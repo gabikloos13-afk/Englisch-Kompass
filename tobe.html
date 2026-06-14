@@ -1551,7 +1551,7 @@ body.hausaufgaben-mode #nachschlagen .ref-wrap > :not(.homework-note):not(.homew
 </head>
 <body>
 <!-- NAVIGATION -->
-<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button></div></div><div class="page-content">
+<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button><button class="print-btn" id="tb-reset-storage-btn" type="button">🧹 Lernstand löschen</button></div></div><div class="page-content">
 <article class="learning-card" data-topic="tobe" id="tobe-compass">
 <header class="compass-head">
 <div>
@@ -2123,16 +2123,245 @@ body.hausaufgaben-mode #nachschlagen .ref-wrap > :not(.homework-note):not(.homew
   renderWritecheck();renderFormLab('I');renderMachine();bindChecks();loadChecks();loadNotes();bindSelfcheckChoices();bindErrorScanner();bindStaticButtons();
 })();
 </script>
+
 <script>
 (function(){
-  if (window.__kompassHashTabsReady) return;
-  window.__kompassHashTabsReady = true;
-  var aliases = {'lernen':'learn','learn':'learn','verstehen':'learn','nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference','schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck','verbindungen':'connections','connections':'connections','notizen':'notes','notes':'notes'};
-  function cleanHash(){try{return decodeURIComponent((window.location.hash||'').replace(/^#/,'')).toLowerCase().trim();}catch(e){return (window.location.hash||'').replace(/^#/,'').toLowerCase().trim();}}
-  function openSectionFromHash(){var key=cleanHash();if(!key)return;if(key==='kannichs'||key==='kann-ichs'||key==='selfcheck'){var learnBtn=document.querySelector('.compass-mode-btn[data-val="learn"]');if(learnBtn)learnBtn.click();window.setTimeout(function(){var selfBtn=document.querySelector('[data-tab="tobe-learn"][data-val="selfcheck"]');if(selfBtn)selfBtn.click();var card=document.querySelector('.learning-card')||selfBtn||learnBtn;if(card&&typeof card.scrollIntoView==='function')card.scrollIntoView({block:'start'});},40);return;}var mode=aliases[key];if(!mode)return;var btn=document.querySelector('.compass-mode-btn[data-val="'+mode+'"]')||document.querySelector('[data-tab$="-mode"][data-val="'+mode+'"]');if(!btn)return;btn.click();window.setTimeout(function(){var card=document.querySelector('.learning-card')||btn;if(card&&typeof card.scrollIntoView==='function')card.scrollIntoView({block:'start'});},40);}
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',openSectionFromHash);}else{openSectionFromHash();}
-  window.addEventListener('hashchange',openSectionFromHash);
+  'use strict';
+  if (window.__kompassToBeHistoryStorageReady) return;
+  window.__kompassToBeHistoryStorageReady = true;
+
+  var STATE_KEY = 'kompass_tobe_history_storage_v1';
+  var FORM_KEY = STATE_KEY + ':form';
+  var UI_KEY = STATE_KEY + ':ui';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  var CHECK_KEY = 'kompass_tobe_checks';
+  var NOTE_KEY = 'kompass_tobe_notes';
+  var HASH_PREFIX = 'kompass:';
+  var restoring = false;
+  var saveTimer = null;
+
+  var legacyModes = {
+    'lernen':'learn','learn':'learn','verstehen':'learn',
+    'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+    'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
+    'verbindungen':'connections','connections':'connections',
+    'notizen':'notes','notes':'notes'
+  };
+  var legacyLearn = {
+    'wozu':'entry','entry':'entry',
+    'kontrollzentrum':'control','control':'control',
+    'maschine':'machine','satzbauen':'machine','satz-bauen':'machine','machine':'machine',
+    'fragewoerter':'questions','fragewörter':'questions','questions':'questions',
+    'kannichs':'selfcheck','kann-ichs':'selfcheck','selfcheck':'selfcheck','kannich':'selfcheck'
+  };
+
+  function qs(sel, root){return (root || document).querySelector(sel);}
+  function qsa(sel, root){return Array.prototype.slice.call((root || document).querySelectorAll(sel));}
+  function readJSON(key, fallback){try{var raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function writeJSON(key, value){try{localStorage.setItem(key, JSON.stringify(value));}catch(e){}}
+  function cssEscape(value){if(window.CSS && CSS.escape){return CSS.escape(String(value));}return String(value).replace(/[^a-zA-Z0-9_-]/g,'\\$&');}
+  function getMode(){var btn=qs('[data-tab="tobe-mode"][aria-pressed="true"]')||qs('[data-tab="tobe-mode"].is-active');return btn?btn.getAttribute('data-val'):'learn';}
+  function getLearn(){var btn=qs('[data-tab="tobe-learn"][aria-pressed="true"]')||qs('[data-tab="tobe-learn"].is-active');return btn?btn.getAttribute('data-val'):'entry';}
+  function buildHash(){var mode=getMode()||'learn';var parts=['mode='+encodeURIComponent(mode)];if(mode==='learn'){parts.push('learn='+encodeURIComponent(getLearn()||'entry'));}return '#'+HASH_PREFIX+parts.join('&');}
+  function parseHash(){
+    var raw='';
+    try{raw=decodeURIComponent((location.hash||'').replace(/^#/, '')).trim();}catch(e){raw=(location.hash||'').replace(/^#/, '').trim();}
+    if(!raw){return null;}
+    var low=raw.toLowerCase();
+    if(low.indexOf(HASH_PREFIX)===0){
+      var rest=raw.slice(HASH_PREFIX.length);
+      var out={};
+      rest.split('&').forEach(function(pair){var ix=pair.indexOf('=');if(ix<0)return;out[pair.slice(0,ix)]=decodeURIComponent(pair.slice(ix+1));});
+      return {mode:out.mode||'learn', learn:out.learn||'entry'};
+    }
+    if(legacyLearn[low]){return {mode:'learn', learn:legacyLearn[low]};}
+    if(legacyModes[low]){return {mode:legacyModes[low], learn:'entry'};}
+    var byId=document.getElementById(raw);
+    if(byId && byId.getAttribute('data-panel')==='tobe-mode'){return {mode:byId.getAttribute('data-val')||'learn', learn:'entry'};}
+    if(byId && byId.getAttribute('data-panel')==='tobe-learn'){return {mode:'learn', learn:byId.getAttribute('data-val')||'entry'};}
+    return null;
+  }
+  function activateTab(group, val){
+    var btn=qs('[data-tab="'+group+'"][data-val="'+cssEscape(val)+'"]');
+    if(!btn){return false;}
+    qsa('[data-tab="'+group+'"]').forEach(function(b){var on=b===btn;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false');});
+    qsa('[data-panel="'+group+'"]').forEach(function(panel){panel.classList.toggle('is-active',panel.getAttribute('data-val')===val);});
+    return true;
+  }
+  function applyHash(parsed){
+    if(!parsed){return;}
+    restoring=true;
+    activateTab('tobe-mode', parsed.mode || 'learn');
+    if((parsed.mode || 'learn')==='learn'){activateTab('tobe-learn', parsed.learn || 'entry');}
+    restoring=false;
+    saveAll();
+  }
+  function updateHash(replace){
+    var wanted=buildHash();
+    if(location.hash===wanted){return;}
+    var target=location.pathname+location.search+wanted;
+    try{history[replace?'replaceState':'pushState']({kompass:true},'',target);}catch(e){if(replace){location.replace(wanted);}else{location.hash=wanted;}}
+  }
+  function elementKey(el, prefix, index){
+    return el.id || el.getAttribute('name') || el.getAttribute('data-review-id') || el.getAttribute('data-save') || el.getAttribute('data-can') || el.getAttribute('data-lk-note') || el.getAttribute('data-note') || (prefix+'-'+index);
+  }
+  function saveFormState(){
+    var data={};
+    qsa('input, textarea, select').forEach(function(el, index){
+      var key=elementKey(el,'field',index);
+      if(el.type==='radio'){if(el.checked){data[key]=el.value;}}
+      else if(el.type==='checkbox'){data[key]=!!el.checked;}
+      else{data[key]=el.value;}
+    });
+    writeJSON(FORM_KEY,data);
+  }
+  function restoreFormState(){
+    var data=readJSON(FORM_KEY,{});
+    qsa('input, textarea, select').forEach(function(el,index){
+      var key=elementKey(el,'field',index);
+      if(!Object.prototype.hasOwnProperty.call(data,key)){return;}
+      if(el.type==='radio'){el.checked=(el.value===data[key]);}
+      else if(el.type==='checkbox'){el.checked=!!data[key];}
+      else{el.value=data[key];}
+    });
+  }
+  function detailsKey(el,index){
+    if(!el.getAttribute('data-kompass-detail-id')){el.setAttribute('data-kompass-detail-id', el.id || ('details-'+index));}
+    return el.getAttribute('data-kompass-detail-id');
+  }
+  function saveDetailsState(){
+    var data={};
+    qsa('details').forEach(function(el,index){data[detailsKey(el,index)]=!!el.open;});
+    return data;
+  }
+  function restoreDetailsState(data){
+    data=data||{};
+    qsa('details').forEach(function(el,index){var key=detailsKey(el,index);if(Object.prototype.hasOwnProperty.call(data,key)){el.open=!!data[key];}});
+  }
+  function activeValue(sel, attr){var el=qs(sel+'.is-active')||qs(sel+'[aria-pressed="true"]');return el?el.getAttribute(attr):'';}
+  function saveInteractiveState(){
+    var state={
+      mode:getMode(),
+      learn:getLearn(),
+      homework:document.body.classList.contains('hausaufgaben-mode'),
+      formPerson:activeValue('[data-form-person]','data-form-person'),
+      machineMode:activeValue('[data-mode]','data-mode'),
+      machinePerson:activeValue('.m-chip[data-person]','data-person'),
+      details:saveDetailsState(),
+      miniChoices:[],
+      scannerChoices:[],
+      feedbacks:[],
+      writeTasks:[],
+      summary:null
+    };
+    qsa('.mini-decision-item').forEach(function(card,index){
+      var selected=qs('[data-selfcheck-answer].is-selected',card);
+      var feedback=qs('.mini-choice-feedback',card);
+      state.miniChoices.push({index:index,value:selected?selected.getAttribute('data-selfcheck-value'):'',feedbackClass:feedback?feedback.className:'',feedbackText:feedback?feedback.textContent:''});
+    });
+    qsa('.scanner-card').forEach(function(card,index){
+      var selected=qs('[data-scanner-word].is-selected',card);
+      var words=qsa('[data-scanner-word]',card);
+      var selectedIndex=selected?words.indexOf(selected):-1;
+      var feedback=qs('.scanner-feedback',card);
+      state.scannerChoices.push({index:index,selectedIndex:selectedIndex,attempted:card.classList.contains('is-attempted'),feedbackClass:feedback?feedback.className:'',feedbackText:feedback?feedback.textContent:''});
+    });
+    qsa('.writecheck-task').forEach(function(card){state.writeTasks.push({id:card.id,className:card.className});});
+    qsa('.writecheck-feedback').forEach(function(fb){state.feedbacks.push({id:fb.id,className:fb.className,html:fb.innerHTML});});
+    var summary=qs('#writecheck-summary');
+    if(summary){state.summary={className:summary.className,html:summary.innerHTML};}
+    writeJSON(UI_KEY,state);
+  }
+  function clickIfExists(selector){var el=qs(selector);if(el && typeof el.click==='function'){el.click();return true;}return false;}
+  function restoreInteractiveState(){
+    var state=readJSON(UI_KEY,{});
+    restoring=true;
+    if(state.formPerson){clickIfExists('[data-form-person="'+cssEscape(state.formPerson)+'"]');}
+    if(state.machineMode){clickIfExists('[data-mode="'+cssEscape(state.machineMode)+'"]');}
+    if(state.machinePerson){clickIfExists('.m-chip[data-person="'+cssEscape(state.machinePerson)+'"]');}
+    if(state.homework){document.body.classList.add('hausaufgaben-mode');var ha=qs('#ha-btn');if(ha){ha.textContent='📚 Normal-Modus';ha.setAttribute('aria-pressed','true');}}
+    restoreDetailsState(state.details||{});
+    (state.miniChoices||[]).forEach(function(item){
+      var card=qsa('.mini-decision-item')[item.index];
+      if(!card||!item.value){return;}
+      var btn=qs('[data-selfcheck-value="'+cssEscape(item.value)+'"]',card);
+      if(btn){btn.click();}
+      var feedback=qs('.mini-choice-feedback',card);
+      if(feedback){if(item.feedbackClass){feedback.className=item.feedbackClass;}if(item.feedbackText){feedback.textContent=item.feedbackText;}}
+    });
+    (state.scannerChoices||[]).forEach(function(item){
+      var card=qsa('.scanner-card')[item.index];
+      if(!card){return;}
+      var words=qsa('[data-scanner-word]',card);
+      if(item.selectedIndex>=0 && words[item.selectedIndex]){words[item.selectedIndex].click();}
+      card.classList.toggle('is-attempted',!!item.attempted);
+      var feedback=qs('.scanner-feedback',card);
+      if(feedback){if(item.feedbackClass){feedback.className=item.feedbackClass;}if(item.feedbackText){feedback.textContent=item.feedbackText;}}
+    });
+    (state.writeTasks||[]).forEach(function(item){var card=document.getElementById(item.id);if(card&&item.className){card.className=item.className;}});
+    (state.feedbacks||[]).forEach(function(item){var fb=document.getElementById(item.id);if(fb){if(item.className){fb.className=item.className;}if(item.html){fb.innerHTML=item.html;}}});
+    if(state.summary){var summary=qs('#writecheck-summary');if(summary){summary.className=state.summary.className||summary.className;summary.innerHTML=state.summary.html||'';}}
+    if(state.mode){activateTab('tobe-mode',state.mode);}
+    if(state.learn){activateTab('tobe-learn',state.learn);}
+    restoring=false;
+  }
+  function saveNotesMirror(){
+    try{
+      var data={};
+      ['new','hard','free','example'].forEach(function(k){var el=document.getElementById('note-'+k);data[k]=el?el.value:'';});
+      localStorage.setItem(NOTE_KEY,JSON.stringify(data));
+    }catch(e){}
+  }
+  function saveAll(){
+    if(restoring){return;}
+    saveFormState();
+    saveInteractiveState();
+    saveNotesMirror();
+  }
+  function scheduleSave(){
+    if(restoring){return;}
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(saveAll,80);
+  }
+  function resetPageState(){
+    try{localStorage.removeItem(STATE_KEY);localStorage.removeItem(FORM_KEY);localStorage.removeItem(UI_KEY);localStorage.removeItem(CHECK_KEY);localStorage.removeItem(NOTE_KEY);}catch(e){}
+    try{
+      var store=readJSON(WRITE_KEY,{});
+      Object.keys(store).forEach(function(key){
+        if(key==='tobe'||key==='tobeTasks'||key.indexOf('tobe-wc-')===0){delete store[key];}
+        else if(store[key] && store[key].topicId==='tobe'){delete store[key];}
+      });
+      localStorage.setItem(WRITE_KEY,JSON.stringify(store));
+    }catch(e){}
+    try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+    location.reload();
+  }
+  function restoreNavigationFromHashOrStore(){
+    var parsed=parseHash();
+    if(parsed){applyHash(parsed);updateHash(true);return;}
+    var state=readJSON(UI_KEY,{});
+    if(state.mode){activateTab('tobe-mode',state.mode);}
+    if(state.learn){activateTab('tobe-learn',state.learn);}
+    updateHash(true);
+  }
+
+  restoreFormState();
+  restoreInteractiveState();
+  restoreNavigationFromHashOrStore();
+  scheduleSave();
+
+  document.addEventListener('input',scheduleSave,true);
+  document.addEventListener('change',scheduleSave,true);
+  document.addEventListener('toggle',scheduleSave,true);
+  document.addEventListener('click',function(ev){
+    if(ev.target.closest('#tb-reset-storage-btn')){ev.preventDefault();resetPageState();return;}
+    if(ev.target.closest('[data-tab]')){setTimeout(function(){if(!restoring){updateHash(false);scheduleSave();}},0);return;}
+    if(ev.target.closest('button,summary,.scanner-word-btn,.mini-choice-btn')){setTimeout(scheduleSave,0);}
+  },true);
+  window.addEventListener('popstate',function(){applyHash(parseHash());});
+  window.addEventListener('hashchange',function(){applyHash(parseHash());});
 })();
 </script>
+
 </body>
 </html>
