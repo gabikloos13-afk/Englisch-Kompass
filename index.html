@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hannas Englisch-Kompass</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --cyan:#0891b2;--cyan-soft:#ecfeff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;--gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:18px;--radius-sm:12px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,.08);--shadow-sm:0 4px 14px rgba(15,23,42,.06);--shadow-lg:0 18px 54px rgba(15,23,42,.14);
+  --line:1px solid rgba(148,163,184,.42);
+  --font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;
+  --page-top:#dbeafe;--page-bottom:#c7d9f2;--surface:rgba(255,255,255,.94);--surface-soft:rgba(255,255,255,.78);
+}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0 0 54px;font-family:var(--font-body);font-size:15px;line-height:1.62;color:var(--gray-800);background:linear-gradient(180deg,var(--page-top) 0%,var(--page-bottom) 100%);min-height:100vh}
+h1,h2,h3,p,ul{margin-top:0}p,ul{margin-bottom:0}button,input{font:inherit}a{font:inherit;color:inherit}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:1000;padding:9px 13px;border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);box-shadow:var(--shadow-sm);text-decoration:none}.skip-link:focus{top:12px}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero-band{width:100%;padding:26px 30px 20px;background:linear-gradient(135deg,#1d4ed8 0%,#6d28d9 100%);color:#fff;box-shadow:var(--shadow-lg)}
+.hero-inner{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center}
+.logo-mark{width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#38bdf8 0%,#1d4ed8 42%,#0f172a 100%);box-shadow:0 14px 32px rgba(15,23,42,.35);border:3px solid rgba(255,255,255,.9);font-size:2.45rem;flex-shrink:0}
+.hero-kicker{margin:0 0 4px;font-family:var(--font-head);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.hero-title{margin:0;font-family:var(--font-head);font-size:clamp(1.7rem,3.4vw,2.7rem);font-weight:400;line-height:1.06;letter-spacing:-.02em}.hero-subtitle{max-width:780px;margin:8px 0 0;color:rgba(255,255,255,.84);font-size:.98rem;line-height:1.42}
+.hero-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.hero-btn{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 13px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-pill);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-family:var(--font-head);font-size:.86rem;transition:background .18s,border-color .18s,transform .18s}.hero-btn:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);transform:translateY(-1px)}
+.notebook{width:100%;padding:20px 30px 0}.notebook-shell{width:100%;border:var(--line);border-radius:24px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
+.notebook-head{display:grid;grid-template-columns:minmax(240px,1fr) minmax(280px,520px);gap:18px;align-items:center;padding:18px 22px;background:rgba(255,255,255,.78);border-bottom:1px solid rgba(148,163,184,.34)}
+.start-line{display:flex;align-items:center;gap:12px;min-width:0}.start-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:14px;background:var(--blue-soft);font-size:1.25rem;flex-shrink:0}.start-title{margin:0 0 3px;font-family:var(--font-head);font-size:1.06rem;font-weight:400;color:var(--gray-800)}.start-text{color:var(--gray-600);font-size:.9rem;line-height:1.35}
+.search-area{position:relative}.search-symbol{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray-400);pointer-events:none}.topic-search{width:100%;min-height:42px;padding:9px 14px 9px 40px;border:1px solid rgba(148,163,184,.65);border-radius:var(--radius-pill);background:#fff;color:var(--gray-800);outline:none;box-shadow:var(--shadow-sm)}.topic-search:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.14)}
+.register-tabs{display:flex;gap:6px;padding:10px 14px;background:linear-gradient(180deg,#f8fafc,#eef4fb);border-bottom:1px solid rgba(148,163,184,.34);overflow-x:auto;-webkit-overflow-scrolling:touch}.register-tab{flex:0 0 auto;min-height:42px;padding:9px 14px;border:1px solid rgba(148,163,184,.42);border-radius:var(--radius-pill);background:#fff;color:var(--gray-700);font-family:var(--font-head);font-size:.88rem;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s}.register-tab:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark);transform:translateY(-1px)}.register-tab.is-active,.register-tab[aria-selected="true"]{border-color:var(--blue);background:var(--blue);color:#fff}
+.search-results{display:none;padding:14px 22px;border-bottom:1px solid rgba(148,163,184,.34);background:linear-gradient(180deg,#fff,#f8fafc)}.search-results.is-visible{display:block}.search-results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px}.search-title{margin:0;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--gray-800)}.search-clear{padding:6px 10px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius-pill);background:#fff;color:var(--gray-600);font-family:var(--font-head);font-size:.82rem;cursor:pointer}.result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.result-card{display:flex;align-items:flex-start;gap:9px;min-height:78px;padding:11px;border:1px solid rgba(148,163,184,.38);border-radius:var(--radius-sm);background:#fff;text-decoration:none;box-shadow:var(--shadow-sm)}.result-card:hover{border-color:#93c5fd;background:var(--blue-soft)}.result-icon{font-size:1.3rem;line-height:1}.result-title{display:block;margin:0 0 2px;font-family:var(--font-head);font-size:.9rem;color:var(--gray-800)}.result-text{display:block;color:var(--gray-600);font-size:.78rem;line-height:1.3}.empty-state{display:none;padding:10px 12px;border:1px dashed rgba(148,163,184,.6);border-radius:var(--radius-sm);background:#fff;color:var(--gray-600);font-size:.88rem}.empty-state.is-visible{display:block}
+.tab-panel{display:none;padding:22px;background:linear-gradient(180deg,var(--page-top) 0%,var(--page-bottom) 100%)}.tab-panel.is-active{display:block;animation:fadeUp .22s ease both}@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end;margin:0 0 14px}.panel-title{margin:0 0 4px;font-family:var(--font-head);font-size:1.14rem;font-weight:400;color:var(--gray-800)}.panel-text{color:var(--gray-600);font-size:.9rem;line-height:1.42}.panel-count{display:inline-flex;align-items:center;min-height:32px;padding:6px 11px;border-radius:var(--radius-pill);background:#fff;border:1px solid rgba(148,163,184,.4);color:var(--gray-600);font-family:var(--font-head);font-size:.82rem;white-space:nowrap}
+.home-grid{display:grid;grid-template-columns:1.2fr repeat(2,minmax(240px,1fr));gap:14px}.home-card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:148px;padding:17px;border:1px solid rgba(148,163,184,.42);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:var(--shadow-sm);text-decoration:none;text-align:left;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}.home-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#93c5fd}.home-card.is-primary{background:linear-gradient(135deg,#fff,#eff6ff);border-color:#93c5fd}.card-eyebrow{display:block;margin:0 0 5px;font-family:var(--font-head);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500)}.home-title{display:block;margin:0 0 5px;font-family:var(--font-head);font-size:1.02rem;font-weight:400;color:var(--gray-800)}.home-text{display:block;color:var(--gray-600);font-size:.88rem;line-height:1.38}.home-link{display:inline-flex;align-items:center;width:max-content;margin-top:8px;padding:6px 10px;border-radius:var(--radius-pill);background:#fff;border:1px solid rgba(148,163,184,.42);color:var(--blue-dark);font-family:var(--font-head);font-size:.82rem}.home-card.is-primary .home-link{background:var(--blue);border-color:var(--blue);color:#fff}
+.topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.topic-card{position:relative;display:flex;flex-direction:column;gap:10px;min-height:158px;padding:15px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:var(--shadow-sm);text-decoration:none;transition:transform .18s,box-shadow .18s,border-color .18s,background .18s}.topic-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#93c5fd;background:#fff}.topic-card.is-last-topic{border-color:var(--green);box-shadow:0 0 0 3px rgba(21,128,61,.12),var(--shadow-sm)}.topic-top{display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:start}.topic-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:14px;background:var(--blue-soft);font-size:1.35rem;flex-shrink:0}.topic-kicker{display:inline-flex;width:max-content;margin:0 0 4px;padding:2px 7px;border-radius:var(--radius-pill);background:var(--gray-100);color:var(--gray-500);font-size:.72rem;font-family:var(--font-head)}.topic-title{margin:0;font-family:var(--font-head);font-size:1.02rem;font-weight:400;color:var(--gray-800);line-height:1.22}.topic-text{color:var(--gray-600);font-size:.88rem;line-height:1.38;flex:1}.topic-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.status-pill{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border-radius:var(--radius-pill);background:var(--gray-100);color:var(--gray-600);font-family:var(--font-head);font-size:.76rem;white-space:nowrap}.status-pill.is-active{background:var(--green-soft);color:var(--green)}.status-pill.is-complete{background:var(--blue-soft);color:var(--blue-dark)}.topic-open-hint{color:var(--blue-dark);font-family:var(--font-head);font-size:.82rem;white-space:nowrap}.note-card{padding:15px;border:1px dashed rgba(124,58,237,.45);border-radius:var(--radius);background:rgba(245,243,255,.92);box-shadow:var(--shadow-sm)}.note-title{margin:0 0 6px;font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--violet)}.note-text{margin:0 0 10px;color:var(--gray-700);font-size:.88rem;line-height:1.4}.note-link{display:inline-flex;align-items:center;padding:6px 10px;border:1px solid #ddd6fe;border-radius:var(--radius-pill);background:#fff;color:var(--violet);text-decoration:none;font-family:var(--font-head);font-size:.82rem}
+.training-grid{display:grid;grid-template-columns:1.15fr repeat(2,minmax(240px,1fr));gap:14px}.quick-list{display:grid;gap:8px}.quick-link{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border:1px solid rgba(148,163,184,.42);border-radius:var(--radius-sm);background:#fff;text-decoration:none;color:var(--gray-700);box-shadow:var(--shadow-sm)}.quick-link:hover{border-color:#93c5fd;background:var(--blue-soft)}.quick-link span:first-child{font-family:var(--font-head);color:var(--gray-800)}.quick-link span:last-child{color:var(--blue-dark);font-family:var(--font-head);font-size:.82rem;white-space:nowrap}.future-note{margin-top:14px;padding:13px 15px;border:1px solid rgba(148,163,184,.42);border-radius:var(--radius);background:rgba(255,255,255,.86);color:var(--gray-600);font-size:.88rem;line-height:1.42}.future-note span{font-family:var(--font-head);color:var(--gray-800)}
+@media (min-width:1320px){.topic-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.result-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.home-grid,.training-grid{grid-template-columns:1.25fr repeat(2,minmax(260px,1fr))}}
+@media (max-width:1020px){.hero-inner{grid-template-columns:auto minmax(0,1fr)}.hero-actions{grid-column:1/-1;justify-content:flex-start}.notebook-head,.home-grid,.training-grid{grid-template-columns:1fr}.topic-grid,.result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel-intro{grid-template-columns:1fr}}
+@media (max-width:680px){.hero-band,.notebook{padding-left:14px;padding-right:14px}.hero-inner,.topic-grid,.result-grid{grid-template-columns:1fr}.logo-mark{width:78px;height:78px;font-size:2rem}.notebook{padding-top:14px}.notebook-head,.tab-panel,.search-results{padding:14px}.register-tabs{padding:8px}.hero-actions{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}.hero-btn{flex:0 0 auto}.home-card,.topic-card{min-height:auto}.training-grid{grid-template-columns:1fr}}
+@media print{body{background:#fff}.hero-band,.register-tabs,.notebook-head,.search-results{display:none!important}.notebook{padding:0}.notebook-shell{box-shadow:none;border:1px solid #ccc}.tab-panel{display:block!important;background:#fff}.topic-card,.home-card,.note-card{box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#notebook">Direkt zur Übersicht</a>
+<header aria-labelledby="main-title" class="hero-band">
+<div class="hero-inner">
+<div aria-hidden="true" class="logo-mark">🧭</div>
+<div>
+<p class="hero-kicker">Hannas Englisch-Kompass</p>
+<h1 class="hero-title" id="main-title">Englisch-Kompass</h1>
+<p class="hero-subtitle">Wähle einen Bereich aus und starte dein Thema.</p>
+</div>
+<nav aria-label="Bereich für Erwachsene" class="hero-actions">
+<a class="hero-btn" href="begleitbereich.html">Für Erwachsene</a>
+</nav>
+</div>
+</header>
+<main class="notebook" id="notebook">
+<section aria-labelledby="notebook-title" class="notebook-shell">
+<div class="notebook-head">
+<div class="start-line">
+<span aria-hidden="true" class="start-icon">📒</span>
+<div>
+<h2 class="start-title" id="notebook-title">Übersicht</h2>
+<p class="start-text">Wähle ein Register und öffne dein Thema.</p>
+</div>
+</div>
+<div class="search-area">
+<span aria-hidden="true" class="search-symbol">🔎</span>
+<label class="visually-hidden" for="topic-search">Thema suchen</label>
+<input autocomplete="off" class="topic-search" id="topic-search" placeholder="Thema suchen: past, Fragen, Artikel, Adverbs, Hören ..." type="search"/>
+</div>
+</div>
+<nav aria-label="Register der Übersicht" class="register-tabs" role="tablist">
+<button aria-controls="panel-start" aria-selected="true" class="register-tab is-active" data-register="start" id="tab-start" role="tab" type="button">Start</button>
+<button aria-controls="panel-basis" aria-selected="false" class="register-tab" data-register="basis" id="tab-basis" role="tab" type="button">Grundlagen</button>
+<button aria-controls="panel-satz" aria-selected="false" class="register-tab" data-register="satz" id="tab-satz" role="tab" type="button">Satzbau</button>
+<button aria-controls="panel-zeiten" aria-selected="false" class="register-tab" data-register="zeiten" id="tab-zeiten" role="tab" type="button">Zeiten</button>
+<button aria-controls="panel-woerter" aria-selected="false" class="register-tab" data-register="woerter" id="tab-woerter" role="tab" type="button">Wörter</button>
+<button aria-controls="panel-training" aria-selected="false" class="register-tab" data-register="training" id="tab-training" role="tab" type="button">Training</button>
+</nav>
+<section aria-label="Suchergebnisse" aria-live="polite" class="search-results" id="search-results">
+<div class="search-results-head">
+<h2 class="search-title" id="search-title">Suchergebnisse</h2>
+<button class="search-clear" id="search-clear" type="button">Suche löschen</button>
+</div>
+<div class="result-grid" id="result-grid"></div>
+<p class="empty-state" id="empty-state">Kein passendes Thema gefunden.</p>
+</section>
+<section aria-labelledby="tab-start" class="tab-panel is-active" data-panel="start" id="panel-start" role="tabpanel">
+<div class="panel-intro">
+<div>
+<h2 class="panel-title">Heute starten</h2>
+<p class="panel-text">Wähle einen schnellen Einstieg.</p>
+</div>
+<span class="panel-count">Start</span>
+</div>
+<div class="home-grid">
+<a class="home-card is-primary" href="tobe.html#lernen" id="last-box">
+<span><span class="card-eyebrow">Weiterlernen</span><span class="home-title" id="last-topic-title">Noch kein Thema gespeichert</span><span class="home-text" id="last-topic-text">Hier erscheint dein zuletzt geöffnetes Thema.</span></span>
+<span class="home-link" id="last-topic-link">Thema öffnen →</span>
+</a>
+<button class="home-card" data-jump-register="zeiten" type="button">
+<span><span class="card-eyebrow">Zeiten</span><span class="home-title">Zeiten öffnen</span><span class="home-text">Simple Present, Present Progressive und Simple Past.</span></span>
+<span class="home-link">Register öffnen →</span>
+</button>
+<a class="home-card" href="listening.html#buchtraining">
+<span><span class="card-eyebrow">Hören</span><span class="home-title">Listening-Kompass</span><span class="home-text">Hörtraining und Schulbuch-Aufgaben.</span></span>
+<span class="home-link" id="listening-status-pill">0 von 8</span>
+</a>
+</div>
+
+</section>
+<section aria-labelledby="tab-basis" class="tab-panel" data-panel="basis" id="panel-basis" role="tabpanel">
+<div class="panel-intro"><div><h2 class="panel-title">Grundlagen</h2><p class="panel-text">Diese Themen helfen dir bei vielen Sätzen.</p></div><span class="panel-count">3 Themen</span></div>
+<div class="topic-grid">
+<a class="topic-card" data-keywords="to be am is are sein fragen verneinung" data-topic="tobe" href="tobe.html#lernen"><div class="topic-top"><span class="topic-icon">🟦</span><div><span class="topic-kicker">Grundlage</span><h3 class="topic-title">to be</h3></div></div><p class="topic-text">am, is, are · für Alter, Zustand, Herkunft und Ort</p><div class="topic-footer"><span class="status-pill">Start</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="pronouns personalpronomen possessive pronomen i you he she it we they" data-topic="pronouns" href="pronouns.html#lernen"><div class="topic-top"><span class="topic-icon">👤</span><div><span class="topic-kicker">Grundlage</span><h3 class="topic-title">Pronouns</h3></div></div><p class="topic-text">I, you, he, she, it, we, they · wer im Satz gemeint ist</p><div class="topic-footer"><span class="status-pill">Start</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="have got has got haben besitzen family pets" data-topic="havegot" href="havegot.html#lernen"><div class="topic-top"><span class="topic-icon">🎒</span><div><span class="topic-kicker">Grundlage</span><h3 class="topic-title">have got</h3></div></div><p class="topic-text">sagen, was jemand hat · have got / has got</p><div class="topic-footer"><span class="status-pill">Wichtig</span><span class="topic-open-hint">Öffnen →</span></div></a>
+</div>
+</section>
+<section aria-labelledby="tab-satz" class="tab-panel" data-panel="satz" id="panel-satz" role="tabpanel">
+<div class="panel-intro"><div><h2 class="panel-title">Satzbau</h2><p class="panel-text">Hier übst du Aussagen, Fragen und Verneinungen.</p></div><span class="panel-count">3 Themen</span></div>
+<div class="topic-grid">
+<a class="topic-card" data-keywords="word order satzstellung satzbau wer macht was wo wann" data-topic="wordorder" href="wordorder.html#lernen"><div class="topic-top"><span class="topic-icon">🚂</span><div><span class="topic-kicker">Satzbau</span><h3 class="topic-title">Word Order</h3></div></div><p class="topic-text">Wer macht was? Wo? Wann? · englische Satzstellung</p><div class="topic-footer"><span class="status-pill">Satzbau</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="questions fragen fragewort do does simple present how often to be" data-topic="questions" href="questions.html#lernen"><div class="topic-top"><span class="topic-icon">❓</span><div><span class="topic-kicker">Fragen</span><h3 class="topic-title">Questions</h3></div></div><p class="topic-text">Fragen im Simple Present mit Fragewort, do, does und Grundform</p><div class="topic-footer"><span class="status-pill">Satzbau</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="there is there are es gibt ort raum singular plural" data-topic="thereisthereare" href="thereisthereare.html#lernen"><div class="topic-top"><span class="topic-icon">📍</span><div><span class="topic-kicker">Sätze</span><h3 class="topic-title">there is / there are</h3></div></div><p class="topic-text">sagen, was irgendwo ist oder was es gibt</p><div class="topic-footer"><span class="status-pill">Satzbau</span><span class="topic-open-hint">Öffnen →</span></div></a>
+</div>
+</section>
+<section aria-labelledby="tab-zeiten" class="tab-panel" data-panel="zeiten" id="panel-zeiten" role="tabpanel">
+<div class="panel-intro"><div><h2 class="panel-title">Zeiten</h2><p class="panel-text">Gegenwart, gerade jetzt und Vergangenheit.</p></div><span class="panel-count">3 Themen</span></div>
+<div class="topic-grid">
+<a class="topic-card" data-keywords="simple present he she it s habits gewohnheiten always often every day" data-topic="simplepresent" href="simplepresent.html#lernen"><div class="topic-top"><span class="topic-icon">🔁</span><div><span class="topic-kicker">Zeit</span><h3 class="topic-title">Simple Present</h3></div></div><p class="topic-text">Gewohnheiten und Fakten · he/she/it bekommt ein s</p><div class="topic-footer"><span class="status-pill">Zeit</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="present progressive ing now at the moment gerade jetzt" data-topic="progressive" href="progressive.html#lernen"><div class="topic-top"><span class="topic-icon">🎬</span><div><span class="topic-kicker">Zeit</span><h3 class="topic-title">Present Progressive</h3></div></div><p class="topic-text">gerade jetzt · am/is/are + -ing</p><div class="topic-footer"><span class="status-pill">Zeit</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="simple past vergangenheit past tense did was were regular irregular verbs" data-topic="simplepast" href="simplepast.html#lernen"><div class="topic-top"><span class="topic-icon">📖</span><div><span class="topic-kicker">Zeit</span><h3 class="topic-title">Simple Past</h3></div></div><p class="topic-text">Vergangenheit · Aussagen, Fragen, Verneinungen und Irregular Verbs</p><div class="topic-footer"><span class="status-pill">Zeit</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<div class="note-card" data-note="irregularverbs"><h3 class="note-title">Irregular Verbs</h3><p class="note-text">go → went · have → had · im Simple Past bei Lernbaustein 6.</p><a class="note-link" href="simplepast.html#lernen">Zum Simple Past →</a></div>
+</div>
+</section>
+<section aria-labelledby="tab-woerter" class="tab-panel" data-panel="woerter" id="panel-woerter" role="tabpanel">
+<div class="panel-intro"><div><h2 class="panel-title">Wörter</h2><p class="panel-text">Diese Wörter brauchst du oft in Sätzen.</p></div><span class="panel-count">3 Themen</span></div>
+<div class="topic-grid">
+<a class="topic-card" data-keywords="articles a an the artikel bestimmter unbestimmter artikel" data-topic="articles" href="articles.html#lernen"><div class="topic-top"><span class="topic-icon">🔤</span><div><span class="topic-kicker">Wörter</span><h3 class="topic-title">Articles</h3></div></div><p class="topic-text">a, an, the · kleine Wörter, die oft gebraucht werden</p><div class="topic-footer"><span class="status-pill">Wörter</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="adjectives adjektive eigenschaftswörter describing words steigerung" data-topic="adjectives" href="adjectives.html#lernen"><div class="topic-top"><span class="topic-icon">🎨</span><div><span class="topic-kicker">Wörter</span><h3 class="topic-title">Adjectives</h3></div></div><p class="topic-text">beschreiben · vor dem Nomen · keine englische Endung anhängen</p><div class="topic-footer"><span class="status-pill">Wörter</span><span class="topic-open-hint">Öffnen →</span></div></a>
+<a class="topic-card" data-keywords="adverbs of frequency adverbien häufigkeitswörter always usually often sometimes never hardly ever how often" data-topic="adverbsoffrequency" href="adverbsoffrequency.html#lernen"><div class="topic-top"><span class="topic-icon">⏱️</span><div><span class="topic-kicker">Wörter</span><h3 class="topic-title">Adverbs of frequency</h3></div></div><p class="topic-text">always, usually, often, sometimes, never · wie oft etwas passiert</p><div class="topic-footer"><span class="status-pill">Wörter</span><span class="topic-open-hint">Öffnen →</span></div></a>
+</div>
+
+</section>
+<section aria-labelledby="tab-training" class="tab-panel" data-panel="training" id="panel-training" role="tabpanel">
+<div class="panel-intro"><div><h2 class="panel-title">Training</h2><p class="panel-text">Üben, hören und schreiben.</p></div><span class="panel-count">Schnellzugriff</span></div>
+<div class="training-grid">
+<a class="home-card" href="listening.html#buchtraining"><span><span class="card-eyebrow">Hören</span><span class="home-title">Listening-Kompass</span><span class="home-text">ELLLO, Hör-Tage und Schulbuch-Aufgaben.</span></span><span class="home-link" id="listening-status-card">0 von 8</span></a>
+<div class="home-card"><span><span class="card-eyebrow">Üben</span><span class="home-title">Direkt prüfen</span><span class="home-text">Öffne direkt einen passenden Übungsbereich.</span></span><div class="quick-list"><a class="quick-link" href="simplepast.html#simplepast-denkzentrale"><span>Simple Past Denkzentrale</span><span>öffnen →</span></a><a class="quick-link" href="simplepresent.html#schreibcheck"><span>Simple Present</span><span>öffnen →</span></a><a class="quick-link" href="questions.html#schreibcheck"><span>Questions</span><span>öffnen →</span></a><a class="quick-link" href="adverbsoffrequency.html#schreibcheck"><span>Adverbs</span><span>öffnen →</span></a></div></div>
+<a class="home-card" href="schreibwerkstatt.html"><span><span class="card-eyebrow">Schreiben</span><span class="home-title">Schreibwerkstatt</span><span class="home-text">Eigene Sätze planen und prüfen.</span></span><span class="home-link">Öffnen →</span></a>
+</div>
+</section>
+</section>
+</main>
+<script>
+(function(){
+  var topics = [
+    {id:'tobe', title:'to be', href:'tobe.html#lernen', icon:'🟦', text:'am, is, are · Alter, Zustand, Herkunft und Ort', keywords:'to be am is are sein fragen verneinung'},
+    {id:'pronouns', title:'Pronouns', href:'pronouns.html#lernen', icon:'👤', text:'I, you, he, she, it, we, they', keywords:'pronouns personalpronomen possessive pronomen i you he she it we they'},
+    {id:'havegot', title:'have got', href:'havegot.html#lernen', icon:'🎒', text:'sagen, was jemand hat', keywords:'have got has got haben besitzen family pets'},
+    {id:'wordorder', title:'Word Order', href:'wordorder.html#lernen', icon:'🚂', text:'englische Satzstellung', keywords:'word order satzstellung satzbau wer macht was wo wann'},
+    {id:'questions', title:'Questions', href:'questions.html#lernen', icon:'❓', text:'Fragen im Simple Present', keywords:'questions fragen fragewort do does simple present how often to be'},
+    {id:'thereisthereare', title:'there is / there are', href:'thereisthereare.html#lernen', icon:'📍', text:'sagen, was irgendwo ist', keywords:'there is there are es gibt ort raum singular plural'},
+    {id:'simplepresent', title:'Simple Present', href:'simplepresent.html#lernen', icon:'🔁', text:'Gewohnheiten und Fakten', keywords:'simple present he she it s habits gewohnheiten always often every day'},
+    {id:'adverbsoffrequency', title:'Adverbs of frequency', href:'adverbsoffrequency.html#lernen', icon:'⏱️', text:'always, usually, often, sometimes, never', keywords:'adverbs of frequency adverbien häufigkeitswörter always usually often sometimes never hardly ever how often'},
+    {id:'progressive', title:'Present Progressive', href:'progressive.html#lernen', icon:'🎬', text:'gerade jetzt · am/is/are + -ing', keywords:'present progressive ing now at the moment gerade jetzt'},
+    {id:'simplepast', title:'Simple Past', href:'simplepast.html#lernen', icon:'📖', text:'Vergangenheit mit Irregular Verbs', keywords:'simple past vergangenheit past tense did was were regular irregular verbs'},
+    {id:'articles', title:'Articles', href:'articles.html#lernen', icon:'🔤', text:'a, an, the', keywords:'articles a an the artikel bestimmter unbestimmter artikel'},
+    {id:'adjectives', title:'Adjectives', href:'adjectives.html#lernen', icon:'🎨', text:'beschreiben · vor dem Nomen', keywords:'adjectives adjektive eigenschaftswörter describing words steigerung'},
+    {id:'listening', title:'Listening-Kompass', href:'listening.html#buchtraining', icon:'🎧', text:'Hörtraining und Schulbuch-Aufgaben', keywords:'listening hoeren hören audio elllo schulbuch'}
+  ];
+
+  function setActiveRegister(name){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-register]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+    tabs.forEach(function(tab){
+      var active = tab.getAttribute('data-register') === name;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach(function(panel){
+      panel.classList.toggle('is-active', panel.getAttribute('data-panel') === name);
+    });
+  }
+
+  function initRegisters(){
+    document.querySelectorAll('[data-register]').forEach(function(tab){
+      tab.addEventListener('click', function(){ setActiveRegister(tab.getAttribute('data-register')); });
+    });
+    document.querySelectorAll('[data-jump-register]').forEach(function(item){
+      item.addEventListener('click', function(){ setActiveRegister(item.getAttribute('data-jump-register')); });
+    });
+  }
+
+  function markLastTopic(){
+    var last = '';
+    try{ last = localStorage.getItem('kompass_last_topic') || ''; }catch(e){ last = ''; }
+    var topic = topics.find(function(item){ return item.id === last; });
+    var box = document.getElementById('last-box');
+    var title = document.getElementById('last-topic-title');
+    var text = document.getElementById('last-topic-text');
+    var link = document.getElementById('last-topic-link');
+    if(!topic){ return; }
+    if(box){ box.href = topic.href; }
+    if(title){ title.textContent = topic.title; }
+    if(text){ text.textContent = 'Direkt dort weitermachen, wo Hanna zuletzt war.'; }
+    if(link){ link.textContent = topic.title + ' öffnen →'; }
+    var card = document.querySelector('[data-topic="' + topic.id + '"]');
+    if(card){ card.classList.add('is-last-topic'); }
+  }
+
+  function updateListeningStatus(){
+    var pills = [document.getElementById('listening-status-pill'), document.getElementById('listening-status-card')];
+    var data = {};
+    try{ data = JSON.parse(localStorage.getItem('hanna_listening_kompass_v2') || '{}'); }catch(e){ data = {}; }
+    var done = 0;
+    for(var i=1;i<=8;i++){ if(data['day'+i] && data['day'+i].done){ done++; } }
+    pills.forEach(function(pill){
+      if(!pill){ return; }
+      pill.textContent = done >= 8 ? 'fertig' : done + ' von 8';
+      pill.classList.remove('is-active','is-complete');
+      if(done >= 8){ pill.classList.add('is-complete'); }
+      else if(done > 0){ pill.classList.add('is-active'); }
+    });
+  }
+
+  function resultMarkup(topic){
+    return '<a class="result-card" href="' + topic.href + '"><span class="result-icon" aria-hidden="true">' + topic.icon + '</span><span><span class="result-title">' + topic.title + '</span><span class="result-text">' + topic.text + '</span></span></a>';
+  }
+
+  function initSearch(){
+    var search = document.getElementById('topic-search');
+    var results = document.getElementById('search-results');
+    var grid = document.getElementById('result-grid');
+    var empty = document.getElementById('empty-state');
+    var clear = document.getElementById('search-clear');
+    if(!search || !results || !grid){ return; }
+
+    function apply(){
+      var query = search.value.trim().toLowerCase();
+      if(!query){
+        results.classList.remove('is-visible');
+        grid.innerHTML = '';
+        if(empty){ empty.classList.remove('is-visible'); }
+        return;
+      }
+      var matches = topics.filter(function(topic){
+        var text = (topic.title + ' ' + topic.text + ' ' + topic.keywords).toLowerCase();
+        return text.indexOf(query) !== -1;
+      });
+      grid.innerHTML = matches.map(resultMarkup).join('');
+      results.classList.add('is-visible');
+      if(empty){ empty.classList.toggle('is-visible', matches.length === 0); }
+    }
+    search.addEventListener('input', apply);
+    if(clear){ clear.addEventListener('click', function(){ search.value = ''; apply(); search.focus(); }); }
+  }
+
+  initRegisters();
+  markLastTopic();
+  updateListeningStatus();
+  initSearch();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Present Progressive — Hannas Englisch-Kompass</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Nunito+Sans:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --cyan:#0891b2;--cyan-soft:#ecfeff;
+  --rose:#db2777;--rose-soft:#fdf2f8;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:18px;--radius-sm:12px;--radius-pill:999px;
+  --shadow:0 10px 30px rgba(15,23,42,.10);--shadow-sm:0 4px 16px rgba(15,23,42,.07);
+  --line:1px solid var(--gray-200);
+  --font-head:'Nunito',sans-serif;--font-body:'Nunito Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:linear-gradient(180deg,#dbeafe 0,#e0f2fe 250px,var(--gray-50) 250px)}
+h1,h2,h3,h4,p,ul,ol,table{margin-top:0;font-weight:400}p,ul,ol{margin-bottom:0}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;left:16px;top:-60px;z-index:1000;background:#fff;color:var(--blue-dark);border:var(--line);border-radius:var(--radius-pill);padding:8px 14px;text-decoration:none}.skip-link:focus{top:12px}
+.site-nav{background:rgba(255,255,255,.96);border-bottom:var(--line);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}.site-nav-inner{max-width:1160px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:12px;flex-wrap:wrap}.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-size:1rem}.nav-logo-icon{font-size:1.3rem}.nav-logo-text{color:var(--blue-dark)}.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.nav-link,.nav-action{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.84rem;color:var(--gray-700);text-decoration:none;border:1px solid var(--gray-200);background:#fff;cursor:pointer}.nav-link:hover,.nav-action:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}.nav-link.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}.nav-action.print{color:var(--green);border-color:#bbf7d0;background:var(--green-soft)}.nav-action.homework{color:var(--violet);border-color:#ddd6fe;background:var(--violet-soft)}
+.page-content{max-width:1160px;margin:0 auto;padding:22px 18px}.learning-card{border:var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.compass-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;padding:28px 30px 24px;background:linear-gradient(135deg,#eef6ff 0,#fff 52%,#f5f3ff 100%);border-bottom:var(--line)}.eyebrow{margin:0 0 8px;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;font-size:.76rem}.compass-head h1{font-family:var(--font-head);font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;margin:0 0 12px;color:#0f172a}.lead{font-size:1.05rem;color:var(--gray-700);max-width:760px}.head-badge{align-self:start;border:1px solid #bfdbfe;background:#fff;border-radius:22px;padding:14px 16px;min-width:210px;box-shadow:var(--shadow-sm)}.head-badge-title{font-size:.82rem;color:var(--gray-500);margin-bottom:8px}.head-badge-main{font-family:var(--font-head);font-size:1.1rem;color:var(--blue-dark)}.head-badge-sub{margin-top:6px;font-size:.9rem;color:var(--gray-600)}
+.compass-mode-grid,.learn-step-nav,.subtab-grid{display:flex;gap:8px;flex-wrap:wrap}.compass-mode-grid{padding:16px 18px;background:#fff;border-bottom:var(--line)}.compass-mode-btn,.learn-step-btn,.subtab-btn,.choice-btn,.tool-btn,.mini-btn{border:1px solid var(--gray-200);background:#fff;color:var(--gray-700);border-radius:var(--radius-pill);padding:8px 13px;font-family:var(--font-head);font-size:.92rem;cursor:pointer;transition:.16s}.compass-mode-btn{display:grid;grid-template-columns:auto;gap:1px;text-align:left;border-radius:18px;padding:10px 14px}.compass-mode-btn span{display:block}.tab-title{color:var(--gray-800)}.tab-sub{font-size:.76rem;color:var(--gray-500)}.compass-mode-btn.is-active,.learn-step-btn.is-active,.subtab-btn.is-active{border-color:var(--blue);background:var(--blue);color:#fff}.compass-mode-btn.is-active .tab-title,.compass-mode-btn.is-active .tab-sub{color:#fff}.learn-step-nav{padding:14px 18px;background:var(--gray-25);border-bottom:var(--line)}.learn-step-btn{font-size:.84rem}.compass-mode-panel,.learn-panel{padding:24px 26px}.tabs-ready [data-panel]{display:none}.tabs-ready [data-panel].is-active{display:block}
+.section-kicker{color:var(--blue-dark);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}.section-title{font-family:var(--font-head);font-size:1.55rem;line-height:1.22;margin-bottom:10px;color:#0f172a}.section-text{color:var(--gray-700);max-width:850px;margin-bottom:18px}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card,.tool-card,.note-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:18px;box-shadow:var(--shadow-sm)}.soft-card{border:1px solid #bfdbfe;background:#eff6ff}.green-card{border-color:#bbf7d0;background:#f0fdf4}.yellow-card{border-color:#fde68a;background:#fffbeb}.red-card{border-color:#fecaca;background:#fef2f2}.violet-card{border-color:#ddd6fe;background:#f5f3ff}.cyan-card{border-color:#a5f3fc;background:#ecfeff}.card h3,.tool-card h3,.note-card h3{font-family:var(--font-head);font-size:1.12rem;margin-bottom:8px;color:#0f172a}.mini-label{font-size:.78rem;color:var(--gray-500);margin-bottom:5px}.sentence{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:1.08rem;margin:10px 0}.chip,.word-chip{display:inline-flex;align-items:center;gap:5px;border-radius:var(--radius-pill);padding:4px 10px;border:1px solid var(--gray-200);background:#fff;color:var(--gray-700)}.chip.blue{border-color:#bfdbfe;background:#eff6ff;color:#1e3a8a}.chip.green{border-color:#bbf7d0;background:#f0fdf4;color:#14532d}.chip.yellow{border-color:#fde68a;background:#fffbeb;color:#78350f}.chip.red{border-color:#fecaca;background:#fef2f2;color:#7f1d1d}.chip.violet{border-color:#ddd6fe;background:#f5f3ff;color:#4c1d95}.signal-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.split-example{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}.vs{align-self:center;border:var(--line);background:#fff;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--gray-500)}.formula-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}.formula-part{border:var(--line);border-radius:16px;padding:14px;background:#fff}.formula-part .big{display:block;font-family:var(--font-head);font-size:1.35rem;color:var(--blue-dark)}.select-row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}.field{display:grid;gap:4px}.field label{font-size:.8rem;color:var(--gray-600)}select,input,textarea{font:inherit;border:1px solid var(--gray-300);border-radius:12px;padding:9px 11px;background:#fff;color:var(--gray-800)}textarea{min-height:92px;resize:vertical;width:100%}.output-box{border:1px dashed #93c5fd;background:#eff6ff;border-radius:16px;padding:16px;margin-top:12px}.output-sentence{font-family:var(--font-head);font-size:1.35rem;color:#0f172a;margin-bottom:6px}.output-note{color:var(--gray-600)}.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.choice-btn:hover,.tool-btn:hover,.mini-btn:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}.choice-btn.is-selected{border-color:var(--blue);background:var(--blue);color:#fff}.choice-btn.is-correct{border-color:var(--green);background:var(--green);color:#fff}.choice-btn.is-careful{border-color:var(--red);background:var(--red);color:#fff}.feedback,.write-feedback{border-radius:14px;padding:10px 12px;background:var(--gray-100);color:var(--gray-700);margin-top:10px}.feedback.is-good,.write-feedback.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}.feedback.is-careful,.write-feedback.is-careful{background:var(--red-soft);color:#7f1d1d;border:1px solid #fecaca}.feedback.is-hint,.write-feedback.is-hint{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}.trap-card{border:var(--line);border-radius:var(--radius);padding:16px;background:#fff}.table-wrap{overflow:auto;border:var(--line);border-radius:var(--radius);background:#fff}table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:11px 12px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:top}th{background:var(--gray-50);color:#0f172a}tr:last-child td{border-bottom:0}.rule-list{display:grid;gap:10px}.rule-item{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start;border:var(--line);border-radius:14px;padding:12px;background:#fff}.rule-name{color:var(--blue-dark);font-family:var(--font-head)}.connection-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.connection-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px;box-shadow:var(--shadow-sm)}.connection-card a{display:inline-flex;margin-top:10px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);padding:6px 11px;text-decoration:none;color:var(--blue-dark);background:var(--blue-soft)}.writecheck-list{display:grid;gap:14px}.write-task{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px}.write-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.write-task-title{font-family:var(--font-head);color:#0f172a}.write-task-meta{font-size:.78rem;color:var(--gray-500)}.write-task input{width:100%;margin-top:8px}.write-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.solution-btn[hidden]{display:none!important}.summary-box{margin-top:14px;border-radius:16px;padding:14px;background:var(--gray-100)}.summary-box.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}.summary-box.is-careful{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}.workshop-preview{border:1px dashed #a5b4fc;background:#f5f3ff;border-radius:18px;padding:16px;margin-top:14px}.journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.note-status{margin-top:10px;color:var(--green);min-height:1.4em}.print-sheet{display:none}.homework-only{display:none}.mt-16{margin-top:16px}.mt-18{margin-top:18px}.small-title{font-size:1.25rem;margin-top:22px}
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]),body.hausaufgaben-mode .interactive-only{display:none!important}body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}body.hausaufgaben-mode .homework-only{display:block}body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+@media (max-width:900px){.compass-head{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}.nav-links{display:none}.site-nav-inner{justify-content:center}.page-content{padding:14px 10px}.compass-mode-panel,.learn-panel{padding:18px 14px}.compass-head{padding:22px 18px}}
+@media print{body{background:#fff;color:#000;padding:0}.site-nav,.page-content{display:none!important}body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html"><span class="nav-logo-icon" aria-hidden="true">🧭</span><span class="nav-logo-text">Hannas Englisch-Kompass</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="tobe.html">to be</a>
+      <a class="nav-link" href="pronouns.html">Pronouns</a>
+      <a class="nav-link" href="havegot.html">have got</a>
+      <a class="nav-link" href="simplepresent.html">Simple Present</a>
+      <a class="nav-link" href="questions.html">Questions</a>
+      <a class="nav-link is-active" href="progressive.html" aria-current="page">Progressive</a>
+      <a class="nav-link" href="simplepast.html">Simple Past</a>
+      <a class="nav-link" href="wordorder.html">Word Order</a>
+      <a class="nav-link" href="index.html">Alle Themen</a>
+    </div>
+    <div class="nav-links" aria-label="Werkzeuge">
+      <button class="nav-action homework" type="button" data-homework-toggle>Hausaufgabenmodus</button>
+      <button class="nav-action print" type="button" data-print-cheatsheet>Spickzettel drucken</button>
+    </div>
+  </div>
+</nav>
+<main id="main-content" class="page-content">
+  <article class="learning-card" data-topic="present-progressive">
+    <header class="compass-head">
+      <div>
+        <p class="eyebrow">Present Progressive</p>
+        <h1>Present Progressive</h1>
+        <p class="lead">Du benutzt es, wenn etwas gerade jetzt passiert oder gerade in dieser Zeit läuft: <span class="chip blue">I am reading.</span> Der Denkweg ist nicht „einfach -ing“, sondern immer: <span class="chip green">Person</span> + <span class="chip blue">am/is/are</span> + <span class="chip violet">Verb-ing</span>.</p>
+      </div>
+      <aside class="head-badge" aria-label="Kernregel">
+        <div class="head-badge-title">Kernregel</div>
+        <div class="head-badge-main">to be + Verb-ing</div>
+        <div class="head-badge-sub">I am playing. She is playing. They are playing.</div>
+      </aside>
+    </header>
+
+    <div class="compass-mode-grid" role="tablist" aria-label="Hauptbereiche">
+      <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span class="tab-title">🎯 Lernen</span><span class="tab-sub">erst verstehen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span class="tab-title">📖 Nachschlagen</span><span class="tab-sub">Regeln ansehen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span class="tab-title">🔗 Verbindungen</span><span class="tab-sub">Themen verknüpfen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="tab-title">✍️ Schreib-Check</span><span class="tab-sub">selbst prüfen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span class="tab-title">📝 Schreibwerkstatt</span><span class="tab-sub">eigene Sätze</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span class="tab-title">✏️ Notizen</span><span class="tab-sub">Fragen sammeln</span></button>
+    </div>
+
+    <section class="compass-mode-panel is-active" id="lernen" role="tabpanel" aria-labelledby="tab-lernen" data-panel="pg-mode" data-val="learn">
+      <div class="learn-step-nav" role="tablist" aria-label="Lernschritte">
+        <button class="learn-step-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="pg-learn-wozu" id="tab-pg-learn-wozu" data-tab="pg-learn" data-val="wozu">1 Wozu?</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-radar" id="tab-pg-learn-radar" data-tab="pg-learn" data-val="radar">2 Jetzt-Radar</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-machine" id="tab-pg-learn-machine" data-tab="pg-learn" data-val="machine">3 Satzmaschine</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-spelling" id="tab-pg-learn-spelling" data-tab="pg-learn" data-val="spelling">4 -ing-Zauberer</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-questions" id="tab-pg-learn-questions" data-tab="pg-learn" data-val="questions">5 Fragen</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-contrast" id="tab-pg-learn-contrast" data-tab="pg-learn" data-val="contrast">6 Wechsel</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-state" id="tab-pg-learn-state" data-tab="pg-learn" data-val="state">7 Stoppschild</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-check" id="tab-pg-learn-check" data-tab="pg-learn" data-val="check">8 Kann ich’s?</button>
+      </div>
+
+      <section class="learn-panel is-active" id="pg-learn-wozu" role="tabpanel" aria-labelledby="tab-pg-learn-wozu" data-panel="pg-learn" data-val="wozu">
+        <p class="section-kicker">Erst Bedeutung, dann Form</p>
+        <h2 class="section-title">Wozu brauche ich Present Progressive?</h2>
+        <p class="section-text">Deutsch sagt oft einfach „sie spielt“. Englisch fragt genauer: Passiert es gerade jetzt, läuft es gerade in dieser Zeit oder ist es eine Gewohnheit? Genau hier entscheidet sich Simple Present oder Present Progressive.</p>
+        <div class="split-example">
+          <div class="card green-card">
+            <h3>Gewohnheit</h3>
+            <div class="sentence"><span class="chip green">She plays tennis.</span></div>
+            <p>Sie spielt Tennis. Das ist allgemein oder regelmäßig.</p>
+            <div class="signal-list"><span class="chip">every day</span><span class="chip">always</span><span class="chip">on Mondays</span></div>
+          </div>
+          <div class="vs">vs.</div>
+          <div class="card soft-card">
+            <h3>Gerade jetzt / gerade in dieser Zeit</h3>
+            <div class="sentence"><span class="chip blue">She is playing tennis.</span></div>
+            <p>Sie spielt gerade Tennis. Die Handlung läuft im Moment.</p>
+            <p>Manchmal läuft die Handlung gerade in dieser Zeit, nicht genau in dieser Sekunde: <span class="chip blue">I’m reading an exciting book this week.</span> <span class="chip blue">We are learning English this year.</span></p>
+            <div class="signal-list"><span class="chip">now</span><span class="chip">right now</span><span class="chip">at the moment</span><span class="chip">Look!</span><span class="chip">this week</span></div>
+          </div>
+        </div>
+        <div class="card yellow-card mt-16">
+          <h3>Deutsch-Falle</h3>
+          <p>„Ich lese“ kann auf Deutsch beides heißen. Englisch braucht die Entscheidung: <span class="chip green">I read every day.</span>, <span class="chip blue">I am reading now.</span> oder <span class="chip blue">I am reading an exciting book this week.</span></p>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar">
+        <p class="section-kicker">Denkweg 1</p>
+        <h2 class="section-title">Jetzt-Radar: Läuft die Handlung gerade?</h2>
+        <p class="section-text">Klicke zuerst auf deine Entscheidung. Die Lösung erscheint erst danach.</p>
+        <div class="grid-2 interactive-only" data-radar-list>
+          <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
+            <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="simple" data-note="Every day zeigt Gewohnheit. Also: plays.">
+            <p class="mini-label">Satz</p><p>She ___ tennis every day.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="progressive" data-note="At the moment zeigt: Die Handlung läuft jetzt. Also: are eating.">
+            <p class="mini-label">Satz</p><p>At the moment they ___ pizza.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">eat</button><button class="choice-btn" type="button" data-radar-choice="progressive">are eating</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="simple" data-note="Usually zeigt Gewohnheit. Also: walk.">
+            <p class="mini-label">Satz</p><p>We usually ___ to school.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">walk</button><button class="choice-btn" type="button" data-radar-choice="progressive">are walking</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+        </div>
+        <button class="tool-btn interactive-only" type="button" data-reset-radar>Zurücksetzen</button>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
+        <p class="section-kicker">Denkweg 2</p>
+        <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
+        <div class="formula-row">
+          <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
+          <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
+          <div class="formula-part"><span class="big">3 Verb-ing</span><span>playing, reading, running</span></div>
+        </div>
+        <div class="tool-card interactive-only">
+          <h3>Baue den Satz</h3>
+          <div class="select-row">
+            <div class="field"><label for="pg-person">Person</label><select id="pg-person" data-machine-person><option>I</option><option>you</option><option>he</option><option>she</option><option>it</option><option>we</option><option>they</option></select></div>
+            <div class="field"><label for="pg-verb">Verb</label><select id="pg-verb" data-machine-verb><option>play</option><option>read</option><option>watch</option><option>make</option><option>write</option><option>run</option><option>swim</option><option>sit</option><option>get</option><option>dance</option></select></div>
+            <div class="field"><label for="pg-mode-select">Satzart</label><select id="pg-mode-select" data-machine-mode><option value="positive">positiv</option><option value="negative">negativ</option><option value="question">Frage</option><option value="shortYes">Kurzantwort ja</option><option value="shortNo">Kurzantwort nein</option></select></div>
+          </div>
+          <div class="output-box" aria-live="polite"><div class="output-sentence" data-machine-output>I am playing.</div><div class="output-note" data-machine-note>I braucht am. Das Vollverb bekommt -ing.</div></div>
+        </div>
+        <div class="card red-card mt-16"><h3>Nicht verhandelbar</h3><p>Ohne <span class="chip blue">am/is/are</span> ist es kein Present Progressive. <span class="chip red">She playing.</span> ist falsch.</p></div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-spelling" role="tabpanel" aria-labelledby="tab-pg-learn-spelling" data-panel="pg-learn" data-val="spelling">
+        <p class="section-kicker">Denkweg 3</p>
+        <h2 class="section-title">-ing-Zauberer: Wie schreibe ich die Form?</h2>
+        <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
+        <div class="grid-3">
+          <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
+          <div class="card yellow-card"><h3>Stummes -e weg</h3><p>make → making<br/>write → writing<br/>come → coming</p></div>
+          <div class="card violet-card"><h3>Konsonant verdoppeln</h3><p>Bei kurzen Verben: kurzer Vokal + ein Endkonsonant → Endkonsonant oft verdoppeln.</p><p>run → running<br/>sit → sitting<br/>swim → swimming<br/>get → getting</p><p>Nicht bei w/y: play → playing, show → showing.</p></div>
+        </div>
+        <div class="tool-card interactive-only mt-16">
+          <h3>Prüfe die -ing-Form</h3>
+          <p>Verb: <span class="chip blue" data-spell-word>play</span></p>
+          <label class="visually-hidden" for="spell-input">-ing-Form eingeben</label>
+          <input id="spell-input" type="text" autocomplete="off" data-spell-input placeholder="z. B. playing"/>
+          <div class="write-actions"><button class="tool-btn" type="button" data-spell-check>Prüfen</button><button class="tool-btn" type="button" data-spell-next>Nächstes Verb</button></div>
+          <div class="feedback" data-spell-feedback>Tippe die -ing-Form ein.</div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-questions" role="tabpanel" aria-labelledby="tab-pg-learn-questions" data-panel="pg-learn" data-val="questions">
+        <p class="section-kicker">Denkweg 4</p>
+        <h2 class="section-title">Fragen und Verneinungen</h2>
+        <div class="grid-2">
+          <div class="card soft-card"><h3>Verneinung</h3><p>Setze <span class="chip red">not</span> hinter am/is/are.</p><div class="sentence"><span class="chip blue">She</span><span class="chip blue">is not</span><span class="chip violet">playing</span><span>tennis.</span></div><p>Kurzer: She isn’t playing tennis.</p></div>
+          <div class="card green-card"><h3>Frage</h3><p>Stelle am/is/are nach vorne.</p><div class="sentence"><span class="chip blue">Is</span><span class="chip blue">she</span><span class="chip violet">playing</span><span>tennis?</span></div><p>Kurzantwort: Yes, she is. / No, she isn’t.</p></div>
+        </div>
+        <div class="card red-card mt-16"><h3>Harte Denkfalle</h3><p>Bei Present Progressive-Fragen brauchst du nicht do/does. <span class="chip red">Does she playing?</span> ist falsch. Richtig ist <span class="chip green">Is she playing?</span></p></div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-contrast" role="tabpanel" aria-labelledby="tab-pg-learn-contrast" data-panel="pg-learn" data-val="contrast">
+        <p class="section-kicker">Denkweg 5</p>
+        <h2 class="section-title">Wechsel: Simple Present oder Present Progressive?</h2>
+        <p class="section-text">Das Thema ist erst sicher, wenn Hanna die Weiche selbst stellen kann.</p>
+        <div class="rule-list">
+          <div class="rule-item"><div class="rule-name">Gewohnheit</div><div><span class="chip green">Simple Present</span> — every day, always, usually, on Mondays</div></div>
+          <div class="rule-item"><div class="rule-name">Gerade jetzt</div><div><span class="chip blue">Present Progressive</span> — now, right now, at the moment, Look!, Listen!</div></div>
+          <div class="rule-item"><div class="rule-name">Zustand / Meinung</div><div>Meist <span class="chip green">Simple Present</span>: like, know, want, need, understand</div></div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-state" role="tabpanel" aria-labelledby="tab-pg-learn-state" data-panel="pg-learn" data-val="state">
+        <p class="section-kicker">Sicherheitsregel</p>
+        <h2 class="section-title">Stoppschild: Manche Verben laufen nicht</h2>
+        <p class="section-text">Das Stoppschild ist kein zweiter Satzbau. Erst kommt die normale Form: am/is/are + Verb-ing. Danach prüfst du kurz, ob das Verb überhaupt eine laufende Handlung beschreibt.</p>
+        <div class="grid-2">
+          <div class="card green-card"><h3>Handlungen: Progressive möglich</h3><p>play, read, run, write, eat, watch</p><p>Diese Verben zeigen etwas, das jemand tun kann: She is reading.</p></div>
+          <div class="card red-card"><h3>Zustände: Stoppschild prüfen</h3><p>like, love, hate, know, want, need, have (Besitz), understand</p><p>Schulregel Klasse 5: I want a dog. Nicht: I am wanting a dog.</p></div>
+        </div>
+        <div class="card yellow-card mt-16"><h3>So wichtig ist das Stoppschild</h3><p>Für sichere Testsätze brauchst du es als Zusatzprüfung. Der wichtigste Lernkern bleibt: Bedeutung erkennen, am/is/are setzen und die -ing-Form richtig schreiben.</p></div>
+        <div class="tool-card interactive-only mt-16" data-state-quiz>
+          <h3>Stoppschild-Check</h3>
+          <p>Verb: <span class="chip blue" data-state-word>play</span></p>
+          <div class="choice-row"><button class="choice-btn" type="button" data-state-choice="action">Handlung: -ing möglich</button><button class="choice-btn" type="button" data-state-choice="state">Zustand: lieber Simple Present</button></div>
+          <div class="feedback" data-state-feedback>Entscheide zuerst.</div>
+          <button class="tool-btn" type="button" data-state-next>Nächstes Verb</button>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-check" role="tabpanel" aria-labelledby="tab-pg-learn-check" data-panel="pg-learn" data-val="check">
+        <p class="section-kicker">Selbstprüfung</p>
+        <h2 class="section-title">Kann ich’s wirklich?</h2>
+        <p class="section-text">Hier reicht kein Abhaken. Hanna muss kurz selbst denken, erklären und einen eigenen Satz bilden.</p>
+        <div class="grid-3">
+          <div class="card soft-card"><h3>1. Unterschied erklären</h3><p>Erkläre den Unterschied zwischen <span class="chip green">She plays tennis.</span> und <span class="chip blue">She is playing tennis.</span></p><details><summary>Kontrollantwort anzeigen</summary><p>She plays tennis. = Gewohnheit. She is playing tennis. = sie spielt gerade jetzt oder gerade in dieser Zeit.</p></details></div>
+          <div class="card red-card"><h3>2. Fehler finden</h3><p>Was ist falsch an <span class="chip red">Does she playing tennis?</span></p><details><summary>Kontrollantwort anzeigen</summary><p>Bei Present Progressive-Fragen nimmt man nicht do/does. Richtig ist: Is she playing tennis?</p></details></div>
+          <div class="card green-card"><h3>3. Eigenen Satz bilden</h3><p>Schreibe einen Satz über etwas, das gerade wirklich passiert.</p><p class="mini-label">Beispiel</p><p><span class="chip blue">I am sitting at my desk.</span></p></div>
+        </div>
+        <div class="card yellow-card mt-16"><h3>Bestanden, wenn ...</h3><p>Hanna kann erklären, wann Simple Present und Present Progressive verschieden sind, baut am/is/are + Verb-ing sicher und erkennt die wichtigste do/does-Denkfalle.</p></div>
+      </section>
+    </section>
+
+    <section class="compass-mode-panel" id="nachschlagen" role="tabpanel" aria-labelledby="tab-nachschlagen" data-panel="pg-mode" data-val="reference">
+      <p class="section-kicker">Regelübersicht</p>
+      <h2 class="section-title">Present Progressive – Spickzettel</h2>
+      <p class="section-text homework-only">Hausaufgabenmodus: Hier bleiben nur die schnellen Regeln sichtbar.</p>
+      <div class="grid-2">
+        <div class="card soft-card"><h3>Kurz merken</h3><p>Present Progressive bedeutet: etwas passiert gerade jetzt oder gerade in dieser Zeit. Die Form ist immer <span class="chip blue">am/is/are</span> + <span class="chip violet">Verb-ing</span>.</p></div>
+        <div class="card yellow-card"><h3>Wichtigste Denkfrage</h3><p>Kann ich „gerade jetzt“ sinnvoll dazudenken? Dann prüfe Present Progressive. Geht es um Gewohnheit? Dann Simple Present.</p></div>
+      </div>
+      <h3 class="section-title small-title">Formen mit play</h3>
+      <div class="table-wrap"><table><thead><tr><th>Person</th><th>Positiv</th><th>Verneinung</th><th>Frage</th><th>Kurzantwort</th></tr></thead><tbody>
+        <tr><td>I</td><td>I am playing.</td><td>I am not playing.</td><td>Am I playing?</td><td>Yes, I am. / No, I’m not.</td></tr>
+        <tr><td>you</td><td>You are playing.</td><td>You aren’t playing.</td><td>Are you playing?</td><td>Yes, I am. / No, I’m not.</td></tr>
+        <tr><td>he/she/it</td><td>She is playing.</td><td>She isn’t playing.</td><td>Is she playing?</td><td>Yes, she is. / No, she isn’t.</td></tr>
+        <tr><td>we/they</td><td>They are playing.</td><td>They aren’t playing.</td><td>Are they playing?</td><td>Yes, they are. / No, they aren’t.</td></tr>
+      </tbody></table></div>
+      <h3 class="section-title small-title">Spelling-Regeln für -ing</h3>
+      <div class="table-wrap"><table><thead><tr><th>Regel</th><th>Wann?</th><th>Beispiele</th></tr></thead><tbody>
+        <tr><td>+ing</td><td>Normalfall</td><td>play → playing, read → reading, watch → watching</td></tr>
+        <tr><td>e fällt weg</td><td>Verb endet auf stummes -e</td><td>make → making, write → writing, come → coming</td></tr>
+        <tr><td>Konsonant verdoppeln</td><td>bei kurzen Verben: kurzer Vokal + ein Endkonsonant</td><td>run → running, sit → sitting, swim → swimming, get → getting</td></tr>
+        <tr><td>w/y nicht verdoppeln</td><td>Endung -w oder -y</td><td>show → showing, play → playing</td></tr>
+      </tbody></table></div>
+      <div class="grid-2 mt-18">
+        <div class="card green-card"><h3>Signalwörter</h3><p>now, right now, at the moment, Look! und Listen! sind starke Hinweise auf Present Progressive. Today kann passen, wenn es „gerade heute / derzeit“ bedeutet: I’m working at home today. Aber today allein entscheidet nicht. Entscheidend ist: Läuft es gerade oder ist es eine Gewohnheit?</p></div>
+        <div class="card red-card"><h3>Denkfallen</h3><p>She playing. → She is playing.<br/>She is play. → She is playing.<br/>Does she playing? → Is she playing?<br/>I am wanting a dog. → I want a dog.</p></div>
+      </div>
+      <h3 class="section-title small-title">Typische Schulbeispiele</h3>
+      <div class="table-wrap"><table><thead><tr><th>Englisch</th><th>Deutsch</th><th>Warum?</th></tr></thead><tbody>
+        <tr><td>Look! She is reading a book.</td><td>Schau! Sie liest gerade ein Buch.</td><td>Look! = jetzt</td></tr>
+        <tr><td>What are you doing?</td><td>Was machst du gerade?</td><td>Frage mit are vorne</td></tr>
+        <tr><td>I’m not watching TV. I’m doing my homework.</td><td>Ich sehe nicht fern. Ich mache Hausaufgaben.</td><td>Verneinung + positiver Satz</td></tr>
+        <tr><td>They play football every Friday.</td><td>Sie spielen jeden Freitag Fußball.</td><td>Gewohnheit = Simple Present</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="compass-mode-panel" id="verbindungen" role="tabpanel" aria-labelledby="tab-verbindungen" data-panel="pg-mode" data-val="connections">
+      <p class="section-kicker">Themen-Landkarte</p>
+      <h2 class="section-title">Womit hängt Present Progressive zusammen?</h2>
+      <div class="connection-map">
+        <div class="connection-card"><h3>to be</h3><p>Ohne am/is/are gibt es kein Present Progressive.</p><a href="tobe.html">to be öffnen</a></div>
+        <div class="connection-card"><h3>Pronouns</h3><p>I, he, she, it, we, they entscheiden die Form von to be.</p><a href="pronouns.html">Pronouns öffnen</a></div>
+        <div class="connection-card"><h3>Simple Present</h3><p>Der wichtigste Kontrast: Gewohnheit oder gerade jetzt?</p><a href="simplepresent.html">Simple Present öffnen</a></div>
+        <div class="connection-card"><h3>Questions</h3><p>In Fragen steht am/is/are vorne. Nicht do/does.</p><a href="questions.html">Questions öffnen</a></div>
+      </div>
+      <div class="card yellow-card mt-18"><h3>Lernreihenfolge</h3><p>Erst to be sicher machen, dann Present Progressive bauen, dann mit Simple Present vergleichen. Wer diesen Ablauf überspringt, verwechselt fast immer <span class="chip red">she plays</span> und <span class="chip blue">she is playing</span>.</p></div>
+    </section>
+
+    <section class="compass-mode-panel" id="schreibcheck" role="tabpanel" aria-labelledby="tab-schreibcheck" data-panel="pg-mode" data-val="writecheck">
+      <p class="section-kicker">Selbst schreiben</p>
+      <h2 class="section-title">Schreib-Check: Present Progressive</h2>
+      <p class="section-text">Die Aufgaben decken die Kernentscheidungen ab: Bedeutung, Form, -ing-Schreibung, Frage, Verneinung, Kurzantwort und Simple-Present-Kontrast.</p>
+      <div class="writecheck-list" data-writecheck-list>
+        <div class="write-task" data-review-id="pg-now-positive" data-answer="I am reading a book." data-alt="I'm reading a book" data-hint="Baue: I + am + reading."><div class="write-task-head"><div><div class="write-task-title">1. Übersetze</div><p>Ich lese gerade ein Buch.</p></div><div class="write-task-meta">Jetzt-Satz</div></div><input type="text" aria-label="Antwort 1"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-negative" data-answer="She isn't playing tennis." data-alt="She is not playing tennis|She's not playing tennis" data-hint="Verneinung: is + not + playing."><div class="write-task-head"><div><div class="write-task-title">2. Verneine</div><p>She is playing tennis.</p></div><div class="write-task-meta">Verneinung</div></div><input type="text" aria-label="Antwort 2"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-question" data-answer="Are they eating pizza?" data-hint="Frage: are nach vorne."><div class="write-task-head"><div><div class="write-task-title">3. Bilde eine Frage</div><p>They are eating pizza.</p></div><div class="write-task-meta">Frage</div></div><input type="text" aria-label="Antwort 3"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-short-answer" data-answer="Yes, she is." data-hint="Antworte mit Ja: Yes + Pronoun + is."><div class="write-task-head"><div><div class="write-task-title">4. Kurzantwort</div><p>Antworte mit Ja: Is she coming?</p></div><div class="write-task-meta">Kurzantwort</div></div><input type="text" aria-label="Antwort 4"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-ing-run" data-answer="running" data-hint="run hat kurzen Vokal + n am Ende: n wird verdoppelt."><div class="write-task-head"><div><div class="write-task-title">5. -ing-Form</div><p>run → ?</p></div><div class="write-task-meta">Spelling</div></div><input type="text" aria-label="Antwort 5"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-e-drop" data-answer="making" data-hint="make endet auf stummes e. e fällt weg, dann -ing."><div class="write-task-head"><div><div class="write-task-title">6. -ing-Form</div><p>make → ?</p></div><div class="write-task-meta">Spelling</div></div><input type="text" aria-label="Antwort 6"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-contrast" data-answer="He plays football every day." data-hint="every day = Gewohnheit. Also Simple Present, nicht Progressive."><div class="write-task-head"><div><div class="write-task-title">7. Wähle die richtige Zeitform</div><p>Er spielt jeden Tag Fußball.</p></div><div class="write-task-meta">Kontrast</div></div><input type="text" aria-label="Antwort 7"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-state" data-answer="Do you like music?" data-hint="like ist ein Zustandsverb. In Klasse 5: Simple Present-Frage mit do."><div class="write-task-head"><div><div class="write-task-title">8. Verbessere den Satz</div><p>Are you liking music?</p></div><div class="write-task-meta">Stoppschild</div></div><input type="text" aria-label="Antwort 8"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+      </div>
+      <div class="write-actions"><button class="tool-btn" type="button" data-check-all>Alle prüfen</button><button class="tool-btn" type="button" data-reset-writecheck>Zurücksetzen</button></div>
+      <div class="summary-box" data-write-summary>Bearbeite die Aufgaben und prüfe danach.</div>
+    </section>
+
+    <section class="compass-mode-panel" id="schreibwerkstatt" role="tabpanel" aria-labelledby="tab-schreibwerkstatt" data-panel="pg-mode" data-val="workshop">
+      <p class="section-kicker">Eigene Sätze</p>
+      <h2 class="section-title">Schreibwerkstatt: Baue einen echten Jetzt-Satz</h2>
+      <p class="section-text">Das Ziel ist nicht Raten, sondern ein eigener Satz nach Plan. Erst auswählen, dann lesen, dann selbst umformulieren.</p>
+      <div class="tool-card interactive-only">
+        <div class="select-row">
+          <div class="field"><label for="ws-person">Wer?</label><select id="ws-person" data-ws-person><option>I</option><option>my friend</option><option>the dog</option><option>we</option><option>the children</option></select></div>
+          <div class="field"><label for="ws-verb">Was?</label><select id="ws-verb" data-ws-verb><option>read a book</option><option>play football</option><option>watch TV</option><option>do homework</option><option>run in the park</option></select></div>
+          <div class="field"><label for="ws-signal">Signal</label><select id="ws-signal" data-ws-signal><option>now</option><option>right now</option><option>at the moment</option><option>Look!</option></select></div>
+        </div>
+        <div class="workshop-preview" aria-live="polite"><p class="mini-label">Vorschlag</p><div class="output-sentence" data-ws-output>I am reading a book now.</div><p class="output-note">Schreibe danach einen eigenen Satz zu etwas, das gerade wirklich passiert.</p></div>
+      </div>
+      <div class="note-card"><h3>Mein eigener Satz</h3><textarea id="pg-own-sentence" data-own-sentence placeholder="z. B. My dog is sleeping on the sofa now."></textarea><div class="write-actions"><button class="tool-btn" type="button" data-save-own-sentence>Speichern</button></div><div class="note-status" data-own-status></div></div>
+    </section>
+
+    <section class="compass-mode-panel" id="notizen" role="tabpanel" aria-labelledby="tab-notizen" data-panel="pg-mode" data-val="notes">
+      <p class="section-kicker">Lernjournal</p>
+      <h2 class="section-title">Meine Notizen zu Present Progressive</h2>
+      <div class="journal-grid">
+        <div class="note-card"><h3>Das habe ich verstanden</h3><textarea data-note-field="understood"></textarea></div>
+        <div class="note-card"><h3>Das ist noch unklar</h3><textarea data-note-field="unclear"></textarea></div>
+        <div class="note-card"><h3>Das möchte ich fragen</h3><textarea data-note-field="question"></textarea></div>
+        <div class="note-card"><h3>Mein eigener Beispielsatz</h3><textarea data-note-field="example"></textarea></div>
+      </div>
+      <div class="write-actions"><button class="tool-btn" type="button" data-save-notes>Notizen speichern</button><button class="tool-btn" type="button" data-clear-notes>Notizen löschen</button></div>
+      <div class="note-status" data-note-status></div>
+    </section>
+  </article>
+</main>
+
+<section class="print-sheet" id="progressive-cheatsheet" aria-label="Spickzettel Druckversion">
+  <h1>Present Progressive – Spickzettel</h1>
+  <div class="print-note">Kernregel: Present Progressive = etwas passiert gerade jetzt oder gerade in dieser Zeit. Form: Person + am/is/are + Verb-ing.</div>
+  <h2>Satzmuster</h2>
+  <table><tr><th>Art</th><th>Muster</th><th>Beispiel</th></tr><tr><td>Positiv</td><td>Person + am/is/are + Verb-ing.</td><td>She is reading.</td></tr><tr><td>Verneinung</td><td>Person + am/is/are + not + Verb-ing.</td><td>She isn’t reading.</td></tr><tr><td>Frage</td><td>Am/Is/Are + Person + Verb-ing?</td><td>Is she reading?</td></tr><tr><td>Kurzantwort</td><td>Yes/No + passende Person + am/is/are. Bei you antwortest du meist mit I.</td><td>Yes, she is. / No, she isn’t. / Yes, I am.</td></tr></table>
+  <h2>-ing-Schreibung</h2>
+  <table><tr><th>Regel</th><th>Beispiele</th></tr><tr><td>Normal: +ing</td><td>play → playing, read → reading</td></tr><tr><td>Stummes e weg</td><td>make → making, write → writing</td></tr><tr><td>Kurzer Vokal + ein Endkonsonant: oft verdoppeln</td><td>run → running, sit → sitting, swim → swimming, get → getting</td></tr><tr><td>w/y nicht verdoppeln</td><td>play → playing, show → showing</td></tr></table>
+  <h2>Denkfallen</h2>
+  <p>She playing. → She is playing. / Does she playing? → Is she playing? / every day = Simple Present. / like, want, know, understand normalerweise Simple Present.</p>
+</section>
+
+<script>
+(function(){
+  document.body.classList.add('tabs-ready');
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function activate(group, value){
+    var buttons = qa('[data-tab="' + group + '"]');
+    var panels = qa('[data-panel="' + group + '"]');
+    buttons.forEach(function(btn){
+      var on = btn.getAttribute('data-val') === value;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      btn.setAttribute('tabindex', on ? '0' : '-1');
+    });
+    panels.forEach(function(panel){ panel.classList.toggle('is-active', panel.getAttribute('data-val') === value); });
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-tab]');
+    if (!btn) return;
+    activate(btn.getAttribute('data-tab'), btn.getAttribute('data-val'));
+  });
+  document.addEventListener('keydown', function(e){
+    var btn = e.target.closest('[data-tab]');
+    if (!btn || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
+    var group = btn.getAttribute('data-tab');
+    var buttons = qa('[data-tab="' + group + '"]');
+    var i = buttons.indexOf(btn);
+    var next = e.key === 'ArrowRight' ? (i + 1) % buttons.length : (i - 1 + buttons.length) % buttons.length;
+    buttons[next].focus(); buttons[next].click(); e.preventDefault();
+  });
+  var aliases = {lernen:'learn',learn:'learn',nachschlagen:'reference',reference:'reference',schreibcheck:'writecheck','schreib-check':'writecheck',verbindungen:'connections',connections:'connections',notizen:'notes',notes:'notes',schreibwerkstatt:'workshop',workshop:'workshop'};
+  function openHash(){
+    var h = (location.hash || '').replace('#','').toLowerCase();
+    if (aliases[h]) activate('pg-mode', aliases[h]);
+  }
+  window.addEventListener('hashchange', openHash); openHash();
+})();
+</script>
+<script>
+(function(){
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function ing(v){
+    var doubles = {run:'running',swim:'swimming',sit:'sitting',get:'getting',stop:'stopping'};
+    if (doubles[v]) return doubles[v];
+    if (/ie$/.test(v)) return v.replace(/ie$/,'ying');
+    if (/[^aeiou]e$/.test(v) && !/(ee|ye|oe)$/.test(v)) return v.slice(0,-1)+'ing';
+    return v+'ing';
+  }
+  function be(person){ return person === 'I' ? 'am' : (person === 'he' || person === 'she' || person === 'it' || person === 'my friend' || person === 'the dog') ? 'is' : 'are'; }
+  function pronounForShort(person){ return (person === 'my friend') ? 'he' : (person === 'the dog') ? 'it' : (person === 'the children') ? 'they' : person; }
+  function shortYes(person, b){ return person === 'you' ? 'Yes, I am.' : 'Yes, '+pronounForShort(person)+' '+b+'.'; }
+  function shortNo(person, b){ if(person === 'I' || person === 'you') return 'No, I’m not.'; return 'No, '+pronounForShort(person)+' '+(b==='is'?'isn’t':'aren’t')+'.'; }
+  function shortNote(person, b){ return person === 'you' ? 'Bei Are you ...? antwortest du für dich selbst: Yes, I am. / No, I’m not.' : 'Kurzantwort: kein Vollverb, nur '+b+' oder '+b+' + not.'; }
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  function initMachine(){
+    var p=document.querySelector('[data-machine-person]'), v=document.querySelector('[data-machine-verb]'), m=document.querySelector('[data-machine-mode]'), out=document.querySelector('[data-machine-output]'), note=document.querySelector('[data-machine-note]');
+    if(!p||!v||!m||!out) return;
+    function update(){
+      var person=p.value, b=be(person), g=ing(v.value), mode=m.value, sentence='', n='';
+      if(mode==='positive'){ sentence=person+' '+b+' '+g+'.'; n=person+' braucht '+b+'. Das Vollverb bekommt -ing.'; }
+      if(mode==='negative'){ sentence=person+' '+b+' not '+g+'.'; n='not steht direkt hinter '+b+'.'; }
+      if(mode==='question'){ sentence=cap(b)+' '+person+' '+g+'?'; n='In der Frage steht '+b+' vorne.'; }
+      if(mode==='shortYes'){ sentence=shortYes(person,b); n=shortNote(person,b); }
+      if(mode==='shortNo'){ sentence=shortNo(person,b); n=shortNote(person,b); }
+      out.textContent=cap(sentence); if(note) note.textContent=n;
+    }
+    [p,v,m].forEach(function(el){el.addEventListener('change', update)}); update();
+  }
+  function resetChoices(card){ qa('.choice-btn',card).forEach(function(b){b.classList.remove('is-selected','is-correct','is-careful'); b.setAttribute('aria-pressed','false');}); }
+  function initRadar(){
+    qa('[data-radar-card]').forEach(function(card){
+      qa('[data-radar-choice]',card).forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){
+        var expected=card.getAttribute('data-answer'), choice=btn.getAttribute('data-radar-choice'), fb=card.querySelector('.feedback'); resetChoices(card); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true');
+        if(choice===expected){ btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+card.getAttribute('data-note'); }
+        else { btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. Frage zuerst: gerade jetzt oder Gewohnheit?'; }
+      }); });
+    });
+    var reset=document.querySelector('[data-reset-radar]'); if(reset) reset.addEventListener('click',function(){ qa('[data-radar-card]').forEach(function(card){ resetChoices(card); var fb=card.querySelector('.feedback'); fb.className='feedback'; fb.textContent='Entscheide zuerst.'; }); });
+  }
+  function initSpelling(){
+    var words=['play','read','make','write','run','swim','sit','get','dance','watch','come','stop']; var i=0;
+    var word=document.querySelector('[data-spell-word]'), input=document.querySelector('[data-spell-input]'), fb=document.querySelector('[data-spell-feedback]');
+    function show(){ if(word) word.textContent=words[i]; if(input) input.value=''; if(fb){fb.className='feedback'; fb.textContent='Tippe die -ing-Form ein.';} }
+    function check(){ var correct=ing(words[i]); var val=(input.value||'').trim().toLowerCase(); if(!val){fb.className='feedback is-hint'; fb.textContent='Erst eine Form eintippen.'; return;} if(val===correct){fb.className='feedback is-good'; fb.textContent='Richtig: '+correct+'.';} else {fb.className='feedback is-careful'; fb.textContent='Noch nicht. Die richtige Form ist: '+correct+'. Prüfe e weg oder Verdopplung.';} }
+    var cb=document.querySelector('[data-spell-check]'), nb=document.querySelector('[data-spell-next]'); if(cb) cb.addEventListener('click',check); if(nb) nb.addEventListener('click',function(){i=(i+1)%words.length; show();}); if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter') check(); }); show();
+  }
+  function initState(){
+    var items=[['play','action','play ist eine Handlung: playing ist möglich.'],['want','state','want ist ein Zustand/Wunsch: I want, nicht I am wanting.'],['read','action','read ist eine Handlung: reading ist möglich.'],['know','state','know ist ein Zustand im Kopf: I know, nicht I am knowing.'],['run','action','run ist eine Handlung: running ist möglich.'],['like','state','like ist eine Meinung/Vorliebe: I like, nicht I am liking.'],['understand','state','understand ist ein Zustand im Kopf: I understand.'],['watch','action','watch ist eine Handlung: watching ist möglich.']]; var i=0;
+    var word=document.querySelector('[data-state-word]'), fb=document.querySelector('[data-state-feedback]'), quiz=document.querySelector('[data-state-quiz]');
+    function show(){ if(word) word.textContent=items[i][0]; if(fb){fb.className='feedback'; fb.textContent='Entscheide zuerst.';} if(quiz) resetChoices(quiz); }
+    qa('[data-state-choice]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){ resetChoices(quiz); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true'); var ok=btn.getAttribute('data-state-choice')===items[i][1]; if(ok){btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+items[i][2];} else {btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. '+items[i][2];} }); });
+    var next=document.querySelector('[data-state-next]'); if(next) next.addEventListener('click',function(){i=(i+1)%items.length; show();}); show();
+  }
+  initMachine(); initRadar(); initSpelling(); initState();
+})();
+</script>
+<script>
+(function(){
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function norm(s){ return (s||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim(); }
+  function answers(task){ var arr=[task.getAttribute('data-answer')||'']; var alt=task.getAttribute('data-alt'); if(alt){ alt.split('|').forEach(function(a){arr.push(a);}); } return arr.map(norm); }
+  function checkTask(task){
+    var input=task.querySelector('input'), fb=task.querySelector('.write-feedback'), sol=task.querySelector('[data-show-solution]'), val=norm(input.value), ok=answers(task).indexOf(val)>-1;
+    if(!val){ fb.className='write-feedback is-hint'; fb.textContent='Schreibe zuerst eine Antwort.'; if(sol) sol.hidden=true; return false; }
+    if(ok){ fb.className='write-feedback is-good'; fb.textContent='Richtig.'; if(sol) sol.hidden=true; return true; }
+    fb.className='write-feedback is-careful'; fb.textContent='Noch nicht. Tipp: '+(task.getAttribute('data-hint')||'Prüfe die Kernregel.'); if(sol) sol.hidden=false; return false;
+  }
+  document.addEventListener('click',function(e){
+    var one=e.target.closest('[data-check-one]'); if(one){ checkTask(one.closest('.write-task')); }
+    var solution=e.target.closest('[data-show-solution]'); if(solution){ var task=solution.closest('.write-task'), fb=task.querySelector('.write-feedback'); fb.className='write-feedback is-hint'; fb.textContent='Lösung: '+task.getAttribute('data-answer'); }
+    if(e.target.closest('[data-check-all]')){ var tasks=qa('.write-task'), right=0; tasks.forEach(function(t){ if(checkTask(t)) right++; }); var box=document.querySelector('[data-write-summary]'); if(box){ box.className='summary-box '+(right===tasks.length?'is-good':'is-careful'); box.textContent= right+' von '+tasks.length+' Aufgaben sicher. Entscheidend ist, welche Denkstelle noch wackelt.'; } }
+    if(e.target.closest('[data-reset-writecheck]')){ qa('.write-task').forEach(function(t){ var input=t.querySelector('input'), fb=t.querySelector('.write-feedback'), sol=t.querySelector('[data-show-solution]'); if(input) input.value=''; if(fb){fb.className='write-feedback'; fb.textContent='Noch nicht geprüft.';} if(sol) sol.hidden=true; }); var box=document.querySelector('[data-write-summary]'); if(box){box.className='summary-box'; box.textContent='Bearbeite die Aufgaben und prüfe danach.';} }
+  });
+})();
+</script>
+<script>
+(function(){
+  function ingPhrase(phrase){ var parts=phrase.split(' '); var v=parts.shift(); var g={do:'doing'}[v] || (v==='run'?'running':v.replace(/e$/,'')+'ing'); return g+(parts.length?' '+parts.join(' '):''); }
+  function be(person){ return person==='I'?'am':(person==='my friend'||person==='the dog')?'is':'are'; }
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  function update(){ var p=document.querySelector('[data-ws-person]'), v=document.querySelector('[data-ws-verb]'), sig=document.querySelector('[data-ws-signal]'), out=document.querySelector('[data-ws-output]'); if(!p||!v||!sig||!out)return; var signal=sig.value; var sentence=(signal==='Look!'?'Look! ':'')+p.value+' '+be(p.value)+' '+ingPhrase(v.value)+(signal==='Look!'?'.':' '+signal+'.'); out.textContent=cap(sentence); }
+  ['[data-ws-person]','[data-ws-verb]','[data-ws-signal]'].forEach(function(sel){ var el=document.querySelector(sel); if(el) el.addEventListener('change',update); }); update();
+  var ownKey='kompass.progressive.ownSentence'; var own=document.querySelector('[data-own-sentence]'); if(own){ own.value=localStorage.getItem(ownKey)||''; }
+  var save=document.querySelector('[data-save-own-sentence]'); if(save) save.addEventListener('click',function(){ localStorage.setItem(ownKey, own.value||''); var st=document.querySelector('[data-own-status]'); if(st) st.textContent='Gespeichert.'; });
+})();
+</script>
+<script>
+(function(){
+  var key='kompass.progressive.notes.v1';
+  function fields(){ return Array.prototype.slice.call(document.querySelectorAll('[data-note-field]')); }
+  function load(){ var data={}; try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){} fields().forEach(function(f){ f.value=data[f.getAttribute('data-note-field')]||''; }); }
+  function save(){ var data={}; fields().forEach(function(f){ data[f.getAttribute('data-note-field')]=f.value||''; }); localStorage.setItem(key, JSON.stringify(data)); var st=document.querySelector('[data-note-status]'); if(st) st.textContent='Gespeichert.'; }
+  function clear(){ localStorage.removeItem(key); fields().forEach(function(f){ f.value=''; }); var st=document.querySelector('[data-note-status]'); if(st) st.textContent='Gelöscht.'; }
+  var saveBtn=document.querySelector('[data-save-notes]'), clearBtn=document.querySelector('[data-clear-notes]'); if(saveBtn) saveBtn.addEventListener('click',save); if(clearBtn) clearBtn.addEventListener('click',clear); load();
+})();
+</script>
+<script>
+(function(){
+  var homework=document.querySelector('[data-homework-toggle]'); if(homework) homework.addEventListener('click',function(){ document.body.classList.toggle('hausaufgaben-mode'); var ref=document.querySelector('[data-tab="pg-mode"][data-val="reference"]'); if(document.body.classList.contains('hausaufgaben-mode') && ref) ref.click(); });
+  var printBtn=document.querySelector('[data-print-cheatsheet]'); if(printBtn) printBtn.addEventListener('click',function(){ document.body.classList.add('print-cheatsheet'); window.print(); setTimeout(function(){document.body.classList.remove('print-cheatsheet');},500); });
+})();
+</script>
+</body>
+</html>

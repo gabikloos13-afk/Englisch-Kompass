@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>have got — Hannas Englisch-Kompass</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{
+  /* Markenfarben */
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:16px;--radius-sm:10px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,0.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,0.06);
+  --shadow-lg:0 16px 48px rgba(15,23,42,0.14);
+  --line:1px solid var(--gray-200);
+  --font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;
+
+  /* Personenfarben — das Farbsystem */
+  --c-I:        #2563eb; --c-I-soft:   #dbeafe; --c-I-text:   #1e3a8a;
+  --c-you:      #0891b2; --c-you-soft: #cffafe; --c-you-text: #164e63;
+  --c-he:       #ea580c; --c-he-soft:  #ffedd5; --c-he-text:  #7c2d12;
+  --c-she:      #db2777; --c-she-soft: #fce7f3; --c-she-text: #831843;
+  --c-it:       #059669; --c-it-soft:  #d1fae5; --c-it-text:  #064e3b;
+  --c-we:       #7c3aed; --c-we-soft:  #ede9fe; --c-we-text:  #4c1d95;
+  --c-they:     #9333ea; --c-they-soft:#f3e8ff; --c-they-text:#581c87;
+  /* Themenhintergrund have got */
+  --hg-topic-bg-top:#dbeafe;
+  --hg-topic-bg-bottom:#c7d9f2;
+  --hg-card-border:rgba(148,163,184,.45);
+  --hg-card-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+/* HAUSAUFGABEN */
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,
+body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),
+body.hausaufgaben-mode .learn-step-nav,
+body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+
+.hg-homework-note{
+  display:none;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  border-radius:var(--radius);
+  background:#ecfeff;
+  border:1px solid #67e8f9;
+  color:#155e75;
+  font-family:var(--font-head);
+  font-size:.88rem;
+  font-weight:400;
+  box-shadow:0 4px 14px rgba(15,23,42,.08);
+}
+body.hausaufgaben-mode .hg-homework-note{display:flex}
+body.hausaufgaben-mode .hg-ref-intro{display:none}
+body.hausaufgaben-mode .hg-reference-wrap{gap:14px}
+body.hausaufgaben-mode .hg-ref-forms,
+body.hausaufgaben-mode .hg-ref-special,
+body.hausaufgaben-mode .hg-ref-questionwords,
+body.hausaufgaben-mode .hg-ref-british,
+body.hausaufgaben-mode .hg-ref-examples{display:none}
+body.hausaufgaben-mode .hg-ref-core,
+body.hausaufgaben-mode .hg-ref-patterns,
+body.hausaufgaben-mode .hg-ref-traps{box-shadow:0 6px 18px rgba(15,23,42,.08)}
+
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:var(--gray-50)}
+h1,h2,h3,p,ul,ol,table{margin-top:0}p,ul,ol{margin-bottom:0}
+
+/* ── Logo ── */
+.site-head-logo{display:flex;justify-content:center;align-items:center;padding:32px 30px 24px}
+.midnight-logo-container{display:flex;justify-content:center;align-items:center;padding:6px}
+.midnight-wrapper{position:relative;width:200px;height:200px;display:flex;justify-content:center;align-items:center}
+.midnight-ring{position:absolute;width:175px;height:175px;border:2px solid rgba(224,242,254,0.3);border-radius:50%;z-index:2;transition:all .4s ease;pointer-events:none}
+.midnight-core{width:145px;height:145px;background:radial-gradient(circle,#1e3a8a 0%,#0f172a 100%);border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.4);border:3px solid #e0f2fe;z-index:1;cursor:default;transition:all .4s ease}
+.midnight-wrapper:hover .midnight-core{transform:scale(1.08);box-shadow:0 0 25px rgba(56,189,248,0.4);border-color:#38bdf8}
+.midnight-wrapper:hover .midnight-ring{width:185px;height:185px;border-color:#38bdf8;box-shadow:0 0 15px rgba(56,189,248,0.2)}
+.midnight-wrapper:hover .compass-needle-box{transform:rotate(15deg)}
+.midnight-inner-dashed{position:relative;width:125px;height:125px;border:1px dashed rgba(224,242,254,0.3);border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.compass-needle-box{position:absolute;top:8px;width:16px;height:24px;display:flex;transition:transform .5s cubic-bezier(.175,.885,.32,1.275)}
+.needle-north{width:0;height:0;border-left:8px solid transparent;border-bottom:24px solid #38bdf8}
+.needle-south{width:0;height:0;border-right:8px solid transparent;border-bottom:24px solid #0284c7}
+.midnight-text-box{margin-top:22px;color:#fff;font-family:var(--font-head);text-align:center;text-transform:uppercase;line-height:1.1;letter-spacing:.02em}
+.midnight-tag{display:block;margin-bottom:2px;color:#bae6fd;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:none}
+.midnight-main1{display:block;color:#fff;font-size:15px}
+.midnight-main2{display:block;color:#38bdf8;font-size:19px}
+
+/* ── Lernstand-Banner ── */
+.progress-banner{max-width:860px;margin:0 auto 16px;padding:0 16px}
+.progress-inner{display:flex;align-items:center;gap:12px;padding:11px 16px;border-radius:var(--radius);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(4px)}
+.progress-label{color:rgba(255,255,255,.85);font-size:.85rem;font-family:var(--font-head);font-weight:400;white-space:nowrap}
+.progress-track{flex:1;height:8px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.2);overflow:hidden}
+.progress-track-fill{height:100%;border-radius:var(--radius-pill);background:linear-gradient(90deg,#38bdf8,#a78bfa);transition:width .5s ease}
+.progress-count{color:#bae6fd;font-size:.85rem;font-family:var(--font-head);font-weight:400;white-space:nowrap}
+.progress-reset{padding:4px 10px;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.78rem;font-weight:400;color:rgba(255,255,255,.7);background:transparent;cursor:pointer;transition:all .18s}
+.progress-reset:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* ── Lernkarte ── */
+.page-wrap{max-width:860px;margin:0 auto;padding:0 16px}
+.learning-card{border:var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+
+/* ── Kompass-Kopf ── */
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#1d4ed8,#6d28d9);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.82);font-size:.91rem;max-width:540px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+
+/* ── Haupt-Navigation ── */
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--gray-25)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:color .18s,border-color .18s,background .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--blue)}
+
+/* ── Modus-Panels ── */
+.compass-mode-panel{display:none}.compass-mode-panel.is-active{display:block}
+
+/* ── Schritt-Navigation ── */
+.learn-step-nav{display:flex;background:var(--gray-25);border-bottom:var(--line)}
+.learn-step-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s}
+.learn-step-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;background:var(--gray-100);color:var(--gray-600);transition:background .18s,color .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--blue);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+.learn-progress-bar{height:3px;background:var(--gray-100)}
+.learn-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--violet));border-radius:var(--radius-pill);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.learn-panel{display:none;padding:22px 20px}.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Passive Info-Elemente: flach, ohne Button-Anmutung; echte Buttons behalten Cursor/Hover. */
+/* ── Einstieg ── */
+.entry-card{display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:center;padding:18px;border:2px solid #bfdbfe;border-radius:var(--radius);background:linear-gradient(135deg,#fff,var(--blue-soft));margin-bottom:14px}
+.entry-visual{display:flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;font-size:2.6rem;background:linear-gradient(135deg,#dbeafe,#ede9fe);box-shadow:0 4px 14px rgba(37,99,235,.15);flex-shrink:0}
+.entry-hook{margin:0 0 6px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--blue-dark);line-height:1.3}
+.entry-text{margin:0 0 10px;color:var(--gray-700);font-size:.91rem;line-height:1.5}
+.entry-examples{display:flex;flex-wrap:wrap;gap:6px}
+.entry-ex{display:inline-block;padding:4px 8px 4px 10px;border-left:3px solid #bfdbfe;border-radius:6px;font-size:.87rem;font-weight:400;color:var(--blue-dark);background:#eff6ff}
+.mini-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mini-rule{padding:11px 9px;border:var(--line);border-radius:var(--radius-sm);text-align:center;background:#fff}
+.mini-rule-main{display:block;font-family:var(--font-head);font-size:1.1rem;font-weight:400;color:var(--blue-dark);margin-bottom:3px}
+.mini-rule-sub{display:block;font-size:.78rem;color:var(--gray-600);margin-bottom:1px}
+.mini-rule-ex{display:block;font-size:.78rem;color:var(--gray-400)}
+
+/* ── Maschine ── */
+.machine-card{padding:18px;border:var(--line);border-radius:var(--radius);background:#fff;margin-bottom:12px}
+.machine-question{margin:0 0 11px;font-family:var(--font-head);font-size:.95rem;font-weight:400;color:var(--blue-dark)}
+.mode-switcher{display:flex;gap:6px;margin-bottom:11px;flex-wrap:wrap}
+.mode-btn{min-height:32px;padding:5px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-600);background:#fff;cursor:pointer;transition:all .18s}
+.mode-btn:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}
+.mode-btn.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}
+.machine-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.m-chip{min-height:34px;padding:5px 13px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.9rem;font-weight:400;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
+.m-chip:hover{border-color:var(--blue);background:var(--blue-soft)}
+.m-chip.is-active{color:#fff}
+/* Personenfarben auf Chips */
+.m-chip[data-person="I"].is-active{background:var(--c-I);border-color:var(--c-I)}
+.m-chip[data-person="you"].is-active{background:var(--c-you);border-color:var(--c-you)}
+.m-chip[data-person="he"].is-active{background:var(--c-he);border-color:var(--c-he)}
+.m-chip[data-person="she"].is-active{background:var(--c-she);border-color:var(--c-she)}
+.m-chip[data-person="it"].is-active{background:var(--c-it);border-color:var(--c-it)}
+.m-chip[data-person="we"].is-active{background:var(--c-we);border-color:var(--c-we)}
+.m-chip[data-person="they"].is-active{background:var(--c-they);border-color:var(--c-they)}
+.machine-output{padding:14px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line);transition:border-color .3s}
+.machine-output.is-pop{animation:pop .2s ease both}
+@keyframes pop{0%{transform:scale(.97);opacity:.7}100%{transform:scale(1);opacity:1}}
+.sentence-built{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:7px}
+.tok{display:inline-flex;align-items:center;padding:4px 11px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:.92rem;line-height:1.3}
+.tok-subject{color:#fff}
+.tok-verb{color:var(--green);background:#dcfce7}
+.tok-rest{color:var(--violet);background:var(--violet-soft)}
+.tok-neg{color:var(--red);background:var(--red-soft)}
+.tok-short{color:var(--gray-500);background:var(--gray-100);font-weight:400;font-size:.82rem}
+.machine-note{font-size:.84rem;color:var(--gray-600);font-style:italic;margin:0}
+.shortform-box{padding:10px 13px;border:1px solid #fde68a;border-radius:var(--radius);background:var(--yellow-soft);margin-bottom:11px}
+.shortform-title{font-family:var(--font-head);font-weight:400;color:var(--yellow);font-size:.88rem;margin:0 0 6px}
+.shortform-row{display:flex;flex-wrap:wrap;gap:5px}
+.sf-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--radius-pill);font-size:.84rem;font-weight:400;background:#fff;border:1px solid #fde68a;color:var(--yellow)}
+.sf-arrow{color:var(--gray-400);font-size:.76rem}
+.age-box{padding:12px 14px;border:var(--line);border-radius:var(--radius);background:#fff}
+.age-box-title{margin:0 0 8px;font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.9rem}
+.age-rows{display:grid;gap:5px}
+.age-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:7px 10px;border:var(--line);border-radius:var(--radius-sm)}
+.age-row-q{background:var(--blue-soft);border-color:#bfdbfe}
+.age-row-a{background:var(--green-soft);border-color:#bbf7d0}
+.age-note{color:var(--gray-400);font-size:.81rem}
+
+/* ── Fehler-Scanner & Selbstcheck ── */
+.check-shell{display:grid;gap:10px}
+.scanner-intro{padding:10px 13px;border-radius:var(--radius);background:var(--red-soft);border:1px solid #fecaca;font-family:var(--font-head);font-weight:400;color:var(--red);font-size:.89rem;margin:0}
+.error-item{border:var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s}
+.error-item:hover{box-shadow:var(--shadow-sm)}
+.error-summary{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;list-style:none;font-family:var(--font-head);font-weight:400;color:var(--gray-800);font-size:.89rem}
+.error-summary::-webkit-details-marker{display:none}
+.error-badge{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:var(--radius-pill);font-size:.74rem;font-weight:400;background:var(--red-soft);color:var(--red);transition:background .2s,color .2s}
+.error-item[open] .error-badge{background:var(--green-soft);color:var(--green)}
+.error-wrong{color:var(--red)}
+.error-body{padding:0 14px 12px}
+.error-compare{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}
+.ec-wrong{padding:8px 10px;border:1px solid #fecaca;border-radius:var(--radius-sm);background:var(--red-soft);font-size:.89rem}
+.ec-right{padding:8px 10px;border:1px solid #bbf7d0;border-radius:var(--radius-sm);background:var(--green-soft);font-size:.89rem}
+.ec-label{display:block;font-family:var(--font-head);font-size:.69rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.ec-wrong .ec-label{color:var(--red)}.ec-right .ec-label{color:var(--green)}
+.error-rule{padding:6px 10px;border-left:4px solid var(--blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--gray-700);background:var(--blue-soft);font-size:.84rem;margin:0}
+.selfcheck-divider{display:flex;align-items:center;gap:10px;color:var(--gray-600);font-size:.8rem;font-family:var(--font-head);font-weight:400}
+.selfcheck-divider::before,.selfcheck-divider::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+.selfcheck-title{margin:0 0 8px;font-family:var(--font-head);font-size:.93rem;font-weight:400;color:var(--green)}
+.check-list{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.check-list li{border:var(--line);border-radius:var(--radius-sm);background:#fff;transition:background .2s,border-color .2s}
+.check-list li:has(input:checked){background:var(--green-soft);border-color:#bbf7d0}
+.check-list label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;cursor:pointer}
+.check-list input[type="checkbox"]{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:var(--green)}
+.check-list input:checked+span{color:var(--gray-400);text-decoration:line-through}
+
+
+
+/* ── Kann ich's: Mini-Entscheidung, Fehler-Scanner, Selbstcheck ── */
+.havegot-can-check{gap:14px}
+.mini-decision-answer[hidden],.mini-decision-solutions[hidden],.scanner-card[hidden],.scanner-solution[hidden],.scanner-feedback[hidden],.explain-feedback[hidden]{display:none!important}
+.check-intro-card,.check-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px;box-shadow:var(--shadow-sm)}
+.check-intro-card{background:var(--green-soft);border-color:#bbf7d0}
+.check-kicker{margin:0 0 4px;font-family:var(--font-head);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.check-intro-card h3,.check-card h4{margin:0 0 7px;font-family:var(--font-head);font-weight:400;color:var(--gray-800)}
+.check-intro-card p,.check-card-text{margin:0;color:var(--gray-700);font-size:.9rem;line-height:1.55}
+.mini-decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:12px 0}
+.mini-decision-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font-size:.9rem}
+.mini-decision-prompt{font-family:var(--font-head);font-weight:400;color:var(--blue-dark);min-width:76px}
+.mini-decision-arrow{color:var(--gray-400)}
+.mini-decision-question{color:var(--gray-700)}
+.mini-decision-item.is-stacked{display:grid;align-items:stretch;gap:7px}
+.mini-decision-line{display:flex;align-items:center;gap:8px}
+.mini-decision-answer{padding:9px 11px;border:1px solid #bbf7d0;border-radius:var(--radius-sm);background:var(--green-soft);color:var(--gray-800);font-size:.9rem}
+.mini-decision-solutions{display:grid;gap:6px;margin-top:10px;padding:12px;border:1px solid #bbf7d0;border-radius:var(--radius-sm);background:var(--green-soft);font-size:.9rem;color:var(--gray-800)}
+.mini-decision-solutions p{margin:6px 0 0;color:var(--green);font-family:var(--font-head);font-size:.86rem}
+.check-action-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:7px 13px;border:1px solid #bfdbfe;border-radius:var(--radius-pill);background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-weight:400;font-size:.84rem;cursor:pointer;transition:all .18s}
+.check-action-button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.error-scanner{display:grid;gap:10px;margin-top:12px}
+.scanner-card{border:1px solid var(--gray-200);border-radius:var(--radius);background:var(--gray-25);padding:14px}
+.scanner-card.is-active{border-color:#bfdbfe;background:#fff}
+.scanner-label{margin:0 0 7px;font-family:var(--font-head);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}
+.scanner-sentence{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 9px;padding:11px 13px;border-radius:var(--radius-sm);background:var(--red-soft);border:1px solid #fecaca;color:var(--red);font-family:var(--font-head);font-size:1rem}
+.scanner-word{border:1px solid transparent;border-radius:9px;background:transparent;color:inherit;font:inherit;padding:2px 5px;cursor:pointer}
+.scanner-word:hover,.scanner-word:focus-visible{border-color:#fca5a5;background:#fff;outline:none}
+.scanner-word.is-found{border-color:#bbf7d0;background:var(--green-soft);color:var(--green)}
+.scanner-word.is-wrong{border-color:#fecaca;background:#fff;color:var(--red)}
+.scanner-feedback{margin:0 0 9px;padding:8px 10px;border-radius:var(--radius-sm);background:var(--blue-soft);border:1px solid #bfdbfe;color:var(--blue-dark);font-size:.86rem}
+.scanner-question{margin:0 0 10px;color:var(--gray-700);font-size:.9rem}
+.scanner-solution{display:grid;gap:4px;margin-top:10px;padding:11px 13px;border-radius:var(--radius-sm);border:1px solid #bbf7d0;background:var(--green-soft);color:var(--gray-800);font-size:.9rem}
+.scanner-solution p{margin:0}
+.scanner-actions{display:flex;justify-content:flex-end}
+.explain-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.explain-option{min-height:34px;padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);background:#fff;color:var(--gray-700);font-family:var(--font-head);font-weight:400;font-size:.84rem;cursor:pointer;transition:all .18s}
+.explain-option:hover,.explain-option.is-active{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.explain-feedback{margin-top:10px;padding:11px 13px;border-radius:var(--radius-sm);background:var(--blue-soft);border:1px solid #bfdbfe;color:var(--blue-dark);font-size:.9rem}
+.check-return-hint{margin:12px 0 0;color:var(--gray-600);font-size:.84rem}
+
+/* ════════════════════════════════════════════════
+   NACHSCHLAGEN — Das neue System
+   ════════════════════════════════════════════════ */
+.ref-wrap{padding:20px;background:#fff;display:grid;gap:20px}
+
+/* Schritt 1: Drei Einstiegs-Kacheln */
+.ref-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ref-tile{padding:16px 12px;border:2px solid var(--gray-200);border-radius:var(--radius);text-align:center;cursor:pointer;transition:all .2s;background:#fff;display:flex;flex-direction:column;align-items:center;gap:6px}
+.ref-tile:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.ref-tile.is-active{border-color:var(--blue);background:var(--blue);color:#fff}
+.ref-tile.is-active .ref-tile-icon{filter:grayscale(0)}
+.ref-tile.is-active .ref-tile-label{color:#fff}
+.ref-tile.is-active .ref-tile-hint{color:rgba(255,255,255,.75)}
+.ref-tile-icon{font-size:1.8rem;line-height:1}
+.ref-tile-label{font-family:var(--font-head);font-weight:400;font-size:.88rem;color:var(--gray-800)}
+.ref-tile-hint{font-size:.74rem;color:var(--gray-500)}
+
+/* Schritt 2: Personenauswahl (erscheint nach Kachel-Klick) */
+.ref-persons{display:none;animation:fadeUp .2s ease both}
+.ref-persons.is-visible{display:block}
+.ref-persons-title{font-family:var(--font-head);font-weight:400;font-size:.8rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px}
+.ref-person-row{display:flex;flex-wrap:wrap;gap:8px}
+.ref-person-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.9rem;font-weight:400;cursor:pointer;background:#fff;transition:all .18s;color:var(--gray-700)}
+.ref-person-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.ref-person-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* Personenfarben */
+.ref-person-btn[data-p="I"]   .ref-person-dot{background:var(--c-I)}
+.ref-person-btn[data-p="you"] .ref-person-dot{background:var(--c-you)}
+.ref-person-btn[data-p="he"]  .ref-person-dot{background:var(--c-he)}
+.ref-person-btn[data-p="she"] .ref-person-dot{background:var(--c-she)}
+.ref-person-btn[data-p="it"]  .ref-person-dot{background:var(--c-it)}
+.ref-person-btn[data-p="we"]  .ref-person-dot{background:var(--c-we)}
+.ref-person-btn[data-p="they"].ref-person-dot{background:var(--c-they)}
+.ref-person-btn.is-active{color:#fff;border-color:transparent}
+.ref-person-btn[data-p="I"].is-active  {background:var(--c-I)}
+.ref-person-btn[data-p="you"].is-active{background:var(--c-you)}
+.ref-person-btn[data-p="he"].is-active {background:var(--c-he)}
+.ref-person-btn[data-p="she"].is-active{background:var(--c-she)}
+.ref-person-btn[data-p="it"].is-active {background:var(--c-it)}
+.ref-person-btn[data-p="we"].is-active {background:var(--c-we)}
+.ref-person-btn[data-p="they"].is-active{background:var(--c-they)}
+
+/* Schritt 3: Die interaktive Formkarte */
+.ref-card-wrap{display:none;animation:fadeUp .25s ease both}
+.ref-card-wrap.is-visible{display:block}
+.form-card-scene{perspective:1000px;width:100%;max-width:500px;margin:0 auto;height:220px}
+.form-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.form-card.is-flipped{transform:rotateY(180deg)}
+.form-card-face{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;padding:22px 24px;display:flex;flex-direction:column;justify-content:center}
+.form-card-back{transform:rotateY(180deg)}
+.formcard-label{font-family:var(--font-head);font-size:.72rem;font-weight:400;text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px;opacity:.7}
+.formcard-main{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.formcard-token{display:inline-flex;align-items:center;padding:6px 14px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:1.05rem}
+.formcard-person{color:#fff}
+.formcard-verb{background:rgba(255,255,255,.25);color:#fff}
+.formcard-rest{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+.formcard-short{background:rgba(0,0,0,.12);color:rgba(255,255,255,.85);font-size:.88rem}
+.formcard-note{font-size:.82rem;color:rgba(255,255,255,.8);font-style:italic;margin:0}
+.formcard-flip-hint{font-size:.72rem;color:rgba(255,255,255,.55);text-align:right;margin-top:8px;font-family:var(--font-head)}
+/* Rückseite Sektionen */
+.formcard-back-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.formcard-back-section{}
+.formcard-back-label{font-family:var(--font-head);font-size:.7rem;font-weight:400;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin:0 0 5px}
+.formcard-back-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:.87rem}
+.formcard-back-form{font-family:var(--font-head);font-weight:400;color:#fff}
+.formcard-back-short{color:rgba(255,255,255,.75);font-size:.82rem}
+
+/* Adjektive & Fragen (sichtbar ohne Klick) */
+.ref-bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px}
+.ref-section-title{font-family:var(--font-head);font-weight:400;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px}
+.adj-group{margin-bottom:10px}
+.adj-group-title{font-family:var(--font-head);font-weight:400;font-size:.74rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px}
+.adj-chips{display:flex;flex-wrap:wrap;gap:5px}
+.adj-chip{display:inline-flex;flex-direction:column;padding:5px 9px;border:var(--line);border-radius:var(--radius-sm);background:#fff;transition:border-color .18s}
+.adj-chip:hover{border-color:#bfdbfe;background:var(--blue-soft)}
+.adj-en{font-family:var(--font-head);font-weight:400;font-size:.85rem;color:var(--blue-dark)}
+.adj-de{font-size:.74rem;color:var(--gray-500)}
+.ref-note{padding:7px 10px;border-left:4px solid var(--blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--gray-700);background:var(--blue-soft);font-size:.84rem;margin-top:8px}
+.ref-note-yellow{border-left-color:#d97706;background:var(--yellow-soft)}
+.ref-note-green{border-left-color:var(--green);background:var(--green-soft)}
+.qa-rows{display:grid;gap:5px}
+.qa-row{padding:7px 10px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font-size:.85rem}
+.qa-person{font-family:var(--font-head);font-weight:400;color:var(--blue-dark);display:block;margin-bottom:2px;font-size:.82rem}
+.qa-example{color:var(--gray-700)}
+
+/* Access-1-Sätze */
+.ref-sentences{}
+.sentence-rows{display:grid;gap:4px}
+.sentence-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:7px 10px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.84rem;transition:background .15s}
+.sentence-row:hover{background:var(--gray-25)}
+.sr-en{font-family:var(--font-head);font-weight:400;color:var(--gray-800)}
+.sr-de{color:var(--gray-600)}
+.sr-ctx{font-size:.72rem;color:var(--blue-dark);background:var(--blue-soft);padding:2px 7px;border-radius:var(--radius-pill);white-space:nowrap;font-family:var(--font-head);font-weight:400}
+
+/* ── Notizenbereich ── */
+.notes-panel{padding:20px;background:#fff}
+.notes-title{font-family:var(--font-head);font-weight:400;font-size:.97rem;color:var(--blue-dark);margin:0 0 14px;padding:12px 14px;border-radius:var(--radius);background:rgba(255,255,255,.88);border:1px solid rgba(147,197,253,.75);box-shadow:0 4px 14px rgba(15,23,42,.08)}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:12px}
+.note-field-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-textarea{width:100%;min-height:88px;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;color:var(--gray-800);background:var(--gray-25);resize:vertical;transition:border-color .18s}
+.note-textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.note-field:nth-child(1) .note-textarea{border-top:3px solid var(--blue)}
+.note-field:nth-child(2) .note-textarea{border-top:3px solid var(--red)}
+.note-field:nth-child(3) .note-textarea{border-top:3px solid var(--green)}
+.note-example-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-example-input{width:100%;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.89rem;color:var(--gray-800);background:var(--gray-25);transition:border-color .18s;border-top:3px solid var(--violet)}
+.note-example-input:focus{outline:none;border-color:var(--violet);background:#fff}
+.note-example-input::placeholder{color:var(--gray-300)}
+.notes-save-row{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:var(--radius);background:rgba(255,255,255,.88);border:1px solid rgba(147,197,253,.75)}
+.notes-save-btn{padding:7px 18px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.86rem;font-weight:400;color:#fff;background:var(--blue);cursor:pointer;transition:background .18s}
+.notes-save-btn:hover{background:var(--blue-dark)}
+.notes-saved{font-size:.82rem;color:var(--green);font-family:var(--font-head);font-weight:400;opacity:0;transition:opacity .3s}
+.notes-saved.is-visible{opacity:1}
+
+/* ── Verbindungen ── */
+.connections-panel{padding:20px}
+.conn-intro{padding:10px 14px;border-radius:var(--radius);background:linear-gradient(135deg,var(--blue-soft),var(--violet-soft));border:1px solid #ddd6fe;margin-bottom:12px;font-family:var(--font-head);font-size:.88rem;font-weight:400;color:var(--blue-dark)}
+.conn-map{display:grid;gap:8px}
+.conn-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;padding:12px;border:var(--line);border-radius:var(--radius);background:#fff;transition:box-shadow .2s,transform .2s,border-color .2s}
+.conn-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px);border-color:#bfdbfe}
+.conn-icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--radius-sm);font-size:1.25rem;background:var(--blue-soft);flex-shrink:0}
+.conn-title{margin:0 0 2px;font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.91rem}
+.conn-text{color:var(--gray-700);font-size:.86rem;margin:0 0 6px;line-height:1.5}
+.conn-examples{display:flex;flex-wrap:wrap;gap:5px}
+.conn-ex{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--radius-pill);font-size:.81rem;font-weight:400}
+.conn-ex-blue{color:var(--blue-dark);background:#dbeafe}
+.conn-ex-green{color:var(--green);background:#dcfce7}
+.conn-ex-violet{color:var(--violet);background:var(--violet-soft)}
+.conn-ex-yellow{color:var(--yellow);background:var(--yellow-soft)}
+
+/* ── Responsive ── */
+@media(max-width:620px){
+  .midnight-wrapper{width:170px;height:170px}.midnight-ring{width:150px;height:150px}
+  .midnight-core{width:126px;height:126px}.midnight-inner-dashed{width:108px;height:108px}
+  .midnight-main1{font-size:13px}.midnight-main2{font-size:16px}
+}
+@media(max-width:580px){
+  body{padding:0 0 48px}
+  .compass-head{padding:16px 14px}.compass-emoji{font-size:1.8rem}
+  .learn-panel,.connections-panel,.ref-wrap,.notes-panel{padding:14px 12px}
+  .entry-card{grid-template-columns:1fr}
+  .mini-rules,.ref-tiles,.ref-bottom,.notes-grid{grid-template-columns:1fr}
+  .error-compare,.formcard-back-grid{grid-template-columns:1fr}
+  .form-card-scene{height:auto;min-height:180px}
+  .sentence-row{grid-template-columns:1fr 1fr}.sr-ctx{display:none}
+  .conn-card{grid-template-columns:1fr}
+}
+
+
+/* SCHREIB-CHECK */
+.writecheck-panel{padding:22px;background:#fff}
+.writecheck-intro{border:1px solid #bfdbfe;background:var(--blue-soft);border-radius:18px;padding:16px 18px;margin-bottom:16px}
+.writecheck-intro h3{margin:0 0 6px;font-family:var(--font-head);font-size:1.05rem;color:var(--blue-dark)}
+.writecheck-intro p{margin:0;color:var(--gray-700)}
+.writecheck-grid{display:grid;gap:14px}
+.writecheck-task{border:var(--line);border-radius:16px;background:var(--gray-25);padding:15px;box-shadow:var(--shadow-sm)}
+.writecheck-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.writecheck-task-num{font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--blue-dark);background:var(--blue-soft);border:1px solid #bfdbfe;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.writecheck-kind{font-size:.76rem;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:999px;padding:3px 8px;background:#fff;white-space:nowrap}
+.writecheck-prompt{font-size:1rem;color:var(--gray-800);margin:0 0 8px}
+.writecheck-context{font-size:.9rem;color:var(--gray-600);background:#fff;border:1px dashed var(--gray-300);border-radius:12px;padding:8px 10px;margin:0 0 8px}
+.writecheck-input-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.writecheck-input{flex:1;min-width:220px;border:1px solid var(--gray-300);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:var(--gray-800)}
+.writecheck-input:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}
+.writecheck-btn,.writecheck-check-all,.writecheck-reset{border-radius:999px;border:1px solid #bfdbfe;background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
+.writecheck-btn:hover,.writecheck-check-all:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.writecheck-reset{border-color:var(--gray-300);background:#fff;color:var(--gray-600)}
+.writecheck-reset:hover{background:var(--gray-100);color:var(--gray-800)}
+.writecheck-feedback{margin-top:8px;border-radius:12px;padding:9px 10px;font-size:.9rem;display:none}
+.writecheck-feedback.is-visible{display:block}
+.writecheck-feedback.is-correct{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534}
+.writecheck-feedback.is-almost{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-feedback.is-wrong{border:1px solid #fecaca;background:#fef2f2;color:#991b1b}
+.writecheck-feedback.is-empty{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-solution-btn{margin-left:8px;margin-top:6px;padding:6px 10px;font-size:.8rem}
+.writecheck-task.is-correct{border-color:#86efac;background:#f0fdf4}
+.writecheck-task.is-almost{border-color:#fcd34d;background:#fffbeb}
+.writecheck-task.is-wrong{border-color:#fca5a5;background:#fef2f2}
+.writecheck-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.writecheck-summary{display:none;margin-top:14px;padding:13px 15px;border-radius:var(--radius);background:rgba(255,255,255,.9);border:1px solid rgba(147,197,253,.75);box-shadow:var(--shadow-sm)}
+.writecheck-summary.is-visible{display:block}
+.writecheck-summary-title{margin:0 0 8px;font-family:var(--font-head);font-size:1.05rem;color:var(--gray-800)}
+.writecheck-stand{font-family:var(--font-head);font-size:1.02rem;font-weight:400;color:var(--blue-dark);margin-bottom:8px}
+.writecheck-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-family:var(--font-head);font-weight:400;font-size:.84rem;margin-bottom:10px}
+.writecheck-status.is-green{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.writecheck-status.is-yellow{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.writecheck-status.is-orange{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}
+.writecheck-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.writecheck-list{border:1px solid var(--gray-200);border-radius:14px;padding:12px;background:var(--gray-25)}
+.writecheck-list h4{margin:0 0 6px;font-family:var(--font-head);font-size:.92rem;color:var(--gray-700)}
+.writecheck-list ul{margin:0;padding-left:18px}
+.writecheck-list li{margin:2px 0}
+@media(max-width:700px){.writecheck-panel{padding:16px}.writecheck-input-row{display:block}.writecheck-input{width:100%;min-width:0;margin-bottom:8px}.writecheck-btn{width:100%;justify-content:center}.writecheck-task-head{display:block}.writecheck-kind{display:inline-flex;margin-top:6px}}
+
+/* NAVIGATION */
+.site-nav{background:#fff;border-bottom:var(--line);box-shadow:var(--shadow-sm);position:static;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}
+.nav-logo-text{color:var(--blue-dark)}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--gray-600);text-decoration:none;border:1px solid var(--gray-200);background:#fff;transition:all .18s}
+.nav-link:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}
+.nav-link.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}
+.nav-link-all{color:var(--blue-dark);border-color:transparent;background:transparent}
+.nav-link-all:hover{background:var(--blue-soft);border-color:var(--blue)}
+
+/* PAGE */
+.page-content{max-width:1100px;margin:0 auto;padding:20px 20px 0}
+
+.print-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--green);border:1px solid #bbf7d0;background:var(--green-soft);cursor:pointer;transition:all .18s}
+.print-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.ha-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#0f766e;border:1px solid #99f6e4;background:#ccfbf1;cursor:pointer;transition:all .18s}
+.ha-btn:hover{background:#0f766e;color:#fff;border-color:#0f766e}
+
+@media print{
+  .site-nav,
+  .overview-return-wrap,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar,
+  .notes-save-row,
+  .writecheck-actions{display:none!important}
+  .compass-mode-panel:not(.is-active),
+  .learn-panel:not(.is-active){display:none!important}
+  .compass-mode-panel.is-active,
+  .learn-panel.is-active{display:block!important}
+  .learning-card{box-shadow:none!important;border:1px solid #ccc!important}
+  body{background:#fff!important;padding:0!important}
+  .page-content{padding:10px!important;max-width:none!important;width:auto!important}
+}
+
+
+
+.hg-machine-card{padding:18px;border:var(--line);border-radius:var(--radius);background:#fff;margin-bottom:12px}
+.hg-form-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:.82rem}
+.hg-have{color:#1d4ed8;background:#dbeafe}
+.hg-has{color:#d97706;background:#fef3c7}
+.hg-output{padding:14px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line);transition:border-color .3s;min-height:72px}
+.hg-output.is-pop{animation:pop .2s ease both}
+.possession-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.poss-chip{padding:5px 12px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
+.poss-chip:hover{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.poss-chip.is-active{border-color:var(--green);background:var(--green);color:#fff}
+
+.hg-balance-card{padding:15px;border:var(--line);border-radius:var(--radius);background:linear-gradient(135deg,#f0fdf4,#eff6ff);margin-bottom:14px}
+.hg-balance-title{font-family:var(--font-head);font-weight:400;color:var(--green);font-size:.94rem;margin:0 0 10px}
+.hg-balance-picker{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 12px}
+.hg-balance-pick{min-height:34px;padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);background:#fff;color:var(--gray-700);font-family:var(--font-head);font-weight:400;font-size:.86rem;cursor:pointer;transition:all .18s}
+.hg-balance-pick:hover,.hg-balance-pick.is-active{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.hg-balance-scale{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.hg-balance-side{border:2px solid var(--gray-200);border-radius:var(--radius);background:#fff;padding:12px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.hg-balance-side.is-active{border-color:var(--green);box-shadow:0 8px 20px rgba(21,128,61,.12);transform:translateY(-1px)}
+.hg-balance-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.8rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.hg-balance-persons{display:block;font-family:var(--font-head);font-weight:400;font-size:1rem;color:var(--gray-800);margin-bottom:7px}
+.hg-balance-form{display:inline-flex;align-items:center;padding:2px 6px;border-radius:5px;font-family:var(--font-head);font-weight:400;font-size:.95rem}
+.hg-balance-form.is-have{color:var(--blue-dark);background:linear-gradient(to top,#dbeafe 0 48%,transparent 48%)}
+.hg-balance-form.is-has{color:#b45309;background:linear-gradient(to top,#fef3c7 0 48%,transparent 48%)}
+.hg-balance-middle{display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gray-400)}
+.hg-balance-result{display:grid;gap:4px;margin-top:12px;padding:12px;border-radius:var(--radius-sm);border:1px solid #bbf7d0;background:#fff;color:var(--gray-800)}
+.hg-balance-result-label{font-family:var(--font-head);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}
+.hg-balance-result-form{font-family:var(--font-head);font-weight:400;color:var(--green);font-size:1rem}
+.hg-balance-result-sentence{font-size:.9rem;color:var(--gray-700)}
+.hg-balance-rule{margin:10px 0 0;color:var(--gray-700);font-size:.86rem}
+@media (max-width:620px){.hg-balance-scale{grid-template-columns:1fr}.hg-balance-middle{display:none}}
+.vs-box{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;border:var(--line);border-radius:var(--radius);background:#fff}
+.vs-col-title{font-family:var(--font-head);font-weight:400;font-size:.85rem;margin:0 0 10px;padding-bottom:6px;border-bottom:var(--line)}
+.vs-row{font-size:.87rem;padding:5px 0;border-bottom:1px solid var(--gray-100);color:var(--gray-700)}
+.vs-row:last-child{border-bottom:none}
+.short-answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.sa-card{padding:10px 13px;border-radius:var(--radius-sm);font-size:.87rem;line-height:1.6}
+.sa-yes{background:var(--green-soft);border:1px solid #bbf7d0}
+.sa-no{background:var(--red-soft);border:1px solid #fecaca}
+.sa-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sa-yes .sa-label{color:var(--green)}.sa-no .sa-label{color:var(--red)}
+
+/* Übersicht zurück */
+.nav-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.nav-link-overview{border-color:#bfdbfe;color:var(--blue-dark);background:var(--blue-soft)}
+.overview-return-wrap{max-width:1100px;margin:10px auto -6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;line-height:1.2;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:400;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+@media(max-width:580px){.overview-return-wrap{margin:8px auto -4px;padding:0 12px}.overview-return{width:100%;justify-content:center}}
+@media print{.overview-return-wrap{display:none!important}}
+
+
+
+/* Mobile safety patch: prevents horizontal overflow without changing content. */
+@media (max-width: 700px){
+  html, body{max-width:100%;}
+  .site-nav, .site-nav-inner, .page-content, .learning-card, .compass-mode-grid, .compass-mode-btn, .learn-step-nav, .learn-step-btn, .mini-card, .feature-card, .rule-card, .error-card, .practice-card, .writecheck-panel, .writecheck-task, .note-card, .notes-panel, .connections-panel, .reference-card, .overview-return-wrap{max-width:100%;min-width:0;}
+  .site-nav-inner{padding-left:12px;padding-right:12px;flex-wrap:wrap;align-items:center;}
+  .nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-actions{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;justify-content:flex-end;}
+  .ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+  .compass-mode-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));}
+  .compass-mode-btn{overflow-wrap:anywhere;}
+  .learn-step-nav{overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto;}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .train-wrap,.sentence-strip,.formula-strip,.timeline-strip,.comparison-grid,.error-compare,.example-grid,.choice-grid,.card-grid{max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  img,svg{max-width:100%;height:auto;}
+}
+
+
+/* FINAL LAYOUT PATCH: wider desktop layout + calm return link.
+   Content, exercises, answers and tab structure are unchanged. */
+@media (min-width: 901px){
+  .site-nav-inner,
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    max-width:1320px;
+  }
+  .page-content{
+    width:min(1320px, calc(100% - 48px));
+  }
+  .overview-return-wrap{
+    width:min(1320px, calc(100% - 48px));
+  }
+}
+@media (max-width:700px){
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    width:auto;
+    max-width:100%;
+  }
+}
+
+
+
+/* Nachschlagen: klare Spickzettel-Struktur */
+.hg-reference-wrap{
+  padding:24px;
+  display:grid;
+  gap:18px;
+  background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%);
+}
+.hg-ref-intro{
+  display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:var(--radius);
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(147,197,253,.75);color:var(--blue-dark);font-family:var(--font-head);font-size:.88rem;font-weight:400;
+  box-shadow:0 4px 14px rgba(15,23,42,.08);
+}
+.hg-ref-section{
+  padding:17px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+.hg-ref-core{background:#fff;border-color:#93c5fd;box-shadow:0 10px 28px rgba(37,99,235,.16)}
+.hg-ref-patterns{background:#fff;border-color:rgba(148,163,184,.45)}
+.hg-ref-forms{background:#fff;border-color:rgba(148,163,184,.45)}
+.hg-ref-traps{background:#fff7f7;border-color:#fecaca}
+.hg-ref-special{background:#fffbeb;border-color:#fde68a}
+.hg-ref-questionwords{background:#f5f3ff;border-color:#ddd6fe}
+.hg-ref-british{background:#f8fafc;border-color:#cbd5e1}
+.hg-ref-examples{background:#fff;border-color:rgba(148,163,184,.45)}
+.hg-ref-title{
+  display:flex;align-items:center;gap:8px;margin:0 0 11px;font-family:var(--font-head);font-weight:400;
+  font-size:.86rem;color:var(--gray-800);text-transform:uppercase;letter-spacing:.06em;
+}
+.hg-ref-title::before{
+  content:attr(data-step);display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;
+  border-radius:var(--radius-pill);background:#eff6ff;border:1px solid #bfdbfe;color:var(--blue-dark);font-size:.78rem;
+}
+.hg-ref-list{margin:0;padding-left:19px;font-size:.9rem;color:var(--gray-700);line-height:1.62}
+.hg-ref-list li+li{margin-top:3px}
+.hg-ref-table-wrap{overflow-x:auto}
+.hg-ref-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.86rem;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-sm);overflow:hidden}
+.hg-ref-table th{background:var(--gray-100);color:var(--gray-700);font-family:var(--font-head);font-weight:400;text-align:left;padding:8px 10px}
+.hg-ref-table td{padding:8px 10px;border-top:1px solid var(--gray-200);vertical-align:top}
+.hg-ref-hint{margin:10px 0 0;padding:9px 11px;border-radius:var(--radius-sm);background:#fff;border:1px solid var(--gray-200);font-size:.86rem;color:var(--gray-700)}
+.hg-ref-card-grid{display:grid;gap:9px}
+.hg-ref-card-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hg-ref-card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hg-ref-mini-card{padding:11px 12px;border-radius:var(--radius-sm);background:#fff;border:1px solid var(--gray-200);font-size:.86rem;line-height:1.55;color:var(--gray-700)}
+.hg-ref-mini-title{display:block;font-family:var(--font-head);font-weight:400;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;color:var(--gray-700)}
+.hg-ref-mini-card.red{background:var(--red-soft);border-color:#fecaca}.hg-ref-mini-card.red .hg-ref-mini-title{color:var(--red)}
+.hg-ref-mini-card.yellow{background:var(--yellow-soft);border-color:#fde68a}.hg-ref-mini-card.yellow .hg-ref-mini-title{color:var(--yellow)}
+.hg-ref-mini-card.blue{background:var(--blue-soft);border-color:#bfdbfe}.hg-ref-mini-card.blue .hg-ref-mini-title{color:var(--blue-dark)}
+.hg-ref-mini-card.green{background:var(--green-soft);border-color:#bbf7d0}.hg-ref-mini-card.green .hg-ref-mini-title{color:var(--green)}
+.hg-ref-mini-card.violet{background:var(--violet-soft);border-color:#ddd6fe}.hg-ref-mini-card.violet .hg-ref-mini-title{color:var(--violet)}
+.hg-ref-qa-row,.hg-ref-example-row{
+  display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:9px 11px;border:var(--line);
+  border-radius:var(--radius-sm);background:#fff;font-size:.86rem;
+}
+.hg-ref-qa-row{grid-template-columns:1fr 1fr;background:var(--blue-soft)}
+.hg-ref-en{font-family:var(--font-head);font-weight:400;color:var(--gray-800)}
+.hg-ref-de{color:var(--gray-600)}
+.hg-ref-tag{display:inline-block;font-size:.71rem;padding:2px 6px 2px 8px;border-left:3px solid currentColor;border-radius:5px;font-family:var(--font-head);font-weight:400;white-space:nowrap;background:var(--green-soft);color:var(--green)}
+.hg-ref-tag.red{background:var(--red-soft);color:var(--red)}.hg-ref-tag.blue{background:var(--blue-soft);color:var(--blue-dark)}.hg-ref-tag.yellow{background:var(--yellow-soft);color:var(--yellow)}
+.hg-ref-note-box{margin-top:10px;padding:10px 13px;border-left:4px solid var(--blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--blue-soft);font-size:.86rem;color:var(--gray-700)}
+@media (max-width:900px){
+  .hg-ref-card-grid.three{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .hg-ref-card-grid.two{grid-template-columns:1fr}
+  .hg-ref-qa-row,.hg-ref-example-row{grid-template-columns:1fr}
+  .hg-ref-tag{width:max-content}
+}
+
+
+/* Spickzettel-Druckansicht */
+.hg-print-spickzettel{display:none}
+@media print{
+  body.spickzettel-print .site-nav,
+  body.spickzettel-print .overview-return-wrap,
+  body.spickzettel-print .compass-mode-grid,
+  body.spickzettel-print .learn-step-nav,
+  body.spickzettel-print .learn-progress-bar,
+  body.spickzettel-print .notes-panel,
+  body.spickzettel-print .connections-panel,
+  body.spickzettel-print .writecheck-panel,
+  body.spickzettel-print .compass-mode-panel:not([data-val="reference"]){display:none!important}
+  body.spickzettel-print .compass-mode-panel[data-val="reference"]{display:block!important}
+  body.spickzettel-print .hg-reference-wrap > :not(.hg-print-spickzettel){display:none!important}
+  body.spickzettel-print .hg-print-spickzettel{display:block!important;padding:0!important;color:#111!important;background:#fff!important}
+  body.spickzettel-print .learning-card{box-shadow:none!important;border:none!important}
+  body.spickzettel-print .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:14px!important}
+  body.spickzettel-print .compass-kicker,
+  body.spickzettel-print .check-return-hint{display:none!important}
+  body.spickzettel-print .compass-title{color:#111!important;font-size:22px!important;margin:0!important}
+  body.spickzettel-print .hg-print-spickzettel h2{font-size:18px;margin:0 0 10px;color:#111}
+  body.spickzettel-print .hg-print-spickzettel h3{font-size:14px;margin:0 0 6px;color:#111}
+  body.spickzettel-print .hg-print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  body.spickzettel-print .hg-print-box{border:1px solid #999;border-radius:8px;padding:9px;break-inside:avoid;background:#fff!important}
+  body.spickzettel-print .hg-print-box ul{margin:0;padding-left:18px}
+  body.spickzettel-print .hg-print-box li{margin:2px 0}
+  body.spickzettel-print .hg-print-pattern{font-family:Arial, Helvetica, sans-serif;font-weight:400;margin:4px 0}
+  body.spickzettel-print .hg-print-warning{border:2px solid #111}
+  body.spickzettel-print{background:#fff!important;padding:0!important}
+  body.spickzettel-print .page-content{padding:0!important;max-width:none!important}
+}
+
+
+
+/* WHOLE-TOPIC VISUAL PATCH: ruhiger blaugrauer Bereich für das ganze Einzelthema.
+   Inhalte und Lernlogik bleiben unverändert; die Karten bleiben weiß oder sehr dezent pastell. */
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="connections"],
+.compass-mode-panel[data-val="writecheck"],
+.compass-mode-panel[data-val="notes"]{
+  background:linear-gradient(180deg,var(--hg-topic-bg-top) 0%,var(--hg-topic-bg-bottom) 100%);
+}
+.learn-panel,
+.writecheck-panel,
+.notes-panel,
+.connections-panel,
+.compass-mode-panel[data-val="connections"] > div{
+  padding:24px;
+  background:linear-gradient(180deg,var(--hg-topic-bg-top) 0%,var(--hg-topic-bg-bottom) 100%);
+}
+.entry-card,
+.hg-machine-card,
+.check-card,
+.writecheck-task,
+.note-field,
+.conn-card,
+.connection-map-card{
+  background:rgba(255,255,255,.96)!important;
+  border:1px solid var(--hg-card-border)!important;
+  box-shadow:var(--hg-card-shadow);
+}
+.hg-balance-card,
+.check-intro-card,
+.writecheck-intro,
+.compass-mode-panel[data-val="connections"] > div > p{
+  background:rgba(255,255,255,.88)!important;
+  border:1px solid rgba(147,197,253,.75)!important;
+  box-shadow:0 4px 14px rgba(15,23,42,.08);
+}
+.mini-rule,
+.hg-output,
+.mini-decision-item,
+.scanner-card,
+.scanner-solution,
+.explain-option,
+.note-textarea,
+.note-example-input,
+.writecheck-context{
+  background:#fff!important;
+}
+.mini-decision-answer,
+.mini-decision-solutions,
+.writecheck-feedback.is-correct{
+  background:#f0fdf4!important;
+}
+.scanner-feedback,
+.writecheck-feedback.is-almost{
+  background:#fffbeb!important;
+}
+.scanner-solution,
+.writecheck-feedback.is-wrong{
+  background:#fef2f2!important;
+}
+.note-field{
+  padding:13px;
+  border-radius:var(--radius);
+}
+.compass-mode-panel[data-val="connections"] > div > div{
+  display:grid;
+  gap:11px;
+}
+.connection-compare > div{
+  border-radius:var(--radius-sm)!important;
+}
+@media(max-width:620px){
+  .learn-panel,
+  .writecheck-panel,
+  .notes-panel,
+  .connections-panel,
+  .compass-mode-panel[data-val="connections"] > div,
+  .hg-reference-wrap{padding:16px;}
+}
+@media print{
+  .compass-mode-panel[data-val="learn"],
+  .compass-mode-panel[data-val="connections"],
+  .compass-mode-panel[data-val="writecheck"],
+  .compass-mode-panel[data-val="notes"],
+  .learn-panel,
+  .writecheck-panel,
+  .notes-panel,
+  .connections-panel,
+  .compass-mode-panel[data-val="connections"] > div{
+    background:#fff!important;
+  }
+  .entry-card,
+  .hg-machine-card,
+  .check-card,
+  .writecheck-task,
+  .note-field,
+  .conn-card,
+  .connection-map-card{
+    box-shadow:none!important;
+  }
+}
+
+
+
+/* ── Technische Bereinigung: keine Inline-Styles, keine strong-Tags, kein onclick ── */
+.havegot-head-gradient{background:linear-gradient(135deg,#15803d,#0891b2)}
+.progress-step-1{width:25%}.progress-step-2{width:50%}.progress-step-3{width:75%}.progress-step-4{width:100%}
+.mt-14{margin-top:14px}.mb-10{margin-bottom:10px}.note-example-wrap{margin-bottom:12px}
+.text-blue-dark{color:var(--blue-dark)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-has-color{color:#d97706}.text-muted-small{color:var(--gray-500);font-size:.8rem}.text-small-title{font-size:.9rem}
+.text-mark{color:var(--blue-dark);background:linear-gradient(to top,#dbeafe 0 46%,transparent 46%);border-radius:2px;padding:0 .08em}
+.use-box{margin-top:14px;padding:14px;border:var(--line);border-radius:var(--radius);background:#fff}
+.use-title{font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.92rem;margin:0 0 10px}
+.use-grid{display:grid;gap:6px}.use-row,.use-row-alert{display:flex;align-items:center;gap:10px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);font-size:.87rem}.use-row{background:var(--gray-25)}.use-row-alert{background:var(--red-soft)}
+.use-label,.use-label-alert{font-family:var(--font-head);font-weight:400;min-width:100px}.use-label{color:var(--green)}.use-label-alert{color:var(--red)}
+.mini-section-label{font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;margin:0 0 7px}
+.person-i-color{color:var(--c-I)}.person-you-color{color:var(--c-you)}.person-he-color{color:var(--c-he)}.person-she-color{color:var(--c-she)}.person-it-color{color:var(--c-it)}.person-we-color{color:var(--c-we)}.person-they-color{color:var(--c-they)}
+.tok-person-I{background:var(--c-I-soft);color:var(--c-I)}.tok-person-you{background:var(--c-you-soft);color:var(--c-you)}.tok-person-he{background:var(--c-he-soft);color:var(--c-he)}.tok-person-she{background:var(--c-she-soft);color:var(--c-she)}.tok-person-it{background:var(--c-it-soft);color:var(--c-it)}.tok-person-we{background:var(--c-we-soft);color:var(--c-we)}.tok-person-they{background:var(--c-they-soft);color:var(--c-they)}
+.machine-output-person-I{border-color:var(--c-I-soft)}.machine-output-person-you{border-color:var(--c-you-soft)}.machine-output-person-he{border-color:var(--c-he-soft)}.machine-output-person-she{border-color:var(--c-she-soft)}.machine-output-person-it{border-color:var(--c-it-soft)}.machine-output-person-we{border-color:var(--c-we-soft)}.machine-output-person-they{border-color:var(--c-they-soft)}
+.connections-wrap{padding:22px}.connections-note{padding:10px 13px;border-radius:var(--radius);background:linear-gradient(135deg,var(--green-soft),var(--blue-soft));border:1px solid #bbf7d0;font-family:var(--font-head);font-size:.87rem;font-weight:400;color:var(--green);margin:0 0 14px}.connections-stack{display:grid;gap:9px}
+.connection-map-card{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff}.connection-map-icon{display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--blue-soft)}.connection-map-title{margin:0 0 4px;font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.92rem}.connection-map-text{color:var(--gray-700);font-size:.86rem;margin:0 0 8px}.connection-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px}.connection-mini-card-blue,.connection-mini-card-green{padding:9px 11px;border-radius:var(--radius-sm);font-size:.85rem}.connection-mini-card-blue{background:var(--blue-soft)}.connection-mini-card-green{background:var(--green-soft)}.connection-mini-title-blue,.connection-mini-title-green{display:block;font-family:var(--font-head);font-weight:400;margin-bottom:4px}.connection-mini-title-blue{color:var(--blue-dark)}.connection-mini-title-green{color:var(--green)}.connection-chip-row{display:flex;flex-wrap:wrap;gap:6px}.connection-pill-blue,.connection-pill-she,.connection-pill-they{display:inline-block;padding:3px 7px 3px 9px;border-left:3px solid currentColor;border-radius:6px;font-size:.82rem;font-weight:400}.connection-pill-blue{color:var(--blue-dark);background:#eff6ff}.connection-pill-she{color:var(--c-she);background:var(--c-she-soft)}.connection-pill-they{color:var(--c-they);background:var(--c-they-soft)}
+
+
+/* V99: Header, Breite und Hintergrund an Simple Past angeglichen.
+   Ziel: keine dauerhafte Themen-Navigation, durchgehend gleiche Register-/Seitenbreite,
+   ruhiger graublauer Hintergrund in allen Hauptregistern. */
+:root{--kompass-page-max:1320px;}
+body{background:#e7eef4!important;}
+.page-action-bar{
+  display:flex!important;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  box-sizing:border-box!important;
+}
+.page-action-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+@media(max-width:700px){
+  .page-action-bar{align-items:stretch!important;flex-direction:column!important;}
+  .page-action-buttons{justify-content:flex-start!important;}
+  .page-action-buttons .ha-btn,
+  .page-action-buttons .print-btn{flex:1 1 160px;justify-content:center;}
+}
+@media print{
+  .page-action-bar{display:none!important;}
+}
+@media (min-width:701px){
+  .overview-return-wrap.page-action-bar{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:10px max(20px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 6px!important;
+  }
+  .page-content{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0 0 60px!important;
+  }
+  .learning-card{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#eef4fb!important;
+  }
+  .compass-head,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-radius:0!important;
+    box-sizing:border-box!important;
+  }
+  .compass-head{
+    padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important;
+  }
+  .compass-mode-grid,
+  .learn-step-nav{
+    padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+    padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+  }
+  .compass-mode-btn,
+  .learn-step-btn{flex:1 1 0!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .hg-reference-wrap,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:min(var(--kompass-page-max),calc(100% - 48px))!important;
+    max-width:var(--kompass-page-max)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding:24px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,var(--hg-topic-bg-top) 0%,var(--hg-topic-bg-bottom) 100%)!important;
+  }
+}
+@media (max-width:700px){
+  .overview-return-wrap.page-action-bar{
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:10px 12px 6px!important;
+  }
+  .page-content{width:100%!important;max-width:100%!important;padding:0 0 48px!important;}
+  .learning-card{border-radius:0!important;border-left:0!important;border-right:0!important;background:#eef4fb!important;}
+  .compass-head,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar{border-radius:0!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .hg-reference-wrap,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:14px 12px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,var(--hg-topic-bg-top) 0%,var(--hg-topic-bg-bottom) 100%)!important;
+  }
+}
+body.hausaufgaben-mode .page-action-bar .overview-return,
+body.hausaufgaben-mode .page-action-bar .print-btn{display:inline-flex!important;}
+body.spickzettel-print .page-action-bar{display:none!important;}
+body.spickzettel-print .page-content{padding:0!important;width:100%!important;max-width:none!important;}
+body.spickzettel-print .learning-card{box-shadow:none!important;border:none!important;background:#fff!important;}
+body.spickzettel-print .hg-reference-wrap{width:100%!important;max-width:none!important;padding:0!important;background:#fff!important;}
+
+
+
+/* V99b: Mobile-Nachschlagen gegen horizontales Überlaufen abgesichert. */
+.hg-reference-wrap,
+.hg-reference-wrap *{box-sizing:border-box;}
+.hg-reference-wrap > *,
+.hg-ref-intro,
+.hg-ref-section,
+.hg-ref-card-grid,
+.hg-ref-mini-card,
+.hg-ref-table-wrap,
+.hg-ref-hint{min-width:0!important;max-width:100%!important;}
+.hg-ref-intro span,
+.hg-ref-title,
+.hg-ref-list,
+.hg-ref-mini-card,
+.hg-ref-hint{overflow-wrap:anywhere;word-break:normal;}
+.hg-ref-table-wrap{overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
+
+
+
+/* V99c: Allgemeiner Druckmodus bleibt weiß und druckt nur die aktuell geöffnete Seite. */
+@media print{
+  body{background:#fff!important;}
+  .page-action-bar,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar,
+  .notes-save-row,
+  .writecheck-actions{display:none!important;}
+  .learning-card,
+  .compass-mode-panel,
+  .learn-panel,
+  .hg-reference-wrap,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{background:#fff!important;box-shadow:none!important;}
+}
+
+</style>
+</head>
+<body>
+<div class="overview-return-wrap page-action-bar">
+  <a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
+  <div class="page-action-buttons" aria-label="Seitenaktionen">
+    <button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
+    <button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button>
+    <button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button>
+  </div>
+</div>
+<div class="page-content">
+<article class="learning-card">
+<header class="compass-head havegot-head-gradient">
+<div>
+<p class="compass-kicker">🧠 Wer bin ich?</p>
+<h1 class="compass-title">have got — ich hab's!</h1>
+<p class="compass-subtitle">Besitz ausdrücken — was jemand hat, besitzt oder zu bieten hat.</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">🎒</span>
+</header>
+<nav aria-label="Bereiche" class="compass-mode-grid">
+<button aria-pressed="true" class="compass-mode-btn" data-tab="hg-mode" data-val="learn" type="button">
+<span class="compass-mode-icon">🎯</span><span>Lernen</span>
+<span class="compass-mode-hint">Neu hier? Fang hier an.</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="reference" type="button">
+<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
+<span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="connections" type="button">
+<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
+<span class="compass-mode-hint">Was hängt damit zusammen?</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="writecheck" type="button">
+<span class="compass-mode-icon">✍️</span><span>Schreib-Check</span>
+<span class="compass-mode-hint">Kannst du es selbst schreiben?</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="notes" type="button">
+<span class="compass-mode-icon">✏️</span><span>Notizen</span>
+<span class="compass-mode-hint">Meine eigenen Notizen</span>
+</button>
+</nav>
+<!-- ══════════ LERNEN ══════════ -->
+<div class="compass-mode-panel is-active" data-panel="hg-mode" data-val="learn" id="lernen">
+<nav class="learn-step-nav">
+<button aria-pressed="true" class="learn-step-btn" data-tab="hg-learn" data-val="entry" type="button">
+<span class="step-badge">1</span><span class="step-label">Wozu brauche ich das?</span>
+</button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="hg-learn" data-val="balance" type="button">
+<span class="step-badge">2</span><span class="step-label">Haben-Waage</span>
+</button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="hg-learn" data-val="machine" type="button">
+<span class="step-badge">3</span><span class="step-label">Satzmaschine</span>
+</button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="hg-learn" data-val="check" type="button">
+<span class="step-badge">4</span><span class="step-label">Kann ich's?</span>
+</button>
+</nav>
+<div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="hg-progress"></div></div>
+<!-- Schritt 1: Wozu? -->
+<div class="learn-panel is-active" data-panel="hg-learn" data-val="entry">
+<div class="entry-card">
+<div class="entry-visual">🎒</div>
+<div>
+<p class="entry-hook">Stell dir vor, jemand fragt dich: Hast du ein Haustier?</p>
+<p class="entry-text">
+<span class="text-mark">to be</span> sagt wer du bist — <em>I am Hanna. She is nice.</em><br/>
+<span class="text-mark">have got</span> sagt was du hast — <em>I have got a dog. She has got a sister.</em><br/>
+            Das ist der Unterschied!
+          </p>
+<div class="entry-examples">
+<span class="entry-ex">I have got a cat.</span>
+<span class="entry-ex">She has got blue eyes.</span>
+<span class="entry-ex">They have got a garden.</span>
+</div>
+</div>
+</div>
+<!-- have vs has -->
+<div class="mini-rules mt-14">
+<div class="mini-rule">
+<span class="mini-rule-main text-blue-dark">have got</span>
+<span class="mini-rule-sub">I / you / we / they</span>
+<span class="mini-rule-ex">I have got a dog.</span>
+</div>
+<div class="mini-rule">
+<span class="mini-rule-main text-has-color">has got</span>
+<span class="mini-rule-sub">he / she / it / Name / Einzahl</span>
+<span class="mini-rule-ex">She has got a cat.</span>
+</div>
+<div class="mini-rule">
+<span class="mini-rule-main text-small-title">💡 Kurz merken</span>
+<span class="mini-rule-sub">Erst fragen: Wer?</span>
+<span class="mini-rule-ex">Person suchen → have oder has</span>
+</div>
+</div>
+<!-- Wozu benutzt man have got -->
+<div class="use-box">
+<p class="use-title">Wann benutzt man have got?</p>
+<div class="use-grid">
+<div class="use-row">
+<span class="use-label">Haustiere</span>
+<span>I have got a dog. She has got two cats.</span>
+</div>
+<div class="use-row">
+<span class="use-label">Familie</span>
+<span>He has got a sister. They have got a big family.</span>
+</div>
+<div class="use-row">
+<span class="use-label">Aussehen</span>
+<span>She has got long hair. He has got blue eyes.</span>
+</div>
+<div class="use-row">
+<span class="use-label">Gegenstände</span>
+<span>I have got a new bike. We have got a garden.</span>
+</div>
+<div class="use-row-alert">
+<span class="use-label-alert">Krankheiten</span>
+<span>I have got a cold. She has got a headache. He has got a temperature.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Schritt 2: Haben-Waage -->
+<div class="learn-panel" data-panel="hg-learn" data-val="balance">
+<div class="hg-machine-card">
+<div aria-label="Haben-Waage: Die Person entscheidet über have got oder has got" class="hg-balance-card">
+<p class="hg-balance-title">⚖️ Haben-Waage: Klicke auf die Person und prüfe die richtige Seite</p>
+<p class="check-card-text">Die Waage entscheidet nur eine Sache: Braucht die Person have got oder has got?</p>
+<div aria-label="Person für die Haben-Waage wählen" class="hg-balance-picker" role="group">
+<button aria-pressed="true" class="hg-balance-pick is-active" data-balance-person="I" type="button">I</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="you" type="button">you</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="he" type="button">he</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="she" type="button">she</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="it" type="button">it</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="we" type="button">we</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="they" type="button">they</button>
+<button aria-pressed="false" class="hg-balance-pick" data-balance-person="my brother" type="button">my brother</button>
+</div>
+<div class="hg-balance-scale">
+<div class="hg-balance-side is-active" data-hg-balance="have">
+<span class="hg-balance-label">I / you / we / they</span>
+<span class="hg-balance-persons">ich · du · wir · sie</span>
+<span class="hg-balance-form is-have">have got</span>
+</div>
+<div aria-hidden="true" class="hg-balance-middle">↔</div>
+<div class="hg-balance-side" data-hg-balance="has">
+<span class="hg-balance-label">he / she / it / Name / Einzahl</span>
+<span class="hg-balance-persons">er · sie · es · my brother</span>
+<span class="hg-balance-form is-has">has got</span>
+</div>
+</div>
+<div aria-live="polite" class="hg-balance-result" id="hg-balance-result">
+<span class="hg-balance-result-label">Gewählt: I</span>
+<span class="hg-balance-result-form">I → have got</span>
+<span class="hg-balance-result-sentence">I have got a dog.</span>
+</div>
+<p class="hg-balance-rule">Denkweg: 1. Person suchen. 2. Gruppe wählen: I / you / we / they oder he / she / it, ein einzelner Name oder ein Nomen in der Einzahl. 3. Dann einsetzen: have got oder has got.</p>
+</div>
+</div>
+</div>
+<!-- Schritt 3: Satzmaschine -->
+<div class="learn-panel" data-panel="hg-learn" data-val="machine">
+<div class="hg-machine-card">
+<p class="machine-question">Wähle einen Modus, eine Person und einen Besitz:</p>
+<!-- Modus -->
+<div class="mode-switcher" role="group">
+<button class="mode-btn is-active" data-hg-mode="positive" type="button">✅ positiv</button>
+<button class="mode-btn" data-hg-mode="negative" type="button">🚫 negativ</button>
+<button class="mode-btn" data-hg-mode="question" type="button">❓ Frage</button>
+</div>
+<!-- Person -->
+<div class="machine-chips" role="group">
+<button class="m-chip is-active" data-person="I" type="button">I</button>
+<button class="m-chip" data-person="you" type="button">you</button>
+<button class="m-chip" data-person="he" type="button">he</button>
+<button class="m-chip" data-person="she" type="button">she</button>
+<button class="m-chip" data-person="it" type="button">it</button>
+<button class="m-chip" data-person="we" type="button">we</button>
+<button class="m-chip" data-person="they" type="button">they</button>
+</div>
+<!-- Besitz-Chips -->
+<div class="mb-10">
+<p class="mini-section-label">Was hat die Person?</p>
+<div class="possession-chips">
+<button class="poss-chip is-active" data-poss="a dog" type="button">a dog 🐕</button>
+<button class="poss-chip" data-poss="a cat" type="button">a cat 🐈</button>
+<button class="poss-chip" data-poss="a sister" type="button">a sister</button>
+<button class="poss-chip" data-poss="a brother" type="button">a brother</button>
+<button class="poss-chip" data-poss="blue eyes" type="button">blue eyes</button>
+<button class="poss-chip" data-poss="long hair" type="button">long hair</button>
+<button class="poss-chip" data-poss="a new bike" type="button">a new bike 🚲</button>
+<button class="poss-chip" data-poss="a garden" type="button">a garden 🌻</button>
+</div>
+</div>
+<!-- Ausgabe -->
+<div class="hg-output" id="hg-out">
+<div class="sentence-built" id="hg-sentence"></div>
+<p class="machine-note" id="hg-note"></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Schritt 4: Kann ich's? -->
+<div class="learn-panel" data-panel="hg-learn" data-val="check">
+<div class="check-shell havegot-can-check">
+<div class="check-intro-card">
+<p class="check-kicker">Denkcheck</p>
+<h3>Kann ich's?</h3>
+<p>Prüfe kurz, ob du die wichtigste Regel wirklich anwenden kannst: Wer hat etwas? Brauchst du have got oder has got?</p>
+</div>
+<section aria-labelledby="hg-mini-decision-title" class="check-card">
+<h4 id="hg-mini-decision-title">1. Welche Form passt?</h4>
+<p class="check-card-text">Entscheide erst mit der Haben-Waage. Die Lösung bleibt zu, bis du gedacht hast.</p>
+<div class="mini-decision-grid">
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">I</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">have got oder has got?</span></div>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Antwort zuklappen" data-reveal-target="hg-mini-answer-1" data-show-label="Antwort zeigen" type="button">Antwort zeigen</button>
+<div class="mini-decision-answer" hidden="" id="hg-mini-answer-1">I have got</div>
+</div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">she</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">have got oder has got?</span></div>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Antwort zuklappen" data-reveal-target="hg-mini-answer-2" data-show-label="Antwort zeigen" type="button">Antwort zeigen</button>
+<div class="mini-decision-answer" hidden="" id="hg-mini-answer-2">she has got</div>
+</div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">my brother</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">have got oder has got?</span></div>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Antwort zuklappen" data-reveal-target="hg-mini-answer-3" data-show-label="Antwort zeigen" type="button">Antwort zeigen</button>
+<div class="mini-decision-answer" hidden="" id="hg-mini-answer-3">my brother has got</div>
+</div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">we</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">have got oder has got?</span></div>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Antwort zuklappen" data-reveal-target="hg-mini-answer-4" data-show-label="Antwort zeigen" type="button">Antwort zeigen</button>
+<div class="mini-decision-answer" hidden="" id="hg-mini-answer-4">we have got</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="hg-error-scanner-title" class="check-card">
+<h4 id="hg-error-scanner-title">2. Fehler-Scanner</h4>
+<p class="check-card-text">Klicke im Satz zuerst auf die Fehlerstelle. Erst wenn du die Fehlerstelle gefunden hast, kannst du die Reparatur öffnen.</p>
+<div class="error-scanner" data-error-scanner="havegot" data-topic-id="havegot">
+<div class="scanner-card is-active" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-he-she-it-has-got" data-review-source="learning-scanner"> 
+<p class="scanner-label">Fehler-Satz 1</p>
+<div aria-label="Fehler-Satz 1: Klicke auf die Fehlerstelle" class="scanner-sentence" role="group">
+<button class="scanner-word" data-error-token="true" type="button">He</button>
+<button class="scanner-word" data-correct-error="true" data-error-token="true" type="button">have</button>
+<button class="scanner-word" data-error-token="true" type="button">got</button>
+<button class="scanner-word" data-error-token="true" type="button">a</button>
+<button class="scanner-word" data-error-token="true" type="button">bike.</button>
+</div>
+<p class="scanner-question">Welche Stelle ist falsch?</p>
+<p class="scanner-feedback" hidden=""></p>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Reparatur zuklappen" data-show-error="" data-show-label="Reparatur zeigen" hidden="" type="button">Reparatur zeigen</button>
+<div class="scanner-solution" hidden="">
+<p>Fehlerstelle: have.</p>
+<p>Richtig: He has got a bike.</p>
+<p>Denkweg: he gehört zu he / she / it. Deshalb brauchst du has got.</p>
+</div>
+</div>
+<div class="scanner-card" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-i-you-we-they-have-got" data-review-source="learning-scanner" hidden=""> 
+<p class="scanner-label">Fehler-Satz 2</p>
+<div aria-label="Fehler-Satz 2: Klicke auf die Fehlerstelle" class="scanner-sentence" role="group">
+<button class="scanner-word" data-error-token="true" type="button">I</button>
+<button class="scanner-word" data-correct-error="true" data-error-token="true" type="button">has</button>
+<button class="scanner-word" data-error-token="true" type="button">got</button>
+<button class="scanner-word" data-error-token="true" type="button">a</button>
+<button class="scanner-word" data-error-token="true" type="button">sister.</button>
+</div>
+<p class="scanner-question">Welche Stelle ist falsch?</p>
+<p class="scanner-feedback" hidden=""></p>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Reparatur zuklappen" data-show-error="" data-show-label="Reparatur zeigen" hidden="" type="button">Reparatur zeigen</button>
+<div class="scanner-solution" hidden="">
+<p>Fehlerstelle: has.</p>
+<p>Richtig: I have got a sister.</p>
+<p>Denkweg: I steht nicht bei he / she / it. Deshalb brauchst du have got.</p>
+</div>
+</div>
+<div class="scanner-card" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-question-have-has-front" data-review-source="learning-scanner" hidden=""> 
+<p class="scanner-label">Fehler-Satz 3</p>
+<div aria-label="Fehler-Satz 3: Klicke auf die Fehlerstelle" class="scanner-sentence" role="group">
+<button class="scanner-word" data-correct-error="true" data-error-token="true" type="button">Have</button>
+<button class="scanner-word" data-error-token="true" type="button">she</button>
+<button class="scanner-word" data-error-token="true" type="button">got</button>
+<button class="scanner-word" data-error-token="true" type="button">a</button>
+<button class="scanner-word" data-error-token="true" type="button">cat?</button>
+</div>
+<p class="scanner-question">Welche Stelle ist falsch?</p>
+<p class="scanner-feedback" hidden=""></p>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Reparatur zuklappen" data-show-error="" data-show-label="Reparatur zeigen" hidden="" type="button">Reparatur zeigen</button>
+<div class="scanner-solution" hidden="">
+<p>Fehlerstelle: Have.</p>
+<p>Richtig: Has she got a cat?</p>
+<p>Denkweg: Bei she muss has nach vorne.</p>
+</div>
+</div>
+<div class="scanner-card" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-no-do-does-question" data-review-source="learning-scanner" hidden=""> 
+<p class="scanner-label">Fehler-Satz 4</p>
+<div aria-label="Fehler-Satz 4: Klicke auf den falschen Satzanfang" class="scanner-sentence" role="group">
+<button class="scanner-word" data-correct-error="true" data-error-token="true" type="button">Does</button>
+<button class="scanner-word" data-error-token="true" type="button">he</button>
+<button class="scanner-word" data-error-token="true" type="button">have</button>
+<button class="scanner-word" data-error-token="true" type="button">got</button>
+<button class="scanner-word" data-error-token="true" type="button">a</button>
+<button class="scanner-word" data-error-token="true" type="button">dog?</button>
+</div>
+<p class="scanner-question">Welcher Satzanfang passt nicht zu have got?</p>
+<p class="scanner-feedback" hidden=""></p>
+<button aria-expanded="false" class="check-action-button" data-hide-label="Reparatur zuklappen" data-show-error="" data-show-label="Reparatur zeigen" hidden="" type="button">Reparatur zeigen</button>
+<div class="scanner-solution" hidden="">
+<p>Fehlerstelle: Does.</p>
+<p>Richtig: Has he got a dog?</p>
+<p>Denkweg: Bei have got-Fragen benutzt du in diesem Schulmuster kein do/does. Has wandert nach vorne.</p>
+</div>
+</div>
+<div class="scanner-actions">
+<button class="check-action-button" data-next-error="" type="button">Nächster Fehler</button>
+</div>
+</div>
+</section>
+<section aria-labelledby="hg-explain-title" class="check-card">
+<h4 id="hg-explain-title">3. Kann ich es erklären?</h4>
+<p class="check-card-text">Kannst du erklären, warum She has got a dog richtig ist?</p>
+<div class="explain-options" data-explain-check="havegot">
+<button class="explain-option" data-explain-result="safe" type="button">Ja, sicher.</button>
+<button class="explain-option" data-explain-result="almost" type="button">Fast, aber ich muss noch nachdenken.</button>
+<button class="explain-option" data-explain-result="unclear" type="button">Nein, das ist noch unklar.</button>
+</div>
+<div class="explain-feedback" hidden="" id="hg-explain-feedback"></div>
+<p class="check-return-hint">Unsicher bei have/has? Zurück zur Haben-Waage. Unsicher bei Fragen? Zurück zur Satzmaschine.</p>
+</section>
+</div>
+</div>
+</article></div><!-- /LERNEN -->
+<!-- ══════════ NACHSCHLAGEN ══════════ -->
+<div class="compass-mode-panel" data-panel="hg-mode" data-val="reference" id="nachschlagen">
+<div class="hg-reference-wrap">
+<section aria-labelledby="hg-print-title" class="hg-print-spickzettel">
+<h2 id="hg-print-title">have got – Spickzettel</h2>
+<div class="hg-print-grid">
+<section class="hg-print-box">
+<h3>Kernregel</h3>
+<ul>
+<li>have got bedeutet: haben / besitzen.</li>
+<li>I / you / we / they → have got</li>
+<li>he / she / it / ein einzelner Name / ein Nomen in der Einzahl → has got</li>
+<li>Mehrere Personen, Tiere oder Dinge → have got</li>
+</ul>
+</section>
+<section class="hg-print-box">
+<h3>Satzmuster</h3>
+<p class="hg-print-pattern">Aussage: Person + have/has got + Sache.</p>
+<p class="hg-print-pattern">Verneinung: Person + haven’t/hasn’t got + Sache.</p>
+<p class="hg-print-pattern">Frage: Have/Has + Person + got + Sache?</p>
+<p class="hg-print-pattern">Kurzantwort: Yes, Person + have/has. / No, Person + haven’t/hasn’t. Bei Have you got …? meist: Yes, I have. / No, I haven’t.</p>
+</section>
+<section class="hg-print-box hg-print-warning">
+<h3>Top-Denkfalle</h3>
+<p>he / she / it brauchen has got, nicht have got.</p>
+<p class="hg-print-pattern">Falsch: He have got a bike.</p>
+<p class="hg-print-pattern">Richtig: He has got a bike.</p>
+</section>
+<section class="hg-print-box">
+<h3>Kurz merken</h3>
+<p>Erst Person oder Sache suchen. Dann entscheiden: have got oder has got. Bei Fragen wandert Have oder Has nach vorne. In Kurzantworten fällt got weg.</p>
+<p>Bei Fragen und Verneinungen mit Mehrzahl steht oft any: Have you got any pets? / We haven’t got any bikes.</p>
+</section>
+</div>
+<section class="hg-print-box">
+<h3>Typische Beispiele</h3>
+<ul>
+<li>I’ve got a dog.</li>
+<li>She has got blue eyes.</li>
+<li>The dog has got a ball.</li>
+<li>We haven’t got any bikes.</li>
+<li>Have you got any pets? – Yes, I have.</li>
+<li>Has she got a new phone? – No, she hasn’t.</li>
+</ul>
+</section>
+</section>
+<div class="hg-ref-intro">
+<span aria-hidden="true">📖</span>
+<span>Nachschlagen: vollständiges Regelwissen. Der erste Block ist der druckbare Spickzettel-Kern.</span>
+</div>
+<div class="hg-homework-note" role="status" aria-live="polite">
+<span aria-hidden="true">📚</span>
+<span>Hausaufgaben-Modus: Du siehst jetzt nur die schnelle Orientierung mit Kurzregel, Satzmustern und wichtigsten Denkfallen. Für vollständige Formen, Sonderfälle und Beispiele schalte zurück in den Normal-Modus.</span>
+</div>
+<section aria-labelledby="hg-ref-kurzmerken" class="hg-ref-section hg-ref-core">
+<h3 class="hg-ref-title" data-step="1" id="hg-ref-kurzmerken">Kurz merken – Spickzettel-Kern</h3>
+<ul class="hg-ref-list">
+<li><span class="text-blue-dark">have got</span> bedeutet: haben / besitzen.</li>
+<li>I / you / we / they → have got</li>
+<li>he / she / it / ein einzelner Name / ein Nomen in der Einzahl → has got</li>
+<li>mehrere Personen, Tiere oder Dinge → have got</li>
+<li>Frage → Have / Has nach vorne</li>
+<li>Verneinung → haven't got / hasn't got</li>
+<li>Kurzantwort → ohne got</li>
+</ul>
+</section>
+<section aria-labelledby="hg-ref-patterns" class="hg-ref-section hg-ref-patterns">
+<h3 class="hg-ref-title" data-step="2" id="hg-ref-patterns">Satzmuster</h3>
+<div class="hg-ref-table-wrap">
+<table class="hg-ref-table">
+<thead>
+<tr><th>Satzart</th><th>Muster</th><th>Beispiel</th></tr>
+</thead>
+<tbody>
+<tr><td>Aussage</td><td>Person + have/has got + Sache.</td><td>She has got a dog.</td></tr>
+<tr><td>Verneinung</td><td>Person + haven't/hasn't got + Sache.</td><td>We haven't got any bikes.</td></tr>
+<tr><td>Frage</td><td>Have/Has + Person + got + Sache?</td><td>Have you got any pets?</td></tr>
+<tr><td>Kurzantwort</td><td>Yes, Person + have/has. / No, Person + haven't/hasn't.</td><td>Has she got a cat? – No, she hasn't.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="hg-ref-hint">Wichtig: In Kurzantworten steht kein got. Bei Have you got …? antwortest du meistens mit I: Yes, I have. / No, I haven't.</p>
+</section>
+<section aria-labelledby="hg-ref-forms" class="hg-ref-section hg-ref-forms">
+<h3 class="hg-ref-title" data-step="3" id="hg-ref-forms">Alle Formen</h3>
+<div class="hg-ref-table-wrap">
+<table class="hg-ref-table">
+<thead>
+<tr><th>Person</th><th>Langform positiv</th><th>Kurzform</th><th>Verneinung</th><th>Kurzform</th><th>Frage</th></tr>
+</thead>
+<tbody>
+<tr><td class="person-i-color">I</td><td>I have got</td><td class="text-blue-dark">I've got</td><td>I have not got</td><td class="text-red">I haven't got</td><td>Have I got…?</td></tr>
+<tr><td class="person-you-color">you</td><td>you have got</td><td class="text-blue-dark">you've got</td><td>you have not got</td><td class="text-red">you haven't got</td><td>Have you got…?</td></tr>
+<tr><td class="person-he-color">he</td><td>he has got</td><td class="text-has-color">he's got</td><td>he has not got</td><td class="text-red">he hasn't got</td><td>Has he got…?</td></tr>
+<tr><td class="person-she-color">she</td><td>she has got</td><td class="text-has-color">she's got</td><td>she has not got</td><td class="text-red">she hasn't got</td><td>Has she got…?</td></tr>
+<tr><td class="person-it-color">it</td><td>it has got</td><td class="text-has-color">it's got</td><td>it has not got</td><td class="text-red">it hasn't got</td><td>Has it got…?</td></tr>
+<tr><td class="person-we-color">we</td><td>we have got</td><td class="text-blue-dark">we've got</td><td>we have not got</td><td class="text-red">we haven't got</td><td>Have we got…?</td></tr>
+<tr><td class="person-they-color">they</td><td>they have got</td><td class="text-blue-dark">they've got</td><td>they have not got</td><td class="text-red">they haven't got</td><td>Have they got…?</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section aria-labelledby="hg-ref-traps" class="hg-ref-section hg-ref-traps">
+<h3 class="hg-ref-title" data-step="4" id="hg-ref-traps">Typische Denkfallen</h3>
+<div class="hg-ref-card-grid three">
+<div class="hg-ref-mini-card red" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-he-she-it-has-got" data-review-source="reference">
+<span class="hg-ref-mini-title">he / she / it → has got</span>
+      Falsch: He have got a bike.<br/>
+      Richtig: He has got a bike.<br/>
+      Grund: he gehört zur has-Seite.
+    </div>
+<div class="hg-ref-mini-card yellow" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-no-do-does-question" data-review-source="reference">
+<span class="hg-ref-mini-title">Kein do/does bei have got</span>
+      Falsch: Does he have got a dog?<br/>
+      Richtig: Has he got a dog?<br/>
+      Grund: Bei have got wandert Have oder Has nach vorne. Does he have a dog? ist echtes Englisch, aber hier nicht das Schulziel.
+    </div>
+<div class="hg-ref-mini-card blue" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-short-answer-no-got" data-review-source="reference">
+<span class="hg-ref-mini-title">Kurzantwort ohne got</span>
+      Falsch: Yes, I have got.<br/>
+      Richtig: Yes, I have.<br/>
+      Grund: In Kurzantworten fällt got weg.
+    </div>
+<div class="hg-ref-mini-card green" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-you-question-answer-i" data-review-source="reference">
+<span class="hg-ref-mini-title">you-Fragen beantworten</span>
+      Frage: Have you got a dog?<br/>
+      Antwort: Yes, I have. / No, I haven't.<br/>
+      Grund: Im Gespräch antwortest du über dich selbst.
+    </div>
+</div>
+</section>
+<section aria-labelledby="hg-ref-special" class="hg-ref-section hg-ref-special">
+<h3 class="hg-ref-title" data-step="5" id="hg-ref-special">Sonderfälle und Hinweise</h3>
+<div class="hg-ref-card-grid two">
+<div class="hg-ref-mini-card green">
+<span class="hg-ref-mini-title">Einzahl oder Mehrzahl?</span>
+      he / she / it, ein einzelner Name oder ein Nomen in der Einzahl → has got.<br/>
+      Mehrere Personen, Tiere oder Dinge → have got.
+    </div>
+<div class="hg-ref-mini-card blue">
+<span class="hg-ref-mini-title">any bei Fragen und Verneinungen</span>
+      Bei Fragen und Verneinungen mit Mehrzahl steht oft any:<br/>
+      Have you got any pets? / We haven't got any bikes.
+    </div>
+<div class="hg-ref-mini-card yellow">
+<span class="hg-ref-mini-title">Kurzformen</span>
+      I have got → I've got<br/>
+      she has got → she's got<br/>
+      have not got → haven't got / has not got → hasn't got<br/>
+      Achtung: he's got / she's got / it's got bedeutet hier has got, weil got dahintersteht.
+    </div>
+<div class="hg-ref-mini-card violet">
+<span class="hg-ref-mini-title">Kurzantworten</span>
+      Ja: Yes, I have. / Yes, she has. / Yes, they have.<br/>
+      Nein: No, I haven't. / No, she hasn't. / No, they haven't.
+    </div>
+</div>
+</section>
+<section aria-labelledby="hg-ref-questionwords" class="hg-ref-section hg-ref-questionwords">
+<h3 class="hg-ref-title" data-step="6" id="hg-ref-questionwords">Fragen mit Fragewort</h3>
+<div class="hg-ref-card-grid">
+<div class="hg-ref-qa-row">
+<span class="hg-ref-en">What have you got?</span>
+<span class="hg-ref-de">Was hast du? — I've got a dog.</span>
+</div>
+<div class="hg-ref-qa-row">
+<span class="hg-ref-en">How many sisters has she got?</span>
+<span class="hg-ref-de">Wie viele Schwestern hat sie?</span>
+</div>
+<div class="hg-ref-qa-row">
+<span class="hg-ref-en">What colour eyes has he got?</span>
+<span class="hg-ref-de">Welche Augenfarbe hat er?</span>
+</div>
+</div>
+</section>
+<section aria-labelledby="hg-ref-british" class="hg-ref-section hg-ref-british">
+<h3 class="hg-ref-title" data-step="7" id="hg-ref-british">have got vs. have — British vs. American English</h3>
+<div class="vs-box">
+<div>
+<p class="vs-col-title text-blue-dark">🇬🇧 British English (Access 1)</p>
+<div class="vs-row">I <span class="text-mark">have got</span> a dog.</div>
+<div class="vs-row">She <span class="text-mark">has got</span> blue eyes.</div>
+<div class="vs-row"><span class="text-mark">Have</span> you got a pen?</div>
+<div class="vs-row">I <span class="text-mark">haven't got</span> a sister.</div>
+</div>
+<div>
+<p class="vs-col-title text-green">🇺🇸 American English</p>
+<div class="vs-row">I <span class="text-mark">have</span> a dog.</div>
+<div class="vs-row">She <span class="text-mark">has</span> blue eyes.</div>
+<div class="vs-row"><span class="text-mark">Do</span> you have a pen?</div>
+<div class="vs-row">I <span class="text-mark">don't have</span> a sister.</div>
+</div>
+</div>
+<div class="hg-ref-note-box">
+    In Access 1 lernst du British English. In Aufgaben zu have got verwendest du deshalb have got / has got. Amerikanisches Englisch mit have / do have ist im echten Englisch möglich, aber hier nicht das Übungsziel.
+  </div>
+</section>
+<section aria-labelledby="hg-ref-examples" class="hg-ref-section hg-ref-examples">
+<h3 class="hg-ref-title" data-step="8" id="hg-ref-examples">Typische Schulbeispiele</h3>
+<div class="hg-ref-card-grid">
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">I've got a dog. His name is Rex.</span>
+<span class="hg-ref-de">Ich habe einen Hund. Sein Name ist Rex.</span>
+<span class="hg-ref-tag">Haustiere</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">She's got long hair and blue eyes.</span>
+<span class="hg-ref-de">Sie hat langes Haar und blaue Augen.</span>
+<span class="hg-ref-tag">Aussehen</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">Have you got a brother or a sister? – Yes, I have.</span>
+<span class="hg-ref-de">Hast du einen Bruder oder eine Schwester? – Ja.</span>
+<span class="hg-ref-tag">Familie</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">We've got a big garden.</span>
+<span class="hg-ref-de">Wir haben einen großen Garten.</span>
+<span class="hg-ref-tag">Zuhause</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">We haven't got any bikes.</span>
+<span class="hg-ref-de">Wir haben keine Fahrräder.</span>
+<span class="hg-ref-tag red">any</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">Has she got a new phone? — No, she hasn't.</span>
+<span class="hg-ref-de">Hat sie ein neues Handy? — Nein.</span>
+<span class="hg-ref-tag blue">Frage+Antwort</span>
+</div>
+<div class="hg-ref-example-row">
+<span class="hg-ref-en">I've got a cold. / She's got a headache.</span>
+<span class="hg-ref-de">Ich bin erkältet. / Sie hat Kopfschmerzen.</span>
+<span class="hg-ref-tag yellow">Krankheiten</span>
+</div>
+</div>
+</section></div>
+</div><!-- /NACHSCHLAGEN -->
+<!-- ══════════ VERBINDUNGEN ══════════ -->
+<div class="compass-mode-panel" data-panel="hg-mode" data-val="connections" id="verbindungen">
+<div class="connections-wrap">
+<p class="connections-note">🧭 have got hängt mit vielen anderen Themen zusammen.</p>
+<div class="connections-stack">
+<!-- to be -->
+<div class="connection-map-card">
+<div class="connection-map-icon">🟦</div>
+<div>
+<h3 class="connection-map-title">to be vs. have got — der wichtigste Unterschied</h3>
+<p class="connection-map-text">to be = WER jemand ist oder WIE jemand ist. have got = WAS jemand hat oder besitzt.</p>
+<div class="connection-compare">
+<div class="connection-mini-card-blue">
+<span class="connection-mini-title-blue">to be — sein</span>
+                She <span class="text-mark">is</span> nice.<br/>He <span class="text-mark">is</span> a teacher.<br/>I <span class="text-mark">am</span> twelve.
+              </div>
+<div class="connection-mini-card-green">
+<span class="connection-mini-title-green">have got — haben</span>
+                She <span class="text-mark">has got</span> a dog.<br/>He <span class="text-mark">has got</span> a sister.<br/>I <span class="text-mark">have got</span> a bike.
+              </div>
+</div>
+</div>
+</div>
+<!-- Pronouns -->
+<div class="connection-map-card">
+<div class="connection-map-icon">👤</div>
+<div>
+<h3 class="connection-map-title">Pronouns — die Form bestimmt have oder has</h3>
+<p class="connection-map-text">Das Personal Pronoun bestimmt die Form. Und Possessive Determiners / Besitzwörter kommen oft danach.</p>
+<div class="connection-chip-row">
+<span class="connection-pill-blue">I have got → my dog</span>
+<span class="connection-pill-she">she has got → her cat</span>
+<span class="connection-pill-they">they have got → their garden</span>
+</div>
+</div>
+</div>
+<!-- Simple Present -->
+<div class="connection-map-card">
+<div class="connection-map-icon">🔁</div>
+<div>
+<h3 class="connection-map-title">Simple Present — Fragen funktionieren anders!</h3>
+<p class="connection-map-text">Das ist ein häufiger Fehler: have got und Simple Present haben verschiedene Fragenmuster.</p>
+<div class="connection-compare">
+<div class="connection-mini-card-green">
+<span class="connection-mini-title-green">have got — Frage</span>
+<span class="text-mark">Has</span> she got a dog?<br/>
+<span class="text-mark">Have</span> you got a bike?<br/>
+<span class="text-muted-small">→ kein do/does!</span>
+</div>
+<div class="connection-mini-card-blue">
+<span class="connection-mini-title-blue">Simple Present — Frage</span>
+<span class="text-mark">Does</span> she like dogs?<br/>
+<span class="text-mark">Do</span> you play football?<br/>
+<span class="text-muted-small">→ mit do/does!</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /VERBINDUNGEN -->
+<!-- ══════════════ SCHREIB-CHECK ══════════════ -->
+<div class="compass-mode-panel" data-panel="hg-mode" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>✍️ Schreib-Check</h3>
+<p>Schreibe die englischen Sätze selbst. Kleine Formfehler wie ein fehlender Punkt zählen nicht hart. Grammatik, Satzbau und Rechtschreibung werden geprüft.</p>
+</div>
+<div class="writecheck-grid" id="writecheck-tasks"></div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div>
+<!-- ══════════ NOTIZEN ══════════ -->
+<div class="compass-mode-panel" data-panel="hg-mode" data-val="notes" id="notizen">
+<div class="notes-panel">
+<p class="notes-title">✏️ Meine Notizen zu have got</p>
+<div class="notes-grid">
+<div class="note-field">
+<label class="note-field-label" for="note-new">💡 Das habe ich verstanden</label>
+<textarea class="note-textarea" id="note-new" placeholder="Was hast du verstanden? Schreibe es in deinen Worten auf."></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-hard">🤔 Das ist noch unklar</label>
+<textarea class="note-textarea" id="note-hard" placeholder="Was ist noch unsicher oder verwirrend?"></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-free">❓ Das möchte ich fragen</label>
+<textarea class="note-textarea" id="note-free" placeholder="Welche Frage möchtest du stellen?"></textarea>
+</div>
+</div>
+<div class="note-example-wrap">
+<label class="note-example-label" for="note-example">✍️ Mein eigener Beispielsatz</label>
+<input class="note-example-input" id="note-example" placeholder="z.B. I've got a cat. Her name is Luna." type="text"/>
+</div>
+<div class="notes-save-row">
+<button class="notes-save-btn" id="notes-save-btn" type="button">Notizen speichern</button>
+<span class="notes-saved" id="notes-saved">✓ Gespeichert!</span>
+</div>
+</div>
+</div>
+
+
+<script>
+(function() {
+
+  /* kompass_last_topic setzen */
+  try { localStorage.setItem('kompass_last_topic', 'havegot'); } catch(e) {}
+  var SKN = 'kompass_havegot_notes';
+
+  var FORMS  = {I:'have got',you:'have got',he:'has got',she:'has got',it:'has got',we:'have got',they:'have got'};
+  var SHORTS = {I:"I've got",you:"you've got",he:"he's got",she:"she's got",it:"it's got",we:"we've got",they:"they've got"};
+  var NEGS   = {I:"haven't got",you:"haven't got",he:"hasn't got",she:"hasn't got",it:"hasn't got",we:"haven't got",they:"haven't got"};
+  var QFORMS = {I:"Have I",you:"Have you",he:"Has he",she:"Has she",it:"Has it",we:"Have we",they:"Have they"};
+  var COLORS = {I:'#2563eb',you:'#0891b2',he:'#ea580c',she:'#db2777',it:'#059669',we:'#7c3aed',they:'#9333ea'};
+  var NOTES_POS = {
+    I:    "I/you/we/they → have got. Erst die Person prüfen, dann have got einsetzen.",
+    you:  "I/you/we/they → have got. Erst die Person prüfen, dann have got einsetzen.",
+    he:   "he/she/it, Name oder Einzahl → has got. Erst die Person oder Sache prüfen, dann has got einsetzen.",
+    she:  "he/she/it, Name oder Einzahl → has got. Erst die Person oder Sache prüfen, dann has got einsetzen.",
+    it:   "he/she/it, Name oder Einzahl → has got. Erst die Person oder Sache prüfen, dann has got einsetzen.",
+    we:   "I/you/we/they → have got. Erst die Person prüfen, dann have got einsetzen.",
+    they: "I/you/we/they → have got. Erst die Person prüfen, dann have got einsetzen."
+  };
+
+  var currentMode   = 'positive';
+  var currentPerson = 'I';
+  var currentPoss   = 'a dog';
+
+  var BALANCE_DATA = {
+    I: {side:'have', form:'have got', sentence:'I have got a dog.'},
+    you: {side:'have', form:'have got', sentence:'You have got a dog.'},
+    he: {side:'has', form:'has got', sentence:'He has got a bike.'},
+    she: {side:'has', form:'has got', sentence:'She has got a cat.'},
+    it: {side:'has', form:'has got', sentence:'It has got a name.'},
+    we: {side:'have', form:'have got', sentence:'We have got a garden.'},
+    they: {side:'have', form:'have got', sentence:'They have got a dog.'},
+    'my brother': {side:'has', form:'has got', sentence:'My brother has got a bike.'}
+  };
+
+  function updateBalance(person) {
+    var data = BALANCE_DATA[person] || BALANCE_DATA.I;
+    document.querySelectorAll('.hg-balance-side').forEach(function(side) {
+      side.classList.toggle('is-active', side.getAttribute('data-hg-balance') === data.side);
+    });
+    document.querySelectorAll('[data-balance-person]').forEach(function(btn) {
+      var active = btn.getAttribute('data-balance-person') === person;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    var result = document.getElementById('hg-balance-result');
+    if (result) {
+      var label = result.querySelector('.hg-balance-result-label');
+      var form = result.querySelector('.hg-balance-result-form');
+      var sentence = result.querySelector('.hg-balance-result-sentence');
+      if (label) label.textContent = 'Gewählt: ' + person;
+      if (form) form.textContent = person + ' → ' + data.form;
+      if (sentence) sentence.textContent = data.sentence;
+    }
+  }
+
+  function tok(cls, text, bg, col) {
+    var personClass = '';
+    if (cls.indexOf('tok-subject') !== -1) {
+      personClass = ' tok-person-' + String(text).replace(/\s+/g, '-');
+    }
+    return '<span class="tok ' + cls + personClass + '">' + text + '</span>';
+  }
+
+  function render() {
+    var p    = currentPerson;
+    var poss = currentPoss;
+    var col  = COLORS[p];
+    var out  = document.getElementById('hg-out');
+    var sent = document.getElementById('hg-sentence');
+    var note = document.getElementById('hg-note');
+    if (!out || !sent || !note) return;
+    out.classList.remove('is-pop'); out.offsetWidth; out.classList.add('is-pop');
+    out.classList.remove('machine-output-person-I','machine-output-person-you','machine-output-person-he','machine-output-person-she','machine-output-person-it','machine-output-person-we','machine-output-person-they');
+    out.classList.add('machine-output-person-' + p);
+
+    updateBalance(p);
+
+    if (currentMode === 'positive') {
+      sent.innerHTML =
+        tok('tok-subject', p, col+'22', col) +
+        tok('tok-verb', FORMS[p]) +
+        tok('tok-rest', poss);
+      note.textContent = NOTES_POS[p];
+    } else if (currentMode === 'negative') {
+      sent.innerHTML =
+        tok('tok-subject', p, col+'22', col) +
+        tok('tok-neg', NEGS[p]) +
+        tok('tok-rest', poss);
+      note.textContent = "Verneinung: nie don't/doesn't — immer haven't/hasn't got!";
+    } else {
+      var aux = FORMS[p].startsWith('has') ? 'Has' : 'Have';
+      var hasForm = FORMS[p].startsWith('has') ? 'has' : 'have';
+      sent.innerHTML =
+        tok('tok-verb', aux) +
+        tok('tok-subject', p, col+'22', col) +
+        tok('tok-verb', 'got') +
+        tok('tok-rest', poss + '?');
+      note.textContent = 'Frage: Have/Has nach vorne, dann Person, dann got. Kurzantworten stehen im Nachschlagen.';
+    }
+  }
+
+  /* Mode buttons (positiv/negativ/Frage) */
+  document.querySelectorAll('[data-hg-mode]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      currentMode = btn.dataset.hgMode;
+      document.querySelectorAll('[data-hg-mode]').forEach(function(b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      render();
+    });
+  });
+
+  /* Person chips */
+  document.querySelectorAll('.m-chip[data-person]').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      currentPerson = chip.dataset.person;
+      document.querySelectorAll('.m-chip[data-person]').forEach(function(c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      render();
+    });
+  });
+
+  /* Haben-Waage: Person anklicken und passende Seite anzeigen */
+  document.querySelectorAll('[data-balance-person]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var person = btn.getAttribute('data-balance-person');
+      if (!person) return;
+      if (Object.prototype.hasOwnProperty.call(FORMS, person)) {
+        currentPerson = person;
+        document.querySelectorAll('.m-chip[data-person]').forEach(function(chip) {
+          chip.classList.toggle('is-active', chip.dataset.person === person);
+        });
+        render();
+      } else {
+        updateBalance(person);
+      }
+    });
+  });
+
+  /* Possession chips */
+  document.querySelectorAll('.poss-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      currentPoss = chip.dataset.poss;
+      document.querySelectorAll('.poss-chip').forEach(function(c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      render();
+    });
+  });
+
+  /* Universal tab handler - for hg-mode and hg-learn */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-tab]');
+    if (!btn) return;
+    var tabGroup = btn.getAttribute('data-tab');
+    var val      = btn.getAttribute('data-val');
+    if (!tabGroup || !val) return;
+
+    /* Deactivate all buttons in group */
+    document.querySelectorAll('[data-tab="' + tabGroup + '"]').forEach(function(b) {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    /* Hide all panels in group */
+    document.querySelectorAll('[data-panel="' + tabGroup + '"]').forEach(function(p) {
+      p.classList.remove('is-active');
+    });
+    /* Activate clicked button */
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-pressed', 'true');
+    /* Show target panel */
+    var panel = document.querySelector('[data-panel="' + tabGroup + '"][data-val="' + val + '"]');
+    if (panel) panel.classList.add('is-active');
+    /* Update progress bar for learn steps */
+    if (tabGroup === 'hg-learn') {
+      var steps = document.querySelectorAll('[data-tab="hg-learn"]');
+      var idx = 0;
+      steps.forEach(function(s, i) { if (s.getAttribute('data-val') === val) idx = i; });
+      var bar = document.getElementById('hg-progress');
+      if (bar) {
+        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4');
+        bar.classList.add('progress-step-' + Math.min(idx + 1, 4));
+      }
+    }
+  });
+
+
+
+  /* Kann ich's: Antworten zeigen und wieder zuklappen */
+  document.addEventListener('click', function(e) {
+    var revealButton = e.target.closest('[data-reveal-target]');
+    if (!revealButton) return;
+    var targetId = revealButton.getAttribute('data-reveal-target');
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    var willOpen = target.hidden;
+    target.hidden = !willOpen;
+    revealButton.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    var showLabel = revealButton.getAttribute('data-show-label') || 'Antwort zeigen';
+    var hideLabel = revealButton.getAttribute('data-hide-label') || 'Antwort zuklappen';
+    revealButton.textContent = willOpen ? hideLabel : showLabel;
+  });
+
+  /* Kann ich's: Fehler-Scanner mit anklickbarer Fehlerstelle */
+  document.querySelectorAll('[data-error-scanner]').forEach(function(scanner) {
+    var cards = Array.from(scanner.querySelectorAll('[data-scanner-card]'));
+    var currentIndex = 0;
+
+    function resetCard(card) {
+      var solution = card.querySelector('.scanner-solution');
+      var feedback = card.querySelector('.scanner-feedback');
+      var showButton = card.querySelector('[data-show-error]');
+      if (solution) solution.hidden = true;
+      if (feedback) {
+        feedback.hidden = true;
+        feedback.textContent = '';
+      }
+      if (showButton) {
+        showButton.setAttribute('aria-expanded', 'false');
+        showButton.textContent = showButton.getAttribute('data-show-label') || 'Reparatur zeigen';
+        showButton.hidden = true;
+      }
+      card.querySelectorAll('[data-error-token]').forEach(function(token) {
+        token.classList.remove('is-found', 'is-wrong');
+      });
+    }
+
+    function showCard(index) {
+      cards.forEach(function(card, i) {
+        var active = i === index;
+        card.hidden = !active;
+        card.classList.toggle('is-active', active);
+        resetCard(card);
+      });
+    }
+
+    scanner.querySelectorAll('[data-error-token]').forEach(function(token) {
+      token.addEventListener('click', function() {
+        var card = token.closest('[data-scanner-card]');
+        if (!card) return;
+        var solution = card.querySelector('.scanner-solution');
+        var feedback = card.querySelector('.scanner-feedback');
+        var showButton = card.querySelector('[data-show-error]');
+        var isCorrect = token.getAttribute('data-correct-error') === 'true';
+
+        card.querySelectorAll('[data-error-token]').forEach(function(t) {
+          t.classList.remove('is-found', 'is-wrong');
+        });
+
+        if (isCorrect) {
+          card.querySelectorAll('[data-correct-error="true"]').forEach(function(t) {
+            t.classList.add('is-found');
+          });
+          if (feedback) {
+            feedback.textContent = 'Ja, das ist die Fehlerstelle. Jetzt kannst du die Reparatur öffnen.';
+            feedback.hidden = false;
+          }
+          if (solution) solution.hidden = true;
+          if (showButton) {
+            showButton.hidden = false;
+            showButton.setAttribute('aria-expanded', 'false');
+            showButton.textContent = showButton.getAttribute('data-show-label') || 'Reparatur zeigen';
+          }
+        } else {
+          token.classList.add('is-wrong');
+          if (feedback) {
+            feedback.textContent = 'Noch nicht. Suche nach der Stelle, an der have/has oder die Frageform nicht passt.';
+            feedback.hidden = false;
+          }
+        }
+      });
+    });
+
+    scanner.querySelectorAll('[data-show-error]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var card = button.closest('[data-scanner-card]');
+        var solution = card ? card.querySelector('.scanner-solution') : null;
+        if (!solution) return;
+        var willOpen = solution.hidden;
+        solution.hidden = !willOpen;
+        button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        button.textContent = willOpen
+          ? (button.getAttribute('data-hide-label') || 'Reparatur zuklappen')
+          : (button.getAttribute('data-show-label') || 'Reparatur zeigen');
+        if (willOpen && card) {
+          card.querySelectorAll('[data-correct-error="true"]').forEach(function(token) {
+            token.classList.add('is-found');
+          });
+        }
+      });
+    });
+
+    var nextButton = scanner.querySelector('[data-next-error]');
+    if (nextButton && cards.length) {
+      nextButton.addEventListener('click', function() {
+        currentIndex = currentIndex + 1;
+        if (currentIndex >= cards.length) currentIndex = 0;
+        showCard(currentIndex);
+      });
+    }
+    if (cards.length) showCard(0);
+  });
+
+  /* Kann ich's: Mini-Selbstcheck */
+  document.querySelectorAll('[data-explain-result]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var wrap = button.closest('[data-explain-check]');
+      var feedback = document.getElementById('hg-explain-feedback');
+      var result = button.getAttribute('data-explain-result');
+      var messages = {
+        safe: 'Gut. Dann solltest du erklären können: she gehört zu he / she / it. Darum heißt es has got.',
+        almost: 'Dann ist die Haben-Waage der richtige Rückweg. Prüfe zuerst die Person, dann die Form.',
+        unclear: 'Dann nicht weiterüben, sondern zurück zur Haben-Waage. Erst die Grundentscheidung sichern.'
+      };
+      if (wrap) {
+        wrap.querySelectorAll('[data-explain-result]').forEach(function(b) { b.classList.remove('is-active'); });
+      }
+      button.classList.add('is-active');
+      if (feedback) {
+        feedback.textContent = messages[result] || messages.almost;
+        feedback.hidden = false;
+      }
+    });
+  });
+  
+  /* ── Schreib-Check ──
+     Eine einzige Logik: erst eigener Versuch, dann Denkfrage, Lösung nur per Button nach falscher Eingabe. */
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  var WRITE_TASKS = [{"id":"hg-wc-01","skill":"forms","skillLabel":"Formen","prompt":"Ich habe einen Hund.","accepted":["I have got a dog.","I've got a dog."],"canonical":"I have got a dog.","correct":"Richtig. I passt zu have got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Wer steht am Anfang? I gehört zu I / you / we / they."},{"id":"hg-wc-02","skill":"forms","skillLabel":"Formen","prompt":"Sie hat einen Bruder.","accepted":["She has got a brother.","She's got a brother."],"canonical":"She has got a brother.","correct":"Richtig. She passt zu has got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Wer steht am Anfang? she gehört zu he / she / it."},{"id":"hg-wc-03","skill":"forms","skillLabel":"Formen","prompt":"Es hat einen Ball.","accepted":["It has got a ball.","It's got a ball."],"canonical":"It has got a ball.","correct":"Richtig. It gehört zu he / she / it und passt zu has got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Wer steht am Anfang? it gehört zu he / she / it."},{"id":"hg-wc-04","skill":"plural","skillLabel":"Plural","prompt":"Sie haben zwei Fahrräder.","accepted":["They have got two bikes.","They've got two bikes."],"canonical":"They have got two bikes.","correct":"Richtig. They passt zu have got, und nach two brauchst du bikes.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Wer steht am Anfang? they gehört zu I / you / we / they. Prüfe außerdem den Plural nach two."},{"id":"hg-wc-05","skill":"negation","skillLabel":"Verneinung","prompt":"Wir haben keine Fahrräder.","accepted":["We haven't got bikes.","We have not got bikes.","We haven't got any bikes.","We have not got any bikes."],"canonical":"We haven't got any bikes.","correct":"Richtig. Bei we heißt die Verneinung haven't got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Bei have got verneinst du nicht mit don't. Welche Verneinung passt zu we?"},{"id":"hg-wc-06","skill":"negation","skillLabel":"Verneinung","prompt":"Er hat keine Schwester.","accepted":["He hasn't got a sister.","He has not got a sister."],"canonical":"He hasn't got a sister.","correct":"Richtig. Bei he heißt die Verneinung hasn't got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Bei he brauchst du die has-Seite. Wie heißt die Verneinung davon?"},{"id":"hg-wc-07","skill":"questions","skillLabel":"Fragen","prompt":"Hast du einen Bleistift?","accepted":["Have you got a pencil?"],"canonical":"Have you got a pencil?","correct":"Richtig. Die Frage beginnt mit Have.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Bei einer have-got-Frage wandert Have oder Has nach vorne. Was passt zu you?"},{"id":"hg-wc-08","skill":"questions","skillLabel":"Fragen","prompt":"Hat sie eine Katze?","accepted":["Has she got a cat?"],"canonical":"Has she got a cat?","correct":"Richtig. Bei she beginnt die Frage mit Has.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Bei einer have-got-Frage wandert Have oder Has nach vorne. Was passt zu she?"},{"id":"hg-wc-09","skill":"questions","skillLabel":"Fragen","prompt":"Haben sie Haustiere?","accepted":["Have they got any pets?","Have they got pets?"],"canonical":"Have they got any pets?","correct":"Richtig. Bei they beginnt die Frage mit Have.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Bei einer have-got-Frage wandert Have oder Has nach vorne. Was passt zu they?"},{"id":"hg-wc-10","skill":"shortAnswers","skillLabel":"Kurzantworten","context":"Has she got a cat?","prompt":"Antworte auf die Frage: Nein.","accepted":["No, she hasn't.","No, she has not."],"canonical":"No, she hasn't.","correct":"Richtig. In der Kurzantwort fällt got weg.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: Kurzantworten sind ohne got. Welche kurze Nein-Antwort passt zu she?"},{"id":"hg-wc-11","skill":"shortAnswers","skillLabel":"Kurzantworten","context":"Have you got a dog?","prompt":"Antworte auf die Frage: Ja.","accepted":["Yes, I have."],"canonical":"Yes, I have.","correct":"Richtig. In der Kurzantwort fällt got weg.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: In echten Antworten auf Have you got …? antwortest du für dich selbst mit I. got fällt weg."},{"id":"hg-wc-12","skill":"forms","skillLabel":"Denkfalle","reviewId":"havegot-he-she-it-has-got","reviewType":"stolperstelle","context":"He have got a bike.","prompt":"Verbessere den Fehler und schreibe den richtigen Satz.","accepted":["He has got a bike.","He's got a bike."],"canonical":"He has got a bike.","correct":"Richtig. He gehört zu he / she / it und braucht has got.","almost":"Fast richtig. Inhalt stimmt. Achte auf die Großschreibung am Satzanfang.","wrong":"Denkfrage: he gehört zur has-Seite. Repariere nur die have/has-Form."}];
+  window.WRITE_TASKS = WRITE_TASKS;
+  var WRITE_RESULTS = {};
+  var SKILL_LABELS = {"forms":"Formen","plural":"Plural","negation":"Verneinung","questions":"Fragen","shortAnswers":"Kurzantworten"};
+
+  function escapeWriteHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function(ch) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+  function normalizeWriteAnswer(value) {
+    return String(value || '')
+      .replace(/[’‘`´]/g, "'")
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/[.!?]+$/,'')
+      .replace(/,$/,'')
+      .toLowerCase();
+  }
+  function normalizeMissingApostrophes(value) {
+    return normalizeWriteAnswer(value)
+      .replace(/\bive\b/g, "i've")
+      .replace(/\byouve\b/g, "you've")
+      .replace(/\bweve\b/g, "we've")
+      .replace(/\btheyve\b/g, "they've")
+      .replace(/\bshes\b/g, "she's")
+      .replace(/\bhes\b/g, "he's")
+      .replace(/\bits\b/g, "it's")
+      .replace(/\bhavent\b/g, "haven't")
+      .replace(/\bhasnt\b/g, "hasn't");
+  }
+  function hasLowercaseSentenceStart(value) {
+    var text = String(value || '').trim();
+    var firstLetter = text.match(/[A-Za-z]/);
+    return !!(firstLetter && firstLetter[0] === firstLetter[0].toLowerCase());
+  }
+  function isAccepted(task, raw) {
+    var normal = normalizeWriteAnswer(raw);
+    return task.accepted.some(function(answer) {
+      return normalizeWriteAnswer(answer) === normal;
+    });
+  }
+  function isAlmostAccepted(task, raw) {
+    var repaired = normalizeMissingApostrophes(raw);
+    return task.accepted.some(function(answer) {
+      return normalizeWriteAnswer(answer) === repaired;
+    });
+  }
+  function diagnoseWriteMistake(task, raw) {
+    var answer = normalizeWriteAnswer(raw);
+    if (!answer) return 'Schreibe zuerst eine Antwort hinein.';
+    if (/\b(do|does|don\'t|doesn\'t|do not|does not)\b.*\bhave got\b/.test(answer)) return 'Denkfrage: Bei have got mischst du hier nicht do oder does dazu. Was wandert bei have got nach vorne?';
+    if (/\b(she|he|it) have got\b/.test(answer)) return 'Denkfrage: Wer steht am Anfang? Bei he / she / it brauchst du has got.';
+    if (/\b(i|you|we|they) has got\b/.test(answer)) return 'Denkfrage: Wer steht am Anfang? Bei I / you / we / they brauchst du have got.';
+    if (/\b(she|he|it) haven\'t got\b|\b(she|he|it) have not got\b/.test(answer)) return 'Denkfrage: Bei he / she / it heißt die Verneinung hasn’t got. Welche has-Seite brauchst du?';
+    if (/\b(i|you|we|they) hasn\'t got\b|\b(i|you|we|they) has not got\b/.test(answer)) return 'Denkfrage: Bei I / you / we / they heißt die Verneinung haven’t got. Welche have-Seite brauchst du?';
+    if (/\b(not have got|not has got|have got not|has got not)\b/.test(answer)) return 'Denkfrage: Die Verneinung steht als haven’t got oder hasn’t got. Wo steht not in der Kurzform?';
+    if (/\bhave got you\b|\bhas got she\b|\bhas got he\b|\bhas got it\b|\bhave got they\b/.test(answer)) return 'Denkfrage: In der Frage steht Have / Has vorne, dann die Person, dann got.';
+    if (task.skill === 'questions' && /^(she|you|they|he|i|we)\b/.test(answer)) return 'Denkfrage: Das ist noch eine Aussage. Welche Form muss in der Frage ganz nach vorne?';
+    if (task.skill === 'shortAnswers' && /\bgot\b/.test(answer)) return 'Denkfrage: In Kurzantworten fällt got weg. Welche kurze Antwort bleibt übrig?';
+    if (/\btwo bike\b/.test(answer)) return 'Denkfrage: Nach two brauchst du den Plural. Wie heißt bike in der Mehrzahl?';
+    if (isAlmostAccepted(task, raw)) return 'Fast richtig. Der Satz stimmt fast. Prüfe Apostroph, Großschreibung oder ein kleines Schreibzeichen.';
+    return task.wrong || 'Denkfrage: Prüfe zuerst die Person, dann have got oder has got, dann den Satztyp.';
+  }
+  function evaluateWriteTask(task, raw) {
+    if (!normalizeWriteAnswer(raw)) return {status:'empty', message:'Schreibe zuerst eine Antwort hinein.'};
+    if (isAccepted(task, raw)) {
+      var status = hasLowercaseSentenceStart(raw) ? 'almost' : 'correct';
+      return {status:status, message:status === 'correct' ? task.correct : task.almost};
+    }
+    if (isAlmostAccepted(task, raw)) {
+      return {status:'almost', message:'Fast richtig. Der Satz stimmt fast. Prüfe Apostroph, Großschreibung oder ein kleines Schreibzeichen.'};
+    }
+    return {status:'wrong', message:diagnoseWriteMistake(task, raw)};
+  }
+  function getWriteTask(id) {
+    return WRITE_TASKS.find(function(task) { return task.id === id; });
+  }
+  function getWriteInput(task) {
+    return document.getElementById('input-' + task.id);
+  }
+  function getWriteFeedback(task) {
+    return document.getElementById('feedback-' + task.id);
+  }
+  function getWriteCard(task) {
+    return document.getElementById('write-task-' + task.id);
+  }
+  function readWriteStore() {
+    try { return JSON.parse(localStorage.getItem(WRITE_KEY) || '{}'); }
+    catch(e) { return {}; }
+  }
+  function writeWriteStore(store) {
+    try { localStorage.setItem(WRITE_KEY, JSON.stringify(store)); }
+    catch(e) {}
+  }
+  function solutionText(task) {
+    return 'Lösung: ' + (task.canonical || task.accepted[0]);
+  }
+  function renderWritecheck() {
+    var wrap = document.getElementById('writecheck-tasks');
+    if (!wrap) return;
+    wrap.innerHTML = WRITE_TASKS.map(function(task, index) {
+      var reviewAttrs = task.reviewId ? ' data-review-id="' + escapeWriteHtml(task.reviewId) + '" data-topic-id="havegot" data-type="' + escapeWriteHtml(task.reviewType || 'stolperstelle') + '" data-review-source="writecheck"' : '';
+      return '<div class="writecheck-task" id="write-task-' + escapeWriteHtml(task.id) + '"' + reviewAttrs + '>'
+        + '<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe ' + (index + 1) + '</span><span class="writecheck-kind">Schreib-Aufgabe</span></div>'
+        + (task.context ? '<p class="writecheck-context">' + escapeWriteHtml(task.context) + '</p>' : '')
+        + '<p class="writecheck-prompt">' + escapeWriteHtml(task.prompt) + '</p>'
+        + '<div class="writecheck-input-row"><input class="writecheck-input" id="input-' + escapeWriteHtml(task.id) + '" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="' + escapeWriteHtml(task.id) + '">Prüfen</button></div>'
+        + '<div class="writecheck-feedback" id="feedback-' + escapeWriteHtml(task.id) + '"></div>'
+        + '</div>';
+    }).join('');
+    wrap.addEventListener('click', function(event) {
+      var checkButton = event.target.closest('[data-writecheck-id]');
+      if (checkButton) {
+        event.preventDefault();
+        checkWriteTask(checkButton.getAttribute('data-writecheck-id'));
+        return;
+      }
+      var solutionButton = event.target.closest('[data-writecheck-solution]');
+      if (solutionButton) {
+        event.preventDefault();
+        showWriteSolution(solutionButton.getAttribute('data-writecheck-solution'));
+      }
+    });
+  }
+  function setWriteFeedback(task, result) {
+    var card = getWriteCard(task);
+    var feedback = getWriteFeedback(task);
+    if (card) {
+      card.classList.remove('is-correct', 'is-almost', 'is-wrong', 'is-empty');
+      card.classList.add('is-' + result.status);
+    }
+    if (!feedback) return;
+    feedback.className = 'writecheck-feedback is-visible is-' + result.status;
+    if (result.status === 'wrong') {
+      feedback.innerHTML = escapeWriteHtml(result.message) + ' <button type="button" class="writecheck-btn writecheck-solution-btn" data-writecheck-solution="' + escapeWriteHtml(task.id) + '">Lösung anzeigen</button>';
+    } else {
+      feedback.textContent = result.message;
+    }
+  }
+  function clearWriteTask(task, clearInput) {
+    var input = getWriteInput(task);
+    var card = getWriteCard(task);
+    var feedback = getWriteFeedback(task);
+    if (clearInput && input) input.value = '';
+    if (card) card.classList.remove('is-correct', 'is-almost', 'is-wrong', 'is-empty');
+    if (feedback) { feedback.className = 'writecheck-feedback'; feedback.textContent = ''; }
+  }
+  function saveWriteResult(task, result, raw) {
+    var store = readWriteStore();
+    if (result.status === 'empty') {
+      delete store[task.id];
+    } else {
+      store[task.id] = {
+        topicId:'havegot',
+        topicTitle:'have got',
+        skill:task.skill || '',
+        skillLabel:task.skillLabel || '',
+        status:result.status,
+        message:result.message,
+        value:String(raw || '').trim(),
+        updated:new Date().toISOString()
+      };
+    }
+    saveWriteSummaryToStore(store);
+    writeWriteStore(store);
+  }
+  function saveWriteSummaryToStore(store) {
+    var sum = computeWriteSummary(store);
+    store.havegot = {
+      topicId:'havegot',
+      topicTitle:'have got',
+      total:sum.total,
+      attempted:sum.attempted,
+      correct:sum.counts.correct,
+      almost:sum.counts.almost,
+      wrong:sum.counts.wrong,
+      open:sum.counts.open,
+      status:sum.status,
+      label:sum.label,
+      strongSkills:sum.strong,
+      focusSkills:sum.focus,
+      lastDone:new Date().toISOString().slice(0,10),
+      lastUpdated:new Date().toISOString()
+    };
+    var taskStore = {};
+    WRITE_TASKS.forEach(function(task) {
+      if (store[task.id]) taskStore[task.id] = store[task.id];
+    });
+    store.havegotTasks = taskStore;
+  }
+  function checkWriteTask(id) {
+    var task = getWriteTask(id);
+    if (!task) return;
+    var input = getWriteInput(task);
+    var raw = input ? input.value : '';
+    var result = evaluateWriteTask(task, raw);
+    if (result.status === 'empty') {
+      delete WRITE_RESULTS[id];
+      setWriteFeedback(task, result);
+      saveWriteResult(task, result, raw);
+      return;
+    }
+    WRITE_RESULTS[id] = result.status;
+    setWriteFeedback(task, result);
+    saveWriteResult(task, result, raw);
+  }
+  window.checkWriteTask = checkWriteTask;
+  window.checkWritecheckAll = function() {
+    var anyFilled = false;
+    var store = readWriteStore();
+    WRITE_TASKS.forEach(function(task) {
+      var input = getWriteInput(task);
+      var raw = input ? input.value : '';
+      if (!normalizeWriteAnswer(raw)) {
+        clearWriteTask(task, false);
+        delete WRITE_RESULTS[task.id];
+        delete store[task.id];
+        return;
+      }
+      anyFilled = true;
+      var result = evaluateWriteTask(task, raw);
+      WRITE_RESULTS[task.id] = result.status;
+      setWriteFeedback(task, result);
+      store[task.id] = {
+        topicId:'havegot',
+        topicTitle:'have got',
+        skill:task.skill || '',
+        skillLabel:task.skillLabel || '',
+        status:result.status,
+        message:result.message,
+        value:String(raw || '').trim(),
+        updated:new Date().toISOString()
+      };
+    });
+    saveWriteSummaryToStore(store);
+    writeWriteStore(store);
+    showWriteSummary(!anyFilled);
+  };
+  function computeWriteSummary(existingStore) {
+    var store = existingStore || readWriteStore();
+    var counts = {correct:0, almost:0, wrong:0, open:0};
+    var bySkill = {};
+    WRITE_TASKS.forEach(function(task) {
+      var result = WRITE_RESULTS[task.id] || (store[task.id] && store[task.id].status);
+      if (!bySkill[task.skill]) bySkill[task.skill] = {total:0, correct:0, almost:0, wrong:0, open:0, label:SKILL_LABELS[task.skill] || task.skillLabel || task.skill};
+      bySkill[task.skill].total++;
+      if (result === 'correct' || result === 'almost' || result === 'wrong') {
+        counts[result]++;
+        bySkill[task.skill][result]++;
+      } else {
+        counts.open++;
+        bySkill[task.skill].open++;
+      }
+    });
+    var strong = [];
+    var focus = [];
+    Object.keys(bySkill).forEach(function(key) {
+      var skill = bySkill[key];
+      if (skill.correct > 0 && skill.wrong === 0 && skill.almost === 0) strong.push(skill.label);
+      if (skill.wrong > 0 || skill.almost > 0) focus.push(skill.label + (skill.wrong > 1 ? ' (mehrfach unsicher)' : ''));
+    });
+    var attempted = counts.correct + counts.almost + counts.wrong;
+    var status = 'orange';
+    var label = 'noch offen';
+    if (attempted && counts.wrong === 0 && counts.open === 0) { status = 'green'; label = 'sicher'; }
+    else if (attempted && (counts.correct + counts.almost) >= Math.ceil(WRITE_TASKS.length * 0.6)) { status = 'yellow'; label = 'fast sicher'; }
+    return {counts:counts, bySkill:bySkill, strong:strong, focus:focus, status:status, label:label, total:WRITE_TASKS.length, attempted:attempted};
+  }
+  function showWriteSummary(emptyOnly) {
+    var box = document.getElementById('writecheck-summary');
+    if (!box) return;
+    var sum = computeWriteSummary();
+    var store = readWriteStore();
+    saveWriteSummaryToStore(store);
+    writeWriteStore(store);
+    if (emptyOnly || !sum.attempted) {
+      box.className = 'writecheck-summary is-visible';
+      box.innerHTML = '<h3 class="writecheck-summary-title">Bearbeitungsstand</h3><p>Schreib erst mindestens eine Antwort hinein. Leere Aufgaben werden nicht bewertet.</p>';
+      return;
+    }
+    var strong = sum.strong.length ? sum.strong.slice(0,5).map(function(item) { return '<li>✓ ' + escapeWriteHtml(item) + '</li>'; }).join('') : '<li>Noch nichts sicher.</li>';
+    var focus = sum.focus.length ? sum.focus.slice(0,5).map(function(item) { return '<li>→ ' + escapeWriteHtml(item) + '</li>'; }).join('') : '<li>Kein besonderer Fokus nötig.</li>';
+    box.className = 'writecheck-summary is-visible';
+    box.innerHTML = '<h3 class="writecheck-summary-title">Bearbeitungsstand</h3>'
+      + '<div class="writecheck-stand">Bearbeitungsstand: ' + sum.counts.correct + ' sicher · ' + sum.counts.almost + ' fast sicher · ' + sum.counts.wrong + ' nochmal prüfen · ' + sum.counts.open + ' offen</div>'
+      + '<span class="writecheck-status is-' + sum.status + '">' + escapeWriteHtml(sum.label) + '</span>'
+      + '<div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>' + strong + '</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>' + focus + '</ul></div></div>';
+  }
+  window.resetWritecheck = function() {
+    WRITE_RESULTS = {};
+    var store = readWriteStore();
+    WRITE_TASKS.forEach(function(task) {
+      clearWriteTask(task, true);
+      delete store[task.id];
+    });
+    delete store.havegot;
+    delete store.havegotTasks;
+    writeWriteStore(store);
+    var box = document.getElementById('writecheck-summary');
+    if (box) { box.className = 'writecheck-summary'; box.innerHTML = ''; }
+  };
+  function showWriteSolution(id) {
+    var task = getWriteTask(id);
+    if (!task) return;
+    var feedback = getWriteFeedback(task);
+    if (!feedback) return;
+    feedback.className = 'writecheck-feedback is-visible is-wrong';
+    feedback.textContent = solutionText(task);
+  }
+  window.__kompassShowWriteSolution = showWriteSolution;
+
+
+
+  /* Notizen */
+  function loadNotes() {
+    try {
+      var s = localStorage.getItem(SKN); if (!s) return;
+      var d = JSON.parse(s);
+      ['new','hard','free','example'].forEach(function(k) {
+        var el = document.getElementById('note-' + k);
+        if (el && d[k]) el.value = d[k];
+      });
+    } catch(e) {}
+  }
+  window.saveNotes = function() {
+    try {
+      var d = {};
+      ['new','hard','free','example'].forEach(function(k) {
+        var el = document.getElementById('note-' + k);
+        d[k] = el ? el.value : '';
+      });
+      localStorage.setItem(SKN, JSON.stringify(d));
+      var sv = document.getElementById('notes-saved');
+      if (sv) {
+        sv.classList.add('is-visible');
+        setTimeout(function() { sv.classList.remove('is-visible'); }, 2000);
+      }
+    } catch(e) {}
+  };
+
+  /* Print */
+  window.printRef = function() {
+    var refBtn = document.querySelector('[data-tab="hg-mode"][data-val="reference"]');
+    if (refBtn) refBtn.click();
+    document.body.classList.remove('page-print');
+    document.body.classList.add('spickzettel-print');
+    setTimeout(function() { window.print(); }, 400);
+  };
+  window.printCurrentPage = function() {
+    document.body.classList.remove('spickzettel-print');
+    document.body.classList.add('page-print');
+    setTimeout(function() { window.print(); }, 120);
+  };
+  window.addEventListener('afterprint', function() {
+    document.body.classList.remove('spickzettel-print');
+    document.body.classList.remove('page-print');
+  });
+
+  renderWritecheck();
+  render();
+  loadNotes();
+
+
+  window.toggleHausaufgaben = function() {
+    var body = document.body;
+    var btn  = document.getElementById('ha-btn');
+    var isOn = body.classList.toggle('hausaufgaben-mode');
+    if (btn) btn.textContent = isOn ? '📚 Normal-Modus' : '📚 Hausaufgaben';
+    if (isOn) {
+      var refBtn = document.querySelector('[data-tab="hg-mode"][data-val="reference"]');
+      if (refBtn) refBtn.click();
+    }
+  };
+
+  function bindStaticActionButtons() {
+    var actions = [
+      ['ha-btn', window.toggleHausaufgaben],
+      ['print-ref-btn', window.printRef],
+      ['print-page-btn', window.printCurrentPage],
+      ['writecheck-check-all-btn', window.checkWritecheckAll],
+      ['writecheck-reset-btn', window.resetWritecheck],
+      ['notes-save-btn', window.saveNotes]
+    ];
+    actions.forEach(function(item) {
+      var btn = document.getElementById(item[0]);
+      if (btn && typeof item[1] === 'function') {
+        btn.addEventListener('click', item[1]);
+      }
+    });
+  }
+  bindStaticActionButtons();
+
+})();
+
+</script>
+<script>
+(function(){
+  if (window.__kompassHashTabsReady) return;
+  window.__kompassHashTabsReady = true;
+  var aliases = {
+    'lernen':'learn','learn':'learn','verstehen':'learn',
+    'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+    'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
+    'verbindungen':'connections','connections':'connections',
+    'notizen':'notes','notes':'notes'
+  };
+  function cleanHash(){
+    try { return decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim(); }
+    catch(e){ return (window.location.hash || '').replace(/^#/, '').toLowerCase().trim(); }
+  }
+  function openSectionFromHash(){
+    var key = cleanHash();
+    if (!key) return;
+    var mode = aliases[key];
+    if (!mode) return;
+    var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
+    if (!btn) return;
+    btn.click();
+    window.setTimeout(function(){
+      var card = document.querySelector('.learning-card') || document.querySelector('[data-topic]') || btn;
+      if (card && typeof card.scrollIntoView === 'function') {
+        card.scrollIntoView({block:'start'});
+      }
+    }, 40);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openSectionFromHash);
+  } else {
+    openSectionFromHash();
+  }
+  window.addEventListener('hashchange', openSectionFromHash);
+})();
+</script>
+</body>
+</html>

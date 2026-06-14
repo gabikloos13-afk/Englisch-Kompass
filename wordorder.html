@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Word Order — Hannas Englisch-Kompass</title>
+<style>
+/* Layout: lokale Systemschrift, keine externe Schriftabhängigkeit. */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#059669;--green-dark:#047857;--green-soft:#ecfdf5;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --cyan:#0891b2;--cyan-soft:#ecfeff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:16px;--radius-sm:10px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,0.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,0.06);
+  --line:1px solid var(--gray-200);
+  --font-head:Arial, Helvetica, sans-serif;--font-body:Arial, Helvetica, sans-serif;
+  --c-I:#2563eb;--c-you:#0891b2;--c-he:#ea580c;--c-she:#db2777;
+  --c-it:#059669;--c-we:#7c3aed;--c-they:#9333ea;
+}
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:var(--gray-50)}
+h1,h2,h3,p,ul,ol,table{margin-top:0}p,ul,ol{margin-bottom:0}
+
+/* HAUSAUFGABEN-MODUS */
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,
+body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),
+body.hausaufgaben-mode .learn-step-nav,
+body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+
+/* NAV */
+.site-nav{background:#fff;border-bottom:var(--line);box-shadow:0 2px 8px rgba(15,23,42,.06);position:static;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-text{color:var(--blue-dark)}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--gray-600);text-decoration:none;border:1px solid var(--gray-200);background:#fff;transition:all .18s}
+.nav-link:hover{border-color:var(--green);color:var(--green-dark);background:var(--green-soft)}
+.nav-link.is-active{border-color:var(--green);color:#fff;background:var(--green)}
+.ha-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--green-dark);border:1px solid #6ee7b7;background:var(--green-soft);cursor:pointer;transition:all .18s}
+.ha-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.print-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--blue-dark);border:1px solid #bfdbfe;background:var(--blue-soft);cursor:pointer;transition:all .18s}
+.print-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.nav-action-link{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--blue-dark);border:1px solid #bfdbfe;background:var(--blue-soft);text-decoration:none;transition:all .18s}
+.nav-action-link:hover,.nav-action-link:focus-visible{background:var(--blue);color:#fff;border-color:var(--blue);outline:none}
+
+/* PAGE */
+.page-content{max-width:1100px;margin:0 auto;padding:20px}
+.learning-card{border:var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+
+/* HEADER */
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#047857,#059669);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.82);font-size:.91rem;max-width:540px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+
+/* HAUPT-NAV */
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--gray-25)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--green-dark);background:var(--green-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--green-dark);border-bottom-color:var(--green);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--green)}
+.compass-mode-panel{display:none}.compass-mode-panel.is-active{display:block}
+
+/* SCHRITT-NAV */
+.learn-step-nav{display:flex;background:var(--gray-25);border-bottom:var(--line);overflow-x:auto}
+.learn-step-btn{flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+.learn-step-btn:hover{color:var(--green-dark);background:var(--green-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--green-dark);border-bottom-color:var(--green);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;background:var(--gray-100);color:var(--gray-600);transition:all .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--green);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+.learn-progress-bar{height:3px;background:var(--gray-100)}
+.learn-progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:var(--radius-pill);transition:width .35s ease}
+.learn-panel{display:none;padding:22px 20px}.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* LERNWEG */
+.wo-learning-path{margin:16px 0 18px;padding:14px;border:var(--line);border-radius:var(--radius);background:linear-gradient(135deg,var(--blue-soft),#fff);box-shadow:var(--shadow-sm)}
+.wo-learning-path-title{margin:0 0 10px;font-family:var(--font-head);font-weight:400;font-size:.92rem;color:var(--blue-dark)}
+.wo-learning-path-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:0;padding:0;list-style:none;counter-reset:wo-path}
+.wo-learning-path-list li{counter-increment:wo-path;display:flex;gap:8px;align-items:flex-start;padding:9px 10px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.84rem;line-height:1.35;color:var(--gray-700)}
+.wo-learning-path-list li::before{content:counter(wo-path);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--radius-pill);background:var(--blue);color:#fff;font-family:var(--font-head);font-size:.78rem;flex:0 0 auto}
+.wo-learning-path-list span{display:block;color:var(--gray-500);font-size:.76rem;margin-top:2px}
+
+.wo-mark-task{margin:14px 0 18px;padding:14px;border:var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+.wo-mark-title{margin:0 0 6px;font-family:var(--font-head);font-weight:400;font-size:.94rem;color:var(--blue-dark)}
+.wo-mark-intro{margin:0 0 10px;color:var(--gray-600);font-size:.86rem}
+.wo-mark-sentence{display:inline-flex;flex-wrap:wrap;gap:7px;margin:0 0 12px;padding:8px 12px;border-radius:var(--radius-sm);background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-size:.96rem}
+.wo-mark-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:10px}
+.wo-mark-label{display:flex;flex-direction:column;gap:5px;font-size:.82rem;color:var(--gray-600)}
+.wo-mark-label input{width:100%;border:1px solid var(--gray-300);border-radius:var(--radius-sm);padding:8px 10px;font-family:var(--font-body);font-size:.9rem;color:var(--gray-800);background:#fff}
+.wo-mark-label input:focus{outline:2px solid #bfdbfe;outline-offset:2px;border-color:var(--blue)}
+.wo-mark-reveal{margin-top:8px;border:1px solid #bfdbfe;border-radius:var(--radius-sm);background:var(--blue-soft);padding:8px 10px;color:var(--gray-700);font-size:.86rem}
+.wo-mark-reveal summary{cursor:pointer;color:var(--blue-dark);font-family:var(--font-head);font-weight:400}
+
+
+/* SATZ-ZUG */
+.train-wrap{overflow-x:auto;padding:4px 0 12px;margin-bottom:14px}
+.sentence-train{display:flex;align-items:stretch;gap:3px;min-width:max-content}
+.train-car{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 16px;border-radius:10px;min-width:90px;border:2px solid}
+.train-car-s{background:#dbeafe;border-color:#bfdbfe}
+.train-car-v{background:#dcfce7;border-color:#bbf7d0}
+.train-car-o{background:#fef9c3;border-color:#fde68a}
+.train-car-p{background:#ffedd5;border-color:#fed7aa}
+.train-car-t{background:#ede9fe;border-color:#ddd6fe}
+.train-car-icon{font-size:1.4rem;line-height:1;margin-bottom:4px}
+.train-car-label{font-family:var(--font-head);font-weight:400;font-size:.82rem;color:var(--gray-800);margin-bottom:2px}
+.train-car-sub{font-size:.72rem;color:var(--gray-600);margin-bottom:3px}
+.train-car-ex{font-size:.78rem;font-family:var(--font-head);font-weight:400;color:var(--gray-700)}
+.train-connector{display:flex;align-items:center;color:var(--gray-400);font-size:1rem;padding:0 2px;align-self:center}
+.train-sentence{font-family:var(--font-head);font-weight:400;font-size:.94rem;color:var(--green-dark);padding:10px 14px;background:var(--green-soft);border-radius:var(--radius-sm);border-left:4px solid var(--green);margin-top:8px}
+
+/* BAUKASTEN */
+.bk-pool{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--gray-25);border-radius:var(--radius-sm);border:2px dashed var(--gray-300);min-height:56px;margin-bottom:12px}
+.bk-slots{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:#fff;border-radius:var(--radius-sm);border:var(--line);min-height:56px;margin-bottom:12px}
+.bk-slot{display:inline-flex;align-items:center;justify-content:center;min-width:80px;min-height:40px;padding:6px 10px;border-radius:var(--radius-sm);border:2px dashed var(--green);background:var(--green-soft);font-family:var(--font-head);font-size:.8rem;font-weight:400;color:var(--green-dark);cursor:pointer;transition:all .18s;position:relative}
+.bk-slot-over{border-color:var(--blue);background:var(--blue-soft)}
+.bk-slot:has(.bk-block){border-style:solid;background:#fff}
+.bk-block{display:inline-flex;align-items:center;padding:7px 13px;border-radius:var(--radius-sm);background:var(--green);color:#fff;font-family:var(--font-head);font-weight:400;font-size:.9rem;cursor:grab;border:none;transition:all .18s;user-select:none}
+.bk-block:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.bk-block-wrong{background:var(--red)!important;box-shadow:0 0 0 2px #fecaca}
+.bk-pool .bk-block{cursor:pointer}
+.bk-task-label{font-family:var(--font-head);font-weight:400;font-size:.85rem;color:var(--green-dark);margin-bottom:10px;display:block;padding:8px 12px;background:var(--green-soft);border-radius:var(--radius-sm);border-left:3px solid var(--green)}
+.bk-counter{font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-500);text-align:center;margin-bottom:8px}
+.bk-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.bk-btn{padding:8px 16px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:.86rem;cursor:pointer;transition:all .18s}
+.bk-btn-check{background:var(--green);color:#fff}
+.bk-btn-check:hover{background:var(--green-dark)}
+.bk-btn-reset{background:var(--gray-100);color:var(--gray-600);border:1px solid var(--gray-200)}
+.bk-btn-reset:hover{background:var(--gray-200)}
+.bk-btn-nav{background:#fff;color:var(--green-dark);border:1px solid #6ee7b7}
+.bk-btn-nav:hover{background:var(--green-soft)}
+.bk-feedback{display:none;padding:10px 13px;border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:400;font-size:.88rem;margin-top:8px;border:1px solid;line-height:1.5}
+
+/* FEHLER-ERKENNER */
+.err-sentence{display:flex;flex-wrap:wrap;gap:8px;padding:16px;background:var(--gray-25);border-radius:var(--radius-sm);margin-bottom:12px;border:var(--line)}
+.err-word{padding:7px 14px;border-radius:var(--radius-sm);background:#fff;border:2px solid var(--gray-200);font-family:var(--font-head);font-size:.95rem;font-weight:400;cursor:pointer;transition:all .18s;color:var(--gray-800)}
+.err-word:hover{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.err-word-correct{background:#dcfce7!important;border-color:var(--green)!important;color:var(--green)!important}
+.err-word-wrong{background:var(--red-soft)!important;border-color:var(--red)!important;color:var(--red)!important}
+.err-feedback{display:none;padding:10px 13px;border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:400;font-size:.88rem;margin-top:8px;border:1px solid;line-height:1.5}
+.err-counter{font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-500);text-align:center;margin-bottom:10px}
+
+/* ADVERB-QUIZ */
+.adv-sentence{font-family:var(--font-head);font-weight:400;font-size:1.1rem;color:var(--gray-800);text-align:center;margin-bottom:4px}
+.adv-word{font-family:var(--font-head);font-weight:400;font-size:.88rem;color:var(--green-dark);background:var(--green-soft);padding:3px 10px;border-radius:var(--radius-pill);display:inline-block;margin-bottom:12px}
+.adv-btns{display:grid;gap:8px;margin-bottom:10px}
+.adv-btn{padding:11px 14px;border:2px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-head);font-size:.9rem;font-weight:400;cursor:pointer;background:#fff;color:var(--gray-700);transition:all .18s;text-align:left}
+.adv-btn:hover{border-color:var(--green);background:var(--green-soft);color:var(--green-dark)}
+.adv-btn-right{background:#dcfce7!important;border-color:var(--green)!important;color:var(--green)!important}
+.adv-btn-wrong{background:var(--red-soft)!important;border-color:var(--red)!important;color:var(--red)!important}
+.adv-feedback{display:none;padding:8px 12px;border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:400;font-size:.88rem;margin-bottom:8px;border:1px solid}
+.adv-score{font-family:var(--font-head);font-weight:400;font-size:.85rem;color:var(--gray-600);text-align:center}
+.adv-counter{font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-500);text-align:center;margin-bottom:10px}
+
+/* TABELLEN */
+table{width:100%;border-collapse:collapse;font-size:.88rem;border:var(--line);border-radius:var(--radius-sm);overflow:hidden}
+th,td{padding:8px 11px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:middle}
+th{font-family:var(--font-head);font-weight:400;font-size:.77rem;color:var(--green-dark);background:var(--green-soft);text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--gray-25)}
+
+/* NOTIZEN */
+.notes-panel{padding:20px;background:#fff}
+.notes-title{font-family:var(--font-head);font-weight:400;font-size:.97rem;color:var(--gray-800);margin:0 0 14px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:12px}
+.note-field-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-textarea{width:100%;min-height:88px;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;color:var(--gray-800);background:var(--gray-25);resize:vertical;transition:border-color .18s}
+.note-textarea:focus{outline:none;border-color:var(--green);background:#fff}
+.note-field:nth-child(1) .note-textarea{border-top:3px solid var(--green)}
+.note-field:nth-child(2) .note-textarea{border-top:3px solid var(--red)}
+.note-field:nth-child(3) .note-textarea{border-top:3px solid var(--blue)}
+.note-example-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-example-input{width:100%;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.89rem;color:var(--gray-800);background:var(--gray-25);transition:border-color .18s;border-top:3px solid var(--violet)}
+.note-example-input:focus{outline:none;border-color:var(--violet);background:#fff}
+.notes-save-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.notes-save-btn{padding:7px 18px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.86rem;font-weight:400;color:#fff;background:var(--green);cursor:pointer;transition:background .18s}
+.notes-save-btn:hover{background:var(--green-dark)}
+.notes-saved{font-size:.82rem;color:var(--green);font-family:var(--font-head);font-weight:400;opacity:0;transition:opacity .3s}
+.notes-saved.is-visible{opacity:1}
+
+
+/* SCHREIB-CHECK */
+.writecheck-panel{padding:22px;background:#fff}
+.writecheck-intro{border:1px solid #bbf7d0;background:#f0fdf4;border-radius:18px;padding:16px 18px;margin-bottom:16px}
+.writecheck-intro h3{margin:0 0 6px;font-family:var(--font-head);font-size:1.05rem;color:var(--green-dark);font-weight:400}
+.writecheck-intro p{margin:0;color:var(--gray-700)}
+.writecheck-grid{display:grid;gap:14px}
+.writecheck-task{border:var(--line);border-radius:16px;background:var(--gray-25);padding:15px;box-shadow:var(--shadow-sm)}
+.writecheck-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.writecheck-task-num{font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--green-dark);background:var(--green-soft);border:1px solid #bbf7d0;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.writecheck-skill{font-size:.76rem;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:999px;padding:3px 8px;background:#fff;white-space:nowrap}
+.writecheck-prompt{font-size:1rem;color:var(--gray-800);margin:0 0 8px}
+.writecheck-context{font-size:.9rem;color:var(--gray-600);background:#fff;border:1px dashed var(--gray-300);border-radius:12px;padding:8px 10px;margin:0 0 8px}
+.writecheck-input-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.writecheck-input{flex:1;min-width:220px;border:1px solid var(--gray-300);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:var(--gray-800)}
+.writecheck-input:focus{outline:3px solid #bbf7d0;border-color:var(--green)}
+.writecheck-btn,.writecheck-check-all,.writecheck-reset{border-radius:999px;border:1px solid #bbf7d0;background:var(--green-soft);color:var(--green-dark);font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
+.writecheck-btn:hover,.writecheck-check-all:hover{background:var(--green);border-color:var(--green);color:#fff}
+.writecheck-reset{border-color:var(--gray-300);background:#fff;color:var(--gray-600)}
+.writecheck-reset:hover{background:var(--gray-100);color:var(--gray-800)}
+.writecheck-feedback{margin-top:8px;border-radius:12px;padding:9px 10px;font-size:.9rem;display:none}
+.writecheck-feedback.is-visible{display:block}
+.writecheck-feedback.is-correct{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534}
+.writecheck-feedback.is-almost{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-feedback.is-wrong{border:1px solid #fecaca;background:#fef2f2;color:#991b1b}
+.writecheck-feedback.is-empty{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-solution-btn{margin-left:8px;margin-top:6px;padding:6px 10px;font-size:.8rem}
+.writecheck-task.is-correct{border-color:#86efac;background:#f0fdf4}
+.writecheck-task.is-almost{border-color:#fcd34d;background:#fffbeb}
+.writecheck-task.is-wrong{border-color:#fca5a5;background:#fef2f2}
+.writecheck-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.writecheck-summary{display:none;border:1px solid var(--gray-200);border-radius:18px;background:#fff;padding:16px;margin-top:14px;box-shadow:var(--shadow-sm)}
+.writecheck-summary.is-visible{display:block}
+.writecheck-summary-title{margin:0 0 8px;font-family:var(--font-head);font-size:1.05rem;color:var(--gray-800);font-weight:400}
+.writecheck-score{font-family:var(--font-head);font-size:1.2rem;font-weight:400;color:var(--green-dark);margin-bottom:8px}
+.writecheck-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-family:var(--font-head);font-weight:400;font-size:.84rem;margin-bottom:10px}
+.writecheck-status.is-green{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.writecheck-status.is-yellow{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.writecheck-status.is-orange{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}
+.writecheck-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.writecheck-list{border:1px solid var(--gray-200);border-radius:14px;padding:12px;background:var(--gray-25)}
+.writecheck-list h4{margin:0 0 6px;font-family:var(--font-head);font-size:.92rem;color:var(--gray-700);font-weight:400}
+.writecheck-list ul{margin:0;padding-left:18px}
+.writecheck-list li{margin:2px 0}
+@media(max-width:700px){.writecheck-panel{padding:16px}.writecheck-input-row{display:block}.writecheck-input{width:100%;min-width:0;margin-bottom:8px}.writecheck-btn{width:100%;justify-content:center}.writecheck-task-head{display:block}.writecheck-skill{display:inline-flex;margin-top:6px}}
+
+@media print{
+  .site-nav,.learn-step-nav,.compass-mode-grid,.learn-progress-bar,.notes-panel,.compass-mode-panel:not(.is-active){display:none!important}
+  .compass-mode-panel.is-active{display:block!important}
+  .learning-card{box-shadow:none;border:1px solid #ccc}
+  body{background:#fff;padding:0}.page-content{padding:10px}
+}
+@media(max-width:580px){
+  body{padding:0 0 48px}
+  .compass-head{padding:15px 13px}.compass-emoji{font-size:1.8rem}
+  .learn-panel{padding:14px 12px}
+  .notes-grid{grid-template-columns:1fr}
+  .bk-pool,.bk-slots{gap:6px;padding:10px}
+}
+
+/* Übersicht zurück */
+.nav-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.nav-link-overview{border-color:#bfdbfe;color:var(--blue-dark);background:var(--blue-soft)}
+.overview-return-wrap{max-width:1100px;margin:10px auto -6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:400;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+@media(max-width:580px){.overview-return-wrap{margin:8px auto -4px;padding:0 12px}.overview-return{width:100%;justify-content:center}}
+
+@media print{.overview-return-wrap{display:none!important}}
+
+
+/* Mobile safety patch: prevents horizontal overflow without changing content. */
+@media (max-width: 700px){
+  html, body{max-width:100%;}
+  .site-nav, .site-nav-inner, .page-content, .learning-card, .compass-mode-grid, .compass-mode-btn, .learn-step-nav, .learn-step-btn, .writecheck-panel, .writecheck-task, .notes-panel, .overview-return-wrap{max-width:100%;min-width:0;}
+  .site-nav-inner{padding-left:12px;padding-right:12px;flex-wrap:wrap;align-items:center;}
+  .nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-actions{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;justify-content:flex-end;}
+  .ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+  .compass-mode-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));}
+  .compass-mode-btn{overflow-wrap:anywhere;}
+  .learn-step-nav{overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto;}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .train-wrap{max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  img,svg{max-width:100%;height:auto;}
+}
+
+
+/* FINAL LAYOUT PATCH: wider desktop layout + calm return link.
+   Content, exercises, answers and tab structure are unchanged. */
+@media (min-width: 901px){
+  .site-nav-inner,
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    max-width:1320px;
+  }
+  .page-content{
+    width:min(1320px, calc(100% - 48px));
+  }
+  .overview-return-wrap{
+    width:min(1320px, calc(100% - 48px));
+  }
+}
+.overview-return{
+  min-height:36px;
+  line-height:1.2;
+}
+@media (max-width:700px){
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    width:auto;
+    max-width:100%;
+  }
+}
+
+
+/* Word Order Zusatzfunktionen: Spickzettel, Signalwort-Detektor, Eltern-Blick */
+.signal-card{padding:14px;border:var(--line);border-radius:var(--radius);background:#fff;margin-bottom:12px}
+.signal-title{margin:0 0 6px;font-family:var(--font-head);font-weight:400;color:var(--green-dark);font-size:.95rem}
+.signal-sub{margin:0 0 10px;color:var(--gray-600);font-size:.87rem}
+.signal-sentence{display:flex;flex-wrap:wrap;gap:7px;padding:12px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line);margin-bottom:10px}
+.signal-word{padding:6px 11px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--gray-800);font-family:var(--font-head);font-weight:400;cursor:pointer;transition:all .18s}
+.signal-word:hover{border-color:var(--green);background:var(--green-soft);color:var(--green-dark)}
+.signal-word.is-correct{border-color:var(--green);background:#dcfce7;color:var(--green)}
+.signal-word.is-wrong{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.signal-tip{display:none;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid #bbf7d0;background:var(--green-soft);color:var(--gray-700);font-size:.87rem;line-height:1.45}
+.signal-tip.is-visible{display:block}
+.signal-mini-rule{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;background:#fff;color:var(--green-dark);font-family:var(--font-head);font-weight:400;margin-right:4px}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{font-size:12px;line-height:1.35;background:#fff!important}
+  .site-nav,.overview-return-wrap,.compass-mode-grid,.learn-step-nav,.learn-progress-bar,.notes-panel,.writecheck-panel,.connections-panel,.compass-mode-panel:not([data-val="reference"]){display:none!important}
+  .compass-mode-panel[data-val="reference"]{display:block!important}
+  .learning-card{box-shadow:none!important;border:0!important}
+  .compass-head{padding:12px 14px!important;background:#fff!important;color:#111!important;border-bottom:1px solid #ddd}
+  .spickzettel-bereich{padding:12px!important;gap:10px!important}
+  .train-car{padding:8px 10px!important;min-width:72px!important}
+  table{font-size:11px!important}
+}
+
+
+/* BLOCK WORDORDER V01: Referenzlayout, aktives Kann-ich's, Lernjournal, ruhige Themenfläche */
+:root{
+  --kompass-topic-bg:#dfeaf1;
+  --kompass-topic-bg-soft:#eef5f8;
+  --kompass-card-bg:#ffffff;
+  --kompass-border-soft:#c9d8e2;
+}
+body{
+  background:var(--kompass-topic-bg);
+}
+.site-nav{
+  background:rgba(255,255,255,.97);
+}
+.page-content{
+  background:transparent;
+}
+.learning-card{
+  background:var(--kompass-topic-bg);
+  border-color:var(--kompass-border-soft);
+}
+.compass-mode-grid,
+.learn-step-nav{
+  background:var(--kompass-topic-bg-soft);
+}
+.compass-mode-btn[aria-pressed="true"],
+.learn-step-btn[aria-pressed="true"]{
+  background:var(--kompass-card-bg);
+}
+.compass-mode-panel,
+.learn-panel,
+.writecheck-panel,
+.notes-panel,
+.wo-ref-wrap,
+#verbindungen > div{
+  background:var(--kompass-topic-bg);
+}
+.entry-card,
+.tx-card,
+.wo-can-card,
+.wo-can-final,
+.wo-can-status,
+.wo-ref-section,
+.writecheck-intro,
+.writecheck-task,
+.writecheck-summary,
+.note-field,
+.overview-return{
+  background:var(--kompass-card-bg);
+}
+.note-help{
+  margin:0 0 7px;
+  font-size:.82rem;
+  line-height:1.45;
+  color:var(--gray-500);
+}
+.note-example-wrap{
+  margin-bottom:12px;
+}
+
+/* Word Order Nachschlagen */
+.wo-ref-wrap{padding:22px;display:grid;gap:18px;background:var(--kompass-topic-bg)}
+.wo-ref-intro{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius);background:var(--green-soft);border:1px solid #6ee7b7;font-size:.87rem;color:var(--green-dark);font-family:var(--font-head);font-weight:400}
+.wo-ref-section{padding:16px;border:var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm);display:grid;gap:10px}
+.wo-ref-core{border-color:#6ee7b7;background:linear-gradient(135deg,#fff,var(--green-soft))}
+.wo-ref-traps{border-color:#fecaca;background:var(--red-soft)}
+.wo-ref-special{border-color:#fde68a;background:var(--yellow-soft)}
+.wo-ref-title{font-family:var(--font-head);font-weight:400;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0}
+.wo-ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}
+.wo-ref-mini{padding:10px 12px;border-radius:var(--radius-sm);border:var(--line);background:#fff;font-size:.86rem;line-height:1.55}
+.wo-ref-mini-title{display:block;font-family:var(--font-head);font-weight:400;color:var(--green-dark);font-size:.78rem;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.wo-ref-line{padding:8px 10px;border-left:4px solid var(--green);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--green-soft);font-size:.86rem;color:var(--gray-700);line-height:1.5}
+.wo-table-scroll{overflow-x:auto}
+.wo-ref-ex-list{display:grid;gap:5px}
+.wo-ref-ex-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center}
+.wo-ref-chip{font-size:.71rem;color:var(--green-dark);background:var(--green-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;white-space:nowrap}
+.wo-homework-note,.wo-spickzettel-title{display:none}
+body.hausaufgaben-mode .wo-homework-note{display:block;padding:10px 14px;border-radius:var(--radius);background:var(--green-soft);border:1px solid #6ee7b7;color:var(--green-dark);font-family:var(--font-head);font-size:.87rem;font-weight:400}
+body.hausaufgaben-mode .wo-homework-hide{display:none!important}
+body.hausaufgaben-mode .wo-homework-keep{display:grid!important}
+body.hausaufgaben-mode .wo-ref-wrap{gap:14px!important}
+body.hausaufgaben-mode .ha-btn{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* Word Order Kann ich's */
+.wo-can-shell{display:grid;gap:14px}
+.wo-can-intro{padding:12px 14px;border-radius:var(--radius);background:linear-gradient(135deg,var(--green-soft),var(--blue-soft));border:1px solid #6ee7b7;font-family:var(--font-head);font-size:.9rem;color:var(--green-dark);line-height:1.45}
+.wo-can-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.wo-can-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:14px;box-shadow:var(--shadow-sm);display:grid;gap:9px}
+.wo-can-card-trap{border-color:#fecaca;background:var(--red-soft)}
+.wo-can-card-title{margin:0;font-family:var(--font-head);font-weight:400;font-size:.92rem;color:var(--gray-800)}
+.wo-can-task{margin:0;font-size:.88rem;color:var(--gray-700);line-height:1.5}
+.wo-can-options{display:grid;gap:7px}
+.wo-can-option{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font-size:.87rem;cursor:pointer}
+.wo-can-option input{margin-top:3px;accent-color:var(--green)}
+.wo-can-reveal{border:var(--line);border-radius:var(--radius-sm);background:#fff;overflow:hidden}
+.wo-can-reveal summary{cursor:pointer;padding:9px 11px;font-family:var(--font-head);font-weight:400;color:var(--green-dark);font-size:.86rem}
+.wo-can-reveal div{padding:0 11px 10px;font-size:.86rem;color:var(--gray-700);line-height:1.5}
+.wo-can-sentence{width:100%;padding:9px 11px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font:inherit;font-size:.88rem;color:var(--gray-800)}
+.wo-can-sentence:focus{outline:none;border-color:var(--green);background:#fff}
+.wo-can-checklist{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.wo-can-checklist li{border:var(--line);border-radius:var(--radius-sm);background:#fff}
+.wo-can-checklist label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;cursor:pointer;font-size:.87rem;color:var(--gray-700)}
+.wo-can-checklist input{margin-top:3px;accent-color:var(--green)}
+.wo-can-checklist li:has(input:checked){background:var(--green-soft);border-color:#bbf7d0}
+.wo-can-final{padding:13px;border-radius:var(--radius);background:var(--gray-25);border:var(--line);display:grid;gap:10px}
+.wo-can-explain-text{min-height:84px;resize:vertical;line-height:1.5}
+.wo-can-explain-check{padding:11px 13px;border-radius:var(--radius-sm);border:1px solid #6ee7b7;background:var(--green-soft)}
+.wo-can-explain-list{margin:6px 0 0;padding-left:20px;color:var(--gray-700);font-size:.88rem}
+.wo-can-explain-list li{margin:3px 0}
+.wo-can-status{padding:13px;border-radius:var(--radius);border:1px solid #bfdbfe;background:linear-gradient(135deg,#fff,var(--blue-soft));display:grid;gap:9px}
+.wo-can-status-title{margin:0;font-family:var(--font-head);font-weight:400;font-size:.92rem;color:var(--blue-dark)}
+.wo-can-status-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.wo-can-status-option{display:flex;gap:8px;align-items:flex-start;padding:9px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.87rem;color:var(--gray-700);cursor:pointer}
+.wo-can-status-option input{margin-top:3px;accent-color:var(--blue)}
+.wo-can-status-option:has(input:checked){border-color:#93c5fd;background:#eff6ff;color:var(--blue-dark)}
+.wo-can-status-note{margin:0;font-size:.84rem;color:var(--gray-600);line-height:1.45}
+
+
+/* Spickzettel-Druckansicht: eigener klarer Druckblock */
+.wo-print-spickzettel{display:none}
+@media print{
+  body.wo-spickzettel-print{background:#fff!important;padding:0!important;font-size:12px;line-height:1.35;color:#111!important}
+  body.wo-spickzettel-print .site-nav,
+  body.wo-spickzettel-print .overview-return-wrap,
+  body.wo-spickzettel-print .compass-mode-grid,
+  body.wo-spickzettel-print .learn-step-nav,
+  body.wo-spickzettel-print .learn-progress-bar,
+  body.wo-spickzettel-print .notes-panel,
+  body.wo-spickzettel-print .writecheck-panel,
+  body.wo-spickzettel-print .connections-panel,
+  body.wo-spickzettel-print .compass-mode-panel:not([data-val="reference"]){display:none!important}
+  body.wo-spickzettel-print .compass-mode-panel[data-val="reference"]{display:block!important}
+  body.wo-spickzettel-print .wo-ref-wrap > :not(.wo-print-spickzettel){display:none!important}
+  body.wo-spickzettel-print .wo-print-spickzettel{display:block!important;padding:0 6px!important;color:#111!important;background:#fff!important}
+  body.wo-spickzettel-print .learning-card{box-shadow:none!important;border:none!important;background:#fff!important}
+  body.wo-spickzettel-print .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:14px!important}
+  body.wo-spickzettel-print .compass-kicker,
+  body.wo-spickzettel-print .check-return-hint{display:none!important}
+  body.wo-spickzettel-print .compass-title{color:#111!important;font-size:22px!important;margin:0!important}
+  body.wo-spickzettel-print .page-content{padding:0!important;max-width:none!important;width:100%!important}
+  body.wo-spickzettel-print .wo-ref-wrap{padding:0!important;gap:0!important;background:#fff!important}
+  body.wo-spickzettel-print .wo-print-spickzettel h2{font-size:18px;margin:0 0 10px;color:#111;line-height:1.2}
+  body.wo-spickzettel-print .wo-print-spickzettel h3{font-size:14px;margin:0 0 6px;color:#111;line-height:1.2}
+  body.wo-spickzettel-print .wo-print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  body.wo-spickzettel-print .wo-print-box{border:1px solid #999;border-radius:8px;padding:9px;break-inside:avoid;background:#fff!important}
+  body.wo-spickzettel-print .wo-print-warning{border:2px solid #111}
+  body.wo-spickzettel-print .wo-print-box ul{margin:0;padding-left:18px}
+  body.wo-spickzettel-print .wo-print-box li{margin:2px 0}
+  body.wo-spickzettel-print .wo-print-pattern{font-family:Arial, Helvetica, sans-serif;font-weight:400;margin:4px 0}
+}
+
+@media(max-width:700px){
+  .wo-ref-ex-row{grid-template-columns:1fr}
+  .wo-can-grid{grid-template-columns:1fr}
+}
+
+/* WORDORDER V03 MOBILE PATCH: kompakte mobile Navigation und größere Touch-Ziele.
+   Inhalt, Aufgaben und JavaScript bleiben unverändert. */
+@media (max-width:700px){
+  html,body{overflow-x:hidden;}
+  .site-nav-inner{display:grid;grid-template-columns:1fr;gap:7px;padding:8px 12px;min-height:0;}
+  .nav-logo{justify-content:center;min-height:32px;}
+  .nav-links{display:flex;flex-wrap:nowrap;width:100%;max-width:100%;overflow-x:auto;gap:6px;padding:0 0 3px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-link{flex:0 0 auto;white-space:nowrap;min-height:34px;padding:6px 12px;}
+  .nav-actions{width:100%;justify-content:center;gap:8px;}
+  .ha-btn,.print-btn{min-height:38px;padding:8px 13px;line-height:1.2;}
+  .compass-mode-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .compass-mode-btn{flex:0 0 118px;min-width:118px;min-height:54px;padding:8px 10px;overflow-wrap:normal;word-break:normal;}
+  .compass-mode-hint{display:none;}
+  .learn-step-nav{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto;min-width:98px;}
+  .step-label{white-space:normal;}
+  .bk-block{min-height:40px;padding:8px 14px;align-items:center;justify-content:center;}
+  .bk-slot{min-height:46px;}
+  .writecheck-btn,.writecheck-check-all,.writecheck-reset{min-height:42px;}
+  .writecheck-actions .writecheck-check-all,.writecheck-actions .writecheck-reset{width:100%;}
+}
+
+
+/* WORDORDER V03B MOBILE PATCH: Rücklink und Schreib-Check auf schmalen Geräten sichern. */
+@media (max-width:700px){
+  .overview-return-wrap{padding-left:12px;padding-right:12px;overflow:hidden;box-sizing:border-box;}
+  .overview-return{width:100%;max-width:100%;box-sizing:border-box;}
+  .writecheck-input-row{display:block;width:100%;}
+  .writecheck-input{display:block;width:100%;max-width:100%;box-sizing:border-box;}
+  .writecheck-input-row .writecheck-btn{display:block;width:100%;max-width:100%;box-sizing:border-box;margin-top:8px;}
+}
+
+
+/* WORDORDER V03C TABLET/MOBILE PATCH: bis Tabletbreite kompakte Navigationsleisten. */
+@media (max-width:820px){
+  html,body{overflow-x:hidden;}
+  .site-nav-inner{display:grid;grid-template-columns:1fr;gap:7px;padding:8px 12px;min-height:0;}
+  .nav-logo{justify-content:center;min-height:32px;}
+  .nav-links{display:flex;flex-wrap:nowrap;width:100%;max-width:100%;overflow-x:auto;gap:6px;padding:0 0 3px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-link{flex:0 0 auto;white-space:nowrap;min-height:34px;padding:6px 12px;}
+  .nav-actions{width:100%;justify-content:center;gap:8px;}
+  .ha-btn,.print-btn{min-height:38px;padding:8px 13px;line-height:1.2;}
+  .compass-mode-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .compass-mode-btn{flex:0 0 118px;min-width:118px;min-height:54px;padding:8px 10px;overflow-wrap:normal;word-break:normal;}
+  .compass-mode-hint{display:none;}
+}
+
+
+/* WORD ORDER V08: extracted former inline styles for maintainability */
+.wo-emph{font-family:var(--font-head);font-weight:400;color:inherit}
+.wo-style-001{width:20%}
+.wo-style-002{display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:center;padding:18px;border:2px solid #6ee7b7;border-radius:var(--radius);background:linear-gradient(135deg,#fff,var(--green-soft));margin-bottom:16px}
+.wo-style-003{display:flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;font-size:2.6rem;background:linear-gradient(135deg,#6ee7b7,#dbeafe);flex-shrink:0}
+.wo-style-004{margin:0 0 6px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--green-dark)}
+.wo-style-005{margin:0 0 10px;color:var(--gray-700);font-size:.91rem;line-height:1.5}
+.wo-style-006{display:flex;flex-wrap:wrap;gap:6px}
+.wo-style-007{padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:400;color:var(--green-dark);background:var(--green-soft)}
+.wo-style-008{padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:400;color:var(--red);background:var(--red-soft)}
+.wo-style-009{font-family:var(--font-head);font-weight:400;font-size:.9rem;color:var(--green-dark);margin:0 0 10px}
+.wo-style-010{display:grid;gap:10px}
+.wo-style-011{padding:11px 14px;border:2px solid #fde68a;border-radius:var(--radius);background:var(--yellow-soft);font-size:.87rem;color:var(--gray-700)}
+.wo-style-012{display:block;font-family:var(--font-head);font-weight:400;color:var(--yellow);font-size:.82rem;text-transform:uppercase;margin-bottom:5px}
+.wo-style-013{color:var(--gray-600)}
+.wo-style-014{padding:11px 14px;border-left:4px solid var(--green);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--green-soft);font-size:.87rem;color:var(--gray-700)}
+.wo-style-015{font-family:var(--font-head);font-weight:400;color:var(--green-dark)}
+.wo-style-016{font-family:var(--font-head);font-weight:400;color:var(--green-dark);font-size:.95rem;margin:0 0 6px}
+.wo-style-017{font-size:.87rem;color:var(--gray-600);margin:0 0 14px}
+.wo-style-018{font-family:var(--font-head);font-weight:400;font-size:.8rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px}
+.wo-style-019{padding:7px 14px;border:1px solid var(--gray-300);border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:400;font-size:.85rem;color:var(--gray-600);background:#fff;cursor:pointer;margin-top:8px;transition:all .18s}
+.wo-style-019:hover{border-color:var(--green);color:var(--green-dark)}
+.is-dragging{opacity:.4}
+.feedback-detail{font-size:.82rem;color:var(--gray-600)}
+.feedback-detail-success{font-size:.82rem;color:var(--green)}
+.feedback-emphasis{font-family:var(--font-head);font-weight:400;color:inherit}
+.bk-feedback.is-warning{display:block;background:var(--yellow-soft);color:var(--yellow);border-color:#fde68a}
+.bk-feedback.is-correct{display:block;background:var(--green-soft);color:var(--green);border-color:#bbf7d0}
+.bk-feedback.is-error{display:block;background:var(--red-soft);color:var(--red);border-color:#fecaca}
+.err-feedback.is-correct{display:block;background:var(--green-soft);color:var(--green);border-color:#bbf7d0}
+.err-feedback.is-error{display:block;background:var(--red-soft);color:var(--red);border-color:#fecaca}
+.adv-feedback.is-correct{display:block;background:var(--green-soft);color:var(--green);border-color:#bbf7d0}
+.adv-feedback.is-error{display:block;background:var(--red-soft);color:var(--red);border-color:#fecaca}
+.progress-step-1{width:20%}
+.progress-step-2{width:40%}
+.progress-step-3{width:60%}
+.progress-step-4{width:80%}
+.progress-step-5{width:100%}
+
+.wo-style-020{justify-content:flex-start;margin-top:10px}
+.wo-style-021{padding:16px;border:var(--line);border-radius:var(--radius);background:#fff}
+.wo-style-022{text-align:center;margin:0 0 12px;font-size:.86rem;color:var(--gray-600)}
+.wo-style-023{margin-top:12px;padding:11px 14px;border:2px solid #fde68a;border-radius:var(--radius);background:var(--yellow-soft);font-size:.87rem;color:var(--gray-700)}
+.wo-style-024{display:block;font-family:var(--font-head);font-weight:400;color:var(--yellow);font-size:.82rem;text-transform:uppercase;margin-bottom:6px}
+.wo-style-025{padding:22px}
+.wo-style-026{padding:10px 13px;border-radius:var(--radius);background:linear-gradient(135deg,var(--green-soft),var(--blue-soft));border:1px solid #6ee7b7;font-family:var(--font-head);font-size:.87rem;font-weight:400;color:var(--green-dark);margin:0 0 14px}
+.wo-style-027{display:grid;gap:9px}
+.wo-style-028{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff}
+a.wo-style-028{color:inherit;text-decoration:none;transition:all .18s}
+a.wo-style-028:hover,a.wo-style-028:focus-visible{border-color:var(--blue);box-shadow:var(--shadow-sm);transform:translateY(-1px);outline:none}
+.wo-style-029{display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--blue-soft)}
+.wo-style-030{margin:0 0 4px;font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.92rem}
+.wo-style-031{color:var(--gray-700);font-size:.86rem;margin:0 0 5px}
+.wo-style-032{padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;color:var(--blue-dark);background:var(--blue-soft)}
+.wo-style-033{display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--cyan-soft)}
+.wo-style-034{margin:0 0 4px;font-family:var(--font-head);font-weight:400;color:var(--cyan);font-size:.92rem}
+.wo-style-035{display:flex;flex-wrap:wrap;gap:5px}
+.wo-style-036{padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;color:var(--cyan);background:var(--cyan-soft)}
+.wo-style-037{padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;color:var(--red);background:var(--red-soft)}
+.wo-style-038{display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--violet-soft)}
+.wo-style-039{margin:0 0 4px;font-family:var(--font-head);font-weight:400;color:var(--violet);font-size:.92rem}
+.wo-style-040{padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;color:var(--violet);background:var(--violet-soft)}
+.wo-style-041{display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:#ffedd5}
+.wo-style-042{margin:0 0 4px;font-family:var(--font-head);font-weight:400;color:#7c2d12;font-size:.92rem}
+.wo-style-043{padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;color:#7c2d12;background:#ffedd5}
+
+.wo-connection-secondary{margin-top:14px;padding:12px 14px;border:1px dashed var(--wo-card-border);border-radius:var(--radius);background:var(--wo-topic-soft);color:var(--gray-700);font-size:.86rem}
+.wo-connection-secondary p{margin:0 0 6px}
+.wo-connection-secondary p:last-child{margin-bottom:0}
+.wo-connection-secondary a{color:var(--blue-dark);text-decoration:none;border-bottom:1px solid rgba(37,99,235,.35)}
+.wo-connection-secondary a:hover,.wo-connection-secondary a:focus-visible{color:var(--blue);border-bottom-color:var(--blue);outline:none}
+
+.wo-learn-linkline{margin-top:12px;padding:10px 12px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius-sm);background:rgba(255,255,255,.82);color:var(--gray-700);font-size:.86rem}
+.wo-learn-linkline a{color:var(--blue-dark);text-decoration:none;border-bottom:1px solid rgba(37,99,235,.35)}
+.wo-learn-linkline a:hover,.wo-learn-linkline a:focus-visible{color:var(--blue);border-bottom-color:var(--blue);outline:none}
+
+
+/* WORDORDER V106: Layout an Simple Past angeglichen – volle Breite, ruhiger Blaugrau-Hintergrund, mobile Aktionsleiste, echter Seitendruck. */
+:root{
+  --kompass-page-max:1320px;
+  --wo-topic-bg-top:#dbeafe;
+  --wo-topic-bg-bottom:#c7d9f2;
+  --wo-topic-surface:rgba(255,255,255,.96);
+  --wo-topic-soft:rgba(255,255,255,.88);
+  --wo-card-border:rgba(148,163,184,.45);
+  --wo-card-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+html,body{width:100%;max-width:100%;overflow-x:hidden;}
+body{background:#e7eef4!important;}
+.site-nav{display:none!important;}
+.page-action-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.page-action-buttons{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;}
+.page-action-buttons .ha-btn,.page-action-buttons .print-btn{min-height:34px;}
+.learning-card{background:#eef4fb!important;}
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="reference"],
+.compass-mode-panel[data-val="connections"],
+.compass-mode-panel[data-val="writecheck"],
+.compass-mode-panel[data-val="notes"]{background:linear-gradient(180deg,var(--wo-topic-bg-top) 0%,var(--wo-topic-bg-bottom) 100%)!important;}
+.learn-panel,
+.wo-ref-wrap,
+#verbindungen > div,
+.writecheck-panel,
+.notes-panel{padding:24px!important;background:linear-gradient(180deg,var(--wo-topic-bg-top) 0%,var(--wo-topic-bg-bottom) 100%)!important;}
+.entry-card,
+.tx-card,
+.wo-can-card,
+.wo-can-final,
+.wo-can-status,
+.wo-ref-section,
+.writecheck-intro,
+.writecheck-task,
+.writecheck-summary,
+.note-field,
+.wo-style-002,
+.wo-style-021,
+a.wo-style-028,
+.wo-style-028{background:var(--wo-topic-surface)!important;border:1px solid var(--wo-card-border)!important;box-shadow:var(--wo-card-shadow)!important;}
+.wo-ref-intro,
+.wo-style-026,
+.wo-can-intro{background:var(--wo-topic-soft)!important;border:1px solid rgba(147,197,253,.75)!important;box-shadow:0 4px 14px rgba(15,23,42,.08)!important;}
+.wo-thinking-line{display:block!important;background:#f8fafc!important;border-top:1px solid rgba(148,163,184,.35)!important;border-bottom:1px solid rgba(148,163,184,.35)!important;color:#334155!important;font-family:var(--font-head);font-size:.9rem;line-height:1.45;box-shadow:none!important;}
+.wo-thinking-line::before{content:"Denkweg: ";font-weight:400;color:#64748b;}
+.wo-thinking-line span{display:inline!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#27415f!important;box-shadow:none!important;}
+.wo-thinking-line span:not(:last-child)::after{content:" → ";margin:0 6px;color:#64748b;}
+@media (min-width:701px){
+  .overview-return-wrap.page-action-bar{max-width:none!important;width:100%!important;margin:0!important;padding:10px max(20px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 6px!important;}
+  .page-content{max-width:none!important;width:100%!important;margin:0!important;padding:0 0 60px!important;}
+  .learning-card{width:100%!important;max-width:none!important;margin:0!important;border-left:0!important;border-right:0!important;border-radius:0!important;box-shadow:none!important;background:#eef4fb!important;}
+  .compass-head,.wo-thinking-line,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;border-radius:0!important;box-sizing:border-box!important;}
+  .compass-head{padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important;}
+  .wo-thinking-line{padding:12px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))!important;}
+  .compass-mode-grid,.learn-step-nav{padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:min(var(--kompass-page-max),calc(100% - 48px))!important;max-width:var(--kompass-page-max)!important;margin-left:auto!important;margin-right:auto!important;}
+  .compass-mode-btn,.learn-step-btn{flex:1 1 0!important;}
+}
+@media(max-width:700px){
+  .page-action-bar{align-items:stretch;flex-direction:column;}
+  .page-action-buttons{justify-content:flex-start;display:grid;grid-template-columns:1fr;gap:8px;width:100%;}
+  .page-action-buttons .ha-btn,.page-action-buttons .print-btn{width:100%;justify-content:center;min-height:42px;}
+  .overview-return-wrap.page-action-bar{margin:0!important;padding:8px 12px!important;max-width:100%!important;width:100%!important;}
+  .overview-return{width:100%;justify-content:center;}
+  .page-content{padding:0 0 48px!important;max-width:100%!important;width:100%!important;}
+  .learning-card{border-radius:0!important;border-left:0!important;border-right:0!important;box-shadow:none!important;}
+  .compass-head,.wo-thinking-line,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{border-radius:0!important;width:100%!important;}
+  .compass-head{padding:16px 14px!important;}
+  .wo-thinking-line{font-size:.86rem!important;padding:12px 14px!important;}
+  .wo-thinking-line::before{display:block;margin:0 0 3px;}
+  .wo-thinking-line span{display:block!important;width:100%;}
+  .wo-thinking-line span:not(:last-child)::after{content:""!important;margin:0!important;}
+  .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:auto!important;max-width:100%!important;margin:0!important;padding:16px 12px!important;}
+  .compass-mode-grid,.learn-step-nav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;justify-content:flex-start!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+  .compass-mode-btn{flex:0 0 132px!important;min-width:132px!important;}
+  .learn-step-btn{flex:0 0 auto!important;min-width:108px!important;}
+}
+@media print{
+  body:not(.wo-spickzettel-print){background:#fff!important;padding:0!important;color:#111!important;}
+  body:not(.wo-spickzettel-print) .page-action-bar,
+  body:not(.wo-spickzettel-print) .overview-return-wrap,
+  body:not(.wo-spickzettel-print) .compass-mode-grid,
+  body:not(.wo-spickzettel-print) .learn-step-nav,
+  body:not(.wo-spickzettel-print) .learn-progress-bar,
+  body:not(.wo-spickzettel-print) .notes-panel{display:none!important;}
+  body:not(.wo-spickzettel-print) .compass-mode-panel.is-active{display:block!important;background:#fff!important;}
+  body:not(.wo-spickzettel-print) .compass-mode-panel:not(.is-active){display:none!important;}
+  body:not(.wo-spickzettel-print) .page-content{max-width:none!important;width:100%!important;margin:0!important;padding:0!important;}
+  body:not(.wo-spickzettel-print) .learning-card{box-shadow:none!important;border:none!important;border-radius:0!important;background:#fff!important;}
+  body:not(.wo-spickzettel-print) .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:12px!important;}
+  body:not(.wo-spickzettel-print) .wo-thinking-line{display:none!important;}
+  body:not(.wo-spickzettel-print) .learn-panel,
+  body:not(.wo-spickzettel-print) .wo-ref-wrap,
+  body:not(.wo-spickzettel-print) #verbindungen > div,
+  body:not(.wo-spickzettel-print) .writecheck-panel{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;background:#fff!important;}
+  body.wo-spickzettel-print .page-action-bar{display:none!important;}
+  body.wo-spickzettel-print .compass-subtitle,
+  body.wo-spickzettel-print .compass-emoji{display:none!important;}
+  body.wo-spickzettel-print .wo-print-spickzettel{padding:0!important;}
+}
+
+/* WORDORDER V106B: regulärer Seitendruck darf aktive Inhalte nicht durch alte Spickzettel-Regeln ausblenden. */
+@media print{
+  body:not(.wo-spickzettel-print) .writecheck-panel,
+  body:not(.wo-spickzettel-print) .notes-panel,
+  body:not(.wo-spickzettel-print) #verbindungen > div{display:block!important;}
+}
+
+
+
+/* WORDORDER V107: Lernbereich-Kartenlayout repariert.
+   Die Themenfläche bleibt blaugrau, die aktiven Lern-Unterbereiche liegen wieder als
+   klare weiße Karten mit Rahmen auf der Fläche. Dadurch sind die ersten Lernreiter
+   nicht mehr als vollflächiger blauer Inhaltsblock sichtbar. */
+.learn-panel{
+  box-sizing:border-box!important;
+  background:var(--wo-topic-surface)!important;
+  border:1px solid var(--wo-card-border)!important;
+  border-radius:18px!important;
+  box-shadow:var(--wo-card-shadow)!important;
+}
+.learn-panel.is-active{
+  display:block;
+}
+.train-wrap,
+.bk-pool,
+.bk-slots,
+.err-sentence,
+.signal-card,
+.wo-style-021,
+.wo-can-final,
+.wo-can-status{
+  border-color:var(--wo-card-border)!important;
+}
+.train-wrap{
+  padding:12px!important;
+  border:1px solid var(--wo-card-border)!important;
+  border-radius:var(--radius)!important;
+  background:rgba(248,250,252,.92)!important;
+}
+@media (min-width:701px){
+  .learn-panel{
+    margin-top:24px!important;
+    margin-bottom:28px!important;
+  }
+}
+@media (max-width:700px){
+  .learn-panel{
+    width:calc(100% - 24px)!important;
+    max-width:calc(100% - 24px)!important;
+    margin:12px auto 18px!important;
+    padding:16px!important;
+    border-radius:16px!important;
+  }
+  .train-wrap{padding:10px!important;}
+}
+@media print{
+  body:not(.wo-spickzettel-print) .learn-panel{
+    border:none!important;
+    box-shadow:none!important;
+    border-radius:0!important;
+    background:#fff!important;
+  }
+}
+
+
+/* WORDORDER V108: Aktionsleiste im Hausaufgaben-Modus repariert.
+   Problem in v107: Die Top-Leiste konnte durch 100%-Breite plus Padding rechts aus
+   dem Sichtfeld laufen. Dadurch waren Spickzettel- und Seitendruck-Button nicht
+   zuverlässig sichtbar. Die Leiste bekommt wieder eine echte Inhaltsbreite wie
+   Simple Past, mit stabiler Umbrechlogik auf Tablet und Handy. */
+.overview-return-wrap.page-action-bar{
+  box-sizing:border-box!important;
+  width:min(var(--kompass-page-max), calc(100% - 48px))!important;
+  max-width:var(--kompass-page-max)!important;
+  margin:10px auto 10px!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:10px!important;
+  overflow:visible!important;
+}
+.overview-return-wrap.page-action-bar .overview-return{
+  min-width:0!important;
+  max-width:100%!important;
+  width:max-content!important;
+  justify-content:center!important;
+  white-space:normal!important;
+}
+.page-action-buttons{
+  box-sizing:border-box!important;
+  min-width:0!important;
+  max-width:100%!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  gap:8px!important;
+  overflow:visible!important;
+}
+.page-action-buttons .ha-btn,.page-action-buttons .print-btn{
+  box-sizing:border-box!important;
+  flex:0 1 auto!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  text-align:center!important;
+}
+body.hausaufgaben-mode .overview-return-wrap.page-action-bar{
+  display:grid!important;
+}
+body.hausaufgaben-mode .page-action-buttons{
+  display:flex!important;
+}
+@media (max-width:900px){
+  .overview-return-wrap.page-action-bar{
+    width:calc(100% - 24px)!important;
+    max-width:calc(100% - 24px)!important;
+    grid-template-columns:1fr!important;
+    margin:8px auto 10px!important;
+  }
+  .overview-return-wrap.page-action-bar .overview-return{
+    width:100%!important;
+  }
+  .page-action-buttons{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    justify-content:stretch!important;
+  }
+  .page-action-buttons .ha-btn,.page-action-buttons .print-btn{
+    width:100%!important;
+    justify-content:center!important;
+    min-height:42px!important;
+    padding:8px 10px!important;
+  }
+  body.hausaufgaben-mode .page-action-buttons{
+    display:grid!important;
+  }
+}
+@media (max-width:560px){
+  .page-action-buttons{
+    grid-template-columns:1fr!important;
+  }
+}
+@media print{
+  .overview-return-wrap.page-action-bar{display:none!important;}
+}
+
+
+
+/* WORDORDER V03: Layoutstandard nach Arbeitsanweisung.
+   Nur Layout-Ebene: Seitenbreite, Farben, Kopfbereich und Navigation.
+   Inhalte, Aufgaben und Lerntexte bleiben unverändert. */
+:root{
+  --kompass-page-max:1320px;
+  --wo-topic-bg-top:#dbeafe;
+  --wo-topic-bg-bottom:#c7d9f2;
+  --wo-topic-surface:rgba(255,255,255,.96);
+  --wo-topic-soft:rgba(255,255,255,.88);
+  --wo-card-border:rgba(148,163,184,.45);
+  --wo-card-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+body{background:#e7eef4!important;}
+.learning-card{background:#eef4fb!important;}
+.compass-head{background:linear-gradient(135deg,#1d4ed8,#0f766e)!important;}
+.compass-title{font-size:clamp(1.2rem,2.5vw,1.55rem)!important;line-height:1.2!important;}
+.compass-subtitle{max-width:620px!important;}
+.compass-mode-grid,.learn-step-nav{background:#f8fafc!important;}
+.compass-mode-btn,.learn-step-btn{min-height:56px!important;}
+.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"]{background:#fff!important;}
+.wo-thinking-line{background:#f8fafc!important;color:#334155!important;}
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="reference"],
+.compass-mode-panel[data-val="connections"],
+.compass-mode-panel[data-val="writecheck"],
+.compass-mode-panel[data-val="notes"]{
+  background:linear-gradient(180deg,var(--wo-topic-bg-top) 0%,var(--wo-topic-bg-bottom) 100%)!important;
+}
+.learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{
+  box-sizing:border-box!important;
+}
+.entry-card,.tx-card,.wo-can-card,.wo-can-final,.wo-can-status,.wo-ref-section,
+.writecheck-intro,.writecheck-task,.writecheck-summary,.note-field,.wo-style-002,
+.wo-style-021,.wo-style-028,a.wo-style-028{
+  background:var(--wo-topic-surface)!important;
+  border:1px solid var(--wo-card-border)!important;
+  box-shadow:var(--wo-card-shadow)!important;
+}
+.wo-ref-intro,.wo-style-026,.wo-can-intro{
+  background:var(--wo-topic-soft)!important;
+  border:1px solid rgba(147,197,253,.75)!important;
+  box-shadow:0 4px 14px rgba(15,23,42,.08)!important;
+}
+.overview-return-wrap.page-action-bar{
+  width:min(var(--kompass-page-max), calc(100% - 48px))!important;
+  max-width:var(--kompass-page-max)!important;
+  margin:10px auto 10px!important;
+  padding:0!important;
+}
+@media (min-width:701px){
+  .page-content{max-width:none!important;width:100%!important;margin:0!important;padding:0 0 60px!important;}
+  .learning-card{width:100%!important;max-width:none!important;margin:0!important;border-left:0!important;border-right:0!important;border-radius:0!important;box-shadow:none!important;}
+  .compass-head,.wo-thinking-line,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;border-radius:0!important;box-sizing:border-box!important;}
+  .compass-head{padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important;}
+  .wo-thinking-line{padding:12px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))!important;}
+  .compass-mode-grid,.learn-step-nav{padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;}
+  .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:min(var(--kompass-page-max),calc(100% - 48px))!important;max-width:var(--kompass-page-max)!important;margin-left:auto!important;margin-right:auto!important;}
+}
+@media (max-width:700px){
+  .overview-return-wrap.page-action-bar{width:calc(100% - 24px)!important;max-width:calc(100% - 24px)!important;margin:8px auto 10px!important;}
+  .page-content{width:100%!important;max-width:100%!important;padding:0 0 48px!important;}
+  .learning-card{border-radius:0!important;border-left:0!important;border-right:0!important;box-shadow:none!important;}
+  .compass-head{padding:16px 14px!important;}
+  .compass-mode-grid,.learn-step-nav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;justify-content:flex-start!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+  .compass-mode-btn{flex:0 0 132px!important;min-width:132px!important;}
+  .learn-step-btn{flex:0 0 auto!important;min-width:108px!important;}
+  .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:auto!important;max-width:100%!important;margin:0!important;padding:16px 12px!important;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button aria-pressed="false" class="ha-btn" data-wo-action="toggle-homework" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" data-wo-action="print-ref" id="wo-spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" data-wo-action="print-page" id="wo-print-page-btn" type="button">🖨️ Diese Seite drucken</button></div></div>
+<div class="page-content">
+<article class="learning-card">
+<header class="compass-head">
+<div>
+<p class="compass-kicker">🚂 Satzbau</p>
+<h1 class="compass-title">Word Order — der englische Satz-Zug</h1>
+<p class="compass-subtitle">Englisch hat eine feste Reihenfolge: Subject · Verb · Object · Place · Time</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">🚂</span>
+</header><div aria-label="Denkweg Word Order" class="wo-thinking-line"><span>Subject erkennen</span><span>Verb setzen</span><span>Rest ordnen</span><span>Ort vor Zeit prüfen</span></div>
+<nav aria-label="Bereiche" class="compass-mode-grid">
+<button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn" data-tab="wo-mode" data-val="learn" type="button">
+<span class="compass-mode-icon">🎯</span><span>Lernen</span>
+<span class="compass-mode-hint">Neu hier? Fang hier an.</span>
+</button>
+<button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="reference" type="button">
+<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
+<span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span>
+</button>
+<button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="connections" type="button">
+<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
+<span class="compass-mode-hint">Was hängt damit zusammen?</span>
+</button>
+<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="writecheck" type="button">
+<span class="compass-mode-icon">✍️</span><span>Schreib-Check</span>
+<span class="compass-mode-hint">Kannst du die Satzstellung schreiben?</span>
+</button>
+<button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="notes" type="button">
+<span class="compass-mode-icon">✏️</span><span>Notizen</span>
+<span class="compass-mode-hint">Meine eigenen Notizen</span>
+</button>
+</nav>
+<!-- LERNEN -->
+<div class="compass-mode-panel is-active" data-panel="wo-mode" data-val="learn" id="lernen">
+<nav class="learn-step-nav">
+<button aria-controls="wo-learn-entry-panel" aria-pressed="true" class="learn-step-btn" data-tab="wo-learn" data-val="entry" type="button"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button>
+<button aria-controls="wo-learn-baukasten-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="baukasten" type="button"><span class="step-badge">2</span><span class="step-label">Baukasten</span></button>
+<button aria-controls="wo-learn-fehler-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="fehler" type="button"><span class="step-badge">3</span><span class="step-label">Fehler-Erkenner</span></button>
+<button aria-controls="wo-learn-adverb-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="adverb" type="button"><span class="step-badge">4</span><span class="step-label">Adverb-Entscheider</span></button>
+<button aria-controls="wo-learn-check-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="check" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich's?</span></button>
+</nav>
+<div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="wo-progress"></div></div>
+<!-- Schritt 1: Wozu? -->
+<div class="learn-panel is-active" data-panel="wo-learn" data-val="entry" id="wo-learn-entry-panel">
+<div class="wo-style-002">
+<div class="wo-style-003">🚂</div>
+<div>
+<p class="wo-style-004">Normale englische Aussagesätze haben eine Lieblingsreihenfolge!</p>
+<p class="wo-style-005">Im Deutschen kann man Satzteile oft umstellen. Im englischen Schulenglisch übst du zuerst eine feste Grundreihenfolge — wie ein Zug mit festen Waggons.</p>
+<div class="wo-style-006">
+<span class="wo-style-007">Hanna plays football. ✓</span>
+<span class="wo-style-008">Football plays Hanna. ✗</span>
+</div>
+</div>
+</div>
+<div class="wo-learning-path" aria-label="Lernweg Word Order">
+<p class="wo-learning-path-title">Dein Lernweg: erst Reihenfolge verstehen, dann Sonderstellen prüfen.</p>
+<ol class="wo-learning-path-list">
+<li>Was ist Word Order?<span>Englisch hat eine feste Satz-Reihenfolge.</span></li>
+<li>Normaler Satz<span>Subject → Verb → Object.</span></li>
+<li>Ort und Zeit<span>Place before Time: wo? vor wann?</span></li>
+<li>Zeit vorne<span>On Mondays she plays — nicht plays she.</span></li>
+<li>always / often<span>Häufigkeitswort an die richtige Stelle setzen.</span></li>
+<li>kurze Frage<span>Where / How often + does + Person + Verb.</span></li>
+</ol>
+</div>
+
+<div class="wo-mark-task" aria-label="Mini-Start Subject Verb Object">
+<p class="wo-mark-title">Mini-Start: Wer macht was?</p>
+<p class="wo-mark-intro">Bevor du den ganzen Satz-Zug anschaust: Markiere im kurzen Satz die drei wichtigsten Teile.</p>
+<p class="wo-mark-sentence" lang="en">Hanna plays football.</p>
+<div class="wo-mark-grid">
+<label class="wo-mark-label" for="wo-mark-subject">Subject: Wer?<input id="wo-mark-subject" type="text" autocomplete="off" placeholder="Subject eintragen"/></label>
+<label class="wo-mark-label" for="wo-mark-verb">Verb: macht was?<input id="wo-mark-verb" type="text" autocomplete="off" placeholder="Verb eintragen"/></label>
+<label class="wo-mark-label" for="wo-mark-object">Object: wen oder was?<input id="wo-mark-object" type="text" autocomplete="off" placeholder="Object eintragen"/></label>
+</div>
+<details class="wo-mark-reveal"><summary>Lösung prüfen</summary><div>Subject = <em>Hanna</em>, Verb = <em>plays</em>, Object = <em>football</em>. Genau daraus entsteht der Grundzug: Subject → Verb → Object.</div></details>
+</div>
+<p class="wo-style-009">🚂 Der Satz-Zug — so fährt ein englischer Satz:</p>
+<div class="train-wrap">
+<div class="sentence-train">
+<div class="train-car train-car-s"><span class="train-car-icon">👤</span><span class="train-car-label">Subject</span><span class="train-car-sub">Wer?</span><span class="train-car-ex">Hanna</span></div>
+<div class="train-connector">→</div>
+<div class="train-car train-car-v"><span class="train-car-icon">⚡</span><span class="train-car-label">Verb</span><span class="train-car-sub">macht was?</span><span class="train-car-ex">plays</span></div>
+<div class="train-connector">→</div>
+<div class="train-car train-car-o"><span class="train-car-icon">📦</span><span class="train-car-label">Object</span><span class="train-car-sub">wen/was?</span><span class="train-car-ex">football</span></div>
+<div class="train-connector">→</div>
+<div class="train-car train-car-p"><span class="train-car-icon">📍</span><span class="train-car-label">Place</span><span class="train-car-sub">wo?</span><span class="train-car-ex">at school</span></div>
+<div class="train-connector">→</div>
+<div class="train-car train-car-t"><span class="train-car-icon">🕒</span><span class="train-car-label">Time</span><span class="train-car-sub">wann?</span><span class="train-car-ex">every Friday</span></div>
+</div>
+<div class="train-sentence">Hanna plays football at school every Friday.</div>
+</div>
+<div class="wo-style-010">
+<div class="wo-style-011">
+<span class="wo-style-012">💡 Merke: Ort vor Zeit ist die sichere Klasse-5-Schulregel.</span>
+          I play football <span class="wo-emph">at school</span> <span class="wo-emph">every Friday</span>. ✓<br/>
+<span class="wo-style-013">I play football every Friday at school.</span> ist nicht grundsätzlich falsch, aber nicht die einfache Klasse-5-Regel. In Schulaufgaben zuerst: Ort vor Zeit.
+        </div>
+<div class="wo-style-014">
+<span class="wo-emph">Zeitangabe vorne?</span> Möglich, aber nur als Extra-Variante. Das Subjekt bleibt direkt danach — kein Verb-Inversion wie im Deutschen!<br/>
+<span class="wo-style-015">On Mondays she plays football. ✓  ·  On Mondays plays she football. ✗</span>
+</div>
+</div>
+<div class="wo-learn-linkline">Passt dazu: <a href="simplepresent.html#lernen">Simple Present öffnen</a> — dort geht es um Routinen wie <em>On Mondays she plays football.</em></div>
+</div>
+<!-- Schritt 2: Baukasten -->
+<div class="learn-panel" data-panel="wo-learn" data-val="baukasten" id="wo-learn-baukasten-panel">
+<p class="wo-style-016">🔧 Satz-Baukasten — ziehe die Blöcke in die richtige Reihenfolge!</p>
+<p class="wo-style-017">Ziehe die Blöcke aus dem Pool (oben) in die nummerierten Felder (unten). Auf Handy: antippen zum Platzieren.</p>
+<p class="bk-counter" id="bk-counter">1 / 8</p>
+<span class="bk-task-label" id="bk-task-label"></span>
+<p class="wo-style-018">📦 Blöcke (zum Ziehen oder Antippen):</p>
+<div class="bk-pool" id="bk-pool"></div>
+<p class="wo-style-018">✅ Richtige Reihenfolge (Felder):</p>
+<div class="bk-slots" id="bk-slots"></div>
+<div class="bk-controls">
+<button class="bk-btn bk-btn-nav" data-wo-action="prev-task" type="button">← Zurück</button>
+<button class="bk-btn bk-btn-reset" data-wo-action="reset-baukasten" type="button">↺ Neu mischen</button>
+<button class="bk-btn bk-btn-check" data-wo-action="check-baukasten" type="button">Prüfen ✓</button>
+<button class="bk-btn bk-btn-nav" data-wo-action="next-task" type="button">Weiter →</button>
+</div>
+<div class="bk-feedback" id="bk-feedback"></div>
+<div class="wo-learn-linkline">Fragen übst du hier nur als Satzstellung. Die ganze Frage-Maschine findest du bei <a href="questions.html#lernen">Questions / How often</a>.</div>
+</div>
+<!-- Schritt 3: Fehler-Erkenner -->
+<div class="learn-panel" data-panel="wo-learn" data-val="fehler" id="wo-learn-fehler-panel">
+<p class="wo-style-016">🔍 Fehler-Erkenner — klicke auf das falsch platzierte Wort!</p>
+<p class="wo-style-017">In jedem Satz steckt <span class="wo-emph">genau ein Fehler</span> in der Wortstellung. Finde ihn!</p>
+<p class="err-counter" id="err-counter">1 / 8</p>
+<div class="err-sentence" id="err-sentence"></div>
+<div class="err-feedback" id="err-feedback"></div>
+<button class="wo-style-019" data-wo-action="next-error" type="button">Nächster Satz →</button>
+</div>
+<!-- Schritt 4: Adverb-Quiz -->
+<div class="learn-panel" data-panel="wo-learn" data-val="adverb" id="wo-learn-adverb-panel">
+<p class="wo-style-016">📍 Adverb-Entscheider — wo gehört das Häufigkeitswort hin?</p>
+<p class="wo-style-017">Wähle den Satz mit der richtigen Position des Adverbs.</p>
+<div aria-label="Signalwort-Detektor" class="signal-card">
+<p class="signal-title">🔎 Signalwort-Detektor</p>
+<p class="signal-sub">Klicke zuerst das Häufigkeitswort an. Danach erscheint die Regel. So liegt die Hilfe erst nach deinem Versuch.</p>
+<p class="adv-counter" id="signal-counter">1 / 5</p>
+<div class="signal-sentence" id="signal-sentence"></div>
+<div aria-live="polite" class="signal-tip" id="signal-tip"></div>
+<div class="bk-controls wo-style-020">
+<button class="bk-btn bk-btn-nav" data-wo-action="next-signal" type="button">Nächster Satz →</button>
+</div>
+</div>
+<div class="wo-style-021">
+<p class="adv-counter" id="adv-counter">1 / 6</p>
+<p class="adv-sentence" id="adv-sentence"></p>
+<p class="wo-style-022">Adverb: <span class="adv-word" id="adv-word"></span></p>
+<div class="adv-feedback" id="adv-feedback"></div>
+<div class="adv-btns">
+<button class="adv-btn" data-wo-adverb-choice="A" id="adv-btn-a" type="button">Antwort A laden…</button>
+<button class="adv-btn" data-wo-adverb-choice="B" id="adv-btn-b" type="button">Antwort B laden…</button>
+</div>
+<p class="adv-score">Bearbeitet: <span id="adv-score">0 bearbeitet</span></p>
+</div>
+<details class="wo-style-023">
+<summary class="wo-style-024">💡 Nach dem Versuch merken</summary>
+<p><span class="wo-emph">Normales Verb:</span> Adverb steht <span class="wo-emph">vor</span> dem Verb → <em>She always plays tennis.</em></p>
+<p><span class="wo-emph">to be (am/is/are):</span> Adverb steht <span class="wo-emph">nach</span> to be → <em>She is always late.</em></p>
+</details>
+<div class="wo-learn-linkline">Wenn es um die Wörter <em>always, usually, often, sometimes, never</em> geht: <a href="adverbsoffrequency.html#lernen">Adverbs of Frequency öffnen</a>.</div>
+</div>
+<!-- Schritt 5: Kann ich's? -->
+<div class="learn-panel" data-panel="wo-learn" data-val="check" id="wo-learn-check-panel">
+<div class="wo-can-shell">
+<div class="wo-can-intro">✅ Prüfe nicht nur, ob du die Regel gelesen hast. Prüfe, ob du sie anwenden kannst: Reihenfolge erkennen, Fehler finden, Satz reparieren und die Regel erklären.</div>
+<div class="wo-can-grid">
+<section class="wo-can-card">
+<h3 class="wo-can-card-title">1. Satz-Zug erkennen</h3>
+<p class="wo-can-task">Bausteine: <em>Hanna / plays / football / at school / every Friday</em></p>
+<div aria-label="Richtige Satzstellung auswählen" class="wo-can-options">
+<label class="wo-can-option"><input name="wo-can-order-1" type="radio"/> Hanna plays football at school every Friday.</label>
+<label class="wo-can-option"><input name="wo-can-order-1" type="radio"/> Hanna football plays every Friday at school.</label>
+<label class="wo-can-option"><input name="wo-can-order-1" type="radio"/> Every Friday plays Hanna football at school.</label>
+</div>
+<details class="wo-can-reveal"><summary>Lösung prüfen</summary><div>Richtig ist: <em>Hanna plays football at school every Friday.</em> Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</div></details>
+</section>
+<section class="wo-can-card wo-can-card-trap">
+<h3 class="wo-can-card-title">2. Fehlerdetektiv</h3>
+<p class="wo-can-task">Falsch: <em>On Mondays plays she football.</em><br/>Was ist kaputt?</p>
+<div aria-label="Fehler finden" class="wo-can-options">
+<label class="wo-can-option"><input name="wo-can-error-1" type="radio"/> Nach einer Zeitangabe vorne bleibt das Subjekt direkt danach.</label>
+<label class="wo-can-option"><input name="wo-can-error-1" type="radio"/> Im Englischen steht das Verb immer am Satzanfang.</label>
+<label class="wo-can-option"><input name="wo-can-error-1" type="radio"/> She darf nicht vor football stehen.</label>
+</div>
+<details class="wo-can-reveal"><summary>Lösung prüfen</summary><div>Richtig: <em>On Mondays she plays football.</em> Im Englischen gibt es hier keine deutsche Verb-Umstellung.</div></details>
+</section>
+<section class="wo-can-card">
+<h3 class="wo-can-card-title">3. Satz reparieren</h3>
+<p class="wo-can-task">Falsch: <em>I go tomorrow to school.</em><br/>Schreibe den Satz nach der Schulregel Ort vor Zeit.</p>
+<input aria-label="Richtigen Satz eintippen" class="wo-can-sentence" placeholder="I go ... ?" type="text"/>
+<details class="wo-can-reveal"><summary>Lösung prüfen</summary><div>Richtig: <em>I go to school tomorrow.</em> Ort kommt vor Zeit: to school vor tomorrow.</div></details>
+</section>
+<section class="wo-can-card">
+<h3 class="wo-can-card-title">4. Häufigkeitswort entscheiden</h3>
+<p class="wo-can-task">Wohin gehört <em>always</em>?</p>
+<ul class="wo-can-checklist">
+<li><label><input type="checkbox"/> Normales Verb: <em>She always plays tennis.</em></label></li>
+<li><label><input type="checkbox"/> to be: <em>She is always late.</em></label></li>
+<li><label><input type="checkbox"/> Nicht nach hinten schieben: <em>She plays tennis always.</em> ist nicht die Schulregel.</label></li>
+</ul>
+<details class="wo-can-reveal"><summary>Warum?</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es direkt nach am, is oder are.</div></details>
+</section>
+</div>
+<section class="wo-can-final wo-can-explain">
+<h3 class="wo-can-card-title">5. Kann ich es erklären?</h3>
+<p class="wo-can-task">Erklären ist der härtere Test. Schreibe die Regel kurz in eigenen Worten und nutze ein Beispiel.</p>
+<div class="wo-can-grid">
+<article class="wo-can-card">
+<h4 class="wo-can-card-title">A. Erkläre den Satz-Zug</h4>
+<p class="wo-can-task">Warum heißt es <em>She plays tennis in the garden on Saturdays.</em>?</p>
+<textarea aria-label="Erklärung zum Satz-Zug" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
+<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Im englischen Aussagesatz kommt zuerst das Subjekt, dann das Verb, dann die Sache. Danach kommt der Ort und zuletzt die Zeit.</div></details>
+</article>
+<article class="wo-can-card wo-can-card-trap">
+<h4 class="wo-can-card-title">B. Erkläre die Zeit-vorne-Falle</h4>
+<p class="wo-can-task">Warum heißt es <em>On Mondays she plays football.</em> und nicht <em>On Mondays plays she football.</em>?</p>
+<textarea aria-label="Erklärung zur Zeit-vorne-Falle" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
+<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Wenn eine Zeitangabe vorne steht, bleibt im Englischen das Subjekt direkt danach. Das Verb wandert nicht vor das Subjekt.</div></details>
+</article>
+<article class="wo-can-card">
+<h4 class="wo-can-card-title">C. Erkläre die Adverb-Regel</h4>
+<p class="wo-can-task">Warum heißt es <em>She often plays</em>, aber <em>She is often late</em>?</p>
+<textarea aria-label="Erklärung zur Adverb-Regel" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
+<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es nach am, is oder are.</div></details>
+</article>
+</div>
+<div class="wo-can-explain-check">
+<p class="wo-can-task"><span aria-hidden="true">🎯</span> Fertig bist du erst, wenn du diese drei Sätze erklären kannst:</p>
+<ol class="wo-can-explain-list">
+<li>Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</li>
+<li>Zeit vorne ist möglich, aber nur ohne deutsche Verb-Umstellung.</li>
+<li>Häufigkeitswörter stehen vor normalen Verben, aber nach to be.</li>
+</ol>
+</div>
+<section aria-labelledby="wo-can-status-title" class="wo-can-status">
+<h3 class="wo-can-status-title" id="wo-can-status-title">Wie sicher bin ich mit Word Order?</h3>
+<p class="wo-can-status-note">Wähle ehrlich aus. Das ist keine Note, sondern dein nächster Lernstand.</p>
+<div class="wo-can-status-options">
+<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="sicher"/> Sicher — ich kann es erklären und anwenden.</label>
+<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="fast-sicher"/> Fast sicher — ich brauche noch einzelne Beispiele.</label>
+<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="nochmal-pruefen"/> Nochmal prüfen — ich verwechsle noch etwas.</label>
+<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="offen"/> Offen — ich brauche dazu noch Hilfe.</label>
+</div>
+</section>
+</section>
+</div>
+</div>
+</div><!-- /LERNEN -->
+<!-- NACHSCHLAGEN -->
+<div class="compass-mode-panel" data-panel="wo-mode" data-val="reference" id="nachschlagen">
+<div class="wo-ref-wrap">
+<section aria-labelledby="wo-print-title" class="wo-print-spickzettel">
+<h2 id="wo-print-title">Word Order – Spickzettel</h2>
+<div class="wo-print-grid">
+<section class="wo-print-box">
+<h3>Kernregel</h3>
+<ul>
+<li>Im englischen Aussagesatz bleibt die Reihenfolge meistens fest.</li>
+<li>Subject → Verb → Object → Place → Time.</li>
+<li>Ort steht meistens vor Zeit.</li>
+<li>Wenn eine Zeitangabe vorne steht, bleibt dahinter trotzdem Subject → Verb.</li>
+</ul>
+</section>
+<section class="wo-print-box">
+<h3>Satzmuster</h3>
+<p class="wo-print-pattern">Normal: Person + Verb + Rest.</p>
+<p class="wo-print-pattern">Mit Ort und Zeit: Person + Verb + Objekt + Ort + Zeit.</p>
+<p class="wo-print-pattern">Zeit vorne: Time + Person + Verb + Rest.</p>
+<p class="wo-print-pattern">Häufigkeitswort: vor normales Verb, nach to be.</p>
+</section>
+<section class="wo-print-box wo-print-warning">
+<h3>Top-Denkfallen</h3>
+<p class="wo-print-pattern">Nicht: On Mondays plays she.</p>
+<p class="wo-print-pattern">Richtig: On Mondays she plays.</p>
+<p class="wo-print-pattern">Nicht: She plays always.</p>
+<p class="wo-print-pattern">Richtig: She always plays.</p>
+</section>
+<section class="wo-print-box">
+<h3>Kurz merken</h3>
+<p>Erst die Satzteile erkennen: Wer? Was tut die Person? Wen oder was? Wo? Wann?</p>
+<p>Bei normalen Aussagen nicht deutsch umstellen. Englisch bleibt klarer und fester.</p>
+</section>
+</div>
+<section class="wo-print-box">
+<h3>Typische Beispiele</h3>
+<ul>
+<li>Hanna plays football at school every Friday.</li>
+<li>On Saturday mornings I go shopping with Mum.</li>
+<li>I always brush my teeth before school.</li>
+<li>She is often late.</li>
+<li>Where does she play tennis?</li>
+</ul>
+</section>
+</section>
+<div class="wo-homework-note">📚 Hausaufgabenmodus: Hier bleiben nur Kurzregel, Satzmuster, Denkfallen und wenige Schulbeispiele sichtbar.</div>
+<div class="wo-ref-intro wo-homework-hide">🚂 Dein Word-Order-Spickzettel — die Satzstellung auf einen Blick.</div>
+<section class="wo-ref-section wo-ref-core wo-homework-keep">
+<p class="wo-ref-title">1. Kurz merken</p>
+<div class="wo-ref-grid">
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Grundregel</span>Subject → Verb → Object → Place → Time.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Ort vor Zeit</span>I play football at school every Friday.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Zeit vorne</span>On Mondays she plays football. Kein deutsches „spielt sie“.</div>
+</div>
+<div class="wo-ref-line">Merkhilfe: Wer macht was — wen oder was — wo — wann?</div>
+<div class="wo-ref-line">Häufigkeitswörter: normales Verb → davor; to be → danach.</div>
+</section>
+<section class="wo-ref-section wo-ref-patterns wo-homework-keep">
+<p class="wo-ref-title">2. Satzmuster</p>
+<div class="wo-ref-grid">
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Aussage</span>She plays tennis.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Mit Ort und Zeit</span>She plays tennis in the garden on Saturdays.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Zeit vorne</span>On Saturdays she plays tennis in the garden.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Normales Verb</span>She always plays tennis.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">to be</span>She is always late.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Frage</span>Where does she play tennis?</div>
+</div>
+<div class="wo-ref-long wo-homework-hide">
+<p class="wo-ref-title">Lange Übersicht: Satz-Zug</p>
+<div class="wo-table-scroll">
+<table>
+<thead><tr><th>Subject</th><th>Verb</th><th>Object</th><th>Place</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>play</td><td>football</td><td>at school</td><td>every Friday</td></tr>
+<tr><td>She</td><td>reads</td><td>a book</td><td>in her room</td><td>every evening</td></tr>
+<tr><td>We</td><td>go</td><td>—</td><td>to London</td><td>every year</td></tr>
+<tr><td>He</td><td>eats</td><td>lunch</td><td>at school</td><td>at 1 o'clock</td></tr>
+<tr><td>They</td><td>play</td><td>tennis</td><td>in the garden</td><td>on Saturdays</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="wo-ref-section wo-ref-traps wo-homework-keep">
+<p class="wo-ref-title">3. Typische Denkfallen</p>
+<div class="wo-ref-grid">
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Deutsch-Falle</span>On Mondays she plays. Nicht: On Mondays plays she.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Ort/Zeit-Falle</span>I go to school tomorrow. Nicht: I go tomorrow to school.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Adverb-Falle</span>She always plays. Nicht: She plays always.</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">to-be-Falle</span>She is always late. Nicht: She always is late.</div>
+</div>
+</section>
+<section class="wo-ref-section wo-ref-special wo-homework-hide">
+<p class="wo-ref-title">4. Sonderfälle und Hinweise</p>
+<div class="wo-ref-grid">
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Fragen</span>Bei Fragen wandert das Hilfsverb nach vorne: Does she play tennis?</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Zeitangabe vorne</span>Nur zur Betonung oder Abwechslung. Der normale Satz bleibt meistens einfacher.</div>
+</div>
+</section>
+<section class="wo-ref-section wo-ref-examples wo-homework-keep">
+<p class="wo-ref-title">5. Typische Schulbeispiele</p>
+<div class="wo-ref-ex-list">
+<div class="wo-ref-ex-row"><span>Hanna plays football at school every Friday.</span><span>Hanna spielt jeden Freitag in der Schule Fußball.</span><span class="wo-ref-chip">Ort vor Zeit</span></div>
+<div class="wo-ref-ex-row"><span>On Saturday mornings I go shopping with Mum.</span><span>Samstagmorgens gehe ich mit Mama einkaufen.</span><span class="wo-ref-chip">Zeit vorne</span></div>
+<div class="wo-ref-ex-row"><span>I always brush my teeth before school.</span><span>Ich putze immer meine Zähne vor der Schule.</span><span class="wo-ref-chip">Adverb</span></div>
+<div class="wo-ref-ex-row"><span>Mum sometimes comes home very late.</span><span>Mama kommt manchmal sehr spät nach Hause.</span><span class="wo-ref-chip">Adverb</span></div>
+<div class="wo-ref-ex-row wo-ref-extra wo-homework-hide"><span>We always have breakfast together on Sunday mornings.</span><span>Wir frühstücken sonntagmorgens immer zusammen.</span><span class="wo-ref-chip">Adverb</span></div>
+</div>
+</section>
+</div>
+</div>
+<!-- /NACHSCHLAGEN -->
+<!-- VERBINDUNGEN -->
+<div class="compass-mode-panel" data-panel="wo-mode" data-val="connections" id="verbindungen">
+<div class="wo-style-025">
+<p class="wo-style-026">🧭 Für die Klassenarbeit ist die wichtigste Achse: Word Order ↔ Adverbs of Frequency ↔ Questions ↔ Simple Present.</p>
+<div class="wo-style-027">
+<a aria-label="Adverbs of frequency öffnen" class="wo-style-028" href="adverbsoffrequency.html#lernen">
+<div class="wo-style-029">📍</div>
+<div>
+<h3 class="wo-style-030">Adverbs of Frequency — Häufigkeitswörter</h3>
+<p class="wo-style-031">Hier sitzt die wichtigste Schnittstelle: Häufigkeitswörter stehen bei normalen Verben vor dem Verb, bei to be nach am, is oder are.</p>
+<div class="wo-style-035">
+<span class="wo-style-032">She always plays tennis. ✓</span>
+<span class="wo-style-032">She is often late. ✓</span>
+</div>
+</div>
+</a>
+<a aria-label="Questions und How often öffnen" class="wo-style-028" href="questions.html#lernen">
+<div class="wo-style-033">❓</div>
+<div>
+<h3 class="wo-style-034">Questions / How often — Frage-Satzbau</h3>
+<p class="wo-style-031">Bei Fragen kommt zuerst das Fragewort, dann do oder does, dann die Person und dann das Verb in der Grundform.</p>
+<div class="wo-style-035">
+<span class="wo-style-036">How often does she play tennis? ✓</span>
+<span class="wo-style-037">How often she plays tennis? ✗</span>
+</div>
+</div>
+</a>
+<a aria-label="Simple Present öffnen" class="wo-style-028" href="simplepresent.html#lernen">
+<div class="wo-style-029">🔁</div>
+<div>
+<h3 class="wo-style-030">Simple Present — Gewohnheiten und Routinen</h3>
+<p class="wo-style-031">Word Order hilft besonders bei Sätzen über Routinen: Person, Verb, Rest — und Häufigkeitswort an die richtige Stelle.</p>
+<div class="wo-style-035">
+<span class="wo-style-032">On Mondays she plays football. ✓</span>
+<span class="wo-style-037">On Mondays plays she football. ✗</span>
+</div>
+</div>
+</a>
+</div>
+<div class="wo-connection-secondary">
+<p>Später brauchst du Word Order auch bei anderen Zeiten. Für diese Klassenarbeit sind aber nur die drei Nachbarn oben wichtig.</p>
+</div>
+</div>
+</div><!-- /VERBINDUNGEN -->
+<!-- SCHREIB-CHECK -->
+<div class="compass-mode-panel" data-panel="wo-mode" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>✍️ Schreib-Check Word Order</h3>
+<p>Schreibe jeden Satz einmal selbst. Jede Aufgabe prüft eine andere Satzbau-Entscheidung.</p>
+</div>
+<div class="writecheck-grid" id="writecheck-tasks">
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-01" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">Hanna / plays / tennis</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen englischen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-02" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">I play football / at school / every Friday</p><p class="writecheck-prompt">Schreibe den vollständigen Satz. Achte auf Ort und Zeit.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-03" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">On Mondays / she / plays / football</p><p class="writecheck-prompt">Schreibe den Satz mit der Zeitangabe vorne.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-04" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">She / always / plays / tennis</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-05" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-05"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 5</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">He / is / often / late</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-06" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">Where / does / she / play / tennis?</p><p class="writecheck-prompt">Schreibe die Frage in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-07" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">How often / does / she / play / tennis?</p><p class="writecheck-prompt">Schreibe die How often-Frage in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-08" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-08"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 8</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">On Mondays plays she football.</p><p class="writecheck-prompt">Verbessere den Fehler und schreibe den richtigen Satz.</p></article>
+</div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div><!-- /SCHREIB-CHECK -->
+<!-- NOTIZEN -->
+<div class="compass-mode-panel" data-panel="wo-mode" data-val="notes" id="notizen">
+<div class="notes-panel">
+<p class="notes-title">✏️ Mein Lernjournal zu Word Order</p>
+<div class="notes-grid">
+<div class="note-field">
+<label class="note-field-label" for="note-understood">💡 Das habe ich verstanden</label>
+<p class="note-help">Welche Satzbau-Regel kannst du schon erklären?</p>
+<textarea class="note-textarea" id="note-understood" placeholder="Heute habe ich verstanden, dass ..."></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-unclear">🤔 Das ist noch unklar</label>
+<p class="note-help">Wo verwechselst du noch die Reihenfolge?</p>
+<textarea class="note-textarea" id="note-unclear" placeholder="Hier bin ich noch unsicher bei ..."></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-question">❓ Das möchte ich fragen</label>
+<p class="note-help">Welche Frage möchtest du noch stellen?</p>
+<textarea class="note-textarea" id="note-question" placeholder="Das möchte ich im Unterricht oder zu Hause noch fragen ..."></textarea>
+</div>
+</div>
+<div class="note-example-wrap">
+<label class="note-example-label" for="note-example">✍️ Mein eigener Beispielsatz</label>
+<p class="note-help">Schreibe einen eigenen Satz mit richtiger Reihenfolge.</p>
+<input class="note-example-input" id="note-example" placeholder="z. B. I always play football at school on Fridays." type="text"/>
+</div>
+<div class="notes-save-row">
+<button class="notes-save-btn" data-wo-action="save-notes" type="button">Lernjournal speichern</button>
+<span class="notes-saved" id="notes-saved">✓ Gespeichert!</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>
+(function() {
+
+  /* kompass_last_topic setzen */
+  try { localStorage.setItem('kompass_last_topic', 'wordorder'); } catch(e) {}
+  var SKN = 'kompass_wordorder_journal';
+  var SKN_OLD = 'kompass_wordorder_notes';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+
+  /* ══════════════════════════════════════
+     DRAG & DROP BAUKASTEN
+  ══════════════════════════════════════ */
+  var TASKS = [
+    {
+      id:'t1', type:'aussage',
+      label:'1. Normaler Aussagesatz — Subject · Verb · Object · Place · Time',
+      blocks:['I','play','football','at school','every Friday'],
+      answer:[0,1,2,3,4],
+      rule:'Subject → Verb → Object → Ort → Zeit'
+    },
+    {
+      id:'t2', type:'place-time',
+      label:'2. Ort vor Zeit — sichere Schulregel',
+      blocks:['She','plays','tennis','in the garden','on Saturdays'],
+      answer:[0,1,2,3,4],
+      rule:'Subject → Verb → Object → Ort → Zeit'
+    },
+    {
+      id:'t3', type:'zeit-vorne',
+      label:'3. Zeitangabe vorne — kein Verb-Inversion!',
+      blocks:['On Mondays','she','plays','football'],
+      answer:[0,1,2,3],
+      rule:'Zeitangabe vorne → Subjekt bleibt direkt dahinter (kein "plays she"!)'
+    },
+    {
+      id:'t4', type:'time-front-adverb',
+      label:'4. Zeit vorne + Häufigkeitswort — keine deutsche Umstellung',
+      blocks:['On Mondays','she','always','plays','football'],
+      answer:[0,1,2,3,4],
+      rule:'Zeit vorne → Subjekt bleibt direkt danach; always steht vor dem normalen Verb'
+    },
+    {
+      id:'t5', type:'adverb',
+      label:'5. Häufigkeitswort — vor normalem Verb',
+      blocks:['She','always','plays','tennis'],
+      answer:[0,1,2,3],
+      rule:'Häufigkeitswort steht VOR dem normalen Verb'
+    },
+    {
+      id:'t6', type:'adverb-tobe',
+      label:'6. Häufigkeitswort — nach to be',
+      blocks:['He','is','always','late'],
+      answer:[0,1,2,3],
+      rule:'Nach to be (am/is/are) kommt das Häufigkeitswort DANACH'
+    },
+    {
+      id:'t7', type:'w-frage',
+      label:'7. W-Frage — Fragewort zuerst',
+      blocks:['Where','does','she','play','tennis?'],
+      answer:[0,1,2,3,4],
+      rule:'Fragewort → Hilfsverb → Subjekt → Grundform'
+    },
+    {
+      id:'t8', type:'how-often',
+      label:'8. How often-Frage — Fragewort + does + Person + Verb',
+      blocks:['How often','does','she','play','tennis?'],
+      answer:[0,1,2,3,4],
+      rule:'How often → does → Person → Grundform des Verbs'
+    }
+  ];
+
+  var currentTaskIdx = 0;
+  var dragState = {
+    dragging: null,
+    fromSlot: null
+  };
+
+  function getTask() { return TASKS[currentTaskIdx]; }
+
+  function buildBaukasten() {
+    var task = getTask();
+    var label = document.getElementById('bk-task-label');
+    var pool  = document.getElementById('bk-pool');
+    var slots = document.getElementById('bk-slots');
+    var fb    = document.getElementById('bk-feedback');
+    var ctr   = document.getElementById('bk-counter');
+    if (!pool || !slots) return;
+    if (label) label.textContent = task.label;
+    if (ctr)   ctr.textContent = (currentTaskIdx + 1) + ' / ' + TASKS.length;
+    if (fb)    { fb.className = 'bk-feedback'; fb.textContent = ''; }
+
+    /* Shuffle blocks for pool */
+    var shuffled = task.blocks.slice();
+    for (var i=shuffled.length-1;i>0;i--) {
+      var j=Math.floor(Math.random()*(i+1));
+      var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;
+    }
+
+    pool.innerHTML = '';
+    shuffled.forEach(function(b, idx) {
+      var btn = document.createElement('button');
+      btn.className = 'bk-block';
+      btn.textContent = b;
+      btn.dataset.word = b;
+      btn.setAttribute('draggable','true');
+      btn.setAttribute('type','button');
+      btn.addEventListener('click', function() { moveToNextSlot(btn); });
+      btn.addEventListener('dragstart', function(e) {
+        dragState.dragging = btn;
+        dragState.fromSlot = null;
+        e.dataTransfer.effectAllowed = 'move';
+        setTimeout(function(){ btn.classList.add('is-dragging'); }, 0);
+      });
+      btn.addEventListener('dragend', function() { btn.classList.remove('is-dragging'); dragState.dragging=null; });
+      pool.appendChild(btn);
+    });
+
+    slots.innerHTML = '';
+    task.blocks.forEach(function(_, idx) {
+      var slot = document.createElement('div');
+      slot.className = 'bk-slot';
+      slot.dataset.slotIdx = idx;
+      slot.textContent = (idx+1) + '.';
+      slot.addEventListener('dragover', function(e) { e.preventDefault(); slot.classList.add('bk-slot-over'); });
+      slot.addEventListener('dragleave', function() { slot.classList.remove('bk-slot-over'); });
+      slot.addEventListener('drop', function(e) {
+        e.preventDefault();
+        slot.classList.remove('bk-slot-over');
+        if (!dragState.dragging) return;
+        var existing = slot.querySelector('.bk-block');
+        if (existing) {
+          /* swap back to pool */
+          existing.remove();
+          slot.textContent = (idx+1) + '.';
+          document.getElementById('bk-pool').appendChild(existing);
+        }
+        slot.textContent = '';
+        slot.appendChild(dragState.dragging);
+        dragState.dragging.classList.remove('is-dragging');
+        dragState.dragging = null;
+      });
+      slot.addEventListener('click', function() {
+        var block = slot.querySelector('.bk-block');
+        if (block) {
+          block.remove();
+          slot.textContent = (idx+1) + '.';
+          document.getElementById('bk-pool').appendChild(block);
+        }
+      });
+      slots.appendChild(slot);
+    });
+  }
+
+  function moveToNextSlot(btn) {
+    var slots = document.querySelectorAll('.bk-slot');
+    for (var i=0;i<slots.length;i++) {
+      if (!slots[i].querySelector('.bk-block')) {
+        slots[i].textContent = '';
+        slots[i].appendChild(btn);
+        return;
+      }
+    }
+  }
+
+  window.checkBaukasten = function() {
+    var task  = getTask();
+    var slots = document.querySelectorAll('.bk-slot');
+    var fb    = document.getElementById('bk-feedback');
+    var built = [];
+    slots.forEach(function(s) {
+      var b = s.querySelector('.bk-block');
+      built.push(b ? b.dataset.word : null);
+    });
+    var correct = task.answer.map(function(i){ return task.blocks[i]; });
+    var allFilled = built.every(function(w){ return w !== null; });
+    if (!allFilled) {
+      if (fb) { fb.className = 'bk-feedback is-warning'; fb.textContent = '⚠️ Bitte alle Blöcke in die Felder ziehen!'; }
+      return;
+    }
+    var ok = built.join('|') === correct.join('|');
+    slots.forEach(function(s,i) {
+      var b = s.querySelector('.bk-block');
+      if (b) b.classList.toggle('bk-block-wrong', b.dataset.word !== correct[i]);
+    });
+    if (ok) {
+      if (fb) { fb.className = 'bk-feedback is-correct'; fb.innerHTML = '✅ Richtig! ' + correct.join(' ') + '<br><span class="feedback-detail">Regel: ' + task.rule + '</span>'; }
+    } else {
+      if (fb) { fb.className = 'bk-feedback is-error'; fb.innerHTML = '❌ Nicht ganz. Die Blöcke mit rotem Rand sind falsch platziert.<br><span class="feedback-detail">Tipp: ' + task.rule + '</span>'; }
+    }
+  };
+
+  window.resetBaukasten = function() {
+    buildBaukasten();
+  };
+
+  window.nextTask = function() {
+    currentTaskIdx = (currentTaskIdx + 1) % TASKS.length;
+    buildBaukasten();
+  };
+
+  window.prevTask = function() {
+    currentTaskIdx = (currentTaskIdx - 1 + TASKS.length) % TASKS.length;
+    buildBaukasten();
+  };
+
+  /* ══════════════════════════════════════
+     FEHLER-ERKENNER
+  ══════════════════════════════════════ */
+  var ERROR_TASKS = [
+    {
+      sentence: ['I', 'play', 'always', 'football', 'at school.'],
+      wrongIdx: 2,
+      rule: '"always" muss VOR dem Verb stehen: I always play football at school.',
+      correct: 'I always play football at school.'
+    },
+    {
+      sentence: ['She', 'is', 'late', 'always.'],
+      wrongIdx: 3,
+      rule: 'Nach to be kommt das Adverb DANACH: She is always late.',
+      correct: 'She is always late.'
+    },
+    {
+      sentence: ['On Mondays', 'plays', 'she', 'football.'],
+      wrongIdx: 1,
+      rule: 'Kein Verb-Inversion nach Zeitangabe! Richtig: On Mondays she plays football.',
+      correct: 'On Mondays she plays football.'
+    },
+    {
+      sentence: ['I', 'go', 'tomorrow', 'to school.'],
+      wrongIdx: 2,
+      rule: 'Für unsere Schulregel gilt: Ort vor Zeit. Richtig: I go to school tomorrow.',
+      correct: 'I go to school tomorrow.'
+    },
+    {
+      sentence: ['Never', 'I', 'eat', 'fish.'],
+      wrongIdx: 0,
+      rule: 'Für diesen Klasse-5-Satz steht never vor dem normalen Verb: I never eat fish.',
+      correct: 'I never eat fish.'
+    },
+    {
+      sentence: ['She', 'tennis', 'plays', 'every Friday.'],
+      wrongIdx: 1,
+      rule: 'Im englischen Aussagesatz kommt erst die Person, dann das Verb, dann die Sache: She plays tennis every Friday.',
+      correct: 'She plays tennis every Friday.'
+    },
+    {
+      sentence: ['How often', 'she', 'does', 'play', 'tennis?'],
+      wrongIdx: 1,
+      rule: 'In einer How often-Frage kommt do/does vor die Person: How often does she play tennis?',
+      correct: 'How often does she play tennis?'
+    },
+    {
+      sentence: ['Always', 'she', 'is', 'happy.'],
+      wrongIdx: 0,
+      rule: 'Adverb of frequency kommt nach to be: She is always happy.',
+      correct: 'She is always happy.'
+    }
+  ];
+
+  var errIdx = 0;
+  var errShuffled = ERROR_TASKS.slice();
+  (function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}})(errShuffled);
+
+  function showErrorTask() {
+    var task = errShuffled[errIdx % errShuffled.length];
+    var sent = document.getElementById('err-sentence');
+    var fb   = document.getElementById('err-feedback');
+    var ctr  = document.getElementById('err-counter');
+    if (!sent) return;
+    sent.innerHTML = '';
+    task.sentence.forEach(function(word, i) {
+      var span = document.createElement('span');
+      span.className = 'err-word';
+      span.textContent = word;
+      span.dataset.idx = i;
+      span.addEventListener('click', function() { checkError(i, task); });
+      sent.appendChild(span);
+    });
+    if (fb)  { fb.className='err-feedback'; fb.textContent=''; }
+    if (ctr) ctr.textContent = (errIdx % errShuffled.length + 1) + ' / ' + errShuffled.length;
+    /* reset word highlights */
+    document.querySelectorAll('.err-word').forEach(function(s){ s.classList.remove('err-word-selected','err-word-correct','err-word-wrong'); });
+  }
+
+  function checkError(clickedIdx, task) {
+    var fb = document.getElementById('err-feedback');
+    document.querySelectorAll('.err-word').forEach(function(s){ s.classList.remove('err-word-selected','err-word-correct','err-word-wrong'); });
+    var words = document.querySelectorAll('.err-word');
+    if (clickedIdx === task.wrongIdx) {
+      words[clickedIdx].classList.add('err-word-correct');
+      if (fb) { fb.className='err-feedback is-correct'; fb.innerHTML = '✅ Genau! <span class="feedback-emphasis">' + task.sentence[clickedIdx] + '</span> steht falsch.<br><span class="feedback-detail">' + task.rule + '</span><br><span class="feedback-detail-success">Richtig: ' + task.correct + '</span>'; }
+    } else {
+      words[clickedIdx].classList.add('err-word-wrong');
+      if (task.wrongIdx < words.length) words[task.wrongIdx].classList.add('err-word-correct');
+      if (fb) { fb.className='err-feedback is-error'; fb.innerHTML = '❌ Nicht ganz. Das falsche Wort war <span class="feedback-emphasis">' + task.sentence[task.wrongIdx] + '</span>.<br><span class="feedback-detail">' + task.rule + '</span>'; }
+    }
+  }
+
+  window.nextError = function() {
+    errIdx++;
+    showErrorTask();
+  };
+
+
+  /* ══════════════════════════════════════
+     SIGNALWORT-DETEKTOR
+  ══════════════════════════════════════ */
+  var SIGNAL_TASKS = [
+    {words:['She','always','plays','tennis.'],target:'always',type:'adverb',rule:'Normales Verb: Häufigkeitswort direkt vor das Verb. She always plays tennis.'},
+    {words:['He','is','often','late.'],target:'often',type:'adverb-tobe',rule:'to be: Häufigkeitswort direkt nach am/is/are. He is often late.'},
+    {words:['I','sometimes','walk','home.'],target:'sometimes',type:'adverb',rule:'Normales Verb: sometimes steht vor walk. I sometimes walk home.'},
+    {words:['They','are','usually','happy.'],target:'usually',type:'adverb-tobe',rule:'to be: usually steht nach are. They are usually happy.'},
+    {words:['We','never','eat','fish.'],target:'never',type:'adverb',rule:'Normales Verb: never steht vor eat. We never eat fish.'}
+  ];
+  var signalIdx = 0;
+  function showSignalTask(){
+    var task=SIGNAL_TASKS[signalIdx % SIGNAL_TASKS.length];
+    var wrap=document.getElementById('signal-sentence');
+    var tip=document.getElementById('signal-tip');
+    var ctr=document.getElementById('signal-counter');
+    if(!wrap)return;
+    wrap.innerHTML='';
+    task.words.forEach(function(w){
+      var clean=w.replace(/[.!?]/g,'');
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='signal-word';
+      btn.textContent=w;
+      btn.setAttribute('aria-label','Wort '+w+' prüfen');
+      btn.addEventListener('click',function(){checkSignalWord(btn,clean,task);});
+      wrap.appendChild(btn);
+    });
+    if(tip){tip.className='signal-tip';tip.innerHTML='';}
+    if(ctr)ctr.textContent=(signalIdx % SIGNAL_TASKS.length + 1)+' / '+SIGNAL_TASKS.length;
+  }
+  function checkSignalWord(btn,word,task){
+    document.querySelectorAll('.signal-word').forEach(function(b){b.classList.remove('is-correct','is-wrong');});
+    var tip=document.getElementById('signal-tip');
+    if(word.toLowerCase()===task.target.toLowerCase()){
+      btn.classList.add('is-correct');
+      if(tip){tip.className='signal-tip is-visible';tip.innerHTML='<span class="signal-mini-rule">Regel</span>'+task.rule;}
+    }else{
+      btn.classList.add('is-wrong');
+      if(tip){tip.className='signal-tip is-visible';tip.innerHTML='Noch nicht. Suche ein Wort wie <span class="feedback-emphasis">always, often, sometimes, usually</span> oder <span class="feedback-emphasis">never</span>.';}
+    }
+  }
+  window.nextSignalTask=function(){
+    signalIdx=(signalIdx+1)%SIGNAL_TASKS.length;
+    showSignalTask();
+  };
+
+  /* ══════════════════════════════════════
+     ADVERB-QUIZ
+  ══════════════════════════════════════ */
+  var ADVERB_TASKS = [
+    {sentence:'She ___ plays tennis.', adverb:'often', posA:'She often plays tennis.', posB:'She plays often tennis.', correct:'A', rule:'Adverb of frequency vor normalem Verb'},
+    {sentence:'He is ___ late.', adverb:'always', posA:'He is always late.', posB:'He is late always.', correct:'A', rule:'Adverb of frequency nach to be'},
+    {sentence:'I ___ eat fish.', adverb:'never', posA:'I never eat fish.', posB:'I eat never fish.', correct:'A', rule:'Adverb of frequency vor normalem Verb'},
+    {sentence:'They are ___ happy.', adverb:'usually', posA:'They are usually happy.', posB:'They are happy usually.', correct:'A', rule:'Adverb of frequency nach to be'},
+    {sentence:'We ___ go to school by bus.', adverb:'sometimes', posA:'We sometimes go to school by bus.', posB:'We go sometimes to school by bus.', correct:'A', rule:'Adverb of frequency vor normalem Verb'},
+    {sentence:'She is ___ tired.', adverb:'always', posA:'She is always tired.', posB:'She is tired always.', correct:'A', rule:'Häufigkeitswort nach to be'}
+  ];
+  var advIdx = 0;
+  var advShuffled = ADVERB_TASKS.slice();
+  (function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}})(advShuffled);
+  var advScore = 0; var advTotal = 0;
+
+  function showAdvTask() {
+    var task = advShuffled[advIdx % advShuffled.length];
+    var sent = document.getElementById('adv-sentence');
+    var adv  = document.getElementById('adv-word');
+    var btnA = document.getElementById('adv-btn-a');
+    var btnB = document.getElementById('adv-btn-b');
+    var fb   = document.getElementById('adv-feedback');
+    var ctr  = document.getElementById('adv-counter');
+    var sc   = document.getElementById('adv-score');
+    if (sent) sent.textContent = task.sentence;
+    if (adv)  adv.textContent = task.adverb;
+    if (btnA) { btnA.textContent = task.posA; btnA.classList.remove('adv-btn-right','adv-btn-wrong'); }
+    if (btnB) { btnB.textContent = task.posB; btnB.classList.remove('adv-btn-right','adv-btn-wrong'); }
+    if (fb)   fb.className = 'adv-feedback';
+    if (ctr)  ctr.textContent = (advIdx % advShuffled.length + 1) + ' / ' + advShuffled.length;
+    if (sc)   sc.textContent = advTotal + ' bearbeitet';
+  }
+
+  window.answerAdverb = function(choice) {
+    var task = advShuffled[advIdx % advShuffled.length];
+    var fb   = document.getElementById('adv-feedback');
+    var btnA = document.getElementById('adv-btn-a');
+    var btnB = document.getElementById('adv-btn-b');
+    var sc   = document.getElementById('adv-score');
+    advTotal++;
+    var ok = (choice === task.correct);
+    if (ok) {
+      advScore++;
+      var btn = choice==='A' ? btnA : btnB;
+      if (btn) btn.classList.add('adv-btn-right');
+      if (fb) { fb.className='adv-feedback is-correct'; fb.textContent = '✅ Richtig entschieden. ' + task.rule; }
+    } else {
+      var wrongBtn = choice==='A' ? btnA : btnB;
+      var rightBtn = choice==='A' ? btnB : btnA;
+      if (wrongBtn) wrongBtn.classList.add('adv-btn-wrong');
+      if (rightBtn) rightBtn.classList.add('adv-btn-right');
+      if (fb) { fb.className='adv-feedback is-error'; fb.textContent = 'Noch nicht. ' + task.rule; }
+    }
+    if (sc) sc.textContent = advTotal + ' bearbeitet';
+    advIdx++;
+    setTimeout(function(){ showAdvTask(); }, 1400);
+  };
+
+
+  /* ── Schreib-Check Word Order ── */
+  var WRITE_TASKS = [
+    {id:'wo-wc-01',reviewId:'wo-wc-01',reviewLabel:'Subject · Verb · Object',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'svo',skillLabel:'Subject · Verb · Object',context:'Hanna / plays / tennis',prompt:'Schreibe den Satz in der richtigen englischen Reihenfolge.',accepted:['Hanna plays tennis.'],canonical:'Hanna plays tennis.',correct:'Richtig. Im englischen Aussagesatz kommt zuerst die Person, dann das Verb, dann die Sache.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-02',reviewId:'wo-wc-02',reviewLabel:'Ort vor Zeit',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'place-time',skillLabel:'Ort vor Zeit',context:'I play football / at school / every Friday',prompt:'Schreibe den vollständigen Satz. Achte auf Ort und Zeit.',accepted:['I play football at school every Friday.'],canonical:'I play football at school every Friday.',correct:'Richtig. In unseren Klasse-5-Standardsätzen kommt der Ort vor der Zeit.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-03',reviewId:'wo-wc-03',reviewLabel:'Zeit vorne',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front',skillLabel:'Zeit vorne',context:'On Mondays / she / plays / football',prompt:'Schreibe den Satz mit der Zeitangabe vorne.',accepted:['On Mondays she plays football.'],canonical:'On Mondays she plays football.',correct:'Richtig. Auch mit Zeit vorne bleibt she direkt vor dem Verb.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-04',reviewId:'wo-wc-04',reviewLabel:'Häufigkeitswort + normales Verb',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-normal',skillLabel:'Häufigkeitswort + normales Verb',context:'She / always / plays / tennis',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['She always plays tennis.'],canonical:'She always plays tennis.',correct:'Richtig. Always steht vor einem normalen Verb.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-05',reviewId:'wo-wc-05',reviewLabel:'Häufigkeitswort + to be',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-tobe',skillLabel:'Häufigkeitswort + to be',context:'He / is / often / late',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['He is often late.'],canonical:'He is often late.',correct:'Richtig. Bei to be steht das Häufigkeitswort nach am, is oder are.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-06',reviewId:'wo-wc-06',reviewLabel:'Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'question',skillLabel:'Frage',context:'Where / does / she / play / tennis?',prompt:'Schreibe die Frage in der richtigen Reihenfolge.',accepted:['Where does she play tennis?'],canonical:'Where does she play tennis?',correct:'Richtig. Bei einer W-Frage kommt zuerst das Fragewort, dann does, dann die Person.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'wo-wc-07',reviewId:'wo-wc-07',reviewLabel:'How often-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'how-often-question',skillLabel:'How often-Frage',context:'How often / does / she / play / tennis?',prompt:'Schreibe die How often-Frage in der richtigen Reihenfolge.',accepted:['How often does she play tennis?'],canonical:'How often does she play tennis?',correct:'Richtig. Bei How often kommt nach dem Fragewort erst does, dann die Person und dann das Verb in der Grundform.',wrong:'Noch nicht. Prüfe die Frage-Maschine: How often → does → Person → Grundform.'},
+    {id:'wo-wc-08',reviewId:'wo-wc-08',reviewLabel:'Zeit vorne ohne Umstellung',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front-trap',skillLabel:'Zeit vorne ohne Umstellung',context:'On Mondays plays she football.',prompt:'Verbessere den Fehler und schreibe den richtigen Satz.',accepted:['On Mondays she plays football.','She plays football on Mondays.'],canonical:'On Mondays she plays football.',correct:'Richtig. Nach einer Zeitangabe vorne kommt im Englischen kein Verbtausch.',wrong:'Noch nicht. Nach der Zeitangabe vorne bleibt die Reihenfolge Person → Verb: On Mondays she plays football.'}
+  ];
+  window.WRITE_TASKS = WRITE_TASKS;
+
+  function escapeHtml(value){
+    return String(value || '').replace(/[&<>"']/g,function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+    });
+  }
+  function normaliseWriteAnswer(s){
+    return String(s||'')
+      .replace(/[’‘`´]/g,"'")
+      .replace(/\u00a0/g,' ')
+      .replace(/[“”]/g,'"')
+      .replace(/,/g,'')
+      .replace(/\s+/g,' ')
+      .trim()
+      .replace(/[.!?]+$/,'')
+      .toLowerCase();
+  }
+  function startsLowercase(value){
+    var match = String(value || '').trim().match(/[A-Za-z]/);
+    return !!(match && match[0] === match[0].toLowerCase());
+  }
+  function expectedPunctuationMissing(task,value){
+    var raw = String(value || '').trim();
+    var canon = String(task.canonical || '');
+    if(!raw)return false;
+    if(/\?$/.test(canon))return !/\?\s*$/.test(raw);
+    if(/[.!]$/.test(canon))return !/[.!]\s*$/.test(raw);
+    return false;
+  }
+  function getWriteStore(){
+    try{return JSON.parse(localStorage.getItem(WRITE_KEY)||'{}');}catch(e){return {};}
+  }
+  function setWriteStore(store){
+    try{localStorage.setItem(WRITE_KEY,JSON.stringify(store));}catch(e){}
+  }
+  function getWriteTask(id){
+    return WRITE_TASKS.find(function(t){return t.id===id;});
+  }
+  function answerAccepted(task,value){
+    var n=normaliseWriteAnswer(value);
+    return (task.accepted||[]).some(function(a){return normaliseWriteAnswer(a)===n;});
+  }
+  function answerAlmostAccepted(task,value){
+    var n=normaliseWriteAnswer(value);
+    return (task.almostAccepted||[]).some(function(a){return normaliseWriteAnswer(a)===n;});
+  }
+  function checkWriteAnswer(task,value){
+    if(!normaliseWriteAnswer(value))return {status:'empty',message:'Schreib erst eine Antwort hinein.'};
+    if(answerAccepted(task,value)){
+      var almost = startsLowercase(value) || expectedPunctuationMissing(task,value);
+      return {
+        status:almost?'almost':'correct',
+        message:almost?(task.almost || 'Fast richtig. Die Lösung stimmt, achte noch auf Großschreibung oder Satzzeichen.'):task.correct
+      };
+    }
+    if(answerAlmostAccepted(task,value))return {status:'almost',message:task.almost || 'Fast richtig. Prüfe noch die genaue Form.'};
+    return {status:'wrong',message:task.wrong};
+  }
+  function solutionText(task){
+    var canonical = task.canonical ? String(task.canonical) : '';
+    var hint = task.wrong ? String(task.wrong) : '';
+    if(hint && canonical && hint.indexOf(canonical) === -1)return hint + ' Lösung: ' + canonical;
+    if(hint)return hint;
+    return canonical ? 'Lösung: ' + canonical : 'Die Lösung ist in der Aufgabe hinterlegt.';
+  }
+  function renderWritecheck(){
+    var wrap=document.getElementById('writecheck-tasks');
+    if(!wrap)return;
+    wrap.innerHTML=WRITE_TASKS.map(function(t,i){
+      return '<div class="writecheck-task" id="write-task-'+escapeHtml(t.id)+'" data-review-id="'+escapeHtml(t.reviewId || t.id)+'" data-topic-id="wordorder" data-review-source="writecheck" data-type="stolperstelle">'
+        +'<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe '+(i+1)+'</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>'
+        +(t.context?'<p class="writecheck-context">'+escapeHtml(t.context)+'</p>':'')
+        +'<p class="writecheck-prompt">'+escapeHtml(t.prompt)+'</p>'
+        +'<div class="writecheck-input-row"><input class="writecheck-input" id="input-'+escapeHtml(t.id)+'" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="'+escapeHtml(t.id)+'">Prüfen</button></div>'
+        +'<div class="writecheck-feedback" id="feedback-'+escapeHtml(t.id)+'"></div>'
+        +'</div>';
+    }).join('');
+  }
+  function showWriteFeedback(task,result){
+    var card=document.getElementById('write-task-'+task.id);
+    var fb=document.getElementById('feedback-'+task.id);
+    if(card){
+      card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+      if(result.status!=='empty')card.classList.add('is-'+result.status);
+    }
+    if(!fb)return;
+    fb.className='writecheck-feedback is-visible is-'+result.status;
+    if(result.status==='wrong'){
+      fb.innerHTML=escapeHtml(result.message)+' <button type="button" class="writecheck-btn writecheck-solution-btn" data-writecheck-solution="'+escapeHtml(task.id)+'">Lösung anzeigen</button>';
+    }else{
+      fb.textContent=result.message;
+    }
+  }
+  function clearWriteVisual(task,clearInput){
+    var card=document.getElementById('write-task-'+task.id);
+    var fb=document.getElementById('feedback-'+task.id);
+    var input=document.getElementById('input-'+task.id);
+    if(card)card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+    if(fb){fb.className='writecheck-feedback';fb.textContent='';}
+    if(clearInput && input)input.value='';
+  }
+  function collectWriteSummary(store){
+    var counts={correct:0,almost:0,wrong:0,open:0};
+    var strong=[];
+    var focus=[];
+    WRITE_TASKS.forEach(function(t){
+      var r=store[t.id];
+      if(!r){counts.open++;return;}
+      if(r.status==='correct'){counts.correct++;strong.push(t.skillLabel||t.skill||'Aufgabe');}
+      else if(r.status==='almost'){counts.almost++;focus.push(t.skillLabel||t.skill||'Aufgabe');}
+      else if(r.status==='wrong'){counts.wrong++;focus.push(t.skillLabel||t.skill||'Aufgabe');}
+      else{counts.open++;}
+    });
+    var attempted=counts.correct+counts.almost+counts.wrong;
+    var status='orange',label='noch offen';
+    if(attempted && counts.wrong===0 && (counts.correct+counts.almost)===WRITE_TASKS.length){status='green';label='sicher';}
+    else if(attempted && (counts.correct+counts.almost)>=Math.ceil(WRITE_TASKS.length*0.6)){status='yellow';label='fast sicher';}
+    return {counts:counts,attempted:attempted,total:WRITE_TASKS.length,status:status,label:label,strong:strong,focus:focus};
+  }
+  function saveWriteSummary(store){
+    var sum=collectWriteSummary(store);
+    store.wordorder={
+      topicId:'wordorder',
+      topicTitle:'Word Order',
+      total:sum.total,
+      attempted:sum.attempted,
+      correct:sum.counts.correct,
+      almost:sum.counts.almost,
+      wrong:sum.counts.wrong,
+      open:sum.counts.open,
+      status:sum.status,
+      label:sum.label,
+      strongSkills:sum.strong,
+      focusSkills:sum.focus,
+      lastDone:new Date().toISOString().slice(0,10),
+      lastUpdated:new Date().toISOString()
+    };
+    var taskStore={};
+    WRITE_TASKS.forEach(function(t){if(store[t.id])taskStore[t.id]=store[t.id];});
+    store.wordorderTasks=taskStore;
+  }
+  function saveWriteResult(task,result,value){
+    var store=getWriteStore();
+    if(result.status==='empty'){
+      delete store[task.id];
+    }else{
+      store[task.id]={
+        topicId:'wordorder',
+        topicTitle:'Word Order',
+        reviewId:task.reviewId || task.id,
+        reviewLabel:task.reviewLabel || task.skillLabel || '',
+        reviewType:task.reviewType || 'stolperstelle',
+        reviewSource:task.reviewSource || 'writecheck',
+        skill:task.skill||'',
+        skillLabel:task.skillLabel||'',
+        status:result.status,
+        message:result.message,
+        value:String(value||'').trim(),
+        updated:new Date().toISOString()
+      };
+    }
+    saveWriteSummary(store);
+    setWriteStore(store);
+  }
+  function renderWriteSummary(emptyOnly){
+    var box=document.getElementById('writecheck-summary');
+    if(!box)return;
+    var sum=collectWriteSummary(getWriteStore());
+    if(!sum.attempted){
+      box.className='writecheck-summary is-visible';
+      box.innerHTML='<h3 class="writecheck-summary-title">Ergebnis</h3><p>Schreib erst mindestens eine Antwort hinein. Leere Aufgaben werden nicht bewertet.</p>';
+      return;
+    }
+    if(emptyOnly)return;
+    var strongHtml=sum.strong.length?sum.strong.slice(0,5).map(function(s){return '<li>'+escapeHtml(s)+'</li>';}).join(''):'<li>Noch nichts sicher.</li>';
+    var focusHtml=sum.focus.length?sum.focus.slice(0,5).map(function(s){return '<li>'+escapeHtml(s)+'</li>';}).join(''):'<li>Kein besonderer Fokus offen.</li>';
+    box.className='writecheck-summary is-visible';
+    box.innerHTML='<h3 class="writecheck-summary-title">Ergebnis</h3>'
+      +'<div class="writecheck-score">'+sum.counts.correct+' richtig · '+sum.counts.almost+' fast richtig · '+sum.counts.wrong+' noch nicht · '+sum.counts.open+' offen</div>'
+      +'<span class="writecheck-status is-'+sum.status+'">'+escapeHtml(sum.label)+'</span>'
+      +'<div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>'+strongHtml+'</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>'+focusHtml+'</ul></div></div>';
+  }
+  window.checkWriteTask=function(id){
+    var task=getWriteTask(id);
+    if(!task)return;
+    var input=document.getElementById('input-'+id);
+    var value=input?input.value:'';
+    var result=checkWriteAnswer(task,value);
+    showWriteFeedback(task,result);
+    saveWriteResult(task,result,value);
+  };
+  window.checkWritecheckAll=function(){
+    var store=getWriteStore();
+    var anyFilled=false;
+    WRITE_TASKS.forEach(function(t){
+      var input=document.getElementById('input-'+t.id);
+      var value=input?input.value:'';
+      if(!normaliseWriteAnswer(value)){
+        clearWriteVisual(t,false);
+        delete store[t.id];
+        return;
+      }
+      anyFilled=true;
+      var result=checkWriteAnswer(t,value);
+      showWriteFeedback(t,result);
+      if(result.status!=='empty'){
+        store[t.id]={
+          topicId:'wordorder',
+          topicTitle:'Word Order',
+          reviewId:t.reviewId || t.id,
+          reviewLabel:t.reviewLabel || t.skillLabel || '',
+          reviewType:t.reviewType || 'stolperstelle',
+          reviewSource:t.reviewSource || 'writecheck',
+          skill:t.skill||'',
+          skillLabel:t.skillLabel||'',
+          status:result.status,
+          message:result.message,
+          value:String(value||'').trim(),
+          updated:new Date().toISOString()
+        };
+      }
+    });
+    saveWriteSummary(store);
+    setWriteStore(store);
+    renderWriteSummary(!anyFilled);
+  };
+  window.resetWritecheck=function(){
+    var store=getWriteStore();
+    WRITE_TASKS.forEach(function(t){
+      clearWriteVisual(t,true);
+      delete store[t.id];
+    });
+    delete store.wordorder;
+    delete store.wordorderTasks;
+    setWriteStore(store);
+    var box=document.getElementById('writecheck-summary');
+    if(box){box.className='writecheck-summary';box.innerHTML='';}
+  };
+  window.showWriteSolution=function(id){
+    var task=getWriteTask(id);
+    if(!task)return;
+    var fb=document.getElementById('feedback-'+task.id);
+    if(!fb)return;
+    fb.className='writecheck-feedback is-visible is-wrong';
+    fb.textContent=solutionText(task);
+  };
+  function loadWritecheck(){
+    var store=getWriteStore();
+    WRITE_TASKS.forEach(function(t){
+      var r=store[t.id];
+      if(!r)return;
+      var input=document.getElementById('input-'+t.id);
+      if(input)input.value=r.value||'';
+      showWriteFeedback(t,{status:r.status,message:r.message || (r.status==='correct'?t.correct:t.wrong)});
+    });
+    var box=document.getElementById('writecheck-summary');
+    if(box && box.classList.contains('is-visible'))renderWriteSummary(false);
+  }
+
+  /* ══════════════════════════════════════
+     HAUSAUFGABEN-MODUS
+  ══════════════════════════════════════ */
+  var woPreviousModeBeforeHomework = null;
+  window.toggleHausaufgaben = function() {
+    var body = document.body;
+    var btn  = document.getElementById('ha-btn');
+    var activeMode = document.querySelector('[data-tab="wo-mode"][aria-pressed="true"]');
+    var refBtn = document.querySelector('[data-tab="wo-mode"][data-val="reference"]');
+    var isOn;
+
+    if (!body.classList.contains('hausaufgaben-mode')) {
+      woPreviousModeBeforeHomework = activeMode ? activeMode.getAttribute('data-val') : 'learn';
+      body.classList.add('hausaufgaben-mode');
+      isOn = true;
+      if (refBtn) refBtn.click();
+    } else {
+      body.classList.remove('hausaufgaben-mode');
+      isOn = false;
+      var restoreBtn = woPreviousModeBeforeHomework ? document.querySelector('[data-tab="wo-mode"][data-val="' + woPreviousModeBeforeHomework + '"]') : null;
+      if (restoreBtn) restoreBtn.click();
+      woPreviousModeBeforeHomework = null;
+    }
+
+    if (btn) {
+      btn.textContent = isOn ? '📚 Normal-Modus' : '📚 Hausaufgaben';
+      btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+    }
+  };
+
+  /* ══════════════════════════════════════
+     TAB-HANDLER
+  ══════════════════════════════════════ */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-tab]');
+    if (!btn) return;
+    var tg  = btn.getAttribute('data-tab');
+    var val = btn.getAttribute('data-val');
+    if (!tg || !val) return;
+    document.querySelectorAll('[data-tab="'+tg+'"]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-pressed','false');});
+    document.querySelectorAll('[data-panel="'+tg+'"]').forEach(function(p){p.classList.remove('is-active');});
+    btn.classList.add('is-active'); btn.setAttribute('aria-pressed','true');
+    var panel = document.querySelector('[data-panel="'+tg+'"][data-val="'+val+'"]');
+    if (panel) panel.classList.add('is-active');
+    if (tg === 'wo-learn') {
+      var steps = document.querySelectorAll('[data-tab="wo-learn"]');
+      var idx=0; steps.forEach(function(s,i){if(s.getAttribute('data-val')===val)idx=i;});
+      var bar = document.getElementById('wo-progress');
+      if (bar) {
+        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5');
+        bar.classList.add('progress-step-' + Math.max(1, Math.min(5, idx + 1)));
+      }
+    }
+  });
+
+  /* ══════════════════════════════════════
+     LERNJOURNAL
+  ══════════════════════════════════════ */
+  function loadNotes(){
+    try{
+      var s=localStorage.getItem(SKN);
+      if(!s && typeof SKN_OLD !== 'undefined'){
+        s=localStorage.getItem(SKN_OLD);
+      }
+      if(!s)return;
+      var d=JSON.parse(s);
+      var map={
+        understood:d.understood || d.new || '',
+        unclear:d.unclear || d.hard || '',
+        question:d.question || d.free || '',
+        example:d.example || ''
+      };
+      ['understood','unclear','question','example'].forEach(function(k){
+        var el=document.getElementById('note-'+k);
+        if(el&&map[k])el.value=map[k];
+      });
+    }catch(e){}
+  }
+  window.saveNotes=function(){
+    try{
+      var d={};
+      ['understood','unclear','question','example'].forEach(function(k){
+        var el=document.getElementById('note-'+k);d[k]=el?el.value:'';
+      });
+      localStorage.setItem(SKN,JSON.stringify(d));
+      var sv=document.getElementById('notes-saved');
+      if(sv){sv.classList.add('is-visible');setTimeout(function(){sv.classList.remove('is-visible');},2000);}
+    }catch(e){}
+  };
+
+  /* ── Lernstand Kann ich's? ── */
+  var WO_CAN_STATUS_KEY = 'kompass_wordorder_can_status';
+  function loadCanStatus(){
+    try{
+      var val = localStorage.getItem(WO_CAN_STATUS_KEY);
+      if(!val) return;
+      var input = document.querySelector('input[name="wo-can-status"][value="'+val+'"]');
+      if(input) input.checked = true;
+    }catch(e){}
+  }
+  function saveCanStatus(value){
+    try{ localStorage.setItem(WO_CAN_STATUS_KEY, value); }catch(e){}
+  }
+  document.addEventListener('change', function(e){
+    var el = e.target;
+    if(el && el.name === 'wo-can-status' && el.checked){
+      saveCanStatus(el.value);
+    }
+  });
+  window.printPage=function(){
+    document.body.classList.remove('wo-spickzettel-print');
+    window.print();
+  };
+
+  window.printRef=function(){
+    var refBtn=document.querySelector('[data-tab="wo-mode"][data-val="reference"]');
+    var fallbackTimer=null;
+    document.body.classList.add('wo-spickzettel-print');
+    if(refBtn)refBtn.click();
+    var cleanup=function(){
+      document.body.classList.remove('wo-spickzettel-print');
+      window.removeEventListener('afterprint',cleanup);
+      if(fallbackTimer){clearTimeout(fallbackTimer);fallbackTimer=null;}
+    };
+    window.addEventListener('afterprint',cleanup);
+    setTimeout(function(){window.print();},350);
+    fallbackTimer=setTimeout(cleanup,30000);
+  };
+
+
+  /* Event-Listener fuer ehemalige Inline-Handler */
+  document.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('button') : null;
+    if (!btn) return;
+    var action = btn.getAttribute('data-wo-action');
+    if (action) {
+      e.preventDefault();
+      if (action === 'toggle-homework') { toggleHausaufgaben(); return; }
+      if (action === 'print-ref') { printRef(); return; }
+      if (action === 'print-page') { printPage(); return; }
+      if (action === 'prev-task') { prevTask(); return; }
+      if (action === 'next-task') { nextTask(); return; }
+      if (action === 'reset-baukasten') { resetBaukasten(); return; }
+      if (action === 'check-baukasten') { checkBaukasten(); return; }
+      if (action === 'next-error') { nextError(); return; }
+      if (action === 'next-signal') { nextSignalTask(); return; }
+      if (action === 'save-notes') { saveNotes(); return; }
+    }
+    var choice = btn.getAttribute('data-wo-adverb-choice');
+    if (choice) {
+      e.preventDefault();
+      answerAdverb(choice);
+      return;
+    }
+    var writeId = btn.getAttribute('data-writecheck-id');
+    if (writeId) {
+      e.preventDefault();
+      checkWriteTask(writeId);
+      return;
+    }
+    var solutionId = btn.getAttribute('data-writecheck-solution');
+    if (solutionId) {
+      e.preventDefault();
+      showWriteSolution(solutionId);
+      return;
+    }
+    var writeAction = btn.getAttribute('data-writecheck-action');
+    if (writeAction === 'check-all') {
+      e.preventDefault();
+      checkWritecheckAll();
+      return;
+    }
+    if (writeAction === 'reset') {
+      e.preventDefault();
+      resetWritecheck();
+    }
+  });
+
+  /* Init */
+  buildBaukasten();
+  showErrorTask();
+  showSignalTask();
+  showAdvTask();
+  renderWritecheck();
+  loadWritecheck();
+  loadNotes();
+  loadCanStatus();
+})();
+
+</script>
+<script>
+(function(){
+  if (window.__kompassHashTabsReady) return;
+  window.__kompassHashTabsReady = true;
+  var aliases = {
+    'lernen':'learn','learn':'learn','verstehen':'learn',
+    'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+    'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
+    'verbindungen':'connections','connections':'connections',
+    'notizen':'notes','notes':'notes'
+  };
+  function cleanHash(){
+    try { return decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim(); }
+    catch(e){ return (window.location.hash || '').replace(/^#/, '').toLowerCase().trim(); }
+  }
+  function openSectionFromHash(){
+    var key = cleanHash();
+    if (!key) return;
+    var mode = aliases[key];
+    if (!mode) return;
+    var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
+    if (!btn) return;
+    btn.click();
+    window.setTimeout(function(){
+      var card = document.querySelector('.learning-card') || document.querySelector('[data-topic]') || btn;
+      if (card && typeof card.scrollIntoView === 'function') {
+        card.scrollIntoView({block:'start'});
+      }
+    }, 40);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openSectionFromHash);
+  } else {
+    openSectionFromHash();
+  }
+  window.addEventListener('hashchange', openSectionFromHash);
+})();
+</script>
+</body>
+</html>

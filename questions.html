@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Questions — Hannas Englisch-Kompass</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#e8eef3;
+  --panel:#ffffff;
+  --panel-soft:#f8fafc;
+  --line:#d7e0ea;
+  --line-strong:#bdd0df;
+  --text:#223040;
+  --muted:#5d6f80;
+  --blue:#28699a;
+  --blue-soft:#e9f3fb;
+  --green:#2f7d5b;
+  --green-soft:#edf8f2;
+  --yellow:#8a6a1f;
+  --yellow-soft:#fff7df;
+  --red:#a84242;
+  --red-soft:#fff0f0;
+  --violet:#6f5fa7;
+  --violet-soft:#f4f0fb;
+  --radius:18px;
+  --radius-small:12px;
+  --shadow:0 12px 30px rgba(35,48,64,.09);
+  --font:Arial,Helvetica,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.58;padding:0 0 54px}
+h1,h2,h3,p,ul,ol{margin-top:0}
+p,ul,ol{margin-bottom:0}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #7db5dc;outline-offset:3px}
+button,input,textarea{font:inherit}
+button{font-weight:400}
+button:disabled{opacity:.48;cursor:not-allowed}
+.overview-return-wrap{max-width:1320px;margin:0 auto;padding:16px 18px 0;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.overview-return{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);background:#fff;color:var(--blue);border-radius:999px;padding:8px 14px;text-decoration:none}
+.page-action-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.action-btn{border:1px solid var(--line-strong);background:#fff;color:var(--blue);border-radius:999px;padding:8px 14px;cursor:pointer}
+.action-btn:hover{background:var(--blue-soft)}
+.page-content{max-width:1320px;margin:0 auto;padding:18px}
+.learning-card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.compass-head{background:linear-gradient(135deg,#3a7198,#6e8fa9);color:#fff;padding:26px 28px;display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.compass-kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.78);margin:0 0 6px}
+.compass-title{font-size:clamp(1.45rem,3vw,2rem);line-height:1.15;margin:0 0 8px;font-weight:400}
+.compass-subtitle{font-size:.98rem;color:rgba(255,255,255,.9);max-width:720px}
+.compass-emoji{font-size:2.4rem;line-height:1}
+.thinking-line{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px;background:#dce8f1;border-bottom:1px solid var(--line)}
+.thinking-chip{display:inline-flex;align-items:center;border:1px solid var(--line-strong);background:#fff;color:var(--blue);border-radius:999px;padding:6px 11px;font-size:.88rem}
+.compass-mode-grid,.learn-step-nav{display:flex;gap:0;background:var(--panel-soft);border-bottom:1px solid var(--line);overflow-x:auto}
+.compass-mode-btn,.learn-step-btn{appearance:none;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--muted);padding:12px 10px;cursor:pointer;min-height:58px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;flex:1;min-width:136px;text-align:center}
+.learn-step-btn{min-width:126px;font-size:.9rem}
+.compass-mode-btn:hover,.learn-step-btn:hover{background:var(--blue-soft);color:var(--blue)}
+.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"]{background:#fff;color:var(--blue);border-bottom-color:var(--blue)}
+.mode-hint{font-size:.73rem;color:var(--muted)}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:#e2eaf1;color:var(--blue);font-size:.84rem}
+.compass-mode-panel,.learn-panel{display:block;padding:24px}
+body.tabs-ready .compass-mode-panel,body.tabs-ready .learn-panel{display:none}
+body.tabs-ready .compass-mode-panel.is-active,body.tabs-ready .learn-panel.is-active{display:block}
+.panel-title{font-size:1.25rem;line-height:1.25;margin:0 0 8px;font-weight:400;color:var(--blue)}
+.panel-intro{color:var(--muted);max-width:880px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:16px;display:grid;gap:10px}
+.card.blue{background:var(--blue-soft);border-color:#b8d3e6}
+.card.green{background:var(--green-soft);border-color:#bcdcca}
+.card.yellow{background:var(--yellow-soft);border-color:#ead48a}
+.card.red{background:var(--red-soft);border-color:#efc1c1}
+.card.violet{background:var(--violet-soft);border-color:#d6c8ed}
+.card-title{font-size:1rem;margin:0;font-weight:400;color:var(--text)}
+.example-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.token{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;background:#fff;border:1px solid var(--line-strong);color:var(--text)}
+.token.qword{background:#eef2ff;color:#51448c;border-color:#c7c3eb}
+.token.aux{background:#e7f3fb;color:var(--blue);border-color:#bdd8eb}
+.token.person{background:#fff7df;color:#6f541a;border-color:#ead48a}
+.token.verb{background:#edf8f2;color:var(--green);border-color:#bcdcca}
+.token.rest{background:#f8fafc;color:#4e6070;border-color:#d7e0ea}
+.arrow{color:var(--muted)}
+.machine-box{border:1px solid var(--line);border-radius:22px;background:#f8fbfd;padding:18px;display:grid;gap:16px}
+.choice-group{display:grid;gap:8px}
+.choice-label{font-size:.86rem;color:var(--muted)}
+.choice-row{display:flex;gap:8px;flex-wrap:wrap}
+.choice-btn{border:1px solid var(--line-strong);background:#fff;color:var(--text);border-radius:999px;padding:8px 12px;cursor:pointer}
+.choice-btn:hover{background:var(--blue-soft);border-color:#a9ccdf;color:var(--blue)}
+.choice-btn.is-active{background:var(--blue);border-color:var(--blue);color:#fff}
+.choice-btn.is-correct{background:var(--green-soft);border-color:#7bb995;color:#225c42}
+.choice-btn.is-wrong{background:var(--red-soft);border-color:#e4a0a0;color:#8a3434}
+.machine-output{border:2px solid #c7d9e6;border-radius:var(--radius);background:#fff;padding:16px;display:grid;gap:10px;min-height:104px}
+.machine-sentence{font-size:1.1rem;color:var(--text)}
+.machine-rule{color:var(--muted);font-size:.92rem}
+.machine-actions,.write-actions,.notes-actions{display:flex;gap:8px;flex-wrap:wrap}
+.primary-btn,.secondary-btn,.danger-btn{border-radius:999px;padding:9px 14px;cursor:pointer;border:1px solid var(--line-strong);background:#fff;color:var(--blue)}
+.primary-btn{background:var(--blue);border-color:var(--blue);color:#fff}
+.secondary-btn:hover{background:var(--blue-soft)}
+.danger-btn{color:var(--red);border-color:#efc1c1;background:#fff}
+.trap-list{display:grid;gap:14px}
+.trap-card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;display:grid;gap:12px}
+.trap-question{font-size:1rem;color:var(--text)}
+.trap-options{display:grid;gap:8px}
+.trap-option{border:1px solid var(--line-strong);border-radius:var(--radius-small);background:#fff;padding:10px 12px;text-align:left;cursor:pointer;color:var(--text)}
+.trap-option:hover{background:var(--blue-soft)}
+.trap-option.is-correct{border-color:#7bb995;background:var(--green-soft);color:#225c42}
+.trap-option.is-wrong{border-color:#e4a0a0;background:var(--red-soft);color:#8a3434}
+.feedback{display:none;border-radius:var(--radius-small);padding:10px 12px;background:#f8fafc;border:1px solid var(--line);color:var(--muted)}
+.feedback.is-visible{display:block}
+.feedback.good{background:var(--green-soft);border-color:#bcdcca;color:#225c42}
+.feedback.almost{background:var(--yellow-soft);border-color:#ead48a;color:#705519}
+.feedback.bad{background:var(--red-soft);border-color:#efc1c1;color:#8a3434}
+.ref-wrap{display:grid;gap:16px}
+.ref-section{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px;display:grid;gap:10px}
+.ref-title{font-size:.84rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:400}
+.pattern{display:grid;gap:8px}
+.pattern-line{border-left:4px solid var(--blue);background:var(--blue-soft);padding:9px 11px;border-radius:0 var(--radius-small) var(--radius-small) 0}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.table-like{display:grid;gap:8px}
+.table-row{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(180px,1.1fr) minmax(180px,1.1fr);gap:8px;align-items:start;border:1px solid var(--line);border-radius:var(--radius-small);padding:10px;background:#fff}
+.table-head{background:#f1f6fa;color:var(--blue)}
+.conn-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.conn-card{display:grid;grid-template-columns:auto 1fr;gap:12px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px;text-decoration:none;color:var(--text)}
+.conn-card:hover{background:var(--blue-soft);border-color:#a9ccdf}
+.conn-icon{font-size:1.6rem;line-height:1}
+.conn-title{font-size:1rem;font-weight:400;margin:0 0 5px;color:var(--blue)}
+.conn-text{color:var(--muted);margin:0 0 8px}
+.conn-open{display:inline-flex;border-radius:999px;background:#fff;border:1px solid var(--line-strong);padding:5px 9px;color:var(--blue);font-size:.86rem}
+.writecheck-panel{display:grid;gap:16px}
+.write-task{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px;display:grid;gap:10px}
+.write-task-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.86rem}
+.write-skill{background:var(--blue-soft);color:var(--blue);border:1px solid #bdd8eb;border-radius:999px;padding:3px 8px}
+.write-prompt{font-size:1rem;color:var(--text)}
+.write-input{width:100%;border:1px solid var(--line-strong);border-radius:var(--radius-small);padding:10px 12px;background:#fff;color:var(--text)}
+.help-box,.solution-box{display:none;border-radius:var(--radius-small);padding:10px 12px;border:1px solid var(--line);background:#f8fafc;color:var(--muted)}
+.help-box.is-visible,.solution-box.is-visible{display:block}
+.solution-box{background:var(--green-soft);border-color:#bcdcca;color:#225c42}
+.write-summary{display:none;border:1px solid var(--line);border-radius:var(--radius);background:#f8fafc;padding:12px;color:var(--muted)}
+.write-summary.is-visible{display:block}
+.notes-panel{display:grid;gap:16px}
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.note-field{display:grid;gap:7px}
+.note-label{color:var(--blue)}
+.note-textarea,.note-input{width:100%;border:1px solid var(--line-strong);border-radius:var(--radius-small);padding:10px 12px;min-height:118px;background:#fff;color:var(--text);resize:vertical}
+.note-input{min-height:0}
+.saved-msg{display:none;color:var(--green)}
+.saved-msg.is-visible{display:inline}
+.print-spickzettel{display:none}
+body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]),body.hausaufgaben-mode .learn-step-nav{display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+@media(max-width:760px){
+  body{font-size:14px}
+  .overview-return-wrap{padding:12px 10px 0}
+  .page-content{padding:10px}
+  .compass-head{padding:20px 16px}
+  .thinking-line{padding:12px 14px}
+  .compass-mode-btn,.learn-step-btn{flex:0 0 138px}
+  .compass-mode-panel,.learn-panel{padding:16px 12px}
+  .table-row{grid-template-columns:1fr}
+  .page-action-buttons .action-btn{flex:1;justify-content:center}
+}
+@media print{
+  body{background:#fff;color:#111;padding:0;font-size:12px;line-height:1.35}
+  .overview-return-wrap,.thinking-line,.compass-mode-grid,.learn-step-nav,.compass-mode-panel:not(#nachschlagen){display:none!important}
+  .page-content{max-width:none;padding:0;margin:0}
+  .learning-card{box-shadow:none;border:0;border-radius:0}
+  .compass-head{background:#fff;color:#111;border-bottom:2px solid #111;padding:0 0 10px;margin-bottom:12px}
+  .compass-kicker,.compass-emoji{display:none}
+  .compass-title{color:#111;font-size:22px}
+  .compass-subtitle{color:#111}
+  #nachschlagen{display:block!important;padding:0!important}
+  body.q-spickzettel-print .ref-wrap > :not(.print-spickzettel){display:none!important}
+  body.q-spickzettel-print .print-spickzettel{display:block!important}
+  .print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .print-box{border:1px solid #999;border-radius:8px;padding:9px;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="overview-return-wrap page-action-bar">
+<a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
+<div aria-label="Seitenaktionen" class="page-action-buttons">
+<button aria-pressed="false" class="action-btn" id="homework-toggle" type="button">📚 Hausaufgaben</button>
+<button class="action-btn" id="spickzettel-print" type="button">🧾 Spickzettel drucken</button>
+<button class="action-btn" id="page-print" type="button">🖨️ Diese Seite drucken</button>
+</div>
+</div>
+<div class="page-content">
+<article class="learning-card">
+<header class="compass-head">
+<div>
+<p class="compass-kicker">Questions</p>
+<h1 class="compass-title">Questions — die Frage-Maschine</h1>
+<p class="compass-subtitle">Baue Fragen im Simple Present: Fragewort → do/does → Person → Verb in Grundform → Rest.</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">❓</span>
+</header>
+<div aria-label="Denkweg Questions" class="thinking-line">
+<span class="thinking-chip">Fragewort?</span>
+<span class="thinking-chip">do oder does?</span>
+<span class="thinking-chip">Person?</span>
+<span class="thinking-chip">Grundform?</span>
+<span class="thinking-chip">Rest?</span>
+</div>
+<nav aria-label="Bereiche" class="compass-mode-grid">
+<button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="q-main" data-val="learn" type="button"><span>🎯 Lernen</span><span class="mode-hint">Frage-Maschine</span></button>
+<button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="reference" type="button"><span>📖 Nachschlagen</span><span class="mode-hint">Spickzettel</span></button>
+<button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="connections" type="button"><span>🔗 Verbindungen</span><span class="mode-hint">Nachbarthemen</span></button>
+<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="writecheck" type="button"><span>✍️ Schreib-Check</span><span class="mode-hint">selbst schreiben</span></button>
+<button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="notes" type="button"><span>✏️ Notizen</span><span class="mode-hint">Lernjournal</span></button>
+</nav>
+<section class="compass-mode-panel is-active" data-panel="q-main" data-val="learn" id="lernen">
+<nav aria-label="Lernschritte" class="learn-step-nav">
+<button aria-controls="q-learn-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="q-learn" data-val="start" type="button"><span class="step-badge">1</span><span>Wozu?</span></button>
+<button aria-controls="q-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="machine" type="button"><span class="step-badge">2</span><span>Maschine</span></button>
+<button aria-controls="q-learn-traps" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="traps" type="button"><span class="step-badge">3</span><span>Denkfallen</span></button>
+<button aria-controls="q-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="check" type="button"><span class="step-badge">4</span><span>Kann ich's?</span></button>
+</nav>
+<div class="learn-panel is-active" data-panel="q-learn" data-val="start" id="q-learn-start">
+<h2 class="panel-title">Wozu brauche ich Questions?</h2>
+<p class="panel-intro">Du brauchst Questions, wenn du etwas fragen willst: Was? Wo? Wann? Wie oft?</p>
+<div class="grid">
+<article class="card blue">
+<h3 class="card-title">Der Kern</h3>
+<div class="example-row"><span class="token qword">Where</span><span class="arrow">→</span><span class="token aux">does</span><span class="arrow">→</span><span class="token person">she</span><span class="arrow">→</span><span class="token verb">play</span><span class="arrow">→</span><span class="token rest">tennis?</span></div>
+<p>Bei normalen Verben im Simple Present brauchst du do oder does.</p>
+</article>
+<article class="card green">
+<h3 class="card-title">do oder does?</h3>
+<p>I, you, we, they → do</p>
+<p>he, she, it → does</p>
+<p>Nach does steht das Verb wieder in der Grundform.</p>
+</article>
+<article class="card yellow">
+<h3 class="card-title">Wichtigste Grenze</h3>
+<p>Bei am, is, are steht kein do oder does.</p>
+<p>Merke nur: am/is/are → kein do/does.</p>
+</article>
+</div>
+</div>
+<div class="learn-panel" data-panel="q-learn" data-val="machine" id="q-learn-machine">
+<h2 class="panel-title">Frage-Maschine</h2>
+<p class="panel-intro">Wähle die Teile aus. Entscheide selbst, ob do oder does passt. Dann baust du die Frage.</p>
+<div class="machine-box" id="question-machine">
+<div class="choice-group">
+<p class="choice-label">1. Fragewort</p>
+<div class="choice-row" data-choice-group="qword">
+<button class="choice-btn" data-qword="" type="button">kein Fragewort</button>
+<button class="choice-btn" data-qword="What" type="button">What</button>
+<button class="choice-btn" data-qword="Where" type="button">Where</button>
+<button class="choice-btn" data-qword="When" type="button">When</button>
+<button class="choice-btn" data-qword="How often" type="button">How often</button>
+</div>
+</div>
+<div class="choice-group">
+<p class="choice-label">2. Person</p>
+<div class="choice-row" data-choice-group="person">
+<button class="choice-btn" data-person="you" type="button">you</button>
+<button class="choice-btn" data-person="she" type="button">she</button>
+<button class="choice-btn" data-person="he" type="button">he</button>
+<button class="choice-btn" data-person="they" type="button">they</button>
+</div>
+</div><div class="choice-group">
+<p class="choice-label">3. do oder does?</p>
+<div class="choice-row" data-choice-group="aux">
+<button class="choice-btn" data-aux="do" type="button">do</button>
+<button class="choice-btn" data-aux="does" type="button">does</button>
+</div>
+</div>
+<div class="choice-group">
+<p class="choice-label">4. Verb + Rest</p>
+<div class="choice-row" data-choice-group="verb"><button class="choice-btn" data-rest="tennis" data-verb="play" type="button">play tennis</button><button class="choice-btn" data-rest="TV" data-verb="watch" type="button">watch TV</button><button class="choice-btn" data-rest="books" data-verb="read" type="button">read books</button><button class="choice-btn" data-rest="pizza" data-verb="eat" type="button">eat pizza</button></div>
+</div>
+<div class="machine-actions">
+<button class="primary-btn" id="build-question" type="button">Frage bauen</button>
+<button class="secondary-btn" id="reset-machine" type="button">Zurücksetzen</button>
+</div>
+<div aria-live="polite" class="machine-output">
+<div class="machine-sentence" id="machine-sentence">Wähle Fragewort, Person, do/does und Verb.</div>
+<div aria-label="Denkweg" class="example-row" id="machine-tokens"></div>
+<p class="machine-rule" id="machine-rule">Erst auswählen, dann bauen.</p>
+</div>
+</div>
+</div>
+<div class="learn-panel" data-panel="q-learn" data-val="traps" id="q-learn-traps">
+<h2 class="panel-title">Denkfallen</h2>
+<p class="panel-intro">Wähle die richtige Frage. Danach bekommst du den Grund.</p>
+<div class="trap-list">
+<article class="trap-card" data-trap="1">
+<p class="trap-question">Welche Frage ist richtig?</p>
+<div class="trap-options">
+<button class="trap-option" data-correct="false" type="button">Does she plays tennis?</button>
+<button class="trap-option" data-correct="true" type="button">Does she play tennis?</button>
+</div>
+<div class="feedback">Does trägt das -s. Das Verb bleibt in der Grundform: play.</div>
+<button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button>
+</article>
+<article class="trap-card" data-trap="2">
+<p class="trap-question">Welche Frage ist richtig?</p>
+<div class="trap-options">
+<button class="trap-option" data-correct="false" type="button">Where she plays tennis?</button>
+<button class="trap-option" data-correct="true" type="button">Where does she play tennis?</button>
+</div>
+<div class="feedback">Bei normalen Verben braucht die Frage do oder does. Where steht vorne.</div>
+<button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button>
+</article>
+<article class="trap-card" data-trap="3">
+<p class="trap-question">Welche Frage ist richtig?</p>
+<div class="trap-options">
+<button class="trap-option" data-correct="true" type="button">Is she late?</button>
+<button class="trap-option" data-correct="false" type="button">Does she is late?</button>
+</div>
+<div class="feedback">is ist to be. Bei am, is, are brauchst du kein do oder does.</div>
+<button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button>
+</article>
+</div>
+</div>
+<div class="learn-panel" data-panel="q-learn" data-val="check" id="q-learn-check">
+<h2 class="panel-title">Kann ich's?</h2>
+<p class="panel-intro">Entscheide kurz. Danach siehst du, ob der Denkweg stimmt.</p>
+<div class="grid">
+<article class="card">
+<h3 class="card-title">Mini-Entscheidung 1</h3>
+<p>she + normales Verb → do oder does?</p>
+<div class="choice-row mini-check" data-answer="does"><button class="choice-btn" data-mini="do" type="button">do</button><button class="choice-btn" data-mini="does" type="button">does</button></div>
+<div class="feedback">she gehört zu he/she/it. Deshalb brauchst du does.</div>
+</article>
+<article class="card">
+<h3 class="card-title">Mini-Entscheidung 2</h3>
+<p>Nach does steht das Verb ...</p>
+<div class="choice-row mini-check" data-answer="base"><button class="choice-btn" data-mini="s" type="button">mit -s</button><button class="choice-btn" data-mini="base" type="button">in der Grundform</button></div>
+<div class="feedback">Does trägt das -s. Das Verb bleibt in der Grundform.</div>
+</article>
+<article class="card">
+<h3 class="card-title">Mini-Entscheidung 3</h3>
+<p>Welche Reihenfolge passt?</p>
+<div class="choice-row mini-check" data-answer="correctorder"><button class="choice-btn" data-mini="wrongorder" type="button">Where she does play tennis?</button><button class="choice-btn" data-mini="correctorder" type="button">Where does she play tennis?</button></div>
+<div class="feedback">Fragewort zuerst, dann does, dann die Person, dann die Grundform.</div>
+</article>
+</div>
+<div class="card blue">
+<h3 class="card-title" id="can-status-title">Lernstand festhalten</h3>
+<p>Wähle deinen Stand.</p>
+<div aria-labelledby="can-status-title" class="choice-row" id="can-status-buttons">
+<button class="choice-btn" data-status="offen" type="button">noch offen</button>
+<button class="choice-btn" data-status="angeschaut" type="button">angeschaut</button>
+<button class="choice-btn" data-status="verstanden" type="button">verstanden</button>
+<button class="choice-btn" data-status="frage" type="button">Frage offen</button>
+</div>
+<p aria-live="polite" class="feedback" id="can-status-feedback"></p>
+</div>
+</div>
+</section>
+<section class="compass-mode-panel" data-panel="q-main" data-val="reference" id="nachschlagen">
+<div class="ref-wrap">
+<section class="ref-section blue">
+<p class="ref-title">Kurz merken</p>
+<p>Bei normalen Verben im Simple Present baust du Fragen mit do oder does.</p>
+<div class="pattern-line">Fragewort → do/does → Person → Verb in Grundform → Rest</div>
+</section>
+<section class="ref-section">
+<p class="ref-title">Satzmuster</p>
+<div class="pattern">
+<div class="pattern-line">Do you play tennis?</div>
+<div class="pattern-line">Does she play tennis?</div>
+<div class="pattern-line">Where does she play tennis?</div>
+<div class="pattern-line">How often does he watch TV?</div>
+</div>
+</section>
+<section class="ref-section red">
+<p class="ref-title">Top-Denkfallen</p>
+<div class="table-like">
+<div class="table-row table-head"><span>Falle</span><span>Falsch</span><span>Richtig</span></div>
+<div class="table-row"><span>does + Grundform</span><span>Does she plays tennis?</span><span>Does she play tennis?</span></div>
+<div class="table-row"><span>Fragewort braucht do/does</span><span>Where she plays tennis?</span><span>Where does she play tennis?</span></div>
+<div class="table-row"><span>to be ohne do/does</span><span>Does she is late?</span><span>Is she late?</span></div>
+</div>
+</section>
+<section class="ref-section green">
+<p class="ref-title">How often</p>
+<p>How often heißt „wie oft“. Das Fragewort steht ganz vorne.</p>
+<div class="pattern-line">How often do you play football?</div>
+<div class="pattern-line">How often does she swim?</div>
+</section>
+<section class="ref-section yellow">
+<p class="ref-title">Grenzen</p>
+<p>did gehört zum Simple Past. am, is, are fragen ohne do/does. Bei normalen Verben im Simple Present brauchst du do oder does.</p>
+</section>
+<section aria-labelledby="q-print-title" class="print-spickzettel">
+<h2 id="q-print-title">Questions – Spickzettel</h2>
+<div class="print-grid">
+<div class="print-box"><h3>Kernregel</h3><p>Fragewort → do/does → Person → Grundform → Rest</p></div>
+<div class="print-box"><h3>do / does</h3><p>I, you, we, they → do<br/>he, she, it → does</p></div>
+<div class="print-box"><h3>Denkfalle</h3><p>Does she play? Nicht: Does she plays?</p></div>
+</div>
+</section>
+</div>
+</section>
+<section class="compass-mode-panel" data-panel="q-main" data-val="connections" id="verbindungen">
+<h2 class="panel-title">Verbindungen</h2>
+<p class="panel-intro">Hier findest du die Seiten, die direkt an Questions anschließen.</p>
+<div class="conn-map">
+<a aria-label="Simple Present öffnen" class="conn-card" href="simplepresent.html#lernen">
+<span aria-hidden="true" class="conn-icon">🔁</span>
+<div><h3 class="conn-title">Simple Present</h3><p class="conn-text">Dort geht es um Bedeutung und Verbform: he/she/it + s. Hier baust du daraus Fragen mit do/does.</p><span class="conn-open">Simple Present öffnen</span></div>
+</a>
+<a aria-label="Adverbs of Frequency öffnen" class="conn-card" href="adverbsoffrequency.html#lernen">
+<span aria-hidden="true" class="conn-icon">📊</span>
+<div><h3 class="conn-title">Adverbs of Frequency</h3><p class="conn-text">How often-Fragen führen zu Häufigkeitswörtern wie always, often, sometimes und never.</p><span class="conn-open">Adverbs öffnen</span></div>
+</a>
+<a aria-label="Word Order öffnen" class="conn-card" href="wordorder.html#lernen">
+<span aria-hidden="true" class="conn-icon">🚂</span>
+<div><h3 class="conn-title">Word Order</h3><p class="conn-text">Dort übst du Reihenfolge im Satz. Hier ist die Frage-Reihenfolge der Kern.</p><span class="conn-open">Word Order öffnen</span></div>
+</a>
+<a aria-label="to be öffnen" class="conn-card" href="tobe.html#lernen">
+<span aria-hidden="true" class="conn-icon">🧩</span>
+<div><h3 class="conn-title">to be</h3><p class="conn-text">am, is, are fragen ohne do/does. Das ist nur die Grenze zu Questions.</p><span class="conn-open">to be öffnen</span></div>
+</a>
+</div>
+</section>
+<section class="compass-mode-panel" data-panel="q-main" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<h2 class="panel-title">Schreib-Check</h2>
+<p class="panel-intro">Schreibe zuerst deine Frage. Prüfe danach. Hilfe und Lösung werden erst nach dem Prüfen frei.</p>
+<div class="grid" id="write-task-grid">
+<article class="write-task" data-review-id="q-wc-01" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 1</span><span class="write-skill">Frage ohne Fragewort</span></div>
+<p class="write-prompt">Schreibe die Frage: Spielst du Tennis?</p>
+<label for="q-wc-01-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-01-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">you gehört zu I/you/we/they. Nimm do und die Grundform.</div><div class="solution-box">Do you play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-02" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 2</span><span class="write-skill">Frage mit Where</span></div>
+<p class="write-prompt">Schreibe die Frage: Wo spielt sie Tennis?</p>
+<label for="q-wc-02-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-02-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">Where steht vorne. she braucht does. Das Verb bleibt play.</div><div class="solution-box">Where does she play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-03" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 3</span><span class="write-skill">Frage mit How often</span></div>
+<p class="write-prompt">Schreibe die Frage: Wie oft schaut er TV?</p>
+<label for="q-wc-03-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-03-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">How often steht vorne. he braucht does. Nach does steht watch.</div><div class="solution-box">How often does he watch TV?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-04" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 4</span><span class="write-skill">Frage mit When</span></div>
+<p class="write-prompt">Schreibe die Frage: Wann gehen sie zur Schule?</p>
+<label for="q-wc-04-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-04-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">When steht vorne. they braucht do. Danach steht go.</div><div class="solution-box">When do they go to school?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-05" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 5</span><span class="write-skill">Fehler reparieren</span></div>
+<p class="write-prompt">Verbessere: Does she plays tennis?</p>
+<label for="q-wc-05-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-05-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">Does trägt das -s. Das Verb darf kein -s mehr haben.</div><div class="solution-box">Does she play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-06" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 6</span><span class="write-skill">Frage mit What</span></div>
+<p class="write-prompt">Schreibe die Frage: Was spielt sie?</p>
+<label for="q-wc-06-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-06-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">What steht vorne. she braucht does. Nach does steht play.</div><div class="solution-box">What does she play?</div><div aria-live="polite" class="feedback"></div>
+</article>
+</div>
+<div class="write-actions"><button class="secondary-btn" id="check-all" type="button">Alle prüfen</button><button class="danger-btn" id="reset-writecheck" type="button">Schreib-Check zurücksetzen</button></div>
+<div aria-live="polite" class="write-summary" id="write-summary"></div>
+</div>
+</section>
+<section class="compass-mode-panel" data-panel="q-main" data-val="notes" id="notizen">
+<div class="notes-panel">
+<h2 class="panel-title">Mein Lernjournal zu Questions</h2>
+<p class="panel-intro">Schreibe auf, was du verstanden hast und wo du noch nachfragen willst.</p>
+<div class="notes-grid">
+<div class="note-field"><label class="note-label" for="note-understood">Das habe ich verstanden</label><textarea class="note-textarea" data-note="understood" id="note-understood" placeholder="zum Beispiel: Nach does steht die Grundform."></textarea></div>
+<div class="note-field"><label class="note-label" for="note-unclear">Das ist noch unklar</label><textarea class="note-textarea" data-note="unclear" id="note-unclear" placeholder="Hier bin ich noch unsicher bei ..."></textarea></div>
+<div class="note-field"><label class="note-label" for="note-question">Das möchte ich fragen</label><textarea class="note-textarea" data-note="question" id="note-question" placeholder="Meine Frage ist ..."></textarea></div>
+</div>
+<div class="note-field"><label class="note-label" for="note-own">Mein eigener Beispielsatz</label><input class="note-input" data-note="own" id="note-own" placeholder="Meine eigene Frage ..." type="text"/></div>
+<div class="notes-actions"><button class="primary-btn" id="save-notes" type="button">Notizen speichern</button><button class="danger-btn" id="clear-notes" type="button">Notizen löschen</button><span aria-live="polite" class="saved-msg" id="notes-saved">Gespeichert.</span></div>
+</div>
+</section>
+</article>
+</div>
+<script>
+(function(){
+  'use strict';
+  var CHECK_KEY='kompass_questions_checks';
+  var NOTES_KEY='kompass_questions_journal';
+  var STATUS_KEY='kompass_questions_can_status';
+  var tasks={
+    'q-wc-01':['Do you play tennis?'],
+    'q-wc-02':['Where does she play tennis?'],
+    'q-wc-03':['How often does he watch TV?'],
+    'q-wc-04':['When do they go to school?'],
+    'q-wc-05':['Does she play tennis?'],
+    'q-wc-06':['What does she play?']
+  };
+  function qs(sel,root){return (root||document).querySelector(sel)}
+  function qsa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))}
+  function readJSON(key, fallback){try{return JSON.parse(localStorage.getItem(key))||fallback}catch(e){return fallback}}
+  function writeJSON(key, value){try{localStorage.setItem(key, JSON.stringify(value))}catch(e){}}
+  function clean(value){return String(value||'').toLowerCase().replace(/[’']/g,"'").replace(/[?!.]/g,'').replace(/\s+/g,' ').trim()}
+  function hasQuestionMark(value){return /\?\s*$/.test(String(value||''))}
+  function setActive(buttons, active){buttons.forEach(function(btn){var on=btn===active;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',on?'true':'false')})}
+  function initTabs(name){
+    var buttons=qsa('[data-tab="'+name+'"]');
+    var panels=qsa('[data-panel="'+name+'"]');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var val=btn.getAttribute('data-val');
+        setActive(buttons,btn);
+        panels.forEach(function(panel){panel.classList.toggle('is-active',panel.getAttribute('data-val')===val)});
+        if(name==='q-main'){
+          var target=btn.getAttribute('aria-controls');
+          if(target){history.replaceState(null,'','#'+target)}
+        }
+      });
+    });
+  }
+  function openHashPanel(){
+    var id=(location.hash||'').replace('#','');
+    if(!id){return}
+    var btn=qs('.compass-mode-btn[aria-controls="'+id+'"]');
+    if(btn){btn.click()}
+  }
+  function activeData(group, attr){var btn=qs('[data-choice-group="'+group+'"] .choice-btn.is-active');return btn?btn.getAttribute(attr):''}
+  function activeBtn(group){return qs('[data-choice-group="'+group+'"] .choice-btn.is-active')}
+  function buildQuestion(){
+    var qwordBtn=activeBtn('qword');
+    var person=activeData('person','data-person');
+    var aux=activeData('aux','data-aux');
+    var verbBtn=activeBtn('verb');
+    var verb=verbBtn?verbBtn.getAttribute('data-verb'):'';
+    var rest=verbBtn?verbBtn.getAttribute('data-rest'):'';
+    var sentenceBox=qs('#machine-sentence');
+    var tokenWrap=qs('#machine-tokens');
+    var ruleBox=qs('#machine-rule');
+    tokenWrap.innerHTML='';
+    if(!qwordBtn || !person || !aux || !verb){
+      sentenceBox.textContent='Wähle zuerst alle Teile aus.';
+      ruleBox.textContent='Du brauchst: Fragewort oder kein Fragewort, Person, do/does und Verb.';
+      return;
+    }
+    var expected=/^(he|she|it)$/.test(person)?'does':'do';
+    if(aux!==expected){
+      sentenceBox.textContent='Noch nicht bauen.';
+      ruleBox.textContent=(expected==='does')?'he/she/it brauchen does.':'I/you/we/they brauchen do.';
+      return;
+    }
+    var qword=qwordBtn.getAttribute('data-qword')||'';
+    if(qword==='What'){rest=''}
+    var words=[];
+    if(qword){words.push(qword)}
+    words.push(aux.charAt(0).toUpperCase()+aux.slice(1));
+    words.push(person);
+    words.push(verb);
+    if(rest){words.push(rest)}
+    sentenceBox.textContent=words.join(' ')+'?';
+    [{t:qword,c:'qword'},{t:aux,c:'aux'},{t:person,c:'person'},{t:verb,c:'verb'},{t:rest,c:'rest'}].forEach(function(item){
+      if(!item.t){return}
+      var span=document.createElement('span');
+      span.className='token '+item.c;
+      span.textContent=item.t;
+      tokenWrap.appendChild(span);
+    });
+    if(qword==='What'){
+      ruleBox.textContent='What fragt nach der Sache. Nach do/does steht die Grundform.';
+    }else{
+      ruleBox.textContent=(aux==='does')?'he/she/it → does. Danach steht die Grundform.':'I/you/we/they → do. Danach steht die Grundform.';
+    }
+  }
+  function resetMachine(){
+    qsa('[data-choice-group]').forEach(function(group){
+      var buttons=qsa('.choice-btn',group);
+      buttons.forEach(function(btn){btn.classList.remove('is-active');btn.setAttribute('aria-pressed','false')});
+    });
+    qs('#machine-sentence').textContent='Wähle Fragewort, Person, do/does und Verb.';
+    qs('#machine-tokens').innerHTML='';
+    qs('#machine-rule').textContent='Erst auswählen, dann bauen.';
+  }
+  qsa('[data-choice-group] .choice-btn').forEach(function(btn){
+    btn.setAttribute('aria-pressed',btn.classList.contains('is-active')?'true':'false');
+    btn.addEventListener('click',function(){
+      var group=btn.closest('[data-choice-group]');
+      setActive(qsa('.choice-btn',group),btn);
+    });
+  });
+  qsa('.trap-card').forEach(function(card){
+    var originalFeedback=qs('.feedback',card).textContent;
+    qsa('.trap-option',card).forEach(function(btn){
+      btn.addEventListener('click',function(){
+        qsa('.trap-option',card).forEach(function(other){other.classList.remove('is-correct','is-wrong')});
+        var good=btn.getAttribute('data-correct')==='true';
+        btn.classList.add(good?'is-correct':'is-wrong');
+        var fb=qs('.feedback',card);
+        fb.classList.add('is-visible',good?'good':'bad');
+        fb.textContent=good?originalFeedback:'Noch nicht. Prüfe do/does, Person und Grundform.';
+      });
+    });
+    var reset=qs('[data-reset-trap]',card);
+    if(reset){reset.addEventListener('click',function(){
+      qsa('.trap-option',card).forEach(function(btn){btn.classList.remove('is-correct','is-wrong')});
+      var fb=qs('.feedback',card);fb.className='feedback';fb.textContent=originalFeedback;
+    })}
+  });
+  qsa('.mini-check').forEach(function(wrap){
+    var miniFeedback=qs('.feedback',wrap.parentNode).textContent;
+    qsa('.choice-btn',wrap).forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var answer=wrap.getAttribute('data-answer');
+        var good=btn.getAttribute('data-mini')===answer;
+        qsa('.choice-btn',wrap).forEach(function(other){other.classList.remove('is-correct','is-wrong')});
+        btn.classList.add(good?'is-correct':'is-wrong');
+        var fb=qs('.feedback',wrap.parentNode);fb.classList.add('is-visible',good?'good':'bad');
+        fb.textContent=good?miniFeedback:'Noch nicht. Prüfe Person, do/does und Reihenfolge.';
+      });
+    });
+  });
+  function saveTaskStatus(id,status){
+    var data=readJSON(CHECK_KEY,{});
+    data[id]=status;
+    writeJSON(CHECK_KEY,data);
+  }
+  function setTaskButtons(card, enabled){
+    qsa('[data-show-help],[data-show-solution]',card).forEach(function(btn){btn.disabled=!enabled});
+  }
+  function checkTask(card){
+    var id=card.getAttribute('data-review-id');
+    var input=qs('.write-input',card);
+    var fb=qs('.feedback',card);
+    var value=input.value.trim();
+    fb.className='feedback is-visible';
+    if(!value){fb.classList.add('bad');fb.textContent='Schreibe zuerst deine eigene Antwort.';setTaskButtons(card,false);saveTaskStatus(id,'offen');return false}
+    setTaskButtons(card,true);
+    var wordMatch=tasks[id].some(function(ans){return clean(ans)===clean(value)});
+    if(wordMatch && hasQuestionMark(value)){
+      fb.classList.add('good');fb.textContent='Richtig. Die Frage ist sauber gebaut.';saveTaskStatus(id,'sicher');return true;
+    }
+    if(wordMatch){fb.classList.add('almost');fb.textContent='Fast richtig. Die Wörter stimmen; am Ende fehlt noch das Fragezeichen.';saveTaskStatus(id,'fast');return false}
+    fb.classList.add('bad');fb.textContent='Noch nicht. Prüfe Fragewort, do/does, Person und Grundform.';saveTaskStatus(id,'offen');return false;
+  }
+  qsa('[data-check-task]').forEach(function(btn){btn.addEventListener('click',function(){checkTask(btn.closest('.write-task'))})});
+  qsa('[data-show-help]').forEach(function(btn){btn.addEventListener('click',function(){qs('.help-box',btn.closest('.write-task')).classList.toggle('is-visible')})});
+  qsa('[data-show-solution]').forEach(function(btn){btn.addEventListener('click',function(){qs('.solution-box',btn.closest('.write-task')).classList.toggle('is-visible')})});
+  var checkAll=qs('#check-all');
+  if(checkAll){checkAll.addEventListener('click',function(){
+    var total=0;var correct=0;
+    qsa('.write-task').forEach(function(card){total+=1;if(checkTask(card)){correct+=1}});
+    var summary=qs('#write-summary');summary.classList.add('is-visible');summary.textContent='Geprüft: '+correct+' von '+total+' sicher richtig. Schreibe unsichere Aufgaben ins Lernjournal.';
+  })}
+  var resetWrite=qs('#reset-writecheck');
+  if(resetWrite){resetWrite.addEventListener('click',function(){
+    qsa('.write-task').forEach(function(card){qs('.write-input',card).value='';qs('.feedback',card).className='feedback';qsa('.help-box,.solution-box',card).forEach(function(box){box.classList.remove('is-visible')});setTaskButtons(card,false)});
+    localStorage.removeItem(CHECK_KEY);
+    var summary=qs('#write-summary');summary.className='write-summary';summary.textContent='';
+  })}
+  function loadNotes(){var data=readJSON(NOTES_KEY,{});qsa('[data-note]').forEach(function(el){el.value=data[el.getAttribute('data-note')]||''})}
+  function saveNotes(){var data={};qsa('[data-note]').forEach(function(el){data[el.getAttribute('data-note')]=el.value});writeJSON(NOTES_KEY,data);var msg=qs('#notes-saved');msg.classList.add('is-visible');setTimeout(function(){msg.classList.remove('is-visible')},1800)}
+  var saveNotesBtn=qs('#save-notes');if(saveNotesBtn){saveNotesBtn.addEventListener('click',saveNotes)}
+  var clearNotesBtn=qs('#clear-notes');if(clearNotesBtn){clearNotesBtn.addEventListener('click',function(){localStorage.removeItem(NOTES_KEY);qsa('[data-note]').forEach(function(el){el.value=''})})}
+  var savedStatus=localStorage.getItem(STATUS_KEY)||'';
+  qsa('#can-status-buttons .choice-btn').forEach(function(btn){
+    if(btn.getAttribute('data-status')===savedStatus){btn.classList.add('is-active')}
+    btn.addEventListener('click',function(){
+      qsa('#can-status-buttons .choice-btn').forEach(function(other){other.classList.remove('is-active')});
+      btn.classList.add('is-active');
+      localStorage.setItem(STATUS_KEY,btn.getAttribute('data-status'));
+      var fb=qs('#can-status-feedback');fb.className='feedback is-visible good';fb.textContent='Gespeichert: '+btn.textContent;
+    })
+  });
+  var homework=qs('#homework-toggle');
+  if(homework){homework.addEventListener('click',function(){
+    var on=!document.body.classList.contains('hausaufgaben-mode');
+    document.body.classList.toggle('hausaufgaben-mode',on);
+    homework.setAttribute('aria-pressed',on?'true':'false');
+    var refBtn=qs('.compass-mode-btn[data-val="reference"]');if(on&&refBtn){refBtn.click()}
+  })}
+  var printRef=qs('#spickzettel-print');if(printRef){printRef.addEventListener('click',function(){document.body.classList.add('q-spickzettel-print');window.print();setTimeout(function(){document.body.classList.remove('q-spickzettel-print')},400)})}
+  var printPage=qs('#page-print');if(printPage){printPage.addEventListener('click',function(){window.print()})}
+  var build=qs('#build-question');if(build){build.addEventListener('click',buildQuestion)}
+  var reset=qs('#reset-machine');if(reset){reset.addEventListener('click',resetMachine)}
+  initTabs('q-main');
+  initTabs('q-learn');
+  document.body.classList.add('tabs-ready');
+  loadNotes();
+  openHashPanel();
+})();
+</script>
+</body>
+</html>

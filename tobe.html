@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>to be — Hannas Englisch-Kompass</title>
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  /* Markenfarben */
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:16px;--radius-sm:10px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,0.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,0.06);
+  --shadow-lg:0 16px 48px rgba(15,23,42,0.14);
+  --line:1px solid var(--gray-200);
+  --font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;
+
+  /* Personenfarben — das Farbsystem */
+  --c-I:        #2563eb; --c-I-soft:   #dbeafe; --c-I-text:   #1e3a8a;
+  --c-you:      #0891b2; --c-you-soft: #cffafe; --c-you-text: #164e63;
+  --c-he:       #ea580c; --c-he-soft:  #ffedd5; --c-he-text:  #7c2d12;
+  --c-she:      #db2777; --c-she-soft: #fce7f3; --c-she-text: #831843;
+  --c-it:       #059669; --c-it-soft:  #d1fae5; --c-it-text:  #064e3b;
+  --c-we:       #7c3aed; --c-we-soft:  #ede9fe; --c-we-text:  #4c1d95;
+  --c-they:     #9333ea; --c-they-soft:#f3e8ff; --c-they-text:#581c87;
+}
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:#e7eef4}
+h1,h2,h3,p,ul,ol,table{margin-top:0}p,ul,ol{margin-bottom:0}
+
+/* HAUSAUFGABEN-MODUS */
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+
+/* ── Lernkarte ── */
+.learning-card{border:var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+
+/* ── Kompass-Kopf ── */
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#1d4ed8,#6d28d9);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.82);font-size:.91rem;max-width:540px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+
+/* ── Haupt-Navigation ── */
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--gray-25)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:color .18s,border-color .18s,background .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--blue)}
+
+/* ── Modus-Panels ── */
+.compass-mode-panel{display:none}.compass-mode-panel.is-active{display:block}
+
+/* ── Schritt-Navigation ── */
+.learn-step-nav{display:flex;background:var(--gray-25);border-bottom:var(--line)}
+.learn-step-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s}
+.learn-step-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;background:var(--gray-100);color:var(--gray-600);transition:background .18s,color .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--blue);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+
+
+.learn-panel{display:none;padding:22px 20px}.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Einstieg ── */
+.entry-card{display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:center;padding:18px;border:2px solid #bfdbfe;border-radius:var(--radius);background:linear-gradient(135deg,#fff,var(--blue-soft));margin-bottom:14px}
+.entry-visual{display:flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;font-size:2.6rem;background:linear-gradient(135deg,#dbeafe,#ede9fe);box-shadow:0 4px 14px rgba(37,99,235,.15);flex-shrink:0}
+.entry-hook{margin:0 0 6px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--blue-dark);line-height:1.3}
+.entry-text{margin:0 0 10px;color:var(--gray-700);font-size:.91rem;line-height:1.5}
+.entry-examples{display:flex;flex-wrap:wrap;gap:6px}
+.entry-ex{display:inline-block;padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:400;color:var(--blue-dark);background:#dbeafe}
+
+
+/* ── Maschine ── */
+
+.machine-question{margin:0 0 11px;font-family:var(--font-head);font-size:.95rem;font-weight:400;color:var(--blue-dark)}
+.mode-switcher{display:flex;gap:6px;margin-bottom:11px;flex-wrap:wrap}
+.mode-btn{min-height:32px;padding:5px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-600);background:#fff;cursor:pointer;transition:all .18s}
+.mode-btn:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}
+.mode-btn.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}
+.machine-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.m-chip{min-height:34px;padding:5px 13px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.9rem;font-weight:400;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
+.m-chip:hover{border-color:var(--blue);background:var(--blue-soft)}
+.m-chip.is-active{color:#fff}
+/* Personenfarben auf Chips */
+.m-chip[data-person="I"].is-active{background:var(--c-I);border-color:var(--c-I)}
+.m-chip[data-person="you"].is-active{background:var(--c-you);border-color:var(--c-you)}
+.m-chip[data-person="he"].is-active{background:var(--c-he);border-color:var(--c-he)}
+.m-chip[data-person="she"].is-active{background:var(--c-she);border-color:var(--c-she)}
+.m-chip[data-person="it"].is-active{background:var(--c-it);border-color:var(--c-it)}
+.m-chip[data-person="we"].is-active{background:var(--c-we);border-color:var(--c-we)}
+.m-chip[data-person="they"].is-active{background:var(--c-they);border-color:var(--c-they)}
+.machine-output{padding:14px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line);transition:border-color .3s}
+.machine-output.is-pop{animation:pop .2s ease both}
+@keyframes pop{0%{transform:scale(.97);opacity:.7}100%{transform:scale(1);opacity:1}}
+.sentence-built{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:7px}
+.tok{display:inline-flex;align-items:center;padding:4px 11px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:.92rem;line-height:1.3}
+.tok-subject{color:#fff}
+.tok-verb{color:var(--green);background:#dcfce7}
+.tok-rest{color:var(--violet);background:var(--violet-soft)}
+.tok-neg{color:var(--red);background:var(--red-soft)}
+.tok-short{color:var(--gray-500);background:var(--gray-100);font-weight:400;font-size:.82rem}
+.machine-note{font-size:.84rem;color:var(--gray-600);font-style:italic;margin:0}
+
+
+/* ── Fehler-Scanner & Selbstcheck ── */
+
+
+.selfcheck-title{margin:0 0 8px;font-family:var(--font-head);font-size:.93rem;font-weight:400;color:var(--green)}
+.check-list{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.check-list li{border:var(--line);border-radius:var(--radius-sm);background:#fff;transition:background .2s,border-color .2s}
+.check-list li:has(input:checked){background:var(--green-soft);border-color:#bbf7d0}
+.check-list label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;cursor:pointer}
+.check-list input[type="checkbox"]{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:var(--green)}
+.check-list input:checked+span{color:var(--gray-400);text-decoration:line-through}
+.selfcheck-explain-title{margin:0 0 8px;font-family:var(--font-head);font-size:.95rem;font-weight:400;color:var(--gray-800)}
+.selfcheck-own-label{display:block;margin:0 0 6px;font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-600)}
+.selfcheck-own-field{width:100%;min-height:76px;padding:9px 11px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.9rem;line-height:1.45;color:var(--gray-800);background:var(--gray-25);resize:vertical}
+.selfcheck-own-field:focus{outline:none;border-color:var(--green);background:#fff}
+.check-list-compact{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.check-list-compact{grid-template-columns:1fr}}
+
+
+/* ════════════════════════════════════════════════
+   NACHSCHLAGEN — Das neue System
+   ════════════════════════════════════════════════ */
+.ref-wrap{padding:20px;background:#fff;display:grid;gap:20px}
+
+/* Schritt 1: Drei Einstiegs-Kacheln */
+
+
+/* Schritt 2: Personenauswahl (erscheint nach Kachel-Klick) */
+
+
+/* Personenfarben */
+
+
+/* Schritt 3: Die lebende Karteikarte */
+
+
+/* Rückseite Sektionen */
+
+
+/* Adjektive & Fragen (sichtbar ohne Klick) */
+
+.ref-section-title{display:flex;align-items:center;gap:8px;margin:0 0 11px;font-family:var(--font-head);font-weight:400;font-size:.86rem;color:var(--gray-800);text-transform:uppercase;letter-spacing:.06em}
+.ref-section-title::before{content:attr(data-step);display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;border-radius:var(--radius-pill);background:#eff6ff;border:1px solid #bfdbfe;color:var(--blue-dark);font-size:.78rem;flex-shrink:0}
+
+
+/* Access-1-Sätze */
+.ref-sentences{}
+.sentence-rows{display:grid;gap:4px}
+.sentence-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;padding:7px 10px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.84rem;transition:background .15s}
+.sentence-row:hover{background:var(--gray-25)}
+.sr-en{font-family:var(--font-head);font-weight:400;color:var(--gray-800)}
+.sr-de{color:var(--gray-600)}
+.sr-ctx{font-size:.72rem;color:var(--blue-dark);background:var(--blue-soft);padding:2px 7px;border-radius:var(--radius-pill);white-space:nowrap;font-family:var(--font-head);font-weight:400}
+
+/* ── Notizenbereich ── */
+.notes-panel{padding:20px;background:rgba(255,255,255,.96);border:1px solid rgba(148,163,184,.35);border-radius:var(--radius);box-shadow:0 8px 22px rgba(15,23,42,.08)}
+.notes-title{font-family:var(--font-head);font-weight:400;font-size:.97rem;color:var(--gray-800);margin:0 0 14px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:12px}
+.note-field-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-textarea{width:100%;min-height:88px;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;color:var(--gray-800);background:var(--gray-25);resize:vertical;transition:border-color .18s}
+.note-textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.note-field:nth-child(1) .note-textarea{border-top:3px solid var(--blue)}
+.note-field:nth-child(2) .note-textarea{border-top:3px solid var(--red)}
+.note-field:nth-child(3) .note-textarea{border-top:3px solid var(--green)}
+.note-example-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-example-input{width:100%;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.89rem;color:var(--gray-800);background:var(--gray-25);transition:border-color .18s;border-top:3px solid var(--violet)}
+.note-example-input:focus{outline:none;border-color:var(--violet);background:#fff}
+.note-example-input::placeholder{color:var(--gray-300)}
+.notes-save-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.notes-save-btn{padding:7px 18px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.86rem;font-weight:400;color:#fff;background:var(--blue);cursor:pointer;transition:background .18s}
+.notes-save-btn:hover{background:var(--blue-dark)}
+.notes-saved{font-size:.82rem;color:var(--green);font-family:var(--font-head);font-weight:400;opacity:0;transition:opacity .3s}
+.notes-saved.is-visible{opacity:1}
+.notes-clear-btn{padding:7px 18px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.86rem;font-weight:400;color:var(--gray-600);background:#fff;cursor:pointer;transition:background .18s,color .18s,border-color .18s}.notes-clear-btn:hover{background:var(--gray-100);color:var(--gray-800);border-color:var(--gray-400)}
+
+/* ── Verbindungen ── */
+.connections-panel{padding:20px}
+.conn-intro{padding:10px 14px;border-radius:var(--radius);background:linear-gradient(135deg,var(--blue-soft),var(--violet-soft));border:1px solid #ddd6fe;margin-bottom:12px;font-family:var(--font-head);font-size:.88rem;font-weight:400;color:var(--blue-dark)}
+.conn-map{display:grid;gap:8px}
+.conn-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;padding:12px;border:var(--line);border-radius:var(--radius);background:#fff;transition:box-shadow .2s,transform .2s,border-color .2s;text-decoration:none;color:inherit;cursor:pointer}
+.conn-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px);border-color:#bfdbfe}
+.conn-card:focus-visible{outline:3px solid rgba(37,99,235,.28);outline-offset:3px;border-color:var(--blue)}
+.conn-icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--radius-sm);font-size:1.25rem;background:var(--blue-soft);flex-shrink:0}
+.conn-title{margin:0 0 2px;font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.91rem}
+.conn-text{color:var(--gray-700);font-size:.86rem;margin:0 0 6px;line-height:1.5}
+.conn-examples{display:flex;flex-wrap:wrap;gap:5px}
+.conn-ex{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--radius-pill);font-size:.81rem;font-weight:400}
+.conn-ex-blue{color:var(--blue-dark);background:#dbeafe}
+.conn-ex-green{color:var(--green);background:#dcfce7}
+.conn-ex-violet{color:var(--violet);background:var(--violet-soft)}
+.conn-link-label{display:inline-flex;margin-top:8px;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--blue-dark);border-bottom:1px solid currentColor}
+
+
+/* ── Standardisierte Hilfsklassen ohne Inline-Styles ── */
+.text-mark{color:var(--blue-dark);border-bottom:1px solid currentColor}
+.nav-actions{display:flex;gap:6px;flex-shrink:0}
+
+
+.subject-I{background:var(--c-I-soft);color:var(--c-I-text)}
+.subject-you{background:var(--c-you-soft);color:var(--c-you-text)}
+.subject-he{background:var(--c-he-soft);color:var(--c-he-text)}
+.subject-she{background:var(--c-she-soft);color:var(--c-she-text)}
+.subject-it{background:var(--c-it-soft);color:var(--c-it-text)}
+.subject-we{background:var(--c-we-soft);color:var(--c-we-text)}
+.subject-they{background:var(--c-they-soft);color:var(--c-they-text)}
+
+
+.short-gap{margin-left:8px}
+.mb-12{margin-bottom:12px}
+
+
+/* TO BE OPTIMIERUNG: Lernregister und geglättete Nachschlagetabelle */
+
+
+.form-pill{display:inline-flex;align-items:center;justify-content:center;min-width:44px;padding:3px 9px;border-radius:var(--radius-pill);background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-weight:400}
+.person-pill{display:inline-flex;align-items:center;justify-content:center;min-width:56px;padding:3px 9px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;background:var(--gray-100);white-space:nowrap}
+.person-i{color:var(--c-I);background:var(--c-I-soft)}.person-you{color:var(--c-you);background:var(--c-you-soft)}.person-he{color:var(--c-she);background:var(--c-she-soft)}.person-they{color:var(--c-they);background:var(--c-they-soft)}
+
+
+/* TO BE OPTIMIERUNG: Lernfeatures */
+
+
+.wrong-inline{color:var(--red);background:var(--red-soft);border:1px solid #fecaca;border-radius:var(--radius-sm);padding:2px 7px;display:inline-block}
+.right-inline{color:var(--green);background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:2px 7px;display:inline-block}
+
+
+/* TO BE OPTIMIERUNG: Nachschlagen-Tabelle */
+
+
+/* ── Responsive ── */
+@media(max-width:580px){
+  body{padding:0 0 48px}
+  .compass-head{padding:16px 14px}.compass-emoji{font-size:1.8rem}
+  .learn-panel,.connections-panel,.ref-wrap,.notes-panel{padding:14px 12px}
+  .entry-card{grid-template-columns:1fr}
+  .notes-grid{grid-template-columns:1fr}
+  
+  
+  .sentence-row{grid-template-columns:1fr 1fr}.sr-ctx{display:none}
+  .conn-card{grid-template-columns:1fr}
+}
+
+
+/* NAV */
+.site-nav{background:#fff;border-bottom:var(--line);box-shadow:0 2px 8px rgba(15,23,42,.06);position:static}
+.site-nav-inner{max-width:1320px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}
+.nav-logo-text{color:var(--blue-dark)}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--gray-600);text-decoration:none;border:1px solid var(--gray-200);background:#fff;transition:all .18s}
+.nav-link:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}
+.nav-link.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}
+.ha-btn,.print-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);font-family:var(--font-head);font-size:.84rem;font-weight:400;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s}
+.ha-btn:hover,.print-btn:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}
+
+/* PAGE */
+.page-content{max-width:1320px;width:min(1320px, calc(100% - 48px));margin:0 auto;padding:20px 20px 0}
+
+/* SCHREIB-CHECK */
+.writecheck-panel{padding:22px;background:#fff}
+.writecheck-intro{border:1px solid #bfdbfe;background:var(--blue-soft);border-radius:18px;padding:16px 18px;margin-bottom:16px}
+.writecheck-intro h3{margin:0 0 6px;font-family:var(--font-head);font-size:1.05rem;color:var(--blue-dark)}
+.writecheck-intro p{margin:0;color:var(--gray-700)}
+.writecheck-grid{display:grid;gap:14px}
+.writecheck-task{border:var(--line);border-radius:16px;background:var(--gray-25);padding:15px;box-shadow:var(--shadow-sm)}
+.writecheck-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.writecheck-task-num{font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--blue-dark);background:var(--blue-soft);border:1px solid #bfdbfe;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.writecheck-skill{font-size:.76rem;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:999px;padding:3px 8px;background:#fff;white-space:nowrap}
+.writecheck-prompt{font-size:1rem;color:var(--gray-800);margin:0 0 8px}
+.writecheck-context{font-size:.9rem;color:var(--gray-600);background:#fff;border:1px dashed var(--gray-300);border-radius:12px;padding:8px 10px;margin:0 0 8px}
+.writecheck-input-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.writecheck-input{flex:1;min-width:220px;border:1px solid var(--gray-300);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:var(--gray-800)}
+.writecheck-input:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}
+.writecheck-btn,.writecheck-check-all,.writecheck-reset{border-radius:999px;border:1px solid #bfdbfe;background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
+.writecheck-btn:hover,.writecheck-check-all:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.writecheck-reset{border-color:var(--gray-300);background:#fff;color:var(--gray-600)}
+.writecheck-reset:hover{background:var(--gray-100);color:var(--gray-800)}
+.writecheck-feedback{margin-top:8px;border-radius:12px;padding:9px 10px;font-size:.9rem;display:none}
+.writecheck-feedback.is-visible{display:block}
+.writecheck-feedback.is-correct{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534}
+.writecheck-feedback.is-almost{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-feedback.is-wrong{border:1px solid #fecaca;background:#fef2f2;color:#991b1b}
+.writecheck-task.is-correct{border-color:#86efac;background:#f0fdf4}
+.writecheck-task.is-almost{border-color:#fcd34d;background:#fffbeb}
+.writecheck-task.is-wrong{border-color:#fca5a5;background:#fef2f2}
+.writecheck-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.writecheck-summary{display:none;border:1px solid var(--gray-200);border-radius:18px;background:#fff;padding:16px;margin-top:14px;box-shadow:var(--shadow-sm)}
+.writecheck-summary.is-visible{display:block}
+.writecheck-summary-title{margin:0 0 8px;font-family:var(--font-head);font-size:1.05rem;color:var(--gray-800)}
+.writecheck-stand{font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--blue-dark);margin-bottom:8px}
+.writecheck-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-family:var(--font-head);font-weight:400;font-size:.84rem;margin-bottom:10px}
+.writecheck-status.is-green{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.writecheck-status.is-yellow{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.writecheck-status.is-orange{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}
+.writecheck-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.writecheck-list{border:1px solid var(--gray-200);border-radius:14px;padding:12px;background:var(--gray-25)}
+.writecheck-list h4{margin:0 0 6px;font-family:var(--font-head);font-size:.92rem;color:var(--gray-700)}
+.writecheck-list ul{margin:0;padding-left:18px}
+.writecheck-list li{margin:2px 0}
+@media(max-width:700px){.writecheck-panel{padding:16px}.writecheck-input-row{display:block}.writecheck-input{width:100%;min-width:0;margin-bottom:8px}.writecheck-btn{width:100%;justify-content:center}.writecheck-task-head{display:block}.writecheck-skill{display:inline-flex;margin-top:6px}}
+
+
+/* REALER TO-BE-FEINSCHLIFF 2026-06-06 */
+.feature-tabs{display:flex;gap:0;overflow-x:auto}
+.feature-tabs .learn-step-btn{min-width:118px;white-space:normal}
+.feature-card{padding:18px;border:1px solid rgba(148,163,184,.35);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 22px rgba(15,23,42,.08);margin-bottom:12px}
+.feature-title{margin:0 0 4px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--blue-dark)}
+.feature-subtitle{margin:0 0 12px;color:var(--gray-600);font-size:.88rem}
+.purpose-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:12px}
+.purpose-card{padding:12px 10px;border:var(--line);border-radius:var(--radius-sm);background:#fff;display:grid;gap:3px;text-align:center}
+.purpose-icon{font-size:1.3rem}.purpose-title{font-family:var(--font-head);font-weight:400;color:var(--blue-dark);font-size:.86rem}.purpose-ex{font-size:.8rem;color:var(--gray-600)}
+.form-person-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.form-person-btn{padding:7px 14px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--gray-700);font-family:var(--font-head);font-size:.9rem;font-weight:400;cursor:pointer;transition:all .18s}
+.form-person-btn:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}
+.form-person-btn.is-active{border-color:var(--blue);background:var(--blue);color:#fff}
+.form-lab-output{padding:15px;border-radius:var(--radius);border:2px solid #bfdbfe;background:linear-gradient(135deg,#fff,var(--blue-soft));margin-bottom:12px}
+.form-lab-output.is-pop{animation:pop .2s ease both}.form-lab-path{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:8px}
+.path-chip{display:inline-flex;align-items:center;padding:4px 11px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;background:#fff;color:var(--gray-700);border:1px solid var(--gray-200)}
+.path-strong{background:var(--blue);border-color:var(--blue);color:#fff}.path-arrow{color:var(--gray-400)}
+.form-lab-sentence{margin:0 0 5px;font-family:var(--font-head);font-size:1.12rem;font-weight:400;color:var(--blue-dark)}.form-lab-note{margin:0;color:var(--gray-600);font-size:.86rem}
+.core-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.core-rule-grid div{padding:10px;border-radius:var(--radius-sm);border:var(--line);background:var(--gray-25);display:grid;gap:3px;text-align:center}.core-rule-grid span{font-size:.8rem;color:var(--gray-500)}.core-rule-grid .form-choice{font-family:var(--font-head);font-size:1.1rem;font-weight:400;color:var(--blue-dark)}
+.change-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:12px}.change-card{padding:13px;border-radius:var(--radius-sm);border:var(--line);background:var(--gray-25)}.change-label{display:block;margin-bottom:7px;font-family:var(--font-head);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-dark)}.change-card p{margin:0 0 6px}.change-note{font-size:.82rem;color:var(--gray-600)!important}
+.ref-section-card{padding:17px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 22px rgba(15,23,42,.10)}
+.ref-core{background:#fff;border-color:#93c5fd;box-shadow:0 10px 28px rgba(37,99,235,.16)}
+.ref-patterns{background:#fff;border-color:rgba(148,163,184,.45)}
+.ref-traps{background:#fff7f7;border-color:#fecaca}
+.ref-special{background:#fffbeb;border-color:#fde68a}
+.ref-examples{background:#fff;border-color:rgba(148,163,184,.45)}
+.pattern-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pattern-card{padding:12px;border-radius:var(--radius-sm);border:var(--line);background:var(--gray-25);display:grid;gap:5px}.pattern-label{font-family:var(--font-head);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-dark)}.pattern-card p{margin:0;color:var(--gray-700);font-size:.87rem;line-height:1.45}
+.simple-table-wrap{overflow-x:auto;border:var(--line);border-radius:var(--radius-sm);background:#fff}.clean-ref-table{width:100%;border:0;border-collapse:collapse;table-layout:fixed;font-size:.87rem}.clean-ref-table th,.clean-ref-table td{padding:10px 12px;line-height:1.4;text-align:left;vertical-align:top;border-bottom:1px solid var(--gray-200);white-space:normal;overflow-wrap:anywhere}.clean-ref-table th{background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-weight:400}.clean-ref-table tr:last-child td{border-bottom:0}.ref-col-person{width:15%}.ref-col-form{width:13%}.ref-col-short{width:17%}.ref-col-example{width:30%}.ref-col-question{width:25%}
+.clean-ref-table td:first-child{white-space:nowrap}.clean-ref-table td:nth-child(2){font-family:var(--font-head);color:var(--blue-dark)}
+@media(max-width:760px){.purpose-grid,.core-rule-grid,.change-grid,.pattern-grid,.selfcheck-task-grid,.tobe-form-card-grid{grid-template-columns:1fr}.feature-tabs .learn-step-btn{min-width:105px}.simple-table-wrap{display:none}.tobe-forms-mobile{display:block}}
+
+
+/* Übersicht zurück */
+.nav-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.nav-link-overview{border-color:#bfdbfe;color:var(--blue-dark);background:var(--blue-soft)}
+.overview-return-wrap{max-width:1320px;width:min(1320px, calc(100% - 48px));margin:10px auto -6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:400;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+@media(max-width:580px){.overview-return-wrap{margin:8px auto -4px;padding:0 12px}.overview-return{width:100%;justify-content:center}}
+
+/* Mobile Layout: verhindert horizontales Überlaufen ohne globale Tabellen-Umformatierung. */
+@media (max-width: 700px){
+  html,body{max-width:100%;}
+  .site-nav,.site-nav-inner,.page-content,.learning-card,.compass-mode-grid,.compass-mode-btn,.learn-step-nav,.learn-step-btn,.feature-card,.writecheck-panel,.writecheck-task,.notes-panel,.connections-panel,.overview-return-wrap{max-width:100%;min-width:0;}
+  .site-nav-inner{padding-left:12px;padding-right:12px;flex-wrap:wrap;align-items:center;}
+  .nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-actions{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;justify-content:flex-end;}
+  .ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+  .compass-mode-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));}
+  .compass-mode-btn{overflow-wrap:anywhere;}
+  .learn-step-nav{overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto;}
+  img,svg{max-width:100%;height:auto;}
+}
+
+
+/* Ruhiger Rücklink */
+.overview-return{
+  min-height:36px;
+  line-height:1.2;
+}
+@media (max-width:700px){
+  .page-content,.overview-return-wrap{
+    width:auto;
+    max-width:100%;
+  }
+}
+
+
+/* TO BE – KOMPASS-ÜBERARBEITUNG NACH REFERENZSTANDARD */
+[hidden]{display:none!important}
+.learning-card{background:#fff}
+
+.ref-wrap{display:grid;gap:14px}
+.ref-intro{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:var(--radius);background:rgba(255,255,255,.92);border:1px solid rgba(147,197,253,.75);color:var(--blue-dark);font-family:var(--font-head);font-size:.88rem;box-shadow:0 4px 14px rgba(15,23,42,.08)}
+.ref-intro span[aria-hidden="true"]{font-size:1rem;line-height:1.2}
+.homework-note{display:none;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:var(--radius);background:#ecfeff;border:1px solid #67e8f9;color:#155e75;font-family:var(--font-head);font-size:.88rem;box-shadow:0 4px 14px rgba(15,23,42,.08)}
+.homework-note span[aria-hidden="true"]{font-size:1rem;line-height:1.2}
+body.hausaufgaben-mode .homework-note{display:flex}
+body.hausaufgaben-mode .ref-intro{display:none}
+body.hausaufgaben-mode .ref-wrap > :not(.homework-note):not([data-homework-visible="true"]){display:none!important}
+body.hausaufgaben-mode .ref-sentences .sentence-row:nth-child(n+5),
+body.spickzettel-print .ref-sentences .sentence-row:nth-child(n+5){display:none!important}
+.form-choice{display:block}
+.selfcheck-card{padding:16px;border:1px solid rgba(148,163,184,.35);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 22px rgba(15,23,42,.08);display:grid;gap:14px}
+.selfcheck-intro{margin:0;color:var(--gray-700)}
+.selfcheck-task-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.selfcheck-task{border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);padding:13px;display:grid;gap:8px}
+.selfcheck-task-label{font-family:var(--font-head);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-dark)}
+.selfcheck-prompt{margin:0;color:var(--gray-800);line-height:1.45}
+.selfcheck-work{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.9rem}
+.selfcheck-choice{padding:3px 8px;border:1px solid var(--gray-200);border-radius:999px;background:#fff;color:var(--gray-700);font-family:var(--font-head)}
+.selfcheck-reveal{border:1px dashed var(--gray-300);border-radius:12px;background:#fff;padding:8px 10px;font-size:.88rem}
+.selfcheck-reveal summary{cursor:pointer;color:var(--blue-dark);font-family:var(--font-head)}
+.selfcheck-reveal p{margin:8px 0 0;color:var(--gray-700)}
+.selfcheck-explain{border:1px solid #bbf7d0;background:var(--green-soft);border-radius:var(--radius-sm);padding:11px 12px;color:#166534}
+.selfcheck-explain p{margin:0}
+.selfcheck-explain .selfcheck-reveal{margin-top:8px;background:#fff}
+.check-list input{accent-color:var(--blue)}
+.check-status{margin-top:0;padding:9px 11px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);background:var(--gray-25);color:var(--gray-700);font-size:.86rem}
+.check-status.is-green{border-color:#86efac;background:#f0fdf4;color:#166534}
+.check-status.is-yellow{border-color:#fde68a;background:#fffbeb;color:#92400e}
+.check-status.is-orange{border-color:#fdba74;background:#ffedd5;color:#9a3412}
+.tobe-forms-mobile{display:none}
+.ref-detail-only{margin-top:14px;padding-top:12px;border-top:1px solid var(--gray-200)}
+.ref-detail-title{margin:0 0 10px;font-size:.9rem;color:var(--blue-dark);font-family:var(--font-head);font-weight:400}
+body.hausaufgaben-mode .ref-detail-only,body.spickzettel-print .ref-detail-only{display:none!important}
+.tobe-form-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tobe-form-card{border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);padding:12px;display:grid;gap:6px}
+.tobe-form-card-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tobe-form-card p{margin:0;color:var(--gray-700);font-size:.87rem;line-height:1.4}
+.tobe-form-question{color:var(--blue-dark)}
+.pitfall-mini{padding:12px;border-radius:var(--radius-sm);border:1px solid #fecaca;background:var(--red-soft);margin-top:12px}
+.pitfall-mini-title{margin:0 0 5px;font-family:var(--font-head);font-size:.9rem;color:var(--red);font-weight:400}
+.reference-kurzmerken{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.reference-kurz-card{padding:12px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);display:grid;gap:4px}
+.reference-kurz-card .ref-icon{font-size:1.2rem}.reference-kurz-card .ref-main{font-family:var(--font-head);font-size:.95rem;color:var(--blue-dark)}.reference-kurz-card .ref-sub{font-size:.82rem;color:var(--gray-600)}
+.trap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.trap-card{padding:12px;border-radius:var(--radius-sm);border:1px solid #fecaca;background:var(--red-soft)}
+.trap-card p{margin:3px 0}.trap-label{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);font-family:var(--font-head)}
+.special-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.special-card{padding:12px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25)}
+.special-card h3{margin:0 0 6px;font-size:.92rem;color:var(--blue-dark);font-family:var(--font-head);font-weight:400}
+@media(max-width:760px){.reference-kurzmerken,.trap-grid,.special-grid{grid-template-columns:1fr}}
+@media print{
+  body{background:#fff!important;padding:0!important}
+  .page-content{max-width:1100px!important;width:auto!important;margin:0 auto!important;padding:20px!important}
+  .site-nav,.overview-return-wrap,.compass-mode-grid,.learn-step-nav,.notes-panel,.connections-panel,.writecheck-panel,.compass-mode-panel:not([data-val="reference"]){display:none!important}
+  .compass-mode-panel[data-val="reference"]{display:block!important}
+  .learning-card{box-shadow:none!important;border:none!important}
+  .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:14px!important}
+  .compass-kicker{display:none!important}.compass-title{color:#111!important;font-size:22px!important;margin:0!important}
+  body.spickzettel-print .page-content{padding:0!important;max-width:none!important;width:auto!important}
+  body.spickzettel-print .ref-wrap > :not([data-homework-visible="true"]){display:none!important}
+  body.spickzettel-print .homework-note{display:none!important}
+  body.spickzettel-print [data-homework-visible="true"]{display:block!important;padding:0!important;color:#111!important;background:#fff!important;box-shadow:none!important;break-inside:avoid}
+}
+
+
+/* TO BE – ÄUSSERER THEMENHINTERGRUND WIE HAVE GOT
+   Nur Layout/CSS: Inhalte und JavaScript bleiben unverändert. */
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="reference"],
+.compass-mode-panel[data-val="connections"],
+.compass-mode-panel[data-val="writecheck"],
+.compass-mode-panel[data-val="notes"]{
+  background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%);
+}
+.learn-panel,
+.ref-wrap,
+.writecheck-panel,
+.notes-panel,
+.connections-wrap{
+  padding:24px;
+  background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%);
+}
+.learn-panel.is-active{
+  display:block;
+}
+.ref-wrap{
+  gap:18px;
+}
+.entry-card,
+.feature-card,
+.machine-card,
+.section-card,
+.selfcheck-card,
+.ref-section-card,
+.writecheck-task,
+.notes-panel,
+.connection-map-card{
+  border-color:rgba(148,163,184,.45);
+}
+@media(max-width:620px){
+  .learn-panel,
+  .ref-wrap,
+  .writecheck-panel,
+  .notes-panel,
+  .connections-wrap{
+    padding:16px;
+  }
+}
+@media print{
+  .compass-mode-panel[data-val="learn"],
+  .compass-mode-panel[data-val="reference"],
+  .compass-mode-panel[data-val="connections"],
+  .compass-mode-panel[data-val="writecheck"],
+  .compass-mode-panel[data-val="notes"],
+  .learn-panel,
+  .ref-wrap,
+  .writecheck-panel,
+  .notes-panel,
+  .connections-wrap{
+    background:#fff!important;
+  }
+}
+
+
+
+/* TO BE – Nachschlagen */
+#nachschlagen .ref-wrap{
+  display:grid;
+  gap:14px;
+  padding:0;
+  background:transparent;
+}
+#nachschlagen .ref-intro{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(147,197,253,.75);
+  color:var(--blue-dark);
+  font-family:var(--font-head);
+  font-size:.88rem;
+  box-shadow:0 4px 14px rgba(15,23,42,.08);
+}
+#nachschlagen .homework-note{
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  border-radius:var(--radius);
+  background:#ecfeff;
+  border:1px solid #67e8f9;
+  color:#155e75;
+  font-family:var(--font-head);
+  font-size:.88rem;
+  box-shadow:0 4px 14px rgba(15,23,42,.08);
+}
+#nachschlagen .ref-section-card{
+  padding:17px;
+  border:1px solid rgba(148,163,184,.45);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+#nachschlagen .ref-core{
+  background:#fff;
+  border-color:#93c5fd;
+  box-shadow:0 10px 28px rgba(37,99,235,.16);
+}
+#nachschlagen .ref-patterns,
+#nachschlagen .ref-examples{
+  background:#fff;
+  border-color:rgba(148,163,184,.45);
+}
+#nachschlagen .ref-traps{
+  background:#fff7f7;
+  border-color:#fecaca;
+}
+#nachschlagen .ref-special{
+  background:#fffbeb;
+  border-color:#fde68a;
+}
+#nachschlagen .ref-section-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 11px;
+  font-family:var(--font-head);
+  font-weight:400;
+  font-size:.86rem;
+  color:var(--gray-800);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+#nachschlagen .ref-section-title::before{
+  content:attr(data-step);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:26px;
+  height:26px;
+  border-radius:var(--radius-pill);
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  color:var(--blue-dark);
+  font-size:.78rem;
+  flex-shrink:0;
+}
+#nachschlagen .ref-list{
+  margin:0;
+  padding-left:19px;
+  font-size:.9rem;
+  color:var(--gray-700);
+  line-height:1.62;
+}
+#nachschlagen .ref-list li+li{
+  margin-top:3px;
+}
+#nachschlagen .ref-list-label{
+  font-family:var(--font-head);
+  color:var(--blue-dark);
+}
+#nachschlagen .simple-table-wrap{
+  overflow-x:auto;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+#nachschlagen .clean-ref-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  table-layout:auto;
+  font-size:.86rem;
+  background:#fff;
+  border:1px solid var(--gray-200);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+#nachschlagen .clean-ref-table th{
+  background:var(--gray-100);
+  color:var(--gray-700);
+  font-family:var(--font-head);
+  font-weight:400;
+  text-align:left;
+  padding:8px 10px;
+  border-bottom:0;
+}
+#nachschlagen .clean-ref-table td{
+  padding:8px 10px;
+  border-top:1px solid var(--gray-200);
+  border-bottom:0;
+  vertical-align:top;
+  line-height:1.45;
+}
+#nachschlagen .ref-pattern-table td:first-child{
+  width:150px;
+  font-family:var(--font-head);
+  color:var(--gray-800);
+}
+#nachschlagen .ref-example-inline{
+  display:inline-block;
+  margin:0 8px 4px 0;
+  color:var(--gray-700);
+}
+#nachschlagen .ref-detail-title{
+  margin:14px 0 9px;
+  font-family:var(--font-head);
+  font-weight:400;
+  color:var(--gray-800);
+  font-size:.86rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+#nachschlagen .tobe-forms-mobile{
+  margin-top:10px;
+}
+#nachschlagen .tobe-form-card,
+#nachschlagen .trap-card,
+#nachschlagen .special-card{
+  padding:11px 12px;
+  border-radius:var(--radius-sm);
+  background:#fff;
+  border:1px solid var(--gray-200);
+  font-size:.86rem;
+  line-height:1.55;
+  color:var(--gray-700);
+}
+#nachschlagen .trap-card{
+  background:var(--red-soft);
+  border-color:#fecaca;
+}
+#nachschlagen .special-card{
+  background:#fff;
+  border-color:var(--gray-200);
+}
+#nachschlagen .trap-label,
+#nachschlagen .pattern-label{
+  display:block;
+  font-family:var(--font-head);
+  font-weight:400;
+  font-size:.75rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:5px;
+}
+#nachschlagen .trap-label{
+  color:var(--red);
+}
+#nachschlagen .special-card h3{
+  margin:0 0 5px;
+  font-family:var(--font-head);
+  font-weight:400;
+  color:var(--gray-800);
+  font-size:.86rem;
+}
+#nachschlagen .sentence-row{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:8px;
+  align-items:center;
+  padding:9px 11px;
+  border:var(--line);
+  border-radius:var(--radius-sm);
+  background:#fff;
+  font-size:.86rem;
+}
+#nachschlagen .sr-ctx{
+  font-size:.71rem;
+  padding:2px 8px;
+}
+@media(max-width:760px){
+  #nachschlagen .ref-pattern-table td:first-child{width:auto}
+  #nachschlagen .sentence-row{grid-template-columns:1fr}
+  #nachschlagen .sr-ctx{width:max-content}
+}
+
+
+/* ── TO BE: Kann ich's im have-got-Aufbau ── */
+.tobe-can-check{display:grid;gap:10px}
+.tobe-can-check .check-intro-card,
+.tobe-can-check .check-card{
+  border:var(--line);
+  border-radius:var(--radius);
+  background:#fff;
+  padding:16px;
+  box-shadow:var(--shadow-sm);
+}
+.tobe-can-check .check-intro-card{
+  background:var(--green-soft);
+  border-color:#bbf7d0;
+}
+.tobe-can-check .check-kicker{
+  margin:0 0 4px;
+  font-family:var(--font-head);
+  font-size:.76rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--green);
+}
+.tobe-can-check .check-intro-card h3,
+.tobe-can-check .check-card h4{
+  margin:0 0 7px;
+  font-family:var(--font-head);
+  font-weight:400;
+  color:var(--gray-800);
+}
+.tobe-can-check .check-intro-card p,
+.tobe-can-check .check-card-text{
+  margin:0;
+  color:var(--gray-700);
+  font-size:.9rem;
+  line-height:1.55;
+}
+.tobe-can-check .mini-decision-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:8px;
+  margin:12px 0 0;
+}
+.tobe-can-check .mini-decision-item{
+  display:grid;
+  gap:7px;
+  padding:10px 12px;
+  border:var(--line);
+  border-radius:var(--radius-sm);
+  background:var(--gray-25);
+  font-size:.9rem;
+}
+.tobe-can-check .mini-decision-line{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.tobe-can-check .mini-decision-prompt{
+  font-family:var(--font-head);
+  font-weight:400;
+  color:var(--blue-dark);
+  min-width:58px;
+}
+.tobe-can-check .mini-decision-arrow{color:var(--gray-400)}
+.tobe-can-check .mini-decision-question{color:var(--gray-700)}
+.tobe-can-check .mini-decision-reveal summary,
+.tobe-can-check .scanner-reveal summary,
+.tobe-can-check .explain-reveal summary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:6px 12px;
+  border:1px solid #bfdbfe;
+  border-radius:var(--radius-pill);
+  background:var(--blue-soft);
+  color:var(--blue-dark);
+  font-family:var(--font-head);
+  font-weight:400;
+  font-size:.84rem;
+  cursor:pointer;
+  list-style:none;
+}
+.tobe-can-check .mini-decision-reveal summary::-webkit-details-marker,
+.tobe-can-check .scanner-reveal summary::-webkit-details-marker,
+.tobe-can-check .explain-reveal summary::-webkit-details-marker{display:none}
+.tobe-can-check .mini-decision-reveal summary:hover,
+.tobe-can-check .scanner-reveal summary:hover,
+.tobe-can-check .explain-reveal summary:hover{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+.tobe-can-check .mini-choice-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:2px;
+}
+.tobe-can-check .mini-choice-btn{
+  min-height:32px;
+  min-width:54px;
+  padding:6px 12px;
+  border:1px solid #bfdbfe;
+  border-radius:var(--radius-pill);
+  background:#fff;
+  color:var(--blue-dark);
+  font-family:var(--font-head);
+  font-weight:400;
+  font-size:.86rem;
+  cursor:pointer;
+  transition:all .18s;
+}
+.tobe-can-check .mini-choice-btn:hover{
+  border-color:var(--blue);
+  background:var(--blue-soft);
+}
+.tobe-can-check .mini-choice-btn.is-selected{
+  border-color:var(--blue);
+  box-shadow:0 0 0 2px rgba(59,130,246,.14);
+}
+.tobe-can-check .mini-choice-btn.is-correct{
+  border-color:#86efac;
+  background:#f0fdf4;
+  color:#166534;
+}
+.tobe-can-check .mini-choice-btn.is-wrong{
+  border-color:#fecaca;
+  background:#fff7f7;
+  color:#991b1b;
+}
+.tobe-can-check .mini-choice-feedback{
+  margin:0;
+  min-height:1.35em;
+  color:var(--gray-600);
+  font-size:.84rem;
+  line-height:1.4;
+}
+.tobe-can-check .mini-choice-feedback.is-correct{color:#166534}
+.tobe-can-check .mini-choice-feedback.is-wrong{color:#991b1b}
+.tobe-can-check .mini-decision-answer{
+  margin-top:7px;
+  padding:9px 11px;
+  border:1px solid #bbf7d0;
+  border-radius:var(--radius-sm);
+  background:var(--green-soft);
+  color:var(--green);
+  font-family:var(--font-head);
+  font-weight:400;
+}
+.tobe-can-check .error-scanner-lite{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.tobe-can-check .scanner-card{
+  border:1px solid var(--gray-200);
+  border-radius:var(--radius);
+  background:var(--gray-25);
+  padding:14px;
+}
+.tobe-can-check .scanner-label{
+  margin:0 0 7px;
+  font-family:var(--font-head);
+  font-size:.76rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--gray-500);
+}
+.tobe-can-check .scanner-sentence-lite{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:0 0 9px;
+  padding:11px 13px;
+  border-radius:var(--radius-sm);
+  background:#fff;
+  border:1px solid var(--gray-200);
+  color:var(--gray-800);
+  font-family:var(--font-head);
+  font-size:1rem;
+}
+.tobe-can-check .scanner-word{
+  border:1px solid transparent;
+  border-radius:9px;
+  background:transparent;
+  color:inherit;
+  padding:3px 6px;
+}
+.tobe-can-check .scanner-word.is-error-target{
+  border-color:#fecaca;
+  background:#fff;
+}
+.tobe-can-check .scanner-question{
+  margin:0 0 9px;
+  color:var(--gray-700);
+  font-size:.88rem;
+}
+.tobe-can-check .scanner-solution-lite{
+  margin-top:8px;
+  padding:11px 13px;
+  border-radius:var(--radius-sm);
+  background:#fff;
+  border:1px solid #bbf7d0;
+  color:var(--gray-700);
+  font-size:.89rem;
+  line-height:1.5;
+}
+.tobe-can-check .scanner-solution-lite p{margin:0}
+.tobe-can-check .scanner-solution-lite p+p{margin-top:4px}
+.tobe-can-check .explain-reveal{
+  margin-top:10px;
+}
+.tobe-can-check .explain-reveal p{
+  margin:9px 0 0;
+  padding:11px 13px;
+  border-radius:var(--radius-sm);
+  background:var(--blue-soft);
+  border:1px solid #bfdbfe;
+  color:var(--blue-dark);
+  font-size:.9rem;
+}
+.tobe-can-check .check-return-hint{
+  margin:12px 0 0;
+  color:var(--gray-600);
+  font-size:.84rem;
+}
+.tobe-can-check .check-finish-card{
+  background:rgba(255,255,255,.96);
+}
+@media (max-width:720px){
+  .tobe-can-check .mini-decision-grid{grid-template-columns:1fr}
+  .tobe-can-check .scanner-sentence-lite{font-size:.92rem}
+}
+
+
+/* TO BE – Fehler-Scanner klickbar */
+.tobe-can-check .scanner-word-btn{
+  border:1px solid #bfdbfe;
+  border-radius:var(--radius-pill);
+  background:#fff;
+  color:var(--gray-800);
+  font-family:var(--font-head);
+  font-weight:400;
+  font-size:.9rem;
+  padding:4px 10px;
+  cursor:pointer;
+  transition:all .18s;
+}
+.tobe-can-check .scanner-word-btn:hover,
+.tobe-can-check .scanner-word-btn:focus-visible{
+  border-color:var(--blue);
+  background:var(--blue-soft);
+  color:var(--blue-dark);
+  outline:none;
+}
+.tobe-can-check .scanner-word-btn.is-selected{
+  box-shadow:0 0 0 2px rgba(59,130,246,.14);
+}
+.tobe-can-check .scanner-word-btn.is-correct{
+  border-color:#86efac;
+  background:#f0fdf4;
+  color:#166534;
+}
+.tobe-can-check .scanner-word-btn.is-wrong{
+  border-color:#fecaca;
+  background:#fef2f2;
+  color:#991b1b;
+}
+.tobe-can-check .scanner-feedback{
+  margin:0;
+  padding:8px 10px;
+  border:1px solid var(--gray-200);
+  border-radius:var(--radius-sm);
+  background:#fff;
+  color:var(--gray-600);
+  font-size:.86rem;
+}
+.tobe-can-check .scanner-feedback.is-correct{
+  border-color:#86efac;
+  background:#f0fdf4;
+  color:#166534;
+}
+.tobe-can-check .scanner-feedback.is-wrong{
+  border-color:#fecaca;
+  background:#fef2f2;
+  color:#991b1b;
+}
+.tobe-can-check .scanner-card:not(.is-attempted) .scanner-reveal{
+  display:none;
+}
+body.spickzettel-print #nachschlagen .trap-card:not([data-print-core="true"]){
+  display:none!important;
+}
+
+
+
+/* Mobile Nachschlagen-Fix: Satzmuster- und Formen-Tabelle bleiben sichtbar. */
+@media(max-width:760px){
+  #nachschlagen .ref-pattern-table-wrap{display:block!important;}
+  #nachschlagen .ref-detail-only > .simple-table-wrap{display:block!important;}
+  #nachschlagen .tobe-forms-mobile{display:none!important;}
+}
+
+
+/* TO BE: technische Endprüfung */
+:root{--kompass-page-max:1320px;}
+html,body{max-width:100%;overflow-x:hidden;}
+body{background:#e7eef4!important;}
+.site-nav{display:none!important;position:static!important;}
+.compass-head,.page-action-bar{position:static!important;top:auto!important;}
+.page-action-bar{
+  display:flex!important;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  box-sizing:border-box!important;
+}
+.page-action-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+@media(max-width:700px){
+  .page-action-bar{align-items:stretch!important;flex-direction:column!important;}
+  .page-action-buttons{justify-content:flex-start!important;}
+  .page-action-buttons .ha-btn,
+  .page-action-buttons .print-btn{flex:1 1 160px;justify-content:center;}
+}
+@media (min-width:701px){
+  .overview-return-wrap.page-action-bar{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:10px max(20px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 6px!important;
+  }
+  .page-content{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0 0 60px!important;
+  }
+  .learning-card{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#eef4fb!important;
+  }
+  .compass-head,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-radius:0!important;
+    box-sizing:border-box!important;
+  }
+  .compass-head{
+    padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important;
+  }
+  .compass-mode-grid,
+  .learn-step-nav{
+    padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+    padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+  }
+  .compass-mode-btn,
+  .learn-step-btn{flex:1 1 0!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .ref-wrap,
+  .connections-panel,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:min(var(--kompass-page-max),calc(100% - 48px))!important;
+    max-width:var(--kompass-page-max)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding:24px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%)!important;
+  }
+}
+@media (max-width:700px){
+  .overview-return-wrap.page-action-bar{
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:10px 12px 6px!important;
+  }
+  .page-content{width:100%!important;max-width:100%!important;padding:0 0 48px!important;}
+  .learning-card{border-radius:0!important;border-left:0!important;border-right:0!important;background:#eef4fb!important;}
+  .compass-head,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar{border-radius:0!important;}
+  .compass-mode-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(118px,1fr))!important;}
+  .learn-step-nav{overflow-x:auto!important;justify-content:flex-start!important;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto!important;min-width:112px!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .ref-wrap,
+  .connections-panel,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:14px 12px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%)!important;
+  }
+}
+
+/* Mobile-/Breitenschutz, besonders Nachschlagen */
+.learning-card,.compass-mode-panel,.learn-panel,.ref-wrap,.connections-panel,.writecheck-panel,.notes-panel,
+#nachschlagen .ref-section-card,#nachschlagen .simple-table-wrap,#nachschlagen .clean-ref-table,
+.writecheck-task,.note-field,.connection-map-card,.feature-card,.machine-card,.section-card,.selfcheck-card{min-width:0!important;max-width:100%;box-sizing:border-box;}
+#nachschlagen .simple-table-wrap{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
+#nachschlagen .clean-ref-table{max-width:100%;}
+#nachschlagen .ref-pattern-table{table-layout:fixed;min-width:0!important;width:100%!important;}
+#nachschlagen .ref-pattern-table th,
+#nachschlagen .ref-pattern-table td{overflow-wrap:anywhere;word-break:normal;}
+#nachschlagen .ref-example-inline{max-width:100%;overflow-wrap:anywhere;}
+@media(max-width:700px){
+  #nachschlagen .clean-ref-table{font-size:.82rem;}
+  #nachschlagen .clean-ref-table th,
+  #nachschlagen .clean-ref-table td{padding:7px 8px;}
+  #nachschlagen .ref-example-inline{display:block;margin:0 0 4px 0;}
+}
+
+/* Passive Informationen dürfen nicht wie klickbare Buttons wirken */
+.entry-ex,
+.text-mark,
+.person-pill,
+.form-pill,
+.tok,
+.sr-ctx,
+.ref-example-inline,
+.selfcheck-choice,
+.writecheck-task-num,
+.writecheck-skill,
+.purpose-title,
+.purpose-ex,
+.trap-label,
+.pattern-label,
+#nachschlagen .sr-ctx,
+#nachschlagen .ref-list-label{
+  cursor:default!important;
+  box-shadow:none!important;
+  transition:none!important;
+}
+.entry-ex,
+.selfcheck-choice,
+.sr-ctx,
+#nachschlagen .sr-ctx,
+.writecheck-task-num,
+.writecheck-skill{
+  border-radius:6px!important;
+  border-left:3px solid currentColor!important;
+  padding-left:8px!important;
+}
+.sentence-row:hover{background:#fff!important;}
+.compass-mode-btn,.learn-step-btn,.ha-btn,.print-btn,.mode-btn,.m-chip,.form-person-btn,.mini-choice-btn,.scanner-word-btn,summary,button{cursor:pointer;}
+
+/* Hausaufgabenmodus: Kernbereich reduziert und sauber rücksetzbar */
+body.hausaufgaben-mode .page-action-bar .overview-return,
+body.hausaufgaben-mode .page-action-bar .print-btn{display:inline-flex!important;}
+body.hausaufgaben-mode .ref-wrap > :not(.homework-note):not([data-homework-visible="true"]){display:none!important;}
+body.hausaufgaben-mode .ref-detail-only{display:none!important;}
+body.hausaufgaben-mode .ref-sentences .sentence-row:nth-child(n+5){display:none!important;}
+
+/* Eigener Spickzettel-Druckblock + allgemeiner Seitendruck getrennt */
+.tb-print-spickzettel{display:none;}
+@media print{
+  body{background:#fff!important;padding:0!important;color:#111!important;overflow:visible!important;}
+  .page-action-bar,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar,
+  .notes-save-row,
+  .writecheck-actions{display:none!important;}
+  .page-content{padding:10px!important;width:100%!important;max-width:none!important;margin:0!important;}
+  .learning-card{box-shadow:none!important;border:none!important;background:#fff!important;}
+  .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:14px!important;}
+  .compass-kicker,.compass-subtitle,.compass-emoji{display:none!important;}
+  .compass-title{color:#111!important;font-size:22px!important;margin:0!important;}
+  body:not(.spickzettel-print) .compass-mode-panel.is-active{display:block!important;background:#fff!important;}
+  body:not(.spickzettel-print) .compass-mode-panel:not(.is-active){display:none!important;}
+  body:not(.spickzettel-print) .learn-panel.is-active{display:block!important;background:#fff!important;}
+  body:not(.spickzettel-print) .learn-panel:not(.is-active){display:none!important;}
+  body:not(.spickzettel-print) .learn-panel,
+  body:not(.spickzettel-print) .ref-wrap,
+  body:not(.spickzettel-print) .connections-panel,
+  body:not(.spickzettel-print) .connections-wrap,
+  body:not(.spickzettel-print) .writecheck-panel,
+  body:not(.spickzettel-print) .notes-panel{width:100%!important;max-width:none!important;padding:0!important;margin:0!important;background:#fff!important;box-shadow:none!important;}
+  body.spickzettel-print .compass-mode-panel:not([data-val="reference"]){display:none!important;}
+  body.spickzettel-print .compass-mode-panel[data-val="reference"]{display:block!important;background:#fff!important;}
+  body.spickzettel-print .ref-wrap{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important;background:#fff!important;}
+  body.spickzettel-print .ref-wrap > :not(.tb-print-spickzettel){display:none!important;}
+  body.spickzettel-print .tb-print-spickzettel,
+  body.spickzettel-print .ref-wrap > .tb-print-spickzettel{display:block!important;padding:0!important;color:#111!important;background:#fff!important;}
+  body.spickzettel-print .tb-print-spickzettel h2{font-size:18px;margin:0 0 10px;color:#111;font-family:Arial,Helvetica,sans-serif;font-weight:400;}
+  body.spickzettel-print .tb-print-spickzettel h3{font-size:14px;margin:0 0 6px;color:#111;font-family:Arial,Helvetica,sans-serif;font-weight:400;}
+  body.spickzettel-print .tb-print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  body.spickzettel-print .tb-print-box{border:1px solid #999;border-radius:8px;padding:9px;break-inside:avoid;background:#fff!important;box-shadow:none!important;}
+  body.spickzettel-print .tb-print-box ul{margin:0;padding-left:18px;}
+  body.spickzettel-print .tb-print-box li{margin:2px 0;}
+  body.spickzettel-print .tb-print-pattern{font-family:Arial,Helvetica,sans-serif;font-weight:400;margin:4px 0;line-height:1.35;}
+  body.spickzettel-print .tb-print-warning{border:2px solid #111;}
+}
+
+
+.ref-detail-accordion{padding:0;overflow:hidden}
+.ref-detail-accordion summary{cursor:pointer;padding:16px 18px;list-style:none}
+.ref-detail-accordion summary::-webkit-details-marker{display:none}
+.ref-detail-accordion summary::after{content:" öffnen";font-size:.85rem;color:#64748b}
+.ref-detail-accordion[open] summary::after{content:" schließen"}
+.ref-detail-accordion > :not(summary){margin:0 18px 18px}
+
+
+/* TO BE: Layout-Abgleich nach Simple Past / Kompass-Stil */
+:root{
+  --tb-page-max:1320px;
+  --tb-topic-bg-top:#dbeafe;
+  --tb-topic-bg-bottom:#c7d9f2;
+  --tb-topic-surface:rgba(255,255,255,.96);
+  --tb-topic-soft:rgba(255,255,255,.88);
+  --tb-card-border:rgba(148,163,184,.45);
+  --tb-card-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+body{background:#eef4fb!important;}
+@media (min-width:701px){
+  .overview-return-wrap.page-action-bar{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:10px max(20px,calc((100vw - var(--tb-page-max))/2 + 24px)) 6px!important;
+  }
+  .page-content{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0 0 60px!important;
+  }
+  .learning-card{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#eef4fb!important;
+  }
+  .compass-head,
+  .compass-mode-grid,
+  .learn-step-nav,
+  .learn-progress-bar{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-radius:0!important;
+    box-sizing:border-box!important;
+  }
+  .compass-head{
+    padding:24px max(26px,calc((100vw - var(--tb-page-max))/2 + 26px)) 20px!important;
+  }
+  .compass-mode-grid,
+  .learn-step-nav{
+    padding-left:max(0px,calc((100vw - var(--tb-page-max))/2))!important;
+    padding-right:max(0px,calc((100vw - var(--tb-page-max))/2))!important;
+  }
+  .compass-mode-btn,
+  .learn-step-btn{flex:1 1 0!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .ref-wrap,
+  .connections-panel,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:min(var(--tb-page-max),calc(100% - 48px))!important;
+    max-width:var(--tb-page-max)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding:24px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,var(--tb-topic-bg-top) 0%,var(--tb-topic-bg-bottom) 100%)!important;
+  }
+}
+@media (max-width:700px){
+  .page-content{width:100%!important;max-width:100%!important;padding:0 0 48px!important;}
+  .learning-card{border-radius:0!important;border-left:0!important;border-right:0!important;background:#eef4fb!important;}
+  .compass-head,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{border-radius:0!important;}
+  .compass-mode-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(118px,1fr))!important;}
+  .learn-step-nav{overflow-x:auto!important;justify-content:flex-start!important;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto!important;min-width:112px!important;}
+  .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
+  .learn-panel,
+  .ref-wrap,
+  .connections-panel,
+  .connections-wrap,
+  .writecheck-panel,
+  .notes-panel{
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:14px 12px!important;
+    box-sizing:border-box!important;
+    background:linear-gradient(180deg,var(--tb-topic-bg-top) 0%,var(--tb-topic-bg-bottom) 100%)!important;
+  }
+}
+.compass-title,
+.compass-kicker,
+.compass-subtitle,
+.learn-step-btn,
+.compass-mode-btn,
+.ref-section-title,
+.writecheck-intro h3,
+.writecheck-task-title,
+.note-field label,
+.connections-panel h2,
+.connections-panel h3{
+  font-weight:400!important;
+}
+.compass-title{font-size:clamp(1.22rem,2.4vw,1.58rem)!important;letter-spacing:.01em;}
+.compass-subtitle{max-width:720px!important;}
+.learn-panel h2,
+.ref-wrap h2,
+.connections-panel h2,
+.writecheck-panel h2,
+.notes-panel h2{
+  font-size:1.15rem!important;
+  line-height:1.28!important;
+  margin-bottom:10px!important;
+  color:var(--gray-800)!important;
+}
+.learn-panel h3,
+.ref-wrap h3,
+.connections-panel h3,
+.writecheck-panel h3,
+.notes-panel h3{
+  font-size:1rem!important;
+  line-height:1.3!important;
+  margin-bottom:8px!important;
+  color:var(--gray-800)!important;
+}
+.feature-card,
+.machine-card,
+.section-card,
+.selfcheck-card,
+.ref-section-card,
+.writecheck-task,
+.connection-map-card,
+.note-field,
+.ref-list-card,
+.pattern-card,
+.trap-card,
+.purpose-card,
+.tobe-control-card,
+.tobe-can-card{
+  background:var(--tb-topic-surface)!important;
+  border:1px solid var(--tb-card-border)!important;
+  box-shadow:var(--tb-card-shadow)!important;
+}
+.purpose-note,
+.control-hint,
+.writecheck-intro,
+.homework-note,
+.conn-intro{
+  background:var(--tb-topic-soft)!important;
+  border:1px solid rgba(147,197,253,.75)!important;
+  box-shadow:0 4px 14px rgba(15,23,42,.08)!important;
+}
+.compass-mode-grid,
+.learn-step-nav{background:#fff!important;}
+.compass-mode-btn[aria-pressed="true"],
+.learn-step-btn[aria-pressed="true"]{background:#fff!important;}
+
+
+
+/* Korrektur: Nachschlagen-Karten 1-9 optisch einheitlich halten */
+#nachschlagen .ref-section-card,
+#nachschlagen .ref-core,
+#nachschlagen .ref-patterns,
+#nachschlagen .ref-forms,
+#nachschlagen .ref-traps,
+#nachschlagen .ref-special,
+#nachschlagen .ref-examples{
+  background:var(--tb-topic-surface)!important;
+  border:1px solid var(--tb-card-border)!important;
+  box-shadow:var(--tb-card-shadow)!important;
+}
+#nachschlagen details.ref-section-card{
+  display:block!important;
+}
+#nachschlagen .ref-accordion-summary{
+  list-style:none!important;
+  margin:0!important;
+}
+#nachschlagen details.ref-section-card[open] .ref-accordion-summary{
+  margin:0 0 11px!important;
+}
+#nachschlagen .ref-accordion-summary::-webkit-details-marker{
+  display:none!important;
+}
+#nachschlagen .ref-accordion-summary::after{
+  content:'aufklappen';
+  margin-left:auto;
+  font-size:.72rem;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--gray-500);
+}
+#nachschlagen details.ref-section-card[open] .ref-accordion-summary::after{
+  content:'schließen';
+}
+
+
+/* Finale Korrektur: Nachschlagen einheitlich, Hausaufgaben-Druck kurz, Mini-Spickzettel */
+#nachschlagen .ref-wrap{gap:14px!important;}
+#nachschlagen .ref-section-card{
+  width:100%!important;
+  box-sizing:border-box!important;
+  padding:17px!important;
+  border-radius:var(--radius)!important;
+  background:var(--tb-topic-surface)!important;
+  border:1px solid var(--tb-card-border)!important;
+  box-shadow:var(--tb-card-shadow)!important;
+}
+#nachschlagen .ref-section-title,
+#nachschlagen .ref-accordion-summary{
+  min-height:30px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  margin:0 0 11px!important;
+  padding:0!important;
+}
+#nachschlagen details.ref-section-card:not([open]) .ref-accordion-summary{margin:0!important;}
+#nachschlagen details.ref-section-card > *:not(summary){margin-top:11px;}
+#nachschlagen .ref-accordion-summary::after{
+  margin-left:auto!important;
+  padding:3px 9px!important;
+  border-radius:999px!important;
+  background:#eef4fb!important;
+  border:1px solid var(--tb-card-border)!important;
+}
+body.hausaufgaben-mode #nachschlagen .ref-examples{display:none!important;}
+.tb-print-spickzettel{display:none;}
+@media print{
+  body.hausaufgaben-mode:not(.spickzettel-print) .compass-mode-panel:not([data-val="reference"]){display:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .compass-mode-panel[data-val="reference"]{display:block!important;background:#fff!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-wrap{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important;background:#fff!important;box-shadow:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-wrap > :not([data-homework-visible="true"]){display:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-section-card[data-homework-visible="true"]{display:block!important;padding:8px 0!important;margin:0 0 8px!important;border:0!important;border-bottom:1px solid #bbb!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;color:#111!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-section-title{font-size:12px!important;margin:0 0 4px!important;color:#111!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-section-title::before{display:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .trap-grid{display:block!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .trap-card{break-inside:avoid;border:0!important;padding:2px 0!important;margin:0!important;background:#fff!important;box-shadow:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .trap-card:not([data-print-core="true"]){display:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) .homework-note,
+  body.hausaufgaben-mode:not(.spickzettel-print) .ref-intro{display:none!important;}
+  body.spickzettel-print .tb-print-spickzettel{font-size:11px!important;line-height:1.28!important;}
+  body.spickzettel-print .tb-print-spickzettel h2{font-size:17px!important;margin:0 0 8px!important;}
+  body.spickzettel-print .tb-print-spickzettel h3{font-size:12.5px!important;margin:0 0 5px!important;}
+  body.spickzettel-print .tb-print-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin:8px 0!important;}
+  body.spickzettel-print .tb-print-box{padding:7px!important;border:1px solid #999!important;border-radius:7px!important;}
+  body.spickzettel-print .tb-print-box ul,
+  body.spickzettel-print .tb-print-box ol{margin:0!important;padding-left:17px!important;}
+  body.spickzettel-print .tb-print-pattern{margin:2px 0!important;}
+}
+
+
+
+/* Finale Korrektur 2: Nachschlagen geschlossen, Hausaufgaben-Kurzinfo, Mini-Spickzettel */
+#nachschlagen .ref-wrap{
+  max-width:100%;
+}
+#nachschlagen .ref-wrap > .ref-section-card,
+#nachschlagen .ref-wrap > details.ref-section-card{
+  width:100%;
+  box-sizing:border-box;
+}
+#nachschlagen .ref-detail-accordion > summary.ref-section-title{
+  margin:0;
+  list-style:none;
+}
+#nachschlagen .ref-detail-accordion[open] > summary.ref-section-title{
+  margin-bottom:11px;
+}
+#nachschlagen .ref-detail-accordion > summary::-webkit-details-marker{display:none;}
+#nachschlagen .homework-summary{display:none;}
+body.hausaufgaben-mode #nachschlagen .homework-summary{display:block;}
+body.hausaufgaben-mode #nachschlagen .ref-wrap > :not(.homework-note):not(.homework-summary){display:none!important;}
+@media print{
+  body.hausaufgaben-mode:not(.spickzettel-print) *{visibility:hidden!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) #nachschlagen,
+  body.hausaufgaben-mode:not(.spickzettel-print) #nachschlagen *{visibility:visible!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) #nachschlagen .ref-wrap > :not(.homework-summary){display:none!important;}
+  body.hausaufgaben-mode:not(.spickzettel-print) #nachschlagen .homework-summary{display:block!important;position:static!important;border:0!important;box-shadow:none!important;background:#fff!important;padding:0!important;color:#111!important;}
+  body.spickzettel-print .tb-print-spickzettel{display:block!important;}
+}
+</style>
+</head>
+<body>
+<!-- NAVIGATION -->
+<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button></div></div><div class="page-content">
+<article class="learning-card" data-topic="tobe" id="tobe-compass">
+<header class="compass-head">
+<div>
+<p class="compass-kicker">🧠 Kontrollzentrum</p>
+<h1 class="compass-title">to be — am, is, are</h1>
+<p class="compass-subtitle">Mit to be sagst du, wer oder was jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist.</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">🟦</span>
+</header>
+<nav aria-label="Bereiche" class="compass-mode-grid">
+<button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="tobe-mode" data-val="learn" type="button"><span class="compass-mode-icon">🎯</span><span>Lernen</span><span class="compass-mode-hint">erst verstehen</span></button>
+<button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="reference" type="button"><span class="compass-mode-icon">📖</span><span>Nachschlagen</span><span class="compass-mode-hint">Regeln &amp; Spickzettel</span></button>
+<button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="connections" type="button"><span class="compass-mode-icon">🔗</span><span>Verbindungen</span><span class="compass-mode-hint">nicht verwechseln</span></button>
+<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="writecheck" type="button"><span class="compass-mode-icon">✍️</span><span>Schreib-Check</span><span class="compass-mode-hint">selbst schreiben</span></button>
+<button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="notes" type="button"><span class="compass-mode-icon">✏️</span><span>Notizen</span><span class="compass-mode-hint">Lernjournal</span></button>
+</nav>
+<div class="compass-mode-panel is-active" data-panel="tobe-mode" data-val="learn" id="lernen">
+<nav aria-label="Lernschritte" class="learn-step-nav feature-tabs"><button aria-controls="tobe-learn-entry" aria-pressed="true" class="learn-step-btn is-active" data-tab="tobe-learn" data-val="entry" type="button"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button><button aria-controls="tobe-learn-control" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="control" type="button"><span class="step-badge">2</span><span class="step-label">Kontrollzentrum</span></button><button aria-controls="tobe-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="machine" type="button"><span class="step-badge">3</span><span class="step-label">Satz bauen</span></button><button aria-controls="tobe-learn-questions" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="questions" type="button"><span class="step-badge">4</span><span class="step-label">Fragewörter</span></button><button aria-controls="tobe-learn-selfcheck" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="selfcheck" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich’s?</span></button></nav>
+<div class="learn-panel is-active" data-panel="tobe-learn" data-val="entry" id="tobe-learn-entry">
+<div class="entry-card">
+<div aria-hidden="true" class="entry-visual">🙋</div>
+<div>
+<p class="entry-hook">to be bedeutet „sein“.</p>
+<p class="entry-text">Du brauchst <span class="text-mark">am</span>, <span class="text-mark">is</span> oder <span class="text-mark">are</span>, wenn du sagst, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist.</p>
+<div class="entry-examples"><span class="entry-ex">I am eleven.</span><span class="entry-ex">She is happy.</span><span class="entry-ex">They are from Plymouth.</span><span class="entry-ex">We are at school.</span></div>
+</div>
+</div>
+<div aria-label="to-be-Kontrollzentrum" class="change-grid">
+<div class="change-card"><span class="change-label">1. Bedeutung prüfen</span><p>Geht es um Alter, Zustand, Herkunft, Ort oder Person?</p><p class="change-note">In solchen Sätzen ist to be meistens das richtige Verb.</p></div>
+<div class="change-card"><span class="change-label">2. Person erkennen</span><p>Wer ist gemeint: I, you, he, she, it, we, they oder ein Name?</p><p class="change-note">Die Person entscheidet die Form.</p></div>
+<div class="change-card"><span class="change-label">3. Form wählen</span><p>I → am · he/she/it/ein Name → is · you/we/they → are</p><p class="change-note">Erst die Person, dann die Form. Nicht raten.</p></div>
+<div class="change-card"><span class="change-label">4. Satzart bauen</span><p>Aussage: Person + to be. Verneinung: not nach to be. Frage: to be nach vorne.</p><p class="change-note">So baust du den Satz, nicht Wort für Wort aus dem Deutschen.</p></div>
+<div class="change-card"><span class="change-label">5. Fehler prüfen</span><p>Frage dich: Passt die Form? Steht not richtig? Steht bei der Frage am/is/are vorne? Gibt es ein falsches do/does?</p><p class="change-note">Bei to be-Fragen brauchst du kein do und kein does.</p></div>
+</div>
+<div aria-label="Wann benutzt man to be?" class="purpose-grid">
+<div class="purpose-card"><span class="purpose-icon">👤</span><span class="purpose-title">Alter / Person</span><span class="purpose-ex">I am eleven.</span></div>
+<div class="purpose-card"><span class="purpose-icon">🙂</span><span class="purpose-title">Zustand</span><span class="purpose-ex">She is tired.</span></div>
+<div class="purpose-card"><span class="purpose-icon">🌍</span><span class="purpose-title">Herkunft</span><span class="purpose-ex">He is from Bath.</span></div>
+<div class="purpose-card"><span class="purpose-icon">📍</span><span class="purpose-title">Ort</span><span class="purpose-ex">We are at school.</span></div>
+</div>
+</div>
+<div class="learn-panel" data-panel="tobe-learn" data-val="control" id="tobe-learn-control">
+<div class="feature-card tobe-form-lab">
+<p class="feature-title">🧭 to-be-Kontrollzentrum</p>
+<p class="feature-subtitle">Denke immer in vier Schritten: Wer ist gemeint? Welche Form passt? Welche Satzart brauche ich? Ist der fertige Satz sauber?</p>
+<div aria-label="Person für to be wählen" class="form-person-row" role="group">
+<button aria-pressed="true" class="form-person-btn is-active" data-form-person="I" type="button">I</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="you" type="button">you</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="he" type="button">he</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="she" type="button">she</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="it" type="button">it</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="we" type="button">we</button>
+<button aria-pressed="false" class="form-person-btn" data-form-person="they" type="button">they</button>
+</div>
+<div aria-live="polite" class="form-lab-output" id="form-lab-output">
+<div class="form-lab-path"><span class="path-chip" id="form-lab-person">I</span><span class="path-arrow">→</span><span class="path-chip path-strong" id="form-lab-form">am</span><span class="path-arrow">→</span><span class="path-chip" id="form-lab-rule">nur für I</span></div>
+<p class="form-lab-sentence" id="form-lab-sentence">I am eleven.</p>
+<p class="form-lab-note" id="form-lab-note">Bei I kommt immer am. Nicht is, nicht are.</p>
+</div>
+<div aria-label="Kernregel für am, is, are" class="core-rule-grid">
+<div><span>I</span><span class="form-choice">am</span></div>
+<div><span>he / she / it</span><span class="form-choice">is</span></div>
+<div><span>you / we / they</span><span class="form-choice">are</span></div>
+</div>
+<div class="pitfall-mini" data-review-id="tobe-name-is" data-review-source="learning-control" data-topic-id="tobe" data-type="stolperstelle">
+<p class="pitfall-mini-title">Zentrale Denkfalle</p>
+<p><span class="wrong-inline">Hanna are happy.</span> ist falsch. <span class="right-inline">Hanna is happy.</span> ist richtig, weil ein einzelner Name wie she oder he funktioniert.</p>
+</div>
+</div>
+</div>
+<div class="learn-panel" data-panel="tobe-learn" data-val="machine" id="tobe-learn-machine">
+<div class="feature-card">
+<p class="feature-title">🧱 to-be-Satzmaschine</p>
+<p class="feature-subtitle">Nimm immer denselben Denkweg: Person finden, Form einsetzen, Satzart bauen, dann den fertigen Satz prüfen.</p>
+<p class="machine-question">Wähle erst die Satzart, dann die Person. Prüfe danach den ganzen Satz.</p>
+<div aria-label="Satzart" class="mode-switcher" role="group">
+<button aria-pressed="true" class="mode-btn is-active" data-mode="positive" type="button">Aussage</button>
+<button aria-pressed="false" class="mode-btn" data-mode="negative" type="button">Verneinung</button>
+<button aria-pressed="false" class="mode-btn" data-mode="question" type="button">Frage</button>
+</div>
+<div aria-label="Person wählen" class="machine-chips" role="group">
+<button aria-pressed="true" class="m-chip is-active" data-person="I" type="button">I</button>
+<button aria-pressed="false" class="m-chip" data-person="you" type="button">you</button>
+<button aria-pressed="false" class="m-chip" data-person="he" type="button">he</button>
+<button aria-pressed="false" class="m-chip" data-person="she" type="button">she</button>
+<button aria-pressed="false" class="m-chip" data-person="it" type="button">it</button>
+<button aria-pressed="false" class="m-chip" data-person="we" type="button">we</button>
+<button aria-pressed="false" class="m-chip" data-person="they" type="button">they</button>
+</div>
+<div aria-live="polite" class="machine-output" id="machine-out"><div class="sentence-built" id="m-sentence"></div><p class="machine-note" id="m-note"></p></div><div class="pitfall-mini" data-review-id="tobe-no-do-does-question-learning" data-review-source="learning-machine" data-topic-id="tobe" data-type="stolperstelle">
+<p class="pitfall-mini-title">Wichtigste Frage-Falle</p>
+<p><span class="wrong-inline">Do you are ready?</span> ist falsch. <span class="right-inline">Are you ready?</span> ist richtig. Bei to be-Fragen kommt am/is/are nach vorne. Kein do, kein does.</p>
+</div>
+<div class="change-grid">
+<div class="change-card"><span class="change-label">Aussage</span><p><span class="tok tok-subject subject-she">She</span><span class="tok tok-verb">is</span><span class="tok tok-rest">happy.</span></p><p class="change-note">Prüfe: Person und Form passen zusammen.</p></div>
+<div class="change-card"><span class="change-label">Verneinung</span><p><span class="tok tok-subject subject-she">She</span><span class="tok tok-verb">is</span><span class="tok tok-neg">not</span><span class="tok tok-rest">happy.</span></p><p class="change-note">Prüfe: not steht direkt nach am/is/are.</p></div>
+<div class="change-card"><span class="change-label">Frage</span><p><span class="tok tok-verb">Is</span><span class="tok tok-subject subject-she">she</span><span class="tok tok-rest">happy?</span></p><p class="change-note">Prüfe: am/is/are steht vorne. Kein do/does.</p></div>
+</div>
+</div>
+</div>
+<div class="learn-panel" data-panel="tobe-learn" data-val="questions" id="tobe-learn-questions">
+<div class="feature-card">
+<p class="feature-title">❓ Fragewörter mit to be</p>
+<p class="feature-subtitle">Bei Fragen mit to be steht am, is oder are vor der Person. Mit Fragewort steht das Fragewort ganz vorne. Du brauchst kein do und kein does.</p>
+<div class="change-grid">
+<div class="change-card"><span class="change-label">Alter</span><p><span class="tok tok-rest">How old</span> <span class="tok tok-verb">are</span> <span class="tok tok-subject subject-you">you</span>?</p><p class="change-note">Antwort: I am eleven.</p></div>
+<div class="change-card"><span class="change-label">Herkunft</span><p><span class="tok tok-rest">Where</span> <span class="tok tok-verb">are</span> <span class="tok tok-subject subject-you">you</span> from?</p><p class="change-note">Antwort: I am from Germany.</p></div>
+<div class="change-card"><span class="change-label">Person</span><p><span class="tok tok-rest">Who</span> <span class="tok tok-verb">is</span> <span class="tok tok-subject subject-she">she</span>?</p><p class="change-note">Antwort: She is my friend.</p></div>
+<div class="change-card"><span class="change-label">Ja-/Nein-Frage</span><p><span class="tok tok-verb">Are</span> <span class="tok tok-subject subject-you">you</span> <span class="tok tok-rest">ready</span>?</p><p class="change-note">Antwort: Yes, I am. / No, I am not.</p></div></div>
+<div class="pitfall-mini" data-review-id="tobe-questionword-order" data-review-source="learning-questionwords" data-topic-id="tobe" data-type="stolperstelle">
+<p class="pitfall-mini-title">Denkweg</p>
+<p>Fragewort → am/is/are → Person → Rest. Beispiel: <span class="right-inline">Where are you from?</span></p>
+</div>
+</div>
+</div>
+<div class="learn-panel" data-panel="tobe-learn" data-val="selfcheck" id="tobe-learn-selfcheck">
+<div class="check-shell tobe-can-check">
+<div class="check-intro-card">
+<p class="check-kicker">Prüfe das Kontrollzentrum ohne Spickzettel: Wer ist gemeint? Welche Form passt? Welche Satzart ist es? Wo steckt der typische Fehler?</p>
+<h3>Kann ich’s?</h3>
+<p>Entscheide zuerst selbst. Danach prüfst du, ob dein Satz sauber gebaut ist.</p>
+</div>
+<section aria-labelledby="tb-mini-decision-title" class="check-card">
+<h4 id="tb-mini-decision-title">1. Person erkennen und Form wählen</h4>
+<p class="check-card-text">Entscheide zuerst: Welche Person ist gemeint? Wähle dann am, is oder are. Die Lösung bleibt zu, bis du gedacht hast.</p>
+<div class="mini-decision-grid">
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">I</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">Welche Form passt?</span></div>
+<div aria-label="Form für I wählen" class="mini-choice-row" role="group"><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="am" data-selfcheck-ok="Richtig: I am." data-selfcheck-value="am" data-selfcheck-wrong="Noch nicht. I braucht am." type="button">am</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="am" data-selfcheck-ok="Richtig: I am." data-selfcheck-value="is" data-selfcheck-wrong="Noch nicht. I braucht am." type="button">is</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="am" data-selfcheck-ok="Richtig: I am." data-selfcheck-value="are" data-selfcheck-wrong="Noch nicht. I braucht am." type="button">are</button></div><p aria-live="polite" class="mini-choice-feedback">Wähle am, is oder are.</p></div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">she</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">Welche Form passt?</span></div>
+<div aria-label="Form für she wählen" class="mini-choice-row" role="group"><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: she is." data-selfcheck-value="am" data-selfcheck-wrong="Noch nicht. she braucht is." type="button">am</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: she is." data-selfcheck-value="is" data-selfcheck-wrong="Noch nicht. she braucht is." type="button">is</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: she is." data-selfcheck-value="are" data-selfcheck-wrong="Noch nicht. she braucht is." type="button">are</button></div><p aria-live="polite" class="mini-choice-feedback">Wähle am, is oder are.</p></div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">we</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">Welche Form passt?</span></div>
+<div aria-label="Form für we wählen" class="mini-choice-row" role="group"><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="are" data-selfcheck-ok="Richtig: we are." data-selfcheck-value="am" data-selfcheck-wrong="Noch nicht. we braucht are." type="button">am</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="are" data-selfcheck-ok="Richtig: we are." data-selfcheck-value="is" data-selfcheck-wrong="Noch nicht. we braucht are." type="button">is</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="are" data-selfcheck-ok="Richtig: we are." data-selfcheck-value="are" data-selfcheck-wrong="Noch nicht. we braucht are." type="button">are</button></div><p aria-live="polite" class="mini-choice-feedback">Wähle am, is oder are.</p></div>
+<div class="mini-decision-item is-stacked">
+<div class="mini-decision-line"><span class="mini-decision-prompt">Hanna</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">Welche Form passt?</span></div>
+<div aria-label="Form für Hanna wählen" class="mini-choice-row" role="group"><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: Hanna is. Ein einzelner Name funktioniert wie he/she/it." data-selfcheck-value="am" data-selfcheck-wrong="Noch nicht. Hanna braucht is." type="button">am</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: Hanna is. Ein einzelner Name funktioniert wie he/she/it." data-selfcheck-value="is" data-selfcheck-wrong="Noch nicht. Hanna braucht is." type="button">is</button><button aria-pressed="false" class="mini-choice-btn" data-selfcheck-answer="is" data-selfcheck-ok="Richtig: Hanna is. Ein einzelner Name funktioniert wie he/she/it." data-selfcheck-value="are" data-selfcheck-wrong="Noch nicht. Hanna braucht is." type="button">are</button></div><p aria-live="polite" class="mini-choice-feedback">Wähle am, is oder are.</p></div>
+</div>
+</section>
+<section aria-labelledby="tb-build-title" class="check-card">
+<h4 id="tb-build-title">2. Satz bauen</h4>
+<p class="check-card-text">Baue den Satz im Kopf mit dem Kontrollzentrum. Öffne die Kontrolle erst danach.</p>
+<div class="error-scanner-lite">
+<div class="scanner-card">
+<p class="scanner-label">Aussage</p>
+<p class="scanner-sentence-lite"><span class="scanner-word">Hanna</span><span class="scanner-word">?</span><span class="scanner-word">happy.</span></p>
+<p class="scanner-question">Welche Form gehört zwischen Hanna und happy?</p>
+<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Hanna is happy.</p><p>Denkweg: Hanna ist ein einzelner Name. Ein einzelner Name funktioniert hier wie she. Deshalb brauchst du is.</p></div></details>
+</div>
+<div class="scanner-card">
+<p class="scanner-label">Frage</p>
+<p class="scanner-sentence-lite"><span class="scanner-word">?</span><span class="scanner-word">you</span><span class="scanner-word">ready?</span></p>
+<p class="scanner-question">Welche to-be-Form muss nach vorne?</p>
+<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Are you ready?</p><p>Denkweg: you gehört zu are. Bei Fragen steht die to-be-Form vorne.</p></div></details>
+</div>
+</div>
+</section>
+<section aria-labelledby="tb-error-scanner-title" class="check-card">
+<h4 id="tb-error-scanner-title">3. Fehler erkennen</h4>
+<p class="check-card-text">Prüfe mit demselben Kontrollzentrum: Person erkennen, Form prüfen, Satzstellung prüfen. Öffne die Reparatur erst danach.</p>
+<div class="error-scanner-lite">
+<div class="scanner-card">
+<p class="scanner-label">Fehler-Satz 1</p>
+<p class="scanner-sentence-lite"><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">She</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-hidden-error-target="true" data-review-id="tobe-he-she-it-is-scanner" data-review-source="selfcheck" data-scanner-word="true" data-topic-id="tobe" data-type="stolperstelle" type="button">are</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">happy.</button></p>
+<p class="scanner-question">Welche Stelle ist falsch?</p><p aria-live="polite" class="scanner-feedback">Klicke zuerst die Stelle an, die du für falsch hältst.</p>
+<details class="scanner-reveal"><summary>Reparatur zeigen</summary><div class="scanner-solution-lite"><p>Fehlerstelle: are.</p><p>Richtig: She is happy.</p><p>Denkweg: she gehört zu he / she / it. Deshalb brauchst du is.</p></div></details>
+</div>
+<div class="scanner-card">
+<p class="scanner-label">Fehler-Satz 2</p>
+<p class="scanner-sentence-lite"><button aria-pressed="false" class="scanner-word scanner-word-btn" data-hidden-error-target="true" data-review-id="tobe-no-do-does-question-scanner" data-review-source="selfcheck" data-scanner-word="true" data-topic-id="tobe" data-type="stolperstelle" type="button">Do</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">you</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">are</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">ready?</button></p>
+<p class="scanner-question">Welcher Satzanfang passt nicht zu to be?</p><p aria-live="polite" class="scanner-feedback">Klicke zuerst die Stelle an, die du für falsch hältst.</p>
+<details class="scanner-reveal"><summary>Reparatur zeigen</summary><div class="scanner-solution-lite"><p>Fehlerstelle: Do.</p><p>Richtig: Are you ready?</p><p>Denkweg: Bei to be-Fragen benutzt du kein do/does. Die to-be-Form wandert nach vorne.</p></div></details>
+</div>
+<div class="scanner-card">
+<p class="scanner-label">Kurzantwort-Falle</p>
+<p class="scanner-sentence-lite"><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">Are</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">you</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">ready?</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">—</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">Yes,</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-hidden-error-target="true" data-review-id="tobe-short-answer-longform-scanner" data-review-source="selfcheck" data-scanner-word="true" data-topic-id="tobe" data-type="stolperstelle" type="button">I'm.</button></p>
+<p class="scanner-question">Was ist an der Kurzantwort nicht sauber?</p><p aria-live="polite" class="scanner-feedback">Klicke zuerst die Stelle an, die du für falsch hältst.</p>
+<details class="scanner-reveal"><summary>Reparatur zeigen</summary><div class="scanner-solution-lite"><p>Fehlerstelle: I'm.</p><p>Richtig: Yes, I am.</p><p>Denkweg: In positiven Kurzantworten steht die Langform.</p></div></details>
+</div>
+</div>
+</section>
+<section aria-labelledby="tb-explain-title" class="check-card">
+<h4 id="tb-explain-title">4. Denkweg erklären</h4>
+<p class="check-card-text">Erkläre die Regel erst selbst. Vergleiche danach mit der Muster-Kurzfassung.</p>
+<label class="selfcheck-own-label" for="tobe-own-rule">Mein Satz zur Regel:</label>
+<textarea class="selfcheck-own-field" id="tobe-own-rule" placeholder="Zum Beispiel: to be benutze ich, wenn ..." rows="3"></textarea>
+<details class="explain-reveal"><summary>Muster-Kurzfassung vergleichen</summary><p>to be beschreibt, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist. Die Form richtet sich nach der Person: I am, he/she/it is, you/we/they are.</p></details>
+<p class="check-return-hint">Unsicher? Zurück zum Kontrollzentrum: Person erkennen → Form wählen → Satz bauen → Fehler erkennen.</p>
+</section>
+<section aria-labelledby="tb-final-check-title" class="check-card check-finish-card">
+<h4 id="tb-final-check-title">5. Nach dem eigenen Versuch prüfen</h4>
+<p class="check-card-text">Hake nur ab, was du wirklich gemacht hast.</p>
+<ul class="check-list check-list-compact" id="check-list-tobe">
+<li><label><input type="checkbox"/><span>Ich habe die Mini-Aufgaben ohne Musterlösung versucht.</span></label></li>
+<li><label><input type="checkbox"/><span>Ich kann die Regel mit einem eigenen Beispiel erklären.</span></label></li>
+</ul>
+<div aria-live="polite" class="check-status" id="check-status">Noch offen: Erst Aufgaben versuchen, dann die eigene Erklärung mit der Muster-Kurzfassung vergleichen.</div>
+</section>
+</div>
+</div></div>
+<div class="compass-mode-panel" data-panel="tobe-mode" data-val="reference" id="nachschlagen">
+<div class="ref-wrap">
+<div class="ref-intro"><span aria-hidden="true">📖</span><span>Nachschlagen: schneller Spickzettel. Oben stehen die Kernregeln. Zusatzregeln kannst du bei Bedarf aufklappen.</span></div><div aria-live="polite" class="homework-note" role="status"><span aria-hidden="true">📚</span><span>Hausaufgaben-Modus: Du siehst jetzt nur die schnelle Orientierung zum Nachschlagen. Für alle Formen und Sonderfälle schalte oben zurück in den Normal-Modus.</span></div><div aria-labelledby="tb-homework-title" class="ref-section-card homework-summary" data-homework-visible="true"><h3 class="ref-section-title" data-step="Kurzinfo" id="tb-homework-title">Kurzinfo für Hausaufgaben</h3><ul class="ref-list"><li><span class="ref-list-label">Kernregel: </span>to be benutzt du für Alter, Zustand, Herkunft und Ort.</li><li><span class="ref-list-label">Formen: </span>I am · he/she/it is · you/we/they are.</li><li><span class="ref-list-label">Satzmuster: </span>Person + am/is/are + Rest.</li><li><span class="ref-list-label">Frage: </span>Am/Is/Are + Person + Rest?</li><li><span class="ref-list-label">Denkfalle: </span>Kein do/does bei to be: Are you ready?</li><li><span class="ref-list-label">Kurzantwort: </span>Yes, I am. / No, I’m not.</li></ul></div>
+<div aria-labelledby="tb-ref-kurzmerken" class="ref-section-card ref-core">
+<h3 class="ref-section-title" data-step="1" id="tb-ref-kurzmerken">Kurz merken – Spickzettel-Kern</h3>
+<ul class="ref-list"><li><span class="ref-list-label">Kernregel: </span>to be benutzt du für Alter, Zustand, Herkunft und Ort.</li><li><span class="ref-list-label">Wichtigste Form: </span>I am · he/she/it is · you/we/they are</li><li><span class="ref-list-label">Wichtigste Denkfalle: </span>Keine do/does-Frage: Are you ready? Nicht: Do you are ready?</li><li><span class="ref-list-label">Merksatz: </span>Erst die Person finden, dann am, is oder are wählen.</li></ul>
+</div>
+<div aria-labelledby="tb-ref-patterns" class="ref-section-card ref-patterns">
+<h3 class="ref-section-title" data-step="2" id="tb-ref-patterns">Satzmuster</h3>
+<div class="simple-table-wrap ref-pattern-table-wrap"><table class="clean-ref-table ref-pattern-table"><thead><tr><th>Satzart</th><th>Muster</th><th>Beispiele</th></tr></thead><tbody><tr><td>Aussage</td><td>Person + am / is / are + Rest.</td><td><span class="ref-example-inline">I am happy.</span> <span class="ref-example-inline">She is nice.</span> <span class="ref-example-inline">They are friends.</span></td></tr><tr><td>Verneinung</td><td>Person + am not / is not / are not + Rest.</td><td><span class="ref-example-inline">I am not tired.</span> <span class="ref-example-inline">She is not nice. / She isn't nice.</span> <span class="ref-example-inline">They are not friends. / They aren't friends.</span></td></tr><tr><td>Frage</td><td>Am / Is / Are + Person + Rest?</td><td><span class="ref-example-inline">Am I late?</span> <span class="ref-example-inline">Is she nice?</span> <span class="ref-example-inline">Are they friends?</span></td></tr></tbody></table></div>
+</div><details class="ref-section-card ref-forms ref-detail-only ref-detail-accordion"><summary class="ref-section-title ref-accordion-summary" data-step="3" id="tb-ref-forms">Alle Formen</summary>
+<div class="simple-table-wrap"><table class="clean-ref-table">
+<colgroup><col class="ref-col-person"/><col class="ref-col-form"/><col class="ref-col-short"/><col class="ref-col-example"/><col class="ref-col-question"/></colgroup>
+<thead><tr><th>Person</th><th>Form</th><th>Kurzform</th><th>Beispiel</th><th>Frage</th></tr></thead><tbody>
+<tr><td><span class="person-pill person-i">I</span></td><td><span class="form-pill">am</span></td><td>I'm</td><td>I am eleven.</td><td>Am I late?</td></tr>
+<tr><td><span class="person-pill person-you">you</span></td><td><span class="form-pill">are</span></td><td>you're</td><td>You are ready.</td><td>Are you ready?</td></tr>
+<tr><td><span class="person-pill person-he">he</span></td><td><span class="form-pill">is</span></td><td>he's</td><td>He is funny.</td><td>Is he funny?</td></tr>
+<tr><td><span class="person-pill person-he">she</span></td><td><span class="form-pill">is</span></td><td>she's</td><td>She is nice.</td><td>Is she nice?</td></tr>
+<tr><td><span class="person-pill person-he">it</span></td><td><span class="form-pill">is</span></td><td>it's</td><td>It is cold.</td><td>Is it cold?</td></tr>
+<tr><td><span class="person-pill person-they">we</span></td><td><span class="form-pill">are</span></td><td>we're</td><td>We are friends.</td><td>Are we friends?</td></tr>
+<tr><td><span class="person-pill person-they">they</span></td><td><span class="form-pill">are</span></td><td>they're</td><td>They are friendly.</td><td>Are they friendly?</td></tr>
+</tbody></table></div>
+</details>
+<div aria-labelledby="tb-ref-traps" class="ref-section-card ref-traps">
+<h3 class="ref-section-title" data-step="4" id="tb-ref-traps">Typische Denkfallen</h3>
+<div class="trap-grid">
+<div class="trap-card" data-review-id="tobe-i-am-not-is" data-review-source="reference" data-topic-id="tobe" data-type="stolperstelle"><span class="trap-label">Form</span><p><span class="wrong-inline">I is Hanna.</span></p><p><span class="right-inline">I am Hanna.</span></p><p>I hat immer am.</p></div>
+<div class="trap-card" data-review-id="tobe-he-she-it-is-reference" data-review-source="reference" data-topic-id="tobe" data-type="stolperstelle"><span class="trap-label">Form</span><p><span class="wrong-inline">She are happy.</span></p><p><span class="right-inline">She is happy.</span></p><p>he / she / it passen zu is.</p></div>
+<div class="trap-card" data-print-core="true" data-review-id="tobe-no-do-does-question-reference" data-review-source="reference" data-topic-id="tobe" data-type="stolperstelle"><span class="trap-label">Frage</span><p><span class="wrong-inline">Do you are ready?</span></p><p><span class="right-inline">Are you ready?</span></p><p>to be bildet Fragen selbst.</p></div>
+<div class="trap-card" data-review-id="tobe-short-answer-longform-reference" data-review-source="reference" data-topic-id="tobe" data-type="stolperstelle"><span class="trap-label">Kurzantwort</span><p><span class="wrong-inline">Yes, I'm.</span></p><p><span class="right-inline">Yes, I am.</span></p><p>Bei Yes-Kurzantworten steht die Langform.</p></div>
+</div>
+</div><details class="ref-section-card ref-special ref-detail-accordion"><summary class="ref-section-title ref-accordion-summary" data-step="5" id="tb-ref-negative-shortforms">Verneinung &amp; Kurzformen</summary>
+<div class="special-grid">
+<div class="special-card"><h3>I</h3><p>I am not oder I'm not.</p><p>Bei I gibt es keine normale Kurzform mit n't.</p></div>
+<div class="special-card"><h3>is</h3><p>She is not nice.</p><p>She isn't nice oder She's not nice sind beide möglich.</p></div>
+<div class="special-card"><h3>are</h3><p>They are not friends.</p><p>They aren't friends oder They're not friends sind beide möglich.</p></div>
+</div>
+</details><details class="ref-section-card ref-special ref-detail-accordion"><summary class="ref-section-title ref-accordion-summary" data-step="6" id="tb-ref-shortanswers">Kurzantworten</summary>
+<div class="special-grid">
+<div class="special-card"><h3>Mit are</h3><p>Are you ready? — Yes, I am. / No, I'm not.</p><p>Are they friends? — Yes, they are. / No, they aren't.</p></div>
+<div class="special-card"><h3>Mit is</h3><p>Is she nice? — Yes, she is. / No, she isn't.</p><p>Is it cold? — Yes, it is. / No, it isn't.</p></div>
+</div>
+</details><details class="ref-section-card ref-special ref-detail-accordion"><summary class="ref-section-title ref-accordion-summary" data-step="7" id="tb-ref-adjectives">Adjektive mit to be</summary>
+<div class="special-grid">
+<div class="special-card"><h3>Eigenschaften und Zustände</h3><p>Adjektive stehen nach to be.</p><p>She is nice. They are friendly. I am tired.</p></div>
+<div class="special-card"><h3>Keine Extra-Endung</h3><p>Das Adjektiv bleibt gleich.</p><p>She is friendly. They are friendly.</p></div>
+</div>
+</details><details class="ref-section-card ref-special ref-detail-accordion"><summary class="ref-section-title ref-accordion-summary" data-step="8" id="tb-ref-questionwords">Fragewörter mit to be</summary>
+<div class="special-grid">
+<div class="special-card"><h3>Alter</h3><p>How old are you? — I'm eleven.</p></div>
+<div class="special-card"><h3>Herkunft</h3><p>Where are you from? — I'm from Germany.</p></div>
+<div class="special-card"><h3>Person</h3><p>Who is she? — She is my friend.</p></div>
+</div>
+</details><div aria-labelledby="tb-ref-examples" class="ref-sentences ref-section-card ref-examples">
+<h3 class="ref-section-title" data-step="9" id="tb-ref-examples">Typische Schulbeispiele</h3>
+<div class="sentence-rows">
+<div class="sentence-row"><span class="sr-en">I'm from Plymouth.</span><span class="sr-de">Ich komme aus Plymouth.</span><span class="sr-ctx">Herkunft</span></div>
+<div class="sentence-row"><span class="sr-en">How old are you? — I'm eleven.</span><span class="sr-de">Wie alt bist du? — Ich bin elf.</span><span class="sr-ctx">Alter</span></div>
+<div class="sentence-row"><span class="sr-en">She is British.</span><span class="sr-de">Sie ist Britin.</span><span class="sr-ctx">Herkunft</span></div>
+<div class="sentence-row"><span class="sr-en">We are at school.</span><span class="sr-de">Wir sind in der Schule.</span><span class="sr-ctx">Ort</span></div>
+</div>
+</div><section aria-labelledby="tb-print-title" class="tb-print-spickzettel"><h2 id="tb-print-title">to be – Mini-Spickzettel</h2><div class="tb-print-box tb-print-core"><h3>Kernregel</h3><p class="tb-print-pattern">to be: Alter, Zustand, Herkunft, Ort.</p><p class="tb-print-pattern">Erst Person finden, dann am/is/are wählen.</p></div><div class="tb-print-grid"><section class="tb-print-box"><h3>Denkweg</h3><ol><li>Wer?</li><li>Form?</li><li>Satzart?</li><li>Satz prüfen.</li></ol></section><section class="tb-print-box"><h3>Satzmuster</h3><p class="tb-print-pattern">Aussage: Person + am/is/are + Rest.</p><p class="tb-print-pattern">Verneinung: Person + am/is/are + not + Rest.</p><p class="tb-print-pattern">Frage: Am/Is/Are + Person + Rest?</p><p class="tb-print-pattern">Kurzantwort: Yes, I am. / No, I’m not.</p></section></div><section class="tb-print-box tb-print-warning"><h3>Denkfallen</h3><p class="tb-print-pattern">Kein do/does: Are you ready?</p><p class="tb-print-pattern">Nicht: Yes, I’m. Richtig: Yes, I am.</p></section></section></div>
+
+
+
+
+
+
+</div></article></div>
+
+<div class="compass-mode-panel" data-panel="tobe-mode" data-val="connections" id="verbindungen">
+<div class="connections-panel">
+<p class="conn-intro">to be ist eine Grundlage. Diese Nachbarthemen helfen dir, es nicht mit anderen Satzmustern zu verwechseln.</p>
+<div class="conn-map">
+<a class="conn-card" href="pronouns.html#lernen"><div aria-hidden="true" class="conn-icon">👤</div><div><h3 class="conn-title">Pronouns</h3><p class="conn-text">Ohne Pronomen weißt du nicht sicher, ob am, is oder are passt.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">I → am</span><span class="conn-ex conn-ex-blue">she → is</span><span class="conn-ex conn-ex-blue">they → are</span></div><span class="conn-link-label">Pronouns öffnen →</span></div></a>
+<a class="conn-card" href="questions.html#lernen"><div aria-hidden="true" class="conn-icon">❓</div><div><h3 class="conn-title">Questions</h3><p class="conn-text">Bei normalen Verben brauchst du do oder does. Bei to be steht am, is oder are selbst vorne.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">Is she late?</span><span class="conn-ex conn-ex-blue">nicht: Does she is late?</span></div><span class="conn-link-label">Questions öffnen →</span></div></a>
+<a class="conn-card" href="wordorder.html#lernen"><div aria-hidden="true" class="conn-icon">🧱</div><div><h3 class="conn-title">Word Order</h3><p class="conn-text">Dort prüfst du die Satzstellung. Bei to be verändert sich die Reihenfolge besonders in Fragen.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">She is ready.</span><span class="conn-ex conn-ex-blue">Is she ready?</span></div><span class="conn-link-label">Word Order öffnen →</span></div></a>
+<a class="conn-card" href="adverbsoffrequency.html#lernen"><div aria-hidden="true" class="conn-icon">🔁</div><div><h3 class="conn-title">Adverbs of Frequency</h3><p class="conn-text">Häufigkeitswörter stehen bei to be meistens nach am, is oder are.</p><div class="conn-examples"><span class="conn-ex conn-ex-violet">She is always late.</span><span class="conn-ex conn-ex-violet">They are often tired.</span></div><span class="conn-link-label">Adverbs of Frequency öffnen →</span></div></a>
+<a class="conn-card" href="progressive.html#lernen"><div aria-hidden="true" class="conn-icon">🎬</div><div><h3 class="conn-title">Present Progressive</h3><p class="conn-text">Dort ist to be das Hilfsverb vor dem Verb mit -ing.</p><div class="conn-examples"><span class="conn-ex conn-ex-violet">She is playing.</span><span class="conn-ex conn-ex-violet">They are eating.</span></div><span class="conn-link-label">Present Progressive öffnen →</span></div></a>
+<a class="conn-card" href="thereisthereare.html#lernen"><div aria-hidden="true" class="conn-icon">📍</div><div><h3 class="conn-title">there is / there are</h3><p class="conn-text">Dort benutzt du wieder is oder are, aber diesmal nach there.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">There is a book.</span><span class="conn-ex conn-ex-blue">There are three cats.</span></div><span class="conn-link-label">there is / there are öffnen →</span></div></a>
+</div>
+</div>
+</div>
+<div class="compass-mode-panel" data-panel="tobe-mode" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro"><h3>✍️ Schreib-Check</h3><p>Schreibe erst selbst. Prüfe immer: Wer ist gemeint? Welche Form passt? Ist es Aussage, Verneinung oder Frage? Danach bekommst du eine Denkfrage oder auf Wunsch die Lösung. Leere Aufgaben werden nicht bewertet.</p></div>
+<div class="writecheck-grid" id="writecheck-tasks"></div>
+<div class="writecheck-actions"><button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle ausgefüllten Antworten prüfen</button><button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button></div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div>
+<div class="compass-mode-panel" data-panel="tobe-mode" data-val="notes" id="notizen">
+<div class="notes-panel">
+<p class="notes-title">✏️ Meine Notizen zu to be</p>
+<div class="notes-grid">
+<div class="note-field"><label class="note-field-label" for="note-new">Das war neu für mich</label><textarea class="note-textarea" id="note-new" placeholder="Was hast du heute verstanden?"></textarea></div>
+<div class="note-field"><label class="note-field-label" for="note-hard">Das war schwierig</label><textarea class="note-textarea" id="note-hard" placeholder="Welche Stelle musst du nochmal prüfen?"></textarea></div>
+<div class="note-field"><label class="note-field-label" for="note-free">Meine eigene Regel</label><textarea class="note-textarea" id="note-free" placeholder="Schreibe die Regel in deinen Worten."></textarea></div>
+</div>
+<div class="mb-12"><label class="note-example-label" for="note-example">Mein eigener Beispielsatz</label><input class="note-example-input" id="note-example" placeholder="Zum Beispiel: I am at home." type="text"/></div>
+<div class="notes-save-row"><button class="notes-save-btn" id="notes-save-btn" type="button">Notizen speichern</button><button class="notes-clear-btn" id="notes-clear-btn" type="button">Notizen löschen</button><span aria-live="polite" class="notes-saved" id="notes-saved">Gespeichert.</span></div>
+</div>
+</div>
+<script>
+(function(){
+  try { localStorage.setItem('kompass_last_topic', 'tobe'); } catch(e) {}
+  var SK = 'kompass_tobe_checks';
+  var SKN = 'kompass_tobe_notes';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+
+  var FORMS = {I:'am',you:'are',he:'is',she:'is',it:'is',we:'are',they:'are'};
+  var SHORTS = {I:"I'm",you:"you're",he:"he's",she:"she's",it:"it's",we:"we're",they:"they're"};
+  var RESTS = {I:'eleven.',you:'ready.',he:'from Bath.',she:'happy.',it:'cold.',we:'at school.',they:'friendly.'};
+  var NOTES_POS = {I:"I gehört allein zu am.",you:"you gehört zu are.",he:"he gehört zu is.",she:"she gehört zu is.",it:"it gehört zu is.",we:"we gehört zu are.",they:"they gehört zu are."};
+  var NOTES_NEG = {I:"I am not oder I'm not. Nicht amn't.",you:"you are not / you aren't / you're not.",he:"he is not / he isn't / he's not.",she:"she is not / she isn't / she's not.",it:"it is not / it isn't / it's not.",we:"we are not / we aren't / we're not.",they:"they are not / they aren't / they're not."};
+  var NOTES_Q = {I:"Am I…? — Yes, I am. / No, I'm not.",you:"Are you…? — Yes, I am. / No, I'm not.",he:"Is he…? — Yes, he is. / No, he isn't.",she:"Is she…? — Yes, she is. / No, she isn't.",it:"Is it…? — Yes, it is. / No, it isn't.",we:"Are we…? — Yes, we are. / No, we aren't.",they:"Are they…? — Yes, they are. / No, they aren't."};
+  var FORM_LAB = {
+    I:{form:'am',rule:'nur für I',sent:'I am eleven.',note:'Bei I kommt immer am. Nicht is, nicht are.'},
+    you:{form:'are',rule:'you → are',sent:'You are ready.',note:'you benutzt are.'},
+    he:{form:'is',rule:'he / she / it → is',sent:'He is from Bath.',note:'he ist eine einzelne Person: he is.'},
+    she:{form:'is',rule:'he / she / it → is',sent:'She is happy.',note:'she ist eine einzelne Person: she is.'},
+    it:{form:'is',rule:'he / she / it → is',sent:'It is cold.',note:'it ist eine Sache, ein Tier oder das Wetter: it is.'},
+    we:{form:'are',rule:'you / we / they → are',sent:'We are at school.',note:'we benutzt are.'},
+    they:{form:'are',rule:'you / we / they → are',sent:'They are friendly.',note:'they benutzt are.'}
+  };
+  var currentMode = 'positive';
+  var currentPerson = 'I';
+
+  function escapeHtml(value){return String(value || '').replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  function tok(cls,text){return '<span class="tok '+cls+'">'+escapeHtml(text)+'</span>';}
+  function setPressed(groupSelector, activeEl){
+    document.querySelectorAll(groupSelector).forEach(function(btn){var on=btn===activeEl;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',on?'true':'false');});
+  }
+  function renderFormLab(person){
+    var d=FORM_LAB[person] || FORM_LAB.I;
+    var box=document.getElementById('form-lab-output');
+    var p=document.getElementById('form-lab-person');
+    var f=document.getElementById('form-lab-form');
+    var r=document.getElementById('form-lab-rule');
+    var s=document.getElementById('form-lab-sentence');
+    var n=document.getElementById('form-lab-note');
+    if(!box||!p||!f||!r||!s||!n)return;
+    p.textContent=person; f.textContent=d.form; r.textContent=d.rule; s.textContent=d.sent; n.textContent=d.note;
+    box.classList.remove('is-pop'); box.offsetWidth; box.classList.add('is-pop');
+  }
+  function renderMachine(){
+    var p=currentPerson, form=FORMS[p], rest=RESTS[p];
+    var out=document.getElementById('machine-out');
+    var sent=document.getElementById('m-sentence');
+    var note=document.getElementById('m-note');
+    if(!out||!sent||!note)return;
+    out.classList.remove('is-pop'); out.offsetWidth; out.classList.add('is-pop');
+    ['I','you','he','she','it','we','they'].forEach(function(x){out.classList.remove('machine-person-'+x);});
+    out.classList.add('machine-person-'+p);
+    if(currentMode==='positive'){
+      sent.innerHTML=tok('tok-subject subject-'+p,p)+tok('tok-verb',form)+tok('tok-rest',rest)+'<span class="short-gap">'+tok('tok-short',SHORTS[p]+' '+rest)+'</span>';
+      note.textContent=NOTES_POS[p];
+    } else if(currentMode==='negative'){
+      sent.innerHTML=tok('tok-subject subject-'+p,p)+tok('tok-verb',form)+tok('tok-neg','not')+tok('tok-rest',rest);
+      note.textContent=NOTES_NEG[p];
+    } else {
+      var qf=form.charAt(0).toUpperCase()+form.slice(1);
+      sent.innerHTML=tok('tok-verb',qf)+tok('tok-subject subject-'+p,p)+tok('tok-rest',rest.replace('.','?'));
+      note.textContent=NOTES_Q[p];
+    }
+  }
+
+  document.addEventListener('click',function(ev){
+    var formBtn=ev.target.closest('[data-form-person]');
+    if(formBtn){setPressed('[data-form-person]',formBtn);renderFormLab(formBtn.getAttribute('data-form-person'));return;}
+    var modeBtn=ev.target.closest('[data-mode]');
+    if(modeBtn){currentMode=modeBtn.getAttribute('data-mode');setPressed('[data-mode]',modeBtn);renderMachine();return;}
+    var personBtn=ev.target.closest('.m-chip[data-person]');
+    if(personBtn){currentPerson=personBtn.getAttribute('data-person');setPressed('.m-chip[data-person]',personBtn);renderMachine();return;}
+    var tabBtn=ev.target.closest('[data-tab]');
+    if(!tabBtn)return;
+    var group=tabBtn.getAttribute('data-tab');
+    var val=tabBtn.getAttribute('data-val');
+    if(!group||!val)return;
+    document.querySelectorAll('[data-tab="'+group+'"]').forEach(function(btn){var on=btn===tabBtn;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',on?'true':'false');});
+    document.querySelectorAll('[data-panel="'+group+'"]').forEach(function(panel){panel.classList.toggle('is-active',panel.getAttribute('data-val')===val);});
+  });
+
+  function loadChecks(){
+    try{var s=localStorage.getItem(SK);if(!s)return;var data=JSON.parse(s);var list=document.getElementById('check-list-tobe');if(!list)return;list.querySelectorAll('input[type="checkbox"]').forEach(function(box,i){box.checked=!!data[i];});}catch(e){}
+    updateCheckStatus();
+  }
+  function saveChecks(){
+    try{var list=document.getElementById('check-list-tobe');if(!list)return;var data=[];list.querySelectorAll('input[type="checkbox"]').forEach(function(box){data.push(box.checked);});localStorage.setItem(SK,JSON.stringify(data));}catch(e){}
+  }
+  function updateCheckStatus(){
+    var list=document.getElementById('check-list-tobe');var box=document.getElementById('check-status');if(!list||!box)return;
+    var checks=list.querySelectorAll('input[type="checkbox"]');var done=0;checks.forEach(function(ch){if(ch.checked)done++;});
+    box.className='check-status';
+    if(done===checks.length){box.classList.add('is-green');box.textContent='Sicher: Du hast zuerst selbst gedacht und kannst die Regel mit einem Beispiel erklären.';}
+    else if(done>0){box.classList.add('is-yellow');box.textContent='Fast sicher: Vergleiche deine eigene Erklärung noch mit der Muster-Kurzfassung.';}
+    else {box.classList.add('is-orange');box.textContent='Noch offen: Erst Aufgaben versuchen, dann die eigene Erklärung mit der Muster-Kurzfassung vergleichen.';}
+  }
+  function bindChecks(){var list=document.getElementById('check-list-tobe');if(!list)return;list.addEventListener('change',function(){saveChecks();updateCheckStatus();});}
+
+  var WRITE_TASKS = [
+    {id:'tobe-wc-01',skill:'forms',skillLabel:'Formen',think:'Wer spricht im Satz? Welche Form passt zu dieser Person?',prompt:'Ich bin elf Jahre alt.',accepted:['I am eleven years old.',"I'm eleven years old.",'I am 11 years old.',"I'm 11 years old.",'I am eleven.',"I'm eleven."],canonical:'I am eleven years old.',hint:'Suche zuerst die Person. Welche Form passt dazu?',correct:'Sicher. Person und Form passen zusammen.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.'},
+    {id:'tobe-wc-02',skill:'forms',skillLabel:'Formen',think:'Wer ist gemeint? Bleibt der Name stehen oder ersetzt du ihn durch ein Pronomen?',prompt:'Hanna ist nett.',accepted:['She is nice.',"She's nice.",'Hanna is nice.'],canonical:'She is nice. / Hanna is nice.',hint:'Du kannst Hanna als Namen stehen lassen oder durch she ersetzen. Welche Form passt dazu?',correct:'Sicher. Name/Pronomen und Form passen zusammen.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.'},
+    {id:'tobe-wc-03',skill:'forms',skillLabel:'Fehlerdetektiv',think:'Suche zuerst die Person. Ist es eine Person oder sind es mehrere?',context:'We is at school.',prompt:'Korrigiere den Satz.',accepted:['We are at school.',"We're at school."],canonical:'We are at school.',hint:'Suche die Person im Satz. Prüfe dann die passende Form.',correct:'Sicher. Person, Form und Rest des Satzes passen.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.'},
+    {id:'tobe-wc-04',skill:'negation',skillLabel:'Verneinung',think:'Verneinung: am/is/are + not.',prompt:'Ich bin nicht müde.',accepted:['I am not tired.',"I'm not tired."],canonical:'I am not tired.',hint:'not steht nach am. Bei I gibt es kein amn’t.',correct:'Sicher. I am not oder I\'m not ist richtig.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.',reviewId:'tobe-i-am-not'},
+    {id:'tobe-wc-05',skill:'negation',skillLabel:'Fehlerdetektiv',think:'Prüfe zuerst die Person. Danach prüfe, wo not stehen muss.',context:'She are not happy.',prompt:'Korrigiere den Satz.',accepted:['She is not happy.',"She isn't happy.","She's not happy."],canonical:'She is not happy.',hint:'Suche die Person. Danach: Wo steht not bei to be?',correct:'Sicher. Form und Verneinung passen.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.'},
+    {id:'tobe-wc-06',skill:'questions',skillLabel:'Fragen',think:'Ist es eine Frage? Welches to-be-Wort muss nach vorne?',prompt:'Ist Hanna glücklich?',accepted:['Is she happy?','Is Hanna happy?'],canonical:'Is she happy?',hint:'Bei to be beginnt die Frage mit der passenden Form von am, is oder are.',correct:'Sicher. Die to-be-Frage ist richtig gebaut.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.',reviewId:'tobe-question-is-first'},
+    {id:'tobe-wc-07',skill:'questions',skillLabel:'Fragen',think:'Wer ist gemeint? Welche Form muss in der Frage nach vorne?',prompt:'Sind die Kinder Freunde?',accepted:['Are they friends?','Are the children friends?'],canonical:'Are they friends?',hint:'Suche zuerst die gemeinte Person. Welche to-be-Form steht in einer Frage vorne?',correct:'Sicher. Die Frage beginnt mit Are.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.'},
+    {id:'tobe-wc-08',skill:'shortAnswers',skillLabel:'Kurzantworten',think:'Über wen antwortest du: über die andere Person oder über dich selbst?',context:'Are you ready?',prompt:'Antworte: Ja, bin ich.',accepted:['Yes, I am.'],canonical:'Yes, I am.',hint:'Prüfe, aus wessen Sicht die Kurzantwort kommt.',correct:'Sicher. Yes, I am ist richtig.',almost:'Fast sicher. Inhalt stimmt. Prüfe Komma, Großschreibung oder Punkt.',reviewId:'tobe-are-you-answer-i-am'},
+    {id:'tobe-wc-09',skill:'pitfalls',skillLabel:'Denkfalle',think:'to be braucht kein do/does. Das Verb wandert selbst nach vorne.',context:'Do you are ready?',prompt:'Korrigiere den Satz.',accepted:['Are you ready?'],canonical:'Are you ready?',hint:'to be braucht kein do oder does. Was wandert nach vorne?',correct:'Sicher. to be bildet die Frage selbst.',almost:'Fast sicher. Inhalt und Form stimmen. Kleine Schreibweise prüfen.',reviewId:'tobe-no-do-does-question'}
+  ];  window.WRITE_TASKS = WRITE_TASKS;
+  var WRITE_RESULTS = {};
+  var SKILL_LABELS = {forms:'Formen',negation:'Verneinung',questions:'Fragen',shortAnswers:'Kurzantworten',pitfalls:'Denkfalle'};
+
+  function normalise(value){return String(value||'').replace(/[’‘`´]/g,"'").replace(/\s+/g,' ').trim().replace(/[.!?]+$/,'').replace(/,$/,'').toLowerCase().replace(/^(yes|no),\s+/,'$1 ');}
+  function hasLowercaseStart(value){var m=String(value||'').trim().match(/[A-Za-z]/);return !!(m && m[0]===m[0].toLowerCase());}
+  function diagnose(task,raw){
+    var n=normalise(raw);
+    if(!n)return 'Schreibe zuerst eine Antwort hinein.';
+    if(/\bhapy\b/.test(n))return 'Denkfrage: Wie schreibt man happy?';
+    if(/\btierd\b/.test(n))return 'Denkfrage: Wie schreibt man tired?';
+    if(/\bamn't\b|\bamnt\b/.test(n))return 'Denkfrage: Welche Verneinung benutzt du bei I am?';
+    if(/\bdo\b|\bdoes\b/.test(n))return 'Denkfrage: Braucht to be für Fragen do oder does?';
+    if(/\bi is\b/.test(n))return 'Denkfrage: Welche Form gehört zu I?';
+    if(/\bshe are\b|\bhe are\b|\bit are\b/.test(n))return 'Denkfrage: Welche Form gehört zu he, she, it?';
+    if(/\bwe is\b|\bthey is\b|\byou is\b/.test(n))return 'Denkfrage: Welche Form gehört zu you, we, they?';
+    if(task.id==='tobe-wc-08' && /yes you are/.test(n))return 'Denkfrage: Antwortest du über you oder über dich selbst?';
+    if(task.skill==='questions' && /^(she|they|hanna|the children)\b/.test(n))return 'Denkfrage: Was muss bei einer to-be-Frage nach vorne?';
+    return task.hint || 'Denkfrage: Prüfe Person, Form und Satzstellung.';
+  }
+  function evaluate(task,raw){
+    var norm=normalise(raw);
+    if(!norm)return {status:'empty',message:'Schreibe zuerst eine Antwort hinein.'};
+    var ok=task.accepted.some(function(answer){return normalise(answer)===norm;});
+    if(ok){var status=hasLowercaseStart(raw)?'almost':'correct';return {status:status,message:status==='correct'?task.correct:task.almost};}
+    return {status:'wrong',message:diagnose(task,raw)};
+  }
+  function renderWritecheck(){
+    var wrap=document.getElementById('writecheck-tasks');if(!wrap)return;
+    wrap.innerHTML=WRITE_TASKS.map(function(task,i){
+      var reviewAttrs='';
+      return '<div class="writecheck-task" id="write-task-'+escapeHtml(task.id)+'"'+reviewAttrs+'>'+
+        '<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe '+(i+1)+'</span><span class="writecheck-skill">'+escapeHtml(task.skillLabel || 'Schreib-Aufgabe')+'</span></div>'+
+        (task.think?'<p class="writecheck-context">Denkspur: '+escapeHtml(task.think)+'</p>':'')+
+        (task.context?'<p class="writecheck-context">'+escapeHtml(task.context)+'</p>':'')+
+        '<p class="writecheck-prompt">'+escapeHtml(task.prompt)+'</p>'+
+        '<div class="writecheck-input-row"><input class="writecheck-input" id="input-'+escapeHtml(task.id)+'" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-write-task="'+escapeHtml(task.id)+'">Prüfen</button></div>'+
+        '<div class="writecheck-feedback" id="feedback-'+escapeHtml(task.id)+'"></div></div>';
+    }).join('');
+  }
+  function getTask(id){return WRITE_TASKS.find(function(task){return task.id===id;});}
+  function getInput(task){return document.getElementById('input-'+task.id);}
+  function getFeedback(task){return document.getElementById('feedback-'+task.id);}
+  function getCard(task){return document.getElementById('write-task-'+task.id);}
+  function solutionText(task){return 'Lösung: '+task.canonical;}
+  function showFeedback(task,result){
+    var card=getCard(task);var fb=getFeedback(task);if(card){card.classList.remove('is-correct','is-almost','is-wrong');if(result.status!=='empty')card.classList.add('is-'+result.status);}if(!fb)return;
+    if(result.status==='empty'){fb.className='writecheck-feedback';fb.textContent='';return;}
+    fb.className='writecheck-feedback is-visible is-'+result.status;
+    if(result.status==='wrong')fb.innerHTML=escapeHtml(result.message)+' <button type="button" class="writecheck-btn writecheck-solution-btn" data-kompass-show-solution="'+escapeHtml(task.id)+'">Lösung anzeigen</button>';
+    else fb.textContent=result.message;
+  }
+  function readStore(){try{return JSON.parse(localStorage.getItem(WRITE_KEY)||'{}');}catch(e){return {};}}
+  function writeStore(store){try{localStorage.setItem(WRITE_KEY,JSON.stringify(store));}catch(e){}}
+  function saveSummary(store){
+    var sum=computeSummary(store);store.tobe={topicId:'tobe',topicTitle:'to be',total:sum.total,attempted:sum.attempted,correct:sum.counts.correct,almost:sum.counts.almost,wrong:sum.counts.wrong,open:sum.counts.open,status:sum.status,label:sum.label,strongSkills:sum.strong,focusSkills:sum.focus,lastDone:new Date().toISOString().slice(0,10),lastUpdated:new Date().toISOString()};
+    var taskStore={};WRITE_TASKS.forEach(function(task){if(store[task.id])taskStore[task.id]=store[task.id];});store.tobeTasks=taskStore;
+  }
+  function saveResult(task,result,raw){
+    var store=readStore();
+    if(result.status==='empty'){delete store[task.id];delete WRITE_RESULTS[task.id];}
+    else {WRITE_RESULTS[task.id]=result.status;store[task.id]={topicId:'tobe',topicTitle:'to be',skill:task.skill,skillLabel:task.skillLabel,status:result.status,message:result.message,value:String(raw||'').trim(),updated:new Date().toISOString()};}
+    saveSummary(store);writeStore(store);
+  }
+  function clearTask(task,clearInput){var card=getCard(task);var fb=getFeedback(task);var input=getInput(task);if(card)card.classList.remove('is-correct','is-almost','is-wrong');if(fb){fb.className='writecheck-feedback';fb.textContent='';}if(clearInput&&input)input.value='';}
+  function checkSingle(id){var task=getTask(id);if(!task)return;var input=getInput(task);var raw=input?input.value:'';var result=evaluate(task,raw);showFeedback(task,result);saveResult(task,result,raw);}
+  function checkAll(){
+    var any=false;var store=readStore();
+    WRITE_TASKS.forEach(function(task){var input=getInput(task);var raw=input?input.value:'';var result=evaluate(task,raw);if(result.status==='empty'){clearTask(task,false);delete store[task.id];delete WRITE_RESULTS[task.id];return;}any=true;WRITE_RESULTS[task.id]=result.status;showFeedback(task,result);store[task.id]={topicId:'tobe',topicTitle:'to be',skill:task.skill,skillLabel:task.skillLabel,status:result.status,message:result.message,value:String(raw||'').trim(),updated:new Date().toISOString()};});
+    saveSummary(store);writeStore(store);showSummary(!any);
+  }
+  function computeSummary(existingStore){
+    var store=existingStore||readStore();var counts={correct:0,almost:0,wrong:0,open:0};var bySkill={};
+    WRITE_TASKS.forEach(function(task){var status=WRITE_RESULTS[task.id]||(store[task.id]&&store[task.id].status);if(!bySkill[task.skill])bySkill[task.skill]={label:SKILL_LABELS[task.skill]||task.skillLabel,total:0,correct:0,almost:0,wrong:0,open:0};bySkill[task.skill].total++;if(status==='correct'||status==='almost'||status==='wrong'){counts[status]++;bySkill[task.skill][status]++;}else{counts.open++;bySkill[task.skill].open++;}});
+    var strong=[],focus=[];Object.keys(bySkill).forEach(function(key){var item=bySkill[key];if(item.correct>0&&item.wrong===0&&item.almost===0)strong.push(item.label);if(item.wrong>0||item.almost>0)focus.push(item.label+(item.wrong>1?' (mehrfach unsicher)':''));});
+    var attempted=counts.correct+counts.almost+counts.wrong;var status='orange',label='noch offen';if(attempted&&counts.wrong===0&&counts.open===0){status='green';label='sicher';}else if(attempted&&(counts.correct+counts.almost)>=Math.ceil(WRITE_TASKS.length*.6)){status='yellow';label='fast sicher';}
+    return {counts:counts,strong:strong,focus:focus,total:WRITE_TASKS.length,attempted:attempted,status:status,label:label};
+  }
+  function showSummary(emptyOnly){
+    var box=document.getElementById('writecheck-summary');if(!box)return;var store=readStore();saveSummary(store);writeStore(store);var sum=computeSummary(store);
+    if(emptyOnly||!sum.attempted){box.className='writecheck-summary is-visible';box.innerHTML='<h3 class="writecheck-summary-title">Bearbeitungsstand</h3><p>Schreib erst mindestens eine Antwort hinein. Leere Aufgaben werden nicht bewertet.</p>';return;}
+    var strong=sum.strong.length?sum.strong.map(function(x){return '<li>'+escapeHtml(x)+'</li>';}).join(''):'<li>Noch nichts sicher.</li>';
+    var focus=sum.focus.length?sum.focus.map(function(x){return '<li>'+escapeHtml(x)+'</li>';}).join(''):'<li>Kein besonderer Fokus offen.</li>';
+    box.className='writecheck-summary is-visible';box.innerHTML='<h3 class="writecheck-summary-title">Bearbeitungsstand</h3><div class="writecheck-stand">'+sum.counts.correct+' sicher · '+sum.counts.almost+' fast sicher · '+sum.counts.wrong+' nochmal prüfen · '+sum.counts.open+' offen</div><span class="writecheck-status is-'+sum.status+'">'+escapeHtml(sum.label)+'</span><div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>'+strong+'</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>'+focus+'</ul></div></div>';
+  }
+  function resetWritecheck(){var store=readStore();WRITE_RESULTS={};WRITE_TASKS.forEach(function(task){clearTask(task,true);delete store[task.id];});delete store.tobe;delete store.tobeTasks;writeStore(store);var box=document.getElementById('writecheck-summary');if(box){box.className='writecheck-summary';box.innerHTML='';}}
+  function showSolution(id){var task=getTask(id);var fb=task?getFeedback(task):null;if(fb&&task){fb.className='writecheck-feedback is-visible is-wrong';fb.textContent=solutionText(task);}}
+
+  document.addEventListener('click',function(ev){
+    var single=ev.target.closest('[data-write-task]');if(single){checkSingle(single.getAttribute('data-write-task'));return;}
+    var sol=ev.target.closest('[data-kompass-show-solution]');if(sol){showSolution(sol.getAttribute('data-kompass-show-solution'));return;}
+  });
+
+  function loadNotes(){try{var s=localStorage.getItem(SKN);if(!s)return;var data=JSON.parse(s);['new','hard','free','example'].forEach(function(k){var el=document.getElementById('note-'+k);if(el&&data[k])el.value=data[k];});}catch(e){}}
+  function showNotesStatus(text){var saved=document.getElementById('notes-saved');if(saved){saved.textContent=text;saved.classList.add('is-visible');setTimeout(function(){saved.classList.remove('is-visible');},2000);}}
+  function saveNotes(){try{var data={};['new','hard','free','example'].forEach(function(k){var el=document.getElementById('note-'+k);data[k]=el?el.value:'';});localStorage.setItem(SKN,JSON.stringify(data));showNotesStatus('Gespeichert.');}catch(e){}}
+  function clearNotes(){try{localStorage.removeItem(SKN);['new','hard','free','example'].forEach(function(k){var el=document.getElementById('note-'+k);if(el)el.value='';});showNotesStatus('Notizen gelöscht.');}catch(e){}}
+  function toggleHausaufgaben(){var on=document.body.classList.toggle('hausaufgaben-mode');var btn=document.getElementById('ha-btn');if(btn)btn.textContent=on?'📚 Normal-Modus':'📚 Hausaufgaben';if(on){var refBtn=document.querySelector('[data-tab="tobe-mode"][data-val="reference"]');if(refBtn)refBtn.click();}}
+  function printPage(){document.body.classList.remove('spickzettel-print');window.print();}
+  function printRef(){var refBtn=document.querySelector('[data-tab="tobe-mode"][data-val="reference"]');if(refBtn)refBtn.click();document.body.classList.add('spickzettel-print');setTimeout(function(){window.print();},300);}
+  window.addEventListener('afterprint',function(){document.body.classList.remove('spickzettel-print');});
+
+  function bindSelfcheckChoices(){
+    var buttons = document.querySelectorAll('[data-selfcheck-answer]');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var group = btn.closest('.mini-decision-item');
+        if(!group) return;
+        var answer = btn.getAttribute('data-selfcheck-answer');
+        var value = btn.getAttribute('data-selfcheck-value');
+        var isCorrect = answer === value;
+        group.querySelectorAll('[data-selfcheck-answer]').forEach(function(other){
+          other.classList.remove('is-selected','is-correct','is-wrong');
+          other.setAttribute('aria-pressed','false');
+        });
+        btn.classList.add('is-selected', isCorrect ? 'is-correct' : 'is-wrong');
+        btn.setAttribute('aria-pressed','true');
+        var feedback = group.querySelector('.mini-choice-feedback');
+        if(feedback){
+          feedback.classList.remove('is-correct','is-wrong');
+          feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+          feedback.textContent = isCorrect ? btn.getAttribute('data-selfcheck-ok') : btn.getAttribute('data-selfcheck-wrong');
+        }
+      });
+    });
+  }
+
+
+  function bindErrorScanner(){
+    document.querySelectorAll('.scanner-card').forEach(function(card){
+      var words = card.querySelectorAll('[data-scanner-word]');
+      var feedback = card.querySelector('.scanner-feedback');
+      words.forEach(function(word){
+        word.addEventListener('click', function(){
+          var isCorrect = word.getAttribute('data-hidden-error-target') === 'true';
+          words.forEach(function(other){
+            other.classList.remove('is-selected','is-correct','is-wrong');
+            other.setAttribute('aria-pressed','false');
+          });
+          word.classList.add('is-selected', isCorrect ? 'is-correct' : 'is-wrong');
+          word.setAttribute('aria-pressed','true');
+          card.classList.add('is-attempted');
+          if(feedback){
+            feedback.classList.remove('is-correct','is-wrong');
+            feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+            feedback.textContent = isCorrect ? 'Ja, hier liegt der Fehler.' : 'Noch nicht. Schau auf die to-be-Form.';
+          }
+        });
+      });
+    });
+  }
+
+  function bindStaticButtons(){
+    var actions=[['ha-btn',toggleHausaufgaben],['print-ref-btn',printRef],['print-page-btn',printPage],['writecheck-check-all-btn',checkAll],['writecheck-reset-btn',resetWritecheck],['notes-save-btn',saveNotes],['notes-clear-btn',clearNotes]];
+    actions.forEach(function(item){var btn=document.getElementById(item[0]);if(btn)btn.addEventListener('click',item[1]);});
+  }
+
+  renderWritecheck();renderFormLab('I');renderMachine();bindChecks();loadChecks();loadNotes();bindSelfcheckChoices();bindErrorScanner();bindStaticButtons();
+})();
+</script>
+<script>
+(function(){
+  if (window.__kompassHashTabsReady) return;
+  window.__kompassHashTabsReady = true;
+  var aliases = {'lernen':'learn','learn':'learn','verstehen':'learn','nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference','schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck','verbindungen':'connections','connections':'connections','notizen':'notes','notes':'notes'};
+  function cleanHash(){try{return decodeURIComponent((window.location.hash||'').replace(/^#/,'')).toLowerCase().trim();}catch(e){return (window.location.hash||'').replace(/^#/,'').toLowerCase().trim();}}
+  function openSectionFromHash(){var key=cleanHash();if(!key)return;if(key==='kannichs'||key==='kann-ichs'||key==='selfcheck'){var learnBtn=document.querySelector('.compass-mode-btn[data-val="learn"]');if(learnBtn)learnBtn.click();window.setTimeout(function(){var selfBtn=document.querySelector('[data-tab="tobe-learn"][data-val="selfcheck"]');if(selfBtn)selfBtn.click();var card=document.querySelector('.learning-card')||selfBtn||learnBtn;if(card&&typeof card.scrollIntoView==='function')card.scrollIntoView({block:'start'});},40);return;}var mode=aliases[key];if(!mode)return;var btn=document.querySelector('.compass-mode-btn[data-val="'+mode+'"]')||document.querySelector('[data-tab$="-mode"][data-val="'+mode+'"]');if(!btn)return;btn.click();window.setTimeout(function(){var card=document.querySelector('.learning-card')||btn;if(card&&typeof card.scrollIntoView==='function')card.scrollIntoView({block:'start'});},40);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',openSectionFromHash);}else{openSectionFromHash();}
+  window.addEventListener('hashchange',openSectionFromHash);
+})();
+</script>
+</body>
+</html>

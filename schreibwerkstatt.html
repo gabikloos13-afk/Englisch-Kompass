@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Schreibwerkstatt Simple Past — Hannas Englisch-Kompass</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap");
+
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-soft: #eff6ff;
+  --green: #15803d;
+  --green-soft: #f0fdf4;
+  --yellow-soft: #fffbeb;
+  --red: #b91c1c;
+  --red-soft: #fef2f2;
+  --violet: #6d28d9;
+  --violet-soft: #f5f3ff;
+  --gray-25: #fcfcfd;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --line: 1px solid var(--gray-200);
+  --font-head: "Nunito", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+  --sw-bg-top: #dbeafe;
+  --sw-bg-bottom: #c7d9f2;
+  --sw-card-border: rgba(148, 163, 184, .45);
+  --sw-card-shadow: 0 8px 22px rgba(15, 23, 42, .10);
+  --kompass-page-max: 1320px;
+  --kompass-side-pad: max(24px, calc((100vw - var(--kompass-page-max)) / 2 + 24px));
+  --kompass-content-width: min(var(--kompass-page-max), calc(100% - 48px));
+}
+
+html { background: #e7eef4; }
+body {
+  margin: 0;
+  padding: 0 0 60px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--gray-800);
+  background: #e7eef4;
+}
+h1, h2, h3, h4, h5, p, ul, ol, table { margin-top: 0; }
+h1, h2, h3, h4, h5 { font-family: var(--font-head); font-weight: 400; }
+p, ul, ol { margin-bottom: 0; }
+a { color: inherit; font: inherit; }
+button, input, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .35);
+  outline-offset: 3px;
+}
+[hidden] { display: none !important; }
+
+.topic-page--schreibwerkstatt {
+  min-height: 100vh;
+  background: #e7eef4;
+}
+.page-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 10px max(20px, calc((100vw - var(--kompass-page-max)) / 2 + 24px)) 6px;
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+}
+.overview-return,
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 7px 13px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--gray-700);
+  font-family: var(--font-head);
+  font-size: .86rem;
+  font-weight: 400;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: border-color .18s, color .18s, background .18s;
+}
+.overview-return:hover,
+.print-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue-dark);
+}
+.overview-return-topic {
+  border-color: #bfdbfe;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+.page-action-buttons,
+.return-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.page-content.topic-page-content {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 60px;
+}
+.learning-card.topic-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #eef4fb;
+  box-shadow: none;
+}
+
+.topic-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 24px var(--kompass-side-pad) 20px;
+  border-radius: 0;
+  background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+  color: #fff;
+}
+.compass-kicker {
+  margin: 0 0 3px;
+  color: rgba(255, 255, 255, .68);
+  font-family: var(--font-head);
+  font-size: .78rem;
+  letter-spacing: .09em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.compass-title {
+  margin: 0 0 5px;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: clamp(1.32rem, 2.6vw, 1.72rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+.compass-subtitle {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(255, 255, 255, .84);
+  font-family: var(--font-body);
+  font-size: .94rem;
+  line-height: 1.45;
+}
+.compass-emoji {
+  flex-shrink: 0;
+  font-size: 2.25rem;
+  line-height: 1;
+  opacity: .96;
+}
+.sw-writing-line {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 12px var(--kompass-side-pad);
+  border-top: 1px solid rgba(148, 163, 184, .35);
+  border-bottom: 1px solid rgba(148, 163, 184, .35);
+  background: #f8fafc;
+  color: #334155;
+  font-family: var(--font-head);
+  font-size: .9rem;
+  line-height: 1.45;
+  box-shadow: none;
+}
+.sw-writing-line::before {
+  content: "Schreibweg:";
+  margin-right: 8px;
+  color: #64748b;
+  font-weight: 400;
+}
+.sw-writing-line span {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #27415f;
+  font-family: var(--font-head);
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+}
+.sw-writing-line span:not(:last-child)::after {
+  content: " →";
+  margin: 0 6px 0 8px;
+  color: #64748b;
+}
+
+.topic-tabs,
+.feature-tabs {
+  display: flex;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  overflow-x: auto;
+  padding-left: max(0px, calc((100vw - var(--kompass-page-max)) / 2));
+  padding-right: max(0px, calc((100vw - var(--kompass-page-max)) / 2));
+  border-bottom: var(--line);
+  border-radius: 0;
+  background: var(--gray-25);
+}
+.compass-mode-btn,
+.learn-step-btn {
+  min-height: 58px;
+  padding: 9px 8px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--gray-600);
+  font-family: var(--font-head);
+  font-size: .85rem;
+  font-weight: 400;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color .18s, border-color .18s, background .18s;
+}
+.compass-mode-btn {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+.learn-step-btn {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: .78rem;
+  white-space: nowrap;
+}
+.compass-mode-btn:hover,
+.learn-step-btn:hover {
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+.compass-mode-btn[aria-selected="true"],
+.compass-mode-btn[aria-pressed="true"],
+.compass-mode-btn.is-active,
+.learn-step-btn[aria-selected="true"],
+.learn-step-btn[aria-pressed="true"],
+.learn-step-btn.is-active {
+  border-bottom-color: var(--blue);
+  background: #fff;
+  color: var(--blue-dark);
+}
+.compass-mode-icon { font-size: 1.1rem; }
+.compass-mode-hint {
+  color: var(--gray-400);
+  font-family: var(--font-body);
+  font-size: .68rem;
+  font-weight: 400;
+}
+.compass-mode-btn[aria-selected="true"] .compass-mode-hint,
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint,
+.compass-mode-btn.is-active .compass-mode-hint { color: var(--blue); }
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-size: .82rem;
+  transition: background .18s, color .18s;
+}
+.learn-step-btn[aria-selected="true"] .step-badge,
+.learn-step-btn[aria-pressed="true"] .step-badge,
+.learn-step-btn.is-active .step-badge {
+  background: var(--blue);
+  color: #fff;
+}
+.step-label {
+  font-size: .74rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.compass-mode-panel {
+  display: block;
+  width: 100%;
+  background: linear-gradient(180deg, var(--sw-bg-top) 0%, var(--sw-bg-bottom) 100%);
+}
+.tabs-ready .compass-mode-panel { display: none; }
+.tabs-ready .compass-mode-panel.is-active { display: block; }
+.step-panel { display: block; }
+.tabs-ready .step-panel { display: none; }
+.tabs-ready .step-panel.is-active {
+  display: block;
+  animation: fadeUp .22s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sw-panel {
+  width: var(--kompass-content-width);
+  max-width: var(--kompass-page-max);
+  margin: 0 auto;
+  padding: 24px;
+  background: transparent;
+}
+.sw-card {
+  margin-bottom: 14px;
+  padding: 18px;
+  border: 1px solid var(--sw-card-border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .96);
+  box-shadow: var(--sw-card-shadow);
+}
+.sw-card:last-child { margin-bottom: 0; }
+.sw-card-title {
+  margin: 0 0 10px;
+  color: var(--blue-dark);
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.sw-card-intro {
+  margin: 0 0 14px;
+  color: var(--gray-700);
+  font-size: .91rem;
+  line-height: 1.55;
+}
+.sw-note {
+  margin: 10px 0 0;
+  padding: 9px 12px;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--blue-soft);
+  color: var(--gray-700);
+  font-size: .86rem;
+}
+.sw-note.green { border-color: #bbf7d0; border-left-color: var(--green); background: var(--green-soft); }
+.sw-note.yellow { border-color: #fde68a; border-left-color: #d97706; background: var(--yellow-soft); }
+.sw-note.red { border-color: #fecaca; border-left-color: var(--red); background: var(--red-soft); }
+
+.freetext-grid,
+.diary-write-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.freetext-grid { margin-bottom: 12px; }
+.freetext-label,
+.dear-diary-label {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--gray-500);
+  font-family: var(--font-head);
+  font-size: .82rem;
+  font-weight: 400;
+}
+.freetext-area,
+.diary-area,
+.diary-header-field {
+  width: 100%;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--gray-800);
+  outline: none;
+  transition: border-color .18s;
+}
+.freetext-area,
+.diary-area {
+  min-height: 200px;
+  padding: 12px;
+  font-size: .93rem;
+  line-height: 1.65;
+  resize: vertical;
+}
+.diary-area {
+  min-height: 220px;
+  padding: 13px;
+  font-style: italic;
+  line-height: 1.7;
+}
+.diary-header-field {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 12px;
+  font-size: .9rem;
+}
+.freetext-area:focus,
+.diary-area:focus,
+.diary-header-field:focus { border-color: var(--blue); }
+.freetext-sidebox,
+.diary-tools-box,
+.phrase-group,
+.ref-mini-box {
+  border: var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.freetext-sidebox,
+.diary-tools-box,
+.phrase-group { padding: 13px; }
+.diary-tools-box { margin-bottom: 10px; }
+.freetext-sidebox-title,
+.diary-tools-title,
+.diary-section-title {
+  color: var(--blue-dark);
+  font-family: var(--font-head);
+  font-weight: 400;
+}
+.freetext-sidebox-title,
+.diary-tools-title {
+  margin: 0 0 8px;
+  font-size: .82rem;
+}
+.diary-tools-title.is-irr { color: var(--violet); }
+.wordbank {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wordbank li {
+  padding: 5px 9px;
+  border: 1px solid rgba(147, 197, 253, .45);
+  border-radius: var(--radius-sm);
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  font-family: var(--font-head);
+  font-size: .84rem;
+}
+.freetext-actions,
+.diary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.freetext-actions { margin-bottom: 10px; }
+.freetext-btn,
+.diary-btn {
+  min-height: 38px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-head);
+  font-size: .88rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s;
+}
+.freetext-btn.primary,
+.diary-btn.primary {
+  background: var(--blue);
+  color: #fff;
+}
+.freetext-btn.primary:hover,
+.diary-btn.primary:hover { background: var(--blue-dark); }
+.freetext-btn.reset,
+.diary-btn.reset {
+  border: 1px solid var(--gray-200);
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+.freetext-btn.reset:hover,
+.diary-btn.reset:hover { background: var(--gray-200); }
+.freetext-result,
+.diary-result {
+  display: none;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--gray-800);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.diary-result { margin-top: 10px; }
+.freetext-result.show,
+.diary-result.show { display: block; }
+.freetext-result.ok,
+.diary-result.ok {
+  border: 1px solid #bbf7d0;
+  background: var(--green-soft);
+}
+.freetext-result.warn,
+.diary-result.warn {
+  border: 1px solid #fde68a;
+  background: var(--yellow-soft);
+}
+.autocheck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+}
+.task-balance-grid {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 0 0 16px;
+}
+.autocheck-item {
+  padding: 8px 10px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--gray-600);
+  font-size: .83rem;
+}
+.autocheck-item.ok { border-color: #bbf7d0; background: var(--green-soft); color: var(--green); }
+.autocheck-item.fail { border-color: #fecaca; background: var(--red-soft); color: var(--red); }
+
+.wk-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+.wk-plan-card {
+  padding: 10px 12px;
+  border: 1px solid rgba(148, 163, 184, .35);
+  border-radius: var(--radius-sm);
+  background: var(--gray-50);
+}
+.wk-plan-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue-dark);
+  font-family: var(--font-head);
+  font-size: .78rem;
+}
+.wk-plan-card p {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: .83rem;
+  line-height: 1.45;
+}
+
+
+.diary-structure,
+.phrase-grid { display: grid; gap: 10px; }
+.diary-section {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
+  border: var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.diary-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: .9rem;
+}
+.diary-num.n1 { background: #2563eb; }
+.diary-num.n2 { background: #059669; }
+.diary-num.n3 { background: #d97706; }
+.diary-num.n4 { background: #6d28d9; }
+.diary-num.n5 { background: #db2777; }
+.diary-section-title { margin: 0 0 4px; font-size: .92rem; }
+.diary-section-text { margin: 0 0 8px; color: var(--gray-700); font-size: .87rem; line-height: 1.5; }
+.diary-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.diary-ex {
+  display: inline-block;
+  padding: 3px 8px 3px 10px;
+  border-left: 3px solid #bfdbfe;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: var(--blue-dark);
+  font-size: .83rem;
+  font-style: italic;
+}
+.diary-ex.green { border-left-color: #bbf7d0; background: var(--green-soft); color: var(--green); }
+.diary-ex.violet { border-left-color: #ddd6fe; background: var(--violet-soft); color: var(--violet); }
+.phrase-group-label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--gray-500);
+  font-family: var(--font-head);
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.phrase-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0;
+  border-top: 1px solid var(--gray-100);
+  font-size: .87rem;
+}
+.phrase-row:first-of-type { border-top: 0; }
+.phrase-en {
+  min-width: 0;
+  color: var(--gray-800);
+  font-family: var(--font-head);
+}
+.phrase-de {
+  flex-shrink: 0;
+  color: var(--gray-500);
+  font-size: .82rem;
+}
+.diary-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ref-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.ref-mini-box {
+  padding: 10px 12px;
+  background: #f8fafc;
+  font-size: .85rem;
+  line-height: 1.55;
+}
+.ref-mini-box .mini-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--gray-500);
+  font-family: var(--font-head);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.ref-mini-box.blue { border-color: #bfdbfe; background: var(--blue-soft); }
+.ref-mini-box.blue .mini-label { color: var(--blue-dark); }
+.ref-mini-box.red { border-color: #fecaca; background: var(--red-soft); }
+.ref-mini-box.red .mini-label { color: var(--red); }
+.ref-mini-box.green { border-color: #bbf7d0; background: var(--green-soft); }
+.ref-mini-box.green .mini-label { color: var(--green); }
+.ref-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.ref-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-head);
+  font-size: .83rem;
+}
+.ref-pill.key { border: 1px solid #fde68a; background: #fef9c3; color: #713f12; }
+.ref-pill.sequence { border: 1px solid #bae6fd; background: #f0f9ff; color: #0369a1; }
+
+
+/* Verbbox-Text */
+.verbbox-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 14px;
+  padding: 11px;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius);
+  background: var(--blue-soft);
+}
+.verbbox-word {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid rgba(37, 99, 235, .24);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--blue-dark);
+  font-family: var(--font-head);
+  font-size: .86rem;
+}
+
+.vb-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.vb-flow-step {
+  padding: 8px 10px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--gray-700);
+  font-family: var(--font-head);
+  font-size: .84rem;
+  line-height: 1.35;
+}
+.vb-flow-step span {
+  display: block;
+  color: var(--blue-dark);
+  font-size: .74rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.freetext-btn[disabled] {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.vb-own-rules {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--gray-600);
+  font-size: .84rem;
+  line-height: 1.55;
+}
+.vb-own-rules li + li { margin-top: 3px; }
+
+.vb-task-note {
+  margin: -4px 0 12px;
+  color: var(--gray-600);
+  font-size: .86rem;
+  line-height: 1.55;
+}
+.vb-cloze-text {
+  display: grid;
+  gap: 9px;
+  margin: 0 0 14px;
+}
+.vb-line {
+  padding: 10px 12px;
+  border: var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--gray-800);
+  font-size: .92rem;
+  line-height: 1.65;
+}
+.vb-gap {
+  width: min(210px, 100%);
+  min-height: 34px;
+  margin: 0 4px;
+  padding: 5px 9px;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--gray-800);
+}
+.vb-gap:focus { border-color: var(--blue); }
+.vb-gap.is-ok { border-color: #86efac; background: var(--green-soft); }
+.vb-gap.is-error { border-color: #fecaca; background: var(--red-soft); }
+.vb-feedback-list {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+.vb-feedback-item {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.vb-feedback-item.ok {
+  border: 1px solid #bbf7d0;
+  background: var(--green-soft);
+  color: var(--green);
+}
+.vb-feedback-item.warn {
+  border: 1px solid #fde68a;
+  background: var(--yellow-soft);
+  color: #713f12;
+}
+.vb-solution-box {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e9d5ff;
+  border-radius: var(--radius-sm);
+  background: var(--violet-soft);
+  color: var(--gray-700);
+  font-size: .86rem;
+  line-height: 1.55;
+}
+.vb-solution-box.show { display: block; }
+.vb-own-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.vb-own-checks {
+  display: grid;
+  gap: 7px;
+}
+.vb-own-result {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--gray-800);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.vb-own-result.show { display: block; }
+.vb-own-result.ok { border: 1px solid #bbf7d0; background: var(--green-soft); }
+.vb-own-result.warn { border: 1px solid #fde68a; background: var(--yellow-soft); }
+
+@media (max-width: 700px) {
+  :root { --kompass-content-width: 100%; }
+  .page-action-bar { padding: 8px 12px; }
+  .topic-header { padding: 20px 16px 18px; }
+  .sw-writing-line { padding: 12px 14px; font-size: .86rem; }
+  .sw-writing-line::before { display: block; margin: 0 0 3px; }
+  .sw-writing-line span { display: block; width: 100%; font-size: .86rem; }
+  .sw-writing-line span:not(:last-child)::after { content: ""; margin: 0; }
+  .topic-tabs,
+  .feature-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .compass-mode-btn { flex: 0 0 132px; min-width: 132px; }
+  .learn-step-btn { flex: 0 0 118px; min-width: 118px; }
+  .sw-panel { width: 100%; padding: 16px 12px; }
+  .freetext-grid,
+  .diary-write-grid,
+  .vb-flow { grid-template-columns: 1fr 1fr; }
+  .vb-own-grid { grid-template-columns: 1fr; }
+  .ref-mini-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  body,
+  .topic-page--schreibwerkstatt,
+  .learning-card.topic-shell,
+  .compass-mode-panel,
+  .sw-panel { background: #fff !important; }
+  .page-action-bar,
+  .topic-tabs,
+  .feature-tabs,
+  .print-page-btn { display: none !important; }
+  .sw-card {
+    break-inside: avoid;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="topic-page topic-page--schreibwerkstatt" id="schreibwerkstatt-root">
+<!-- ── Zurück-Leiste ── -->
+<div class="overview-return-wrap page-action-bar">
+<a class="overview-return" href="index.html">← Zurück zur Übersicht</a>
+<div class="return-actions page-action-buttons">
+<a class="overview-return overview-return-topic" href="simplepast.html#lernen">📖 Simple Past</a>
+<button class="print-btn print-page-btn" id="print-btn" type="button">🖨️ Diese Seite drucken</button>
+</div>
+</div>
+<div class="page-content topic-page-content">
+<article class="learning-card topic-shell">
+<!-- ── Level 1: Kompass-Kopf ── -->
+<header class="compass-head past-compass-head topic-header">
+<div>
+<p class="compass-kicker">Schreiben im Simple Past</p>
+<h1 class="compass-title">Schreibwerkstatt</h1>
+<p class="compass-subtitle">Sätze und kurze Texte schreiben, prüfen und verbessern.</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">📝</span>
+</header>
+<div aria-label="Schreibweg" class="past-thinking-line sw-writing-line">
+<span>Auftrag lesen</span>
+<span>Verbbox nutzen</span>
+<span>Text schreiben</span>
+<span>Fehler prüfen</span>
+</div>
+<!-- ── Level 2: Haupt-Tabs ── -->
+<nav aria-label="Bereiche der Schreibwerkstatt" class="compass-mode-grid topic-tabs" role="tablist">
+<button aria-controls="sw-verbbox" aria-pressed="true" aria-selected="true" class="compass-mode-btn is-active" data-tab="sw-mode" data-val="verbbox" id="tab-sw-verbbox" role="tab" type="button">
+<span class="compass-mode-icon">✍️</span><span>Verbbox-Text</span>
+<span class="compass-mode-hint">Text ergänzen</span>
+</button>
+<button aria-controls="sw-weekend" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="weekend" id="tab-sw-weekend" role="tab" type="button">
+<span class="compass-mode-icon">🌤️</span><span>My last weekend</span>
+<span class="compass-mode-hint">freier Text</span>
+</button>
+<button aria-controls="sw-diary" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="diary" id="tab-sw-diary" role="tab" type="button">
+<span class="compass-mode-icon">📔</span><span>Dear Diary</span>
+<span class="compass-mode-hint">Eintrag schreiben</span>
+</button>
+<button aria-controls="sw-reference" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="reference" id="tab-sw-reference" role="tab" type="button">
+<span class="compass-mode-icon">🧭</span><span>Mini-Hilfe</span>
+<span class="compass-mode-hint">kurz nachsehen</span>
+</button>
+</nav>
+<!-- ══════════ VERBBOX-TEXT ══════════ -->
+<div aria-labelledby="tab-sw-verbbox" class="compass-mode-panel is-active" data-panel="sw-mode" data-val="verbbox" id="sw-verbbox" role="tabpanel" tabindex="0">
+<div class="sw-panel">
+<div class="sw-card">
+<h2 class="sw-card-title">Text mit Verbbox</h2>
+<p class="sw-card-intro">Nutze die Verben aus der Box. Setze die richtige Simple-Past-Form ein. Manche Sätze sind negativ. Nicht jedes Verb passt.</p>
+<div class="vb-flow" aria-label="Reihenfolge der Aufgabe">
+<div class="vb-flow-step"><span>1</span>Verbbox lesen</div>
+<div class="vb-flow-step"><span>2</span>Text ergänzen</div>
+<div class="vb-flow-step"><span>3</span>Text prüfen</div>
+<div class="vb-flow-step"><span>4</span>Eigene Sätze schreiben</div>
+</div>
+<div aria-label="Verbbox" class="verbbox-strip">
+<span class="verbbox-word">be</span>
+<span class="verbbox-word">go</span>
+<span class="verbbox-word">have</span>
+<span class="verbbox-word">see</span>
+<span class="verbbox-word">eat</span>
+<span class="verbbox-word">buy</span>
+<span class="verbbox-word">play</span>
+<span class="verbbox-word">visit</span>
+<span class="verbbox-word">watch</span>
+<span class="verbbox-word">miss</span>
+<span class="verbbox-word">do</span>
+<span class="verbbox-word">want</span>
+</div>
+<p class="vb-task-note">Bilde die Verbformen selbst. Prüfe zuerst deinen Text. Danach kannst du die Lösung anzeigen.</p>
+<div class="vb-cloze-text" id="vb-cloze-text">
+<p class="vb-line">Last Saturday I <input aria-label="Lücke 1" autocomplete="off" class="vb-gap" data-vb-gap="1" id="vb-gap-1" type="text"/> to town with my friend Mia.</p>
+<p class="vb-line">We <input aria-label="Lücke 2" autocomplete="off" class="vb-gap" data-vb-gap="2" id="vb-gap-2" type="text"/> a present for my cousin.</p>
+<p class="vb-line">After that, we <input aria-label="Lücke 3" autocomplete="off" class="vb-gap" data-vb-gap="3" id="vb-gap-3" type="text"/> a big ice cream.</p>
+<p class="vb-line">In the afternoon, Mia <input aria-label="Lücke 4" autocomplete="off" class="vb-gap" data-vb-gap="4" id="vb-gap-4" type="text"/> me at home.</p>
+<p class="vb-line">We <input aria-label="Lücke 5" autocomplete="off" class="vb-gap" data-vb-gap="5" id="vb-gap-5" type="text"/> a game in the garden.</p>
+<p class="vb-line">In the evening, I <input aria-label="Lücke 6" autocomplete="off" class="vb-gap" data-vb-gap="6" id="vb-gap-6" type="text"/> my homework because it was Saturday.</p>
+<p class="vb-line">I <input aria-label="Lücke 7" autocomplete="off" class="vb-gap" data-vb-gap="7" id="vb-gap-7" type="text"/> TV because I was too tired.</p>
+<p class="vb-line">The day <input aria-label="Lücke 8" autocomplete="off" class="vb-gap" data-vb-gap="8" id="vb-gap-8" type="text"/> boring.</p>
+</div>
+<div class="freetext-actions">
+<button class="freetext-btn primary" id="vb-check-btn" type="button">Text prüfen</button>
+<button class="freetext-btn" id="vb-solution-btn" type="button" disabled>Lösung nach dem Prüfen anzeigen</button>
+<button class="freetext-btn reset" id="vb-reset-btn" type="button">Zurücksetzen</button>
+</div>
+<div class="vb-feedback-list" id="vb-feedback" aria-live="polite"></div>
+<div class="vb-solution-box" id="vb-solution-box">Lösung: went · bought · ate · visited · played · didn’t do · didn’t watch · wasn’t</div>
+</div>
+<div class="sw-card">
+<h2 class="sw-card-title">Kurzer eigener Text</h2>
+<p class="sw-card-intro">Schreibe 4 eigene Sätze über dein letztes Wochenende. Nutze mindestens 3 Verben aus der Verbbox. Ein Satz muss negativ sein. Die Verbformen bildest du selbst.</p>
+<div class="vb-own-grid">
+<div>
+<label class="freetext-label" for="vb-own-textarea">Deine Sätze</label>
+<textarea aria-label="Kurzer eigener Verbbox-Text" class="freetext-area" id="vb-own-textarea" placeholder="Last weekend I …
+I …
+I didn't …
+It was …"></textarea>
+</div>
+<div>
+<div class="freetext-sidebox">
+<h3 class="freetext-sidebox-title">Prüfe deinen Text</h3>
+<div class="vb-own-checks">
+<div class="autocheck-item" id="vbo-sentences">□ 4 eigene Sätze</div>
+<div class="autocheck-item" id="vbo-verbs">□ 3 Verben aus der Verbbox</div>
+<div class="autocheck-item" id="vbo-neg">□ 1 negative sentence</div>
+<div class="autocheck-item" id="vbo-didnt">□ didn't / did not + basic form</div>
+</div>
+<ul class="vb-own-rules">
+<li>Gezählt werden passende Simple-Past-Formen und Grundformen nach didn't / did not.</li>
+<li>Der Check prüft den Auftrag und typische Simple-Past-Fehler, nicht jeden möglichen Englischfehler.</li>
+</ul>
+</div>
+<div class="sw-note yellow">Nutze die Verbbox nur als Anstoß. Die Sätze müssen von dir kommen.</div>
+</div>
+</div>
+<div class="freetext-actions">
+<button class="freetext-btn primary" id="vbo-check-btn" type="button">Sätze prüfen</button>
+<button class="freetext-btn reset" id="vbo-reset-btn" type="button">Zurücksetzen</button>
+</div>
+<div class="vb-own-result" id="vbo-result"></div>
+</div>
+</div>
+</div>
+<!-- ══════════ MY LAST WEEKEND ══════════ -->
+<div aria-labelledby="tab-sw-weekend" class="compass-mode-panel" data-panel="sw-mode" data-val="weekend" id="sw-weekend" role="tabpanel" tabindex="0">
+<div class="sw-panel" id="wk-free">
+<div class="sw-card">
+<h2 class="sw-card-title">My last weekend</h2>
+<p class="sw-card-intro">Schreibe über dein letztes Wochenende. Schreibe mindestens 6 Sätze. Nutze verschiedene Simple-Past-Verben. Schreibe auch, was du nicht gemacht hast.</p>
+<div class="wk-plan-grid" aria-label="Mini-Plan für den Text">
+<div class="wk-plan-card">
+<span class="wk-plan-label">When?</span>
+<p>on Saturday · on Sunday · in the evening</p>
+</div>
+<div class="wk-plan-card">
+<span class="wk-plan-label">Who?</span>
+<p>I · we · my family · my friend</p>
+</div>
+<div class="wk-plan-card">
+<span class="wk-plan-label">Where?</span>
+<p>at home · in town · at my grandma's house</p>
+</div>
+<div class="wk-plan-card">
+<span class="wk-plan-label">What?</span>
+<p>go · play · visit · watch · eat · buy</p>
+</div>
+<div class="wk-plan-card">
+<span class="wk-plan-label">What not?</span>
+<p>didn't watch · didn't play · didn't do</p>
+</div>
+<div class="wk-plan-card">
+<span class="wk-plan-label">Feeling?</span>
+<p>It was … · I felt … because …</p>
+</div>
+</div>
+<div class="freetext-grid">
+
+<div>
+<label class="freetext-label" for="wk-textarea">Dein Text</label>
+<textarea aria-label="My last weekend — freier Text" class="freetext-area" id="wk-textarea" placeholder="Last weekend I …
+On Saturday I …
+Then …
+I didn't …
+It was …"></textarea>
+</div>
+<div>
+<div class="freetext-sidebox">
+<h3 class="freetext-sidebox-title">Nach dem Schreiben prüfen</h3>
+<div class="autocheck-grid task-balance-grid" id="wk-balance-grid">
+<div class="autocheck-item" id="wkb-sentences">□ 6 Sätze</div>
+<div class="autocheck-item" id="wkb-diff">□ 4 verschiedene Verben</div>
+<div class="autocheck-item" id="wkb-reg">□ 2 regular verbs</div>
+<div class="autocheck-item" id="wkb-irr">□ 2 irregular verbs</div>
+<div class="autocheck-item" id="wkb-neg">□ 1 negative sentence</div>
+<div class="autocheck-item" id="wkb-time">□ 1 Zeit- oder Reihenfolge-Wort</div>
+<div class="autocheck-item" id="wkb-didnt">□ didn't / did not + basic form</div>
+<div class="autocheck-item" id="wkb-be">◇ Extra: was / were</div>
+</div>
+<p class="vb-own-rule-note">Der Check prüft den Auftrag, viele typische Schulverben und wichtige Simple-Past-Fehler. Er bewertet nicht jeden Englischfehler.</p>
+</div>
+<div class="freetext-sidebox">
+<h3 class="freetext-sidebox-title">Hilfswörter</h3>
+<ul class="wordbank">
+<li>Last weekend …</li>
+<li>On Saturday …</li>
+<li>On Sunday …</li>
+<li>First …</li>
+<li>Then …</li>
+<li>After that …</li>
+<li>In the evening …</li>
+<li>Finally …</li>
+<li>It was … because …</li>
+<li>I felt … because …</li>
+</ul>
+</div>
+<div class="sw-note">Schreibe zuerst deinen Text. Nutze die Hilfswörter nur, wenn du hängen bleibst. Prüfe danach den Auftrag.</div>
+</div>
+</div>
+<div class="freetext-actions">
+<button class="freetext-btn primary" id="wk-check-btn" type="button">Text prüfen</button>
+<button class="freetext-btn reset" id="wk-reset-btn" type="button">Zurücksetzen</button>
+</div>
+<div class="freetext-result" id="wk-result"></div>
+</div>
+</div>
+</div>
+<!-- ══════════ DEAR DIARY ══════════ -->
+<div aria-labelledby="tab-sw-diary" class="compass-mode-panel" data-panel="sw-mode" data-val="diary" id="sw-diary" role="tabpanel" tabindex="0">
+<!-- Level 3 Steps -->
+<nav aria-label="Schritte: Dear Diary" class="learn-step-nav feature-tabs" role="tablist">
+<button aria-controls="dd-structure" aria-pressed="true" aria-selected="true" class="learn-step-btn is-active" data-tab="dd-step" data-val="structure" id="tab-dd-structure" role="tab" type="button">
+<span class="step-badge">1</span><span class="step-label">Aufbau</span>
+</button>
+<button aria-controls="dd-phrases" aria-pressed="false" aria-selected="false" class="learn-step-btn" data-tab="dd-step" data-val="phrases" id="tab-dd-phrases" role="tab" type="button">
+<span class="step-badge">2</span><span class="step-label">Satzstarter</span>
+</button>
+<button aria-controls="dd-write" aria-pressed="false" aria-selected="false" class="learn-step-btn" data-tab="dd-step" data-val="write" id="tab-dd-write" role="tab" type="button">
+<span class="step-badge">3</span><span class="step-label">Diary schreiben</span>
+</button>
+</nav>
+<!-- Step 1: Aufbau -->
+<div aria-labelledby="tab-dd-structure" class="sw-panel step-panel is-active" data-panel="dd-step" data-val="structure" id="dd-structure" role="tabpanel" tabindex="0">
+<div class="sw-card">
+<h2 class="sw-card-title">Aufbau eines Tagebucheintrags</h2>
+<p class="sw-card-intro">Schreibe über einen Tag am Wochenende. Ziel: 6 bis 8 Sätze. Erzähle in der richtigen Reihenfolge, was passiert ist, was du nicht gemacht hast und wie der Tag war.</p>
+<div class="diary-structure">
+<div class="diary-section">
+<div class="diary-num n1">1</div>
+<div>
+<h3 class="diary-section-title">1. Datum und Anrede</h3>
+<p class="diary-section-text">Schreibe ein Datum. Die Anrede steht über deinem Text: "Dear Diary,".</p>
+<div class="diary-examples">
+<span class="diary-ex">Saturday, 10th June</span>
+<span class="diary-ex">Dear Diary,</span>
+</div>
+</div>
+</div>
+<div class="diary-section">
+<div class="diary-num n2">2</div>
+<div>
+<h3 class="diary-section-title">2. Einstieg: Was ist passiert?</h3>
+<p class="diary-section-text">Schreibe kurz, wie der Tag war. Gib einen Grund an, wenn du einen nennen kannst.</p>
+<div class="diary-examples">
+<span class="diary-ex green">Today was …</span>
+<span class="diary-ex green">The day was … because …</span>
+<span class="diary-ex green">I felt … because …</span>
+</div>
+</div>
+</div>
+<div class="diary-section">
+<div class="diary-num n3">3</div>
+<div>
+<h3 class="diary-section-title">3. Was hast du gemacht?</h3>
+<p class="diary-section-text">Erzähle 3 bis 4 Dinge. Nutze Signalwörter, damit die Reihenfolge klar wird.</p>
+<div class="diary-examples">
+<span class="diary-ex">First, I …</span>
+<span class="diary-ex">Then I …</span>
+<span class="diary-ex">After that, I …</span>
+<span class="diary-ex">We also …</span>
+</div>
+</div>
+</div>
+<div class="diary-section">
+<div class="diary-num n4">4</div>
+<div>
+<h3 class="diary-section-title">4. Was hast du nicht gemacht?</h3>
+<p class="diary-section-text">Schreibe mindestens eine Verneinung. Nach didn't / did not steht die basic form.</p>
+<div class="diary-examples">
+<span class="diary-ex violet">I didn't play …</span>
+<span class="diary-ex violet">We didn't have time to …</span>
+<span class="diary-ex violet">We didn't go …</span>
+</div>
+</div>
+</div>
+<div class="diary-section">
+<div class="diary-num n5">5</div>
+<div>
+<h3 class="diary-section-title">5. Abschluss: Deine Meinung</h3>
+<p class="diary-section-text">Schreibe deine Meinung. Gib möglichst einen Grund an.</p>
+<div class="diary-examples">
+<span class="diary-ex">It was … because …</span>
+<span class="diary-ex">At the end, I felt …</span>
+<span class="diary-ex">I enjoyed … because …</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Formulierungen -->
+<div aria-labelledby="tab-dd-phrases" class="sw-panel step-panel" data-panel="dd-step" data-val="phrases" id="dd-phrases" role="tabpanel" tabindex="0">
+<div class="sw-card">
+<h2 class="sw-card-title">Satzstarter</h2>
+<p class="sw-card-intro">Schreibe zuerst selbst. Wenn du hängen bleibst, nimm einen Satzanfang und ergänze ihn mit eigenen Ideen.</p>
+<div class="phrase-grid">
+<div class="phrase-group">
+<span class="phrase-group-label">Start</span>
+<div class="phrase-row"><span class="phrase-en">Today was …</span><span class="phrase-de">Wie war der Tag?</span></div>
+<div class="phrase-row"><span class="phrase-en">Yesterday was …</span><span class="phrase-de">Wie war gestern?</span></div>
+<div class="phrase-row"><span class="phrase-en">Last weekend was …</span><span class="phrase-de">Wie war das Wochenende?</span></div>
+</div>
+<div class="phrase-group">
+<span class="phrase-group-label">Reihenfolge</span>
+<div class="phrase-row"><span class="phrase-en">First, I …</span><span class="phrase-de">erster Schritt</span></div>
+<div class="phrase-row"><span class="phrase-en">Then we …</span><span class="phrase-de">danach</span></div>
+<div class="phrase-row"><span class="phrase-en">After that, …</span><span class="phrase-de">danach</span></div>
+<div class="phrase-row"><span class="phrase-en">Finally, …</span><span class="phrase-de">am Ende</span></div>
+</div>
+<div class="phrase-group">
+<span class="phrase-group-label">Meinung</span>
+<div class="phrase-row"><span class="phrase-en">I enjoyed …</span><span class="phrase-de">Was fandest du gut?</span></div>
+<div class="phrase-row"><span class="phrase-en">I felt …</span><span class="phrase-de">Wie hast du dich gefühlt?</span></div>
+<div class="phrase-row"><span class="phrase-en">It was … because …</span><span class="phrase-de">Meinung mit Grund</span></div>
+</div>
+<div class="phrase-group">
+<span class="phrase-group-label">Verneinung</span>
+<div class="phrase-row"><span class="phrase-en">I didn't …</span><span class="phrase-de">Was hast du nicht gemacht?</span></div>
+<div class="phrase-row"><span class="phrase-en">We didn't …</span><span class="phrase-de">Was habt ihr nicht gemacht?</span></div>
+<div class="phrase-row"><span class="phrase-en">It wasn't …</span><span class="phrase-de">Wie war es nicht?</span></div>
+</div>
+</div>
+<div class="sw-note yellow">Die Satzstarter sind kein fertiger Text. Du musst eigene Verben, Orte, Personen und Gründe ergänzen.</div>
+</div>
+</div>
+<!-- Step 3: Diary schreiben -->
+<div aria-labelledby="tab-dd-write" class="sw-panel step-panel" data-panel="dd-step" data-val="write" id="dd-write" role="tabpanel" tabindex="0">
+<div class="sw-card">
+<h2 class="sw-card-title">Tagebucheintrag schreiben</h2>
+<p class="sw-card-intro">Schreibe einen Tagebucheintrag über einen Tag am Wochenende. Schreibe 6 bis 8 Sätze. Bilde die Simple-Past-Formen selbst.</p>
+<div class="diary-write-grid">
+<div>
+<div class="diary-header-row">
+<input aria-label="Datum des Eintrags" class="diary-header-field" id="diary-date" placeholder="Datum, zum Beispiel Saturday, 8th June" type="text"/>
+</div>
+<p class="dear-diary-label">Dear Diary,</p>
+<textarea aria-label="Tagebucheintrag schreiben" class="diary-area" id="diary-area" placeholder="Today was …
+
+First, I …
+Then …
+After that, …
+
+I didn't …
+
+It was … because …"></textarea>
+<div class="diary-actions">
+<button class="diary-btn primary" id="diary-check-btn" type="button">Eintrag prüfen</button>
+<button class="diary-btn reset" id="diary-reset-btn" type="button">Zurücksetzen</button>
+</div>
+<div class="diary-result" id="diary-result"></div>
+</div>
+<div>
+<div class="diary-tools-box">
+<h3 class="diary-tools-title">Nach dem Schreiben prüfen</h3>
+<div class="autocheck-grid task-balance-grid" id="diary-balance-grid">
+<div class="autocheck-item" id="ddb-date">□ Datum und Dear Diary</div>
+<div class="autocheck-item" id="ddb-sentences">□ 6 Sätze</div>
+<div class="autocheck-item" id="ddb-diff">□ 5 verschiedene Verben</div>
+<div class="autocheck-item" id="ddb-reg">□ 2 regular verbs</div>
+<div class="autocheck-item" id="ddb-irr">□ 2 irregular verbs</div>
+<div class="autocheck-item" id="ddb-neg">□ 1 negative sentence</div>
+<div class="autocheck-item" id="ddb-time">□ 2 Zeit- oder Reihenfolge-Wörter</div>
+<div class="autocheck-item" id="ddb-feeling">□ Gefühl oder Meinung</div>
+<div class="autocheck-item" id="ddb-didnt">□ didn't / did not + basic form</div>
+<div class="autocheck-item" id="ddb-long">◇ Extra: 8 Sätze</div>
+<div class="autocheck-item" id="ddb-be">◇ Extra: was / were</div>
+</div>
+<p class="vb-own-rule-note">Der Check prüft den Auftrag, viele typische Schulverben und wichtige Simple-Past-Fehler. Er bewertet nicht jeden Englischfehler.</p>
+</div>
+<div class="diary-tools-box">
+<h3 class="diary-tools-title is-irr">Denk daran</h3>
+<ul class="wordbank">
+<li>Nach didn't / did not steht die Grundform.</li>
+<li>was/were funktioniert ohne did.</li>
+<li>Signalwörter zeigen die Reihenfolge: first, then, after that, finally.</li>
+<li>Wenn du ein anderes richtiges Verb benutzt, kann der Check es übersehen. Lies deinen Text trotzdem selbst.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ══════════ NACHSCHLAGEN ══════════ -->
+<div aria-labelledby="tab-sw-reference" class="compass-mode-panel" data-panel="sw-mode" data-val="reference" id="sw-reference" role="tabpanel" tabindex="0">
+<div class="sw-panel">
+<div class="sw-card">
+<h2 class="sw-card-title">Mini-Hilfe</h2>
+<p class="sw-card-intro">Prüfe kurz die wichtigste Regel. Wenn du mehr Erklärung brauchst, gehe zurück zur Simple-Past-Seite.</p>
+<div class="ref-mini-grid">
+<div class="ref-mini-box blue">
+<span class="mini-label">Positive Sätze</span>
+          Person + Past Form + Rest.<br/>Beispiel: I played. / She went.
+        </div>
+<div class="ref-mini-box red">
+<span class="mini-label">Negative Sätze</span>
+          Person + didn't + basic form.<br/>Nicht: didn't played.
+        </div>
+<div class="ref-mini-box green">
+<span class="mini-label">was / were</span>
+          to be ist ein Sonderfall: I was, they were, wasn't, weren't.
+        </div>
+</div>
+<div class="sw-note yellow">Erst schreiben, dann prüfen. Die Mini-Hilfe ersetzt nicht die Simple-Past-Seite.</div>
+<div class="ref-pill-row">
+<span class="ref-pill key">yesterday</span>
+<span class="ref-pill key">last weekend</span>
+<span class="ref-pill key">on Saturday</span>
+<span class="ref-pill sequence">First …</span>
+<span class="ref-pill sequence">Then …</span>
+<span class="ref-pill sequence">After that …</span>
+<span class="ref-pill sequence">Finally …</span>
+</div>
+<p class="sw-note"><a href="simplepast.html#lernen">Zur Simple-Past-Seite, wenn du die Regel noch einmal brauchst</a></p>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>
+(function(){
+'use strict';
+
+/* ── Tab-System (alle Ebenen) ── */
+document.documentElement.classList.add('tabs-ready');
+
+function activateTab(tabAttr, panelAttr, btn) {
+  var val = btn.getAttribute('data-val');
+  document.querySelectorAll('[data-tab="' + tabAttr + '"]').forEach(function(b) {
+    var active = b === btn;
+    b.setAttribute('aria-selected', active ? 'true' : 'false');
+    if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    b.classList.toggle('is-active', active);
+    b.tabIndex = active ? 0 : -1;
+  });
+  document.querySelectorAll('[data-panel="' + panelAttr + '"]').forEach(function(p) {
+    var activePanel = p.getAttribute('data-val') === val;
+    p.classList.toggle('is-active', activePanel);
+    p.hidden = !activePanel;
+  });
+}
+
+function initTabs(tabAttr, panelAttr) {
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-tab="' + tabAttr + '"]'));
+  buttons.forEach(function(btn, index) {
+    btn.tabIndex = btn.getAttribute('aria-selected') === 'true' ? 0 : -1;
+    btn.addEventListener('click', function() {
+      activateTab(tabAttr, panelAttr, btn);
+    });
+    btn.addEventListener('keydown', function(e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      var nextIndex = e.key === 'ArrowRight' ? index + 1 : index - 1;
+      if (nextIndex < 0) nextIndex = buttons.length - 1;
+      if (nextIndex >= buttons.length) nextIndex = 0;
+      buttons[nextIndex].focus();
+      activateTab(tabAttr, panelAttr, buttons[nextIndex]);
+    });
+  });
+  var active = buttons.find(function(btn){ return btn.getAttribute('aria-selected') === 'true'; }) || buttons[0];
+  if (active) activateTab(tabAttr, panelAttr, active);
+}
+
+initTabs('sw-mode', 'sw-mode');
+initTabs('dd-step', 'dd-step');
+
+
+
+/* ── Verbbox-Text ── */
+var VB_ANSWERS = {
+  '1':['went'],
+  '2':['bought'],
+  '3':['ate'],
+  '4':['visited'],
+  '5':['played'],
+  '6':["didn't do", 'didnt do', 'did not do'],
+  '7':["didn't watch", 'didnt watch', 'did not watch'],
+  '8':["wasn't", 'wasnt', 'was not']
+};
+var VB_EXPLAIN = {
+  '1':'go ist irregular: went.',
+  '2':'buy ist irregular: bought.',
+  '3':'eat ist irregular: ate.',
+  '4':'visit ist regular: visited.',
+  '5':'play ist regular: played.',
+  '6':'Bei Verneinung steht didn’t + basic form: didn’t do.',
+  '7':'Bei Verneinung steht didn’t + basic form: didn’t watch.',
+  '8':'be ist ein Sonderfall: wasn’t.'
+};
+function normalizeAnswer(value) {
+  return value.toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function setVerbboxSolutionEnabled(enabled) {
+  var button = document.getElementById('vb-solution-btn');
+  if (!button) return;
+  button.disabled = !enabled;
+  button.textContent = enabled ? 'Lösung anzeigen' : 'Lösung nach dem Prüfen anzeigen';
+  if (!enabled) document.getElementById('vb-solution-box').classList.remove('show');
+}
+function checkVerbboxText() {
+  var feedback = document.getElementById('vb-feedback');
+  feedback.innerHTML = '';
+  var okCount = 0;
+  var filledCount = 0;
+  Object.keys(VB_ANSWERS).forEach(function(num) {
+    var input = document.getElementById('vb-gap-' + num);
+    var answer = normalizeAnswer(input.value);
+    var hasAnswer = answer.length > 0;
+    var ok = hasAnswer && VB_ANSWERS[num].indexOf(answer) !== -1;
+    input.classList.toggle('is-ok', ok);
+    input.classList.toggle('is-error', !ok && hasAnswer);
+    if (hasAnswer) filledCount += 1;
+    if (ok) okCount += 1;
+    var item = document.createElement('div');
+    item.className = 'vb-feedback-item ' + (ok ? 'ok' : 'warn');
+    if (ok) {
+      item.textContent = '✓ Lücke ' + num + ' ist richtig.';
+    } else if (!hasAnswer) {
+      item.textContent = 'Lücke ' + num + ': Trage zuerst eine Form ein.';
+    } else {
+      item.textContent = 'Lücke ' + num + ': ' + VB_EXPLAIN[num];
+    }
+    feedback.appendChild(item);
+  });
+  setVerbboxSolutionEnabled(true);
+  if (okCount === Object.keys(VB_ANSWERS).length) {
+    var done = document.createElement('div');
+    done.className = 'vb-feedback-item ok';
+    done.textContent = '✓ Der Verbbox-Text ist vollständig richtig.';
+    feedback.appendChild(done);
+  } else if (filledCount === 0) {
+    var start = document.createElement('div');
+    start.className = 'vb-feedback-item warn';
+    start.textContent = 'Beginne mit eigenen Formen. Die Erklärungen erscheinen erst nach einem Versuch.';
+    feedback.appendChild(start);
+  }
+}
+function resetVerbboxText() {
+  Object.keys(VB_ANSWERS).forEach(function(num) {
+    var input = document.getElementById('vb-gap-' + num);
+    input.value = '';
+    input.classList.remove('is-ok', 'is-error');
+  });
+  document.getElementById('vb-feedback').innerHTML = '';
+  document.getElementById('vb-solution-box').classList.remove('show');
+  setVerbboxSolutionEnabled(false);
+  localStorage.removeItem(VB_KEY);
+}
+var VERBBOX_BASES = ['be','go','have','see','eat','buy','play','visit','watch','miss','do','want'];
+function countSentences(text) {
+  return text.split(/[.!?\n]+/).map(function(part){ return part.trim(); }).filter(function(part){ return part.length > 2; }).length;
+}
+function getVerbboxVerbUsage(text) {
+  var normalized = normalizeText(text);
+  var used = [];
+  VERBBOX_BASES.forEach(function(base) {
+    var found = false;
+    if (base === 'be') {
+      found = /\b(?:was|were|wasnt|wasn't|was\s+not|werent|weren't|were\s+not)\b/i.test(normalized);
+    } else {
+      var forms = (REG_VERBS_MAP[base] || IRR_VERBS_MAP[base] || []);
+      found = forms.some(function(form){ return containsPastForm(normalized, form); });
+      if (!found) {
+        found = new RegExp("\\b(?:did\\s+not|didnt|didn't)\\s+" + escapeRegExp(base) + "\\b", 'i').test(normalized);
+      }
+    }
+    if (found) used.push(base);
+  });
+  return used;
+}
+function countVerbboxVerbs(text) {
+  return getVerbboxVerbUsage(text).length;
+}
+function checkVerbboxOwnText() {
+  var text = document.getElementById('vb-own-textarea').value;
+  var res = document.getElementById('vbo-result');
+  if (!text.trim()) {
+    res.className = 'vb-own-result show warn';
+    res.textContent = 'Schreibe zuerst 4 eigene Sätze. Danach kannst du sie prüfen.';
+    return;
+  }
+  var r = analyzeText(text);
+  var usedVerbs = getVerbboxVerbUsage(text);
+  var vbCount = usedVerbs.length;
+  var sentences = countSentences(text);
+  function upd(id, ok, label) {
+    var el = document.getElementById(id);
+    el.className = 'autocheck-item ' + (ok ? 'ok' : 'fail');
+    el.textContent = (ok ? '✓ ' : '✗ ') + label;
+  }
+  upd('vbo-sentences', sentences >= 4, sentences + ' eigene Sätze (Ziel: 4)');
+  upd('vbo-verbs', vbCount >= 3, vbCount + ' Verben aus der Verbbox: ' + (usedVerbs.length ? usedVerbs.join(', ') : 'noch keine'));
+  upd('vbo-neg', r.neg >= 1, r.neg + ' negative sentence (Ziel: 1)');
+  upd('vbo-didnt', r.didntOk, r.didntOk ? "didn't / did not + basic form ✓" : "Prüfe nach didn't / did not: " + r.didntErrors.join(', '));
+  var issues = [];
+  if (sentences < 4) issues.push('Schreibe noch ' + (4 - sentences) + ' Satz/Sätze.');
+  if (vbCount < 3) issues.push('Nutze noch mindestens ' + (3 - vbCount) + ' Verb/Verben aus der Verbbox.');
+  if (r.neg < 1) issues.push("Baue einen negativen Satz mit didn't / did not ein.");
+  if (!r.didntOk) issues.push("Nach didn't / did not steht die Grundform: go, watch, do, play.");
+  var all = issues.length === 0;
+  res.className = 'vb-own-result show ' + (all ? 'ok' : 'warn');
+  res.textContent = all
+    ? '✓ Der Auftrag ist erfüllt: 4 Sätze, 3 Verbbox-Verben, 1 negative sentence und die did-Regel stimmen. Lies deinen Text jetzt noch einmal laut und prüfe, ob er sinnvoll klingt.'
+    : 'Noch nicht ganz: ' + issues.join(' ');
+}
+function resetVerbboxOwnText() {
+  document.getElementById('vb-own-textarea').value = '';
+  var res = document.getElementById('vbo-result');
+  res.className = 'vb-own-result';
+  res.textContent = '';
+  [
+    ['vbo-sentences','□ 4 eigene Sätze'],
+    ['vbo-verbs','□ 3 Verben aus der Verbbox'],
+    ['vbo-neg','□ 1 negative sentence'],
+    ['vbo-didnt',"□ didn't / did not + basic form"]
+  ].forEach(function(item){
+    var el = document.getElementById(item[0]);
+    el.className = 'autocheck-item';
+    el.textContent = item[1];
+  });
+  localStorage.removeItem(VBO_KEY);
+}
+document.getElementById('vb-check-btn').addEventListener('click', checkVerbboxText);
+document.getElementById('vb-solution-btn').addEventListener('click', function(){
+  if (this.disabled) return;
+  document.getElementById('vb-solution-box').classList.toggle('show');
+});
+document.getElementById('vb-reset-btn').addEventListener('click', resetVerbboxText);
+document.getElementById('vbo-check-btn').addEventListener('click', checkVerbboxOwnText);
+document.getElementById('vbo-reset-btn').addEventListener('click', resetVerbboxOwnText);
+setVerbboxSolutionEnabled(false);
+
+/* ── My last weekend — Freier Text ── */
+var REG_VERBS_MAP = {
+  play:['played'], watch:['watched'], clean:['cleaned'], help:['helped'], cook:['cooked'], walk:['walked'], talk:['talked'], stay:['stayed'], listen:['listened'], use:['used'], visit:['visited'], love:['loved'], dance:['danced'], call:['called'], stop:['stopped'], plan:['planned'], enjoy:['enjoyed'], try:['tried'], study:['studied'], cry:['cried'], carry:['carried'], arrive:['arrived'], live:['lived'], like:['liked'], want:['wanted'], wait:['waited'], open:['opened'], close:['closed'], miss:['missed'], travel:['travelled','traveled'], work:['worked'], start:['started'], finish:['finished'], bake:['baked'], tidy:['tidied'], phone:['phoned'], text:['texted'], ask:['asked'], answer:['answered'], look:['looked'], need:['needed'], collect:['collected'], remember:['remembered'], paint:['painted'], laugh:['laughed'], smile:['smiled'], jump:['jumped'], climb:['climbed'], return:['returned'], practise:['practised','practiced']
+};
+var IRR_VERBS_MAP = {
+  go:['went'], have:['had'], see:['saw'], come:['came'], get:['got'], make:['made'], eat:['ate'], buy:['bought'], take:['took'], meet:['met'], read:['read'], write:['wrote'], sleep:['slept'], feel:['felt'], think:['thought'], know:['knew'], swim:['swam'], run:['ran'], give:['gave'], find:['found'], tell:['told'], wake:['woke'], do:['did'], be:['was','were'], drink:['drank'], leave:['left'], lose:['lost'], win:['won'], sit:['sat'], say:['said'], put:['put'], bring:['brought'], catch:['caught'], draw:['drew']
+};
+var BASIC_FORMS = Object.keys(REG_VERBS_MAP).concat(Object.keys(IRR_VERBS_MAP));
+var PAST_TO_BASE = {};
+var THIRD_PERSON_FORMS = {};
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+function normalizeText(text) {
+  return (' ' + text.toLowerCase() + ' ')
+    .replace(/[’‘]/g, "'")
+    .replace(/[^a-z'\s]/g, ' ')
+    .replace(/\s+/g, ' ');
+}
+function containsWord(normalized, word) {
+  return new RegExp('\\b' + escapeRegExp(word) + '\\b', 'i').test(normalized);
+}
+function containsPastForm(normalized, form) {
+  if (form === 'did') {
+    return /\bdid\b(?!\s+not|['’]?nt)/i.test(normalized);
+  }
+  return containsWord(normalized, form);
+}
+function makeThirdPerson(base) {
+  if (/[^aeiou]y$/.test(base)) return base.slice(0, -1) + 'ies';
+  if (/(s|x|z|ch|sh|o)$/.test(base)) return base + 'es';
+  return base + 's';
+}
+Object.keys(REG_VERBS_MAP).forEach(function(base) {
+  REG_VERBS_MAP[base].forEach(function(past) { PAST_TO_BASE[past] = base; });
+  THIRD_PERSON_FORMS[makeThirdPerson(base)] = base;
+});
+Object.keys(IRR_VERBS_MAP).forEach(function(base) {
+  IRR_VERBS_MAP[base].forEach(function(past) { PAST_TO_BASE[past] = base; });
+  THIRD_PERSON_FORMS[makeThirdPerson(base)] = base;
+});
+
+function analyzeText(text) {
+  var normalized = normalizeText(text);
+  var usedReg = [];
+  var usedIrr = [];
+  var usedVerbs = [];
+  var didntErrors = [];
+
+  Object.keys(REG_VERBS_MAP).forEach(function(base){
+    var found = REG_VERBS_MAP[base].some(function(past){ return containsPastForm(normalized, past); });
+    if (found) { usedReg.push(base); usedVerbs.push(base); }
+  });
+  Object.keys(IRR_VERBS_MAP).forEach(function(base){
+    var found = IRR_VERBS_MAP[base].some(function(past){ return containsPastForm(normalized, past); });
+    if (found) { usedIrr.push(base); usedVerbs.push(base); }
+  });
+
+  var negCount = (normalized.match(/\b(?:did\s+not|didnt|didn't|was\s+not|wasnt|wasn't|were\s+not|werent|weren't)\b/g) || []).length;
+  var didPattern = /\b(?:did\s+not|didnt|didn't)\s+([a-z]+)\b/g;
+  var m;
+  while ((m = didPattern.exec(normalized)) !== null) {
+    var afterDidnt = m[1];
+    if (REG_VERBS_MAP[afterDidnt] && usedReg.indexOf(afterDidnt) === -1) {
+      usedReg.push(afterDidnt);
+      usedVerbs.push(afterDidnt);
+    }
+    if (IRR_VERBS_MAP[afterDidnt] && usedIrr.indexOf(afterDidnt) === -1 && afterDidnt !== 'be') {
+      usedIrr.push(afterDidnt);
+      usedVerbs.push(afterDidnt);
+    }
+    var isKnownPast = PAST_TO_BASE[afterDidnt] && PAST_TO_BASE[afterDidnt] !== afterDidnt;
+    var isProgressive = /ing$/.test(afterDidnt);
+    var isRegularPast = /(ed|ied)$/.test(afterDidnt) && BASIC_FORMS.indexOf(afterDidnt) === -1;
+    var isThirdPerson = !!THIRD_PERSON_FORMS[afterDidnt];
+    var isToBeProblem = afterDidnt === 'was' || afterDidnt === 'were' || afterDidnt === 'be';
+    if (isKnownPast || isProgressive || isRegularPast || isThirdPerson || isToBeProblem) {
+      if (didntErrors.indexOf(afterDidnt) === -1) didntErrors.push(afterDidnt);
+    }
+  }
+
+  var uniqueVerbs = usedVerbs.filter(function(v,i,a){return a.indexOf(v)===i;});
+  return {
+    reg:usedReg.length,
+    irr:usedIrr.length,
+    diff:uniqueVerbs.length,
+    neg:negCount,
+    didntOk:didntErrors.length === 0,
+    didntErrors:didntErrors
+  };
+}
+
+function countSentences(text) {
+  var parts = text
+    .replace(/\r/g, '\n')
+    .split(/[.!?]+|\n+/)
+    .map(function(part){ return part.trim(); })
+    .filter(function(part){ return part.split(/\s+/).filter(Boolean).length >= 2; });
+  return parts.length;
+}
+function hasTimeMarker(text) {
+  return countTimeMarkers(text) >= 1;
+}
+function countTimeMarkers(text) {
+  var normalized = normalizeText(text);
+  var patterns = [
+    /\blast weekend\b/, /\bon saturday\b/, /\bon sunday\b/, /\byesterday\b/,
+    /\bin the morning\b/, /\bin the afternoon\b/, /\bin the evening\b/,
+    /\bfirst\b/, /\bthen\b/, /\bafter that\b/, /\bfinally\b/, /\blater\b/, /\bnext\b/
+  ];
+  return patterns.reduce(function(count, pattern){ return count + (pattern.test(normalized) ? 1 : 0); }, 0);
+}
+function hasFeelingOrOpinion(text) {
+  var normalized = normalizeText(text);
+  var patterns = [
+    /\bi felt\b/, /\bi enjoyed\b/, /\bi liked\b/, /\bi loved\b/, /\bi didn'?t like\b/,
+    /\bit was\s+(fun|nice|great|boring|tiring|good|bad|interesting|cool|exciting)\b/,
+    /\bi was\s+(happy|tired|excited|sad|angry|bored)\b/,
+    /\bbecause\b/
+  ];
+  return patterns.some(function(pattern){ return pattern.test(normalized); });
+}
+function hasWasWere(text) {
+  var normalized = normalizeText(text);
+  return /\b(?:was|were|wasnt|wasn't|was\s+not|werent|weren't|were\s+not)\b/.test(normalized);
+}
+
+document.getElementById('wk-check-btn').addEventListener('click', function(){
+  var text = document.getElementById('wk-textarea').value;
+  var res = document.getElementById('wk-result');
+  if (!text.trim()) {
+    res.className = 'freetext-result show warn';
+    res.textContent = 'Schreibe zuerst deinen Text. Danach kannst du ihn prüfen.';
+    return;
+  }
+  var r = analyzeText(text);
+  var sentenceCount = countSentences(text);
+  var hasTime = hasTimeMarker(text);
+  var beExtra = hasWasWere(text);
+  function upd(id, ok, label) {
+    var el = document.getElementById(id);
+    el.className = 'autocheck-item ' + (ok ? 'ok' : 'fail');
+    el.textContent = (ok ? '✓ ' : '✗ ') + label;
+  }
+  upd('wkb-sentences', sentenceCount >= 6, sentenceCount + ' Sätze (Ziel: 6)');
+  upd('wkb-diff', r.diff >= 4, r.diff + ' verschiedene Verben (Ziel: 4)');
+  upd('wkb-reg', r.reg >= 2, r.reg + ' regular verbs (Ziel: 2)');
+  upd('wkb-irr', r.irr >= 2, r.irr + ' irregular verbs (Ziel: 2)');
+  upd('wkb-neg', r.neg >= 1, r.neg + ' negative sentence (Ziel: 1)');
+  upd('wkb-time', hasTime, hasTime ? 'Zeit- oder Reihenfolge-Wort gefunden' : 'Zeit- oder Reihenfolge-Wort fehlt');
+  upd('wkb-didnt', r.didntOk, r.didntOk ? "didn't / did not + basic form ✓" : "Prüfe nach didn't / did not: " + r.didntErrors.join(', '));
+  var beEl = document.getElementById('wkb-be');
+  beEl.className = 'autocheck-item ' + (beExtra ? 'ok' : '');
+  beEl.textContent = beExtra ? '✓ Extra: was / were verwendet' : '◇ Extra: was / were ist möglich, aber nicht Pflicht';
+  var coreMissing = [];
+  if (sentenceCount < 6) {
+    var missingSentences = 6 - sentenceCount;
+    coreMissing.push('Schreibe noch ' + missingSentences + (missingSentences === 1 ? ' Satz.' : ' Sätze.'));
+  }
+  if (r.diff < 4) coreMissing.push('Nutze noch mehr verschiedene Verben.');
+  if (r.reg < 2) coreMissing.push('Ergänze noch regular verbs.');
+  if (r.irr < 2) coreMissing.push('Ergänze noch irregular verbs.');
+  if (r.neg < 1) coreMissing.push('Schreibe noch einen negativen Satz.');
+  if (!hasTime) coreMissing.push('Nutze ein Zeit- oder Reihenfolge-Wort.');
+  if (!r.didntOk) coreMissing.push("Nach didn't / did not steht die Grundform.");
+  var coreOk = coreMissing.length === 0;
+  var almostOk = sentenceCount >= 5 && r.diff >= 3 && r.neg >= 1 && r.didntOk;
+  res.className = 'freetext-result show ' + (coreOk ? 'ok' : 'warn');
+  res.textContent = coreOk
+    ? 'Auftrag erfüllt. Der Check hat den Auftrag, viele typische Schulverben und wichtige Simple-Past-Fehler geprüft. Lies deinen Text jetzt laut: Passt die Reihenfolge? Klingt jeder Satz sinnvoll?'
+    : (almostOk ? 'Fast erfüllt. ' : 'Noch verbessern. ') + coreMissing.join(' ') + ' Der Check erkennt viele typische Schulverben, aber nicht jedes richtige Verb. Lies danach jeden Satz noch einmal selbst.';
+});
+
+document.getElementById('wk-reset-btn').addEventListener('click', function(){
+  document.getElementById('wk-textarea').value = '';
+  var res = document.getElementById('wk-result');
+  res.className = 'freetext-result';
+  res.textContent = '';
+  ['wkb-sentences','wkb-diff','wkb-reg','wkb-irr','wkb-neg','wkb-time','wkb-didnt','wkb-be'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.className = 'autocheck-item';
+  });
+  document.getElementById('wkb-sentences').textContent = '□ 6 Sätze';
+  document.getElementById('wkb-diff').textContent = '□ 4 verschiedene Verben';
+  document.getElementById('wkb-reg').textContent  = '□ 2 regular verbs';
+  document.getElementById('wkb-irr').textContent  = '□ 2 irregular verbs';
+  document.getElementById('wkb-neg').textContent  = '□ 1 negative sentence';
+  document.getElementById('wkb-time').textContent = '□ 1 Zeit- oder Reihenfolge-Wort';
+  document.getElementById('wkb-didnt').textContent = "□ didn't / did not + basic form";
+  document.getElementById('wkb-be').textContent = '◇ Extra: was / were';
+});
+
+/* ── Diary Prüfen ── */
+function resetDiaryChecks() {
+  [
+    ['ddb-date','□ Datum und Dear Diary'],
+    ['ddb-sentences','□ 6 Sätze'],
+    ['ddb-diff','□ 5 verschiedene Verben'],
+    ['ddb-reg','□ 2 regular verbs'],
+    ['ddb-irr','□ 2 irregular verbs'],
+    ['ddb-neg','□ 1 negative sentence'],
+    ['ddb-time','□ 2 Zeit- oder Reihenfolge-Wörter'],
+    ['ddb-feeling','□ Gefühl oder Meinung'],
+    ['ddb-didnt',"□ didn't / did not + basic form"],
+    ['ddb-long','◇ Extra: 8 Sätze'],
+    ['ddb-be','◇ Extra: was / were']
+  ].forEach(function(item){
+    var el = document.getElementById(item[0]);
+    if (!el) return;
+    el.className = 'autocheck-item';
+    el.textContent = item[1];
+  });
+}
+
+document.getElementById('diary-check-btn').addEventListener('click', function(){
+  var text = document.getElementById('diary-area').value;
+  var res = document.getElementById('diary-result');
+  if (!text.trim()) {
+    res.className = 'diary-result show warn';
+    res.textContent = 'Schreibe zuerst deinen Tagebucheintrag. Danach kannst du ihn prüfen.';
+    return;
+  }
+  var r = analyzeText(text);
+  var sentenceCount = countSentences(text);
+  var hasDate = document.getElementById('diary-date').value.trim().length > 0;
+  var timeCount = countTimeMarkers(text);
+  var hasFeeling = hasFeelingOrOpinion(text);
+  var beExtra = hasWasWere(text);
+  function upd(id, ok, label) {
+    var el = document.getElementById(id);
+    el.className = 'autocheck-item ' + (ok ? 'ok' : 'fail');
+    el.textContent = (ok ? '✓ ' : '✗ ') + label;
+  }
+  upd('ddb-date', hasDate, hasDate ? 'Datum und Dear Diary stehen oben' : 'Datum fehlt noch oben');
+  upd('ddb-sentences', sentenceCount >= 6, sentenceCount + ' Sätze (Ziel: 6 bis 8)');
+  upd('ddb-diff', r.diff >= 5, r.diff + ' verschiedene Verben (Ziel: 5)');
+  upd('ddb-reg', r.reg >= 2, r.reg + ' regular verbs (Ziel: 2)');
+  upd('ddb-irr', r.irr >= 2, r.irr + ' irregular verbs (Ziel: 2)');
+  upd('ddb-neg', r.neg >= 1, r.neg + ' negative sentence (Ziel: 1)');
+  upd('ddb-time', timeCount >= 2, timeCount + ' Zeit-/Reihenfolge-Wörter (Ziel: 2)');
+  upd('ddb-feeling', hasFeeling, hasFeeling ? 'Gefühl oder Meinung gefunden' : 'Gefühl oder Meinung fehlt noch');
+  upd('ddb-didnt', r.didntOk, r.didntOk ? "didn't / did not + basic form ✓" : "Prüfe nach didn't / did not: " + r.didntErrors.join(', '));
+  var longEl = document.getElementById('ddb-long');
+  longEl.className = 'autocheck-item ' + (sentenceCount >= 8 ? 'ok' : '');
+  longEl.textContent = sentenceCount >= 8 ? '✓ Extra: 8 Sätze erreicht' : '◇ Extra: 8 Sätze = stark';
+  var beEl = document.getElementById('ddb-be');
+  beEl.className = 'autocheck-item ' + (beExtra ? 'ok' : '');
+  beEl.textContent = beExtra ? '✓ Extra: was / were verwendet' : '◇ Extra: was / were ist möglich, aber nicht Pflicht';
+
+  var issues = [];
+  if (!hasDate) issues.push('Ergänze oben das Datum.');
+  if (sentenceCount < 6) {
+    var missingSentences = 6 - sentenceCount;
+    issues.push('Schreibe noch ' + missingSentences + (missingSentences === 1 ? ' Satz.' : ' Sätze.'));
+  }
+  if (r.diff < 5) issues.push('Nutze noch mehr verschiedene Verben.');
+  if (r.reg < 2) issues.push('Ergänze noch regular verbs.');
+  if (r.irr < 2) issues.push('Ergänze noch irregular verbs.');
+  if (r.neg < 1) issues.push('Schreibe noch einen negativen Satz.');
+  if (timeCount < 2) issues.push('Nutze mindestens zwei Wörter für Zeit oder Reihenfolge.');
+  if (!hasFeeling) issues.push('Schreibe noch, wie der Tag war oder wie du dich gefühlt hast.');
+  if (!r.didntOk) issues.push("Nach didn't / did not steht die Grundform.");
+  var coreOk = issues.length === 0;
+  var almostOk = sentenceCount >= 5 && r.diff >= 4 && r.neg >= 1 && r.didntOk;
+  res.className = 'diary-result show ' + (coreOk ? 'ok' : 'warn');
+  res.textContent = coreOk
+    ? 'Auftrag erfüllt. Der Check hat den Auftrag, viele typische Schulverben und wichtige Simple-Past-Fehler geprüft. Lies deinen Eintrag jetzt laut: Passt die Reihenfolge? Klingt jeder Satz sinnvoll?'
+    : (almostOk ? 'Fast erfüllt. ' : 'Noch verbessern. ') + issues.join(' ') + ' Der Check erkennt viele typische Schulverben, aber nicht jedes richtige Verb. Lies danach jeden Satz noch einmal selbst.';
+});
+
+document.getElementById('diary-reset-btn').addEventListener('click', function(){
+  document.getElementById('diary-area').value = '';
+  document.getElementById('diary-date').value = '';
+  var res = document.getElementById('diary-result');
+  res.className = 'diary-result';
+  res.textContent = '';
+  resetDiaryChecks();
+});
+
+/* ── Print ── */
+document.getElementById('print-btn').addEventListener('click', function(){ window.print(); });
+
+/* ── LocalStorage: Texte erhalten ── */
+var VB_KEY = 'sw_vb_text_v1';
+var VBO_KEY = 'sw_vb_own_text_v1';
+var WK_KEY = 'sw_wk_text_v1';
+var DD_KEY = 'sw_dd_text_v1';
+var DD_DATE_KEY = 'sw_dd_date_v1';
+var vbOwnArea = document.getElementById('vb-own-textarea');
+var wkArea = document.getElementById('wk-textarea');
+var ddArea = document.getElementById('diary-area');
+var ddDate = document.getElementById('diary-date');
+
+var vbSaved = {};
+try { vbSaved = JSON.parse(localStorage.getItem(VB_KEY) || '{}'); } catch(e) { vbSaved = {}; }
+Object.keys(VB_ANSWERS).forEach(function(num){
+  var input = document.getElementById('vb-gap-' + num);
+  if (input && vbSaved[num]) input.value = vbSaved[num];
+});
+vbOwnArea.value = localStorage.getItem(VBO_KEY) || '';
+wkArea.value = localStorage.getItem(WK_KEY) || '';
+ddArea.value = localStorage.getItem(DD_KEY) || '';
+ddDate.value = localStorage.getItem(DD_DATE_KEY) || '';
+
+document.querySelectorAll('[data-vb-gap]').forEach(function(input){
+  input.addEventListener('input', function(){
+    var values = {};
+    document.querySelectorAll('[data-vb-gap]').forEach(function(gap){ values[gap.getAttribute('data-vb-gap')] = gap.value; });
+    localStorage.setItem(VB_KEY, JSON.stringify(values));
+    input.classList.remove('is-ok', 'is-error');
+    setVerbboxSolutionEnabled(false);
+  });
+});
+vbOwnArea.addEventListener('input', function(){ localStorage.setItem(VBO_KEY, vbOwnArea.value); });
+wkArea.addEventListener('input', function(){ localStorage.setItem(WK_KEY, wkArea.value); });
+ddArea.addEventListener('input', function(){ localStorage.setItem(DD_KEY, ddArea.value); });
+ddDate.addEventListener('input', function(){ localStorage.setItem(DD_DATE_KEY, ddDate.value); });
+
+document.getElementById('wk-reset-btn').addEventListener('click', function(){ localStorage.removeItem(WK_KEY); }, true);
+document.getElementById('diary-reset-btn').addEventListener('click', function(){ localStorage.removeItem(DD_KEY); localStorage.removeItem(DD_DATE_KEY); }, true);
+
+})();
+</script>
+</main>
+</body>
+</html>
