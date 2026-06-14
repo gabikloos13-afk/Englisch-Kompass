@@ -889,6 +889,25 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   }
 }
 
+
+/* SCHREIBWERKSTATT HISTORY/STORAGE PATCH */
+.learning-reset-btn{
+  border-color:#fecaca;
+  background:#fff;
+  color:#991b1b;
+}
+.learning-reset-btn:hover{
+  border-color:#ef4444;
+  background:#fef2f2;
+  color:#991b1b;
+}
+@media(max-width:700px){
+  .learning-reset-btn{
+    flex:1 1 180px;
+    justify-content:center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -899,6 +918,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 <div class="return-actions page-action-buttons">
 <a class="overview-return overview-return-topic" href="simplepast.html#lernen">📖 Simple Past</a>
 <button class="print-btn print-page-btn" id="print-btn" type="button">🖨️ Diese Seite drucken</button>
+<button class="print-btn learning-reset-btn" id="sw-learning-reset" type="button">🧹 Lernstand löschen</button>
 </div>
 </div>
 <div class="page-content topic-page-content">
@@ -1853,6 +1873,316 @@ document.getElementById('diary-reset-btn').addEventListener('click', function(){
 
 })();
 </script>
+
+<script>
+(function(){
+  'use strict';
+  if (window.__schreibwerkstattHistoryStorageReady) return;
+  window.__schreibwerkstattHistoryStorageReady = true;
+
+  var STATE_KEY = 'kompass_schreibwerkstatt_history_storage_v1';
+  var LEGACY_KEYS = [
+    'sw_vb_text_v1',
+    'sw_vb_own_text_v1',
+    'sw_wk_text_v1',
+    'sw_dd_text_v1',
+    'sw_dd_date_v1'
+  ];
+  var applying = false;
+  var hashTimer = 0;
+  var saveTimer = 0;
+  var mainModes = ['verbbox','weekend','diary','reference'];
+  var diarySteps = ['structure','phrases','write'];
+
+  function qs(sel, root){ return (root || document).querySelector(sel); }
+  function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(STATE_KEY) || '{}') || {}; }
+    catch(e){ return {}; }
+  }
+  function writeState(state){
+    try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
+    catch(e){}
+  }
+  function safeDecode(value){
+    try { return decodeURIComponent(value || ''); }
+    catch(e){ return value || ''; }
+  }
+  function parseKompassHash(){
+    var raw = safeDecode((window.location.hash || '').replace(/^#/, '')).trim();
+    if (!raw) return null;
+    if (raw.indexOf('kompass:') === 0) {
+      var data = {};
+      raw.slice(8).split('&').forEach(function(part){
+        if (!part) return;
+        var pair = part.split('=');
+        data[pair[0]] = pair.slice(1).join('=');
+      });
+      return {
+        mode: normalizeMode(data.mode),
+        step: normalizeStep(data.step || data.learn || data.diary || data.dd)
+      };
+    }
+    var legacy = raw.toLowerCase();
+    var legacyModes = {
+      'sw-verbbox':'verbbox','verbbox':'verbbox','text':'verbbox','verbbox-text':'verbbox',
+      'sw-weekend':'weekend','weekend':'weekend','my-last-weekend':'weekend','last-weekend':'weekend',
+      'sw-diary':'diary','diary':'diary','dear-diary':'diary',
+      'sw-reference':'reference','reference':'reference','mini-hilfe':'reference','minihilfe':'reference','hilfe':'reference','nachschlagen':'reference'
+    };
+    var legacySteps = {
+      'dd-structure':'structure','structure':'structure','aufbau':'structure',
+      'dd-phrases':'phrases','phrases':'phrases','satzstarter':'phrases',
+      'dd-write':'write','write':'write','diary-schreiben':'write','schreiben':'write'
+    };
+    if (legacySteps[legacy]) return {mode:'diary', step:legacySteps[legacy]};
+    if (legacyModes[legacy]) return {mode:legacyModes[legacy], step:null};
+    return null;
+  }
+  function normalizeMode(value){
+    value = String(value || '').toLowerCase();
+    return mainModes.indexOf(value) !== -1 ? value : null;
+  }
+  function normalizeStep(value){
+    value = String(value || '').toLowerCase();
+    return diarySteps.indexOf(value) !== -1 ? value : null;
+  }
+  function currentMode(){
+    var btn = qs('[data-tab="sw-mode"].is-active') || qs('[data-tab="sw-mode"][aria-selected="true"]');
+    return btn ? btn.getAttribute('data-val') : 'verbbox';
+  }
+  function currentStep(){
+    var btn = qs('[data-tab="dd-step"].is-active') || qs('[data-tab="dd-step"][aria-selected="true"]');
+    return btn ? btn.getAttribute('data-val') : 'structure';
+  }
+  function makeHash(mode, step){
+    mode = normalizeMode(mode) || 'verbbox';
+    step = normalizeStep(step) || 'structure';
+    var parts = ['mode=' + mode];
+    if (mode === 'diary') parts.push('step=' + step);
+    return '#kompass:' + parts.join('&');
+  }
+  function replaceHash(mode, step){
+    var target = makeHash(mode, step);
+    if (window.location.hash !== target) {
+      history.replaceState({kompass:true, mode:mode, step:step || null}, '', target);
+    }
+  }
+  function pushHash(mode, step){
+    var target = makeHash(mode, step);
+    if (window.location.hash !== target) {
+      history.pushState({kompass:true, mode:mode, step:step || null}, '', target);
+    }
+  }
+  function applyTab(tabAttr, panelAttr, value){
+    var btn = qs('[data-tab="' + tabAttr + '"][data-val="' + value + '"]');
+    if (!btn) return false;
+    qsa('[data-tab="' + tabAttr + '"]').forEach(function(item){
+      var active = item === btn;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', active ? 'true' : 'false');
+      if (item.hasAttribute('aria-pressed')) item.setAttribute('aria-pressed', active ? 'true' : 'false');
+      item.tabIndex = active ? 0 : -1;
+    });
+    qsa('[data-panel="' + panelAttr + '"]').forEach(function(panel){
+      var activePanel = panel.getAttribute('data-val') === value;
+      panel.classList.toggle('is-active', activePanel);
+      panel.hidden = !activePanel;
+    });
+    return true;
+  }
+  function applyNavigation(mode, step, replace){
+    mode = normalizeMode(mode) || 'verbbox';
+    step = normalizeStep(step) || 'structure';
+    applying = true;
+    applyTab('sw-mode', 'sw-mode', mode);
+    if (mode === 'diary') applyTab('dd-step', 'dd-step', step);
+    window.setTimeout(function(){ applying = false; }, 0);
+    if (replace) replaceHash(mode, step);
+  }
+  function applyFromHashOrState(){
+    var parsed = parseKompassHash();
+    var state = readState();
+    if (parsed && parsed.mode) {
+      applyNavigation(parsed.mode, parsed.step || state.step || 'structure', false);
+      return;
+    }
+    applyNavigation(state.mode || 'verbbox', state.step || 'structure', true);
+  }
+
+  function classListOf(el){
+    return el ? Array.prototype.slice.call(el.classList) : [];
+  }
+  function setClassList(el, classes){
+    if (!el || !Array.isArray(classes)) return;
+    el.className = classes.join(' ');
+  }
+  function collectValues(){
+    var values = {};
+    qsa('input[id], textarea[id]').forEach(function(el){
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        values[el.id] = {checked: !!el.checked};
+      } else {
+        values[el.id] = {value: el.value};
+      }
+    });
+    return values;
+  }
+  function restoreValues(values){
+    if (!values) return;
+    Object.keys(values).forEach(function(id){
+      var el = document.getElementById(id);
+      var rec = values[id];
+      if (!el || !rec) return;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        el.checked = !!rec.checked;
+      } else if (Object.prototype.hasOwnProperty.call(rec, 'value')) {
+        el.value = rec.value;
+      }
+    });
+  }
+  function collectUi(){
+    var ui = {
+      gaps: {},
+      checks: {},
+      results: {},
+      panels: {},
+      buttons: {},
+      htmlBlocks: {}
+    };
+    qsa('[data-vb-gap]').forEach(function(el){
+      ui.gaps[el.id] = classListOf(el);
+    });
+    [
+      'vbo-sentences','vbo-verbs','vbo-neg','vbo-didnt',
+      'wkb-sentences','wkb-diff','wkb-reg','wkb-irr','wkb-neg','wkb-time','wkb-didnt','wkb-be',
+      'ddb-date','ddb-sentences','ddb-diff','ddb-reg','ddb-irr','ddb-neg','ddb-time','ddb-feeling','ddb-didnt','ddb-long','ddb-be'
+    ].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) ui.checks[id] = {className: el.className, text: el.textContent};
+    });
+    ['vbo-result','wk-result','diary-result','vb-solution-box'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) ui.results[id] = {className: el.className, html: el.innerHTML};
+    });
+    var vbFeedback = document.getElementById('vb-feedback');
+    if (vbFeedback) ui.htmlBlocks['vb-feedback'] = vbFeedback.innerHTML;
+    var solutionBtn = document.getElementById('vb-solution-btn');
+    if (solutionBtn) ui.buttons['vb-solution-btn'] = {disabled: !!solutionBtn.disabled, text: solutionBtn.textContent};
+    return ui;
+  }
+  function restoreUi(ui){
+    if (!ui) return;
+    if (ui.gaps) Object.keys(ui.gaps).forEach(function(id){
+      setClassList(document.getElementById(id), ui.gaps[id]);
+    });
+    if (ui.checks) Object.keys(ui.checks).forEach(function(id){
+      var el = document.getElementById(id), rec = ui.checks[id];
+      if (!el || !rec) return;
+      el.className = rec.className || 'autocheck-item';
+      el.textContent = rec.text || el.textContent;
+    });
+    if (ui.results) Object.keys(ui.results).forEach(function(id){
+      var el = document.getElementById(id), rec = ui.results[id];
+      if (!el || !rec) return;
+      el.className = rec.className || el.className;
+      el.innerHTML = rec.html || '';
+    });
+    if (ui.htmlBlocks && Object.prototype.hasOwnProperty.call(ui.htmlBlocks, 'vb-feedback')) {
+      var fb = document.getElementById('vb-feedback');
+      if (fb) fb.innerHTML = ui.htmlBlocks['vb-feedback'] || '';
+    }
+    if (ui.buttons && ui.buttons['vb-solution-btn']) {
+      var btn = document.getElementById('vb-solution-btn');
+      var recBtn = ui.buttons['vb-solution-btn'];
+      if (btn) {
+        btn.disabled = !!recBtn.disabled;
+        if (recBtn.text) btn.textContent = recBtn.text;
+      }
+    }
+  }
+  function saveStateNow(){
+    if (applying) return;
+    var state = readState();
+    state.mode = currentMode();
+    state.step = currentStep();
+    state.values = collectValues();
+    state.ui = collectUi();
+    state.updatedAt = new Date().toISOString();
+    writeState(state);
+  }
+  function scheduleSave(delay){
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(saveStateNow, delay == null ? 80 : delay);
+  }
+  function syncHashAfterClick(){
+    window.clearTimeout(hashTimer);
+    hashTimer = window.setTimeout(function(){
+      if (applying) return;
+      var mode = currentMode();
+      var step = currentStep();
+      pushHash(mode, step);
+      saveStateNow();
+    }, 0);
+  }
+  function resetPageState(){
+    try {
+      localStorage.removeItem(STATE_KEY);
+      LEGACY_KEYS.forEach(function(key){ localStorage.removeItem(key); });
+    } catch(e){}
+    try { history.replaceState({}, '', window.location.pathname + window.location.search); } catch(e){}
+    window.location.reload();
+  }
+
+  function init(){
+    var state = readState();
+    restoreValues(state.values);
+    restoreUi(state.ui);
+    applyFromHashOrState();
+
+    document.addEventListener('click', function(event){
+      if (event.target.closest('#sw-learning-reset')) {
+        event.preventDefault();
+        resetPageState();
+        return;
+      }
+      if (event.target.closest('[data-tab="sw-mode"], [data-tab="dd-step"]')) {
+        syncHashAfterClick();
+        return;
+      }
+      if (event.target.closest('button')) {
+        scheduleSave(120);
+      }
+    }, true);
+
+    document.addEventListener('input', function(){ scheduleSave(120); }, true);
+    document.addEventListener('change', function(){ scheduleSave(120); }, true);
+    window.addEventListener('beforeunload', saveStateNow);
+    window.addEventListener('popstate', function(){
+      var parsed = parseKompassHash();
+      if (parsed && parsed.mode) {
+        applyNavigation(parsed.mode, parsed.step || currentStep(), false);
+        scheduleSave(0);
+      }
+    });
+    window.addEventListener('hashchange', function(){
+      var parsed = parseKompassHash();
+      if (parsed && parsed.mode) {
+        applyNavigation(parsed.mode, parsed.step || currentStep(), false);
+        scheduleSave(0);
+      }
+    });
+    scheduleSave(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </main>
 </body>
 </html>
