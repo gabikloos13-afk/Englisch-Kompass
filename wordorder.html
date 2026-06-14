@@ -945,7 +945,7 @@ body{background:#e7eef4!important;}
 </head>
 <body>
 
-<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button aria-pressed="false" class="ha-btn" data-wo-action="toggle-homework" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" data-wo-action="print-ref" id="wo-spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" data-wo-action="print-page" id="wo-print-page-btn" type="button">🖨️ Diese Seite drucken</button></div></div>
+<div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button aria-pressed="false" class="ha-btn" data-wo-action="toggle-homework" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" data-wo-action="print-ref" id="wo-spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" data-wo-action="print-page" id="wo-print-page-btn" type="button">🖨️ Diese Seite drucken</button><button class="print-btn" data-wo-action="reset-storage" id="wo-reset-storage-btn" type="button">🧹 Lernstand löschen</button></div></div>
 <div class="page-content">
 <article class="learning-card">
 <header class="compass-head">
@@ -2288,40 +2288,447 @@ body{background:#e7eef4!important;}
 </script>
 <script>
 (function(){
-  if (window.__kompassHashTabsReady) return;
-  window.__kompassHashTabsReady = true;
-  var aliases = {
+  if (window.__kompassWordOrderHistoryStorageReady) return;
+  window.__kompassWordOrderHistoryStorageReady = true;
+
+  var TOPIC = 'wordorder';
+  var STATE_KEY = 'kompass_wordorder_history_storage_v1';
+  var FORM_KEY = STATE_KEY + ':form';
+  var UI_KEY = STATE_KEY + ':ui';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  var NOTE_KEYS = ['kompass_wordorder_journal','kompass_wordorder_notes','kompass_wordorder_can_status'];
+  var HASH_PREFIX = 'kompass:';
+  var suppressHashPush = false;
+  var restoreInProgress = false;
+  var saveTimer = null;
+
+  var modeAliases = {
     'lernen':'learn','learn':'learn','verstehen':'learn',
     'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
     'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
     'verbindungen':'connections','connections':'connections',
     'notizen':'notes','notes':'notes'
   };
-  function cleanHash(){
-    try { return decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim(); }
-    catch(e){ return (window.location.hash || '').replace(/^#/, '').toLowerCase().trim(); }
+
+  function safeJsonParse(raw, fallback){
+    try { return raw ? JSON.parse(raw) : fallback; } catch(e){ return fallback; }
   }
-  function openSectionFromHash(){
-    var key = cleanHash();
-    if (!key) return;
-    var mode = aliases[key];
-    if (!mode) return;
-    var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
+  function storeGet(key, fallback){
+    try { return safeJsonParse(localStorage.getItem(key), fallback); } catch(e){ return fallback; }
+  }
+  function storeSet(key, value){
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch(e){}
+  }
+  function storeRemove(key){
+    try { localStorage.removeItem(key); } catch(e){}
+  }
+  function cssEscape(value){
+    if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(String(value));
+    return String(value).replace(/["\\]/g,'\\$&');
+  }
+  function decodeHash(){
+    var raw = (window.location.hash || '').replace(/^#/, '');
+    try { raw = decodeURIComponent(raw); } catch(e){}
+    return raw.trim();
+  }
+  function parseQueryString(qs){
+    var out = {};
+    qs.split('&').forEach(function(part){
+      if (!part) return;
+      var bits = part.split('=');
+      var k = bits.shift();
+      var v = bits.join('=');
+      if (!k) return;
+      try { k = decodeURIComponent(k); v = decodeURIComponent(v || ''); } catch(e){}
+      out[k] = v;
+    });
+    return out;
+  }
+  function parseHashState(){
+    var raw = decodeHash();
+    if (!raw) return null;
+    var low = raw.toLowerCase();
+    if (low.indexOf(HASH_PREFIX) === 0) {
+      var data = parseQueryString(raw.slice(HASH_PREFIX.length));
+      var mode = data.mode || data.tab || 'learn';
+      var learn = data.learn || data.step || null;
+      mode = modeAliases[String(mode).toLowerCase()] || mode;
+      return {mode:mode, learn:learn || undefined};
+    }
+    if (modeAliases[low]) {
+      return {mode:modeAliases[low], learn:undefined};
+    }
+    if (low.indexOf('learn=') >= 0 || low.indexOf('mode=') >= 0) {
+      var parsed = parseQueryString(raw);
+      return {mode:modeAliases[String(parsed.mode || 'learn').toLowerCase()] || parsed.mode || 'learn', learn:parsed.learn || parsed.step || undefined};
+    }
+    return null;
+  }
+  function activeVal(tab){
+    var btn = document.querySelector('[data-tab="' + tab + '"][aria-pressed="true"]');
+    return btn ? btn.getAttribute('data-val') : null;
+  }
+  function currentState(){
+    return {
+      mode: activeVal('wo-mode') || 'learn',
+      learn: activeVal('wo-learn') || 'entry'
+    };
+  }
+  function stateToHash(state){
+    var mode = state && state.mode ? state.mode : 'learn';
+    var learn = state && state.learn ? state.learn : (activeVal('wo-learn') || 'entry');
+    var parts = ['mode=' + encodeURIComponent(mode)];
+    if (mode === 'learn' && learn) parts.push('learn=' + encodeURIComponent(learn));
+    return '#' + HASH_PREFIX + parts.join('&');
+  }
+  function pushCurrentHash(replace){
+    if (suppressHashPush) return;
+    var state = currentState();
+    var hash = stateToHash(state);
+    var current = window.location.hash || '';
+    if (current === hash) return;
+    try {
+      if (replace) history.replaceState({kompassTopic:TOPIC, kompassState:state}, '', hash);
+      else history.pushState({kompassTopic:TOPIC, kompassState:state}, '', hash);
+    } catch(e) {
+      if (replace && current !== hash) window.location.replace(hash);
+      else if (current !== hash) window.location.hash = hash;
+    }
+  }
+  function clickTab(tab, val){
+    if (!val) return;
+    var btn = document.querySelector('[data-tab="' + tab + '"][data-val="' + val + '"]');
     if (!btn) return;
+    if (btn.getAttribute('aria-pressed') === 'true') return;
     btn.click();
-    window.setTimeout(function(){
-      var card = document.querySelector('.learning-card') || document.querySelector('[data-topic]') || btn;
-      if (card && typeof card.scrollIntoView === 'function') {
-        card.scrollIntoView({block:'start'});
+  }
+  function applyHashState(state){
+    if (!state) return;
+    suppressHashPush = true;
+    try {
+      clickTab('wo-mode', state.mode || 'learn');
+      if ((state.mode || 'learn') === 'learn' && state.learn) clickTab('wo-learn', state.learn);
+    } finally {
+      window.setTimeout(function(){ suppressHashPush = false; saveAll(); }, 0);
+    }
+  }
+  function initialiseHash(){
+    var state = parseHashState();
+    if (state) applyHashState(state);
+    else pushCurrentHash(true);
+  }
+
+  function stableIndex(el, selector){
+    var all = Array.prototype.slice.call(document.querySelectorAll(selector));
+    return all.indexOf(el);
+  }
+  function elementKey(el, selector, prefix){
+    if (!el) return '';
+    if (el.id) return prefix + ':id:' + el.id;
+    if (!el.getAttribute('data-wo-store-id')) {
+      el.setAttribute('data-wo-store-id', prefix + '-auto-' + Math.max(0, stableIndex(el, selector)));
+    }
+    return prefix + ':auto:' + el.getAttribute('data-wo-store-id');
+  }
+  function saveForms(){
+    if (restoreInProgress) return;
+    var data = {fields:{}, checks:{}, details:{}};
+    document.querySelectorAll('input, textarea, select').forEach(function(el){
+      var type = (el.type || '').toLowerCase();
+      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
+      var key = elementKey(el, 'input, textarea, select', 'field');
+      if (!key) return;
+      if (type === 'checkbox' || type === 'radio') data.checks[key] = !!el.checked;
+      else data.fields[key] = el.value;
+    });
+    document.querySelectorAll('details').forEach(function(el){
+      var key = elementKey(el, 'details', 'details');
+      if (key) data.details[key] = !!el.open;
+    });
+    storeSet(FORM_KEY, data);
+  }
+  function restoreForms(){
+    var data = storeGet(FORM_KEY, null);
+    if (!data) return;
+    restoreInProgress = true;
+    try {
+      document.querySelectorAll('input, textarea, select').forEach(function(el){
+        var type = (el.type || '').toLowerCase();
+        if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
+        var key = elementKey(el, 'input, textarea, select', 'field');
+        if (!key) return;
+        if ((type === 'checkbox' || type === 'radio') && data.checks && Object.prototype.hasOwnProperty.call(data.checks, key)) {
+          el.checked = !!data.checks[key];
+        } else if (data.fields && Object.prototype.hasOwnProperty.call(data.fields, key)) {
+          el.value = data.fields[key];
+        }
+      });
+      document.querySelectorAll('details').forEach(function(el){
+        var key = elementKey(el, 'details', 'details');
+        if (key && data.details && Object.prototype.hasOwnProperty.call(data.details, key)) el.open = !!data.details[key];
+      });
+    } finally {
+      restoreInProgress = false;
+    }
+  }
+
+  function parseCounterNumber(id){
+    var el = document.getElementById(id);
+    var m = el && String(el.textContent || '').match(/(\d+)\s*\//);
+    return m ? parseInt(m[1], 10) : null;
+  }
+  function classListSnapshot(el){
+    return el ? String(el.className || '') : '';
+  }
+  function saveUiState(){
+    if (restoreInProgress) return;
+    var ui = {state:currentState(), scrollY:window.scrollY || 0};
+
+    var bkSlots = [];
+    document.querySelectorAll('.bk-slot').forEach(function(slot){
+      var block = slot.querySelector('.bk-block');
+      bkSlots.push(block ? block.getAttribute('data-word') : null);
+    });
+    ui.baukasten = {
+      index: parseCounterNumber('bk-counter'),
+      slots: bkSlots,
+      feedbackClass: classListSnapshot(document.getElementById('bk-feedback')),
+      feedbackHtml: document.getElementById('bk-feedback') ? document.getElementById('bk-feedback').innerHTML : ''
+    };
+
+    ui.signal = {
+      index: parseCounterNumber('signal-counter'),
+      selectedText: (function(){
+        var selected = document.querySelector('.signal-word.is-correct,.signal-word.is-wrong');
+        return selected ? selected.textContent : '';
+      })(),
+      selectedClass: (function(){
+        var selected = document.querySelector('.signal-word.is-correct,.signal-word.is-wrong');
+        return selected ? selected.className : '';
+      })(),
+      tipClass: classListSnapshot(document.getElementById('signal-tip')),
+      tipHtml: document.getElementById('signal-tip') ? document.getElementById('signal-tip').innerHTML : ''
+    };
+
+    ui.error = {
+      index: parseCounterNumber('err-counter'),
+      clickedText: (function(){
+        var selected = document.querySelector('.err-word.err-word-correct,.err-word.err-word-wrong');
+        return selected ? selected.textContent : '';
+      })(),
+      feedbackClass: classListSnapshot(document.getElementById('err-feedback')),
+      feedbackHtml: document.getElementById('err-feedback') ? document.getElementById('err-feedback').innerHTML : ''
+    };
+
+    ui.adverb = {
+      index: parseCounterNumber('adv-counter'),
+      score: document.getElementById('adv-score') ? document.getElementById('adv-score').textContent : '',
+      feedbackClass: classListSnapshot(document.getElementById('adv-feedback')),
+      feedbackHtml: document.getElementById('adv-feedback') ? document.getElementById('adv-feedback').innerHTML : ''
+    };
+
+    ui.writecheck = [];
+    document.querySelectorAll('.writecheck-task').forEach(function(card){
+      var id = card.id || '';
+      var fb = card.querySelector('.writecheck-feedback');
+      ui.writecheck.push({
+        id:id,
+        className:classListSnapshot(card),
+        feedbackClass:fb ? classListSnapshot(fb) : '',
+        feedbackHtml:fb ? fb.innerHTML : ''
+      });
+    });
+    var summary = document.getElementById('writecheck-summary');
+    ui.writeSummary = summary ? {className:classListSnapshot(summary), html:summary.innerHTML} : null;
+
+    storeSet(UI_KEY, ui);
+    storeSet(STATE_KEY, {updated:new Date().toISOString(), state:ui.state});
+  }
+  function setBaukastenIndex(target){
+    if (!target || typeof window.nextTask !== 'function') return;
+    var guard = 0;
+    while (parseCounterNumber('bk-counter') !== target && guard < 12) {
+      window.nextTask();
+      guard++;
+    }
+  }
+  function restoreBaukasten(ui){
+    if (!ui || !ui.baukasten) return;
+    setBaukastenIndex(ui.baukasten.index);
+    if (Array.isArray(ui.baukasten.slots)) {
+      ui.baukasten.slots.forEach(function(word, i){
+        if (!word) return;
+        var slot = document.querySelectorAll('.bk-slot')[i];
+        if (!slot) return;
+        var block = document.querySelector('.bk-block[data-word="' + cssEscape(word) + '"]');
+        if (!block) return;
+        slot.textContent = '';
+        slot.appendChild(block);
+      });
+    }
+    var fb = document.getElementById('bk-feedback');
+    if (fb) {
+      if (ui.baukasten.feedbackClass) fb.className = ui.baukasten.feedbackClass;
+      if (ui.baukasten.feedbackHtml) fb.innerHTML = ui.baukasten.feedbackHtml;
+    }
+  }
+  function setSignalIndex(target){
+    if (!target || typeof window.nextSignalTask !== 'function') return;
+    var guard = 0;
+    while (parseCounterNumber('signal-counter') !== target && guard < 8) {
+      window.nextSignalTask();
+      guard++;
+    }
+  }
+  function restoreSignal(ui){
+    if (!ui || !ui.signal) return;
+    setSignalIndex(ui.signal.index);
+    if (ui.signal.selectedText) {
+      document.querySelectorAll('.signal-word').forEach(function(btn){
+        if (btn.textContent === ui.signal.selectedText) btn.className = ui.signal.selectedClass || btn.className;
+      });
+    }
+    var tip = document.getElementById('signal-tip');
+    if (tip) {
+      if (ui.signal.tipClass) tip.className = ui.signal.tipClass;
+      if (ui.signal.tipHtml) tip.innerHTML = ui.signal.tipHtml;
+    }
+  }
+  function restoreFeedbackOnly(ui){
+    if (!ui) return;
+    if (ui.error) {
+      var ef = document.getElementById('err-feedback');
+      if (ef && ui.error.feedbackHtml) { ef.className = ui.error.feedbackClass || ef.className; ef.innerHTML = ui.error.feedbackHtml; }
+    }
+    if (ui.adverb) {
+      var af = document.getElementById('adv-feedback');
+      if (af && ui.adverb.feedbackHtml) { af.className = ui.adverb.feedbackClass || af.className; af.innerHTML = ui.adverb.feedbackHtml; }
+      var sc = document.getElementById('adv-score');
+      if (sc && ui.adverb.score) sc.textContent = ui.adverb.score;
+    }
+    if (Array.isArray(ui.writecheck)) {
+      ui.writecheck.forEach(function(item){
+        var card = item.id ? document.getElementById(item.id) : null;
+        if (!card) return;
+        if (item.className) card.className = item.className;
+        var fb = card.querySelector('.writecheck-feedback');
+        if (fb) {
+          if (item.feedbackClass) fb.className = item.feedbackClass;
+          if (item.feedbackHtml) fb.innerHTML = item.feedbackHtml;
+        }
+      });
+    }
+    if (ui.writeSummary) {
+      var summary = document.getElementById('writecheck-summary');
+      if (summary) {
+        if (ui.writeSummary.className) summary.className = ui.writeSummary.className;
+        if (ui.writeSummary.html) summary.innerHTML = ui.writeSummary.html;
       }
-    }, 40);
+    }
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', openSectionFromHash);
-  } else {
-    openSectionFromHash();
+  function restoreUi(){
+    var ui = storeGet(UI_KEY, null);
+    if (!ui) return;
+    restoreInProgress = true;
+    try {
+      if (ui.state) applyHashState(ui.state);
+      restoreBaukasten(ui);
+      restoreSignal(ui);
+      restoreFeedbackOnly(ui);
+    } finally {
+      restoreInProgress = false;
+    }
   }
-  window.addEventListener('hashchange', openSectionFromHash);
+  function saveAll(){
+    if (restoreInProgress) return;
+    saveForms();
+    saveUiState();
+  }
+  function scheduleSave(delay){
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(saveAll, typeof delay === 'number' ? delay : 180);
+  }
+  function pruneWriteStore(){
+    var store = storeGet(WRITE_KEY, {});
+    Object.keys(store || {}).forEach(function(key){
+      if (key.indexOf('wo-wc-') === 0 || key === 'wordorder' || key === 'wordorderTasks') delete store[key];
+    });
+    storeSet(WRITE_KEY, store || {});
+  }
+  function resetStoredLearningState(){
+    storeRemove(STATE_KEY);
+    storeRemove(FORM_KEY);
+    storeRemove(UI_KEY);
+    NOTE_KEYS.forEach(storeRemove);
+    pruneWriteStore();
+
+    document.querySelectorAll('input, textarea, select').forEach(function(el){
+      var type = (el.type || '').toLowerCase();
+      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
+      if (type === 'checkbox' || type === 'radio') el.checked = false;
+      else el.value = '';
+    });
+    document.querySelectorAll('details').forEach(function(el){ el.open = false; });
+    if (typeof window.resetWritecheck === 'function') window.resetWritecheck();
+    if (typeof window.resetBaukasten === 'function') window.resetBaukasten();
+
+    var btn = document.getElementById('wo-reset-storage-btn');
+    if (btn) {
+      var old = btn.textContent;
+      btn.textContent = '✓ Lernstand gelöscht';
+      window.setTimeout(function(){ btn.textContent = old; }, 1800);
+    }
+    pushCurrentHash(true);
+  }
+
+  document.addEventListener('click', function(e){
+    var reset = e.target && e.target.closest ? e.target.closest('[data-wo-action="reset-storage"]') : null;
+    if (reset) {
+      e.preventDefault();
+      resetStoredLearningState();
+      return;
+    }
+    var tab = e.target && e.target.closest ? e.target.closest('[data-tab]') : null;
+    if (tab) {
+      window.setTimeout(function(){ pushCurrentHash(false); scheduleSave(40); }, 0);
+      return;
+    }
+    window.setTimeout(function(){ scheduleSave(120); }, 0);
+  }, true);
+  document.addEventListener('input', function(){ scheduleSave(); }, true);
+  document.addEventListener('change', function(){ scheduleSave(60); }, true);
+  document.addEventListener('toggle', function(){ scheduleSave(60); }, true);
+  window.addEventListener('beforeunload', saveAll);
+  window.addEventListener('popstate', function(){ applyHashState(parseHashState()); });
+  window.addEventListener('hashchange', function(){
+    if (!suppressHashPush) applyHashState(parseHashState());
+  });
+
+  ['nextTask','prevTask','resetBaukasten','checkBaukasten','nextError','nextSignalTask','answerAdverb','checkWriteTask','checkWritecheckAll','resetWritecheck','showWriteSolution','saveNotes'].forEach(function(name){
+    var fn = window[name];
+    if (typeof fn !== 'function' || fn.__woStorageWrapped) return;
+    var wrapped = function(){
+      var result = fn.apply(this, arguments);
+      window.setTimeout(function(){ scheduleSave(50); }, 0);
+      return result;
+    };
+    wrapped.__woStorageWrapped = true;
+    window[name] = wrapped;
+  });
+
+  function boot(){
+    restoreForms();
+    restoreUi();
+    initialiseHash();
+    window.setTimeout(function(){
+      restoreForms();
+      restoreUi();
+      pushCurrentHash(true);
+      saveAll();
+    }, 80);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();
 </script>
 </body>

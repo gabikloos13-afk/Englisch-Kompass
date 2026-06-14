@@ -176,6 +176,12 @@ body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
   .print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .print-box{border:1px solid #999;border-radius:8px;padding:9px;break-inside:avoid}
 }
+
+/* QUESTIONS HISTORY/STORAGE PATCH: Browser-Zurück, Hash-Navigation und Bearbeitungsstand. */
+#learning-reset{color:var(--red);border-color:#efc1c1;background:#fff}
+#learning-reset:hover,#learning-reset:focus-visible{background:var(--red-soft);color:var(--red)}
+@media(max-width:760px){#learning-reset{flex:1;justify-content:center}}
+
 </style>
 </head>
 <body>
@@ -184,7 +190,7 @@ body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
 <div aria-label="Seitenaktionen" class="page-action-buttons">
 <button aria-pressed="false" class="action-btn" id="homework-toggle" type="button">📚 Hausaufgaben</button>
 <button class="action-btn" id="spickzettel-print" type="button">🧾 Spickzettel drucken</button>
-<button class="action-btn" id="page-print" type="button">🖨️ Diese Seite drucken</button>
+<button class="action-btn" id="page-print" type="button">🖨️ Diese Seite drucken</button><button class="action-btn" id="learning-reset" type="button">🧹 Lernstand löschen</button>
 </div>
 </div>
 <div class="page-content">
@@ -690,6 +696,329 @@ body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
   document.body.classList.add('tabs-ready');
   loadNotes();
   openHashPanel();
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  if (window.__questionsHistoryStorageReady) return;
+  window.__questionsHistoryStorageReady = true;
+
+  var STATE_KEY = 'kompass_questions_history_storage_v1';
+  var LEGACY_KEYS = ['kompass_questions_checks','kompass_questions_journal','kompass_questions_can_status'];
+  var applying = false;
+  var saveTimer = null;
+  var lastAppliedHash = '';
+
+  function qs(sel, root){ return (root || document).querySelector(sel); }
+  function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function safeJSON(key, fallback){ try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch(e){ return fallback; } }
+  function writeJSON(key, value){ try { localStorage.setItem(key, JSON.stringify(value)); } catch(e){} }
+  function enc(value){ return encodeURIComponent(String(value || '')); }
+  function dec(value){ try { return decodeURIComponent(String(value || '')); } catch(e){ return String(value || ''); } }
+
+  function getCurrentNav(){
+    var modeBtn = qs('[data-tab="q-main"][aria-pressed="true"]') || qs('[data-tab="q-main"].is-active');
+    var learnBtn = qs('[data-tab="q-learn"][aria-pressed="true"]') || qs('[data-tab="q-learn"].is-active');
+    return {
+      mode: modeBtn ? modeBtn.getAttribute('data-val') : 'learn',
+      learn: learnBtn ? learnBtn.getAttribute('data-val') : 'start'
+    };
+  }
+
+  function makeHash(nav){
+    var mode = (nav && nav.mode) || 'learn';
+    var learn = (nav && nav.learn) || 'start';
+    var parts = ['mode=' + enc(mode)];
+    if (mode === 'learn') parts.push('learn=' + enc(learn));
+    return '#kompass:' + parts.join('&');
+  }
+
+  function parseHash(){
+    var raw = (window.location.hash || '').replace(/^#/, '');
+    if (!raw) return null;
+    raw = dec(raw).trim();
+    var lower = raw.toLowerCase();
+    var legacy = {
+      'lernen':'learn','learn':'learn','verstehen':'learn',
+      'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+      'verbindungen':'connections','connections':'connections',
+      'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck',
+      'notizen':'notes','notes':'notes'
+    };
+    var learnLegacy = {
+      'q-learn-start':'start','start':'start','wozu':'start',
+      'q-learn-machine':'machine','machine':'machine','maschine':'machine',
+      'q-learn-traps':'traps','traps':'traps','denkfallen':'traps',
+      'q-learn-check':'check','check':'check','kannich':'check'
+    };
+    if (raw.indexOf('kompass:') === 0) {
+      var body = raw.slice('kompass:'.length);
+      var out = {};
+      body.split('&').forEach(function(part){
+        var pair = part.split('=');
+        if (pair[0]) out[pair[0]] = dec(pair.slice(1).join('='));
+      });
+      return { mode: out.mode || 'learn', learn: out.learn || 'start' };
+    }
+    if (legacy[lower]) return {mode: legacy[lower], learn: getCurrentNav().learn};
+    if (learnLegacy[lower]) return {mode:'learn', learn: learnLegacy[lower]};
+    var byId = document.getElementById(raw);
+    if (byId) {
+      var mainPanel = byId.closest ? byId.closest('[data-panel="q-main"]') : null;
+      var learnPanel = byId.closest ? byId.closest('[data-panel="q-learn"]') : null;
+      if (learnPanel) return {mode:'learn', learn: learnPanel.getAttribute('data-val') || 'start'};
+      if (mainPanel) return {mode: mainPanel.getAttribute('data-val') || 'learn', learn: getCurrentNav().learn};
+    }
+    return null;
+  }
+
+  function activateTab(name, val){
+    var buttons = qsa('[data-tab="' + name + '"]');
+    var panels = qsa('[data-panel="' + name + '"]');
+    buttons.forEach(function(btn){
+      var on = btn.getAttribute('data-val') === val;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    panels.forEach(function(panel){
+      panel.classList.toggle('is-active', panel.getAttribute('data-val') === val);
+    });
+  }
+
+  function applyNav(nav, replace){
+    if (!nav) return;
+    applying = true;
+    activateTab('q-main', nav.mode || 'learn');
+    if ((nav.mode || 'learn') === 'learn') activateTab('q-learn', nav.learn || 'start');
+    var hash = makeHash(getCurrentNav());
+    if (replace && window.location.hash !== hash) {
+      try { history.replaceState(null, '', hash); } catch(e){}
+    }
+    lastAppliedHash = hash;
+    window.setTimeout(function(){ applying = false; }, 0);
+  }
+
+  function rememberNavigation(push){
+    if (applying) return;
+    window.setTimeout(function(){
+      var hash = makeHash(getCurrentNav());
+      if (window.location.hash !== hash) {
+        try {
+          if (push) history.pushState(null, '', hash);
+          else history.replaceState(null, '', hash);
+        } catch(e){}
+      }
+      lastAppliedHash = hash;
+      saveStateSoon();
+    }, 0);
+  }
+
+  function currentFieldState(){
+    var fields = {};
+    qsa('input, textarea, select').forEach(function(el, index){
+      var key = el.id || el.name || el.getAttribute('data-note') || ('field-' + index);
+      if (el.type === 'checkbox' || el.type === 'radio') fields[key] = !!el.checked;
+      else fields[key] = el.value;
+    });
+    return fields;
+  }
+
+  function restoreFields(fields){
+    if (!fields) return;
+    qsa('input, textarea, select').forEach(function(el, index){
+      var key = el.id || el.name || el.getAttribute('data-note') || ('field-' + index);
+      if (!(key in fields)) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!fields[key];
+      else el.value = fields[key];
+    });
+  }
+
+  function classListWithoutBase(el, base){
+    return Array.prototype.slice.call(el.classList).filter(function(c){ return c !== base; });
+  }
+
+  function saveButtonGroupState(selector, buttonSelector){
+    return qsa(selector).map(function(group){
+      var buttons = qsa(buttonSelector || 'button', group);
+      var activeIndex = -1;
+      buttons.forEach(function(btn, idx){ if (btn.classList.contains('is-active')) activeIndex = idx; });
+      return activeIndex;
+    });
+  }
+
+  function restoreButtonGroupState(selector, buttonSelector, data){
+    if (!data) return;
+    qsa(selector).forEach(function(group, idx){
+      var buttons = qsa(buttonSelector || 'button', group);
+      buttons.forEach(function(btn){ btn.classList.remove('is-active'); btn.setAttribute('aria-pressed','false'); });
+      if (typeof data[idx] === 'number' && data[idx] >= 0 && buttons[data[idx]]) {
+        buttons[data[idx]].classList.add('is-active');
+        buttons[data[idx]].setAttribute('aria-pressed','true');
+      }
+    });
+  }
+
+  function saveOptionCards(selector, optionSelector){
+    return qsa(selector).map(function(card){
+      var feedback = qs('.feedback', card);
+      return {
+        options: qsa(optionSelector, card).map(function(btn){ return btn.className; }),
+        feedbackClass: feedback ? feedback.className : '',
+        feedbackHTML: feedback ? feedback.innerHTML : ''
+      };
+    });
+  }
+
+  function restoreOptionCards(selector, optionSelector, data){
+    if (!data) return;
+    qsa(selector).forEach(function(card, idx){
+      var saved = data[idx];
+      if (!saved) return;
+      qsa(optionSelector, card).forEach(function(btn, bidx){ if (saved.options && saved.options[bidx]) btn.className = saved.options[bidx]; });
+      var feedback = qs('.feedback', card);
+      if (feedback) {
+        feedback.className = saved.feedbackClass || 'feedback';
+        feedback.innerHTML = saved.feedbackHTML || feedback.innerHTML;
+      }
+    });
+  }
+
+  function saveWriteTasks(){
+    return qsa('.write-task').map(function(card){
+      var id = card.getAttribute('data-review-id') || '';
+      var input = qs('.write-input', card);
+      var feedback = qs('.feedback', card);
+      return {
+        id: id,
+        input: input ? input.value : '',
+        feedbackClass: feedback ? feedback.className : '',
+        feedbackHTML: feedback ? feedback.innerHTML : '',
+        helpVisible: !!(qs('.help-box', card) && qs('.help-box', card).classList.contains('is-visible')),
+        solutionVisible: !!(qs('.solution-box', card) && qs('.solution-box', card).classList.contains('is-visible')),
+        buttons: qsa('[data-show-help],[data-show-solution]', card).map(function(btn){ return !!btn.disabled; })
+      };
+    });
+  }
+
+  function restoreWriteTasks(data){
+    if (!data) return;
+    var map = {};
+    data.forEach(function(item){ if (item && item.id) map[item.id] = item; });
+    qsa('.write-task').forEach(function(card){
+      var id = card.getAttribute('data-review-id') || '';
+      var saved = map[id];
+      if (!saved) return;
+      var input = qs('.write-input', card);
+      var feedback = qs('.feedback', card);
+      if (input) input.value = saved.input || '';
+      if (feedback) {
+        feedback.className = saved.feedbackClass || 'feedback';
+        feedback.innerHTML = saved.feedbackHTML || '';
+      }
+      var help = qs('.help-box', card);
+      var solution = qs('.solution-box', card);
+      if (help) help.classList.toggle('is-visible', !!saved.helpVisible);
+      if (solution) solution.classList.toggle('is-visible', !!saved.solutionVisible);
+      qsa('[data-show-help],[data-show-solution]', card).forEach(function(btn, idx){
+        btn.disabled = saved.buttons && typeof saved.buttons[idx] === 'boolean' ? saved.buttons[idx] : btn.disabled;
+      });
+    });
+  }
+
+  function saveState(){
+    if (applying) return;
+    var state = {
+      version: 1,
+      savedAt: new Date().toISOString(),
+      nav: getCurrentNav(),
+      fields: currentFieldState(),
+      details: qsa('details').map(function(d){ return !!d.open; }),
+      machineGroups: saveButtonGroupState('[data-choice-group]', '.choice-btn'),
+      machineSentence: qs('#machine-sentence') ? qs('#machine-sentence').innerHTML : '',
+      machineTokens: qs('#machine-tokens') ? qs('#machine-tokens').innerHTML : '',
+      machineRule: qs('#machine-rule') ? qs('#machine-rule').innerHTML : '',
+      trapCards: saveOptionCards('.trap-card', '.trap-option'),
+      miniCards: saveOptionCards('.mini-check', '.choice-btn'),
+      canStatusButtons: qsa('#can-status-buttons .choice-btn').map(function(btn){ return btn.className; }),
+      canStatusFeedback: qs('#can-status-feedback') ? {className: qs('#can-status-feedback').className, html: qs('#can-status-feedback').innerHTML} : null,
+      writeTasks: saveWriteTasks(),
+      writeSummary: qs('#write-summary') ? {className: qs('#write-summary').className, html: qs('#write-summary').innerHTML} : null
+    };
+    writeJSON(STATE_KEY, state);
+  }
+
+  function saveStateSoon(){
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveState, 120);
+  }
+
+  function restoreState(){
+    var state = safeJSON(STATE_KEY, null);
+    if (!state) return;
+    applying = true;
+    restoreFields(state.fields);
+    if (state.details) qsa('details').forEach(function(d, idx){ d.open = !!state.details[idx]; });
+    restoreButtonGroupState('[data-choice-group]', '.choice-btn', state.machineGroups);
+    if (qs('#machine-sentence') && state.machineSentence) qs('#machine-sentence').innerHTML = state.machineSentence;
+    if (qs('#machine-tokens') && state.machineTokens) qs('#machine-tokens').innerHTML = state.machineTokens;
+    if (qs('#machine-rule') && state.machineRule) qs('#machine-rule').innerHTML = state.machineRule;
+    restoreOptionCards('.trap-card', '.trap-option', state.trapCards);
+    restoreOptionCards('.mini-check', '.choice-btn', state.miniCards);
+    if (state.canStatusButtons) qsa('#can-status-buttons .choice-btn').forEach(function(btn, idx){ if (state.canStatusButtons[idx]) btn.className = state.canStatusButtons[idx]; });
+    if (state.canStatusFeedback && qs('#can-status-feedback')) {
+      qs('#can-status-feedback').className = state.canStatusFeedback.className || 'feedback';
+      qs('#can-status-feedback').innerHTML = state.canStatusFeedback.html || '';
+    }
+    restoreWriteTasks(state.writeTasks);
+    if (state.writeSummary && qs('#write-summary')) {
+      qs('#write-summary').className = state.writeSummary.className || 'write-summary';
+      qs('#write-summary').innerHTML = state.writeSummary.html || '';
+    }
+    var hashNav = parseHash();
+    applyNav(hashNav || state.nav || {mode:'learn', learn:'start'}, true);
+    applying = false;
+  }
+
+  function resetLearningState(){
+    try { localStorage.removeItem(STATE_KEY); } catch(e){}
+    LEGACY_KEYS.forEach(function(key){ try { localStorage.removeItem(key); } catch(e){} });
+    try { history.replaceState(null, '', window.location.pathname + window.location.search); } catch(e){}
+    window.location.reload();
+  }
+
+  document.addEventListener('click', function(e){
+    var reset = e.target.closest && e.target.closest('#learning-reset');
+    if (reset) {
+      e.preventDefault();
+      resetLearningState();
+      return;
+    }
+    var tab = e.target.closest && e.target.closest('[data-tab="q-main"],[data-tab="q-learn"]');
+    if (tab) rememberNavigation(true);
+    else saveStateSoon();
+  }, true);
+
+  document.addEventListener('input', saveStateSoon, true);
+  document.addEventListener('change', saveStateSoon, true);
+  document.addEventListener('toggle', saveStateSoon, true);
+  window.addEventListener('beforeunload', saveState);
+
+  function handleBrowserNavigation(){
+    var nav = parseHash();
+    if (nav) applyNav(nav, false);
+  }
+  window.addEventListener('popstate', handleBrowserNavigation);
+  window.addEventListener('hashchange', function(){
+    var current = window.location.hash || '';
+    if (current === lastAppliedHash) return;
+    handleBrowserNavigation();
+  });
+
+  restoreState();
+  if (!window.location.hash) applyNav(getCurrentNav(), true);
+  saveStateSoon();
 })();
 </script>
 </body>

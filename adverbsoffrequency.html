@@ -2639,6 +2639,13 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
   body.page-print .compass-head{background:#fff!important;color:#111!important;}
 }
 
+
+
+/* AOF History-/Speicher-Pilot: gezielter Reset für diese Seite */
+.aof-clear-progress-btn{color:#991b1b;border-color:#fecaca;background:#fef2f2}
+.aof-clear-progress-btn:hover{background:#b91c1c;color:#fff;border-color:#b91c1c}
+@media print{.aof-clear-progress-btn{display:none!important}}
+
 </style>
 <script>
 (function(){
@@ -2655,6 +2662,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <button aria-pressed="false" class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
 <button class="print-btn spickzettel-btn" id="spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button>
 <button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button>
+<button class="print-btn aof-clear-progress-btn" id="aof-clear-progress-btn" type="button">🧹 Lernstand löschen</button>
 </div>
 </div>
 <div class="page-content">
@@ -3096,6 +3104,9 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
   var WRITE_KEY = 'kompass_writecheck_results_v1';
   var AOF_TOPIC_ID = 'adverbsoffrequency';
   var AOF_TOPIC_TITLE = 'Adverbs of frequency';
+  var PAGE_STATE_KEY = 'kompass_adverbs_learning_state';
+  var isRestoringTopicState = false;
+  var saveTopicTimer = null;
   function readWriteStore(){ try { return JSON.parse(localStorage.getItem(WRITE_KEY) || '{}') || {}; } catch(e) { return {}; } }
   function writeWriteStore(store){ try { localStorage.setItem(WRITE_KEY, JSON.stringify(store)); } catch(e) {} }
   function aofTaskLabel(card){
@@ -3189,17 +3200,248 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
   function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function qs(sel, root){ return (root || document).querySelector(sel); }
   function normalise(value){ return String(value || '').toLowerCase().replace(/[’‘`]/g,"'").replace(/[?.!]/g,'').replace(/\s+/g,' ').trim(); }
-  function activate(group, val){
+  function activeValue(group){
+    var current = qs('[data-tab="' + group + '"][aria-pressed="true"]');
+    return current ? current.getAttribute('data-val') : '';
+  }
+  function hashForState(mode, learn){
+    mode = mode || activeValue('aof-mode') || 'learn';
+    learn = learn || activeValue('aof-learn') || 'entry';
+    var parts = ['mode=' + encodeURIComponent(mode)];
+    if(mode === 'learn'){ parts.push('learn=' + encodeURIComponent(learn || 'entry')); }
+    return '#kompass:' + parts.join('&');
+  }
+  function parseKompassHash(){
+    var raw = window.location.hash || '';
+    if(!raw){ return null; }
+    var hash = raw.charAt(0) === '#' ? raw.slice(1) : raw;
+    var legacyMap = {lernen:'learn', nachschlagen:'reference', schreibcheck:'writecheck', verbindungen:'connections', notizen:'notes'};
+    if(legacyMap[hash]){ return {mode:legacyMap[hash], learn:'entry'}; }
+    if(hash.indexOf('kompass:') !== 0){ return null; }
+    var query = hash.slice('kompass:'.length);
+    var out = {};
+    query.split('&').forEach(function(part){
+      var pieces = part.split('=');
+      if(pieces[0]){ out[decodeURIComponent(pieces[0])] = decodeURIComponent(pieces.slice(1).join('=') || ''); }
+    });
+    if(!out.mode){ out.mode = 'learn'; }
+    if(!out.learn){ out.learn = 'entry'; }
+    return out;
+  }
+  function syncHashFromCurrent(replace){
+    if(isRestoringTopicState) return;
+    var mode = activeValue('aof-mode') || 'learn';
+    var learn = activeValue('aof-learn') || 'entry';
+    var nextHash = hashForState(mode, learn);
+    if(window.location.hash === nextHash){ return; }
+    try {
+      if(window.history && window.history[replace ? 'replaceState' : 'pushState']){
+        window.history[replace ? 'replaceState' : 'pushState']({kompass:true, mode:mode, learn:learn}, '', nextHash);
+      } else {
+        window.location.hash = nextHash;
+      }
+    } catch(e) {
+      window.location.hash = nextHash;
+    }
+  }
+  function activate(group, val, options){
     if(!group || !val) return;
+    options = options || {};
     qsa('[data-tab="'+group+'"]').forEach(function(btn){ var active = btn.getAttribute('data-val') === val; btn.classList.toggle('is-active', active); btn.setAttribute('aria-pressed', active ? 'true' : 'false'); });
     qsa('[data-panel="'+group+'"]').forEach(function(panel){ panel.classList.toggle('is-active', panel.getAttribute('data-val') === val); });
     if(group === 'aof-learn'){
       var order = ['entry','scale','signal','trap','howoften','selfcheck']; var idx = Math.max(0, order.indexOf(val)); var fill = document.getElementById('aof-progress'); if(fill){ fill.style.width = (((idx+1) / order.length) * 100) + '%'; }
     }
+    if((group === 'aof-mode' || group === 'aof-learn') && !isRestoringTopicState){
+      if(options.pushHistory){ syncHashFromCurrent(false); }
+      if(options.replaceHistory){ syncHashFromCurrent(true); }
+      queueSaveTopicState();
+    }
+  }
+  function readTopicState(){
+    try { return JSON.parse(localStorage.getItem(PAGE_STATE_KEY) || '{}') || {}; } catch(e) { return {}; }
+  }
+  function writeTopicState(state){
+    if(isRestoringTopicState) return;
+    try { localStorage.setItem(PAGE_STATE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+  function queueSaveTopicState(){
+    if(isRestoringTopicState) return;
+    if(saveTopicTimer){ window.clearTimeout(saveTopicTimer); }
+    saveTopicTimer = window.setTimeout(function(){ saveTopicTimer = null; saveTopicState(); }, 40);
+  }
+  function selectedValue(selector, attr){
+    var btn = qs(selector + '[aria-pressed="true"]');
+    return btn ? btn.getAttribute(attr) : '';
+  }
+  function setPressedGroup(selector, attr, value){
+    qsa(selector).forEach(function(btn){ btn.setAttribute('aria-pressed', value && btn.getAttribute(attr) === value ? 'true' : 'false'); });
+  }
+  function saveTopicState(){
+    if(isRestoringTopicState) return;
+    var state = {
+      version: 1,
+      updated: new Date().toISOString(),
+      nav: { mode: activeValue('aof-mode') || 'learn', learn: activeValue('aof-learn') || 'entry' },
+      text: {},
+      details: {},
+      writecheck: {},
+      writeSummary: {},
+      pressed: {
+        signalFind: selectedValue('[data-aof-signal-find]', 'data-aof-signal-find'),
+        signalChoice: selectedValue('[data-aof-signal-choice]', 'data-aof-signal-choice'),
+        howoftenChoice: selectedValue('[data-aof-howoften-choice]', 'data-aof-howoften-choice'),
+        learnStatus: selectedValue('[data-aof-learn-status]', 'data-aof-learn-status'),
+        self: []
+      },
+      traps: {}
+    };
+    qsa('#aof-compass input[id], #aof-compass textarea[id]').forEach(function(field){ state.text[field.id] = field.value; });
+    qsa('.aof-self-task').forEach(function(task){
+      var input = task.querySelector('input[id]');
+      var details = task.querySelector('details');
+      if(input && details){ state.details[input.id + '-solution'] = !!details.open; }
+    });
+    qsa('[data-aof-self][aria-pressed="true"]').forEach(function(btn){ state.pressed.self.push(btn.getAttribute('data-aof-self') || btn.textContent.trim()); });
+    qsa('.aof-trap-card').forEach(function(card){
+      var key = card.getAttribute('data-aof-trap');
+      if(!key) return;
+      var selected = qs('[data-aof-trap-choice][aria-pressed="true"]', card);
+      var feedback = qs('.aof-trap-feedback', card);
+      state.traps[key] = {
+        choice: selected ? selected.getAttribute('data-aof-trap-choice') : '',
+        cardClass: card.className,
+        feedbackClass: feedback ? feedback.className : '',
+        feedbackText: feedback ? feedback.textContent : ''
+      };
+    });
+    qsa('.writecheck-task[data-review-id]').forEach(function(card){
+      var id = card.getAttribute('data-review-id');
+      var input = qs('.writecheck-input', card);
+      var feedback = qs('.writecheck-feedback', card);
+      state.writecheck[id] = {
+        value: input ? input.value : '',
+        wcState: card.getAttribute('data-wc-state') || '',
+        tried: card.getAttribute('data-wc-tried') || '',
+        cardClass: card.className,
+        feedbackClass: feedback ? feedback.className : '',
+        feedbackText: feedback ? feedback.textContent : ''
+      };
+    });
+    var summary = document.getElementById('aof-writecheck-summary');
+    if(summary){
+      var status = qs('[data-wc-status]', summary);
+      state.writeSummary = {
+        visible: summary.classList.contains('is-visible'),
+        score: (qs('[data-wc-score]', summary) || {}).textContent || '',
+        statusClass: status ? status.className : '',
+        statusText: status ? status.textContent : '',
+        goodHtml: (qs('[data-wc-good]', summary) || {}).innerHTML || '',
+        reviewHtml: (qs('[data-wc-review]', summary) || {}).innerHTML || ''
+      };
+    }
+    writeTopicState(state);
+  }
+  function restoreTopicState(){
+    var state = readTopicState();
+    if(!state || !state.version) return state || {};
+    isRestoringTopicState = true;
+    Object.keys(state.text || {}).forEach(function(id){ var field = document.getElementById(id); if(field){ field.value = state.text[id]; } });
+    qsa('.aof-self-task').forEach(function(task){
+      var input = task.querySelector('input[id]');
+      var details = task.querySelector('details');
+      if(input && details && state.details && state.details.hasOwnProperty(input.id + '-solution')){ details.open = !!state.details[input.id + '-solution']; }
+    });
+    setPressedGroup('[data-aof-signal-find]', 'data-aof-signal-find', state.pressed && state.pressed.signalFind ? state.pressed.signalFind : '');
+    setPressedGroup('[data-aof-signal-choice]', 'data-aof-signal-choice', state.pressed && state.pressed.signalChoice ? state.pressed.signalChoice : '');
+    setPressedGroup('[data-aof-howoften-choice]', 'data-aof-howoften-choice', state.pressed && state.pressed.howoftenChoice ? state.pressed.howoftenChoice : '');
+    setPressedGroup('[data-aof-learn-status]', 'data-aof-learn-status', state.pressed && state.pressed.learnStatus ? state.pressed.learnStatus : '');
+    qsa('[data-aof-self]').forEach(function(btn){
+      var key = btn.getAttribute('data-aof-self') || btn.textContent.trim();
+      btn.setAttribute('aria-pressed', state.pressed && state.pressed.self && state.pressed.self.indexOf(key) !== -1 ? 'true' : 'false');
+    });
+    Object.keys(state.traps || {}).forEach(function(key){
+      var card = qs('.aof-trap-card[data-aof-trap="' + key + '"]');
+      if(!card) return;
+      var data = state.traps[key] || {};
+      card.className = data.cardClass || 'aof-trap-card';
+      qsa('[data-aof-trap-choice]', card).forEach(function(btn){
+        var active = data.choice && btn.getAttribute('data-aof-trap-choice') === data.choice;
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        btn.classList.remove('is-correct','is-careful');
+        if(active){ btn.classList.add(card.classList.contains('is-correct') ? 'is-correct' : 'is-careful'); }
+      });
+      var feedback = qs('.aof-trap-feedback', card);
+      if(feedback){ feedback.className = data.feedbackClass || 'aof-trap-feedback'; feedback.textContent = data.feedbackText || 'Wähle erst einen Satz.'; }
+    });
+    Object.keys(state.writecheck || {}).forEach(function(id){
+      var card = qs('.writecheck-task[data-review-id="' + id + '"]');
+      if(!card) return;
+      var data = state.writecheck[id] || {};
+      card.className = data.cardClass || 'writecheck-task';
+      if(data.wcState){ card.setAttribute('data-wc-state', data.wcState); } else { card.removeAttribute('data-wc-state'); }
+      if(data.tried){ card.setAttribute('data-wc-tried', data.tried); } else { card.removeAttribute('data-wc-tried'); }
+      var input = qs('.writecheck-input', card); if(input){ input.value = data.value || ''; }
+      var feedback = qs('.writecheck-feedback', card); if(feedback){ feedback.className = data.feedbackClass || 'writecheck-feedback'; feedback.textContent = data.feedbackText || ''; }
+    });
+    var summary = document.getElementById('aof-writecheck-summary');
+    if(summary && state.writeSummary){
+      summary.classList.toggle('is-visible', !!state.writeSummary.visible);
+      var score = qs('[data-wc-score]', summary); if(score){ score.textContent = state.writeSummary.score || ''; }
+      var status = qs('[data-wc-status]', summary); if(status){ status.className = state.writeSummary.statusClass || 'writecheck-status'; status.textContent = state.writeSummary.statusText || ''; }
+      var goodList = qs('[data-wc-good]', summary); if(goodList){ goodList.innerHTML = state.writeSummary.goodHtml || ''; }
+      var reviewList = qs('[data-wc-review]', summary); if(reviewList){ reviewList.innerHTML = state.writeSummary.reviewHtml || ''; }
+    }
+    isRestoringTopicState = false;
+    return state;
+  }
+  function resetTopicProgress(){
+    try {
+      localStorage.removeItem(PAGE_STATE_KEY);
+      localStorage.removeItem(noteKey);
+      localStorage.removeItem(statusKey);
+      legacyNoteKeys.forEach(function(key){ localStorage.removeItem(key); });
+    } catch(e) {}
+    clearAofWriteResults();
+    isRestoringTopicState = true;
+    qsa('#aof-compass input[id], #aof-compass textarea[id]').forEach(function(field){ field.value = ''; });
+    qsa('#aof-compass details').forEach(function(details){ details.open = false; });
+    setPressedGroup('[data-aof-signal-find]', 'data-aof-signal-find', '');
+    setPressedGroup('[data-aof-signal-choice]', 'data-aof-signal-choice', '');
+    setPressedGroup('[data-aof-howoften-choice]', 'data-aof-howoften-choice', '');
+    setPressedGroup('[data-aof-learn-status]', 'data-aof-learn-status', '');
+    qsa('[data-aof-self]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); });
+    var signalFindOut = document.getElementById('aof-signal-find-output');
+    if(signalFindOut){ signalFindOut.innerHTML = '<p class="aof-output-kicker">Wähle zuerst einen Satz.</p><p class="aof-output-rule">Suche das Verb-Signal. Danach entscheidest du die Stelle des Häufigkeitswortes.</p>'; }
+    var signalOut = document.getElementById('aof-signal-output');
+    if(signalOut){ signalOut.innerHTML = '<p class="aof-output-kicker">Wähle ein Verb-Signal.</p><p class="aof-output-rule">Dann zeigt dir die Weiche, wo das Häufigkeitswort steht.</p>'; }
+    var howOut = document.getElementById('aof-howoften-output');
+    if(howOut){ howOut.innerHTML = '<p class="aof-output-kicker">Wähle eine Personengruppe.</p><p class="aof-output-rule">Dann siehst du die Frage und die Grundform-Falle.</p>'; }
+    qsa('.aof-trap-card').forEach(function(card){
+      card.classList.remove('is-correct','is-careful');
+      qsa('[data-aof-trap-choice]', card).forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.classList.remove('is-correct','is-careful'); });
+      var feedback = qs('.aof-trap-feedback', card); if(feedback){ feedback.className = 'aof-trap-feedback'; feedback.textContent = 'Wähle erst einen Satz.'; }
+    });
+    qsa('.writecheck-task[data-review-id]').forEach(function(card){
+      card.classList.remove('is-correct','is-almost','is-wrong');
+      card.removeAttribute('data-wc-state');
+      card.removeAttribute('data-wc-tried');
+      var input = qs('.writecheck-input', card); if(input){ input.value = ''; }
+      var feedback = qs('.writecheck-feedback', card); if(feedback){ feedback.className = 'writecheck-feedback'; feedback.textContent = ''; }
+    });
+    var summary = document.getElementById('aof-writecheck-summary');
+    if(summary){ summary.classList.remove('is-visible'); }
+    var selfOut = document.getElementById('aof-self-result');
+    if(selfOut){ selfOut.textContent = 'Entscheide danach deinen Lernstand.'; }
+    activate('aof-mode','learn', {save:false});
+    activate('aof-learn','entry', {save:false});
+    isRestoringTopicState = false;
+    syncHashFromCurrent(true);
+    saveTopicState();
   }
   document.addEventListener('click', function(event){
-    var tab = event.target.closest ? event.target.closest('[data-tab]') : null; if(tab){ activate(tab.getAttribute('data-tab'), tab.getAttribute('data-val')); }
-    var decision = event.target.closest ? event.target.closest('[data-aof-switch] button') : null; if(decision){ var wrap = decision.closest('[data-aof-switch]'); qsa('button', wrap).forEach(function(btn){ btn.setAttribute('aria-pressed', btn === decision ? 'true' : 'false'); }); var output = wrap.parentElement.querySelector('.aof-output'); if(output){ output.textContent = decision.getAttribute('data-result') || ''; } }
+    var tab = event.target.closest ? event.target.closest('[data-tab]') : null; if(tab){ activate(tab.getAttribute('data-tab'), tab.getAttribute('data-val'), {pushHistory:true}); }
+    var decision = event.target.closest ? event.target.closest('[data-aof-switch] button') : null; if(decision){ var wrap = decision.closest('[data-aof-switch]'); qsa('button', wrap).forEach(function(btn){ btn.setAttribute('aria-pressed', btn === decision ? 'true' : 'false'); }); var output = wrap.parentElement.querySelector('.aof-output'); if(output){ output.textContent = decision.getAttribute('data-result') || ''; } queueSaveTopicState(); }
   });
   qsa('.aof-write-task').forEach(function(card){ var input = card.querySelector('input'); var feedback = card.querySelector('.aof-feedback'); var answer = card.getAttribute('data-answer') || ''; function setFeedback(kind, text){ feedback.className = 'aof-feedback ' + kind; feedback.textContent = text; } card.querySelector('[data-check]').addEventListener('click', function(){ var user = normalise(input.value), expected = normalise(answer); if(!user){ setFeedback('is-help','Schreibe zuerst deinen Satz. Dann prüfst du.'); } else if(user === expected){ setFeedback('is-good','Richtig. Die Satzstellung passt.'); } else { setFeedback('is-bad','Noch nicht sicher. Prüfe: Vollverb, be oder don’t/doesn’t?'); } }); card.querySelector('[data-help]').addEventListener('click', function(){ setFeedback('is-help','Denkfrage: Welches Verb-Signal siehst du? Danach entscheidest du die Stelle.'); }); card.querySelector('[data-solution]').addEventListener('click', function(){ setFeedback('is-help','Lösung: ' + answer + '.'); }); });
 
@@ -3441,6 +3683,26 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
       rule:'How often does Silky swim? Nach does steht die Grundform: swim, nicht swims.'
     }
   };
+  function restoreChoiceOutputsFromState(state){
+    if(!state || !state.pressed) return;
+    var find = state.pressed.signalFind;
+    var signal = state.pressed.signalChoice;
+    var how = state.pressed.howoftenChoice;
+    var output;
+    if(find){
+      output = document.getElementById('aof-signal-find-output');
+      if(output && signalFindData[find]){ output.innerHTML = '<p class="aof-output-kicker">' + signalFindData[find].kicker + '</p><p class="aof-output-rule">' + signalFindData[find].rule + '</p>'; }
+    }
+    if(signal){
+      output = document.getElementById('aof-signal-output');
+      if(output && signalData[signal]){ output.innerHTML = '<p class="aof-output-kicker">' + signalData[signal].kicker + '</p><p class="aof-output-rule">' + signalData[signal].rule + '</p>'; }
+    }
+    if(how){
+      output = document.getElementById('aof-howoften-output');
+      if(output && howOftenData[how]){ output.innerHTML = '<p class="aof-output-kicker">' + howOftenData[how].kicker + '</p><p class="aof-output-rule">' + howOftenData[how].rule + '</p>'; }
+    }
+    updateSelfCheck();
+  }
   qsa('[data-aof-howoften-choice]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var wasPressed = btn.getAttribute('aria-pressed') === 'true';
@@ -3496,7 +3758,34 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     else { out.textContent = 'Alle Punkte sicher. Jetzt einen eigenen Satz ins Lernjournal schreiben.'; }
   }
   qsa('[data-aof-self]').forEach(function(btn){ btn.addEventListener('click', function(){ var active = btn.getAttribute('aria-pressed') === 'true'; btn.setAttribute('aria-pressed', active ? 'false' : 'true'); updateSelfCheck(); }); });
-  qsa('[data-aof-learn-status]').forEach(function(btn){ btn.addEventListener('click', function(){ var was = btn.getAttribute('aria-pressed') === 'true'; qsa('[data-aof-learn-status]').forEach(function(other){ other.setAttribute('aria-pressed','false'); }); if(!was){ btn.setAttribute('aria-pressed','true'); saveLearnStatus(btn.getAttribute('data-aof-learn-status')); } else { saveLearnStatus('offen'); } }); });
+  qsa('[data-aof-learn-status]').forEach(function(btn){ btn.addEventListener('click', function(){ var was = btn.getAttribute('aria-pressed') === 'true'; qsa('[data-aof-learn-status]').forEach(function(other){ other.setAttribute('aria-pressed','false'); }); if(!was){ btn.setAttribute('aria-pressed','true'); saveLearnStatus(btn.getAttribute('data-aof-learn-status')); } else { saveLearnStatus('offen'); } queueSaveTopicState(); }); });
+
+  document.addEventListener('input', function(event){
+    if(event.target && event.target.closest && event.target.closest('#aof-compass')){ queueSaveTopicState(); }
+  });
+  document.addEventListener('change', function(event){
+    if(event.target && event.target.closest && event.target.closest('#aof-compass')){ queueSaveTopicState(); }
+  });
+  document.addEventListener('click', function(event){
+    if(event.target && event.target.closest && event.target.closest('#aof-compass')){ window.setTimeout(queueSaveTopicState, 0); }
+  });
+  document.addEventListener('toggle', function(event){
+    if(event.target && event.target.closest && event.target.closest('#aof-compass')){ queueSaveTopicState(); }
+  }, true);
+  window.addEventListener('popstate', function(){
+    var nav = parseKompassHash() || {mode:'learn', learn:'entry'};
+    isRestoringTopicState = true;
+    activate('aof-mode', nav.mode || 'learn', {save:false});
+    activate('aof-learn', nav.learn || 'entry', {save:false});
+    isRestoringTopicState = false;
+    saveTopicState();
+  });
+  var clearProgressBtn = document.getElementById('aof-clear-progress-btn');
+  if(clearProgressBtn){ clearProgressBtn.addEventListener('click', function(){
+    var ok = true;
+    try { ok = window.confirm('Bearbeitungsstand für Adverbs of frequency löschen? Notizen, Eingaben und Rückmeldungen dieser Seite werden entfernt.'); } catch(e) { ok = true; }
+    if(ok){ resetTopicProgress(); }
+  }); }
 
   var aofModeBeforeHomework = 'learn';
   var ha = document.getElementById('ha-btn'); if(ha){ ha.addEventListener('click', function(){ var active = !document.body.classList.contains('hausaufgaben-mode'); if(active){ var current = qs('[data-tab="aof-mode"][aria-pressed="true"]'); aofModeBeforeHomework = current ? current.getAttribute('data-val') : 'learn'; document.body.classList.add('hausaufgaben-mode'); ha.setAttribute('aria-pressed','true'); ha.textContent = '📘 Normalmodus'; activate('aof-mode','reference'); } else { document.body.classList.remove('hausaufgaben-mode'); ha.setAttribute('aria-pressed','false'); ha.textContent = '📚 Hausaufgaben'; activate('aof-mode', aofModeBeforeHomework || 'learn'); } }); }
@@ -3506,7 +3795,19 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
   if(window && window.addEventListener){ window.addEventListener('afterprint', clearPrintModes); }
   var spick = document.getElementById('spickzettel-print-btn'); if(spick){ spick.addEventListener('click', function(){ aofModeBeforePrint = currentAofMode(); clearPrintModes(); activate('aof-mode','reference'); document.body.classList.add('spickzettel-print'); window.print(); setTimeout(function(){ clearPrintModes(); activate('aof-mode', aofModeBeforePrint || 'learn'); }, 500); }); }
   var print = document.getElementById('print-page-btn'); if(print){ print.addEventListener('click', function(){ clearPrintModes(); document.body.classList.add('page-print'); window.print(); setTimeout(clearPrintModes, 500); }); }
-  loadNotes(); loadLearnStatus(); activate('aof-mode','learn'); activate('aof-learn','entry');
+  loadNotes();
+  loadLearnStatus();
+  var restoredTopicState = restoreTopicState();
+  restoreChoiceOutputsFromState(restoredTopicState);
+  var hashNav = parseKompassHash();
+  var savedNav = restoredTopicState && restoredTopicState.nav ? restoredTopicState.nav : null;
+  var initialNav = hashNav || savedNav || {mode:'learn', learn:'entry'};
+  isRestoringTopicState = true;
+  activate('aof-mode', initialNav.mode || 'learn', {save:false});
+  activate('aof-learn', initialNav.learn || 'entry', {save:false});
+  isRestoringTopicState = false;
+  syncHashFromCurrent(true);
+  saveTopicState();
 })();
 </script>
 </article></div></body>

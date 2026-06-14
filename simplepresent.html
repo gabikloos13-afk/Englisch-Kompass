@@ -918,6 +918,12 @@ body{
   .page-action-bar,.sp-thinking-line{display:none!important;}
 }
 
+
+
+/* SIMPLE PRESENT HISTORY/STORAGE PATCH */
+.sp-clear-progress-btn{color:#991b1b!important;border-color:#fecaca!important;background:#fef2f2!important}
+.sp-clear-progress-btn:hover,.sp-clear-progress-btn:focus-visible{background:#b91c1c!important;color:#fff!important;border-color:#b91c1c!important}
+@media print{.sp-clear-progress-btn{display:none!important}}
 </style>
 </head>
 <body>
@@ -927,7 +933,7 @@ body{
 <div aria-label="Seitenaktionen" class="page-action-buttons">
 <button aria-pressed="false" class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
 <button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button>
-</div>
+<button class="print-btn sp-clear-progress-btn" id="sp-clear-progress-btn" type="button">🧹 Lernstand löschen</button></div>
 </div>
 <div class="page-content topic-page-content">
 <article class="learning-card topic-shell">
@@ -1105,7 +1111,6 @@ body{
 </div>
 <div aria-live="polite" class="sp-rule-box" id="sp-rule"></div>
 </div>
-
 </div>
 <!-- Schritt 3: Denkfalle do/does -->
 <div class="learn-panel" data-panel="sp-learn" data-val="trap" id="sp-learn-trap">
@@ -1199,7 +1204,7 @@ body{
 <button class="repair-pick" data-correct="true" data-repair-pick="pick-s-rule" type="button">plays</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-s-rule-feedback"></p>
-<button class="cancheck-btn repair-toggle" data-repair-show="repair-s-rule" disabled="" aria-disabled="true" type="button">Reparatur zeigen</button>
+<button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-s-rule" disabled="" type="button">Reparatur zeigen</button>
 <div class="repair-solution" hidden="" id="repair-s-rule"><p><span class="repair-label">Richtig:</span> She plays football.</p><p>he / she / it → Verb bekommt +s.</p></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-does-baseform">
@@ -1210,7 +1215,7 @@ body{
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-does-baseform" type="button">does</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-does-baseform-feedback"></p>
-<button class="cancheck-btn repair-toggle" data-repair-show="repair-does-baseform" disabled="" aria-disabled="true" type="button">Reparatur zeigen</button>
+<button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-does-baseform" disabled="" type="button">Reparatur zeigen</button>
 <div class="repair-solution" hidden="" id="repair-does-baseform"><p><span class="repair-label">Richtig:</span> Does she play tennis?</p><p>Nach do / does steht die Grundform. Das -s steckt schon in does.</p></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-dont-doesnt">
@@ -1221,7 +1226,7 @@ body{
 <button class="repair-pick" data-correct="true" data-repair-pick="pick-dont-doesnt" type="button">doesn't</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-dont-doesnt-feedback"></p>
-<button class="cancheck-btn repair-toggle" data-repair-show="repair-dont-doesnt" disabled="" aria-disabled="true" type="button">Reparatur zeigen</button>
+<button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-dont-doesnt" disabled="" type="button">Reparatur zeigen</button>
 <div class="repair-solution" hidden="" id="repair-dont-doesnt"><p><span class="repair-label">Richtig:</span> He doesn't like cats.</p><p>he / she / it braucht doesn't, nicht don't.</p></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-double-error">
@@ -1232,10 +1237,9 @@ body{
 <button class="repair-pick" data-correct="true" data-repair-pick="pick-double-error" type="button">She doesn't like</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-double-error-feedback"></p>
-<button class="cancheck-btn repair-toggle" data-repair-show="repair-double-error" disabled="" aria-disabled="true" type="button">Reparatur zeigen</button>
+<button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-double-error" disabled="" type="button">Reparatur zeigen</button>
 <div class="repair-solution" hidden="" id="repair-double-error"><p><span class="repair-label">Richtig:</span> She doesn't like fish.</p><p>Zwei Fehler: doesn't statt don't, und nach doesn't steht die Grundform.</p></div>
 </div>
-
 <div class="repair-card" data-review-id="simplepresent-cancheck-i-baseform">
 <p class="repair-wrong">Every day I plays football.</p>
 <p class="repair-find">Welche Verbform passt zu I?</p>
@@ -1244,10 +1248,9 @@ body{
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-i-baseform" type="button">plays</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-i-baseform-feedback"></p>
-<button class="cancheck-btn repair-toggle" data-repair-show="repair-i-baseform" disabled="" aria-disabled="true" type="button">Reparatur zeigen</button>
+<button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-i-baseform" disabled="" type="button">Reparatur zeigen</button>
 <div class="repair-solution" hidden="" id="repair-i-baseform"><p><span class="repair-label">Richtig:</span> Every day I play football.</p><p>I bekommt kein -s. Nur he / she / it bekommt in Aussagen ein -s.</p></div>
 </div>
-
 </div>
 </section>
 <section class="cancheck-block" data-cancheck-block="explain">
@@ -1536,8 +1539,8 @@ Richtig: She doesn’t play.
 </div>
 <div class="note-example-wrap">
 <label class="note-example-label" for="note-example">✍️ Mein eigener Beispielsatz</label>
-<input class="note-example-input" id="note-example" placeholder="Schreibe einen eigenen Simple-Present-Satz." type="text">
-</input></div>
+<input class="note-example-input" id="note-example" placeholder="Schreibe einen eigenen Simple-Present-Satz." type="text"/>
+</div>
 <div class="notes-save-row">
 <button class="notes-save-btn" id="notes-save-btn" type="button">Notizen speichern</button>
 <span class="notes-saved" id="notes-saved">✓ Gespeichert!</span>
@@ -2419,43 +2422,336 @@ Richtig: She doesn’t play.
 })();
 
 </script>
+
 <script>
 (function(){
-  if (window.__kompassHashTabsReady) return;
-  window.__kompassHashTabsReady = true;
-  var aliases = {
-    'lernen':'learn','learn':'learn','verstehen':'learn',
-    'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
-    'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
-    'verbindungen':'connections','connections':'connections',
-    'notizen':'notes','notes':'notes'
-  };
-  function cleanHash(){
-    try { return decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim(); }
-    catch(e){ return (window.location.hash || '').replace(/^#/, '').toLowerCase().trim(); }
+  'use strict';
+  if (window.__simplePresentHistoryStorageReady) return;
+  window.__simplePresentHistoryStorageReady = true;
+
+  var PAGE_STATE_KEY = 'kompass_simplepresent_learning_state';
+  var NOTES_KEY = 'kompass_simplepresent_notes';
+  var CHECK_KEY = 'kompass_simplepresent_checks';
+  var CANCHECK_KEY = 'kompass_simplepresent_cancheck_status';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  var suppressHistory = false;
+  var saveTimer = null;
+
+  function qs(sel, root){ return (root || document).querySelector(sel); }
+  function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function safeJSON(value, fallback){ try { return JSON.parse(value); } catch(e) { return fallback; } }
+  function readTopicState(){ try { return safeJSON(localStorage.getItem(PAGE_STATE_KEY) || '{}', {}); } catch(e) { return {}; } }
+  function writeTopicState(state){ try { localStorage.setItem(PAGE_STATE_KEY, JSON.stringify(state)); } catch(e) {} }
+  function activeValue(group){
+    var btn = qs('[data-tab="' + group + '"][aria-pressed="true"]') || qs('[data-tab="' + group + '"].is-active');
+    return btn ? btn.getAttribute('data-val') : '';
   }
-  function openSectionFromHash(){
-    var key = cleanHash();
-    if (!key) return;
-    var mode = aliases[key];
-    if (!mode) return;
-    var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
-    if (!btn) return;
-    btn.click();
-    window.setTimeout(function(){
-      var card = document.querySelector('.learning-card') || document.querySelector('[data-topic]') || btn;
-      if (card && typeof card.scrollIntoView === 'function') {
-        card.scrollIntoView({block:'start'});
+  function normaliseMode(mode){
+    var map = {
+      lernen:'learn', learn:'learn', verstehen:'learn', entry:'learn', machine:'learn', trap:'learn', check:'learn',
+      nachschlagen:'reference', reference:'reference', regel:'reference', regeln:'reference', spickzettel:'reference',
+      schreibcheck:'writecheck', 'schreib-check':'writecheck', writecheck:'writecheck', pruefen:'writecheck', 'prüfen':'writecheck',
+      verbindungen:'connections', connections:'connections',
+      notizen:'notes', notes:'notes'
+    };
+    return map[String(mode || '').toLowerCase()] || '';
+  }
+  function normaliseLearn(learn){
+    var map = {
+      entry:'entry', start:'entry', wozu:'entry', verstehen:'entry', lernen:'entry', 'sp-learn-entry':'entry',
+      machine:'machine', maschine:'machine', entscheidung:'machine', 'verbform-entscheider':'machine', 'sp-learn-machine':'machine',
+      trap:'trap', denkfalle:'trap', fallen:'trap', 'do-does':'trap', 'sp-learn-trap':'trap',
+      check:'check', kannich:'check', 'kann-ich':'check', 'sp-learn-check':'check'
+    };
+    return map[String(learn || '').toLowerCase()] || '';
+  }
+  function parseKompassHash(){
+    var raw;
+    try { raw = decodeURIComponent((window.location.hash || '').replace(/^#/, '')); }
+    catch(e) { raw = (window.location.hash || '').replace(/^#/, ''); }
+    raw = String(raw || '').trim();
+    if (!raw) return null;
+    var lower = raw.toLowerCase();
+    if (lower.indexOf('kompass:') === 0) {
+      var query = raw.slice(raw.indexOf(':') + 1);
+      var parts = query.split('&');
+      var data = {};
+      parts.forEach(function(part){
+        var idx = part.indexOf('=');
+        if (idx === -1) return;
+        data[part.slice(0, idx).trim()] = part.slice(idx + 1).trim();
+      });
+      return { mode: normaliseMode(data.mode) || 'learn', learn: normaliseLearn(data.learn) || 'entry' };
+    }
+    var mode = normaliseMode(lower);
+    var learn = normaliseLearn(lower);
+    if (learn && !mode) return {mode:'learn', learn:learn};
+    if (mode) return {mode:mode, learn:'entry'};
+    var byId = {
+      'sp-learn-entry':{mode:'learn',learn:'entry'},
+      'sp-learn-machine':{mode:'learn',learn:'machine'},
+      'sp-learn-trap':{mode:'learn',learn:'trap'},
+      'sp-learn-check':{mode:'learn',learn:'check'},
+      lernen:{mode:'learn',learn:'entry'}, nachschlagen:{mode:'reference',learn:'entry'}, verbindungen:{mode:'connections',learn:'entry'}, schreibcheck:{mode:'writecheck',learn:'entry'}, notizen:{mode:'notes',learn:'entry'}
+    };
+    return byId[lower] || null;
+  }
+  function hashForState(mode, learn){
+    mode = normaliseMode(mode) || activeValue('sp-mode') || 'learn';
+    learn = normaliseLearn(learn) || activeValue('sp-learn') || 'entry';
+    var hash = '#kompass:mode=' + encodeURIComponent(mode);
+    if (mode === 'learn') hash += '&learn=' + encodeURIComponent(learn);
+    return hash;
+  }
+  function activateGroup(group, val){
+    var btn = qs('[data-tab="' + group + '"][data-val="' + val + '"]');
+    var panel = qs('[data-panel="' + group + '"][data-val="' + val + '"]');
+    if (!btn || !panel) return false;
+    qsa('[data-tab="' + group + '"]').forEach(function(b){
+      var on = b === btn;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    qsa('[data-panel="' + group + '"]').forEach(function(p){ p.classList.toggle('is-active', p === panel); });
+    if (group === 'sp-learn') updateLearnProgress(val);
+    return true;
+  }
+  function updateLearnProgress(val){
+    var order = ['entry','machine','trap','check'];
+    var idx = Math.max(0, order.indexOf(val));
+    var bar = qs('#sp-progress');
+    if (!bar) return;
+    bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4');
+    bar.classList.add('progress-step-' + (idx + 1));
+  }
+  function applyHashState(state){
+    if (!state) return;
+    suppressHistory = true;
+    activateGroup('sp-mode', state.mode || 'learn');
+    if ((state.mode || 'learn') === 'learn') activateGroup('sp-learn', state.learn || 'entry');
+    suppressHistory = false;
+    queueSaveTopicState();
+  }
+  function syncHashFromCurrent(replace){
+    if (suppressHistory) return;
+    var mode = activeValue('sp-mode') || 'learn';
+    var learn = activeValue('sp-learn') || 'entry';
+    var hash = hashForState(mode, learn);
+    if (window.location.hash === hash) return;
+    try {
+      if (replace) history.replaceState({kompass:true, mode:mode, learn:learn}, '', hash);
+      else history.pushState({kompass:true, mode:mode, learn:learn}, '', hash);
+    } catch(e) {
+      window.location.hash = hash;
+    }
+  }
+  function collectInputs(){
+    var values = {};
+    qsa('input[id], textarea[id], select[id]').forEach(function(el){
+      if (!el.id) return;
+      if (el.type === 'checkbox' || el.type === 'radio') values[el.id] = !!el.checked;
+      else values[el.id] = el.value;
+    });
+    return values;
+  }
+  function restoreInputs(values){
+    values = values || {};
+    Object.keys(values).forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!values[id];
+      else el.value = values[id];
+    });
+  }
+  function collectDetails(){
+    var details = {};
+    qsa('details[id]').forEach(function(el){ details[el.id] = !!el.open; });
+    return details;
+  }
+  function restoreDetails(details){
+    details = details || {};
+    Object.keys(details).forEach(function(id){ var el = document.getElementById(id); if (el && el.tagName.toLowerCase() === 'details') el.open = !!details[id]; });
+  }
+  function selectedAttr(selector, attr){
+    var el = qs(selector + '.is-active');
+    return el ? el.getAttribute(attr) : '';
+  }
+
+  function cssIdent(value){
+    if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(String(value));
+    return String(value || '').replace(/[\"']/g, '\\$&');
+  }
+  function clickBySelector(selector){
+    var el = qs(selector);
+    if (el) el.click();
+  }
+  function collectMachineState(){
+    return {
+      radar: selectedAttr('[data-sp-radar]', 'data-sp-radar'),
+      mode: selectedAttr('[data-sp-mode]', 'data-sp-mode'),
+      person: selectedAttr('.m-chip[data-person]', 'data-person'),
+      verb: selectedAttr('.verb-chip[data-verb]', 'data-verb'),
+      outputClass: qs('#sp-out') ? qs('#sp-out').className : '',
+      sentenceHtml: qs('#sp-sentence') ? qs('#sp-sentence').innerHTML : '',
+      noteText: qs('#sp-note') ? qs('#sp-note').textContent : '',
+      ruleClass: qs('#sp-rule') ? qs('#sp-rule').className : '',
+      ruleText: qs('#sp-rule') ? qs('#sp-rule').textContent : '',
+      radarOutputClass: qs('#sp-radar-output') ? qs('#sp-radar-output').className : '',
+      radarDecision: qs('#sp-radar-decision') ? qs('#sp-radar-decision').textContent : '',
+      radarExample: qs('#sp-radar-example') ? qs('#sp-radar-example').textContent : '',
+      radarHint: qs('#sp-radar-hint') ? qs('#sp-radar-hint').textContent : ''
+    };
+  }
+  function restoreMachineState(state){
+    if (!state) return;
+    suppressHistory = true;
+    if (state.radar) clickBySelector('[data-sp-radar="' + cssIdent(state.radar) + '"]');
+    if (state.mode) clickBySelector('[data-sp-mode="' + cssIdent(state.mode) + '"]');
+    if (state.person) clickBySelector('.m-chip[data-person="' + cssIdent(state.person) + '"]');
+    if (state.verb) clickBySelector('.verb-chip[data-verb="' + cssIdent(state.verb) + '"]');
+    suppressHistory = false;
+    var out = qs('#sp-out'), sent = qs('#sp-sentence'), note = qs('#sp-note'), rule = qs('#sp-rule');
+    if (out && state.outputClass) out.className = state.outputClass;
+    if (sent && state.sentenceHtml) sent.innerHTML = state.sentenceHtml;
+    if (note) note.textContent = state.noteText || note.textContent || '';
+    if (rule && state.ruleClass) { rule.className = state.ruleClass; rule.textContent = state.ruleText || ''; }
+    var rOut = qs('#sp-radar-output');
+    if (rOut && state.radarOutputClass) rOut.className = state.radarOutputClass;
+    if (qs('#sp-radar-decision') && state.radarDecision) qs('#sp-radar-decision').textContent = state.radarDecision;
+    if (qs('#sp-radar-example')) qs('#sp-radar-example').textContent = state.radarExample || '';
+    if (qs('#sp-radar-hint') && state.radarHint) qs('#sp-radar-hint').textContent = state.radarHint;
+  }
+  function collectClassState(selector, attrs){
+    return qsa(selector).map(function(el, idx){
+      var item = {idx:idx, className:el.className || '', hidden:!!el.hidden, disabled:!!el.disabled, ariaPressed:el.getAttribute('aria-pressed'), text:el.textContent || '', html:el.innerHTML || ''};
+      (attrs || []).forEach(function(attr){ item[attr] = el.getAttribute(attr); });
+      if (el.id) item.id = el.id;
+      return item;
+    });
+  }
+  function restoreClassState(selector, list){
+    (list || []).forEach(function(item){
+      var el = item.id ? document.getElementById(item.id) : qsa(selector)[item.idx];
+      if (!el) return;
+      if (typeof item.className === 'string') el.className = item.className;
+      if ('hidden' in item) el.hidden = !!item.hidden;
+      if ('disabled' in item) el.disabled = !!item.disabled;
+      if (item.ariaPressed === null || item.ariaPressed === undefined) el.removeAttribute('aria-pressed'); else el.setAttribute('aria-pressed', item.ariaPressed);
+      if (selector.indexOf('.writecheck-feedback') !== -1 || selector.indexOf('.repair-pick-feedback') !== -1 || selector.indexOf('.cancheck-feedback') !== -1 || selector.indexOf('.cancheck-explanation') !== -1 || selector.indexOf('.repair-solution') !== -1 || selector.indexOf('.writecheck-summary') !== -1 || selector.indexOf('.cancheck-status-output') !== -1) {
+        el.innerHTML = item.html || '';
       }
-    }, 40);
+      if (selector.indexOf('[data-repair-show]') !== -1 || selector.indexOf('[data-explain-compare]') !== -1) {
+        el.textContent = item.text || el.textContent;
+      }
+    });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', openSectionFromHash);
-  } else {
-    openSectionFromHash();
+  function collectTopicState(){
+    return {
+      mode: activeValue('sp-mode') || 'learn',
+      learn: activeValue('sp-learn') || 'entry',
+      inputs: collectInputs(),
+      details: collectDetails(),
+      machine: collectMachineState(),
+      canButtons: collectClassState('.cancheck-btn, .status-btn, .repair-pick'),
+      canFeedback: collectClassState('.cancheck-feedback, .repair-pick-feedback, .cancheck-explanation, .repair-solution, .explain-empty, .cancheck-status-output'),
+      repairButtons: collectClassState('[data-repair-show], [data-explain-compare]'),
+      writeCards: collectClassState('.writecheck-task'),
+      writeFeedback: collectClassState('.writecheck-feedback'),
+      writeSummary: collectClassState('#writecheck-summary'),
+      updatedAt: new Date().toISOString()
+    };
   }
-  window.addEventListener('hashchange', openSectionFromHash);
+  function queueSaveTopicState(){
+    if (saveTimer) window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(function(){ writeTopicState(collectTopicState()); }, 80);
+  }
+  function saveTopicStateNow(){ writeTopicState(collectTopicState()); }
+  function restoreTopicState(){
+    var state = readTopicState();
+    if (!state || !Object.keys(state).length) return;
+    restoreInputs(state.inputs);
+    restoreDetails(state.details);
+    restoreMachineState(state.machine);
+    restoreClassState('.cancheck-btn, .status-btn, .repair-pick', state.canButtons);
+    restoreClassState('.cancheck-feedback, .repair-pick-feedback, .cancheck-explanation, .repair-solution, .explain-empty, .cancheck-status-output', state.canFeedback);
+    restoreClassState('[data-repair-show], [data-explain-compare]', state.repairButtons);
+    restoreClassState('.writecheck-task', state.writeCards);
+    restoreClassState('.writecheck-feedback', state.writeFeedback);
+    restoreClassState('#writecheck-summary', state.writeSummary);
+  }
+  function removeSimplePresentWriteResults(){
+    try {
+      var store = safeJSON(localStorage.getItem(WRITE_KEY) || '{}', {});
+      Object.keys(store).forEach(function(key){
+        var item = store[key];
+        if (key.indexOf('sp-wc-') === 0 || key === 'simplepresent' || key === 'simplepresentTasks' || (item && item.topicId === 'simplepresent')) delete store[key];
+      });
+      localStorage.setItem(WRITE_KEY, JSON.stringify(store));
+    } catch(e) {}
+  }
+  function resetTopicProgress(){
+    var ok = window.confirm('Bearbeitungsstand für Simple Present löschen? Notizen, Eingaben und Rückmeldungen dieser Seite werden entfernt.');
+    if (!ok) return;
+    try { localStorage.removeItem(PAGE_STATE_KEY); } catch(e) {}
+    try { localStorage.removeItem(NOTES_KEY); } catch(e) {}
+    try { localStorage.removeItem(CHECK_KEY); } catch(e) {}
+    try { localStorage.removeItem(CANCHECK_KEY); } catch(e) {}
+    removeSimplePresentWriteResults();
+    qsa('input[id], textarea[id], select[id]').forEach(function(el){
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+      else el.value = '';
+    });
+    qsa('details').forEach(function(el){ el.open = false; });
+    qsa('.is-active').forEach(function(el){
+      if (!el.matches('[data-tab]')) el.classList.remove('is-active');
+    });
+    qsa('.is-correct,.is-wrong,.is-almost,.is-empty,.is-visible').forEach(function(el){
+      el.classList.remove('is-correct','is-wrong','is-almost','is-empty','is-visible');
+    });
+    qsa('.writecheck-task').forEach(function(el){ el.classList.remove('is-correct','is-almost','is-wrong','is-empty'); });
+    qsa('.writecheck-feedback').forEach(function(el){ el.className = 'writecheck-feedback'; el.textContent = ''; });
+    var summary = qs('#writecheck-summary'); if (summary) { summary.className = 'writecheck-summary'; summary.innerHTML = ''; }
+    qsa('.cancheck-feedback,.repair-pick-feedback,.cancheck-explanation,.repair-solution,.explain-empty').forEach(function(el){ el.hidden = true; if (el.matches('.repair-pick-feedback')) el.textContent = ''; });
+    qsa('[data-repair-show]').forEach(function(btn){ btn.disabled = true; btn.setAttribute('aria-disabled','true'); btn.textContent = 'Reparatur zeigen'; });
+    var statusOut = qs('#cancheck-status-output'); if (statusOut) statusOut.textContent = 'Noch kein Lernstand gewählt.';
+    if (typeof window.resetWritecheck === 'function') window.resetWritecheck();
+    var resetBtn = qs('#sp-reset-btn'); if (resetBtn) resetBtn.click();
+    activateGroup('sp-mode','learn');
+    activateGroup('sp-learn','entry');
+    syncHashFromCurrent(true);
+    saveTopicStateNow();
+  }
+
+  document.addEventListener('click', function(e){
+    var tab = e.target.closest('[data-tab]');
+    if (tab) {
+      window.setTimeout(function(){ syncHashFromCurrent(false); queueSaveTopicState(); }, 0);
+      return;
+    }
+    if (e.target.closest('#sp-clear-progress-btn')) {
+      e.preventDefault();
+      resetTopicProgress();
+      return;
+    }
+    window.setTimeout(queueSaveTopicState, 0);
+  });
+  document.addEventListener('input', queueSaveTopicState);
+  document.addEventListener('change', queueSaveTopicState);
+  document.addEventListener('toggle', queueSaveTopicState, true);
+  window.addEventListener('beforeunload', saveTopicStateNow);
+  window.addEventListener('popstate', function(){ applyHashState(parseKompassHash() || {mode:'learn', learn:'entry'}); });
+  window.addEventListener('hashchange', function(){ applyHashState(parseKompassHash() || {mode:'learn', learn:'entry'}); });
+
+  function initHistoryStorage(){
+    restoreTopicState();
+    var parsed = parseKompassHash();
+    var saved = readTopicState();
+    applyHashState(parsed || {mode:saved.mode || 'learn', learn:saved.learn || 'entry'});
+    syncHashFromCurrent(!parsed);
+    saveTopicStateNow();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initHistoryStorage);
+  else initHistoryStorage();
 })();
-</script>
-</body>
+</script></body>
 </html>
