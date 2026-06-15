@@ -2484,6 +2484,33 @@ body.spickzettel-print .past-thinking-line{display:none!important}
 
 
 
+/* AOF v17: Nicht-oft-Brücke für do not / does not → don't / doesn't */
+#aof-compass .aof-notbridge-card{background:linear-gradient(135deg,#ffffff 0%,#f8fafc 58%,#eff6ff 100%)!important;border-color:#bfdbfe!important}
+#aof-compass .aof-notbridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+#aof-compass .aof-notbridge-path{padding:14px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+#aof-compass .aof-notbridge-path h3{margin:0 0 8px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--blue-dark)}
+#aof-compass .aof-bridge-flow{display:grid;gap:7px;margin:8px 0 0}
+#aof-compass .aof-bridge-step{padding:8px 10px;border:1px solid rgba(148,163,184,.35);border-radius:var(--radius-sm);background:#f8fafc;color:var(--gray-800)}
+#aof-compass .aof-bridge-step span{display:block;margin-bottom:2px;font-family:var(--font-head);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:#64748b}
+#aof-compass .aof-contract-switch{margin:14px 0;padding:14px;border:1px solid rgba(147,197,253,.75);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+#aof-compass .aof-contract-switch h3{margin:0 0 6px;font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--blue-dark)}
+#aof-compass .aof-contract-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+#aof-compass [data-aof-contract-choice]{border:1px solid rgba(148,163,184,.55);border-radius:var(--radius-sm);background:#fff;color:var(--gray-800);font-family:var(--font-head);font-weight:400;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s;padding:10px 12px;text-align:left}
+#aof-compass [data-aof-contract-choice]:hover{transform:translateY(-1px);background:#eaf1f8;border-color:#8aa4c0}
+#aof-compass [data-aof-contract-choice][aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+#aof-compass .aof-contract-output{min-height:118px;margin-top:10px;padding:12px 14px;border:1px solid rgba(147,197,253,.75);border-radius:var(--radius-sm);background:var(--blue-soft);color:var(--blue-dark)}
+#aof-compass .aof-contract-flow{display:grid;gap:7px;margin-top:8px}
+#aof-compass .aof-contract-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 10px;border-radius:var(--radius-sm);background:#fff;border:1px solid rgba(148,163,184,.35);color:var(--gray-800)}
+#aof-compass .aof-contract-label{min-width:92px;font-family:var(--font-head);font-size:.76rem;letter-spacing:.04em;text-transform:uppercase;color:#64748b}
+#aof-compass .aof-contract-note{margin:9px 0 0;padding:8px 10px;border-left:4px solid #d97706;border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:#fffbeb;color:#92400e}
+#aof-compass .aof-baseform-check{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+#aof-compass .aof-baseform-mini{padding:12px;border:1px solid rgba(148,163,184,.45);border-radius:var(--radius-sm);background:#fff}
+#aof-compass .aof-baseform-mini h3{margin:0 0 6px;font-family:var(--font-head);font-size:.92rem;font-weight:400;color:#27415f}
+#aof-compass .aof-baseform-mini p{margin:0;color:var(--gray-700);font-size:.88rem;line-height:1.4}
+@media(max-width:900px){#aof-compass .aof-contract-choice-grid,#aof-compass .aof-baseform-check{grid-template-columns:1fr}}
+@media(max-width:760px){#aof-compass .aof-notbridge-grid{grid-template-columns:1fr}#aof-compass .aof-contract-line{display:grid;grid-template-columns:1fr}.aof-contract-label{min-width:0}}
+
+
 /* AOF v06: Nachschlagen-Hintergrund graublau + Korrektur Schreib-Check */
 #aof-compass #nachschlagen,
 #aof-compass #nachschlagen .sp-reference-wrap{
@@ -2776,6 +2803,51 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 </section>
 </div>
 <div class="learn-panel" data-panel="aof-learn" data-val="trap" id="aof-learn-trap">
+
+<section aria-labelledby="aof-notbridge-title" class="past-topic-card past-topic-card-tools aof-notbridge-card">
+<p class="feature-label">Nicht-oft-Brücke</p>
+<h2 id="aof-notbridge-title">not often / not usually richtig bauen</h2>
+<p>Wenn im Deutschen <span class="past-code">nicht oft</span> oder <span class="past-code">normalerweise nicht</span> steht, setzt du bei normalen Handlungsverben im Simple Present nicht einfach <span class="past-code">not</span> vor das Verb. Du baust zuerst mit <span class="past-code">do not</span> oder <span class="past-code">does not</span>. Danach darfst du kürzen. Bei <span class="past-code">am / is / are</span> ist es anders.</p>
+<div class="aof-notbridge-grid">
+<article class="aof-notbridge-path">
+<h3>I / you / we / they</h3>
+<div class="aof-bridge-flow">
+<div class="aof-bridge-step"><span>Deutsch</span>Ich spiele nicht oft Fußball.</div>
+<div class="aof-bridge-step"><span>Langform</span>I do not often play football.</div>
+<div class="aof-bridge-step"><span>Kurzform</span>I don’t often play football.</div>
+<div class="aof-bridge-step"><span>Kontrolle</span>Nach don’t bleibt das Verb Grundform: play.</div>
+</div>
+</article>
+<article class="aof-notbridge-path">
+<h3>he / she / it</h3>
+<div class="aof-bridge-flow">
+<div class="aof-bridge-step"><span>Deutsch</span>Sie geht normalerweise nicht mit dem Hund Gassi.</div>
+<div class="aof-bridge-step"><span>Langform</span>She does not usually walk her dog.</div>
+<div class="aof-bridge-step"><span>Kurzform</span>She doesn’t usually walk her dog.</div>
+<div class="aof-bridge-step"><span>Kontrolle</span>Das s steckt in does. Das Vollverb bleibt walk.</div>
+</div>
+</article>
+</div>
+<div class="aof-contract-switch" aria-labelledby="aof-contract-title">
+<h3 id="aof-contract-title">Langform → Kurzform sehen</h3>
+<p>Wähle einen Satz. Die Brücke zeigt: <span class="past-code">don’t</span> ist nur die Kurzform von <span class="past-code">do not</span>, <span class="past-code">doesn’t</span> ist nur die Kurzform von <span class="past-code">does not</span>.</p>
+<div class="aof-contract-choice-grid" aria-label="Nicht-oft-Brücke auswählen">
+<button type="button" aria-pressed="false" data-aof-contract-choice="i-often">I / not often / play football</button>
+<button type="button" aria-pressed="false" data-aof-contract-choice="she-usually">she / not usually / walk her dog</button>
+<button type="button" aria-pressed="false" data-aof-contract-choice="i-never">I / never / touch snakes</button>
+</div>
+<div id="aof-contract-output" class="aof-contract-output" aria-live="polite">
+<p class="aof-output-kicker">Wähle einen Satz.</p>
+<p class="aof-output-rule">Dann siehst du Deutsch, Langform, Kurzform und die Verbform-Kontrolle.</p>
+</div>
+</div>
+<div class="aof-baseform-check">
+<div class="aof-baseform-mini"><h3>not often bei Handlungsverben</h3><p><span class="past-code">not often</span> braucht bei normalen Handlungsverben den Helfer: <span class="past-code">do not often</span> oder <span class="past-code">does not often</span>.</p></div>
+<div class="aof-baseform-mini"><h3>don’t / doesn’t</h3><p>Nach <span class="past-code">don’t</span> und <span class="past-code">doesn’t</span> kommt das Häufigkeitswort und dann die Grundform.</p></div>
+<div class="aof-baseform-mini"><h3>never</h3><p><span class="past-code">never</span> ist schon negativ. Deshalb nicht: <span class="past-code">don’t never</span>.</p></div>
+<div class="aof-baseform-mini"><h3>be ist anders</h3><p>Bei <span class="past-code">am / is / are</span> brauchst du kein <span class="past-code">do/does</span>: <span class="past-code">She is not usually late.</span> / <span class="past-code">They are not often at home.</span></p></div>
+</div>
+</section>
 <section aria-labelledby="aof-trap-title" class="past-topic-card past-topic-card-tools">
 <p class="feature-label">Denkfalle</p>
 <h2 id="aof-trap-title">Nicht zwischen Verb und Objekt</h2>
@@ -2822,8 +2894,36 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <p aria-live="polite" class="aof-trap-feedback">Wähle erst einen Satz.</p>
 <button class="aof-reset-btn" data-aof-trap-reset="" type="button">Nochmal</button>
 </article>
+
+<article class="aof-trap-card" data-aof-trap="notbridge" data-correct="B">
+<h3>4. not often braucht do/does + not</h3>
+<div class="aof-option-grid">
+<button aria-pressed="false" data-aof-trap-choice="A" type="button">I not often play football.</button>
+<button aria-pressed="false" data-aof-trap-choice="B" type="button">I don’t often play football.</button>
+</div>
+<p aria-live="polite" class="aof-trap-feedback">Wähle erst einen Satz.</p>
+<button class="aof-reset-btn" data-aof-trap-reset="" type="button">Nochmal</button>
+</article>
+<article class="aof-trap-card" data-aof-trap="baseform" data-correct="A">
+<h3>5. Nach doesn’t Grundform</h3>
+<div class="aof-option-grid">
+<button aria-pressed="false" data-aof-trap-choice="A" type="button">She doesn’t usually walk her dog.</button>
+<button aria-pressed="false" data-aof-trap-choice="B" type="button">She doesn’t usually walks her dog.</button>
+</div>
+<p aria-live="polite" class="aof-trap-feedback">Wähle erst einen Satz.</p>
+<button class="aof-reset-btn" data-aof-trap-reset="" type="button">Nochmal</button>
+</article>
+<article class="aof-trap-card" data-aof-trap="neveri" data-correct="A">
+<h3>6. I + never + Grundform</h3>
+<div class="aof-option-grid">
+<button aria-pressed="false" data-aof-trap-choice="A" type="button">I never touch snakes.</button>
+<button aria-pressed="false" data-aof-trap-choice="B" type="button">I never touches snakes.</button>
+</div>
+<p aria-live="polite" class="aof-trap-feedback">Wähle erst einen Satz.</p>
+<button class="aof-reset-btn" data-aof-trap-reset="" type="button">Nochmal</button>
+</article>
 <article class="aof-trap-card" data-aof-trap="object" data-correct="B">
-<h3>4. Objekt-Falle</h3>
+<h3>7. Objekt-Falle</h3>
 <div class="aof-option-grid">
 <button aria-pressed="false" data-aof-trap-choice="A" type="button">We play often cards.</button>
 <button aria-pressed="false" data-aof-trap-choice="B" type="button">We often play cards.</button>
@@ -2870,6 +2970,9 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <div class="aof-self-task"><label for="aof-self-02">2. Setze das Wort richtig ein: Morph reads ghost stories. (often)</label><input autocomplete="off" id="aof-self-02" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">Morph often reads ghost stories.</span></details></div>
 <div class="aof-self-task"><label for="aof-self-03">3. Bilde die Frage: Silky / swim / with her friends</label><input autocomplete="off" id="aof-self-03" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">How often does Silky swim with her friends?</span></details></div>
 <div class="aof-self-task"><label for="aof-self-04">4. Verbessere den Fehler: We play often cards.</label><input autocomplete="off" id="aof-self-04" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">We often play cards.</span></details></div>
+<div class="aof-self-task"><label for="aof-self-05">5. Kürze die Langform: I do not often play football.</label><input autocomplete="off" id="aof-self-05" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">I don’t often play football.</span></details></div>
+<div class="aof-self-task"><label for="aof-self-06">6. Verbessere den Fehler: She doesn’t usually walks her dog.</label><input autocomplete="off" id="aof-self-06" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">She doesn’t usually walk her dog.</span></details></div>
+<div class="aof-self-task"><label for="aof-self-07">7. Verbessere den Fehler: I never touches snakes.</label><input autocomplete="off" id="aof-self-07" type="text"/><details><summary>Lösung prüfen</summary><span class="aof-self-solution">I never touch snakes.</span></details></div>
 </div>
 <div aria-live="polite" class="aof-self-result" id="aof-self-result">Entscheide danach deinen Lernstand.</div>
 <div aria-label="Lernstand Adverbs of frequency im Lernbereich" class="aof-status-row"><button aria-pressed="false" data-aof-learn-status="sicher" type="button">sicher</button><button aria-pressed="false" data-aof-learn-status="fast sicher" type="button">fast sicher</button><button aria-pressed="false" data-aof-learn-status="nochmal prüfen" type="button">nochmal prüfen</button><button aria-pressed="false" data-aof-learn-status="offen" type="button">offen</button></div>
@@ -2913,6 +3016,13 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <p class="sp-print-pattern">Lucy doesn’t usually eat in the canteen.</p>
 </section>
 <section class="sp-print-box">
+<h3>not often / not usually bei Handlungsverben</h3>
+<p class="sp-print-pattern">nicht oft → do not often → don’t often</p>
+<p class="sp-print-pattern">normalerweise nicht → does not usually → doesn’t usually</p>
+<p class="sp-print-pattern">Nach don’t/doesn’t: basic form.</p>
+<p class="sp-print-pattern">Bei be: She is not usually late.</p>
+</section>
+<section class="sp-print-box">
 <h3>How often?</h3>
 <p class="sp-print-pattern">How often + do/does + person + basic form? (bei Handlungsverben)</p><p class="sp-print-pattern">Bei be: How often are they at the Lido?</p>
 <p class="sp-print-pattern">How often do you play football?</p>
@@ -2926,7 +3036,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <p class="sp-print-pattern">Richtig: She never eats fish.</p>
 </section>
 </div>
-<p class="sp-print-mini">Kurzregel: Beim Vollverb steht das Häufigkeitswort vor dem Verb. Bei am/is/are und don’t/doesn’t steht es danach.</p>
+<p class="sp-print-mini">Kurzregel: Beim Vollverb steht das Häufigkeitswort vor dem Verb. Bei am/is/are und don’t/doesn’t steht es danach. Bei Handlungsverben werden not often und not usually mit do not/does not gebaut und dann zu don’t/doesn’t gekürzt. Bei be bleibt es bei am/is/are + not.</p>
 </section><section aria-labelledby="aof-homework-title" class="aof-homework-sheet">
 <p class="feature-label">Hausaufgabenmodus</p>
 <h2 id="aof-homework-title">Kurz lernen, dann schreiben</h2>
@@ -2954,8 +3064,15 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <p>Sam is always nice.</p>
 <p>Lucy doesn’t usually eat in the canteen.</p>
 </article>
+<article class="aof-homework-card">
+<h3>4. not often / not usually bei Handlungsverben</h3>
+<p>nicht oft → do not often → don’t often</p>
+<p>normalerweise nicht → does not usually → doesn’t usually</p>
+<p>Danach: Grundform.</p>
+<p>Bei be anders: She is not usually late.</p>
+</article>
 <article class="aof-homework-card is-warning">
-<h3>4. Denkfallen</h3>
+<h3>5. Denkfallen</h3>
 <p>Nicht: We play often cards.</p>
 <p>Richtig: We often play cards.</p>
 <p>Nicht: She doesn’t never eat fish.</p>
@@ -2996,6 +3113,21 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <tr><td>don’t / doesn’t</td><td>nach don’t/doesn’t</td><td>subject + don’t/doesn’t + adverb + basic form + rest</td><td>Lucy doesn’t usually eat in the canteen.</td></tr>
 </tbody>
 </table>
+</section>
+<section aria-labelledby="aof-ref-notbridge-title" class="aof-ref-card">
+<div class="aof-ref-kicker">Negativ-Brücke</div>
+<h2 id="aof-ref-notbridge-title">Bei Handlungsverben: not often / not usually heißt do/does + not + Häufigkeitswort</h2>
+<table class="aof-pattern-table">
+<thead><tr><th>Deutsch gemeint</th><th>Langform</th><th>Kurzform</th><th>Verbform</th></tr></thead>
+<tbody>
+<tr><td>ich spiele nicht oft</td><td>I do not often play.</td><td>I don’t often play.</td><td>play = Grundform</td></tr>
+<tr><td>ich gehe normalerweise nicht mit dem Hund Gassi</td><td>I do not usually walk my dog.</td><td>I don’t usually walk my dog.</td><td>walk = Grundform</td></tr>
+<tr><td>sie geht normalerweise nicht mit dem Hund Gassi</td><td>She does not usually walk her dog.</td><td>She doesn’t usually walk her dog.</td><td>walk = Grundform</td></tr>
+<tr><td>ich berühre nie Schlangen</td><td colspan="2">I never touch snakes.</td><td>never braucht kein don’t</td></tr>
+</tbody>
+</table>
+<p class="aof-ref-note is-warning">Merke: Bei <span class="past-code">doesn’t</span> steckt das s schon in <span class="past-code">does</span>. Das Vollverb bekommt kein zweites s.</p>
+<p class="aof-ref-note">Bei <span class="past-code">am / is / are</span> brauchst du kein <span class="past-code">do/does</span>: <span class="past-code">She is not usually late.</span> / <span class="past-code">They are not often at home.</span></p>
 </section>
 <section aria-labelledby="aof-ref-examples-title" class="aof-ref-card">
 <div class="aof-ref-kicker">Beispiele</div>
@@ -3051,6 +3183,14 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <span class="aof-ref-line is-right">She never eats fish.</span>
 <span class="aof-ref-line is-right">She doesn’t usually eat fish.</span>
 </article>
+<article class="aof-ref-mini is-danger">
+<h3>not often nicht allein setzen</h3>
+<span class="aof-ref-line is-wrong">I not often play football.</span>
+<span class="aof-ref-line is-right">I do not often play football.</span>
+<span class="aof-ref-line is-right">I don’t often play football.</span>
+<span class="aof-ref-line is-wrong">She doesn’t usually walks her dog.</span>
+<span class="aof-ref-line is-right">She doesn’t usually walk her dog.</span>
+</article>
 <article class="aof-ref-mini is-warning">
 <h3>usually doesn’t</h3>
 <span class="aof-ref-line is-right">Für diese Einheit sicher: Lucy doesn’t usually eat in the canteen.</span>
@@ -3071,9 +3211,9 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
 <div class="writecheck-panel" data-aof-writecheck="true">
 <div class="writecheck-intro">
 <h2>Schreib-Check: Häufigkeitswörter sicher setzen</h2>
-<p>Schreibe erst selbst. Prüfe dann das Verb-Signal und die Stelle des Häufigkeitswortes.</p>
+<p>Schreibe erst selbst. Prüfe dann das Verb-Signal, die Stelle des Häufigkeitswortes und bei not often / not usually die Brücke über do not / does not.</p>
 </div>
-<div class="writecheck-grid"><div class="writecheck-task" data-answers="Sam always goes to a club" data-help="Vollverb: goes. Das Häufigkeitswort steht vor dem Vollverb." data-review-id="aof-review-01" data-solution="Sam always goes to a club."><div class="writecheck-task-head"><span class="writecheck-task-num">1</span><span class="writecheck-skill">Adverb einsetzen</span></div><label class="writecheck-prompt" for="aof-review-01">Setze always richtig ein.</label><p class="writecheck-context">Sam goes to a club.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-01" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Sam always goes to a club on Thursdays" data-help="Vollverb-Signal: goes. Das Häufigkeitswort steht vor goes. Die Zeitangabe on Thursdays kommt ans Ende." data-review-id="aof-review-02" data-solution="Sam always goes to a club on Thursdays."><div class="writecheck-task-head"><span class="writecheck-task-num">2</span><span class="writecheck-skill">Wortsalat ordnen</span></div><label class="writecheck-prompt" for="aof-review-02">Ordne die Wörter zu einem richtigen Satz.</label><p class="writecheck-context">goes – always – Sam – on Thursdays – to a club</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-02" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Lucy doesn't usually eat in the canteen||Lucy does not usually eat in the canteen" data-help="Für diese Einheit gilt der sichere Schulweg: doesn’t usually + Grundform." data-review-id="aof-review-03" data-solution="Lucy doesn’t usually eat in the canteen."><div class="writecheck-task-head"><span class="writecheck-task-num">3</span><span class="writecheck-skill">Negativsatz</span></div><label class="writecheck-prompt" for="aof-review-03">Schreibe den Satz mit doesn’t usually.</label><p class="writecheck-context">Lucy / usually / not eat in the canteen</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-03" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="We often play cards" data-help="play cards bleibt zusammen. Das Häufigkeitswort steht vor play." data-review-id="aof-review-04" data-solution="We often play cards."><div class="writecheck-task-head"><span class="writecheck-task-num">4</span><span class="writecheck-skill">Objekt-Falle korrigieren</span></div><label class="writecheck-prompt" for="aof-review-04">Verbessere den Satz.</label><p class="writecheck-context">We play often cards.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-04" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Sam often tells silly jokes" data-help="Nur ein Häufigkeitswort. Vollverb-Signal: tells. often steht vor tells; silly jokes bleibt zusammen." data-review-id="aof-review-05" data-solution="Sam often tells silly jokes."><div class="writecheck-task-head"><span class="writecheck-task-num">5</span><span class="writecheck-skill">Doppeltes Adverb</span></div><label class="writecheck-prompt" for="aof-review-05">Verbessere den Satz nach dem sicheren Bauplan. Das Häufigkeitswort steht nur einmal.</label><p class="writecheck-context">Sam often tells often silly jokes.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-05" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="How often does Silky swim" data-help="Fragewort zuerst: How often. Bei Silky brauchst du does. In der Frage steht swim ohne s." data-review-id="aof-review-06" data-solution="How often does Silky swim?"><div class="writecheck-task-head"><span class="writecheck-task-num">6</span><span class="writecheck-skill">How often</span></div><label class="writecheck-prompt" for="aof-review-06">Schreibe die Frage.</label><p class="writecheck-context">Wie oft schwimmt Silky?</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-06" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="" data-help="Dein Satz braucht genau ein Häufigkeitswort und ein Verb. Beispiel-Bauplan: I often play football." data-open-check="own" data-review-id="aof-review-07" data-solution="Beispiel: I often play football."><div class="writecheck-task-head"><span class="writecheck-task-num">7</span><span class="writecheck-skill">Eigener Satz</span></div><label class="writecheck-prompt" for="aof-review-07">Schreibe einen eigenen Satz mit einem Häufigkeitswort.</label><p class="writecheck-context">Nutze: always, usually, often, sometimes oder never.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-07" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div></div>
+<div class="writecheck-grid"><div class="writecheck-task" data-answers="Sam always goes to a club" data-help="Vollverb: goes. Das Häufigkeitswort steht vor dem Vollverb." data-review-id="aof-review-01" data-solution="Sam always goes to a club."><div class="writecheck-task-head"><span class="writecheck-task-num">1</span><span class="writecheck-skill">Adverb einsetzen</span></div><label class="writecheck-prompt" for="aof-review-01">Setze always richtig ein.</label><p class="writecheck-context">Sam goes to a club.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-01" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Sam always goes to a club on Thursdays" data-help="Vollverb-Signal: goes. Das Häufigkeitswort steht vor goes. Die Zeitangabe on Thursdays kommt ans Ende." data-review-id="aof-review-02" data-solution="Sam always goes to a club on Thursdays."><div class="writecheck-task-head"><span class="writecheck-task-num">2</span><span class="writecheck-skill">Wortsalat ordnen</span></div><label class="writecheck-prompt" for="aof-review-02">Ordne die Wörter zu einem richtigen Satz.</label><p class="writecheck-context">goes – always – Sam – on Thursdays – to a club</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-02" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Lucy doesn't usually eat in the canteen||Lucy does not usually eat in the canteen" data-help="Bei einem Handlungsverb wird not usually im Simple Present mit does not usually gebaut. Kurzform: doesn’t usually. Danach bleibt eat Grundform." data-review-id="aof-review-03" data-solution="Lucy doesn’t usually eat in the canteen."><div class="writecheck-task-head"><span class="writecheck-task-num">3</span><span class="writecheck-skill">Negativsatz</span></div><label class="writecheck-prompt" for="aof-review-03">Schreibe den Satz mit doesn’t usually.</label><p class="writecheck-context">Lucy / usually / not eat in the canteen</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-03" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="I don't often play football||I do not often play football" data-help="Bei einem Handlungsverb: nicht oft → do not often → don’t often. Danach bleibt play Grundform." data-review-id="aof-review-neg-often" data-solution="I don’t often play football."><div class="writecheck-task-head"><span class="writecheck-task-num">4</span><span class="writecheck-skill">not often bauen</span></div><label class="writecheck-prompt" for="aof-review-neg-often">Schreibe den Satz mit not often.</label><p class="writecheck-context">I / not often / play football</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-neg-often" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="I don't often play football||I do not often play football" data-help="don’t ist die Kurzform von do not. Hier ist ausdrücklich die Kurzform gefragt: I don’t often play football." data-require-short="dont" data-review-id="aof-review-neg-short" data-solution="I don’t often play football."><div class="writecheck-task-head"><span class="writecheck-task-num">5</span><span class="writecheck-skill">Kurzform verstehen</span></div><label class="writecheck-prompt" for="aof-review-neg-short">Kürze die Langform.</label><p class="writecheck-context">I do not often play football.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-neg-short" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="She doesn't usually walk her dog||She does not usually walk her dog" data-help="Bei she brauchst du does not / doesn’t. Das s steckt in does, deshalb bleibt walk Grundform." data-review-id="aof-review-neg-base" data-solution="She doesn’t usually walk her dog."><div class="writecheck-task-head"><span class="writecheck-task-num">6</span><span class="writecheck-skill">doesn’t + Grundform</span></div><label class="writecheck-prompt" for="aof-review-neg-base">Verbessere den Satz.</label><p class="writecheck-context">She doesn’t usually walks her dog.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-neg-base" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="I never touch snakes" data-help="I bekommt im Simple Present keine s-Endung. never ist das Häufigkeitswort, danach kommt touch in der Grundform." data-review-id="aof-review-never-touch" data-solution="I never touch snakes."><div class="writecheck-task-head"><span class="writecheck-task-num">7</span><span class="writecheck-skill">never + Grundform</span></div><label class="writecheck-prompt" for="aof-review-never-touch">Verbessere den Satz.</label><p class="writecheck-context">I never touches snakes.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-never-touch" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="We often play cards" data-help="play cards bleibt zusammen. Das Häufigkeitswort steht vor play." data-review-id="aof-review-04" data-solution="We often play cards."><div class="writecheck-task-head"><span class="writecheck-task-num">8</span><span class="writecheck-skill">Objekt-Falle korrigieren</span></div><label class="writecheck-prompt" for="aof-review-04">Verbessere den Satz.</label><p class="writecheck-context">We play often cards.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-04" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="Sam often tells silly jokes" data-help="Nur ein Häufigkeitswort. Vollverb-Signal: tells. often steht vor tells; silly jokes bleibt zusammen." data-review-id="aof-review-05" data-solution="Sam often tells silly jokes."><div class="writecheck-task-head"><span class="writecheck-task-num">9</span><span class="writecheck-skill">Doppeltes Adverb</span></div><label class="writecheck-prompt" for="aof-review-05">Verbessere den Satz nach dem sicheren Bauplan. Das Häufigkeitswort steht nur einmal.</label><p class="writecheck-context">Sam often tells often silly jokes.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-05" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="How often does Silky swim" data-help="Fragewort zuerst: How often. Bei Silky brauchst du does. In der Frage steht swim ohne s." data-review-id="aof-review-06" data-solution="How often does Silky swim?"><div class="writecheck-task-head"><span class="writecheck-task-num">10</span><span class="writecheck-skill">How often</span></div><label class="writecheck-prompt" for="aof-review-06">Schreibe die Frage.</label><p class="writecheck-context">Wie oft schwimmt Silky?</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-06" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div><div class="writecheck-task" data-answers="" data-help="Dein Satz braucht genau ein Häufigkeitswort und ein Verb. Bei not often / not usually brauchst du don’t oder doesn’t. Bei never kein don’t." data-open-check="own" data-review-id="aof-review-07" data-solution="Beispiel: I often play football. Negativ-Beispiel: I don’t often play football."><div class="writecheck-task-head"><span class="writecheck-task-num">11</span><span class="writecheck-skill">Eigener Satz</span></div><label class="writecheck-prompt" for="aof-review-07">Schreibe einen eigenen Satz mit einem Häufigkeitswort.</label><p class="writecheck-context">Nutze: always, usually, often, sometimes oder never.</p><div class="writecheck-input-row"><input autocomplete="off" class="writecheck-input" id="aof-review-07" inputmode="text" type="text"/><button class="writecheck-btn" data-wc-check="" type="button">Prüfen</button><button class="writecheck-btn" data-wc-help="" type="button">Denkfrage</button><button class="writecheck-btn" data-wc-solution="" type="button">Lösung</button></div><div aria-live="polite" class="writecheck-feedback"></div></div></div>
 <div class="writecheck-actions">
 <button class="writecheck-check-all" data-wc-check-all="" type="button">Alle prüfen</button>
 <button class="writecheck-reset" data-wc-reset="" type="button">Zurücksetzen</button>
@@ -3291,6 +3431,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
         signalFind: selectedValue('[data-aof-signal-find]', 'data-aof-signal-find'),
         signalChoice: selectedValue('[data-aof-signal-choice]', 'data-aof-signal-choice'),
         howoftenChoice: selectedValue('[data-aof-howoften-choice]', 'data-aof-howoften-choice'),
+        contractChoice: selectedValue('[data-aof-contract-choice]', 'data-aof-contract-choice'),
         learnStatus: selectedValue('[data-aof-learn-status]', 'data-aof-learn-status'),
         self: []
       },
@@ -3355,6 +3496,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     setPressedGroup('[data-aof-signal-find]', 'data-aof-signal-find', state.pressed && state.pressed.signalFind ? state.pressed.signalFind : '');
     setPressedGroup('[data-aof-signal-choice]', 'data-aof-signal-choice', state.pressed && state.pressed.signalChoice ? state.pressed.signalChoice : '');
     setPressedGroup('[data-aof-howoften-choice]', 'data-aof-howoften-choice', state.pressed && state.pressed.howoftenChoice ? state.pressed.howoftenChoice : '');
+    setPressedGroup('[data-aof-contract-choice]', 'data-aof-contract-choice', state.pressed && state.pressed.contractChoice ? state.pressed.contractChoice : '');
     setPressedGroup('[data-aof-learn-status]', 'data-aof-learn-status', state.pressed && state.pressed.learnStatus ? state.pressed.learnStatus : '');
     qsa('[data-aof-self]').forEach(function(btn){
       var key = btn.getAttribute('data-aof-self') || btn.textContent.trim();
@@ -3409,6 +3551,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     setPressedGroup('[data-aof-signal-find]', 'data-aof-signal-find', '');
     setPressedGroup('[data-aof-signal-choice]', 'data-aof-signal-choice', '');
     setPressedGroup('[data-aof-howoften-choice]', 'data-aof-howoften-choice', '');
+    setPressedGroup('[data-aof-contract-choice]', 'data-aof-contract-choice', '');
     setPressedGroup('[data-aof-learn-status]', 'data-aof-learn-status', '');
     qsa('[data-aof-self]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); });
     var signalFindOut = document.getElementById('aof-signal-find-output');
@@ -3417,6 +3560,8 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     if(signalOut){ signalOut.innerHTML = '<p class="aof-output-kicker">Wähle ein Verb-Signal.</p><p class="aof-output-rule">Dann zeigt dir die Weiche, wo das Häufigkeitswort steht.</p>'; }
     var howOut = document.getElementById('aof-howoften-output');
     if(howOut){ howOut.innerHTML = '<p class="aof-output-kicker">Wähle eine Personengruppe.</p><p class="aof-output-rule">Dann siehst du die Frage und die Grundform-Falle.</p>'; }
+    var contractOut = document.getElementById('aof-contract-output');
+    if(contractOut){ contractOut.innerHTML = '<p class="aof-output-kicker">Wähle einen Satz.</p><p class="aof-output-rule">Dann siehst du Deutsch, Langform, Kurzform und die Verbform-Kontrolle.</p>'; }
     qsa('.aof-trap-card').forEach(function(card){
       card.classList.remove('is-correct','is-careful');
       qsa('[data-aof-trap-choice]', card).forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.classList.remove('is-correct','is-careful'); });
@@ -3473,7 +3618,8 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
   }
   function checkWriteTask(card){
     var input = card.querySelector('.writecheck-input');
-    var value = normaliseWrite(input ? input.value : '');
+    var rawValue = input ? String(input.value || '') : '';
+    var value = normaliseWrite(rawValue);
     var answers = writeAnswers(card);
     if(!value){
       setWriteFeedback(card, 'is-almost', 'Schreibe zuerst einen eigenen Satz.');
@@ -3487,8 +3633,24 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
       var adverbs = value.match(/\b(always|usually|often|sometimes|never)\b/g) || [];
       var words = value.split(' ').filter(Boolean);
       var hasDoubleNegative = /\b(do not|does not)\s+never\b/.test(value);
+      var hasINeverTouches = /\bi\s+never\s+touches\s+snakes\b/.test(value);
+      var hasDoesntVerbS = /\bdoes not\s+(always|usually|often|sometimes)\s+\w+(s|es)\b/.test(value);
       if(hasDoubleNegative){
         setWriteFeedback(card, 'is-wrong', 'Achtung: never ist schon negativ. Nicht: don’t/doesn’t never.');
+        card.setAttribute('data-wc-state','wrong');
+        saveAofWriteResult(card, 'wrong', value);
+        saveAofWriteSummary();
+        return false;
+      }
+      if(hasINeverTouches){
+        setWriteFeedback(card, 'is-wrong', 'Bei I bleibt das Verb Grundform: I never touch snakes. Nicht: touches.');
+        card.setAttribute('data-wc-state','wrong');
+        saveAofWriteResult(card, 'wrong', value);
+        saveAofWriteSummary();
+        return false;
+      }
+      if(hasDoesntVerbS){
+        setWriteFeedback(card, 'is-wrong', 'Nach doesn’t steht das Verb in der Grundform. Das s steckt schon in does.');
         card.setAttribute('data-wc-state','wrong');
         saveAofWriteResult(card, 'wrong', value);
         saveAofWriteSummary();
@@ -3511,6 +3673,13 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
       setWriteFeedback(card, 'is-wrong', card.getAttribute('data-help') || 'Schreibe einen ganzen Satz mit einem Häufigkeitswort.');
       card.setAttribute('data-wc-state','wrong');
       saveAofWriteResult(card, 'wrong', value);
+      saveAofWriteSummary();
+      return false;
+    }
+    if(card.getAttribute('data-require-short') && !/\b(don['’]t|doesn['’]t)\b/i.test(rawValue)){
+      setWriteFeedback(card, 'is-almost', 'Das ist die Langform. Hier ist die Kurzform gefragt: don’t oder doesn’t.');
+      card.setAttribute('data-wc-state','empty');
+      saveAofWriteResult(card, 'empty', value);
       saveAofWriteSummary();
       return false;
     }
@@ -3673,6 +3842,56 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
       if(output && data){ output.innerHTML = '<p class="aof-output-kicker">' + data.kicker + '</p><p class="aof-output-rule">' + data.rule + '</p>'; }
     });
   });
+
+  var contractData = {
+    'i-often': {
+      title:'I / not often / play football',
+      deutsch:'Ich spiele nicht oft Fußball.',
+      long:'I do not often play football.',
+      short:'I don’t often play football.',
+      check:'Nach don’t steht play in der Grundform.'
+    },
+    'she-usually': {
+      title:'she / not usually / walk her dog',
+      deutsch:'Sie geht normalerweise nicht mit dem Hund Gassi.',
+      long:'She does not usually walk her dog.',
+      short:'She doesn’t usually walk her dog.',
+      check:'Das s steckt in does. Deshalb bleibt walk Grundform.'
+    },
+    'i-never': {
+      title:'I / never / touch snakes',
+      deutsch:'Ich berühre nie Schlangen.',
+      long:'I never touch snakes.',
+      short:'Hier gibt es keine don’t-Kurzform, weil never schon negativ ist.',
+      check:'Bei I bleibt touch Grundform. Nicht: I never touches snakes.'
+    }
+  };
+  function renderContractOutput(key){
+    var output = document.getElementById('aof-contract-output');
+    if(!output) return;
+    var data = contractData[key];
+    if(!data){
+      output.innerHTML = '<p class="aof-output-kicker">Wähle einen Satz.</p><p class="aof-output-rule">Dann siehst du Deutsch, Langform, Kurzform und die Verbform-Kontrolle.</p>';
+      return;
+    }
+    output.innerHTML = '<p class="aof-output-kicker">' + data.title + '</p>' +
+      '<div class="aof-contract-flow">' +
+      '<div class="aof-contract-line"><span class="aof-contract-label">Deutsch</span><span>' + data.deutsch + '</span></div>' +
+      '<div class="aof-contract-line"><span class="aof-contract-label">Langform</span><span>' + data.long + '</span></div>' +
+      '<div class="aof-contract-line"><span class="aof-contract-label">Kurzform</span><span>' + data.short + '</span></div>' +
+      '<div class="aof-contract-line"><span class="aof-contract-label">Kontrolle</span><span>' + data.check + '</span></div>' +
+      '</div><p class="aof-contract-note">Prüffrage: Bei einem Handlungsverb: Brauche ich do not / does not oder reicht never?</p>';
+  }
+  qsa('[data-aof-contract-choice]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var wasPressed = btn.getAttribute('aria-pressed') === 'true';
+      qsa('[data-aof-contract-choice]').forEach(function(other){ other.setAttribute('aria-pressed','false'); });
+      if(wasPressed){ renderContractOutput(''); return; }
+      btn.setAttribute('aria-pressed','true');
+      renderContractOutput(btn.getAttribute('data-aof-contract-choice'));
+    });
+  });
+
   var howOftenData = {
     do: {
       kicker:'you / I / we / they → do',
@@ -3688,6 +3907,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     var find = state.pressed.signalFind;
     var signal = state.pressed.signalChoice;
     var how = state.pressed.howoftenChoice;
+    var contract = state.pressed.contractChoice;
     var output;
     if(find){
       output = document.getElementById('aof-signal-find-output');
@@ -3701,6 +3921,7 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
       output = document.getElementById('aof-howoften-output');
       if(output && howOftenData[how]){ output.innerHTML = '<p class="aof-output-kicker">' + howOftenData[how].kicker + '</p><p class="aof-output-rule">' + howOftenData[how].rule + '</p>'; }
     }
+    if(contract){ renderContractOutput(contract); }
     updateSelfCheck();
   }
   qsa('[data-aof-howoften-choice]').forEach(function(btn){
@@ -3722,6 +3943,9 @@ body.hausaufgaben-mode #ha-btn{background:#1d4ed8;border-color:#1d4ed8;color:#ff
     fullverb: { good:'Richtig. Bei plays ist das Häufigkeitswort davor: always plays.', careful:'Noch nicht. Bei einem Vollverb steht das Häufigkeitswort vor dem Verb.' },
     be: { good:'Richtig. Bei is steht das Häufigkeitswort danach: is always.', careful:'Noch nicht. Bei am / is / are steht das Häufigkeitswort nach be.' },
     negative: { good:'Richtig. Für diese Einheit ist doesn’t usually die sichere Schulform: doesn’t usually + Grundform.', careful:'Nicht als falsch abspeichern: Usually doesn’t kann später vorkommen. Jetzt üben wir den sicheren Schulweg: doesn’t usually + Grundform.' },
+    notbridge: { good:'Richtig. not often wird mit do not often gebaut und dann zu don’t often gekürzt.', careful:'Noch nicht. Im Simple Present steht not nicht allein vor often. Baue: do not often → don’t often.' },
+    baseform: { good:'Richtig. Bei doesn’t steckt das s schon in does. Das Verb bleibt walk.', careful:'Noch nicht. Nach doesn’t kommt die Grundform: walk, nicht walks.' },
+    neveri: { good:'Richtig. Bei I bleibt das Verb Grundform: I never touch snakes.', careful:'Noch nicht. I bekommt kein s am Verb. Außerdem ist never schon negativ.' },
     object: { good:'Richtig. Often steht vor der Verbgruppe: often play cards.', careful:'Noch nicht. Im Englischen trennst du play cards nicht mit often.' }
   };
   qsa('.aof-trap-card').forEach(function(card){

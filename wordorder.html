@@ -166,6 +166,26 @@ body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
 .adv-score{font-family:var(--font-head);font-weight:400;font-size:.85rem;color:var(--gray-600);text-align:center}
 .adv-counter{font-family:var(--font-head);font-size:.82rem;font-weight:400;color:var(--gray-500);text-align:center;margin-bottom:10px}
 
+
+
+/* WORDORDER DOES-MASCHINE: starkes visuelles Denkwerkzeug für does/doesn't */
+.wo-does-machine{margin:18px 0;padding:16px;border:1px solid rgba(147,197,253,.9);border-radius:18px;background:linear-gradient(135deg,#fff,#eff6ff);box-shadow:var(--shadow-sm);display:grid;gap:13px}
+.wo-does-title{margin:0;font-family:var(--font-head);font-weight:400;font-size:1rem;color:var(--blue-dark)}
+.wo-does-intro{margin:0;color:var(--gray-700);font-size:.9rem;line-height:1.5}
+.wo-does-paths{display:grid;gap:11px}
+.wo-does-path{padding:12px;border:1px solid var(--wo-card-border, var(--gray-200));border-radius:14px;background:rgba(255,255,255,.95);display:grid;gap:8px}
+.wo-does-path-title{margin:0;font-family:var(--font-head);font-weight:400;font-size:.86rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.05em}
+.wo-does-track{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.wo-does-box{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 10px;border-radius:12px;border:1px solid #bfdbfe;background:#fff;color:var(--gray-800);font-family:var(--font-head);font-size:.88rem;line-height:1.25;text-align:center}
+.wo-does-box-key{border-color:#60a5fa;background:#dbeafe;color:#1e40af}
+.wo-does-box-neg{border-color:#fca5a5;background:#fef2f2;color:#991b1b}
+.wo-does-box-verb{border-color:#86efac;background:#f0fdf4;color:#166534}
+.wo-does-arrow{color:var(--gray-400);font-size:1rem}
+.wo-does-example{margin:0;padding:8px 10px;border-radius:12px;background:var(--green-soft);color:var(--green-dark);font-family:var(--font-head);font-size:.88rem;line-height:1.45}
+.wo-does-warning{margin:0;padding:9px 11px;border-radius:12px;border:1px solid #fde68a;background:#fffbeb;color:#92400e;font-size:.87rem;line-height:1.45}
+.wo-does-warning em{font-style:normal;color:#7c2d12}
+@media(max-width:700px){.wo-does-track{display:grid;grid-template-columns:1fr}.wo-does-arrow{display:none}.wo-does-box{justify-content:flex-start}}
+
 /* TABELLEN */
 table{width:100%;border-collapse:collapse;font-size:.88rem;border:var(--line);border-radius:var(--radius-sm);overflow:hidden}
 th,td{padding:8px 11px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:middle}
@@ -431,18 +451,7 @@ body.hausaufgaben-mode .ha-btn{background:var(--green);color:#fff;border-color:v
 .wo-can-options{display:grid;gap:7px}
 .wo-can-option{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font-size:.87rem;cursor:pointer}
 .wo-can-option input{margin-top:3px;accent-color:var(--green)}
-.wo-can-option.is-selected{border-color:#93c5fd;background:#eff6ff;color:var(--blue-dark)}
-.wo-can-option.is-correct{border-color:#86efac;background:#f0fdf4;color:#166534}
-.wo-can-option.is-wrong{border-color:#fca5a5;background:#fef2f2;color:#991b1b}
-.wo-can-feedback{display:none;padding:9px 11px;border-radius:var(--radius-sm);font-size:.87rem;line-height:1.45;border:1px solid var(--gray-200);background:#fff;color:var(--gray-700)}
-.wo-can-feedback.is-visible{display:block}
-.wo-can-feedback.is-correct{border-color:#86efac;background:#f0fdf4;color:#166534}
-.wo-can-feedback.is-wrong{border-color:#fca5a5;background:#fef2f2;color:#991b1b}
-.wo-can-feedback.is-empty{border-color:#fde68a;background:#fffbeb;color:#92400e}
-.wo-can-btn{justify-self:start;padding:8px 13px;border-radius:999px;border:1px solid #bbf7d0;background:var(--green-soft);color:var(--green-dark);font-family:var(--font-head);font-weight:400;font-size:.84rem;cursor:pointer;transition:all .18s}
-.wo-can-btn:hover{background:var(--green);border-color:var(--green);color:#fff}
 .wo-can-reveal{border:var(--line);border-radius:var(--radius-sm);background:#fff;overflow:hidden}
-.wo-can-card:not(.is-checked) .wo-can-reveal{display:none}
 .wo-can-reveal summary{cursor:pointer;padding:9px 11px;font-family:var(--font-head);font-weight:400;color:var(--green-dark);font-size:.86rem}
 .wo-can-reveal div{padding:0 11px 10px;font-size:.86rem;color:var(--gray-700);line-height:1.5}
 .wo-can-sentence{width:100%;padding:9px 11px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font:inherit;font-size:.88rem;color:var(--gray-800)}
@@ -1062,6 +1071,30 @@ body{background:#e7eef4!important;}
 </div>
 </div>
 <div class="wo-learn-linkline">Passt dazu: <a href="simplepresent.html#lernen">Simple Present öffnen</a> — dort geht es um Routinen wie <em>On Mondays she plays football.</em></div>
+
+<div class="wo-does-machine" aria-label="Does-Maschine für Fragen und Verneinungen">
+<p class="wo-does-title">⚙️ Does-Maschine — wenn does oder doesn’t im Satz steht</p>
+<p class="wo-does-intro">Bei diesen Aufgaben entscheidet nicht dein Gefühl. Du schickst die Wörter durch eine feste Maschine. Nach <em>does</em> oder <em>doesn’t</em> kommt das Verb immer in der Grundform.</p>
+<div class="wo-does-paths">
+<section class="wo-does-path">
+<p class="wo-does-path-title">Ja/Nein-Frage</p>
+<div class="wo-does-track"><span class="wo-does-box wo-does-box-key">Does</span><span class="wo-does-arrow">→</span><span class="wo-does-box">Person</span><span class="wo-does-arrow">→</span><span class="wo-does-box wo-does-box-verb">Verb ohne s</span><span class="wo-does-arrow">→</span><span class="wo-does-box">Rest?</span></div>
+<p class="wo-does-example">Does Silky have crabs for breakfast?</p>
+</section>
+<section class="wo-does-path">
+<p class="wo-does-path-title">W-Frage</p>
+<div class="wo-does-track"><span class="wo-does-box wo-does-box-key">Where / What / How often</span><span class="wo-does-arrow">→</span><span class="wo-does-box wo-does-box-key">does</span><span class="wo-does-arrow">→</span><span class="wo-does-box">Person</span><span class="wo-does-arrow">→</span><span class="wo-does-box wo-does-box-verb">Verb ohne s</span><span class="wo-does-arrow">→</span><span class="wo-does-box">Rest?</span></div>
+<p class="wo-does-example">Where does Silky swim with her friends?</p>
+</section>
+<section class="wo-does-path">
+<p class="wo-does-path-title">Verneinung</p>
+<div class="wo-does-track"><span class="wo-does-box">Person</span><span class="wo-does-arrow">→</span><span class="wo-does-box wo-does-box-neg">doesn’t</span><span class="wo-does-arrow">→</span><span class="wo-does-box wo-does-box-verb">Verb ohne s</span><span class="wo-does-arrow">→</span><span class="wo-does-box">Rest.</span></div>
+<p class="wo-does-example">Silky doesn’t usually swim in the Lido pool.</p>
+</section>
+</div>
+<p class="wo-does-warning">Denkfalle: <em>does</em> trägt schon das <em>-s</em>. Darum heißt es: <em>Does Silky have ...?</em> und nicht <em>Does Silky has ...?</em></p>
+</div>
+
 </div>
 <!-- Schritt 2: Baukasten -->
 <div class="learn-panel" data-panel="wo-learn" data-val="baukasten" id="wo-learn-baukasten-panel">
@@ -1114,7 +1147,6 @@ body{background:#e7eef4!important;}
 <button class="adv-btn" data-wo-adverb-choice="A" id="adv-btn-a" type="button">Antwort A laden…</button>
 <button class="adv-btn" data-wo-adverb-choice="B" id="adv-btn-b" type="button">Antwort B laden…</button>
 </div>
-<div class="bk-controls wo-style-020"><button class="bk-btn bk-btn-nav" data-wo-action="next-adverb" id="adv-next-btn" type="button">Nächste Entscheidung →</button></div>
 <p class="adv-score">Bearbeitet: <span id="adv-score">0 bearbeitet</span></p>
 </div>
 <details class="wo-style-023">
@@ -1127,7 +1159,7 @@ body{background:#e7eef4!important;}
 <!-- Schritt 5: Kann ich's? -->
 <div class="learn-panel" data-panel="wo-learn" data-val="check" id="wo-learn-check-panel">
 <div class="wo-can-shell">
-<div class="wo-can-intro">✅ Prüfe nicht nur, ob du die Regel gelesen hast. Prüfe, ob du sie anwenden kannst: Reihenfolge erkennen, Fehler finden, Satz reparieren und die Regel erklären.</div>
+<div class="wo-can-intro">✅ Prüfe, ob du die Word-Order wirklich anwenden kannst: normale Aussage, Zeit-vorne-Falle, Häufigkeitswort und die neue Does-Maschine.</div>
 <div class="wo-can-grid">
 <section class="wo-can-card" data-wo-can-task="can-order-1" data-answer="a">
 <h3 class="wo-can-card-title">1. Satz-Zug erkennen</h3>
@@ -1156,64 +1188,50 @@ body{background:#e7eef4!important;}
 <section class="wo-can-card" data-wo-can-task="can-repair-1" data-answer="i go to school tomorrow">
 <h3 class="wo-can-card-title">3. Satz reparieren</h3>
 <p class="wo-can-task">Falsch: <em>I go tomorrow to school.</em><br/>Schreibe den Satz nach der Schulregel Ort vor Zeit.</p>
-<input aria-label="Richtigen Satz eintippen" class="wo-can-sentence" data-wo-can-input="can-repair-1" placeholder="I go ... ?" type="text" autocomplete="off" spellcheck="false"/>
+<input aria-label="Richtigen Satz eintippen" class="wo-can-sentence" placeholder="Satz eintippen" type="text"/>
 <button class="wo-can-btn" data-wo-can-check="can-repair-1" type="button">Antwort prüfen</button>
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-repair-1"></div>
-<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>I go to school tomorrow.</em> Ort kommt vor Zeit: to school vor tomorrow.</div></details>
+<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>I go to school tomorrow.</em> Ort kommt vor Zeit: <em>to school</em> vor <em>tomorrow</em>.</div></details>
 </section>
-<section class="wo-can-card" data-wo-can-task="can-adverb-1" data-answer="b">
+<section class="wo-can-card" data-wo-can-task="can-adverb-1" data-answer="a">
 <h3 class="wo-can-card-title">4. Häufigkeitswort entscheiden</h3>
-<p class="wo-can-task">Welche Regel passt zu <em>She always plays tennis.</em>?</p>
-<div aria-label="Regel zum Häufigkeitswort auswählen" class="wo-can-options">
-<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="a"/> <em>always</em> steht am Satzende: <em>She plays tennis always.</em></label>
-<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="b"/> Bei normalen Verben steht <em>always</em> vor dem Verb: <em>She always plays tennis.</em></label>
-<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="c"/> Bei normalen Verben steht <em>always</em> nach dem Verb: <em>She plays always tennis.</em></label>
+<p class="wo-can-task">Welcher Satz folgt der Schulregel?</p>
+<div aria-label="Adverb-Stellung auswählen" class="wo-can-options">
+<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="a"/> She always plays tennis.</label>
+<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="b"/> She plays always tennis.</label>
+<label class="wo-can-option"><input name="wo-can-adverb-1" type="radio" value="c"/> She plays tennis always.</label>
 </div>
 <button class="wo-can-btn" data-wo-can-check="can-adverb-1" type="button">Antwort prüfen</button>
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-adverb-1"></div>
-<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es direkt nach am, is oder are: <em>She is always late.</em></div></details>
-</section></div>
+<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb: <em>She always plays tennis.</em></div></details>
+</section>
+<section class="wo-can-card" data-wo-can-task="can-does-q" data-answer="does silky have crabs for breakfast">
+<h3 class="wo-can-card-title">5. Does-Frage bauen</h3>
+<p class="wo-can-task">Bausteine: <em>crabs / have / Silky / Does / for breakfast?</em></p>
+<input aria-label="Does-Frage eintippen" class="wo-can-sentence" placeholder="Frage eintippen" type="text"/>
+<button class="wo-can-btn" data-wo-can-check="can-does-q" type="button">Antwort prüfen</button>
+<div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-does-q"></div>
+<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>Does Silky have crabs for breakfast?</em> Does steht vorne. Danach kommt die Person und dann das Verb ohne <em>-s</em>.</div></details>
+</section>
+<section class="wo-can-card wo-can-card-trap" data-wo-can-task="can-does-neg" data-answer="silky doesnt usually swim in the lido pool">
+<h3 class="wo-can-card-title">6. Doesn’t-Satz bauen</h3>
+<p class="wo-can-task">Bausteine: <em>usually / doesn’t / in the Lido pool / Silky / swim</em></p>
+<input aria-label="Doesn't-Satz eintippen" class="wo-can-sentence" placeholder="Satz eintippen" type="text"/>
+<button class="wo-can-btn" data-wo-can-check="can-does-neg" type="button">Antwort prüfen</button>
+<div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-does-neg"></div>
+<details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>Silky doesn’t usually swim in the Lido pool.</em> Nach <em>doesn’t</em> steht <em>swim</em>, nicht <em>swims</em>.</div></details>
+</section>
+</div>
 <section class="wo-can-final wo-can-explain">
-<h3 class="wo-can-card-title">5. Kann ich es erklären?</h3>
+<h3 class="wo-can-card-title">7. Kann ich es erklären?</h3>
 <p class="wo-can-task">Erklären ist der härtere Test. Schreibe die Regel kurz in eigenen Worten und nutze ein Beispiel.</p>
 <div class="wo-can-grid">
-<article class="wo-can-card">
-<h4 class="wo-can-card-title">A. Erkläre den Satz-Zug</h4>
-<p class="wo-can-task">Warum heißt es <em>She plays tennis in the garden on Saturdays.</em>?</p>
-<textarea aria-label="Erklärung zum Satz-Zug" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
-<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Im englischen Aussagesatz kommt zuerst das Subjekt, dann das Verb, dann die Sache. Danach kommt der Ort und zuletzt die Zeit.</div></details>
-</article>
-<article class="wo-can-card wo-can-card-trap">
-<h4 class="wo-can-card-title">B. Erkläre die Zeit-vorne-Falle</h4>
-<p class="wo-can-task">Warum heißt es <em>On Mondays she plays football.</em> und nicht <em>On Mondays plays she football.</em>?</p>
-<textarea aria-label="Erklärung zur Zeit-vorne-Falle" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
-<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Wenn eine Zeitangabe vorne steht, bleibt im Englischen das Subjekt direkt danach. Das Verb wandert nicht vor das Subjekt.</div></details>
-</article>
-<article class="wo-can-card">
-<h4 class="wo-can-card-title">C. Erkläre die Adverb-Regel</h4>
-<p class="wo-can-task">Warum heißt es <em>She often plays</em>, aber <em>She is often late</em>?</p>
-<textarea aria-label="Erklärung zur Adverb-Regel" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea>
-<details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es nach am, is oder are.</div></details>
-</article>
+<article class="wo-can-card"><h4 class="wo-can-card-title">A. Erkläre den Satz-Zug</h4><p class="wo-can-task">Warum heißt es <em>She plays tennis in the garden on Saturdays.</em>?</p><textarea aria-label="Erklärung zum Satz-Zug" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Im englischen Aussagesatz kommt zuerst das Subjekt, dann das Verb, dann die Sache. Danach kommt der Ort und zuletzt die Zeit.</div></details></article>
+<article class="wo-can-card wo-can-card-trap"><h4 class="wo-can-card-title">B. Erkläre die Does-Maschine</h4><p class="wo-can-task">Warum heißt es <em>Does Silky have ...?</em> und nicht <em>Does Silky has ...?</em>?</p><textarea aria-label="Erklärung zur Does-Maschine" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div><em>Does</em> trägt schon das <em>-s</em>. Darum bleibt das Vollverb in der Grundform: <em>have</em>, <em>swim</em>, <em>read</em>.</div></details></article>
+<article class="wo-can-card"><h4 class="wo-can-card-title">C. Erkläre die Adverb-Regel</h4><p class="wo-can-task">Warum heißt es <em>She often plays</em>, aber <em>She is often late</em>?</p><textarea aria-label="Erklärung zur Adverb-Regel" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es nach am, is oder are.</div></details></article>
 </div>
-<div class="wo-can-explain-check">
-<p class="wo-can-task"><span aria-hidden="true">🎯</span> Fertig bist du erst, wenn du diese drei Sätze erklären kannst:</p>
-<ol class="wo-can-explain-list">
-<li>Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</li>
-<li>Zeit vorne ist möglich, aber nur ohne deutsche Verb-Umstellung.</li>
-<li>Häufigkeitswörter stehen vor normalen Verben, aber nach to be.</li>
-</ol>
-</div>
-<section aria-labelledby="wo-can-status-title" class="wo-can-status">
-<h3 class="wo-can-status-title" id="wo-can-status-title">Wie sicher bin ich mit Word Order?</h3>
-<p class="wo-can-status-note">Wähle ehrlich aus. Das ist keine Note, sondern dein nächster Lernstand.</p>
-<div class="wo-can-status-options">
-<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="sicher"/> Sicher — ich kann es erklären und anwenden.</label>
-<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="fast-sicher"/> Fast sicher — ich brauche noch einzelne Beispiele.</label>
-<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="nochmal-pruefen"/> Nochmal prüfen — ich verwechsle noch etwas.</label>
-<label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="offen"/> Offen — ich brauche dazu noch Hilfe.</label>
-</div>
-</section>
+<div class="wo-can-explain-check"><p class="wo-can-task"><span aria-hidden="true">🎯</span> Fertig bist du erst, wenn du diese vier Muster erklären kannst:</p><ol class="wo-can-explain-list"><li>Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</li><li>Zeit vorne ist möglich, aber nur ohne deutsche Verb-Umstellung.</li><li>Does + Person + Verb ohne s + Rest?</li><li>Person + doesn’t + Verb ohne s + Rest.</li></ol></div>
+<section aria-labelledby="wo-can-status-title" class="wo-can-status"><h3 class="wo-can-status-title" id="wo-can-status-title">Wie sicher bin ich mit Word Order?</h3><p class="wo-can-status-note">Wähle ehrlich aus. Das ist keine Note, sondern dein nächster Lernstand.</p><div class="wo-can-status-options"><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="sicher"/> Sicher — ich kann es erklären und anwenden.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="fast-sicher"/> Fast sicher — ich brauche noch einzelne Beispiele.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="nochmal-pruefen"/> Nochmal prüfen — ich verwechsle noch etwas.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="offen"/> Offen — ich brauche dazu noch Hilfe.</label></div></section>
 </section>
 </div>
 </div>
@@ -1275,6 +1293,7 @@ body{background:#e7eef4!important;}
 </div>
 <div class="wo-ref-line">Merkhilfe: Wer macht was — wen oder was — wo — wann?</div>
 <div class="wo-ref-line">Häufigkeitswörter: normales Verb → davor; to be → danach.</div>
+<div class="wo-ref-line">Does-Maschine: Does + Person + Verb ohne s? · Person + doesn’t + Verb ohne s.</div>
 </section>
 <section class="wo-ref-section wo-ref-patterns wo-homework-keep">
 <p class="wo-ref-title">2. Satzmuster</p>
@@ -1285,6 +1304,8 @@ body{background:#e7eef4!important;}
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Normales Verb</span>She always plays tennis.</div>
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">to be</span>She is always late.</div>
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Frage</span>Where does she play tennis?</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Does-Frage</span>Does Silky have crabs for breakfast?</div>
+<div class="wo-ref-mini"><span class="wo-ref-mini-title">Doesn’t</span>Silky doesn’t usually swim in the Lido pool.</div>
 </div>
 <div class="wo-ref-long wo-homework-hide">
 <p class="wo-ref-title">Lange Übersicht: Satz-Zug</p>
@@ -1384,13 +1405,11 @@ body{background:#e7eef4!important;}
 </div>
 <div class="writecheck-grid" id="writecheck-tasks">
 <article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-01" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / Hanna / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen englischen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-02" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">every Friday / football / I / at school / play</p><p class="writecheck-prompt">Schreibe den vollständigen Satz. Achte auf Ort und Zeit.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-02" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">every Friday / football / at school / I play</p><p class="writecheck-prompt">Schreibe den vollständigen Satz. Achte auf Ort vor Zeit.</p></article>
 <article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-03" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">football / plays / she / On Mondays</p><p class="writecheck-prompt">Schreibe den Satz mit der Zeitangabe vorne.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-04" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / plays / always / She</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-05" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-05"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 5</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">late / often / He / is</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-06" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / she / Where / play / does ?</p><p class="writecheck-prompt">Schreibe die Frage in der richtigen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-07" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / does / How often / play / she ?</p><p class="writecheck-prompt">Schreibe die How often-Frage in der richtigen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-08" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-08"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 8</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">Fehlersatz: On Mondays plays she football.</p><p class="writecheck-prompt">Verbessere den Fehler und schreibe den richtigen Satz.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-04" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / always / She / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-06" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span><span class="writecheck-skill">Does-Frage</span></div><p class="writecheck-context">crabs / have / Silky / Does / for breakfast?</p><p class="writecheck-prompt">Baue die Ja/Nein-Frage mit does.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-07" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span><span class="writecheck-skill">Where-Frage</span></div><p class="writecheck-context">does / where / with her friends / Silky / swim?</p><p class="writecheck-prompt">Baue die Where-Frage.</p></article>
 </div>
 <div class="writecheck-actions">
 <button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
@@ -1642,56 +1661,17 @@ body{background:#e7eef4!important;}
      FEHLER-ERKENNER
   ══════════════════════════════════════ */
   var ERROR_TASKS = [
-    {
-      sentence: ['I', 'play', 'always', 'football', 'at school.'],
-      wrongIdx: 2,
-      rule: '"always" muss VOR dem Verb stehen: I always play football at school.',
-      correct: 'I always play football at school.'
-    },
-    {
-      sentence: ['She', 'is', 'late', 'always.'],
-      wrongIdx: 3,
-      rule: 'Nach to be kommt das Adverb DANACH: She is always late.',
-      correct: 'She is always late.'
-    },
-    {
-      sentence: ['On Mondays', 'plays', 'she', 'football.'],
-      wrongIdx: 1,
-      rule: 'Kein Verb-Inversion nach Zeitangabe! Richtig: On Mondays she plays football.',
-      correct: 'On Mondays she plays football.'
-    },
-    {
-      sentence: ['I', 'go', 'tomorrow', 'to school.'],
-      wrongIdx: 2,
-      rule: 'Für unsere Schulregel gilt: Ort vor Zeit. Richtig: I go to school tomorrow.',
-      correct: 'I go to school tomorrow.'
-    },
-    {
-      sentence: ['Never', 'I', 'eat', 'fish.'],
-      wrongIdx: 0,
-      rule: 'Für diesen Klasse-5-Satz steht never vor dem normalen Verb: I never eat fish.',
-      correct: 'I never eat fish.'
-    },
-    {
-      sentence: ['She', 'tennis', 'plays', 'every Friday.'],
-      wrongIdx: 1,
-      rule: 'Im englischen Aussagesatz kommt erst die Person, dann das Verb, dann die Sache: She plays tennis every Friday.',
-      correct: 'She plays tennis every Friday.'
-    },
-    {
-      sentence: ['How often', 'she', 'does', 'play', 'tennis?'],
-      wrongIdx: 1,
-      rule: 'In einer How often-Frage kommt do/does vor die Person: How often does she play tennis?',
-      correct: 'How often does she play tennis?'
-    },
-    {
-      sentence: ['Always', 'she', 'is', 'happy.'],
-      wrongIdx: 0,
-      rule: 'Adverb of frequency kommt nach to be: She is always happy.',
-      correct: 'She is always happy.'
-    }
+    {sentence:['I','play','always','football','at school.'],wrongIdx:2,rule:'"always" muss vor dem normalen Verb stehen: I always play football at school.',correct:'I always play football at school.'},
+    {sentence:['She','is','late','always.'],wrongIdx:3,rule:'Nach to be kommt das Adverb danach: She is always late.',correct:'She is always late.'},
+    {sentence:['On Mondays','plays','she','football.'],wrongIdx:1,rule:'Keine deutsche Verb-Umstellung nach Zeitangabe. Richtig: On Mondays she plays football.',correct:'On Mondays she plays football.'},
+    {sentence:['I','go','tomorrow','to school.'],wrongIdx:2,rule:'Ort vor Zeit. Richtig: I go to school tomorrow.',correct:'I go to school tomorrow.'},
+    {sentence:['Does','Silky','has','crabs','for breakfast?'],wrongIdx:2,rule:'Nach does steht das Verb in der Grundform: Does Silky have crabs for breakfast?',correct:'Does Silky have crabs for breakfast?'},
+    {sentence:['Where','Silky','does','swim','with her friends?'],wrongIdx:1,rule:'W-Frage: Fragewort → does → Person → Verb. Richtig: Where does Silky swim with her friends?',correct:'Where does Silky swim with her friends?'},
+    {sentence:['Silky','doesn’t','swims','in the Lido pool.'],wrongIdx:2,rule:'Nach doesn’t steht die Grundform: Silky doesn’t swim in the Lido pool.',correct:'Silky doesn’t swim in the Lido pool.'},
+    {sentence:['What','Morph','does','read?'],wrongIdx:1,rule:'W-Frage: What → does → Person → Verb. Richtig: What does Morph read?',correct:'What does Morph read?'},
+    {sentence:['She','tennis','plays','every Friday.'],wrongIdx:1,rule:'Erst Person, dann Verb, dann Sache: She plays tennis every Friday.',correct:'She plays tennis every Friday.'},
+    {sentence:['How often','she','does','play','tennis?'],wrongIdx:1,rule:'How often-Frage: How often → does → Person → Verb. Richtig: How often does she play tennis?',correct:'How often does she play tennis?'}
   ];
-
   var errIdx = 0;
   var errShuffled = ERROR_TASKS.slice();
   (function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}})(errShuffled);
@@ -1811,27 +1791,21 @@ body{background:#e7eef4!important;}
     var sc   = document.getElementById('adv-score');
     if (sent) sent.textContent = task.sentence;
     if (adv)  adv.textContent = task.adverb;
-    advAnsweredCurrent = false;
-    if (btnA) { btnA.textContent = task.posA; btnA.classList.remove('adv-btn-right','adv-btn-wrong'); btnA.disabled = false; }
-    if (btnB) { btnB.textContent = task.posB; btnB.classList.remove('adv-btn-right','adv-btn-wrong'); btnB.disabled = false; }
-    if (fb)   { fb.className = 'adv-feedback'; fb.textContent = ''; }
+    if (btnA) { btnA.textContent = task.posA; btnA.classList.remove('adv-btn-right','adv-btn-wrong'); }
+    if (btnB) { btnB.textContent = task.posB; btnB.classList.remove('adv-btn-right','adv-btn-wrong'); }
+    if (fb)   fb.className = 'adv-feedback';
     if (ctr)  ctr.textContent = (advIdx % advShuffled.length + 1) + ' / ' + advShuffled.length;
     if (sc)   sc.textContent = advTotal + ' bearbeitet';
   }
 
-  var advAnsweredCurrent = false;
   window.answerAdverb = function(choice) {
-    if (advAnsweredCurrent) return;
     var task = advShuffled[advIdx % advShuffled.length];
     var fb   = document.getElementById('adv-feedback');
     var btnA = document.getElementById('adv-btn-a');
     var btnB = document.getElementById('adv-btn-b');
     var sc   = document.getElementById('adv-score');
     advTotal++;
-    advAnsweredCurrent = true;
     var ok = (choice === task.correct);
-    if (btnA) btnA.disabled = true;
-    if (btnB) btnB.disabled = true;
     if (ok) {
       advScore++;
       var btn = choice==='A' ? btnA : btnB;
@@ -1845,27 +1819,26 @@ body{background:#e7eef4!important;}
       if (fb) { fb.className='adv-feedback is-error'; fb.textContent = 'Noch nicht. ' + task.rule; }
     }
     if (sc) sc.textContent = advTotal + ' bearbeitet';
-  };
-
-  window.nextAdverbTask = function() {
-    advIdx = (advIdx + 1) % advShuffled.length;
-    advAnsweredCurrent = false;
-    showAdvTask();
+    advIdx++;
+    setTimeout(function(){ showAdvTask(); }, 1400);
   };
 
 
   /* ── Schreib-Check Word Order ── */
   var WRITE_TASKS = [
-    {id:'wo-wc-01',reviewId:'wo-wc-01',reviewLabel:'Subject · Verb · Object',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'svo',skillLabel:'Subject · Verb · Object',context:'tennis / Hanna / plays',prompt:'Schreibe den Satz in der richtigen englischen Reihenfolge.',accepted:['Hanna plays tennis.'],canonical:'Hanna plays tennis.',correct:'Richtig. Im englischen Aussagesatz kommt zuerst die Person, dann das Verb, dann die Sache.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-02',reviewId:'wo-wc-02',reviewLabel:'Ort vor Zeit',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'place-time',skillLabel:'Ort vor Zeit',context:'every Friday / football / I / at school / play',prompt:'Schreibe den vollständigen Satz. Achte auf Ort und Zeit.',accepted:['I play football at school every Friday.'],canonical:'I play football at school every Friday.',correct:'Richtig. In unseren Klasse-5-Standardsätzen kommt der Ort vor der Zeit.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-03',reviewId:'wo-wc-03',reviewLabel:'Zeit vorne',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front',skillLabel:'Zeit vorne',context:'football / plays / she / On Mondays',prompt:'Schreibe den Satz mit der Zeitangabe vorne.',accepted:['On Mondays she plays football.'],canonical:'On Mondays she plays football.',correct:'Richtig. Auch mit Zeit vorne bleibt she direkt vor dem Verb.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-04',reviewId:'wo-wc-04',reviewLabel:'Häufigkeitswort + normales Verb',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-normal',skillLabel:'Häufigkeitswort + normales Verb',context:'tennis / plays / always / She',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['She always plays tennis.'],canonical:'She always plays tennis.',correct:'Richtig. Always steht vor einem normalen Verb.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-05',reviewId:'wo-wc-05',reviewLabel:'Häufigkeitswort + to be',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-tobe',skillLabel:'Häufigkeitswort + to be',context:'late / often / He / is',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['He is often late.'],canonical:'He is often late.',correct:'Richtig. Bei to be steht das Häufigkeitswort nach am, is oder are.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-06',reviewId:'wo-wc-06',reviewLabel:'Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'question',skillLabel:'Frage',context:'tennis / she / Where / play / does ?',prompt:'Schreibe die Frage in der richtigen Reihenfolge.',accepted:['Where does she play tennis?'],canonical:'Where does she play tennis?',correct:'Richtig. Bei einer W-Frage kommt zuerst das Fragewort, dann does, dann die Person.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
-    {id:'wo-wc-07',reviewId:'wo-wc-07',reviewLabel:'How often-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'how-often-question',skillLabel:'How often-Frage',context:'tennis / does / How often / play / she ?',prompt:'Schreibe die How often-Frage in der richtigen Reihenfolge.',accepted:['How often does she play tennis?'],canonical:'How often does she play tennis?',correct:'Richtig. Bei How often kommt nach dem Fragewort erst does, dann die Person und dann das Verb in der Grundform.',wrong:'Noch nicht. Prüfe die Frage-Maschine: How often → does → Person → Grundform.'},
-    {id:'wo-wc-08',reviewId:'wo-wc-08',reviewLabel:'Zeit vorne ohne Umstellung',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front-trap',skillLabel:'Zeit vorne ohne Umstellung',context:'Fehlersatz: On Mondays plays she football.',prompt:'Verbessere den Fehler und schreibe den richtigen Satz.',accepted:['On Mondays she plays football.','She plays football on Mondays.'],canonical:'On Mondays she plays football.',correct:'Richtig. Nach einer Zeitangabe vorne kommt im Englischen kein Verbtausch.',wrong:'Noch nicht. Nach der Zeitangabe vorne bleibt die Reihenfolge Person → Verb: On Mondays she plays football.'}
-  ];
-  window.WRITE_TASKS = WRITE_TASKS;
+    {id:'wo-wc-01',reviewId:'wo-wc-01',reviewLabel:'Subject · Verb · Object',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'svo',skillLabel:'Subject · Verb · Object',context:'tennis / Hanna / plays',prompt:'Schreibe den Satz in der richtigen englischen Reihenfolge.',accepted:['Hanna plays tennis.'],canonical:'Hanna plays tennis.',correct:'Richtig. Person → Verb → Sache.',wrong:'Noch nicht. Suche zuerst die Person, dann das Verb, dann die Sache.'},
+    {id:'wo-wc-02',reviewId:'wo-wc-02',reviewLabel:'Ort vor Zeit',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'place-time',skillLabel:'Ort vor Zeit',context:'every Friday / football / at school / I play',prompt:'Schreibe den vollständigen Satz. Achte auf Ort vor Zeit.',accepted:['I play football at school every Friday.'],canonical:'I play football at school every Friday.',correct:'Richtig. Ort vor Zeit: at school vor every Friday.',wrong:'Noch nicht. Baue: Person + Verb + Sache + Ort + Zeit.'},
+    {id:'wo-wc-03',reviewId:'wo-wc-03',reviewLabel:'Zeit vorne',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front',skillLabel:'Zeit vorne',context:'football / plays / she / On Mondays',prompt:'Schreibe den Satz mit der Zeitangabe vorne.',accepted:['On Mondays she plays football.'],canonical:'On Mondays she plays football.',correct:'Richtig. Nach der Zeitangabe kommt she, dann plays.',wrong:'Noch nicht. Nach einer Zeitangabe vorne gibt es keine deutsche Verb-Umstellung.'},
+    {id:'wo-wc-04',reviewId:'wo-wc-04',reviewLabel:'Häufigkeitswort + normales Verb',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-normal',skillLabel:'Häufigkeitswort + normales Verb',context:'tennis / always / She / plays',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['She always plays tennis.'],canonical:'She always plays tennis.',correct:'Richtig. Always steht vor einem normalen Verb.',wrong:'Noch nicht. Bei normalen Verben steht das Häufigkeitswort vor dem Verb.'},
+    {id:'wo-wc-05',reviewId:'wo-wc-05',reviewLabel:'Häufigkeitswort + to be',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'frequency-tobe',skillLabel:'Häufigkeitswort + to be',context:'late / often / He / is',prompt:'Schreibe den Satz in der richtigen Reihenfolge.',accepted:['He is often late.'],canonical:'He is often late.',correct:'Richtig. Bei to be steht often nach is.',wrong:'Noch nicht. Bei to be: Person + is + Häufigkeitswort + Rest.'},
+    {id:'wo-wc-06',reviewId:'wo-wc-06',reviewLabel:'Does-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'does-question',skillLabel:'Does-Frage',context:'crabs / have / Silky / Does / for breakfast?',prompt:'Baue die Ja/Nein-Frage mit does.',accepted:['Does Silky have crabs for breakfast?'],canonical:'Does Silky have crabs for breakfast?',correct:'Richtig. Does + Person + Verb ohne s + Rest?',wrong:'Noch nicht. Does steht vorne. Nach does kommt have, nicht has.'},
+    {id:'wo-wc-07',reviewId:'wo-wc-07',reviewLabel:'Where does-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'where-does-question',skillLabel:'Where does-Frage',context:'does / where / with her friends / Silky / swim?',prompt:'Baue die Where-Frage.',accepted:['Where does Silky swim with her friends?'],canonical:'Where does Silky swim with her friends?',correct:'Richtig. Where → does → Person → Verb → Rest?',wrong:'Noch nicht. Fragewort zuerst, dann does, dann Person, dann Verb.'},
+    {id:'wo-wc-08',reviewId:'wo-wc-08',reviewLabel:'Doesn’t + Grundform',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'doesnt-basic',skillLabel:'Doesn’t + Grundform',context:'usually / doesn’t / in the Lido pool / Silky / swim',prompt:'Baue den verneinten Satz.',accepted:['Silky doesn’t usually swim in the Lido pool.','Silky usually doesn’t swim in the Lido pool.'],canonical:'Silky doesn’t usually swim in the Lido pool.',correct:'Richtig. Nach doesn’t steht swim, nicht swims.',wrong:'Noch nicht. Baue: Person + doesn’t + Häufigkeitswort + Verb ohne s + Rest.'},
+    {id:'wo-wc-09',reviewId:'wo-wc-09',reviewLabel:'What does-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'what-does-question',skillLabel:'What does-Frage',context:'books / does / what / read / Morph?',prompt:'Baue die What-Frage.',accepted:['What books does Morph read?','What does Morph read?'],canonical:'What books does Morph read?',correct:'Richtig. What books → does → Morph → read?',wrong:'Noch nicht. Bei einer W-Frage steht does nach dem Fragewort.'},
+    {id:'wo-wc-10',reviewId:'wo-wc-10',reviewLabel:'How often-Frage',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'how-often-question',skillLabel:'How often-Frage',context:'play / how often / tennis / does / she?',prompt:'Schreibe die How often-Frage.',accepted:['How often does she play tennis?'],canonical:'How often does she play tennis?',correct:'Richtig. How often → does → Person → Verb.',wrong:'Noch nicht. Frage-Maschine: How often → does → Person → Grundform.'},
+    {id:'wo-wc-11',reviewId:'wo-wc-11',reviewLabel:'Zeit vorne reparieren',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'time-front-trap',skillLabel:'Zeit vorne ohne Umstellung',context:'Fehler: On Mondays plays she football.',prompt:'Verbessere den Fehler und schreibe den richtigen Satz.',accepted:['On Mondays she plays football.','She plays football on Mondays.'],canonical:'On Mondays she plays football.',correct:'Richtig. Nach einer Zeitangabe vorne kommt kein Verbtausch.',wrong:'Noch nicht. Nach der Zeitangabe vorne bleibt die Reihenfolge Person → Verb.'},
+    {id:'wo-wc-12',reviewId:'wo-wc-12',reviewLabel:'Does-Fehler reparieren',reviewType:'stolperstelle',reviewSource:'writecheck',skill:'does-repair',skillLabel:'Does-Fehler reparieren',context:'Fehler: Does Silky has crabs for breakfast?',prompt:'Verbessere den Fehler und schreibe die Frage richtig.',accepted:['Does Silky have crabs for breakfast?'],canonical:'Does Silky have crabs for breakfast?',correct:'Richtig. Nach does steht have in der Grundform.',wrong:'Noch nicht. Does trägt schon das -s. Das Vollverb bleibt ohne s.'}
+  ];  window.WRITE_TASKS = WRITE_TASKS;
 
   function escapeHtml(value){
     return String(value || '').replace(/[&<>"']/g,function(ch){
@@ -2125,6 +2098,66 @@ body{background:#e7eef4!important;}
     if(box && box.classList.contains('is-visible'))renderWriteSummary(false);
   }
 
+
+
+  /* ── Aktiver Kann-ich's-Check Word Order + Does-Maschine ── */
+  function normaliseCanAnswer(value){
+    return String(value||'').replace(/[’‘`´]/g,"'").replace(/doesn't/g,'doesnt').replace(/does not/g,'doesnt').replace(/\u00a0/g,' ').replace(/[“”]/g,'"').replace(/[.,!?]+$/,'').replace(/\s+/g,' ').trim().toLowerCase();
+  }
+  function setCanReveal(card, enabled){
+    if(!card)return;
+    card.querySelectorAll('.wo-can-reveal').forEach(function(d){
+      if(enabled){d.removeAttribute('data-locked');}
+      else{d.setAttribute('data-locked','true');d.open=false;}
+    });
+  }
+  function initCanChecks(){
+    document.querySelectorAll('[data-wo-can-task]').forEach(function(card){setCanReveal(card,false);});
+  }
+  window.checkCanTask=function(id){
+    var card=document.querySelector('[data-wo-can-task="'+id+'"]');
+    if(!card)return;
+    var feedback=document.getElementById('wo-can-feedback-'+id);
+    var answer=card.getAttribute('data-answer')||'';
+    var selected=card.querySelector('input[type="radio"]:checked');
+    var input=card.querySelector('input.wo-can-sentence');
+    var ok=false;
+    card.querySelectorAll('.wo-can-option').forEach(function(label){label.classList.remove('is-selected','is-correct','is-wrong');});
+    if(input){
+      var given=normaliseCanAnswer(input.value);
+      ok = !!given && given===normaliseCanAnswer(answer);
+      if(!given){
+        if(feedback){feedback.className='wo-can-feedback is-visible is-empty';feedback.textContent='Schreibe zuerst eine eigene Antwort hinein.';}
+        setCanReveal(card,false);return;
+      }
+    }else{
+      if(!selected){
+        if(feedback){feedback.className='wo-can-feedback is-visible is-empty';feedback.textContent='Wähle zuerst eine Antwort aus.';}
+        setCanReveal(card,false);return;
+      }
+      ok=selected.value===answer;
+      selected.closest('.wo-can-option').classList.add('is-selected', ok?'is-correct':'is-wrong');
+      card.querySelectorAll('input[type="radio"]').forEach(function(r){
+        if(r.value===answer)r.closest('.wo-can-option').classList.add('is-correct');
+      });
+    }
+    if(feedback){
+      feedback.className='wo-can-feedback is-visible '+(ok?'is-correct':'is-wrong');
+      feedback.textContent=ok?'Richtig. Jetzt darfst du die Erklärung öffnen.':'Noch nicht. Prüfe die Maschine und versuche es noch einmal. Die Erklärung bleibt erst einmal zu.';
+    }
+    setCanReveal(card,ok);
+  };
+  document.addEventListener('toggle', function(e){
+    var d=e.target;
+    if(d && d.matches && d.matches('.wo-can-reveal[data-locked="true"]') && d.open){
+      d.open=false;
+      var card=d.closest('[data-wo-can-task]');
+      var id=card?card.getAttribute('data-wo-can-task'):'';
+      var feedback=id?document.getElementById('wo-can-feedback-'+id):null;
+      if(feedback){feedback.className='wo-can-feedback is-visible is-empty';feedback.textContent='Erst selbst entscheiden oder schreiben, dann prüfen. Danach öffnet sich die Erklärung.';}
+    }
+  }, true);
+
   /* ══════════════════════════════════════
      HAUSAUFGABEN-MODUS
   ══════════════════════════════════════ */
@@ -2179,68 +2212,6 @@ body{background:#e7eef4!important;}
       }
     }
   });
-
-  /* ── Kann ich's Word Order: echte Prüfung statt alles-grün ── */
-  function normaliseCanAnswer(value){
-    return String(value || '')
-      .replace(/[’‘`´]/g,"'")
-      .replace(/ /g,' ')
-      .replace(/[,]/g,'')
-      .replace(/\s+/g,' ')
-      .trim()
-      .replace(/[.!?]+$/,'')
-      .toLowerCase();
-  }
-  function showCanFeedback(id,status,message){
-    var card=document.querySelector('[data-wo-can-task="' + id + '"]');
-    var fb=document.getElementById('wo-can-feedback-' + id);
-    if(card && status !== 'empty') card.classList.add('is-checked');
-    if(!fb)return;
-    fb.className='wo-can-feedback is-visible is-' + status;
-    fb.textContent=message;
-  }
-  document.addEventListener('change', function(e){
-    var el=e.target;
-    if(!el || !el.closest) return;
-    var card=el.closest('[data-wo-can-task]');
-    if(!card) return;
-    card.classList.remove('is-checked');
-    card.querySelectorAll('.wo-can-option').forEach(function(opt){opt.classList.remove('is-selected','is-correct','is-wrong');});
-    var fb=card.querySelector('.wo-can-feedback');
-    if(fb){fb.className='wo-can-feedback';fb.textContent='';}
-  });
-
-  window.checkCanTask=function(id){
-    var card=document.querySelector('[data-wo-can-task="' + id + '"]');
-    if(!card)return;
-    card.querySelectorAll('.wo-can-option').forEach(function(opt){opt.classList.remove('is-selected','is-correct','is-wrong');});
-    var expected=card.getAttribute('data-answer') || '';
-    var radio=card.querySelector('input[type="radio"]:checked');
-    var textInput=card.querySelector('[data-wo-can-input="' + id + '"]');
-    if(radio){
-      var selected=radio.value;
-      var label=radio.closest('.wo-can-option');
-      if(label)label.classList.add('is-selected');
-      var ok=selected===expected;
-      card.querySelectorAll('input[type="radio"]').forEach(function(inp){
-        var opt=inp.closest('.wo-can-option');
-        if(!opt)return;
-        if(inp.value===expected)opt.classList.add('is-correct');
-        else if(inp.checked)opt.classList.add('is-wrong');
-      });
-      if(ok)showCanFeedback(id,'correct','Richtig. Deine Auswahl passt zur Word-Order-Regel.');
-      else showCanFeedback(id,'wrong','Noch nicht. Lies die Erklärung darunter und prüfe: Wer? Verb? Rest? Oder: Wo steht das Häufigkeitswort?');
-      return;
-    }
-    if(textInput){
-      var value=normaliseCanAnswer(textInput.value);
-      if(!value){showCanFeedback(id,'empty','Schreib erst einen Satz hinein.');return;}
-      if(value===normaliseCanAnswer(expected))showCanFeedback(id,'correct','Richtig. Ort steht vor Zeit: to school vor tomorrow.');
-      else showCanFeedback(id,'wrong','Noch nicht. Nach der Schulregel kommt der Ort vor der Zeit: I go to school tomorrow.');
-      return;
-    }
-    showCanFeedback(id,'empty','Wähle erst eine Antwort aus.');
-  };
 
   /* ══════════════════════════════════════
      LERNJOURNAL
@@ -2321,12 +2292,6 @@ body{background:#e7eef4!important;}
   document.addEventListener('click', function(e){
     var btn = e.target && e.target.closest ? e.target.closest('button') : null;
     if (!btn) return;
-    var canCheck = btn.getAttribute('data-wo-can-check');
-    if (canCheck) {
-      e.preventDefault();
-      checkCanTask(canCheck);
-      return;
-    }
     var action = btn.getAttribute('data-wo-action');
     if (action) {
       e.preventDefault();
@@ -2339,13 +2304,18 @@ body{background:#e7eef4!important;}
       if (action === 'check-baukasten') { checkBaukasten(); return; }
       if (action === 'next-error') { nextError(); return; }
       if (action === 'next-signal') { nextSignalTask(); return; }
-      if (action === 'next-adverb') { nextAdverbTask(); return; }
       if (action === 'save-notes') { saveNotes(); return; }
     }
     var choice = btn.getAttribute('data-wo-adverb-choice');
     if (choice) {
       e.preventDefault();
       answerAdverb(choice);
+      return;
+    }
+    var canId = btn.getAttribute('data-wo-can-check');
+    if (canId) {
+      e.preventDefault();
+      checkCanTask(canId);
       return;
     }
     var writeId = btn.getAttribute('data-writecheck-id');
@@ -2378,6 +2348,7 @@ body{background:#e7eef4!important;}
   showSignalTask();
   showAdvTask();
   renderWritecheck();
+  initCanChecks();
   loadWritecheck();
   loadNotes();
   loadCanStatus();
