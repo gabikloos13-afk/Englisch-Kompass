@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Articles a / an / the — Hannas Englisch-Kompass</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --amber:#d97706;--amber-dark:#b45309;--amber-soft:#fffbeb;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --indigo:#4f46e5;--indigo-soft:#eef2ff;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:16px;--radius-sm:10px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,0.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,0.06);
+  --line:1px solid var(--gray-200);
+  --font-head:"Nunito",sans-serif;--font-body:"Nunito Sans",sans-serif;
+}
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:var(--gray-50)}
+h1,h2,h3,p,ul,ol,table{margin-top:0}p,ul,ol{margin-bottom:0}
+
+/* HAUSAUFGABEN */
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,
+body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),
+body.hausaufgaben-mode .learn-step-nav,
+body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+
+/* NAV */
+.site-nav{background:#fff;border-bottom:var(--line);box-shadow:0 2px 8px rgba(15,23,42,.06);position:sticky;top:0;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:800;font-size:1rem}
+.nav-logo-text{color:var(--blue-dark)}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:700;color:var(--gray-600);text-decoration:none;border:1px solid var(--gray-200);background:#fff;transition:all .18s}
+.nav-link:hover{border-color:var(--amber);color:var(--amber-dark);background:var(--amber-soft)}
+.nav-link.is-active{border-color:var(--amber);color:#fff;background:var(--amber)}
+.ha-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:700;color:var(--amber-dark);border:1px solid #fde68a;background:var(--amber-soft);cursor:pointer;transition:all .18s}
+.ha-btn:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
+.print-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:700;color:var(--blue-dark);border:1px solid #bfdbfe;background:var(--blue-soft);cursor:pointer;transition:all .18s}
+.print-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* PAGE */
+.page-content{max-width:1100px;margin:0 auto;padding:20px}
+.learning-card{border:var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+
+/* HEADER */
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#b45309,#d97706);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:800;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.82);font-size:.91rem;max-width:540px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+
+/* HAUPT-NAV */
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--gray-25)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:700;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--amber-dark);background:var(--amber-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--amber-dark);border-bottom-color:var(--amber);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--amber)}
+.compass-mode-panel{display:none}.compass-mode-panel.is-active{display:block}
+
+/* SCHRITT-NAV */
+.learn-step-nav{display:flex;background:var(--gray-25);border-bottom:var(--line);overflow-x:auto}
+.learn-step-btn{flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:700;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+.learn-step-btn:hover{color:var(--amber-dark);background:var(--amber-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--amber-dark);border-bottom-color:var(--amber);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:800;background:var(--gray-100);color:var(--gray-600);transition:all .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--amber);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+.learn-progress-bar{height:3px;background:var(--gray-100)}
+.learn-progress-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--blue));border-radius:var(--radius-pill);transition:width .35s ease}
+.learn-panel{display:none;padding:22px 20px}.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{0%{transform:scale(.97);opacity:.7}100%{transform:scale(1);opacity:1}}
+
+/* ZWEI-TORE */
+.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.gate-card{padding:18px 14px;border-radius:var(--radius);text-align:center;border:2px solid}
+.gate-a{background:var(--green-soft);border-color:#bbf7d0}
+.gate-an{background:var(--indigo-soft);border-color:#c7d2fe}
+.gate-icon{font-size:2rem;margin-bottom:6px;display:block}
+.gate-title{font-family:var(--font-head);font-weight:900;font-size:1.4rem;margin-bottom:4px}
+.gate-a .gate-title{color:var(--green)}
+.gate-an .gate-title{color:var(--indigo)}
+.gate-rule{font-size:.84rem;font-weight:700;margin-bottom:8px;color:var(--gray-700)}
+.gate-words{font-size:.83rem;color:var(--gray-600);line-height:1.7}
+
+/* OHR-TEST */
+.ear-wrap{padding:16px;border:var(--line);border-radius:var(--radius);background:#fff;margin-bottom:12px}
+.ear-buttons{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.ear-btn{padding:7px 14px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.88rem;font-weight:700;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
+.ear-btn:hover{border-color:var(--amber);background:var(--amber-soft);color:var(--amber-dark)}
+.ear-btn.is-active{background:var(--amber);border-color:var(--amber);color:#fff}
+.ear-out{padding:14px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line);transition:border-color .3s;min-height:80px}
+.ear-out.is-pop{animation:pop .2s ease both}
+.ear-path{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.ear-token{padding:4px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;font-size:.88rem;background:var(--gray-100);color:var(--gray-700)}
+.ear-token-sound{background:var(--amber-soft);color:var(--amber-dark)}
+.ear-token-result{background:var(--green);color:#fff;font-size:1rem}
+.ear-arrow{color:var(--gray-400);font-size:1.1rem}
+.ear-result{font-family:var(--font-head);font-weight:900;font-size:1.3rem;margin:0 0 4px;display:block}
+.ear-note{font-size:.84rem;color:var(--gray-600);margin:0;font-style:italic}
+
+/* LÜCKENTEXT-QUIZ */
+.gq-gap{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--gray-800);padding:12px 14px;background:var(--amber-soft);border-radius:var(--radius-sm);margin-bottom:10px;border-left:4px solid var(--amber);line-height:1.5}
+.gq-options{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
+.gq-btn{padding:10px 12px;border:2px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-head);font-size:.92rem;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-700);transition:all .18s;text-align:center}
+.gq-btn:hover:not(:disabled){border-color:var(--amber);background:var(--amber-soft);color:var(--amber-dark)}
+.gq-btn:disabled{cursor:default;opacity:.8}
+.gq-btn-right{background:#dcfce7!important;border-color:var(--green)!important;color:var(--green)!important}
+.gq-btn-wrong{background:var(--red-soft)!important;border-color:var(--red)!important;color:var(--red)!important}
+.gq-feedback{display:none;padding:9px 12px;border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:700;font-size:.88rem;margin-bottom:8px;border:1px solid;line-height:1.4}
+.gq-meta{display:flex;justify-content:space-between;font-family:var(--font-head);font-size:.82rem;font-weight:700;color:var(--gray-500);margin-bottom:8px}
+
+/* SORTIERSPIEL */
+.sort-pool{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--gray-25);border-radius:var(--radius-sm);border:2px dashed var(--gray-300);min-height:50px;margin-bottom:14px}
+.sort-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
+.sort-col{border:2px solid;border-radius:var(--radius-sm);padding:10px;min-height:90px}
+.sort-col-a{border-color:#bbf7d0;background:var(--green-soft)}
+.sort-col-an{border-color:#c7d2fe;background:var(--indigo-soft)}
+.sort-col-none{border-color:var(--gray-300);background:var(--gray-25)}
+.sort-col-label{font-family:var(--font-head);font-weight:800;font-size:.9rem;margin-bottom:8px;display:block}
+.sort-col-a .sort-col-label{color:var(--green)}
+.sort-col-an .sort-col-label{color:var(--indigo)}
+.sort-col-none .sort-col-label{color:var(--gray-500)}
+.sort-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sort-chip{padding:6px 13px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.88rem;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-700);transition:all .18s}
+.sort-chip:hover{border-color:var(--amber);background:var(--amber-soft);color:var(--amber-dark)}
+.sort-chip-wrong{background:var(--red-soft)!important;border-color:var(--red)!important;color:var(--red)!important}
+.sort-feedback{display:none;padding:9px 12px;border-radius:var(--radius-sm);font-family:var(--font-head);font-weight:700;font-size:.88rem;margin-bottom:8px;border:1px solid var(--gray-200);background:var(--gray-25)}
+.sort-controls{display:flex;gap:8px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;font-size:.86rem;cursor:pointer;transition:all .18s}
+.sort-btn-check{background:var(--amber);color:#fff}
+.sort-btn-check:hover{background:var(--amber-dark)}
+.sort-btn-reset{background:var(--gray-100);color:var(--gray-600);border:1px solid var(--gray-200)}
+.sort-btn-reset:hover{background:var(--gray-200)}
+
+/* FEHLER-SCANNER */
+.check-shell{display:grid;gap:10px}
+.scanner-intro{padding:10px 13px;border-radius:var(--radius);background:var(--red-soft);border:1px solid #fecaca;font-family:var(--font-head);font-weight:700;color:var(--red);font-size:.89rem;margin:0}
+.error-item{border:var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+.error-summary{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;list-style:none;font-family:var(--font-head);font-weight:700;color:var(--gray-800);font-size:.89rem}
+.error-summary::-webkit-details-marker{display:none}
+.error-badge{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:var(--radius-pill);font-size:.74rem;font-weight:800;background:var(--red-soft);color:var(--red)}
+.error-item[open] .error-badge{background:var(--green-soft);color:var(--green)}
+.error-wrong{color:var(--red)}
+.error-body{padding:0 14px 12px}
+.error-compare{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}
+.ec-wrong{padding:8px 10px;border:1px solid #fecaca;border-radius:var(--radius-sm);background:var(--red-soft);font-size:.89rem}
+.ec-right{padding:8px 10px;border:1px solid #bbf7d0;border-radius:var(--radius-sm);background:#dcfce7;font-size:.89rem}
+.ec-label{display:block;font-family:var(--font-head);font-size:.69rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.ec-wrong .ec-label{color:var(--red)}.ec-right .ec-label{color:var(--green)}
+.error-rule{padding:6px 10px;border-left:4px solid var(--amber);border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--gray-700);background:var(--amber-soft);font-size:.84rem;margin:0}
+.selfcheck-divider{display:flex;align-items:center;gap:10px;color:var(--gray-600);font-size:.8rem;font-family:var(--font-head);font-weight:700}
+.selfcheck-divider::before,.selfcheck-divider::after{content:"";flex:1;height:1px;background:var(--gray-200)}
+.selfcheck-title{margin:0 0 8px;font-family:var(--font-head);font-size:.93rem;font-weight:800;color:var(--green)}
+.check-list{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.check-list li{border:var(--line);border-radius:var(--radius-sm);background:#fff}
+.check-list li:has(input:checked){background:#dcfce7;border-color:#bbf7d0}
+.check-list label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;cursor:pointer}
+.check-list input[type="checkbox"]{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:var(--green)}
+.check-list input:checked+span{color:var(--gray-400);text-decoration:line-through}
+.check-score{display:flex;align-items:center;gap:9px;padding:8px 12px;border-radius:var(--radius-sm);background:var(--gray-25);font-size:.84rem;color:var(--gray-700);margin-top:8px}
+.check-score-bar{flex:1;height:7px;border-radius:var(--radius-pill);background:var(--gray-200);overflow:hidden}
+.check-score-fill{height:100%;border-radius:var(--radius-pill);background:var(--green);transition:width .4s ease}
+
+/* TABELLEN */
+table{width:100%;border-collapse:collapse;font-size:.88rem;border:var(--line);border-radius:var(--radius-sm);overflow:hidden}
+th,td{padding:8px 11px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:middle}
+th{font-family:var(--font-head);font-weight:700;font-size:.77rem;color:var(--amber-dark);background:var(--amber-soft);text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--gray-25)}
+
+/* NOTIZEN */
+.notes-panel{padding:20px;background:#fff}
+.notes-title{font-family:var(--font-head);font-weight:800;font-size:.97rem;color:var(--gray-800);margin:0 0 14px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:12px}
+.note-field-label{display:block;font-family:var(--font-head);font-weight:700;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-textarea{width:100%;min-height:88px;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;color:var(--gray-800);background:var(--gray-25);resize:vertical;transition:border-color .18s}
+.note-textarea:focus{outline:none;border-color:var(--amber);background:#fff}
+.note-field:nth-child(1) .note-textarea{border-top:3px solid var(--amber)}
+.note-field:nth-child(2) .note-textarea{border-top:3px solid var(--red)}
+.note-field:nth-child(3) .note-textarea{border-top:3px solid var(--green)}
+.note-example-label{display:block;font-family:var(--font-head);font-weight:700;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-example-input{width:100%;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.89rem;color:var(--gray-800);background:var(--gray-25);transition:border-color .18s;border-top:3px solid var(--blue)}
+.note-example-input:focus{outline:none;border-color:var(--blue);background:#fff}
+.notes-save-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.notes-save-btn{padding:7px 18px;border:none;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.86rem;font-weight:700;color:#fff;background:var(--amber);cursor:pointer;transition:background .18s}
+.notes-save-btn:hover{background:var(--amber-dark)}
+.notes-saved{font-size:.82rem;color:var(--green);font-family:var(--font-head);font-weight:700;opacity:0;transition:opacity .3s}
+.notes-saved.is-visible{opacity:1}
+
+@media print{
+  .site-nav,.learn-step-nav,.compass-mode-grid,.learn-progress-bar,.notes-panel,.compass-mode-panel:not(.is-active){display:none!important}
+  .compass-mode-panel.is-active{display:block!important}
+  .learning-card{box-shadow:none;border:1px solid #ccc}
+  body{background:#fff;padding:0}.page-content{padding:10px}
+}
+@media(max-width:580px){
+  body{padding:0 0 48px}
+  .compass-head{padding:15px 13px}.compass-emoji{font-size:1.8rem}
+  .learn-panel{padding:14px 12px}
+  .gate-grid{grid-template-columns:1fr}
+  .sort-cols{grid-template-columns:1fr}
+  .gq-options{grid-template-columns:1fr 1fr}
+  .error-compare,.notes-grid{grid-template-columns:1fr}
+}
+
+/* Übersicht zurück */
+.nav-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.nav-link-overview{border-color:#bfdbfe;color:var(--blue-dark);background:var(--blue-soft)}
+.overview-return-wrap{max-width:1100px;margin:10px auto -6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:700;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+@media(max-width:580px){.overview-return-wrap{margin:8px auto -4px;padding:0 12px}.overview-return{width:100%;justify-content:center}}
+@media print{.overview-return-wrap{display:none!important}}
+
+/* SCHREIB-CHECK */
+.writecheck-panel{padding:22px;background:#fff}
+.writecheck-intro{border:1px solid #fde68a;background:var(--amber-soft);border-radius:18px;padding:16px 18px;margin-bottom:16px}
+.writecheck-intro h3{margin:0 0 6px;font-family:var(--font-head);font-size:1.05rem;color:var(--amber-dark);font-weight:800}
+.writecheck-intro p{margin:0;color:var(--gray-700)}
+.writecheck-grid{display:grid;gap:14px}
+.writecheck-task{border:var(--line);border-radius:16px;background:var(--gray-25);padding:15px;box-shadow:var(--shadow-sm)}
+.writecheck-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.writecheck-task-num{font-family:var(--font-head);font-size:.78rem;font-weight:800;color:var(--amber-dark);background:var(--amber-soft);border:1px solid #fde68a;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.writecheck-skill{font-size:.76rem;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:999px;padding:3px 8px;background:#fff;white-space:nowrap}
+.writecheck-prompt{font-size:1rem;color:var(--gray-800);margin:0 0 8px}
+.writecheck-context{font-size:.9rem;color:var(--gray-600);background:#fff;border:1px dashed var(--gray-300);border-radius:12px;padding:8px 10px;margin:0 0 8px}
+.writecheck-input-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.writecheck-input{flex:1;min-width:220px;border:1px solid var(--gray-300);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:var(--gray-800)}
+.writecheck-input:focus{outline:3px solid #fde68a;border-color:var(--amber)}
+.writecheck-btn,.writecheck-check-all,.writecheck-reset{border-radius:999px;border:1px solid #fde68a;background:var(--amber-soft);color:var(--amber-dark);font-family:var(--font-head);font-weight:800;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
+.writecheck-btn:hover,.writecheck-check-all:hover{background:var(--amber);border-color:var(--amber);color:#fff}
+.writecheck-reset{border-color:var(--gray-300);background:#fff;color:var(--gray-600)}
+.writecheck-reset:hover{background:var(--gray-100);color:var(--gray-800)}
+.writecheck-feedback{margin-top:8px;border-radius:12px;padding:9px 10px;font-size:.9rem;display:none}
+.writecheck-feedback.is-visible{display:block}
+.writecheck-feedback.is-correct{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534}
+.writecheck-feedback.is-wrong{border:1px solid #fecaca;background:#fef2f2;color:#991b1b}
+.writecheck-task.is-correct{border-color:#86efac;background:#f0fdf4}
+.writecheck-task.is-wrong{border-color:#fca5a5;background:#fef2f2}
+.writecheck-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.writecheck-summary{display:none;border:1px solid var(--gray-200);border-radius:18px;background:#fff;padding:16px;margin-top:14px;box-shadow:var(--shadow-sm)}
+.writecheck-summary.is-visible{display:block}
+.writecheck-summary-title{margin:0 0 8px;font-family:var(--font-head);font-size:1.05rem;color:var(--gray-800);font-weight:800}
+.writecheck-score{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--amber-dark);margin-bottom:8px}
+.writecheck-status{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-family:var(--font-head);font-weight:800;font-size:.84rem;margin-bottom:10px}
+.writecheck-status.is-green{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.writecheck-status.is-yellow{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.writecheck-status.is-orange{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}
+.writecheck-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.writecheck-list{border:1px solid var(--gray-200);border-radius:14px;padding:12px;background:var(--gray-25)}
+.writecheck-list h4{margin:0 0 6px;font-family:var(--font-head);font-size:.92rem;color:var(--gray-700);font-weight:800}
+.writecheck-list ul{margin:0;padding-left:18px}
+.writecheck-list li{margin:2px 0}
+@media(max-width:700px){.writecheck-panel{padding:16px}.writecheck-task-head{flex-direction:column}.writecheck-input{min-width:0;width:100%}.writecheck-input-row{align-items:stretch}.writecheck-btn{width:100%}}
+
+
+
+
+/* Mobile safety patch: prevents horizontal overflow without changing content. */
+@media (max-width: 700px){
+  html, body{max-width:100%;}
+  .site-nav, .site-nav-inner, .page-content, .learning-card, .compass-mode-grid, .compass-mode-btn, .learn-step-nav, .learn-step-btn, .mini-card, .feature-card, .rule-card, .error-card, .practice-card, .writecheck-panel, .writecheck-task, .note-card, .notes-panel, .connections-panel, .reference-card, .overview-return-wrap{max-width:100%;min-width:0;}
+  .site-nav-inner{padding-left:12px;padding-right:12px;flex-wrap:wrap;align-items:center;}
+  .nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .nav-actions{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;justify-content:flex-end;}
+  .ha-btn,.print-btn{white-space:nowrap;max-width:100%;}
+  .compass-mode-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));}
+  .compass-mode-btn{overflow-wrap:anywhere;}
+  .learn-step-nav{overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}
+  .learn-step-btn{flex:0 0 auto;}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .train-wrap,.sentence-strip,.formula-strip,.timeline-strip,.comparison-grid,.error-compare,.example-grid,.choice-grid,.card-grid{max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  img,svg{max-width:100%;height:auto;}
+}
+
+
+/* FINAL LAYOUT PATCH: wider desktop layout + calm return link.
+   Content, exercises, answers and tab structure are unchanged. */
+@media (min-width: 901px){
+  .site-nav-inner,
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    max-width:1320px;
+  }
+  .page-content{
+    width:min(1320px, calc(100% - 48px));
+  }
+  .overview-return-wrap{
+    width:min(1320px, calc(100% - 48px));
+  }
+}
+.overview-return{
+  min-height:36px;
+  line-height:1.2;
+}
+@media (max-width:700px){
+  .page-content,
+  .page-wrap,
+  .progress-banner,
+  .overview-return-wrap{
+    width:auto;
+    max-width:100%;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-icon">🧭</span><span class="nav-logo-text">Hannas Kompass</span></a>
+    <div class="nav-links">
+      <a href="tobe.html" class="nav-link">🟦 to be</a>
+      <a href="pronouns.html" class="nav-link">👤 Pronouns</a>
+      <a href="havegot.html" class="nav-link">🎒 have got</a>
+      <a href="simplepresent.html" class="nav-link">🔁 Simple Present</a>
+      <a href="questions.html" class="nav-link">❓ Questions</a>
+      <a href="progressive.html" class="nav-link">🎬 Progressive</a>
+      <a href="simplepast.html" class="nav-link">📖 Simple Past</a><a href="wordorder.html" class="nav-link">🚂 Word Order</a>
+      <a href="thereisthereare.html" class="nav-link">📍 there is/are</a>
+      <a href="articles.html" class="nav-link is-active">🔤 Articles</a>
+      <a href="adjectives.html" class="nav-link">🎨 Adjectives</a>
+<a class="nav-link" href="listening.html">🎧 Listening</a>
+      <a href="index.html" class="nav-link nav-link-overview">Alle Themen →</a>
+    </div>
+    <div class="nav-actions">
+      <button type="button" class="ha-btn" id="ha-btn" onclick="toggleHausaufgaben()">📚 Hausaufgaben</button>
+      <button type="button" class="print-btn" onclick="printRef()">🖨️ Drucken</button>
+    </div>
+  </div>
+</nav>
+
+<div class="overview-return-wrap"><a class="overview-return" href="index.html" aria-label="Zur Startseite mit Themenübersicht">← Zurück zur Übersicht</a></div>
+<div class="page-content">
+<article class="learning-card">
+<header class="compass-head">
+<div>
+<p class="compass-kicker">🔤 Artikel</p>
+<h1 class="compass-title">Articles — a / an / the</h1>
+<p class="compass-subtitle">Dein Ohr entscheidet: a oder an? Und wann kommt the?</p>
+</div>
+<span aria-hidden="true" class="compass-emoji">👂</span>
+</header>
+<nav aria-label="Bereiche" class="compass-mode-grid">
+<button aria-pressed="true" class="compass-mode-btn" data-tab="art-mode" data-val="learn" type="button">
+<span class="compass-mode-icon">🎯</span><span>Lernen</span>
+<span class="compass-mode-hint">Neu hier? Fang hier an.</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="art-mode" data-val="reference" type="button">
+<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
+<span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="art-mode" data-val="connections" type="button">
+<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
+<span class="compass-mode-hint">Was hängt damit zusammen?</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="art-mode" data-val="writecheck" type="button">
+<span class="compass-mode-icon">📝</span><span>Schreib-Check</span>
+<span class="compass-mode-hint">Kurz prüfen &amp; schreiben</span>
+</button>
+<button aria-pressed="false" class="compass-mode-btn" data-tab="art-mode" data-val="notes" type="button">
+<span class="compass-mode-icon">✏️</span><span>Notizen</span>
+<span class="compass-mode-hint">Meine eigenen Notizen</span>
+</button>
+</nav>
+<!-- LERNEN -->
+<div class="compass-mode-panel is-active" data-panel="art-mode" data-val="learn" id="lernen">
+<nav class="learn-step-nav">
+<button aria-pressed="true" class="learn-step-btn" data-tab="art-learn" data-val="entry" type="button"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="art-learn" data-val="ohr" type="button"><span class="step-badge">2</span><span class="step-label">Ohr-Test</span></button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="art-learn" data-val="quiz" type="button"><span class="step-badge">3</span><span class="step-label">Lücken-Quiz</span></button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="art-learn" data-val="sort" type="button"><span class="step-badge">4</span><span class="step-label">Sortierspiel</span></button>
+<button aria-pressed="false" class="learn-step-btn" data-tab="art-learn" data-val="check" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich's?</span></button>
+</nav>
+<div class="learn-progress-bar"><div class="learn-progress-fill" id="art-progress" style="width:20%"></div></div>
+<!-- Schritt 1: Wozu? -->
+<div class="learn-panel is-active" data-panel="art-learn" data-val="entry">
+<div style="display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:center;padding:18px;border:2px solid #fde68a;border-radius:var(--radius);background:linear-gradient(135deg,#fff,var(--amber-soft));margin-bottom:16px">
+<div style="display:flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;font-size:2.6rem;background:linear-gradient(135deg,#fde68a,#bfdbfe);flex-shrink:0">👂</div>
+<div>
+<p style="margin:0 0 6px;font-family:var(--font-head);font-size:.98rem;font-weight:800;color:var(--amber-dark)">Nicht der Buchstabe — dein Ohr entscheidet!</p>
+<p style="margin:0 0 10px;color:var(--gray-700);font-size:.91rem;line-height:1.5">Im Deutschen gibt es der/die/das — im Englischen gibt es <strong>a, an</strong> und <strong>the</strong>. a und an klingen fließender vor dem nächsten Wort — dein Ohr merkt, was besser passt.</p>
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<span style="padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:600;color:var(--green);background:var(--green-soft)">a dog ✓</span>
+<span style="padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:600;color:var(--indigo);background:var(--indigo-soft)">an apple ✓</span>
+<span style="padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:600;color:var(--red);background:var(--red-soft)">a apple ✗</span>
+</div>
+</div>
+</div>
+<!-- Zwei-Tore -->
+<p style="font-family:var(--font-head);font-weight:800;font-size:.9rem;color:var(--amber-dark);margin:0 0 10px">🚪 Zwei Tore — welches klingt besser?</p>
+<div class="gate-grid">
+<div class="gate-card gate-a">
+<span class="gate-icon">🅰️</span>
+<span class="gate-title">a</span>
+<span class="gate-rule">Konsonanten-Klang am Anfang</span>
+<span class="gate-words">a <strong>d</strong>og · a <strong>b</strong>ook · a <strong>c</strong>at<br/>a <strong>sch</strong>ool · a <strong>b</strong>ig house</span>
+</div>
+<div class="gate-card gate-an">
+<span class="gate-icon">👂</span>
+<span class="gate-title">an</span>
+<span class="gate-rule">Vokal-Klang am Anfang (a,e,i,o,u)</span>
+<span class="gate-words">an <strong>a</strong>pple · an <strong>e</strong>lephant<br/>an <strong>o</strong>range · an <strong>o</strong>ld house</span>
+</div>
+</div>
+<!-- Wichtig: the -->
+<div style="display:grid;gap:10px">
+<div style="padding:12px 14px;border:2px solid #c7d2fe;border-radius:var(--radius);background:var(--indigo-soft);font-size:.87rem;color:var(--gray-700)">
+<span style="display:block;font-family:var(--font-head);font-weight:800;color:var(--indigo);font-size:.82rem;text-transform:uppercase;margin-bottom:6px">📌 Und wann kommt <em>the</em>?</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:8px 10px;border-radius:var(--radius-sm);background:#fff;font-size:.85rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--indigo);margin-bottom:3px">1. Schon bekannt:</span>
+              There is <strong>a</strong> book. <strong>The</strong> book is red.<br/>
+<span style="font-size:.78rem;color:var(--gray-500)">Erst unbekannt → a, dann bekannt → the</span>
+</div>
+<div style="padding:8px 10px;border-radius:var(--radius-sm);background:#fff;font-size:.85rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--indigo);margin-bottom:3px">2. Einzigartig:</span>
+<strong>the</strong> sun · <strong>the</strong> moon · <strong>the</strong> sky<br/>
+<span style="font-size:.78rem;color:var(--gray-500)">Es gibt nur eine Sonne, einen Mond</span>
+</div>
+</div>
+</div>
+<div style="padding:11px 14px;border-left:4px solid var(--red);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--red-soft);font-size:.87rem;color:var(--gray-700)">
+<strong>Kein Artikel bei:</strong> Sportarten (She plays <strong>football</strong>), Mahlzeiten (We have <strong>breakfast</strong>), Eigennamen (<strong>Hanna</strong> is nice), Schulfächer (I like <strong>English</strong>)
+        </div>
+</div>
+</div>
+<!-- Schritt 2: Ohr-Test -->
+<div class="learn-panel" data-panel="art-learn" data-val="ohr">
+<p style="font-family:var(--font-head);font-weight:800;color:var(--amber-dark);font-size:.95rem;margin:0 0 6px">👂 Ohr-Test-Maschine — welches Wort klingt wie?</p>
+<p style="font-size:.87rem;color:var(--gray-600);margin:0 0 14px">Klicke ein Wort an — die Maschine erklärt dir warum a oder an passt.</p>
+<div class="ear-wrap">
+<div class="ear-buttons">
+<button class="ear-btn is-active" data-word="dog" onclick="testEar('dog')" type="button">🐕 dog</button>
+<button class="ear-btn" data-word="book" onclick="testEar('book')" type="button">📚 book</button>
+<button class="ear-btn" data-word="cat" onclick="testEar('cat')" type="button">🐱 cat</button>
+<button class="ear-btn" data-word="school" onclick="testEar('school')" type="button">🏫 school</button>
+<button class="ear-btn" data-word="apple" onclick="testEar('apple')" type="button">🍎 apple</button>
+<button class="ear-btn" data-word="elephant" onclick="testEar('elephant')" type="button">🐘 elephant</button>
+<button class="ear-btn" data-word="orange" onclick="testEar('orange')" type="button">🍊 orange</button>
+<button class="ear-btn" data-word="egg" onclick="testEar('egg')" type="button">🥚 egg</button>
+<button class="ear-btn" data-word="old house" onclick="testEar('old house')" type="button">🏠 old house</button>
+<button class="ear-btn" data-word="big dog" onclick="testEar('big dog')" type="button">🐕 big dog</button>
+<button class="ear-btn" data-word="hour" onclick="testEar('hour')" type="button">⏰ hour</button>
+<button class="ear-btn" data-word="uniform" onclick="testEar('uniform')" type="button">👕 uniform</button>
+</div>
+<div class="ear-out" id="ear-out">
+<div class="ear-path" id="ear-path"></div>
+<span class="ear-result" id="ear-result"></span>
+<p class="ear-note" id="ear-note"></p>
+</div>
+</div>
+<div style="padding:12px 14px;border:2px solid #fde68a;border-radius:var(--radius);background:var(--amber-soft);font-size:.87rem;color:var(--gray-700)">
+<span style="display:block;font-family:var(--font-head);font-weight:800;color:var(--amber-dark);font-size:.82rem;text-transform:uppercase;margin-bottom:5px">⚠️ Zwei Denkfallen</span>
+<strong>hour</strong> — das h ist stumm, es klingt wie "our" → <strong>an hour</strong> ✓<br/>
+<strong>uniform</strong> — beginnt mit u, klingt aber wie "ju..." → <strong>a uniform</strong> ✓
+      </div>
+</div>
+<!-- Schritt 3: Lücken-Quiz -->
+<div class="learn-panel" data-panel="art-learn" data-val="quiz">
+<p style="font-family:var(--font-head);font-weight:800;color:var(--amber-dark);font-size:.95rem;margin:0 0 6px">📝 Lücken-Quiz — a / an / the oder kein Artikel?</p>
+<p style="font-size:.87rem;color:var(--gray-600);margin:0 0 14px">Wähle den richtigen Artikel für die Lücke. Deckt alle drei Artikel ab!</p>
+<div style="padding:16px;border:var(--line);border-radius:var(--radius);background:#fff">
+<div class="gq-meta">
+<span id="gq-counter">1 / 12</span>
+<span>Punkte: <span id="gq-score">0 / 0</span></span>
+</div>
+<div class="gq-gap" id="gq-gap"></div>
+<div class="gq-feedback" id="gq-feedback"></div>
+<div class="gq-options" id="gq-options"></div>
+</div>
+</div>
+<!-- Schritt 4: Sortierspiel -->
+<div class="learn-panel" data-panel="art-learn" data-val="sort">
+<p style="font-family:var(--font-head);font-weight:800;color:var(--amber-dark);font-size:.95rem;margin:0 0 6px">🔀 Sortierspiel — a, an oder kein Artikel?</p>
+<p style="font-size:.87rem;color:var(--gray-600);margin:0 0 14px">Klicke auf ein Wort aus dem Pool um es der richtigen Spalte zuzuordnen. Klicke erneut um es weiterzuschieben oder zurückzulegen.</p>
+<p style="font-family:var(--font-head);font-weight:700;font-size:.82rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;margin:0 0 7px">📦 Wörter zum Sortieren:</p>
+<div class="sort-pool" id="sort-pool"></div>
+<div class="sort-cols">
+<div class="sort-col sort-col-a">
+<span class="sort-col-label">🅰️ a</span>
+<div class="sort-chips" id="sort-col-a"></div>
+</div>
+<div class="sort-col sort-col-an">
+<span class="sort-col-label">👂 an</span>
+<div class="sort-chips" id="sort-col-an"></div>
+</div>
+<div class="sort-col sort-col-none">
+<span class="sort-col-label">∅ kein Artikel</span>
+<div class="sort-chips" id="sort-col-none"></div>
+</div>
+</div>
+<div class="sort-feedback" id="sort-feedback"></div>
+<div class="sort-controls">
+<button class="sort-btn sort-btn-reset" onclick="resetSort()" type="button">↺ Neu starten</button>
+<button class="sort-btn sort-btn-check" onclick="checkSort()" type="button">Prüfen ✓</button>
+</div>
+</div>
+<!-- Schritt 5: Kann ich's? -->
+<div class="learn-panel" data-panel="art-learn" data-val="check">
+<div class="check-shell">
+<p class="scanner-intro">🔍 Fehler-Scanner — klicke auf einen Fehler:</p>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">I have a apple.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>I have <strong>a</strong> apple.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>I have <strong>an</strong> apple.</div>
+</div><p class="error-rule">apple beginnt mit Vokal-Klang (a) → <strong>an</strong></p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">She has an big dog.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>She has <strong>an</strong> big dog.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>She has <strong>a</strong> big dog.</div>
+</div><p class="error-rule">big beginnt mit Konsonanten-Klang (b) → <strong>a</strong>. Das Adjektiv zählt!</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">I play the football.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>I play <strong>the</strong> football.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>I play <strong>football</strong>.</div>
+</div><p class="error-rule">Sportarten bekommen keinen Artikel — auch kein the!</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">I eat a breakfast.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>I eat <strong>a</strong> breakfast.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>I eat <strong>breakfast</strong>.</div>
+</div><p class="error-rule">Mahlzeiten bekommen keinen Artikel: breakfast, lunch, dinner.</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">I have got dog.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>I have got <strong>dog</strong>.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>I have got <strong>a dog</strong>.</div>
+</div><p class="error-rule">Vor einem einzelnen Nomen (Singular, zählbar) steht fast immer a/an!</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">an uniform</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span><strong>an</strong> uniform</div>
+<div class="ec-right"><span class="ec-label">Richtig</span><strong>a</strong> uniform</div>
+</div><p class="error-rule">uniform sieht nach u aus, klingt aber wie "ju..." → Konsonanten-Klang → a</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">a hour</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span><strong>a</strong> hour</div>
+<div class="ec-right"><span class="ec-label">Richtig</span><strong>an</strong> hour</div>
+</div><p class="error-rule">Das h in hour ist stumm. Es klingt wie "our" → Vokal-Klang → an</p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">There is an book on the table.</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span>There is <strong>an</strong> book.</div>
+<div class="ec-right"><span class="ec-label">Richtig</span>There is <strong>a</strong> book.</div>
+</div><p class="error-rule">book beginnt mit Konsonanten-Klang (b) → <strong>a book</strong></p></div>
+</details>
+<details class="error-item">
+<summary class="error-summary"><span class="error-badge">?</span><span><span class="error-wrong">a my dog</span></span></summary>
+<div class="error-body"><div class="error-compare">
+<div class="ec-wrong"><span class="ec-label">Fehler</span><strong>a my</strong> dog</div>
+<div class="ec-right"><span class="ec-label">Richtig</span><strong>my</strong> dog</div>
+</div><p class="error-rule">a/an und Besitzwörter (my/your/his/her...) stehen nicht zusammen!</p></div>
+</details>
+<div class="selfcheck-divider">und jetzt selbst prüfen</div>
+<div>
+<p class="selfcheck-title">✅ Kann ich's?</p>
+<ul class="check-list" id="check-list-art">
+<li><label><input onchange="saveScore()" type="checkbox"/><span>a vor Konsonanten-Klang: a dog, a book, a big house</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>an vor Vokal-Klang: an apple, an elephant, an old house</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>Adjektiv zählt: an old dog, a big apple — das Adjektiv steht am Tor!</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>Denkfallen: a uniform (klingt /ju/) · an hour (h stumm)</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>the: schon bekannt oder einzigartig (the sun, the book is red)</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>Kein Artikel: Sportarten (football), Mahlzeiten (breakfast), Eigennamen (Hanna), Schulfächer (English)</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>Kein a/an bei Plural: a dog → dogs (kein a dogs!)</span></label></li>
+<li><label><input onchange="saveScore()" type="checkbox"/><span>Kein a/an + Besitzwort: my dog (nicht: a my dog)</span></label></li>
+</ul>
+<div class="check-score" style="margin-top:8px">
+<span id="art-score-text">0 von 8</span>
+<div class="check-score-bar"><div class="check-score-fill" id="art-score-fill" style="width:0%"></div></div>
+<span id="art-score-emoji">💪</span>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /LERNEN -->
+<!-- NACHSCHLAGEN -->
+<div class="compass-mode-panel" data-panel="art-mode" data-val="reference" id="nachschlagen">
+<div style="padding:22px;display:grid;gap:20px">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius);background:var(--amber-soft);border:1px solid #fde68a;font-size:.87rem;color:var(--amber-dark);font-family:var(--font-head);font-weight:600">
+        🔤 Dein Articles-Spickzettel — a / an / the auf einen Blick.
+      </div>
+<!-- Haupttabelle a/an/the/kein -->
+<div>
+<p style="font-family:var(--font-head);font-weight:800;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px">Überblick — a / an / the / kein Artikel</p>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>Artikel</th><th>Wann?</th><th>Beispiele</th></tr></thead>
+<tbody>
+<tr><td><strong style="color:var(--green)">a</strong></td><td>Singular, Konsonanten-Klang am Anfang</td><td>a dog · a book · a cat · a big house · a uniform</td></tr>
+<tr><td><strong style="color:var(--indigo)">an</strong></td><td>Singular, Vokal-Klang am Anfang (a,e,i,o,u)</td><td>an apple · an elephant · an old house · an hour</td></tr>
+<tr><td><strong style="color:var(--blue-dark)">the</strong></td><td>Bekannt, einzigartig, schon erwähnt; vor Plural möglich</td><td>the sun · the moon · the book (schon erwähnt) · the books</td></tr>
+<tr><td><strong style="color:var(--gray-500)">∅ kein</strong></td><td>Sportarten, Mahlzeiten, Eigennamen, Schulfächer, Plural allgemein</td><td>football · breakfast · Hanna · English · dogs (allgemein)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- a/an Ohr-Regel -->
+<div>
+<p style="font-family:var(--font-head);font-weight:800;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px">a / an — Ohr-Regel im Detail</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+<div style="padding:12px;border-radius:var(--radius-sm);background:var(--green-soft);border:1px solid #bbf7d0;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:800;color:var(--green);margin-bottom:6px">🅰️ a — Konsonanten-Klang</span>
+            a <strong>d</strong>og · a <strong>b</strong>ook · a <strong>c</strong>at<br/>
+            a <strong>sch</strong>ool · a <strong>t</strong>eacher<br/>
+            a <strong>b</strong>ig house · a <strong>sm</strong>all cat<br/>
+            a <strong>un</strong>iform (klingt /ju/)
+          </div>
+<div style="padding:12px;border-radius:var(--radius-sm);background:var(--indigo-soft);border:1px solid #c7d2fe;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:800;color:var(--indigo);margin-bottom:6px">👂 an — Vokal-Klang</span>
+            an <strong>a</strong>pple · an <strong>e</strong>lephant<br/>
+            an <strong>o</strong>range · an <strong>e</strong>gg<br/>
+            an <strong>o</strong>ld house · an <strong>a</strong>ngry teacher<br/>
+            an <strong>h</strong>our (h ist stumm)
+          </div>
+</div>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>Situation</th><th>Regel</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td>Normales Nomen</td><td>Klang des Nomens entscheidet</td><td>a dog · an apple</td></tr>
+<tr><td>Adjektiv davor</td><td>Klang des Adjektivs entscheidet!</td><td>an old dog · a big apple</td></tr>
+<tr><td>h stumm</td><td>Vokal-Klang → an</td><td>an hour · an honest man</td></tr>
+<tr><td>u klingt /ju/</td><td>Konsonanten-Klang → a</td><td>a uniform · a university</td></tr>
+<tr><td>Plural</td><td>Kein a/an</td><td>dogs · apples (kein a dogs!)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- the im Detail -->
+<div>
+<p style="font-family:var(--font-head);font-weight:800;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px">the — wann bestimmt?</p>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>Fall</th><th>Erklärung</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td><strong>Erst a → dann the</strong></td><td>Erstes Mal unbekannt → a/an. Zweites Mal bekannt → the.</td><td>There is <strong>a</strong> cat. <strong>The</strong> cat is black.</td></tr>
+<tr><td><strong>Einzigartig</strong></td><td>Es gibt nur eine(n) davon auf der Welt.</td><td><strong>the</strong> sun · <strong>the</strong> moon · <strong>the</strong> sky</td></tr>
+<tr><td><strong>Bestimmte Gruppe</strong></td><td>Klar, welche Sachen gemeint sind.</td><td><strong>The</strong> books on the table are mine.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Kein Artikel -->
+<div>
+<p style="font-family:var(--font-head);font-weight:800;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px">Kein Artikel — diese Fälle auswendig lernen!</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+<div style="padding:11px 12px;border-radius:var(--radius-sm);background:var(--red-soft);border:1px solid #fecaca;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--red);margin-bottom:5px">⚽ Sportarten</span>
+            She plays <strong>football</strong>.<br/>
+            I like <strong>tennis</strong>.<br/>
+            He plays <strong>basketball</strong>.
+          </div>
+<div style="padding:11px 12px;border-radius:var(--radius-sm);background:var(--red-soft);border:1px solid #fecaca;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--red);margin-bottom:5px">🍳 Mahlzeiten</span>
+            We have <strong>breakfast</strong>.<br/>
+            I eat <strong>lunch</strong> at school.<br/>
+            They have <strong>dinner</strong> at 6.
+          </div>
+<div style="padding:11px 12px;border-radius:var(--radius-sm);background:var(--red-soft);border:1px solid #fecaca;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--red);margin-bottom:5px">👤 Eigennamen</span>
+<strong>Hanna</strong> is nice.<br/>
+<strong>Plymouth</strong> is a city.<br/>
+<strong>Tom</strong> has a dog.
+          </div>
+<div style="padding:11px 12px;border-radius:var(--radius-sm);background:var(--red-soft);border:1px solid #fecaca;font-size:.86rem">
+<span style="display:block;font-family:var(--font-head);font-weight:700;color:var(--red);margin-bottom:5px">📚 Schulfächer</span>
+            I like <strong>English</strong>.<br/>
+            She is good at <strong>Maths</strong>.<br/>
+            We have <strong>PE</strong> today.
+          </div>
+</div>
+</div>
+<!-- Access-1-Sätze -->
+<div>
+<p style="font-family:var(--font-head);font-weight:800;font-size:.82rem;color:var(--gray-700);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px">📚 Sätze aus Access 1</p>
+<div style="display:grid;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">I have got a dog.</span>
+<span style="color:var(--gray-600)">Ich habe einen Hund.</span>
+<span style="font-size:.71rem;color:var(--green);background:var(--green-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">a</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">She is an English teacher.</span>
+<span style="color:var(--gray-600)">Sie ist eine Englischlehrerin.</span>
+<span style="font-size:.71rem;color:var(--indigo);background:var(--indigo-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">an</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">There is a book on the desk. The book is red.</span>
+<span style="color:var(--gray-600)">Da ist ein Buch. Das Buch ist rot.</span>
+<span style="font-size:.71rem;color:var(--blue-dark);background:var(--blue-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">a → the</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">Hanna plays football every day.</span>
+<span style="color:var(--gray-600)">Hanna spielt jeden Tag Fußball.</span>
+<span style="font-size:.71rem;color:var(--gray-500);background:var(--gray-100);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">∅ kein</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">We have breakfast at 7 o'clock.</span>
+<span style="color:var(--gray-600)">Wir frühstücken um 7 Uhr.</span>
+<span style="font-size:.71rem;color:var(--gray-500);background:var(--gray-100);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">∅ kein</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center">
+<span style="font-family:var(--font-head);font-weight:600">The sun is very hot today.</span>
+<span style="color:var(--gray-600)">Die Sonne ist heute sehr heiß.</span>
+<span style="font-size:.71rem;color:var(--blue-dark);background:var(--blue-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:700;white-space:nowrap">the</span>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /NACHSCHLAGEN -->
+<!-- VERBINDUNGEN -->
+<div class="compass-mode-panel" data-panel="art-mode" data-val="connections" id="verbindungen">
+<div style="padding:22px">
+<p style="padding:10px 13px;border-radius:var(--radius);background:linear-gradient(135deg,var(--amber-soft),var(--blue-soft));border:1px solid #fde68a;font-family:var(--font-head);font-size:.87rem;font-weight:600;color:var(--amber-dark);margin:0 0 14px">🧭 Articles hängen mit fast allen Themen zusammen — wann immer du ein Nomen hast, brauchst du eine Entscheidung.</p>
+<div style="display:grid;gap:9px">
+<div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff">
+<div style="display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--blue-soft)">🎒</div>
+<div>
+<h3 style="margin:0 0 4px;font-family:var(--font-head);font-weight:800;color:var(--blue-dark);font-size:.92rem">have got — Thema 3</h3>
+<p style="color:var(--gray-700);font-size:.86rem;margin:0 0 5px">Nach have got steht fast immer a/an vor einem Singular-Nomen.</p>
+<div style="display:flex;flex-wrap:wrap;gap:5px">
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--blue-dark);background:var(--blue-soft)">I have got a dog. ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--red);background:var(--red-soft)">I have got dog. ✗</span>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff">
+<div style="display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--indigo-soft)">📍</div>
+<div>
+<h3 style="margin:0 0 4px;font-family:var(--font-head);font-weight:800;color:var(--indigo);font-size:.92rem">there is / are — Thema 10</h3>
+<p style="color:var(--gray-700);font-size:.86rem;margin:0 0 5px">there is braucht fast immer a/an. there are hat kein a/an (Plural).</p>
+<div style="display:flex;flex-wrap:wrap;gap:5px">
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--indigo);background:var(--indigo-soft)">There is a book. ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--indigo);background:var(--indigo-soft)">There are books. ✓</span>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff">
+<div style="display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--violet-soft)">👤</div>
+<div>
+<h3 style="margin:0 0 4px;font-family:var(--font-head);font-weight:800;color:var(--violet);font-size:.92rem">Pronouns / Besitzwörter — Thema 2</h3>
+<p style="color:var(--gray-700);font-size:.86rem;margin:0 0 5px">a/an und my/your/his/her stehen nie zusammen — eines von beiden reicht.</p>
+<p style="padding:8px 11px;border-left:4px solid var(--violet);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--violet-soft);color:var(--gray-700);font-size:.85rem;margin:0 0 7px">🚢 Merksatz: Artikel und Besitzwort sind wie zwei Kapitäne auf einem Schiff — es kann immer nur einer das Sagen haben.</p>
+<div style="display:flex;flex-wrap:wrap;gap:5px">
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--violet);background:var(--violet-soft)">my dog ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--violet);background:var(--violet-soft)">a dog ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--red);background:var(--red-soft)">a my dog ✗</span>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:13px;border:var(--line);border-radius:var(--radius);background:#fff">
+<div style="display:flex;align-items:center;justify-content:center;width:37px;height:37px;border-radius:var(--radius-sm);font-size:1.2rem;background:var(--amber-soft)">🎨</div>
+<div>
+<h3 style="margin:0 0 4px;font-family:var(--font-head);font-weight:800;color:var(--amber-dark);font-size:.92rem">Adjectives — Thema 12</h3>
+<p style="color:var(--gray-700);font-size:.86rem;margin:0 0 5px">Wenn ein Adjektiv vor dem Nomen steht, entscheidet der Klang des Adjektivs über a oder an.</p>
+<div style="display:flex;flex-wrap:wrap;gap:5px">
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--green);background:var(--green-soft)">a big dog ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--indigo);background:var(--indigo-soft)">an old house ✓</span>
+<span style="padding:3px 9px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;color:var(--red);background:var(--red-soft)">a old house ✗</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /VERBINDUNGEN -->
+<!-- SCHREIB-CHECK -->
+<div class="compass-mode-panel" data-panel="art-mode" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>Schreib-Check: Articles</h3>
+<p>Schreibe jede Antwort einmal selbst. Jede Aufgabe prüft eine andere Artikel-Entscheidung.</p>
+</div>
+<div class="writecheck-grid" id="writecheck-tasks"></div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" onclick="checkWritecheckAll()" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" onclick="resetWritecheck()" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div><!-- /SCHREIB-CHECK -->
+<!-- NOTIZEN -->
+<div class="compass-mode-panel" data-panel="art-mode" data-val="notes" id="notizen">
+<div class="notes-panel">
+<p class="notes-title">✏️ Meine Notizen zu Articles</p>
+<div class="notes-grid">
+<div class="note-field">
+<label class="note-field-label" for="note-new">💡 Das war neu für mich</label>
+<textarea class="note-textarea" id="note-new" placeholder="Was hast du heute gelernt?"></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-hard">🤔 Das war schwierig</label>
+<textarea class="note-textarea" id="note-hard" placeholder="Was hat noch nicht ganz geklappt?"></textarea>
+</div>
+<div class="note-field">
+<label class="note-field-label" for="note-free">📝 Meine eigenen Notizen</label>
+<textarea class="note-textarea" id="note-free" placeholder="Eigene Gedanken, Regeln, Tipps..."></textarea>
+</div>
+</div>
+<div style="margin-bottom:12px">
+<label class="note-example-label" for="note-example">✍️ Mein eigener Beispielsatz</label>
+<input class="note-example-input" id="note-example" placeholder="z.B. She has an old cat and a big dog." type="text"/>
+</div>
+<div class="notes-save-row">
+<button class="notes-save-btn" onclick="saveNotes()" type="button">Notizen speichern</button>
+<span class="notes-saved" id="notes-saved">✓ Gespeichert!</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>
+(function() {
+
+  /* kompass_last_topic setzen */
+  try { localStorage.setItem('kompass_last_topic', 'articles'); } catch(e) {}
+  var SK  = 'kompass_articles_checks';
+  var SKN = 'kompass_articles_notes';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+
+  /* ══════════════════════════════════════
+     OHR-TEST-MASCHINE
+  ══════════════════════════════════════ */
+  var EAR_DATA = {
+    dog:       { article:'a',  sound:'Konsonanten-Klang',  icon:'🐕', note:'dog beginnt hart (d). Deshalb a.' },
+    book:      { article:'a',  sound:'Konsonanten-Klang',  icon:'📚', note:'book beginnt hart (b). Deshalb a.' },
+    cat:       { article:'a',  sound:'Konsonanten-Klang',  icon:'🐱', note:'cat beginnt hart (k). Deshalb a.' },
+    school:    { article:'a',  sound:'Konsonanten-Klang',  icon:'🏫', note:'school beginnt hart (sch). Deshalb a.' },
+    apple:     { article:'an', sound:'Vokal-Klang',        icon:'🍎', note:'apple beginnt offen (a). Deshalb an.' },
+    elephant:  { article:'an', sound:'Vokal-Klang',        icon:'🐘', note:'elephant beginnt offen (e). Deshalb an.' },
+    orange:    { article:'an', sound:'Vokal-Klang',        icon:'🍊', note:'orange beginnt offen (o). Deshalb an.' },
+    egg:       { article:'an', sound:'Vokal-Klang',        icon:'🥚', note:'egg beginnt offen (e). Deshalb an.' },
+    'old house': { article:'an', sound:'Vokal-Klang (Adjektiv!)', icon:'🏠', note:'old steht direkt nach a/an und beginnt offen (o). Deshalb an.' },
+    'big dog':   { article:'a',  sound:'Konsonanten-Klang (Adjektiv!)', icon:'🐕', note:'big steht direkt nach a/an und beginnt hart (b). Deshalb a.' },
+    hour:      { article:'an', sound:'h ist stumm → Vokal-Klang', icon:'⏰', note:'Das h in hour hört man nicht. Es klingt wie "our". Deshalb an.' },
+    uniform:   { article:'a',  sound:'klingt wie "ju" → Konsonanten-Klang', icon:'👕', note:'uniform sieht nach u aus, klingt aber wie "ju...". Deshalb a.' }
+  };
+
+  window.testEar = function(key) {
+    var item = EAR_DATA[key];
+    if (!item) return;
+    var out    = document.getElementById('ear-out');
+    var result = document.getElementById('ear-result');
+    var note   = document.getElementById('ear-note');
+    var path   = document.getElementById('ear-path');
+    document.querySelectorAll('.ear-btn').forEach(function(b){b.classList.toggle('is-active', b.dataset.word===key);});
+    if (!out) return;
+    out.classList.remove('is-pop'); out.offsetWidth; out.classList.add('is-pop');
+    out.style.borderColor = item.article==='an' ? '#c7d2fe' : '#bbf7d0';
+    if (path) path.innerHTML =
+      '<span class="ear-token">'+ item.icon +' '+ key +'</span>' +
+      '<span class="ear-arrow">→</span>' +
+      '<span class="ear-token ear-token-sound">'+ item.sound +'</span>' +
+      '<span class="ear-arrow">→</span>' +
+      '<span class="ear-token ear-token-result">'+ item.article +'</span>';
+    if (result) { result.textContent = item.article + ' ' + key; result.style.color = item.article==='an' ? 'var(--indigo)' : 'var(--green)'; }
+    if (note)   note.textContent = item.note;
+  };
+
+  /* ══════════════════════════════════════
+     LÜCKENTEXT-QUIZ
+  ══════════════════════════════════════ */
+  var GAP_TASKS = [
+    { gap:'___ apple',          answer:'an',  options:['a','an','the'],           hint:'apple beginnt mit Vokal-Klang' },
+    { gap:'___ dog',            answer:'a',   options:['a','an','the'],           hint:'dog beginnt mit Konsonanten-Klang' },
+    { gap:'___ old house',      answer:'an',  options:['a','an','the'],           hint:'old (Adjektiv) beginnt mit Vokal-Klang' },
+    { gap:'___ big cat',        answer:'a',   options:['a','an','the'],           hint:'big (Adjektiv) beginnt mit Konsonanten-Klang' },
+    { gap:'___ hour',           answer:'an',  options:['a','an','the'],           hint:'h ist stumm, klingt wie "our"' },
+    { gap:'There is ___ book on the table. ___ book is red.',
+                                answer:'a / the', options:['a / the','an / the','the / a','a / a'], hint:'Erstes Mal unbekannt → a, zweites Mal bekannt → the' },
+    { gap:'She plays ___ football.',  answer:'—',   options:['a','an','the','—'],hint:'Sportarten bekommen keinen Artikel' },
+    { gap:'We have ___ breakfast.',   answer:'—',   options:['a','an','the','—'],hint:'Mahlzeiten bekommen keinen Artikel' },
+    { gap:'___ sun is bright.',       answer:'the', options:['a','an','the','—'],hint:'Einzigartige Dinge → the' },
+    { gap:'She is ___ teacher.',      answer:'a',   options:['a','an','the','—'],hint:'Beruf + Singular → a' },
+    { gap:'I like ___ English.',      answer:'—',   options:['a','an','the','—'],hint:'Schulfächer bekommen keinen Artikel' },
+    { gap:'___ uniform',              answer:'a',   options:['a','an','the'],     hint:'uniform klingt wie "ju..." → Konsonanten-Klang' }
+  ];
+  var gqIdx = 0;
+  var gqShuffled = GAP_TASKS.slice();
+  (function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}})(gqShuffled);
+  var gqScore=0; var gqTotal=0;
+
+  function showGapQuiz() {
+    var q   = gqShuffled[gqIdx % gqShuffled.length];
+    var gap = document.getElementById('gq-gap');
+    var opt = document.getElementById('gq-options');
+    var fb  = document.getElementById('gq-feedback');
+    var ctr = document.getElementById('gq-counter');
+    var sc  = document.getElementById('gq-score');
+    if (gap) gap.textContent = q.gap;
+    if (fb)  fb.style.display = 'none';
+    if (ctr) ctr.textContent = (gqIdx % gqShuffled.length + 1) + ' / ' + gqShuffled.length;
+    if (sc)  sc.textContent = gqScore + ' / ' + gqTotal;
+    if (opt) {
+      opt.innerHTML = '';
+      var shuffOpts = q.options.slice();
+      (function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}})(shuffOpts);
+      shuffOpts.forEach(function(o){
+        var btn = document.createElement('button');
+        btn.className = 'gq-btn';
+        btn.textContent = o === '—' ? '(kein Artikel)' : o;
+        btn.addEventListener('click', function(){ checkGap(o, q); });
+        opt.appendChild(btn);
+      });
+    }
+  }
+
+  function checkGap(chosen, q) {
+    var fb = document.getElementById('gq-feedback');
+    var sc = document.getElementById('gq-score');
+    gqTotal++;
+    var ok = chosen === q.answer;
+    if (ok) {
+      gqScore++;
+      if (fb){ fb.innerHTML='✅ Richtig! · '+q.hint; fb.style.background='var(--green-soft)'; fb.style.color='var(--green)'; fb.style.display='block'; }
+    } else {
+      var displayAnswer = q.answer === '—' ? '(kein Artikel)' : q.answer;
+      if (fb){ fb.innerHTML='❌ '+q.hint+'<br><span style="font-size:.84rem">Richtig: <strong>'+displayAnswer+'</strong></span>'; fb.style.background='var(--red-soft)'; fb.style.color='var(--red)'; fb.style.display='block'; }
+    }
+    if (sc) sc.textContent = gqScore + ' / ' + gqTotal;
+    document.querySelectorAll('.gq-btn').forEach(function(b){
+      b.disabled = true;
+      var bVal = b.textContent === '(kein Artikel)' ? '—' : b.textContent;
+      if (bVal === q.answer) b.classList.add('gq-btn-right');
+      else if (bVal === chosen && !ok) b.classList.add('gq-btn-wrong');
+    });
+    gqIdx++;
+    setTimeout(function(){ showGapQuiz(); }, 1600);
+  }
+
+  /* ══════════════════════════════════════
+     SORTIERSPIEL
+  ══════════════════════════════════════ */
+  var SORT_WORDS = [
+    { word:'apple',     correct:'an' },
+    { word:'dog',       correct:'a' },
+    { word:'elephant',  correct:'an' },
+    { word:'book',      correct:'a' },
+    { word:'orange',    correct:'an' },
+    { word:'cat',       correct:'a' },
+    { word:'hour',      correct:'an' },
+    { word:'school',    correct:'a' },
+    { word:'egg',       correct:'an' },
+    { word:'uniform',   correct:'a' },
+    { word:'football',  correct:'none' },
+    { word:'breakfast', correct:'none' }
+  ];
+  var sortState = {};
+  SORT_WORDS.forEach(function(w){ sortState[w.word] = null; });
+
+  function renderSortGame() {
+    var pool  = document.getElementById('sort-pool');
+    var colA  = document.getElementById('sort-col-a');
+    var colAn = document.getElementById('sort-col-an');
+    var colNone= document.getElementById('sort-col-none');
+    if (!pool) return;
+    pool.innerHTML=''; colA.innerHTML=''; colAn.innerHTML=''; colNone.innerHTML='';
+    SORT_WORDS.forEach(function(w){
+      var chip = document.createElement('button');
+      chip.className = 'sort-chip';
+      chip.type = 'button';
+      chip.textContent = w.word;
+      chip.dataset.word = w.word;
+      var placed = sortState[w.word];
+      var placedLabel = placed === 'a' ? 'Spalte a'
+        : placed === 'an' ? 'Spalte an'
+        : placed === 'none' ? 'Spalte kein Artikel'
+        : 'Wörterpool';
+      chip.setAttribute('aria-label', w.word + ', aktuell in ' + placedLabel + '. Klicken, um weiter zu verschieben.');
+      chip.addEventListener('click', function(){ cycleSortWord(w.word); });
+      if (!placed) { pool.appendChild(chip); }
+      else if (placed==='a')    { colA.appendChild(chip); }
+      else if (placed==='an')   { colAn.appendChild(chip); }
+      else if (placed==='none') { colNone.appendChild(chip); }
+    });
+  }
+
+  window.cycleSortWord = function(word) {
+    var cur = sortState[word];
+    var cols = ['a','an','none',null];
+    var idx  = cols.indexOf(cur);
+    sortState[word] = cols[(idx+1) % cols.length];
+    renderSortGame();
+  };
+
+  window.checkSort = function() {
+    var fb = document.getElementById('sort-feedback');
+    var allPlaced = SORT_WORDS.every(function(w){ return sortState[w.word] !== null; });
+    if (!allPlaced){ if(fb){fb.textContent='⚠️ Bitte alle Wörter zuordnen!';fb.style.color='var(--yellow)';fb.style.display='block';} return; }
+    var wrong = SORT_WORDS.filter(function(w){ return sortState[w.word]!==w.correct; });
+    var chips = document.querySelectorAll('.sort-chip');
+    chips.forEach(function(c){
+      var w = SORT_WORDS.find(function(x){return x.word===c.dataset.word;});
+      if(w) c.classList.toggle('sort-chip-wrong', sortState[w.word]!==w.correct);
+    });
+    if(wrong.length===0){
+      if(fb){fb.textContent='✅ Perfekt! Alle richtig!';fb.style.color='var(--green)';fb.style.background='var(--green-soft)';fb.style.display='block';}
+    } else {
+      if(fb){fb.textContent='❌ '+wrong.length+' falsch platziert (rot markiert). Klicke zum Korrigieren.';fb.style.color='var(--red)';fb.style.background='var(--red-soft)';fb.style.display='block';}
+    }
+  };
+
+  window.resetSort = function() {
+    SORT_WORDS.forEach(function(w){ sortState[w.word]=null; });
+    var fb=document.getElementById('sort-feedback');
+    if(fb) fb.style.display='none';
+    document.querySelectorAll('.sort-chip').forEach(function(c){c.classList.remove('sort-chip-wrong');});
+    renderSortGame();
+  };
+
+
+  /* ══════════════════════════════════════
+     SCHREIB-CHECK
+  ══════════════════════════════════════ */
+  var WRITE_TASKS = [
+    {id:'art-wc-01',skill:'a-consonant',skillLabel:'a vor Konsonanten-Klang',context:'I have got ___ dog.',prompt:'Schreibe den ganzen Satz mit a oder an.',accepted:['I have got a dog.'],canonical:'I have got a dog.',correct:'Richtig. Dog beginnt mit einem Konsonanten-Klang. Deshalb benutzt du a.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-02',skill:'an-vowel',skillLabel:'an vor Vokal-Klang',context:'She has got ___ apple.',prompt:'Schreibe den ganzen Satz mit a oder an.',accepted:['She has got an apple.'],canonical:'She has got an apple.',correct:'Richtig. Apple beginnt mit einem Vokal-Klang. Deshalb benutzt du an.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-03',skill:'adjective-decides',skillLabel:'Das Adjektiv entscheidet',context:'This is ___ old house.',prompt:'Schreibe den ganzen Satz mit a oder an.',accepted:['This is an old house.'],canonical:'This is an old house.',correct:'Richtig. Old steht direkt nach der Lücke und beginnt mit einem Vokal-Klang. Deshalb benutzt du an.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-04',skill:'uniform',skillLabel:'Denkfalle: uniform',context:'He is wearing ___ uniform.',prompt:'Schreibe den ganzen Satz mit a oder an.',accepted:['He is wearing a uniform.'],canonical:'He is wearing a uniform.',correct:'Richtig. Uniform klingt am Anfang wie ju. Das ist ein Konsonanten-Klang. Deshalb benutzt du a.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-05',skill:'hour',skillLabel:'Denkfalle: hour',context:'We have got ___ hour.',prompt:'Schreibe den ganzen Satz mit a oder an.',accepted:['We have got an hour.'],canonical:'We have got an hour.',correct:'Richtig. Das h in hour ist stumm. Hour klingt wie our. Deshalb benutzt du an.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-06',skill:'known-the',skillLabel:'the bei etwas Bekanntem',context:'There is a cat in the garden. ___ cat is black.',prompt:'Schreibe beide Sätze mit a oder the.',accepted:['There is a cat in the garden. The cat is black.'],canonical:'There is a cat in the garden. The cat is black.',correct:'Richtig. Beim ersten Mal ist die Katze neu. Danach weiß man, welche Katze gemeint ist: the cat.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-07',skill:'unique-the',skillLabel:'the bei etwas Einzigartigem',context:'___ sun is yellow.',prompt:'Schreibe den ganzen Satz mit dem passenden Artikel.',accepted:['The sun is yellow.'],canonical:'The sun is yellow.',correct:'Richtig. Es gibt nur eine Sonne. Deshalb benutzt du the sun.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-08',skill:'sport-no-article',skillLabel:'Kein Artikel bei Sportarten',context:'I play ___ football.',prompt:'Schreibe den ganzen Satz. Setze einen Artikel ein oder lasse die Lücke frei.',accepted:['I play football.'],canonical:'I play football.',correct:'Richtig. Bei Sportarten steht normalerweise kein Artikel.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-09',skill:'meal-no-article',skillLabel:'Kein Artikel bei Mahlzeiten',context:'We have ___ breakfast at 7 o’clock.',prompt:'Schreibe den ganzen Satz. Setze einen Artikel ein oder lasse die Lücke frei.',accepted:["We have breakfast at 7 o'clock.",'We have breakfast at 7 o’clock.'],canonical:'We have breakfast at 7 o’clock.',correct:'Richtig. Bei Mahlzeiten wie breakfast, lunch und dinner steht normalerweise kein Artikel.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-10',skill:'plural-no-a',skillLabel:'Kein a/an bei Plural',context:'I have got a dogs.',prompt:'Finde den Fehler und verbessere den Satz.',accepted:['I have got dogs.'],canonical:'I have got dogs.',correct:'Richtig. A/an benutzt du nur bei einer einzelnen zählbaren Sache. Dogs ist Plural.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-11',skill:'possessive-no-a',skillLabel:'Kein a/an vor Besitzwörtern',context:'This is a my dog.',prompt:'Finde den Fehler und verbessere den Satz.',accepted:['This is my dog.'],canonical:'This is my dog.',correct:'Richtig. Vor my, your, his, her, our und their steht kein a/an.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'},
+    {id:'art-wc-12',skill:'subject-no-the',skillLabel:'Kein Artikel bei Schulfächern',context:'My favourite subject is the English.',prompt:'Finde den Fehler und verbessere den Satz.',accepted:['My favourite subject is English.'],canonical:'My favourite subject is English.',correct:'Richtig. Bei Schulfächern steht normalerweise kein Artikel.',wrong:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'}
+  ];
+
+  window.WRITE_TASKS = WRITE_TASKS;
+
+  function normaliseWriteAnswer(s){
+    return (s||'')
+      .replace(/[’‘]/g,"'")
+      .replace(/[“”]/g,'"')
+      .replace(/\s+/g,' ')
+      .trim()
+      .replace(/[.!?]+$/,'')
+      .toLowerCase();
+  }
+  function getWriteStore(){
+    try{return JSON.parse(localStorage.getItem(WRITE_KEY)||'{}');}catch(e){return {};}
+  }
+  function setWriteStore(store){
+    try{localStorage.setItem(WRITE_KEY,JSON.stringify(store));}catch(e){}
+  }
+  function checkWriteAnswer(task,value){
+    var n=normaliseWriteAnswer(value);
+    var ok=task.accepted.some(function(a){return normaliseWriteAnswer(a)===n;});
+    if(ok){return {status:'correct',message:task.correct};}
+    if(!n){return {status:'wrong',message:'Schreib erst eine Antwort hinein.'};}
+    return {status:'wrong',message:task.wrong};
+  }
+  function renderWritecheck(){
+    var wrap=document.getElementById('writecheck-tasks');
+    if(!wrap)return;
+    wrap.innerHTML=WRITE_TASKS.map(function(t,i){
+      return '<div class="writecheck-task" id="write-task-'+t.id+'">'
+        +'<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe '+(i+1)+'</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>'
+        +(t.context?'<p class="writecheck-context">'+t.context+'</p>':'')
+        +'<p class="writecheck-prompt">'+t.prompt+'</p>'
+        +'<div class="writecheck-input-row"><input class="writecheck-input" id="input-'+t.id+'" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" onclick="checkWriteTask(&quot;'+t.id+'&quot;)">Prüfen</button></div>'
+        +'<div class="writecheck-feedback" id="feedback-'+t.id+'"></div>'
+        +'</div>';
+    }).join('');
+  }
+  function applyWriteResult(task,result,value){
+    var card=document.getElementById('write-task-'+task.id);
+    var fb=document.getElementById('feedback-'+task.id);
+    if(card){card.classList.remove('is-correct','is-wrong');card.classList.add('is-'+result.status);}
+    if(fb){fb.className='writecheck-feedback is-visible is-'+result.status;fb.textContent=result.message;}
+    var store=getWriteStore();
+    store[task.id]={status:result.status,value:value||'',updated:new Date().toISOString()};
+    setWriteStore(store);
+  }
+  window.checkWriteTask=function(id){
+    var task=WRITE_TASKS.find(function(t){return t.id===id;});
+    if(!task)return;
+    var input=document.getElementById('input-'+id);
+    var value=input?input.value:'';
+    var result=checkWriteAnswer(task,value);
+    applyWriteResult(task,result,value);
+    updateWriteSummary(false);
+  };
+  window.checkWritecheckAll=function(){
+    WRITE_TASKS.forEach(function(t){
+      var input=document.getElementById('input-'+t.id);
+      var value=input?input.value:'';
+      applyWriteResult(t,checkWriteAnswer(t,value),value);
+    });
+    updateWriteSummary(true);
+  };
+  function updateWriteSummary(show){
+    var store=getWriteStore();
+    var counts={correct:0,wrong:0,open:0};
+    var strong=[];
+    var focus=[];
+    WRITE_TASKS.forEach(function(t){
+      var r=store[t.id];
+      if(!r){counts.open++;focus.push(t.skillLabel);return;}
+      if(r.status==='correct'){counts.correct++;strong.push(t.skillLabel);} else {counts.wrong++;focus.push(t.skillLabel);}
+    });
+    var box=document.getElementById('writecheck-summary');
+    if(!box)return;
+    if(!show && !box.classList.contains('is-visible'))return;
+    var total=WRITE_TASKS.length;
+    var status='orange',label='Noch üben';
+    if(counts.correct>=11 && counts.wrong===0){status='green';label='Sicher';}
+    else if(counts.correct>=8){status='yellow';label='Fast sicher';}
+    var strongHtml=strong.length?strong.map(function(skill){return '<li>'+skill+'</li>';}).join(''):'<li>Noch nichts sicher abgehakt</li>';
+    var focusHtml=focus.length?focus.slice(0,4).map(function(skill){return '<li>'+skill+'</li>';}).join(''):'<li>Kein Fokus offen</li>';
+    box.className='writecheck-summary is-visible';
+    box.innerHTML='<h3 class="writecheck-summary-title">Ergebnis</h3>'
+      +'<div class="writecheck-score">'+counts.correct+' von '+total+' richtig · '+counts.wrong+' noch nicht</div>'
+      +'<span class="writecheck-status is-'+status+'">'+label+'</span>'
+      +'<div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>'+strongHtml+'</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>'+focusHtml+'</ul></div></div>';
+  }
+  window.resetWritecheck=function(){
+    var store=getWriteStore();
+    WRITE_TASKS.forEach(function(t){
+      delete store[t.id];
+      var input=document.getElementById('input-'+t.id);if(input)input.value='';
+      var card=document.getElementById('write-task-'+t.id);if(card)card.classList.remove('is-correct','is-wrong');
+      var fb=document.getElementById('feedback-'+t.id);if(fb){fb.className='writecheck-feedback';fb.textContent='';}
+    });
+    setWriteStore(store);
+    var box=document.getElementById('writecheck-summary');if(box){box.className='writecheck-summary';box.innerHTML='';}
+  };
+  function loadWritecheck(){
+    var store=getWriteStore();
+    WRITE_TASKS.forEach(function(t){
+      var r=store[t.id];
+      if(!r)return;
+      var input=document.getElementById('input-'+t.id);if(input)input.value=r.value||'';
+      applyWriteResult(t,{status:r.status,message:r.status==='correct'?t.correct:t.wrong},r.value||'');
+    });
+    updateWriteSummary(false);
+  }
+
+  /* ══════════════════════════════════════
+     HAUSAUFGABEN-MODUS
+  ══════════════════════════════════════ */
+  window.toggleHausaufgaben = function() {
+    var body=document.body;
+    var btn=document.getElementById('ha-btn');
+    var isOn=body.classList.toggle('hausaufgaben-mode');
+    if(btn) btn.textContent=isOn?'📚 Normal-Modus':'📚 Hausaufgaben';
+    if(isOn){
+      var refBtn=document.querySelector('[data-tab="art-mode"][data-val="reference"]');
+      if(refBtn) refBtn.click();
+    }
+  };
+
+  /* ══════════════════════════════════════
+     TAB-HANDLER
+  ══════════════════════════════════════ */
+  document.addEventListener('click', function(e) {
+    var btn=e.target.closest('[data-tab]');
+    if(!btn) return;
+    var tg=btn.getAttribute('data-tab');
+    var val=btn.getAttribute('data-val');
+    if(!tg||!val) return;
+    document.querySelectorAll('[data-tab="'+tg+'"]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-pressed','false');});
+    document.querySelectorAll('[data-panel="'+tg+'"]').forEach(function(p){p.classList.remove('is-active');});
+    btn.classList.add('is-active'); btn.setAttribute('aria-pressed','true');
+    var panel=document.querySelector('[data-panel="'+tg+'"][data-val="'+val+'"]');
+    if(panel) panel.classList.add('is-active');
+    if(tg==='art-learn'){
+      var steps=document.querySelectorAll('[data-tab="art-learn"]');
+      var idx=0; steps.forEach(function(s,i){if(s.getAttribute('data-val')===val)idx=i;});
+      var bar=document.getElementById('art-progress');
+      if(bar) bar.style.width=Math.round(((idx+1)/steps.length)*100)+'%';
+    }
+  });
+
+  /* ══════════════════════════════════════
+     LOCALSTORAGE
+  ══════════════════════════════════════ */
+  function loadChecks(){
+    try{
+      var s=localStorage.getItem(SK); if(!s)return;
+      var st=JSON.parse(s);
+      var list=document.getElementById('check-list-art'); if(!list)return;
+      list.querySelectorAll('input[type="checkbox"]').forEach(function(b,i){if(st[i])b.checked=true;});
+      updateScore();
+    }catch(e){}
+  }
+  function updateScore(){
+    var list=document.getElementById('check-list-art'); if(!list)return;
+    var boxes=list.querySelectorAll('input[type="checkbox"]');
+    var done=0; boxes.forEach(function(b){if(b.checked)done++;});
+    var total=boxes.length;
+    var st=document.getElementById('art-score-text');
+    var sf=document.getElementById('art-score-fill');
+    var se=document.getElementById('art-score-emoji');
+    if(st)st.textContent=done+' von '+total;
+    if(sf)sf.style.width=Math.round((done/total)*100)+'%';
+    var e=['💪','🙂','😊','😀','🌟','⭐','🎉','✨'];
+    if(se)se.textContent=done===total?'🎉':(e[done]||'😊');
+  }
+  window.saveScore=function(){
+    try{
+      var list=document.getElementById('check-list-art');if(!list)return;
+      var s=[];list.querySelectorAll('input[type="checkbox"]').forEach(function(b){s.push(b.checked);});
+      localStorage.setItem(SK,JSON.stringify(s));
+    }catch(e){}
+    updateScore();
+  };
+  function loadNotes(){
+    try{
+      var s=localStorage.getItem(SKN);if(!s)return;
+      var d=JSON.parse(s);
+      ['new','hard','free','example'].forEach(function(k){
+        var el=document.getElementById('note-'+k);
+        if(el&&d[k])el.value=d[k];
+      });
+    }catch(e){}
+  }
+  window.saveNotes=function(){
+    try{
+      var d={};
+      ['new','hard','free','example'].forEach(function(k){
+        var el=document.getElementById('note-'+k);d[k]=el?el.value:'';
+      });
+      localStorage.setItem(SKN,JSON.stringify(d));
+      var sv=document.getElementById('notes-saved');
+      if(sv){sv.classList.add('is-visible');setTimeout(function(){sv.classList.remove('is-visible');},2000);}
+    }catch(e){}
+  };
+  window.printRef=function(){
+    var refBtn=document.querySelector('[data-tab="art-mode"][data-val="reference"]');
+    if(refBtn) refBtn.click();
+    setTimeout(function(){window.print();},400);
+  };
+
+  /* Init */
+  testEar('dog');
+  showGapQuiz();
+  renderSortGame();
+  renderWritecheck();
+  loadWritecheck();
+  loadChecks();
+  loadNotes();
+})();
+
+</script>
+
+<script>
+(function(){
+  if (!window.__kompassWritecheckGuard) {
+    window.__kompassWritecheckGuard = function(cfg) {
+      var WRITE_KEY = 'kompass_writecheck_results_v1';
+      var tasks = window[cfg.tasksVar] || [];
+      if (!tasks || !tasks.length) return;
+
+      function escapeHtml(value) {
+        return String(value || '').replace(/[&<>"']/g, function(ch) {
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+        });
+      }
+      function readStore() {
+        try { return JSON.parse(localStorage.getItem(WRITE_KEY) || '{}'); }
+        catch(e) { return {}; }
+      }
+      function writeStore(store) {
+        try { localStorage.setItem(WRITE_KEY, JSON.stringify(store)); } catch(e) {}
+      }
+      function normalise(value) {
+        return String(value || '')
+          .replace(/[’‘`´]/g, "'")
+          .replace(/\u00a0/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .replace(/[.!?]+$/,'')
+          .replace(/,/g,'')
+          .toLowerCase();
+      }
+      function startsLowercase(value) {
+        var match = String(value || '').trim().match(/[A-Za-z]/);
+        return !!(match && match[0] === match[0].toLowerCase());
+      }
+      function expectedPunctuationMissing(task, value) {
+        var raw = String(value || '').trim();
+        var canon = String(task.canonical || '');
+        if (!raw) return false;
+        if (/\?$/.test(canon)) return !/\?\s*$/.test(raw);
+        if (/[.!]$/.test(canon)) return !/[.!]\s*$/.test(raw);
+        return false;
+      }
+      function getTask(id) {
+        for (var i=0;i<tasks.length;i++) if (tasks[i].id === id) return tasks[i];
+        return null;
+      }
+      function getInput(task) { return document.getElementById(cfg.inputPrefix + task.id); }
+      function getCard(task) { return document.getElementById(cfg.cardPrefix + task.id); }
+      function getFeedback(task) { return document.getElementById(cfg.feedbackPrefix + task.id); }
+      function taskAccepted(task, raw) {
+        var n = normalise(raw);
+        return (task.accepted || []).some(function(answer){ return normalise(answer) === n; });
+      }
+      function taskAlmostAccepted(task, raw) {
+        var n = normalise(raw);
+        return (task.almostAccepted || []).some(function(answer){ return normalise(answer) === n; });
+      }
+      function evaluate(task, raw) {
+        var n = normalise(raw);
+        if (!n) return {status:'empty', message:'Schreib erst eine Antwort hinein.'};
+        if (taskAccepted(task, raw)) {
+          var almost = startsLowercase(raw) || expectedPunctuationMissing(task, raw);
+          return {status: almost ? 'almost' : 'correct', message: almost ? (task.almost || 'Fast richtig. Die Lösung stimmt, achte noch auf Großschreibung oder Satzzeichen.') : (task.correct || 'Richtig.')};
+        }
+        if (taskAlmostAccepted(task, raw)) {
+          return {status:'almost', message: task.almost || 'Fast richtig. Die Richtung stimmt, prüfe noch die genaue Form.'};
+        }
+        return {status:'wrong', message:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.'};
+      }
+      function solutionText(task) {
+        var hint = task.wrong ? String(task.wrong) : '';
+        var canonical = task.canonical ? String(task.canonical) : '';
+        if (hint && canonical && hint.indexOf(canonical) === -1) return hint + ' Lösung: ' + canonical;
+        if (hint) return hint;
+        return canonical ? 'Lösung: ' + canonical : 'Die Lösung ist in der Aufgabe hinterlegt.';
+      }
+      function clearVisual(task, clearInput) {
+        var card = getCard(task);
+        var fb = getFeedback(task);
+        var input = getInput(task);
+        if (card) card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+        if (fb) { fb.className = 'writecheck-feedback'; fb.textContent = ''; }
+        if (clearInput && input) input.value = '';
+      }
+      function showFeedback(task, result) {
+        var card = getCard(task);
+        var fb = getFeedback(task);
+        if (card) {
+          card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+          if (result.status !== 'empty') card.classList.add('is-' + result.status);
+        }
+        if (!fb) return;
+        fb.className = 'writecheck-feedback is-visible is-' + result.status;
+        if (result.status === 'wrong') {
+          fb.innerHTML = escapeHtml(result.message) + ' <button type="button" class="writecheck-btn writecheck-solution-btn" onclick="window.__kompassShowWriteSolution(\'' + escapeHtml(task.id) + '\')">Lösung anzeigen</button>';
+        } else {
+          fb.textContent = result.message;
+        }
+      }
+      function saveResult(task, result, raw) {
+        var store = readStore();
+        if (result.status === 'empty') {
+          delete store[task.id];
+        } else {
+          store[task.id] = {
+            topicId: cfg.topicKey,
+            topicTitle: cfg.topicTitle,
+            skill: task.skill || '',
+            skillLabel: task.skillLabel || '',
+            status: result.status,
+            message: result.message,
+            value: String(raw || '').trim(),
+            updated: new Date().toISOString()
+          };
+        }
+        saveSummaryToStore(store);
+        writeStore(store);
+      }
+      function collectSummaryFromStore(store) {
+        var counts = {correct:0, almost:0, wrong:0, open:0};
+        var strong = [], focus = [];
+        tasks.forEach(function(task) {
+          var r = store[task.id];
+          if (!r) { counts.open++; return; }
+          if (r.status === 'correct') { counts.correct++; strong.push(task.skillLabel || task.skill || 'Aufgabe'); }
+          else if (r.status === 'almost') { counts.almost++; focus.push(task.skillLabel || task.skill || 'Aufgabe'); }
+          else if (r.status === 'wrong') { counts.wrong++; focus.push(task.skillLabel || task.skill || 'Aufgabe'); }
+          else counts.open++;
+        });
+        var attempted = counts.correct + counts.almost + counts.wrong;
+        var status = 'orange', label = 'noch offen';
+        if (attempted && counts.wrong === 0 && (counts.correct + counts.almost) === tasks.length) { status = 'green'; label = 'sicher'; }
+        else if (attempted && (counts.correct + counts.almost) >= Math.ceil(tasks.length * 0.6)) { status = 'yellow'; label = 'fast sicher'; }
+        return {counts:counts, attempted:attempted, total:tasks.length, status:status, label:label, strong:strong, focus:focus};
+      }
+      function saveSummaryToStore(store) {
+        var sum = collectSummaryFromStore(store);
+        store[cfg.topicKey] = {
+          topicId: cfg.topicKey,
+          topicTitle: cfg.topicTitle,
+          total: sum.total,
+          attempted: sum.attempted,
+          correct: sum.counts.correct,
+          almost: sum.counts.almost,
+          wrong: sum.counts.wrong,
+          open: sum.counts.open,
+          status: sum.status,
+          label: sum.label,
+          strongSkills: sum.strong,
+          focusSkills: sum.focus,
+          lastDone: new Date().toISOString().slice(0,10),
+          lastUpdated: new Date().toISOString()
+        };
+        if (cfg.tasksStoreKey) {
+          var taskStore = {};
+          tasks.forEach(function(task) { if (store[task.id]) taskStore[task.id] = store[task.id]; });
+          store[cfg.tasksStoreKey] = taskStore;
+        }
+      }
+      function renderSummary() {
+        var box = document.getElementById(cfg.summaryId);
+        if (!box) return;
+        var sum = collectSummaryFromStore(readStore());
+        if (!sum.attempted) {
+          box.className = 'writecheck-summary is-visible';
+          box.innerHTML = '<h3 class="writecheck-summary-title">Ergebnis</h3><p>Schreib erst mindestens eine Antwort hinein. Leere Aufgaben werden nicht bewertet.</p>';
+          return;
+        }
+        var strong = sum.strong.length ? sum.strong.slice(0,5).map(function(x){return '<li>' + escapeHtml(x) + '</li>';}).join('') : '<li>Noch nichts sicher.</li>';
+        var focus = sum.focus.length ? sum.focus.slice(0,5).map(function(x){return '<li>' + escapeHtml(x) + '</li>';}).join('') : '<li>Kein besonderer Fokus offen.</li>';
+        box.className = 'writecheck-summary is-visible';
+        box.innerHTML = '<h3 class="writecheck-summary-title">Ergebnis</h3>'
+          + '<div class="writecheck-score">' + sum.counts.correct + ' richtig · ' + sum.counts.almost + ' fast richtig · ' + sum.counts.wrong + ' noch nicht · ' + sum.counts.open + ' offen</div>'
+          + '<span class="writecheck-status is-' + sum.status + '">' + escapeHtml(sum.label) + '</span>'
+          + '<div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>' + strong + '</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>' + focus + '</ul></div></div>';
+      }
+      window.__kompassShowWriteSolution = function(id) {
+        var task = getTask(id);
+        if (!task) return;
+        var fb = getFeedback(task);
+        if (!fb) return;
+        fb.className = 'writecheck-feedback is-visible is-wrong';
+        fb.textContent = solutionText(task);
+      };
+      window[cfg.singleFn] = function(id) {
+        var task = getTask(id);
+        if (!task) return;
+        var input = getInput(task);
+        var raw = input ? input.value : '';
+        var result = evaluate(task, raw);
+        showFeedback(task, result);
+        saveResult(task, result, raw);
+      };
+      window[cfg.allFn] = function() {
+        var anyFilled = false;
+        tasks.forEach(function(task) {
+          var input = getInput(task);
+          var raw = input ? input.value : '';
+          if (!normalise(raw)) {
+            clearVisual(task, false);
+            var store = readStore();
+            delete store[task.id];
+            saveSummaryToStore(store);
+            writeStore(store);
+            return;
+          }
+          anyFilled = true;
+          var result = evaluate(task, raw);
+          showFeedback(task, result);
+          saveResult(task, result, raw);
+        });
+        renderSummary();
+        if (!anyFilled) {
+          tasks.forEach(function(task){ clearVisual(task, false); });
+        }
+      };
+      window[cfg.resetFn] = function() {
+        tasks.forEach(function(task) { clearVisual(task, true); });
+        var store = readStore();
+        tasks.forEach(function(task) { delete store[task.id]; });
+        delete store[cfg.topicKey];
+        if (cfg.tasksStoreKey) delete store[cfg.tasksStoreKey];
+        writeStore(store);
+        var box = document.getElementById(cfg.summaryId);
+        if (box) { box.className = 'writecheck-summary'; box.innerHTML = ''; }
+      };
+      function clearAutoLoadedSolutions() {
+        tasks.forEach(function(task) { clearVisual(task, true); });
+        var box = document.getElementById(cfg.summaryId);
+        if (box) { box.className = 'writecheck-summary'; box.innerHTML = ''; }
+      }
+      clearAutoLoadedSolutions();
+    };
+  }
+  if (!document.getElementById('kompass-writecheck-guard-style')) {
+    var style = document.createElement('style');
+    style.id = 'kompass-writecheck-guard-style';
+    style.textContent = '.writecheck-feedback.is-empty{border:1px solid #fde68a;background:#fffbeb;color:#92400e}.writecheck-solution-btn{margin-left:8px;margin-top:6px;padding:6px 10px;font-size:.8rem}';
+    document.head.appendChild(style);
+  }
+  window.__kompassWritecheckGuard({"tasksVar": "WRITE_TASKS", "inputPrefix": "input-", "feedbackPrefix": "feedback-", "cardPrefix": "write-task-", "singleFn": "checkWriteTask", "allFn": "checkWritecheckAll", "resetFn": "resetWritecheck", "summaryId": "writecheck-summary", "topicKey": "articles", "topicTitle": "Articles", "tasksStoreKey": "articlesTasks"});
+})();
+</script>
+
+
+<script id="kompass-hard-writecheck-guard">
+(function(){
+  var cfg = {"tasksVar": "WRITE_TASKS", "inputPrefix": "input-", "feedbackPrefix": "feedback-", "cardPrefix": "write-task-", "singleFn": "checkWriteTask", "allFn": "checkWritecheckAll", "resetFn": "resetWritecheck", "summaryId": "writecheck-summary", "topicKey": "articles", "topicTitle": "Articles", "tasksStoreKey": "articlesTasks"};
+  function installHardWritecheckGuard(cfg) {
+    var tasks = window[cfg.tasksVar] || [];
+    if (!tasks || !tasks.length) return;
+    var WRITE_KEY = 'kompass_writecheck_results_v1';
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, function(ch) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+      });
+    }
+    function readStore() {
+      try { return JSON.parse(localStorage.getItem(WRITE_KEY) || '{}'); }
+      catch(e) { return {}; }
+    }
+    function writeStore(store) {
+      try { localStorage.setItem(WRITE_KEY, JSON.stringify(store)); } catch(e) {}
+    }
+    function normalise(value) {
+      return String(value || '')
+        .replace(/[’‘`´]/g, "'")
+        .replace(/\u00a0/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/[.!?]+$/,'')
+        .replace(/,/g,'')
+        .toLowerCase();
+    }
+    function startsLowercase(value) {
+      var match = String(value || '').trim().match(/[A-Za-z]/);
+      return !!(match && match[0] === match[0].toLowerCase());
+    }
+    function expectedPunctuationMissing(task, value) {
+      var raw = String(value || '').trim();
+      var canon = String(task.canonical || '');
+      if (!raw) return false;
+      if (/\?$/.test(canon)) return !/\?\s*$/.test(raw);
+      if (/[.!]$/.test(canon)) return !/[.!]\s*$/.test(raw);
+      return false;
+    }
+    function getTask(id) {
+      for (var i = 0; i < tasks.length; i++) if (tasks[i].id === id) return tasks[i];
+      return null;
+    }
+    function getInput(task) { return document.getElementById(cfg.inputPrefix + task.id); }
+    function getCard(task) { return document.getElementById(cfg.cardPrefix + task.id); }
+    function getFeedback(task) { return document.getElementById(cfg.feedbackPrefix + task.id); }
+    function accepted(task, raw) {
+      var n = normalise(raw);
+      return (task.accepted || []).some(function(answer){ return normalise(answer) === n; });
+    }
+    function almostAccepted(task, raw) {
+      var n = normalise(raw);
+      return (task.almostAccepted || []).some(function(answer){ return normalise(answer) === n; });
+    }
+    function evaluate(task, raw) {
+      if (!normalise(raw)) return { status:'empty', message:'Schreib erst eine Antwort hinein.' };
+      if (accepted(task, raw)) {
+        var almost = startsLowercase(raw) || expectedPunctuationMissing(task, raw);
+        return {
+          status: almost ? 'almost' : 'correct',
+          message: almost ? (task.almost || 'Fast richtig. Die Lösung stimmt, achte noch auf Großschreibung oder Satzzeichen.') : (task.correct || 'Richtig.')
+        };
+      }
+      if (almostAccepted(task, raw)) return { status:'almost', message: task.almost || 'Fast richtig. Prüfe noch die genaue Form.' };
+      return { status:'wrong', message:'Noch nicht. Prüfe deine Antwort noch einmal. Wenn du nicht weiterkommst, kannst du die Lösung anzeigen lassen.' };
+    }
+    function solutionText(task) {
+      var canonical = task.canonical ? String(task.canonical) : '';
+      var hint = task.wrong ? String(task.wrong) : '';
+      if (hint && canonical && hint.indexOf(canonical) === -1) return hint + ' Lösung: ' + canonical;
+      if (hint) return hint;
+      return canonical ? 'Lösung: ' + canonical : 'Die Lösung ist in der Aufgabe hinterlegt.';
+    }
+    function clearVisual(task, clearInput) {
+      var card = getCard(task), fb = getFeedback(task), input = getInput(task);
+      if (card) card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+      if (fb) { fb.className = 'writecheck-feedback'; fb.textContent = ''; }
+      if (clearInput && input) input.value = '';
+    }
+    function showFeedback(task, result) {
+      var card = getCard(task), fb = getFeedback(task);
+      if (card) {
+        card.classList.remove('is-correct','is-almost','is-wrong','is-empty');
+        card.classList.add('is-' + result.status);
+      }
+      if (!fb) return;
+      fb.className = 'writecheck-feedback is-visible is-' + result.status;
+      if (result.status === 'wrong') {
+        fb.innerHTML = escapeHtml(result.message) + ' <button type="button" class="writecheck-btn writecheck-solution-btn" data-kompass-show-solution="' + escapeHtml(task.id) + '">Lösung anzeigen</button>';
+      } else {
+        fb.textContent = result.message;
+      }
+    }
+    function collectSummary(store) {
+      var counts = {correct:0, almost:0, wrong:0, open:0};
+      var strong = [], focus = [];
+      tasks.forEach(function(task) {
+        var r = store[task.id];
+        if (!r) { counts.open++; return; }
+        if (r.status === 'correct') { counts.correct++; strong.push(task.skillLabel || task.skill || 'Aufgabe'); }
+        else if (r.status === 'almost') { counts.almost++; focus.push(task.skillLabel || task.skill || 'Aufgabe'); }
+        else if (r.status === 'wrong') { counts.wrong++; focus.push(task.skillLabel || task.skill || 'Aufgabe'); }
+        else counts.open++;
+      });
+      var attempted = counts.correct + counts.almost + counts.wrong;
+      var status = 'orange', label = 'noch offen';
+      if (attempted && counts.wrong === 0 && (counts.correct + counts.almost) === tasks.length) { status = 'green'; label = 'sicher'; }
+      else if (attempted && (counts.correct + counts.almost) >= Math.ceil(tasks.length * 0.6)) { status = 'yellow'; label = 'fast sicher'; }
+      return {counts:counts, attempted:attempted, total:tasks.length, status:status, label:label, strong:strong, focus:focus};
+    }
+    function saveSummary(store) {
+      var sum = collectSummary(store);
+      store[cfg.topicKey] = {
+        topicId: cfg.topicKey,
+        topicTitle: cfg.topicTitle,
+        total: sum.total,
+        attempted: sum.attempted,
+        correct: sum.counts.correct,
+        almost: sum.counts.almost,
+        wrong: sum.counts.wrong,
+        open: sum.counts.open,
+        status: sum.status,
+        label: sum.label,
+        strongSkills: sum.strong,
+        focusSkills: sum.focus,
+        lastDone: new Date().toISOString().slice(0,10),
+        lastUpdated: new Date().toISOString()
+      };
+      if (cfg.tasksStoreKey) {
+        var taskStore = {};
+        tasks.forEach(function(task) { if (store[task.id]) taskStore[task.id] = store[task.id]; });
+        store[cfg.tasksStoreKey] = taskStore;
+      }
+    }
+    function saveResult(task, result, raw) {
+      var store = readStore();
+      if (result.status === 'empty') {
+        delete store[task.id];
+      } else {
+        store[task.id] = {
+          topicId: cfg.topicKey,
+          topicTitle: cfg.topicTitle,
+          skill: task.skill || '',
+          skillLabel: task.skillLabel || '',
+          status: result.status,
+          message: result.message,
+          value: String(raw || '').trim(),
+          updated: new Date().toISOString()
+        };
+      }
+      saveSummary(store);
+      writeStore(store);
+    }
+    function renderSummary(emptyOnly) {
+      var box = document.getElementById(cfg.summaryId);
+      if (!box) return;
+      var sum = collectSummary(readStore());
+      if (!sum.attempted) {
+        box.className = 'writecheck-summary is-visible';
+        box.innerHTML = '<h3 class="writecheck-summary-title">Ergebnis</h3><p>Schreib erst mindestens eine Antwort hinein. Leere Aufgaben werden nicht bewertet.</p>';
+        return;
+      }
+      if (emptyOnly) return;
+      var strong = sum.strong.length ? sum.strong.slice(0,5).map(function(x){return '<li>' + escapeHtml(x) + '</li>';}).join('') : '<li>Noch nichts sicher.</li>';
+      var focus = sum.focus.length ? sum.focus.slice(0,5).map(function(x){return '<li>' + escapeHtml(x) + '</li>';}).join('') : '<li>Kein besonderer Fokus offen.</li>';
+      box.className = 'writecheck-summary is-visible';
+      box.innerHTML = '<h3 class="writecheck-summary-title">Ergebnis</h3>'
+        + '<div class="writecheck-score">' + sum.counts.correct + ' richtig · ' + sum.counts.almost + ' fast richtig · ' + sum.counts.wrong + ' noch nicht · ' + sum.counts.open + ' offen</div>'
+        + '<span class="writecheck-status is-' + sum.status + '">' + escapeHtml(sum.label) + '</span>'
+        + '<div class="writecheck-lists"><div class="writecheck-list"><h4>Stärken</h4><ul>' + strong + '</ul></div><div class="writecheck-list"><h4>Nächster Fokus</h4><ul>' + focus + '</ul></div></div>';
+    }
+    function checkSingle(id) {
+      var task = getTask(id);
+      if (!task) return;
+      var input = getInput(task);
+      var raw = input ? input.value : '';
+      var result = evaluate(task, raw);
+      showFeedback(task, result);
+      saveResult(task, result, raw);
+    }
+    function checkAll() {
+      var anyFilled = false;
+      var store = readStore();
+      tasks.forEach(function(task) {
+        var input = getInput(task);
+        var raw = input ? input.value : '';
+        if (!normalise(raw)) {
+          clearVisual(task, false);
+          delete store[task.id];
+          return;
+        }
+        anyFilled = true;
+        var result = evaluate(task, raw);
+        showFeedback(task, result);
+        if (result.status !== 'empty') {
+          store[task.id] = {
+            topicId: cfg.topicKey,
+            topicTitle: cfg.topicTitle,
+            skill: task.skill || '',
+            skillLabel: task.skillLabel || '',
+            status: result.status,
+            message: result.message,
+            value: String(raw || '').trim(),
+            updated: new Date().toISOString()
+          };
+        }
+      });
+      saveSummary(store);
+      writeStore(store);
+      renderSummary(!anyFilled);
+    }
+    function resetAll() {
+      var store = readStore();
+      tasks.forEach(function(task) {
+        clearVisual(task, true);
+        delete store[task.id];
+      });
+      delete store[cfg.topicKey];
+      if (cfg.tasksStoreKey) delete store[cfg.tasksStoreKey];
+      writeStore(store);
+      var box = document.getElementById(cfg.summaryId);
+      if (box) { box.className = 'writecheck-summary'; box.innerHTML = ''; }
+    }
+    function showSolution(id) {
+      var task = getTask(id);
+      if (!task) return;
+      var fb = getFeedback(task);
+      if (!fb) return;
+      fb.className = 'writecheck-feedback is-visible is-wrong';
+      fb.textContent = solutionText(task);
+    }
+    window[cfg.singleFn] = checkSingle;
+    window[cfg.allFn] = checkAll;
+    window[cfg.resetFn] = resetAll;
+    window.__kompassShowWriteSolution = showSolution;
+    document.addEventListener('click', function(event) {
+      var btn = event.target && event.target.closest ? event.target.closest('button') : null;
+      if (!btn) return;
+      var solutionId = btn.getAttribute('data-kompass-show-solution');
+      if (!solutionId && btn.classList.contains('writecheck-solution-btn')) {
+        var onclick = btn.getAttribute('onclick') || '';
+        var m = onclick.match(/\(['\"]([^'\"]+)['\"]\)/);
+        if (m) solutionId = m[1];
+      }
+      if (solutionId) {
+        event.preventDefault(); event.stopPropagation(); event.stopImmediatePropagation();
+        showSolution(solutionId);
+        return;
+      }
+      if (btn.classList.contains('writecheck-check-all')) {
+        event.preventDefault(); event.stopPropagation(); event.stopImmediatePropagation();
+        checkAll();
+        return;
+      }
+      if (btn.classList.contains('writecheck-reset')) {
+        event.preventDefault(); event.stopPropagation(); event.stopImmediatePropagation();
+        resetAll();
+        return;
+      }
+      if (btn.classList.contains('writecheck-btn')) {
+        var card = btn.closest('.writecheck-task');
+        if (!card || !card.id || card.id.indexOf(cfg.cardPrefix) !== 0) return;
+        event.preventDefault(); event.stopPropagation(); event.stopImmediatePropagation();
+        checkSingle(card.id.slice(cfg.cardPrefix.length));
+      }
+    }, true);
+    tasks.forEach(function(task) { clearVisual(task, true); });
+    var box = document.getElementById(cfg.summaryId);
+    if (box) { box.className = 'writecheck-summary'; box.innerHTML = ''; }
+  }
+  installHardWritecheckGuard(cfg);
+})();
+</script>
+
+
+<script>
+(function(){
+  if (window.__kompassHashTabsReady) return;
+  window.__kompassHashTabsReady = true;
+  var aliases = {
+    'lernen':'learn','learn':'learn','verstehen':'learn',
+    'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+    'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
+    'verbindungen':'connections','connections':'connections',
+    'notizen':'notes','notes':'notes'
+  };
+  function cleanHash(){
+    try { return decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim(); }
+    catch(e){ return (window.location.hash || '').replace(/^#/, '').toLowerCase().trim(); }
+  }
+  function openSectionFromHash(){
+    var key = cleanHash();
+    if (!key) return;
+    var mode = aliases[key];
+    if (!mode) return;
+    var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
+    if (!btn) return;
+    btn.click();
+    window.setTimeout(function(){
+      var card = document.querySelector('.learning-card') || document.querySelector('[data-topic]') || btn;
+      if (card && typeof card.scrollIntoView === 'function') {
+        card.scrollIntoView({block:'start'});
+      }
+    }, 40);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openSectionFromHash);
+  } else {
+    openSectionFromHash();
+  }
+  window.addEventListener('hashchange', openSectionFromHash);
+})();
+</script>
+
+</body>
+</html>
