@@ -597,8 +597,7 @@ body.hausaufgaben-mode .ha-btn{background:var(--green);color:#fff;border-color:v
 .progress-step-1{width:20%}
 .progress-step-2{width:40%}
 .progress-step-3{width:60%}
-.progress-step-4{width:80%}
-.progress-step-5{width:100%}
+.progress-step-4{width:80%}.progress-step-5{width:100%}
 
 .wo-style-020{justify-content:flex-start;margin-top:10px}
 .wo-style-021{padding:16px;border:var(--line);border-radius:var(--radius);background:#fff}
@@ -697,7 +696,8 @@ a.wo-style-028,
   .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
   .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:min(var(--kompass-page-max),calc(100% - 48px))!important;max-width:var(--kompass-page-max)!important;margin-left:auto!important;margin-right:auto!important;}
   .compass-mode-btn,.learn-step-btn{flex:1 1 0!important;}
-}@media(max-width:700px){
+}
+@media(max-width:700px){
   .page-action-bar{align-items:stretch;flex-direction:column;}
   .page-action-buttons{justify-content:flex-start;display:grid;grid-template-columns:1fr;gap:8px;width:100%;}
   .page-action-buttons .ha-btn,.page-action-buttons .print-btn{width:100%;justify-content:center;min-height:42px;}
@@ -992,40 +992,75 @@ body{background:#e7eef4!important;}
 .wo-satzart-exercise>button{margin:5px 8px 5px 0}
 @media(max-width:850px){.wo-satzart-patterns{grid-template-columns:1fr}}
 .progress-step-1{width:16.6667%}.progress-step-2{width:33.3333%}.progress-step-3{width:50%}.progress-step-4{width:66.6667%}.progress-step-5{width:83.3333%}.progress-step-6{width:100%}
+
+
+/* Word Order – Seitenlayout nach tatsächlich gerenderter Simple-Past-Referenz, 13.10.2026.
+   Die bestehenden Lernmodule und ihre Script-Hooks bleiben unangetastet. */
+html,body{background:#e7eef4}
+body .topic-page--word-order{background:#e7eef4;min-height:100vh;color:#243b55;--green:#2563eb;--green-dark:#1d4ed8;--green-soft:#eff6ff;--teal:#2563eb}
+body .topic-page--word-order .page-action-bar{width:100%;max-width:none;margin:0;padding:15px max(24px,calc((100vw - 1320px)/2 + 24px));border-radius:0;background:#e7eef4;box-shadow:none}
+body .topic-page--word-order .page-content.topic-page-content{width:100%;max-width:none;margin:0;padding:0 0 56px}
+body .topic-page--word-order .learning-card.topic-shell{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#d7e6fa;overflow:visible}
+body .topic-page--word-order .compass-head.topic-header{width:100%;max-width:none;margin:0;padding:26px max(36px,calc((100vw - 1320px)/2 + 32px)) 21px;min-height:0;border:0;border-radius:0;box-shadow:none;background:linear-gradient(110deg,#2451dc,#5d24d9)!important;color:#fff;align-items:center}
+body .topic-page--word-order .compass-head .compass-kicker{margin:0 0 7px;color:#cbd7ff;font-size:.81rem;letter-spacing:.07em;text-transform:uppercase;font-weight:400}
+body .topic-page--word-order .compass-head .compass-title{margin:0 0 7px;font-weight:400;font-size:clamp(1.5rem,2.1vw,1.85rem);line-height:1.2;color:#fff}
+body .topic-page--word-order .compass-head .compass-subtitle{margin:0;color:#e3e9ff;font-size:.94rem;line-height:1.55}
+body .topic-page--word-order .wo-thinking-line{display:flex;flex-wrap:wrap;gap:12px;align-items:center;width:100%;max-width:none;margin:0;padding:14px max(24px,calc((100vw - 1320px)/2 + 24px));background:#f2f6fb;border-bottom:1px solid #dee5ef;border-radius:0;box-shadow:none;color:#344968}
+body .topic-page--word-order .wo-thinking-line span{background:transparent;color:#344968;border:0;border-radius:0;padding:0;font-size:.87rem}
+body .topic-page--word-order .wo-thinking-line span+span:before{content:'→';display:inline-block;margin-right:12px;color:#69809b}
+body .topic-page--word-order .wo-thinking-line{column-gap:0}
+body .topic-page--word-order .wo-thinking-line span{margin-right:18px}
+body .topic-page--word-order .wo-thinking-line span+span:before{display:none}
+body .topic-page--word-order .wo-thinking-line span:not(:last-child):after{content:'→';margin-left:18px;color:#69809b}
+body .topic-page--word-order .compass-mode-grid.topic-tabs{display:flex;flex-wrap:nowrap;justify-content:stretch;gap:0;background:#fdfdff;width:100%;max-width:none;margin:0;padding:0 max(20px,calc((100vw - 1320px)/2 + 20px));border:0;border-bottom:1px solid #d8e2ed;border-radius:0;box-shadow:none}
+body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn{flex:1 1 0;min-width:0;margin:0;padding:15px 9px 11px;min-height:74px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:#475775;box-shadow:none;font-weight:400}
+body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn[aria-pressed="true"],body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn.is-active{background:#fff;color:#1c51d9;border-bottom-color:#2966ff}
+body .topic-page--word-order .compass-mode-grid .compass-mode-hint{color:#8a99b3;font-size:.7rem}
+body .topic-page--word-order .compass-mode-grid .compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:#3262cd}
+body .topic-page--word-order .compass-mode-panel{background:#d7e6fa!important;width:100%;max-width:none;margin:0;padding:18px 24px 36px;border:0;border-radius:0;box-shadow:none}
+body .topic-page--word-order .learn-step-nav{background:#fff;border:1px solid #d4e0ed;border-radius:17px;padding:9px;box-shadow:none;margin:0 0 18px;gap:8px}
+body .topic-page--word-order .learn-step-btn{border-radius:12px;background:#fff;color:#344968;border:1px solid transparent;font-weight:400}
+body .topic-page--word-order .learn-step-btn[aria-pressed="true"],body .topic-page--word-order .learn-step-btn.is-active{background:#edf5ff;color:#2055db;border-color:#a8c7ff}
+body .topic-page--word-order .learn-step-btn[aria-pressed="true"] .learn-step-num{background:#2563eb!important}
+body .topic-page--word-order .wo-style-003{display:none}
+body .topic-page--word-order .wo-learning-path-title,body .topic-page--word-order .wo-mark-title{color:#1d4ed8!important}
+body .topic-page--word-order .learn-step-panel,body .topic-page--word-order .wo-card,body .topic-page--word-order .wo-section{border-color:#d4dfec;border-radius:18px;box-shadow:none}
+body .topic-page--word-order .learn-step-panel.is-active{background:#fff}
+body .topic-page--word-order :is(a,button,input,textarea,select):focus-visible{outline:3px solid #225cf1;outline-offset:3px}
+@media(max-width:720px){body .topic-page--word-order .page-action-bar{padding:11px 14px}body .topic-page--word-order .compass-head.topic-header{padding:22px 18px}body .topic-page--word-order .wo-thinking-line{padding:12px 15px}body .topic-page--word-order .compass-mode-grid.topic-tabs{padding:0 6px;flex-wrap:wrap}body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn{flex:1 1 30%;padding:10px 6px;min-height:59px}body .topic-page--word-order .compass-mode-panel{padding:12px 12px 26px}}
 </style>
 </head>
-<body>
-
+<body><main class="topic-page topic-page--word-order" id="wordorder-refactor-root">
 <div class="overview-return-wrap page-action-bar"><a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button aria-pressed="false" class="ha-btn" data-wo-action="toggle-homework" id="ha-btn" type="button">📚 Hausaufgaben</button><button class="print-btn spickzettel-btn" data-wo-action="print-ref" id="wo-spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button><button class="print-btn print-page-btn" data-wo-action="print-page" id="wo-print-page-btn" type="button">🖨️ Diese Seite drucken</button><button class="print-btn" data-wo-action="reset-storage" id="wo-reset-storage-btn" type="button">🧹 Lernstand löschen</button></div></div>
-<div class="page-content">
-<article class="learning-card">
-<header class="compass-head">
+<div class="page-content topic-page-content">
+<article class="learning-card topic-shell">
+<header class="compass-head topic-header">
 <div>
-<p class="compass-kicker">🚂 Satzbau</p>
-<h1 class="compass-title">Word Order — der englische Satz-Zug</h1>
-<p class="compass-subtitle">Englisch hat eine feste Reihenfolge: Subject · Verb · Object · Place · Time</p>
+<p class="compass-kicker">SATZSTELLUNG VERSTEHEN</p>
+<h1 class="compass-title">Word Order</h1>
+<p class="compass-subtitle">Englische Aussagen und Fragen richtig aufbauen.</p>
 </div>
-<span aria-hidden="true" class="compass-emoji">🚂</span>
+
 </header><div aria-label="Denkweg Word Order" class="wo-thinking-line"><span>Subject erkennen</span><span>Verb setzen</span><span>Rest ordnen</span><span>Ort vor Zeit prüfen</span></div>
-<nav aria-label="Bereiche" class="compass-mode-grid">
+<nav aria-label="Bereiche" class="compass-mode-grid topic-tabs">
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn" data-tab="wo-mode" data-val="learn" type="button">
-<span class="compass-mode-icon">🎯</span><span>Lernen</span>
+<span>Lernen</span>
 <span class="compass-mode-hint">Neu hier? Fang hier an.</span>
 </button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="reference" type="button">
-<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
+<span>Nachschlagen</span>
 <span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span>
 </button>
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="connections" type="button">
-<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
+<span>Verbindungen</span>
 <span class="compass-mode-hint">Was hängt damit zusammen?</span>
 </button>
 <button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="writecheck" type="button">
-<span class="compass-mode-icon">✍️</span><span>Schreib-Check</span>
+<span>Schreib-Check</span>
 <span class="compass-mode-hint">Kannst du die Satzstellung schreiben?</span>
 </button>
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="notes" type="button">
-<span class="compass-mode-icon">✏️</span><span>Notizen</span>
+<span>Notizen</span>
 <span class="compass-mode-hint">Meine eigenen Notizen</span>
 </button>
 </nav>
@@ -1053,7 +1088,7 @@ body{background:#e7eef4!important;}
 </div>
 </div>
 </div>
-<div class="wo-learning-path" aria-label="Lernweg Word Order">
+<div aria-label="Lernweg Word Order" class="wo-learning-path">
 <p class="wo-learning-path-title">Dein Lernweg: erst Reihenfolge verstehen, dann Sonderstellen prüfen.</p>
 <ol class="wo-learning-path-list">
 <li>Was ist Word Order?<span>Englisch hat eine feste Satz-Reihenfolge.</span></li>
@@ -1064,15 +1099,14 @@ body{background:#e7eef4!important;}
 <li>kurze Frage<span>Where / How often + does + Person + Verb.</span></li>
 </ol>
 </div>
-
-<div class="wo-mark-task" aria-label="Mini-Start Subject Verb Object">
+<div aria-label="Mini-Start Subject Verb Object" class="wo-mark-task">
 <p class="wo-mark-title">Mini-Start: Wer macht was?</p>
 <p class="wo-mark-intro">Bevor du den ganzen Satz-Zug anschaust: Markiere im kurzen Satz die drei wichtigsten Teile.</p>
 <p class="wo-mark-sentence" lang="en">Hanna plays football.</p>
 <div class="wo-mark-grid">
-<label class="wo-mark-label" for="wo-mark-subject">Subject: Wer?<input id="wo-mark-subject" type="text" autocomplete="off" placeholder="Subject eintragen"/></label>
-<label class="wo-mark-label" for="wo-mark-verb">Verb: macht was?<input id="wo-mark-verb" type="text" autocomplete="off" placeholder="Verb eintragen"/></label>
-<label class="wo-mark-label" for="wo-mark-object">Object: wen oder was?<input id="wo-mark-object" type="text" autocomplete="off" placeholder="Object eintragen"/></label>
+<label class="wo-mark-label" for="wo-mark-subject">Subject: Wer?<input autocomplete="off" id="wo-mark-subject" placeholder="Subject eintragen" type="text"/></label>
+<label class="wo-mark-label" for="wo-mark-verb">Verb: macht was?<input autocomplete="off" id="wo-mark-verb" placeholder="Verb eintragen" type="text"/></label>
+<label class="wo-mark-label" for="wo-mark-object">Object: wen oder was?<input autocomplete="off" id="wo-mark-object" placeholder="Object eintragen" type="text"/></label>
 </div>
 <details class="wo-mark-reveal"><summary>Lösung prüfen</summary><div>Subject = <em>Hanna</em>, Verb = <em>plays</em>, Object = <em>football</em>. Genau daraus entsteht der Grundzug: Subject → Verb → Object.</div></details>
 </div>
@@ -1103,8 +1137,7 @@ body{background:#e7eef4!important;}
 </div>
 </div>
 <div class="wo-learn-linkline">Passt dazu: <a href="simplepresent.html#lernen">Simple Present öffnen</a> — dort geht es um Routinen wie <em>On Mondays she plays football.</em></div>
-
-<div class="wo-does-machine" aria-label="Does-Maschine für Fragen und Verneinungen">
+<div aria-label="Does-Maschine für Fragen und Verneinungen" class="wo-does-machine">
 <p class="wo-does-title">⚙️ Does-Maschine — wenn does oder doesn’t im Satz steht</p>
 <p class="wo-does-intro">Bei diesen Aufgaben entscheidet nicht dein Gefühl. Du schickst die Wörter durch eine feste Maschine. Nach <em>does</em> oder <em>doesn’t</em> kommt das Verb immer in der Grundform.</p>
 <div class="wo-does-paths">
@@ -1126,7 +1159,6 @@ body{background:#e7eef4!important;}
 </div>
 <p class="wo-does-warning">Denkfalle: <em>does</em> trägt schon das <em>-s</em>. Darum heißt es: <em>Does Silky have ...?</em> und nicht <em>Does Silky has ...?</em></p>
 </div>
-
 </div>
 <!-- Schritt 2: Baukasten -->
 <div class="learn-panel" data-panel="wo-learn" data-val="baukasten" id="wo-learn-baukasten-panel">
@@ -1164,8 +1196,7 @@ body{background:#e7eef4!important;}
 <p class="signal-title">🔎 Signalwort-Detektor</p>
 <p class="signal-sub">Klicke zuerst das Häufigkeitswort an. Danach erscheint die Regel. So liegt die Hilfe erst nach deinem Versuch.</p>
 <p class="adv-counter" id="signal-counter">1 / 5</p>
-<div class="signal-sentence" id="signal-sentence"></div>
-<div aria-live="polite" class="signal-tip" id="signal-tip"></div>
+<div class="signal-sentence" id="signal-sentence"></div><div aria-live="polite" class="signal-tip" id="signal-tip"></div>
 <div class="bk-controls wo-style-020">
 <button class="bk-btn bk-btn-nav" data-wo-action="next-signal" type="button">Nächster Satz →</button>
 </div>
@@ -1189,43 +1220,43 @@ body{background:#e7eef4!important;}
 <div class="wo-learn-linkline">Wenn es um die Wörter <em>always, usually, often, sometimes, never</em> geht: <a href="adverbsoffrequency.html#lernen">Adverbs of Frequency öffnen</a>.</div>
 </div>
 <!-- Schritt 5: Satzart wechseln – eigenständiger Zusatz -->
-<section class="learn-panel" data-panel="wo-learn" data-val="satzart" id="wo-learn-satzart-panel" aria-label="Satzart wechseln">
-  <div class="wo-satzart">
-    <h2>Satzart wechseln</h2>
-    <p>Der Satz-Zug zeigt die Grundreihenfolge einer <em>Aussage</em>. Bei Fragen ändert sich die Reihenfolge. Achte darauf, <em>welche Information gefragt ist</em>.</p>
-    <div class="wo-satzart-patterns" aria-label="Drei Satzmuster">
-      <div class="wo-satzart-pattern"><h3>Aussage</h3><p><span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">called</span> Sam.</p><small>Subjekt → Verb → Rest</small></div>
-      <div class="wo-satzart-pattern"><h3>Frage nach dem Objekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-aux">did</span> <span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">call</span>?</p><small>Fragewort → did → Subjekt → Grundform</small></div>
-      <div class="wo-satzart-pattern"><h3>Frage nach dem Subjekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-verb">called</span> Sam?</p><small>Who als Subjekt → Verb → Rest</small></div>
-    </div>
-    <p class="wo-satzart-note">Diese Fragemuster gelten für normale Verben. Fragen mit <em>to be</em> oder <em>can</em> funktionieren anders. Die vollständigen Fragetypen lernst du bei <a href="questions.html">Questions</a>.</p>
-    <div class="wo-satzart-exercise" aria-label="Satzbauaufgaben">
-      <p class="wo-satzart-counter" id="wo-sz-counter" aria-live="polite"></p>
-      <p id="wo-sz-instruction" class="wo-satzart-instruction"></p>
-      <p id="wo-sz-context" class="wo-satzart-context"></p>
-      <h3>Dein Satz</h3>
-      <div class="wo-satzart-built" id="wo-sz-built" aria-label="Dein zusammengesetzter Satz"></div>
-      <h3>Wortbausteine</h3>
-      <div class="wo-satzart-pool" id="wo-sz-pool"></div>
-      <div class="wo-satzart-actions">
-        <button type="button" id="wo-sz-check">Prüfen</button>
-        <button type="button" id="wo-sz-reset">Zurücksetzen</button>
-        <button type="button" id="wo-sz-next">Nächste Aufgabe</button>
-        <button type="button" id="wo-sz-retry" disabled>Unsichere Aufgaben wiederholen (0)</button>
-        <button type="button" id="wo-sz-new">Neue gemischte Runde</button>
-      </div>
-      <div class="wo-satzart-feedback" id="wo-sz-feedback" role="status" aria-live="polite"></div>
-      <button type="button" id="wo-sz-hint" hidden>Weitere Hilfe anzeigen</button>
-      <button type="button" id="wo-sz-solution" hidden>Musterlösung anzeigen</button>
-    </div>
-  </div>
+<section aria-label="Satzart wechseln" class="learn-panel" data-panel="wo-learn" data-val="satzart" id="wo-learn-satzart-panel">
+<div class="wo-satzart">
+<h2>Satzart wechseln</h2>
+<p>Der Satz-Zug zeigt die Grundreihenfolge einer <em>Aussage</em>. Bei Fragen ändert sich die Reihenfolge. Achte darauf, <em>welche Information gefragt ist</em>.</p>
+<div aria-label="Drei Satzmuster" class="wo-satzart-patterns">
+<div class="wo-satzart-pattern"><h3>Aussage</h3><p><span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">called</span> Sam.</p><small>Subjekt → Verb → Rest</small></div>
+<div class="wo-satzart-pattern"><h3>Frage nach dem Objekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-aux">did</span> <span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">call</span>?</p><small>Fragewort → did → Subjekt → Grundform</small></div>
+<div class="wo-satzart-pattern"><h3>Frage nach dem Subjekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-verb">called</span> Sam?</p><small>Who als Subjekt → Verb → Rest</small></div>
+</div>
+<p class="wo-satzart-note">Diese Fragemuster gelten für normale Verben. Fragen mit <em>to be</em> oder <em>can</em> funktionieren anders. Die vollständigen Fragetypen lernst du bei <a href="questions.html">Questions</a>.</p>
+<div aria-label="Satzbauaufgaben" class="wo-satzart-exercise">
+<p aria-live="polite" class="wo-satzart-counter" id="wo-sz-counter"></p>
+<p class="wo-satzart-instruction" id="wo-sz-instruction"></p>
+<p class="wo-satzart-context" id="wo-sz-context"></p>
+<h3>Dein Satz</h3>
+<div aria-label="Dein zusammengesetzter Satz" class="wo-satzart-built" id="wo-sz-built"></div>
+<h3>Wortbausteine</h3>
+<div class="wo-satzart-pool" id="wo-sz-pool"></div>
+<div class="wo-satzart-actions">
+<button id="wo-sz-check" type="button">Prüfen</button>
+<button id="wo-sz-reset" type="button">Zurücksetzen</button>
+<button id="wo-sz-next" type="button">Nächste Aufgabe</button>
+<button disabled="" id="wo-sz-retry" type="button">Unsichere Aufgaben wiederholen (0)</button>
+<button id="wo-sz-new" type="button">Neue gemischte Runde</button>
+</div>
+<div aria-live="polite" class="wo-satzart-feedback" id="wo-sz-feedback" role="status"></div>
+<button hidden="" id="wo-sz-hint" type="button">Weitere Hilfe anzeigen</button>
+<button hidden="" id="wo-sz-solution" type="button">Musterlösung anzeigen</button>
+</div>
+</div>
 </section>
 <!-- Schritt 6: Kann ich's? -->
 <div class="learn-panel" data-panel="wo-learn" data-val="check" id="wo-learn-check-panel">
 <div class="wo-can-shell">
 <div class="wo-can-intro">✅ Prüfe, ob du die Word-Order wirklich anwenden kannst: normale Aussage, Zeit-vorne-Falle, Häufigkeitswort und die neue Does-Maschine.</div>
 <div class="wo-can-grid">
-<section class="wo-can-card" data-wo-can-task="can-order-1" data-answer="a">
+<section class="wo-can-card" data-answer="a" data-wo-can-task="can-order-1">
 <h3 class="wo-can-card-title">1. Satz-Zug erkennen</h3>
 <p class="wo-can-task">Bausteine: <em>football / at school / Hanna / every Friday / plays</em></p>
 <div aria-label="Richtige Satzstellung auswählen" class="wo-can-options">
@@ -1237,7 +1268,7 @@ body{background:#e7eef4!important;}
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-order-1"></div>
 <details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig ist: <em>Hanna plays football at school every Friday.</em> Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</div></details>
 </section>
-<section class="wo-can-card wo-can-card-trap" data-wo-can-task="can-error-1" data-answer="a">
+<section class="wo-can-card wo-can-card-trap" data-answer="a" data-wo-can-task="can-error-1">
 <h3 class="wo-can-card-title">2. Fehlerdetektiv</h3>
 <p class="wo-can-task">Falsch: <em>On Mondays plays she football.</em><br/>Was ist kaputt?</p>
 <div aria-label="Fehler finden" class="wo-can-options">
@@ -1249,7 +1280,7 @@ body{background:#e7eef4!important;}
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-error-1"></div>
 <details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>On Mondays she plays football.</em> Im Englischen gibt es hier keine deutsche Verb-Umstellung.</div></details>
 </section>
-<section class="wo-can-card" data-wo-can-task="can-repair-1" data-answer="i go to school tomorrow">
+<section class="wo-can-card" data-answer="i go to school tomorrow" data-wo-can-task="can-repair-1">
 <h3 class="wo-can-card-title">3. Satz reparieren</h3>
 <p class="wo-can-task">Falsch: <em>I go tomorrow to school.</em><br/>Schreibe den Satz nach der Schulregel Ort vor Zeit.</p>
 <input aria-label="Richtigen Satz eintippen" class="wo-can-sentence" placeholder="Satz eintippen" type="text"/>
@@ -1257,7 +1288,7 @@ body{background:#e7eef4!important;}
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-repair-1"></div>
 <details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>I go to school tomorrow.</em> Ort kommt vor Zeit: <em>to school</em> vor <em>tomorrow</em>.</div></details>
 </section>
-<section class="wo-can-card" data-wo-can-task="can-adverb-1" data-answer="a">
+<section class="wo-can-card" data-answer="a" data-wo-can-task="can-adverb-1">
 <h3 class="wo-can-card-title">4. Häufigkeitswort entscheiden</h3>
 <p class="wo-can-task">Welcher Satz folgt der Schulregel?</p>
 <div aria-label="Adverb-Stellung auswählen" class="wo-can-options">
@@ -1269,7 +1300,7 @@ body{background:#e7eef4!important;}
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-adverb-1"></div>
 <details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb: <em>She always plays tennis.</em></div></details>
 </section>
-<section class="wo-can-card" data-wo-can-task="can-does-q" data-answer="does silky have crabs for breakfast">
+<section class="wo-can-card" data-answer="does silky have crabs for breakfast" data-wo-can-task="can-does-q">
 <h3 class="wo-can-card-title">5. Does-Frage bauen</h3>
 <p class="wo-can-task">Bausteine: <em>crabs / have / Silky / Does / for breakfast?</em></p>
 <input aria-label="Does-Frage eintippen" class="wo-can-sentence" placeholder="Frage eintippen" type="text"/>
@@ -1277,7 +1308,7 @@ body{background:#e7eef4!important;}
 <div aria-live="polite" class="wo-can-feedback" id="wo-can-feedback-can-does-q"></div>
 <details class="wo-can-reveal"><summary>Erklärung nach dem Prüfen</summary><div>Richtig: <em>Does Silky have crabs for breakfast?</em> Does steht vorne. Danach kommt die Person und dann das Verb ohne <em>-s</em>.</div></details>
 </section>
-<section class="wo-can-card wo-can-card-trap" data-wo-can-task="can-does-neg" data-answer="silky doesnt usually swim in the lido pool">
+<section class="wo-can-card wo-can-card-trap" data-answer="silky doesnt usually swim in the lido pool" data-wo-can-task="can-does-neg">
 <h3 class="wo-can-card-title">6. Doesn’t-Satz bauen</h3>
 <p class="wo-can-task">Bausteine: <em>usually / doesn’t / in the Lido pool / Silky / swim</em></p>
 <input aria-label="Doesn't-Satz eintippen" class="wo-can-sentence" placeholder="Satz eintippen" type="text"/>
@@ -1396,7 +1427,8 @@ body{background:#e7eef4!important;}
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">to-be-Falle</span>She is always late. Nicht: She always is late.</div>
 </div>
 </section>
-<section class="wo-ref-section wo-ref-special wo-homework-hide"><p class="wo-ref-title">4. Sonderfälle und Hinweise</p>
+<section class="wo-ref-section wo-ref-special wo-homework-hide">
+<p class="wo-ref-title">4. Sonderfälle und Hinweise</p>
 <div class="wo-ref-grid">
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Fragen</span>Bei Fragen wandert das Hilfsverb nach vorne: Does she play tennis?</div>
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Zeitangabe vorne</span>Nur zur Betonung oder Abwechslung. Der normale Satz bleibt meistens einfacher.</div>
@@ -1515,7 +1547,10 @@ body{background:#e7eef4!important;}
 </div>
 </article>
 </div>
-<script>
+
+
+
+</main><script>
 (function() {
 
   /* kompass_last_topic setzen */
@@ -1760,8 +1795,7 @@ body{background:#e7eef4!important;}
     document.querySelectorAll('.err-word').forEach(function(s){ s.classList.remove('err-word-selected','err-word-correct','err-word-wrong'); });
   }
 
-  function checkError(clickedIdx, task) {
-    var fb = document.getElementById('err-feedback');
+  function checkError(clickedIdx, task) {    var fb = document.getElementById('err-feedback');
     document.querySelectorAll('.err-word').forEach(function(s){ s.classList.remove('err-word-selected','err-word-correct','err-word-wrong'); });
     var words = document.querySelectorAll('.err-word');
     if (clickedIdx === task.wrongIdx) {
@@ -2095,7 +2129,8 @@ body{background:#e7eef4!important;}
   };
   window.checkWritecheckAll=function(){
     var store=getWriteStore();
-    var anyFilled=false;    WRITE_TASKS.forEach(function(t){
+    var anyFilled=false;
+    WRITE_TASKS.forEach(function(t){
       var input=document.getElementById('input-'+t.id);
       var value=input?input.value:'';
       if(!normaliseWriteAnswer(value)){
@@ -2359,8 +2394,7 @@ body{background:#e7eef4!important;}
       e.preventDefault();
       if (action === 'toggle-homework') { toggleHausaufgaben(); return; }
       if (action === 'print-ref') { printRef(); return; }
-      if (action === 'print-page') { printPage(); return; }
-      if (action === 'prev-task') { prevTask(); return; }
+      if (action === 'print-page') { printPage(); return; }      if (action === 'prev-task') { prevTask(); return; }
       if (action === 'next-task') { nextTask(); return; }
       if (action === 'reset-baukasten') { resetBaukasten(); return; }
       if (action === 'check-baukasten') { checkBaukasten(); return; }
@@ -2416,8 +2450,7 @@ body{background:#e7eef4!important;}
   loadCanStatus();
 })();
 
-</script>
-<script>
+</script><script>
 (function(){
   if (window.__kompassWordOrderHistoryStorageReady) return;
   window.__kompassWordOrderHistoryStorageReady = true;
@@ -2794,7 +2827,8 @@ body{background:#e7eef4!important;}
     pruneWriteStore();
 
     document.querySelectorAll('input, textarea, select').forEach(function(el){
-      var type = (el.type || '').toLowerCase();      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
+      var type = (el.type || '').toLowerCase();
+      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
       if (type === 'checkbox' || type === 'radio') el.checked = false;
       else el.value = '';
     });
@@ -2860,9 +2894,7 @@ body{background:#e7eef4!important;}
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();
-</script>
-
-<script>
+</script><script>
 /* Word Order Phase 3: isolated interaction; no inline handlers. */
 (function(){
   'use strict';
@@ -2953,6 +2985,5 @@ body{background:#e7eef4!important;}
   });
   load();
 })();
-</script>
-</body>
+</script></body>
 </html>
