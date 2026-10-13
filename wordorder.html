@@ -697,8 +697,7 @@ a.wo-style-028,
   .compass-mode-panel{width:100%!important;background:#eef4fb!important;}
   .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:min(var(--kompass-page-max),calc(100% - 48px))!important;max-width:var(--kompass-page-max)!important;margin-left:auto!important;margin-right:auto!important;}
   .compass-mode-btn,.learn-step-btn{flex:1 1 0!important;}
-}
-@media(max-width:700px){
+}@media(max-width:700px){
   .page-action-bar{align-items:stretch;flex-direction:column;}
   .page-action-buttons{justify-content:flex-start;display:grid;grid-template-columns:1fr;gap:8px;width:100%;}
   .page-action-buttons .ha-btn,.page-action-buttons .print-btn{width:100%;justify-content:center;min-height:42px;}
@@ -961,6 +960,38 @@ body{background:#e7eef4!important;}
   .learn-panel,.wo-ref-wrap,#verbindungen > div,.writecheck-panel,.notes-panel{width:auto!important;max-width:100%!important;margin:0!important;padding:16px 12px!important;}
 }
 
+
+/* Phase 3 – Satzart wechseln: unabhängig von den bestehenden Word-Order-Werkzeugen. */
+.wo-satzart{padding:clamp(15px,3vw,28px);color:var(--gray-800,#273449)}
+.wo-satzart h2{font-size:1.3rem;font-weight:400;margin:0 0 10px}
+.wo-satzart h3{font-size:1rem;font-weight:400;margin:0 0 10px}
+.wo-satzart p{line-height:1.55}
+.wo-satzart-patterns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.wo-satzart-pattern{background:#fff;border:1px solid #cfdbeb;border-radius:14px;padding:15px;min-width:0}
+.wo-satzart-pattern p{font-size:1.02rem}
+.wo-satzart-pattern small{display:block;color:#475569;line-height:1.4}
+.wo-sz-subject{background:#fef3c7;border-radius:5px;padding:2px 5px}
+.wo-sz-verb{background:#dcfce7;border-radius:5px;padding:2px 5px}
+.wo-sz-q{background:#f3e8ff;border-radius:5px;padding:2px 5px}
+.wo-sz-aux{background:#dbeafe;border-radius:5px;padding:2px 5px}
+.wo-satzart-note{padding:12px;border-left:3px solid #94a3b8;background:#f1f5f9}
+.wo-satzart-exercise{border:1px solid #cfdbeb;border-radius:16px;background:#f8fbff;padding:18px;margin-top:20px}
+.wo-satzart-counter{color:#475569;font-size:.85rem}
+.wo-satzart-instruction{font-size:1.07rem}
+.wo-satzart-context{color:#475569}
+.wo-satzart-built,.wo-satzart-pool{display:flex;flex-wrap:wrap;align-items:center;gap:9px;min-height:66px;padding:12px;border:1px solid #cfdbeb;border-radius:12px;background:white;margin-bottom:15px}
+.wo-satzart-built:empty:before{content:"Wähle die Wörter unten in der richtigen Reihenfolge.";color:#64748b}
+.wo-satzart button.wo-sz-token{border:1px solid #a9bdd5;background:#fff;border-radius:9px;color:#243b55;padding:9px 12px;font:inherit;cursor:pointer}
+.wo-satzart button.wo-sz-token:hover{background:#eaf2ff}
+.wo-satzart button:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.wo-satzart .wo-sz-token:disabled{opacity:.42;cursor:not-allowed}
+.wo-satzart-actions{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+.wo-satzart-actions button,.wo-satzart-exercise>button{background:white;border:1px solid #a9bdd5;border-radius:9px;padding:10px 14px;color:#243b55;font:inherit;cursor:pointer}
+.wo-satzart-actions button:first-child{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+.wo-satzart-feedback:not(:empty){border:1px solid #cfdbeb;border-radius:9px;background:#fff;padding:12px;margin:12px 0}
+.wo-satzart-exercise>button{margin:5px 8px 5px 0}
+@media(max-width:850px){.wo-satzart-patterns{grid-template-columns:1fr}}
+.progress-step-1{width:16.6667%}.progress-step-2{width:33.3333%}.progress-step-3{width:50%}.progress-step-4{width:66.6667%}.progress-step-5{width:83.3333%}.progress-step-6{width:100%}
 </style>
 </head>
 <body>
@@ -1005,7 +1036,8 @@ body{background:#e7eef4!important;}
 <button aria-controls="wo-learn-baukasten-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="baukasten" type="button"><span class="step-badge">2</span><span class="step-label">Baukasten</span></button>
 <button aria-controls="wo-learn-fehler-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="fehler" type="button"><span class="step-badge">3</span><span class="step-label">Fehler-Erkenner</span></button>
 <button aria-controls="wo-learn-adverb-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="adverb" type="button"><span class="step-badge">4</span><span class="step-label">Adverb-Entscheider</span></button>
-<button aria-controls="wo-learn-check-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="check" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich's?</span></button>
+<button aria-controls="wo-learn-satzart-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="satzart" type="button"><span class="step-badge">5</span><span class="step-label">Satzart wechseln</span></button>
+<button aria-controls="wo-learn-check-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="check" type="button"><span class="step-badge">6</span><span class="step-label">Kann ich's?</span></button>
 </nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="wo-progress"></div></div>
 <!-- Schritt 1: Wozu? -->
@@ -1156,7 +1188,39 @@ body{background:#e7eef4!important;}
 </details>
 <div class="wo-learn-linkline">Wenn es um die Wörter <em>always, usually, often, sometimes, never</em> geht: <a href="adverbsoffrequency.html#lernen">Adverbs of Frequency öffnen</a>.</div>
 </div>
-<!-- Schritt 5: Kann ich's? -->
+<!-- Schritt 5: Satzart wechseln – eigenständiger Zusatz -->
+<section class="learn-panel" data-panel="wo-learn" data-val="satzart" id="wo-learn-satzart-panel" aria-label="Satzart wechseln">
+  <div class="wo-satzart">
+    <h2>Satzart wechseln</h2>
+    <p>Der Satz-Zug zeigt die Grundreihenfolge einer <em>Aussage</em>. Bei Fragen ändert sich die Reihenfolge. Achte darauf, <em>welche Information gefragt ist</em>.</p>
+    <div class="wo-satzart-patterns" aria-label="Drei Satzmuster">
+      <div class="wo-satzart-pattern"><h3>Aussage</h3><p><span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">called</span> Sam.</p><small>Subjekt → Verb → Rest</small></div>
+      <div class="wo-satzart-pattern"><h3>Frage nach dem Objekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-aux">did</span> <span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">call</span>?</p><small>Fragewort → did → Subjekt → Grundform</small></div>
+      <div class="wo-satzart-pattern"><h3>Frage nach dem Subjekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-verb">called</span> Sam?</p><small>Who als Subjekt → Verb → Rest</small></div>
+    </div>
+    <p class="wo-satzart-note">Diese Fragemuster gelten für normale Verben. Fragen mit <em>to be</em> oder <em>can</em> funktionieren anders. Die vollständigen Fragetypen lernst du bei <a href="questions.html">Questions</a>.</p>
+    <div class="wo-satzart-exercise" aria-label="Satzbauaufgaben">
+      <p class="wo-satzart-counter" id="wo-sz-counter" aria-live="polite"></p>
+      <p id="wo-sz-instruction" class="wo-satzart-instruction"></p>
+      <p id="wo-sz-context" class="wo-satzart-context"></p>
+      <h3>Dein Satz</h3>
+      <div class="wo-satzart-built" id="wo-sz-built" aria-label="Dein zusammengesetzter Satz"></div>
+      <h3>Wortbausteine</h3>
+      <div class="wo-satzart-pool" id="wo-sz-pool"></div>
+      <div class="wo-satzart-actions">
+        <button type="button" id="wo-sz-check">Prüfen</button>
+        <button type="button" id="wo-sz-reset">Zurücksetzen</button>
+        <button type="button" id="wo-sz-next">Nächste Aufgabe</button>
+        <button type="button" id="wo-sz-retry" disabled>Unsichere Aufgaben wiederholen (0)</button>
+        <button type="button" id="wo-sz-new">Neue gemischte Runde</button>
+      </div>
+      <div class="wo-satzart-feedback" id="wo-sz-feedback" role="status" aria-live="polite"></div>
+      <button type="button" id="wo-sz-hint" hidden>Weitere Hilfe anzeigen</button>
+      <button type="button" id="wo-sz-solution" hidden>Musterlösung anzeigen</button>
+    </div>
+  </div>
+</section>
+<!-- Schritt 6: Kann ich's? -->
 <div class="learn-panel" data-panel="wo-learn" data-val="check" id="wo-learn-check-panel">
 <div class="wo-can-shell">
 <div class="wo-can-intro">✅ Prüfe, ob du die Word-Order wirklich anwenden kannst: normale Aussage, Zeit-vorne-Falle, Häufigkeitswort und die neue Does-Maschine.</div>
@@ -1332,8 +1396,7 @@ body{background:#e7eef4!important;}
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">to-be-Falle</span>She is always late. Nicht: She always is late.</div>
 </div>
 </section>
-<section class="wo-ref-section wo-ref-special wo-homework-hide">
-<p class="wo-ref-title">4. Sonderfälle und Hinweise</p>
+<section class="wo-ref-section wo-ref-special wo-homework-hide"><p class="wo-ref-title">4. Sonderfälle und Hinweise</p>
 <div class="wo-ref-grid">
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Fragen</span>Bei Fragen wandert das Hilfsverb nach vorne: Does she play tennis?</div>
 <div class="wo-ref-mini"><span class="wo-ref-mini-title">Zeitangabe vorne</span>Nur zur Betonung oder Abwechslung. Der normale Satz bleibt meistens einfacher.</div>
@@ -2032,8 +2095,7 @@ body{background:#e7eef4!important;}
   };
   window.checkWritecheckAll=function(){
     var store=getWriteStore();
-    var anyFilled=false;
-    WRITE_TASKS.forEach(function(t){
+    var anyFilled=false;    WRITE_TASKS.forEach(function(t){
       var input=document.getElementById('input-'+t.id);
       var value=input?input.value:'';
       if(!normaliseWriteAnswer(value)){
@@ -2207,8 +2269,8 @@ body{background:#e7eef4!important;}
       var idx=0; steps.forEach(function(s,i){if(s.getAttribute('data-val')===val)idx=i;});
       var bar = document.getElementById('wo-progress');
       if (bar) {
-        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5');
-        bar.classList.add('progress-step-' + Math.max(1, Math.min(5, idx + 1)));
+        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5','progress-step-6');
+        bar.classList.add('progress-step-' + Math.max(1, Math.min(6, idx + 1)));
       }
     }
   });
@@ -2732,8 +2794,7 @@ body{background:#e7eef4!important;}
     pruneWriteStore();
 
     document.querySelectorAll('input, textarea, select').forEach(function(el){
-      var type = (el.type || '').toLowerCase();
-      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
+      var type = (el.type || '').toLowerCase();      if (['button','submit','reset','hidden'].indexOf(type) >= 0) return;
       if (type === 'checkbox' || type === 'radio') el.checked = false;
       else el.value = '';
     });
@@ -2798,6 +2859,99 @@ body{background:#e7eef4!important;}
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
+})();
+</script>
+
+<script>
+/* Word Order Phase 3: isolated interaction; no inline handlers. */
+(function(){
+  'use strict';
+  const tasks=[
+    {prompt:'Baue eine Aussage.',context:'Eine regelmäßige Gewohnheit.',words:['football','Sam','on Sundays.','usually','plays'],answer:['Sam','usually','plays','football','on Sundays.'],hint:'Finde zuerst das Subjekt. Usually steht vor einem normalen Vollverb.',rule:'Subjekt → usually → Verb → Objekt → Zeit.'},
+    {prompt:'Baue die Frage.',context:'Du möchtest wissen, ob Lucy gestern das Museum besucht hat.',words:['the museum','Lucy','Did','yesterday?','visit'],answer:['Did','Lucy','visit','the museum','yesterday?'],hint:'Bei einer Ja-/Nein-Frage im Simple Past steht did vor dem Subjekt.',rule:'Did + Subjekt + Grundform + Rest.'},
+    {prompt:'Baue eine Frage nach dem Handelnden.',context:'Jemand hat das Fenster zerbrochen. Du fragst, wer es war.',words:['broke','Who','the window?'],answer:['Who','broke','the window?'],hint:'Who ist hier selbst das Subjekt. Brauchst du did?',rule:'Subjektfrage im Simple Past: Who + Vergangenheitsform + Rest.'},
+    {prompt:'Baue eine Verneinung.',context:'Sam mag keinen Fisch.',words:['fish.','Sam','like','doesn’t'],answer:['Sam','doesn’t','like','fish.'],hint:'Nach doesn’t steht das Verb in der Grundform.',rule:'Subjekt + doesn’t + Grundform + Rest.'},
+    {prompt:'Baue eine Frage nach dem Objekt.',context:'Lucy called Sam yesterday. Frage, wen Lucy angerufen hat.',words:['Lucy','Who','call','yesterday?','did'],answer:['Who','did','Lucy','call','yesterday?'],hint:'Lucy bleibt die Handelnde. Nach did kommt die Grundform.',rule:'Who + did + Subjekt + Grundform + Zeit.'},
+    {prompt:'Baue eine Aussage.',context:'Die Zeitangabe soll am Satzanfang stehen.',words:['we','Last Friday,','to Bristol.','went'],answer:['Last Friday,','we','went','to Bristol.'],hint:'Nach der Zeitangabe am Anfang folgt hier zuerst das Subjekt.',rule:'Zeitangabe vorne + Subjekt + Verb + Rest.'},
+    {prompt:'Baue eine Frage.',context:'Frage nach der Häufigkeit des Schwimmens.',words:['you','How often','go','swimming?','do'],answer:['How often','do','you','go','swimming?'],hint:'How often gehört zusammen. Danach kommt do vor dem Subjekt.',rule:'How often + do + Subjekt + Grundform + Rest.'},
+    {prompt:'Baue eine Frage nach dem Handelnden.',context:'Ein Junge hat den Ball gefunden. Frage, wer es war.',words:['the ball?','found','Who'],answer:['Who','found','the ball?'],hint:'Who bezeichnet die handelnde Person. Die Vergangenheitsform bleibt.',rule:'Who als Subjekt + found + Objekt.'},
+    {prompt:'Baue eine Aussage.',context:'Ein Häufigkeitswort bei to be.',words:['is','always','Oliver','late.'],answer:['Oliver','is','always','late.'],hint:'Bei to be steht always normalerweise nach am/is/are.',rule:'Subjekt + is + always + Rest.'},
+    {prompt:'Baue eine Verneinung.',context:'Sie spielten gestern nicht Tennis.',words:['tennis','didn’t','They','yesterday.','play'],answer:['They','didn’t','play','tennis','yesterday.'],hint:'Nach didn’t steht die Grundform.',rule:'Subjekt + didn’t + Grundform + Rest.'},
+    {prompt:'Baue eine Frage nach dem Objekt.',context:'Tom found his keys. Frage, was Tom gefunden hat.',words:['Tom','find?','What','did'],answer:['What','did','Tom','find?'],hint:'Tom bleibt Subjekt. Nach did verwendest du find statt found.',rule:'What + did + Subjekt + Grundform.'},
+    {prompt:'Baue eine Ja-/Nein-Frage.',context:'Frage, ob Mia jeden Tag liest.',words:['Mia','every day?','read','Does'],answer:['Does','Mia','read','every day?'],hint:'Does steht vorne, das Verb bekommt kein -s.',rule:'Does + Subjekt + Grundform + Rest.'}
+  ];
+  const root=document.getElementById('wo-learn-satzart-panel');
+  if(!root)return;
+  const el=id=>document.getElementById('wo-sz-'+id);
+  // Each round has its own order. A retry round contains only tasks that
+  // were answered incorrectly, skipped or revealed with the solution.
+  const shuffled=arr=>{
+    const copy=arr.slice();
+    for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+    return copy;
+  };
+  let order=shuffled(tasks.map((_,i)=>i)),position=0,mode='all';
+  let chosen=[],wrongChecks=0,solved=false,shownSolution=false;
+  const missed=new Set();
+  const current=()=>tasks[order[position]];
+  function addToken(place,word,index,selected){
+    const b=document.createElement('button');b.type='button';b.className='wo-sz-token';b.textContent=word+(selected?' ×':'');
+    if(!selected && chosen.includes(index)){b.disabled=true;}
+    else b.addEventListener('click',()=>{if(selected)chosen=chosen.filter(x=>x!==index);else chosen.push(index);solved=false;clearFeedback();renderTokens();});
+    place.appendChild(b);
+  }
+  function clearFeedback(){el('feedback').textContent='';el('hint').hidden=true;el('solution').hidden=true;}
+  function updateButtons(){
+    el('retry').disabled=missed.size===0;
+    el('retry').textContent='Unsichere Aufgaben wiederholen ('+missed.size+')';
+    el('next').disabled=false;
+    el('next').textContent=position>=order.length-1?'Runde abschließen':'Nächste Aufgabe';
+  }
+  function renderTokens(){const t=current();el('built').replaceChildren();el('pool').replaceChildren();chosen.forEach(i=>addToken(el('built'),t.words[i],i,true));t.words.forEach((w,i)=>addToken(el('pool'),w,i,false));}
+  function load(){
+    chosen=[];wrongChecks=0;solved=false;shownSolution=false;clearFeedback();
+    const t=current();
+    el('counter').textContent=(mode==='retry'?'Wiederholung ':'Gemischte Runde ')+(position+1)+' von '+order.length;
+    el('instruction').textContent=t.prompt;el('context').textContent=t.context;
+    renderTokens();updateButtons();
+  }
+  function accountForUnfinished(){if(!solved)missed.add(order[position]);}
+  el('check').addEventListener('click',()=>{
+    const t=current(),attempt=chosen.map(i=>t.words[i]).join(' ');
+    if(chosen.length!==t.words.length){el('feedback').textContent='Setze zuerst alle Wörter ein. Du kannst die Reihenfolge noch ändern.';return;}
+    if(attempt===t.answer.join(' ')){
+      solved=true;
+      if(mode==='retry'&&!shownSolution){missed.delete(order[position]);}
+      el('feedback').textContent='Richtig. '+t.rule+(wrongChecks>0?' Du hast den Satz verbessert.':'');
+      el('hint').hidden=true;el('solution').hidden=true;
+      updateButtons();
+    }else{
+      wrongChecks++;solved=false;missed.add(order[position]);
+      el('feedback').textContent='Die Reihenfolge stimmt noch nicht. Prüfe zuerst Subjekt, Verb und gegebenenfalls Hilfsverb.';
+      el('hint').hidden=false;el('solution').hidden=wrongChecks<2;
+      updateButtons();
+    }
+  });
+  el('hint').addEventListener('click',()=>{el('feedback').textContent=current().hint;el('solution').hidden=wrongChecks<2;});
+  el('solution').addEventListener('click',()=>{shownSolution=true;missed.add(order[position]);el('feedback').textContent='Musterlösung: '+current().answer.join(' ')+' '+current().rule;updateButtons();});
+  el('reset').addEventListener('click',()=>{chosen=[];solved=false;clearFeedback();renderTokens();});
+  el('next').addEventListener('click',()=>{
+    if(position>=order.length-1){
+      accountForUnfinished();updateButtons();
+      el('feedback').textContent='Runde abgeschlossen. Du kannst unsichere Aufgaben wiederholen oder eine neue gemischte Runde starten.';
+      el('next').disabled=true;return;
+    }
+    accountForUnfinished();position++;load();
+  });
+  el('retry').addEventListener('click',()=>{
+    if(missed.size===0)return;
+    accountForUnfinished();
+    order=shuffled(Array.from(missed));position=0;mode='retry';load();
+  });
+  el('new').addEventListener('click',()=>{
+    accountForUnfinished();order=shuffled(tasks.map((_,i)=>i));position=0;mode='all';missed.clear();load();
+  });
+  load();
 })();
 </script>
 </body>
