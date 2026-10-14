@@ -3301,7 +3301,23 @@ body.hausaufgaben-mode .sp-reference-wrap{
 #past-learn-tobe #tobe-v67-trap-token-row .tobe-v23-output-hint{
   margin:0!important;
   color:#64748b!important;
-}</style>
+}
+/* CI-Abgleich: äußere Hülle und Hauptreiter, Lernmodule bleiben unberührt */
+body{background:#e7eef4!important;background-image:none!important;color:#243b55!important}
+.overview-return-wrap.page-action-bar{max-width:1140px!important;margin:14px auto!important;padding:0 15px!important;background:transparent!important;box-shadow:none!important}
+.overview-return-wrap .overview-return,.page-action-buttons button{background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:10px!important;box-shadow:none!important;font-weight:400!important}
+.page-content.topic-page-content{max-width:1140px!important;margin:0 auto!important;padding:0 15px 36px!important}
+.learning-card.topic-shell{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+.compass-head.topic-header{background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;padding:26px 30px!important;margin:0 0 15px!important}
+.compass-head.topic-header h1{color:#243b55!important;font-weight:400!important;text-shadow:none!important}
+.compass-head.topic-header .compass-kicker,.compass-head.topic-header .compass-subtitle{color:#52657b!important}
+.compass-mode-grid.topic-tabs{display:flex!important;flex-wrap:wrap!important;gap:8px!important;padding:12px!important;margin:0 0 15px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important;overflow:visible!important}
+.compass-mode-grid.topic-tabs>.compass-mode-btn{flex:0 1 auto!important;width:auto!important;min-width:0!important;max-width:none!important;min-height:42px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 16px!important;background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:9px!important;box-shadow:none!important;font-weight:400!important}
+.compass-mode-grid.topic-tabs>.compass-mode-btn[aria-pressed="true"],.compass-mode-grid.topic-tabs>.compass-mode-btn.is-active{background:#e7eef4!important;border-color:#9cb1c9!important}
+.compass-mode-grid.topic-tabs>.compass-mode-btn:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
+@media(max-width:700px){.compass-mode-grid.topic-tabs{flex-wrap:wrap!important;overflow:visible!important;scroll-snap-type:none!important;gap:6px!important}.compass-mode-grid.topic-tabs>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;min-width:0!important;width:auto!important;max-width:none!important}.compass-head.topic-header{padding:19px!important}}
+@media print{.compass-mode-grid.topic-tabs{display:none!important}}
+</style>
 <script>
 (function(){
   try { localStorage.removeItem('kompass_theme'); } catch(e) {}
@@ -6349,9 +6365,9 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="overview-return-wrap page-action-bar">
 <a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
 <div aria-label="Seitenaktionen" class="page-action-buttons">
-<button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
-<button class="print-btn spickzettel-btn" id="spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button>
-<button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button>
+<button class="ha-btn" id="ha-btn" type="button">Hausaufgaben</button>
+<button class="print-btn spickzettel-btn" id="spickzettel-print-btn" type="button">Spickzettel drucken</button>
+<button class="print-btn print-page-btn" id="print-page-btn" type="button">Diese Seite drucken</button>
 </div>
 </div>
 <div class="page-content topic-page-content">
@@ -6372,24 +6388,19 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <nav aria-label="Bereiche" class="compass-mode-grid topic-tabs">
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="past-mode" data-val="learn" type="button">
-<span class="compass-mode-icon">🎯</span><span>Verstehen</span>
-<span class="compass-mode-hint">erst verstehen</span>
+<span>Verstehen</span>
 </button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="reference" type="button">
-<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
-<span class="compass-mode-hint">Regeln ansehen</span>
+<span>Nachschlagen</span>
 </button>
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="connections" type="button">
-<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
-<span class="compass-mode-hint">Themen verknüpfen</span>
+<span>Verbindungen</span>
 </button>
 <button aria-controls="schreibwerkstatt" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="writingworkshop" type="button">
-<span class="compass-mode-icon">📝</span><span>Schreibwerkstatt</span>
-<span class="compass-mode-hint">eigene Sätze</span>
+<span>Schreibwerkstatt</span>
 </button>
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="notes" type="button">
-<span class="compass-mode-icon">✏️</span><span>Notizen</span>
-<span class="compass-mode-hint">Eigene Fragen</span>
+<span>Notizen</span>
 </button>
 </nav>
 <!-- LERNEN -->
