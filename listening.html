@@ -132,6 +132,19 @@ body {background:#e7eef4}
 .lk-index-style button:focus-visible,.lk-index-style a:focus-visible,.lk-index-style input:focus-visible,.lk-index-style textarea:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
 @media(max-width:640px){.lk-index-style .lk-toolbar,.lk-index-style .lk-page-header,.lk-index-style .lk-sections-wrap{padding-left:16px;padding-right:16px}.lk-index-style .lk-main{padding:16px 12px 40px}.lk-index-style .lk-section-nav{gap:6px}.lk-index-style .lk-section-nav .compass-mode-btn{font-size:.81rem;padding:7px 10px}.lk-index-style .lk-sections .card,.lk-index-style .lk-sections .book-task,.lk-index-style .lk-sections .day-card{padding:15px}}
 @media print{.lk-index-style .lk-section-nav,.lk-index-style .lk-toolbar{display:none!important}.lk-index-style .lk-main{background:#fff!important}}
+
+/* CI-Abgleich Listening: indexartige Einzelkarten statt Farbverlauf */
+body.lk-index-style{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important}
+.lk-index-style .lk-main{max-width:1140px!important;padding:0 15px 40px!important;margin:0 auto!important;background:transparent!important;background-image:none!important}
+.lk-index-style .lk-page-header{max-width:none!important;margin:0 0 15px!important;padding:25px 30px!important;background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important}
+.lk-index-style .lk-page-header h1{color:#243b55!important;font-weight:400!important}
+.lk-index-style .lk-page-header .compass-kicker,.lk-index-style .lk-page-header .compass-subtitle{color:#52657b!important}
+.lk-index-style .lk-sections-wrap{padding:0!important;margin:0!important;max-width:none!important}
+.lk-index-style .lk-section-nav{max-width:none!important;margin:0 0 15px!important;padding:12px!important;gap:8px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important}
+.lk-index-style .lk-section-nav .compass-mode-btn{min-height:42px!important;padding:9px 16px!important;border:1px solid #cfdce9!important;border-radius:9px!important;background:#fff!important;color:#243b55!important;font-weight:400!important}
+.lk-index-style .lk-section-nav .compass-mode-btn[aria-pressed="true"],.lk-index-style .lk-section-nav .compass-mode-btn.is-active{background:#e7eef4!important;border-color:#9cb1c9!important}
+.lk-index-style .lk-sections .card,.lk-index-style .lk-sections .book-task,.lk-index-style .lk-sections .day-card{background:#fff!important;border-color:#cfdce9!important;box-shadow:none!important;border-radius:14px!important}
+@media(max-width:640px){.lk-index-style .lk-main{padding:0 12px 30px!important}.lk-index-style .lk-page-header{padding:19px!important}.lk-index-style .lk-section-nav{gap:6px!important;padding:9px!important}.lk-index-style .lk-section-nav .compass-mode-btn{flex:1 1 calc(50% - 6px)!important}}
 </style>
 </head>
 <body class="lk-index-style">
