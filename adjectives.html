@@ -40,18 +40,40 @@
 @media (max-width:760px){.form-grid{grid-template-columns:1fr}.sentence-showcase{padding:12px 9px}.word{padding:7px 8px}.mode-btn span{font-size:10px}}
 @media print{.reveal-box{display:block}.mode-panel[hidden],.subpanel[hidden],.learn-view[hidden]{display:block!important}.practice-actions,.test-group-title{display:none!important}}
 
+
+/* CI 2026-10-14: einheitliche Seitenhülle nach index.html */
+body{background:#e7eef4!important;background-image:none!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.6!important}
+.site-actions,.overview-return-wrap.page-action-bar{width:auto!important;max-width:1140px!important;margin:14px auto!important;padding:0 15px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important;background:transparent!important;border:none!important;box-shadow:none!important}
+.site-actions a,.site-actions button,.overview-return-wrap .overview-return,.overview-return-wrap button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:9px 14px!important;background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:10px!important;text-decoration:none!important;font:400 14px/1.4 Arial,Helvetica,sans-serif!important;box-shadow:none!important}
+.site-actions .right,.overview-return-wrap .return-actions{display:flex!important;gap:8px!important;flex-wrap:wrap!important}
+.hero,.compass-head.topic-header{display:block!important;max-width:1110px!important;margin:0 auto 15px!important;padding:26px 30px!important;background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;min-height:0!important}
+.hero h1,.compass-head.topic-header .compass-title{font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif!important;color:#243b55!important;text-shadow:none!important}
+.hero p,.compass-head.topic-header .compass-subtitle{color:#52657b!important;font-size:15px!important;line-height:1.55!important}
+.hero .eyebrow,.compass-head.topic-header .compass-kicker{color:#52657b!important;font:400 12px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:.065em!important}
+.thinking,.past-thinking-line.sw-writing-line{max-width:1110px!important;margin:0 auto 15px!important;padding:11px 16px!important;background:#fff!important;color:#52657b!important;border:1px solid #cfdce9!important;border-radius:11px!important;box-shadow:none!important}
+.mode-tabs,.compass-mode-grid.topic-tabs{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;max-width:1110px!important;margin:0 auto 15px!important;padding:12px!important;background:#fff!important;background-image:none!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;overflow:visible!important}
+.mode-tabs>.mode-btn,.compass-mode-grid.topic-tabs>.compass-mode-btn{display:inline-flex!important;flex:0 1 auto!important;align-items:center!important;justify-content:center!important;min-height:42px!important;min-width:0!important;padding:10px 17px!important;background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:9px!important;box-shadow:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important;transform:none!important}
+.mode-tabs>.mode-btn[aria-selected="true"],.compass-mode-grid.topic-tabs>.compass-mode-btn[aria-selected="true"]{background:#e7eef4!important;color:#19344f!important;border-color:#9cb1c9!important}
+.mode-tabs>.mode-btn:hover,.compass-mode-grid.topic-tabs>.compass-mode-btn:hover{background:#eef4fb!important}
+.mode-tabs>.mode-btn:focus-visible,.compass-mode-grid.topic-tabs>.compass-mode-btn:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
+.compass-mode-icon,.compass-head.topic-header .compass-emoji{display:none!important}
+@media(max-width:650px){.site-actions,.overview-return-wrap.page-action-bar{padding:0 12px!important}.hero,.compass-head.topic-header{margin:0 12px 13px!important;padding:19px!important}.thinking,.past-thinking-line.sw-writing-line{margin:0 12px 13px!important}.mode-tabs,.compass-mode-grid.topic-tabs{margin:0 12px 13px!important;gap:6px!important;padding:9px!important}.mode-tabs>.mode-btn,.compass-mode-grid.topic-tabs>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
+
+.main{max-width:1140px!important;margin:0 auto!important;padding:0 15px 40px!important}
+.panel-shell{background:transparent!important;box-shadow:none!important;border:0!important}
+.card{box-shadow:none!important;border-color:#cfdce9!important}
 </style>
 </head>
 <body>
 <div class="site-actions"><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/">← Zur Übersicht</a><div class="right"><button type="button" id="homework-toggle">Hausaufgabenmodus</button><button type="button" id="print-page">Seite drucken</button></div></div>
-<header class="hero"><div class="eyebrow">Beschreiben · Kompass-Vorschau v03</div><h1>Adjectives – Wie ist etwas?</h1><p>Erst verstehen, dann Sätze selbst bauen, Bedeutungen unterscheiden und knifflige Fälle lösen. Zum Schluss ohne Hilfe zeigen, was du kannst.</p></header>
+<header class="hero"><div class="eyebrow">Beschreiben · Englisch-Kompass · Grammatik</div><h1>Adjectives – Wie ist etwas?</h1><p>Erst verstehen, dann Sätze selbst bauen, Bedeutungen unterscheiden und knifflige Fälle lösen. Zum Schluss ohne Hilfe zeigen, was du kannst.</p></header>
 <div class="thinking">Dein Denkweg: <span>Wen oder was beschreibe ich?</span> → <span>Wo steht das Adjektiv?</span> → <span>Was bedeutet es genau?</span> → <span>Selbst schreiben</span></div>
 <nav class="mode-tabs" role="tablist" aria-label="Bereiche im Englisch-Kompass">
-<button type="button" class="mode-btn" role="tab" data-tab="verstehen" aria-controls="panel-verstehen" aria-selected="true">Verstehen<span>erst verstehen</span></button>
-<button type="button" class="mode-btn" role="tab" data-tab="nachschlagen" aria-controls="panel-nachschlagen" aria-selected="false">Nachschlagen<span>Regeln ansehen</span></button>
-<button type="button" class="mode-btn" role="tab" data-tab="verbindungen" aria-controls="panel-verbindungen" aria-selected="false">Verbindungen<span>Themen verknüpfen</span></button>
-<button type="button" class="mode-btn" role="tab" data-tab="schreibcheck" aria-controls="panel-schreibcheck" aria-selected="false">Schreib-Check<span>ohne Hilfe</span></button>
-<button type="button" class="mode-btn" role="tab" data-tab="notizen" aria-controls="panel-notizen" aria-selected="false">Notizen<span>Lernjournal</span></button>
+<button type="button" class="mode-btn" role="tab" data-tab="verstehen" aria-controls="panel-verstehen" aria-selected="true">Verstehen</button>
+<button type="button" class="mode-btn" role="tab" data-tab="nachschlagen" aria-controls="panel-nachschlagen" aria-selected="false">Nachschlagen</button>
+<button type="button" class="mode-btn" role="tab" data-tab="verbindungen" aria-controls="panel-verbindungen" aria-selected="false">Verbindungen</button>
+<button type="button" class="mode-btn" role="tab" data-tab="schreibcheck" aria-controls="panel-schreibcheck" aria-selected="false">Schreib-Check</button>
+<button type="button" class="mode-btn" role="tab" data-tab="notizen" aria-controls="panel-notizen" aria-selected="false">Notizen</button>
 </nav>
 <main class="main"><div class="panel-shell">
 <section class="mode-panel" data-panel="verstehen" id="panel-verstehen" role="tabpanel" aria-label="Verstehen">
