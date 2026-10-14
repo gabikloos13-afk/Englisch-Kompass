@@ -624,6 +624,13 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 @media(max-width:650px){.page-content{padding:0 12px 22px!important}.compass-head.compass-head-pronouns{padding:20px!important}.unified-section-nav{gap:6px!important;padding:9px!important}.unified-section-nav>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
 @media print{.unified-section-nav{display:none!important}}
 
+
+/* Desktop-Korrektur: nach Entfernen des Symbols keine leere linke Spalte */
+.entry-card{display:block!important;grid-template-columns:none!important;padding:20px 22px!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:12px!important}
+.entry-card>div{min-width:0}
+.entry-text{max-width:75ch}
+@media (min-width:800px){.pron-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pron-guide-grid>.pron-info-card{min-width:0}}
+@media (max-width:650px){.entry-card{padding:16px!important}}
 </style>
 </head>
 <body>
