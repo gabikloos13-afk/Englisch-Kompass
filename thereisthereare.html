@@ -548,7 +548,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
             </div>
             <div class="trap-card trap-interactive" data-trap="any">
               <h3 class="trap-title">Falle 3: Schulform in der Verneinung</h3>
-              <p class="trap-question">Welche Form ist für Klasse 5 die bessere Standardform?</p>
+              <p class="trap-question">Welche Form passt als sichere Standardform im Schulenglisch?</p>
               <div class="trap-choice-row" aria-label="Denkfalle 3 Auswahl">
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There aren't pencils.</button>
                 <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">There aren't any pencils.</button>
@@ -1245,7 +1245,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
       wrong: 'Noch nicht. In Fragen entscheidet die Sache nach there: eine Sache oder mehrere Sachen?'
     },
     any: {
-      correct: 'Richtig. In Klasse 5 ist there aren’t any pencils die saubere Standardform.',
+      correct: 'Richtig. Im Schulenglisch ist there aren’t any pencils die saubere Standardform.',
       wrong: 'Verständlich, aber nicht die beste Schulform. Bei Plural-Verneinungen brauchst du hier any.'
     },
     itthere: {
@@ -1303,85 +1303,39 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   }
 
   function checkTask(task){
-    var input = qs('.writecheck-input', task);
-    var feedback = qs('.writecheck-feedback', task);
-    var raw = input.value;
-    var answers = (task.dataset.answer || '').split(';').map(normalizeAnswer);
-    var user = normalizeAnswer(raw);
-    task.classList.remove('is-correct','is-almost','is-wrong');
-    feedback.className = 'writecheck-feedback is-visible';
-    feedback.innerHTML = '';
-    if(!user){
-      feedback.classList.add('is-empty');
-      feedback.textContent = 'Schreibe zuerst einen Satz.';
-      deleteWriteResult(task);
-      return false;
-    }
-    if(answers.indexOf(user) !== -1){
-      task.classList.add('is-correct');
-      feedback.classList.add('is-correct');
-      feedback.textContent = 'Richtig.';
-      saveWriteResult(task, 'correct');
-      return true;
-    }
-    task.classList.add('is-wrong');
-    feedback.classList.add('is-wrong');
-    saveWriteResult(task, 'wrong');
-    var hint = 'Noch nicht. Denkfrage: Ist die Sache Singular oder Plural? Steht in der Aufgabe eine Frage oder Verneinung?';
-    var solution = (task.dataset.answer || '').split(';')[0];
-    var id = task.getAttribute('data-writecheck-id') || task.getAttribute('data-review-id') || '';
-    feedback.dataset.hint = hint;
-    feedback.dataset.solution = solution;
-    feedback.innerHTML = '<span>' + hint + '</span><br><button class="can-btn writecheck-solution-btn" type="button" data-writecheck-solution="' + id + '">Lösung anzeigen</button>';
-    return false;
+    var input=qs('.writecheck-input',task),feedback=qs('.writecheck-feedback',task);
+    if(!input||!feedback)return false;
+    var user=normalizeAnswer(input.value),answers=(task.dataset.answer||'').split(';').map(normalizeAnswer);
+    task.classList.remove('is-correct','is-almost','is-wrong');feedback.className='writecheck-feedback is-visible';feedback.textContent='';
+    if(!user){feedback.classList.add('is-empty');feedback.textContent='Schreibe zuerst einen vollständigen Satz.';return false;}
+    if(answers.indexOf(user)!==-1){task.classList.add('is-correct');feedback.classList.add('is-correct');feedback.textContent='Richtig. Die Form passt.';task.dataset.reviewCorrect='true';saveWriteResult(task,'correct');return true;}
+    var n=Number(task.dataset.reviewAttempts||0)+1;task.dataset.reviewAttempts=String(n);task.dataset.reviewCorrect='false';
+    task.classList.add('is-almost');feedback.classList.add('is-almost');
+    var hint=document.createElement('p');hint.textContent=n===1
+      ?'Noch nicht automatisch erkannt. Denkfrage: Eine Sache oder mehrere? Aussage, Frage oder Verneinung? Versuche es erneut.'
+      :'Auch der zweite Versuch wurde nicht erkannt. Prüfe die Stellung von is/are und die Verwendung von a, any oder no. Eine andere richtige Formulierung ist möglich.';
+    feedback.appendChild(hint);
+    if(n>=2){var reveal=document.createElement('button');reveal.type='button';reveal.className='can-btn writecheck-solution-btn';reveal.setAttribute('data-writecheck-solution','');reveal.textContent='Beispiel und Selbstkontrolle ansehen';feedback.appendChild(reveal);}
+    saveWriteResult(task,'wrong');return false;
   }
-
-  qsa('[data-writecheck-id].writecheck-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var task = btn.closest('.writecheck-task');
-      if(task){checkTask(task);}
-    });
+  qsa('[data-writecheck-id].writecheck-btn').forEach(function(btn){btn.addEventListener('click',function(){var task=btn.closest('.writecheck-task');if(task)checkTask(task);});});
+  document.addEventListener('click',function(event){
+    var btn=event.target.closest('[data-writecheck-solution]');if(!btn)return;
+    var task=btn.closest('.writecheck-task');if(!task||Number(task.dataset.reviewAttempts||0)<2)return;
+    var fb=qs('.writecheck-feedback',task);if(!fb)return;
+    fb.textContent='';
+    var sample=document.createElement('p');sample.textContent='Beispiellösung: '+(task.dataset.answer||'').split(';')[0]+'.';
+    var guide=document.createElement('p');guide.textContent='Prüfe selbst: 1. Singular oder Plural? 2. Richtige Satzstellung und Form? 3. Stimmt die Bedeutung mit dem Ort? Andere richtige Formulierungen können passen.';
+    fb.append(sample,guide);
   });
-
-  document.addEventListener('click', function(event){
-    var btn = event.target.closest('[data-writecheck-solution]');
-    if(!btn){return;}
-    var task = btn.closest('.writecheck-task');
-    if(!task){return;}
-    var feedback = qs('.writecheck-feedback', task);
-    if(!feedback){return;}
-    var hint = feedback.dataset.hint || 'Noch nicht. Denkfrage: Ist die Sache Singular oder Plural?';
-    var solution = feedback.dataset.solution || (task.dataset.answer || '').split(';')[0];
-    feedback.innerHTML = hint + '<br><span lang="en">Lösung: ' + solution + '.</span>';
+  qs('#checkAllWrite').addEventListener('click',function(){
+    var tasks=qsa('.writecheck-task'),correct=0;tasks.forEach(function(t){if(checkTask(t))correct++;});
+    var summary=qs('#writeSummary');summary.classList.add('is-visible');
+    qs('#writeScore').textContent=correct+' von '+tasks.length+' Aufgaben automatisch richtig erkannt.';
+    qs('#writeAdvice').textContent=correct===tasks.length?'Gut. Übe beim nächsten Mal auch Fragen und Verneinungen ohne Hilfe.':'Überarbeite nicht erkannte Sätze zuerst selbst. Die Beispiellösung kommt erst nach zwei Versuchen.';
   });
-
-  qs('#checkAllWrite').addEventListener('click', function(){
-    var tasks = qsa('.writecheck-task');
-    var correct = 0;
-    tasks.forEach(function(task){if(checkTask(task)){correct += 1;}});
-    var summary = qs('#writeSummary');
-    var score = qs('#writeScore');
-    var advice = qs('#writeAdvice');
-    summary.classList.add('is-visible');
-    score.textContent = correct + ' von ' + tasks.length + ' Aufgaben richtig.';
-    if(correct === tasks.length){
-      advice.textContent = 'Stabil. Achte beim nächsten Mal nur weiter auf any in Fragen und Verneinungen.';
-    } else if(correct >= 3){
-      advice.textContent = 'Solide Grundlage. Prüfe noch einmal die Aufgaben mit Frage oder Verneinung.';
-    } else {
-      advice.textContent = 'Noch nicht stabil. Geh zurück zum Raum-Scanner und zähle bei jeder Aufgabe zuerst die Dinge.';
-    }
-  });
-
-  qs('#resetWrite').addEventListener('click', function(){
-    qsa('.writecheck-task').forEach(function(task){
-      task.classList.remove('is-correct','is-almost','is-wrong');
-      qs('.writecheck-input', task).value = '';
-      var fb = qs('.writecheck-feedback', task);
-      fb.className = 'writecheck-feedback';
-      fb.innerHTML = '';
-      deleteWriteResult(task);
-    });
+  qs('#resetWrite').addEventListener('click',function(){
+    qsa('.writecheck-task').forEach(function(t){t.classList.remove('is-correct','is-almost','is-wrong');qs('.writecheck-input',t).value='';var fb=qs('.writecheck-feedback',t);fb.className='writecheck-feedback';fb.textContent='';delete t.dataset.reviewAttempts;delete t.dataset.reviewCorrect;deleteWriteResult(t);});
     qs('#writeSummary').classList.remove('is-visible');
   });
 
