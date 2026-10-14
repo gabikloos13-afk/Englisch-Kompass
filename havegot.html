@@ -985,47 +985,63 @@ body.spickzettel-print .hg-reference-wrap{width:100%!important;max-width:none!im
   .notes-panel{background:#fff!important;box-shadow:none!important;}
 }
 
+
+/* Einheitlicher Aufbau nach index.html und freigegebenem Pronouns-Design */
+body{background:#e7eef4!important;background-image:none!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.6!important}
+.overview-return-wrap.page-action-bar,.toolbar{max-width:1140px!important;width:auto!important;margin:13px auto 15px!important;padding:0 15px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.overview-return-wrap .overview-return,.overview-return-wrap button,.toolbar .pill{display:inline-flex!important;align-items:center!important;min-height:40px!important;padding:9px 14px!important;border:1px solid #cfdce9!important;border-radius:10px!important;background:#fff!important;color:#243b55!important;box-shadow:none!important;font:400 14px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important}
+.page-action-buttons,.toolbar .tools{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+.page-content,.topic-page-content{max-width:1140px!important;margin:0 auto!important;padding:0 15px 36px!important;box-sizing:border-box!important}
+.page-content>.learning-card,.topic-shell{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;overflow:visible!important}
+.compass-head,.head{display:block!important;max-width:1110px!important;margin:0 auto 15px!important;padding:25px 30px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;background-image:none!important;color:#243b55!important;box-shadow:none!important;min-height:0!important}
+.compass-head h1,.head h1,.compass-head .compass-title{font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif!important;color:#243b55!important;text-shadow:none!important}
+.compass-head .compass-kicker,.head .small{color:#52657b!important;font-size:12px!important;letter-spacing:.06em!important}
+.compass-head .compass-subtitle,.head p{color:#52657b!important;font-size:15px!important;line-height:1.55!important}
+.compass-head .compass-emoji,.compass-mode-icon,.compass-mode-hint{display:none!important}
+.compass-mode-grid,.mainnav{display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:8px!important;max-width:1110px!important;margin:0 auto 15px!important;padding:12px!important;background:#fff!important;background-image:none!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;overflow:visible!important}
+.compass-mode-grid>.compass-mode-btn,.mainnav>button{display:inline-flex!important;flex:0 1 auto!important;min-width:0!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:9px 16px!important;border:1px solid #cfdce9!important;border-radius:9px!important;background:#fff!important;background-image:none!important;color:#243b55!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important;box-shadow:none!important;transform:none!important}
+.compass-mode-grid>.compass-mode-btn[aria-pressed="true"],.compass-mode-grid>.compass-mode-btn[aria-selected="true"],.compass-mode-grid>.compass-mode-btn.is-active,.mainnav>button[aria-selected="true"]{background:#e7eef4!important;color:#19344f!important;border-color:#9cb1c9!important}
+.compass-mode-grid>.compass-mode-btn:hover,.mainnav>button:hover{background:#eef4fb!important}
+.compass-mode-grid>.compass-mode-btn:focus-visible,.mainnav>button:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
+.compass-mode-panel,.surface{background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;margin-bottom:15px!important}
+.sp-thinking-line,.wo-thinking-line,.past-thinking-line,.path{max-width:1110px!important;margin:0 auto 15px!important;padding:11px 16px!important;background:#fff!important;color:#52657b!important;border:1px solid #cfdce9!important;border-radius:11px!important;box-shadow:none!important}
+@media(max-width:650px){.overview-return-wrap.page-action-bar,.toolbar{padding:0 12px!important}.page-content,.topic-page-content{padding:0 12px 26px!important}.compass-head,.head{padding:19px!important}.compass-mode-grid,.mainnav{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn,.mainnav>button{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
+@media print{.compass-mode-grid,.mainnav{display:none!important}}
 </style>
 </head>
 <body>
 <div class="overview-return-wrap page-action-bar">
   <a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
   <div class="page-action-buttons" aria-label="Seitenaktionen">
-    <button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
-    <button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">🧾 Spickzettel drucken</button>
-    <button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button>
+    <button class="ha-btn" id="ha-btn" type="button">Hausaufgaben</button>
+    <button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">Spickzettel drucken</button>
+    <button class="print-btn print-page-btn" id="print-page-btn" type="button">Diese Seite drucken</button>
   </div>
 </div>
 <div class="page-content">
 <article class="learning-card">
 <header class="compass-head havegot-head-gradient">
 <div>
-<p class="compass-kicker">🧠 Wer bin ich?</p>
+<p class="compass-kicker">ENGLISCH-KOMPASS · GRAMMATIK</p>
 <h1 class="compass-title">have got — ich hab's!</h1>
 <p class="compass-subtitle">Besitz ausdrücken — was jemand hat, besitzt oder zu bieten hat.</p>
 </div>
-<span aria-hidden="true" class="compass-emoji">🎒</span>
 </header>
 <nav aria-label="Bereiche" class="compass-mode-grid">
 <button aria-pressed="true" class="compass-mode-btn" data-tab="hg-mode" data-val="learn" type="button">
-<span class="compass-mode-icon">🎯</span><span>Lernen</span>
-<span class="compass-mode-hint">Neu hier? Fang hier an.</span>
+<span>Lernen</span>
 </button>
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="reference" type="button">
-<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
-<span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span>
+<span>Nachschlagen</span>
 </button>
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="connections" type="button">
-<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
-<span class="compass-mode-hint">Was hängt damit zusammen?</span>
+<span>Verbindungen</span>
 </button>
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="writecheck" type="button">
-<span class="compass-mode-icon">✍️</span><span>Schreib-Check</span>
-<span class="compass-mode-hint">Kannst du es selbst schreiben?</span>
+<span>Schreib-Check</span>
 </button>
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="notes" type="button">
-<span class="compass-mode-icon">✏️</span><span>Notizen</span>
-<span class="compass-mode-hint">Meine eigenen Notizen</span>
+<span>Notizen</span>
 </button>
 </nav>
 <!-- ══════════ LERNEN ══════════ -->
