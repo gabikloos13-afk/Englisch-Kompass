@@ -31,30 +31,35 @@ h1,h2,h3,h4,p,ul,ol,table{margin-top:0;font-weight:400}p,ul,ol{margin-bottom:0}.
 body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]),body.hausaufgaben-mode .interactive-only{display:none!important}body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}body.hausaufgaben-mode .homework-only{display:block}body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
 @media (max-width:900px){.compass-head{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}.nav-links{display:none}.site-nav-inner{justify-content:center}.page-content{padding:14px 10px}.compass-mode-panel,.learn-panel{padding:18px 14px}.compass-head{padding:22px 18px}}
 @media print{body{background:#fff;color:#000;padding:0}.site-nav,.page-content{display:none!important}body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
+
+/* Einheitliche Seitenhülle nach index.html – nur äußere Gestaltung */
+:root{--unified-ink:#243b55;--unified-muted:#52657b;--unified-border:#cfdce9;--unified-bg:#e7eef4}
+body{background:var(--unified-bg);color:var(--unified-ink)}
+.site-nav{display:none!important}
+.unified-actions{max-width:1180px;margin:18px auto 14px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.unified-back,.unified-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 15px;background:#fff;color:var(--unified-ink);border:1px solid var(--unified-border);border-radius:11px;text-decoration:none;font:inherit;font-size:14px;line-height:1.3;box-shadow:none}
+.unified-actions button{cursor:pointer}
+.unified-actions button:hover,.unified-back:hover{background:#eef4fb;border-color:#a7bed3}
+.unified-actions button:focus-visible,.unified-back:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.unified-tools{display:flex;flex-wrap:wrap;gap:8px}
+.overview-return-wrap{display:none!important}
+.page-content{max-width:1180px;margin:0 auto;padding:0 20px 36px;box-sizing:border-box}
+.page-content>.learning-card,.page-content>article.learning-card{max-width:100%;margin:0;box-sizing:border-box;background:transparent;border:0;box-shadow:none;padding:0}
+.compass-head{background:#fff!important;color:var(--unified-ink)!important;border:1px solid var(--unified-border)!important;border-radius:16px!important;box-shadow:none!important;padding:25px 30px!important;margin:0 0 16px!important;min-height:0!important}
+.compass-head h1,.compass-head .compass-title{color:var(--unified-ink)!important;text-shadow:none!important}
+.compass-head .compass-subtitle,.compass-head .lead,.compass-head .eyebrow,.compass-head .compass-kicker{color:var(--unified-muted)!important}
+.compass-head .compass-emoji,.compass-head .head-badge{display:none!important}
+.compass-mode-grid{margin-top:0!important}
+@media(max-width:640px){.unified-actions{padding:0 14px;margin-top:12px}.unified-tools{width:100%}.unified-tools button{flex:1 1 auto}.page-content{padding:0 14px 24px}.compass-head{padding:18px!important}}
+@media print{.unified-actions{display:none!important}}
+
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
-<nav class="site-nav" aria-label="Hauptnavigation">
-  <div class="site-nav-inner">
-    <a class="nav-logo" href="index.html"><span class="nav-logo-icon" aria-hidden="true">🧭</span><span class="nav-logo-text">Hannas Englisch-Kompass</span></a>
-    <div class="nav-links">
-      <a class="nav-link" href="tobe.html">to be</a>
-      <a class="nav-link" href="pronouns.html">Pronouns</a>
-      <a class="nav-link" href="havegot.html">have got</a>
-      <a class="nav-link" href="simplepresent.html">Simple Present</a>
-      <a class="nav-link" href="questions.html">Questions</a>
-      <a class="nav-link is-active" href="progressive.html" aria-current="page">Progressive</a>
-      <a class="nav-link" href="simplepast.html">Simple Past</a>
-      <a class="nav-link" href="wordorder.html">Word Order</a>
-      <a class="nav-link" href="index.html">Alle Themen</a>
-    </div>
-    <div class="nav-links" aria-label="Werkzeuge">
-      <button class="nav-action homework" type="button" data-homework-toggle>Hausaufgabenmodus</button>
-      <button class="nav-action print" type="button" data-print-cheatsheet>Spickzettel drucken</button>
-    </div>
-  </div>
-</nav>
+<div class="unified-actions" aria-label="Seitenaktionen"><a class="unified-back" href="index.html">← Zurück zur Übersicht</a><div class="unified-tools"><button class="nav-action homework" type="button" data-homework-toggle>Hausaufgabenmodus</button><button class="nav-action print" type="button" data-print-cheatsheet>Spickzettel drucken</button></div></div>
+
+
 <main id="main-content" class="page-content">
   <article class="learning-card" data-topic="present-progressive">
     <header class="compass-head">
