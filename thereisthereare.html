@@ -326,6 +326,23 @@ body{background:var(--unified-bg);color:var(--unified-ink)}
 @media(max-width:640px){.unified-actions{padding:0 14px;margin-top:12px}.unified-tools{width:100%}.unified-tools button{flex:1 1 auto}.page-content{padding:0 14px 24px}.compass-head{padding:18px!important}}
 @media print{.unified-actions{display:none!important}}
 
+
+/* Einheitliches Index-Design: strukturell vereinfachte Hauptnavigation */
+body{background:#e7eef4!important;background-image:none!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.6!important}
+.page-content{max-width:1140px!important;margin:0 auto!important;padding:0 20px 36px!important;box-sizing:border-box!important}
+.page-content>.learning-card{max-width:100%!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+.compass-head{background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;padding:26px 30px!important;margin:0 0 16px!important;min-height:0!important}
+.compass-head h1,.compass-head .compass-title{color:#243b55!important;font:400 clamp(25px,3vw,34px)/1.2 Arial,Helvetica,sans-serif!important;text-shadow:none!important}
+.compass-head .eyebrow,.compass-head .compass-kicker,.compass-head .lead,.compass-head .compass-subtitle{color:#52657b!important}
+.compass-head .head-badge,.compass-head .compass-emoji{display:none!important}
+.compass-mode-grid{display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;margin:0 0 16px!important;padding:12px!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important}
+.compass-mode-grid>.compass-mode-btn{display:inline-flex!important;flex:0 1 auto!important;min-width:0!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:10px 17px!important;border:1px solid #cfdce9!important;border-radius:9px!important;background:#fff!important;color:#243b55!important;box-shadow:none!important;transform:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important}
+.compass-mode-grid>.compass-mode-btn:hover{background:#eef4fb!important;border-color:#9fb5cb!important}
+.compass-mode-grid>.compass-mode-btn[aria-selected="true"],.compass-mode-grid>.compass-mode-btn[aria-pressed="true"],.compass-mode-grid>.compass-mode-btn.is-active{background:#e7eef4!important;border-color:#9cb1c9!important;color:#19344f!important}
+.compass-mode-grid>.compass-mode-btn:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
+.compass-mode-panel{background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;margin:0 0 16px!important}
+.learn-step-nav{background:#f8fafc!important}
+@media(max-width:650px){.page-content{padding:0 12px 24px!important}.compass-head{padding:20px!important}.compass-mode-grid{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
 </style>
 </head>
 <body>
@@ -339,38 +356,38 @@ body{background:var(--unified-bg);color:var(--unified-ink)}
   <article class="learning-card" id="top">
     <header class="compass-head">
       <div>
-        <p class="compass-kicker">Englisch-Kompass · Klasse 5</p>
+        <p class="compass-kicker">ENGLISCH-KOMPASS · GRAMMATIK</p>
         <h1 class="compass-title">There is / There are</h1>
         <p class="compass-subtitle">Der Raum-Scanner hilft dir: Erst schauen, ob eine Sache oder mehrere Sachen da sind. Dann entscheidest du: <span lang="en">there is</span> oder <span lang="en">there are</span>.</p>
       </div>
-      <div class="compass-emoji" aria-hidden="true">🔎</div>
+      
     </header>
 
     <nav class="compass-mode-grid" aria-label="Hauptbereiche">
       <button class="compass-mode-btn" type="button" data-val="learn" aria-pressed="true" aria-controls="lernen">
-        <span class="compass-mode-icon" aria-hidden="true">🎯</span>
+        
         <span>Lernen</span>
-        <span class="compass-mode-hint">erst verstehen</span>
+        
       </button>
       <button class="compass-mode-btn" type="button" data-val="reference" aria-pressed="false" aria-controls="nachschlagen">
-        <span class="compass-mode-icon" aria-hidden="true">📖</span>
+        
         <span>Nachschlagen</span>
-        <span class="compass-mode-hint">Regeln & Spickzettel</span>
+        
       </button>
       <button class="compass-mode-btn" type="button" data-val="connections" aria-pressed="false" aria-controls="verbindungen">
-        <span class="compass-mode-icon" aria-hidden="true">🔗</span>
+        
         <span>Verbindungen</span>
-        <span class="compass-mode-hint">nicht verwechseln</span>
+        
       </button>
       <button class="compass-mode-btn" type="button" data-val="writecheck" aria-pressed="false" aria-controls="schreibcheck">
-        <span class="compass-mode-icon" aria-hidden="true">✍️</span>
+        
         <span>Schreib-Check</span>
-        <span class="compass-mode-hint">selbst schreiben</span>
+        
       </button>
       <button class="compass-mode-btn" type="button" data-val="notes" aria-pressed="false" aria-controls="notizen">
-        <span class="compass-mode-icon" aria-hidden="true">✏️</span>
+        
         <span>Notizen</span>
-        <span class="compass-mode-hint">Lernjournal</span>
+        
       </button>
     </nav>
 
