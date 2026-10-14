@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>There is / There are — Hannas Englisch-Kompass</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --cyan:#0891b2;--cyan-dark:#0e7490;--cyan-soft:#ecfeff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --topic-bg:#dfeaf1;--topic-bg-soft:#eef5f8;--card-bg:#ffffff;--card-border:#c9d8e2;
+  --radius:16px;--radius-sm:10px;--radius-pill:999px;
+  --shadow:0 8px 28px rgba(15,23,42,0.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,0.06);
+  --line:1px solid var(--gray-200);
+  --font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;
+}
+body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:var(--topic-bg)}
+h1,h2,h3,h4,p,ul,ol,table{margin-top:0}
+p,ul,ol{margin-bottom:0}
+button,input,textarea{font:inherit}
+button{touch-action:manipulation}
+
+.site-nav{background:rgba(255,255,255,.97);border-bottom:var(--line);box-shadow:0 2px 8px rgba(15,23,42,.06);position:sticky;top:0;z-index:100}
+.site-nav-inner{max-width:1320px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}.nav-logo-text{color:var(--blue-dark)}
+.nav-links,.nav-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link,.ha-btn,.print-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);font-family:var(--font-head);font-size:.84rem;font-weight:400;text-decoration:none;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s}
+.nav-link:hover,.ha-btn:hover,.print-btn:hover{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-dark)}
+.nav-link.is-active{border-color:var(--cyan);background:var(--cyan);color:#fff}
+body.hausaufgaben-mode .ha-btn{border-color:var(--cyan);background:var(--cyan);color:#fff}
+
+.page-content,.overview-return-wrap{max-width:1320px;width:min(1320px,calc(100% - 48px));margin:0 auto}
+.page-content{padding:20px 20px 0}
+.overview-return-wrap{margin-top:10px;margin-bottom:-6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;gap:7px;min-height:36px;line-height:1.2;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:400;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+
+.learning-card{border:1px solid var(--card-border);border-radius:22px;background:var(--topic-bg);box-shadow:var(--shadow);overflow:hidden}
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#0e7490,#2563eb);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.84);font-size:.91rem;max-width:640px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--topic-bg-soft)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:color .18s,border-color .18s,background .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--cyan-dark);background:var(--cyan-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--cyan-dark);border-bottom-color:var(--cyan);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--cyan)}
+.compass-mode-panel{display:none;background:var(--topic-bg)}
+.compass-mode-panel.is-active{display:block}
+
+.learn-step-nav{display:flex;background:var(--topic-bg-soft);border-bottom:var(--line);overflow-x:auto}
+.learn-step-btn{flex:1;min-width:92px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+.learn-step-btn:hover{color:var(--cyan-dark);background:var(--cyan-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--cyan-dark);border-bottom-color:var(--cyan);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;background:var(--gray-100);color:var(--gray-600);transition:background .18s,color .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--cyan);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+.learn-progress-bar{height:3px;background:var(--gray-100)}
+.learn-progress-fill{height:100%;width:20%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:var(--radius-pill);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.learn-progress-fill.progress-step-1{width:20%}
+.learn-progress-fill.progress-step-2{width:40%}
+.learn-progress-fill.progress-step-3{width:60%}
+.learn-progress-fill.progress-step-4{width:80%}
+.learn-progress-fill.progress-step-5{width:100%}
+.learn-panel{display:none;padding:22px 20px;background:var(--topic-bg)}
+.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{0%{transform:scale(.97);opacity:.7}100%{transform:scale(1);opacity:1}}
+
+.entry-card,.feature-card,.can-card,.ref-section,.writecheck-intro,.writecheck-task,.writecheck-summary,.notes-panel,.conn-card{border:1px solid rgba(148,163,184,.45);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+.entry-card{display:grid;grid-template-columns:86px minmax(0,1fr);gap:16px;align-items:center;padding:18px;margin-bottom:14px}
+.entry-visual{display:flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;font-size:2.6rem;background:linear-gradient(135deg,#cffafe,#dbeafe);box-shadow:0 4px 14px rgba(8,145,178,.15);flex-shrink:0}
+.entry-hook{margin:0 0 6px;font-family:var(--font-head);font-size:.98rem;font-weight:400;color:var(--cyan-dark);line-height:1.3}
+.entry-text{margin:0 0 10px;color:var(--gray-700);font-size:.91rem;line-height:1.5}
+.entry-examples{display:flex;flex-wrap:wrap;gap:6px}
+.entry-ex{display:inline-block;padding:4px 11px;border-radius:var(--radius-pill);font-size:.87rem;font-weight:400;color:var(--cyan-dark);background:var(--cyan-soft)}
+.rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.rule-card{padding:12px;border:var(--line);border-radius:var(--radius-sm);background:#fff}
+.rule-label{display:block;margin-bottom:4px;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em}
+.rule-main{display:block;margin-bottom:4px;font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--cyan-dark)}
+.rule-note{display:block;font-size:.84rem;color:var(--gray-600);line-height:1.45}
+
+.feature-card{padding:18px;margin-bottom:14px}
+.feature-title{margin:0 0 5px;font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--cyan-dark)}
+.feature-subtitle{margin:0 0 12px;color:var(--gray-600);font-size:.89rem}
+.scanner-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:14px}
+.room-picture{padding:14px;border-radius:var(--radius);background:linear-gradient(180deg,#fff,var(--cyan-soft));border:1px solid #a5f3fc}
+.room-scene{position:relative;min-height:260px;border:2px solid #bae6fd;border-radius:var(--radius);background:linear-gradient(180deg,#f8fafc,#ecfeff);overflow:hidden}
+.room-item{position:absolute;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:2px solid #cbd5e1;border-radius:18px;background:#fff;box-shadow:var(--shadow-sm);font-size:1.7rem;cursor:pointer;transition:all .18s}
+.room-item:hover,.room-item.is-active{border-color:var(--cyan);background:var(--cyan-soft);transform:translateY(-2px)}
+.room-item[data-item="bag"]{left:22px;bottom:26px}
+.room-item[data-item="books"]{left:96px;bottom:34px}
+.room-item[data-item="pencil"]{right:34px;bottom:92px}
+.room-item[data-item="posters"]{right:24px;top:24px}
+.room-item[data-item="dog"]{left:45px;top:76px}
+.room-floor{position:absolute;left:0;right:0;bottom:0;height:54px;background:#dbeafe;border-top:1px solid #bfdbfe}
+.room-hint{margin:10px 0 0;color:var(--gray-600);font-size:.84rem}
+.scanner-panel{display:grid;gap:10px}
+.choice-row{display:flex;flex-wrap:wrap;gap:7px}
+.choice-btn,.machine-btn,.can-btn,.status-btn,.writecheck-btn,.writecheck-check-all,.writecheck-reset,.notes-save-btn,.notes-clear-btn{min-height:34px;padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.84rem;font-weight:400;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
+.choice-btn:hover,.machine-btn:hover,.can-btn:hover,.status-btn:hover,.writecheck-btn:hover,.writecheck-check-all:hover,.notes-save-btn:hover{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-dark)}
+.choice-btn.is-active,.machine-btn.is-active,.status-btn.is-active{border-color:var(--cyan);background:var(--cyan);color:#fff}
+.scan-output{padding:15px;border-radius:var(--radius);border:1px solid #a5f3fc;background:#fff;box-shadow:var(--shadow-sm)}
+.scan-output.is-pop{animation:pop .2s ease both}
+.scan-question{margin:0 0 8px;font-family:var(--font-head);font-weight:400;color:var(--cyan-dark)}
+.scan-path{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:10px}
+.path-chip{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-pill);background:var(--cyan-soft);color:var(--cyan-dark);border:1px solid #a5f3fc;font-family:var(--font-head);font-weight:400}
+.path-arrow{color:var(--gray-400)}
+.scan-sentence{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:7px}
+.tok{display:inline-flex;align-items:center;padding:4px 11px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;font-size:.92rem;line-height:1.3}
+.tok-there{color:#fff;background:var(--cyan)}
+.tok-verb{color:var(--green);background:#dcfce7}
+.tok-thing{color:var(--blue-dark);background:#dbeafe}
+.tok-place{color:var(--violet);background:var(--violet-soft)}
+.tok-neg{color:var(--red);background:var(--red-soft)}
+.machine-note{font-size:.84rem;color:var(--gray-600);font-style:italic;margin:0}
+
+.machine-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.machine-card{padding:16px;border:var(--line);border-radius:var(--radius);background:#fff}
+.machine-title{margin:0 0 8px;font-family:var(--font-head);font-weight:400;color:var(--cyan-dark);font-size:.95rem}
+.machine-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.machine-output{min-height:88px;padding:14px;border-radius:var(--radius-sm);background:var(--gray-25);border:var(--line)}
+.machine-output.is-pop{animation:pop .2s ease both}
+.pattern-list{display:grid;gap:8px}
+.pattern-line{padding:9px 11px;border-radius:var(--radius-sm);border:var(--line);background:var(--gray-25);font-size:.89rem;color:var(--gray-700)}
+.pattern-line span{display:inline-flex;margin-right:5px;padding:2px 7px;border-radius:999px;background:var(--cyan-soft);color:var(--cyan-dark);font-family:var(--font-head)}
+
+.trap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trap-card{padding:14px;border-radius:var(--radius);border:1px solid #fecaca;background:var(--red-soft)}
+.trap-card.good{border-color:#bbf7d0;background:var(--green-soft)}
+.trap-title{margin:0 0 7px;font-family:var(--font-head);font-weight:400;color:var(--gray-800);font-size:.94rem}
+.wrong-line,.right-line{display:block;margin:5px 0;padding:7px 9px;border-radius:var(--radius-sm);font-size:.88rem}
+.wrong-line{border:1px solid #fecaca;background:#fff;color:var(--red)}
+.right-line{border:1px solid #bbf7d0;background:#fff;color:var(--green)}
+.trap-text{margin:8px 0 0;color:var(--gray-700);font-size:.87rem;line-height:1.5}
+
+.trap-question{margin:0 0 9px;color:var(--gray-700);font-size:.88rem;line-height:1.5}
+.trap-choice-row{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
+.trap-choice{min-height:34px;padding:7px 11px;border:1px solid var(--gray-300);border-radius:var(--radius-pill);background:#fff;color:var(--gray-700);font-family:var(--font-head);font-size:.84rem;font-weight:400;cursor:pointer;transition:all .18s}
+.trap-choice:hover,.trap-choice:focus-visible{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-dark);outline:none}
+.trap-choice.is-correct{border-color:#bbf7d0;background:var(--green-soft);color:var(--green)}
+.trap-choice.is-wrong{border-color:#fecaca;background:#fff;color:var(--red)}
+.trap-feedback{margin:8px 0 0;padding:8px 10px;border-radius:var(--radius-sm);background:var(--cyan-soft);border-left:4px solid var(--cyan);color:var(--gray-700);font-size:.86rem;line-height:1.45}
+.trap-feedback.is-wrong{background:var(--yellow-soft);border-left-color:#d97706;color:var(--yellow)}
+.trap-solution{margin:10px 0 0;padding:10px 11px;border-radius:var(--radius-sm);border:1px solid #bbf7d0;background:var(--green-soft);color:var(--gray-700);font-size:.87rem;line-height:1.5}
+.trap-solution .wrong-line,.trap-solution .right-line{margin:4px 0}
+
+.can-shell{display:grid;gap:14px}
+.can-card{padding:16px}
+.can-card-trap{border-color:#fecaca;background:var(--red-soft)}
+.can-title{margin:0 0 7px;font-family:var(--font-head);font-weight:400;color:var(--gray-800);font-size:.98rem}
+.can-task{margin:0 0 10px;color:var(--gray-700);font-size:.9rem;line-height:1.5}
+.can-options{display:grid;gap:7px}
+.can-option{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.87rem;cursor:pointer}
+.can-option input{margin-top:3px;accent-color:var(--cyan)}
+.can-feedback,.can-explanation,.repair-feedback,.status-output{margin:10px 0 0;padding:10px 12px;border-left:4px solid var(--cyan);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--cyan-soft);color:var(--gray-700);font-size:.87rem}
+.can-feedback.is-correct,.repair-feedback.is-correct{border-left-color:var(--green);background:var(--green-soft);color:var(--gray-700)}
+.can-feedback.is-wrong,.repair-feedback.is-wrong{border-left-color:#ef4444;background:var(--red-soft);color:var(--red)}
+.repair-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.explain-textarea{width:100%;min-height:92px;padding:9px 11px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.9rem;color:var(--gray-800);background:#fff;resize:vertical}
+.explain-textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(8,145,178,.12)}
+.status-grid{display:flex;flex-wrap:wrap;gap:8px}
+
+.ref-wrap{padding:22px;display:grid;gap:18px;background:var(--topic-bg)}
+.ref-intro,.homework-note{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:var(--radius);background:var(--cyan-soft);border:1px solid #a5f3fc;font-size:.87rem;color:var(--cyan-dark);font-family:var(--font-head);font-weight:400}
+.homework-note{display:none}
+.ref-section{padding:17px;display:grid;gap:12px}
+.ref-core{border-color:#93c5fd;background:linear-gradient(135deg,#fff,var(--cyan-soft))}
+.ref-traps{border-color:#fecaca;background:#fff7f7}
+.ref-special{border-color:#fde68a;background:var(--yellow-soft)}
+.ref-title{display:flex;align-items:center;gap:8px;margin:0 0 2px;font-family:var(--font-head);font-weight:400;font-size:.86rem;color:var(--gray-800);text-transform:uppercase;letter-spacing:.06em;line-height:1.3}
+.ref-title::before{content:attr(data-step);display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;border-radius:var(--radius-pill);background:#eff6ff;border:1px solid #bfdbfe;color:var(--blue-dark);font-size:.78rem}
+.ref-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ref-grid-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ref-mini{padding:10px 12px;border-radius:var(--radius-sm);border:var(--line);background:#fff;font-size:.88rem;line-height:1.55;color:var(--gray-700)}
+.ref-mini-title{display:block;font-family:var(--font-head);font-weight:400;color:var(--cyan-dark);font-size:.8rem;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.ref-line{padding:8px 10px;border-left:4px solid var(--cyan);border-radius:0 var(--radius-sm) var(--radius-sm) 0;background:var(--cyan-soft);font-size:.88rem;color:var(--gray-700);line-height:1.5}
+.ref-list{margin:0;padding-left:19px;display:grid;gap:3px;color:var(--gray-700);font-size:.9rem;line-height:1.62}
+.ref-ex-list{display:grid;gap:5px}
+.ref-ex-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:8px 11px;border:var(--line);border-radius:var(--radius-sm);background:#fff;font-size:.86rem;align-items:center}
+.ref-chip{font-size:.71rem;color:var(--cyan-dark);background:var(--cyan-soft);padding:2px 8px;border-radius:var(--radius-pill);font-family:var(--font-head);font-weight:400;white-space:nowrap}
+.spickzettel-title{display:none}
+.tia-print-spickzettel{display:none}
+
+.connections-panel,.writecheck-panel,.notes-panel{padding:20px;background:var(--topic-bg)}
+.conn-intro{padding:10px 14px;border-radius:var(--radius);background:linear-gradient(135deg,var(--cyan-soft),var(--blue-soft));border:1px solid #a5f3fc;margin-bottom:12px;font-family:var(--font-head);font-size:.88rem;font-weight:400;color:var(--cyan-dark)}
+.conn-map{display:grid;gap:10px}
+.conn-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;padding:14px}
+.conn-icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--radius-sm);font-size:1.25rem;background:var(--cyan-soft);flex-shrink:0}
+.conn-title{margin:0 0 2px;font-family:var(--font-head);font-weight:400;color:var(--cyan-dark);font-size:.94rem}
+.conn-text{color:var(--gray-700);font-size:.87rem;margin:0 0 6px;line-height:1.5}
+.conn-examples{display:flex;flex-wrap:wrap;gap:5px}
+.conn-ex{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--radius-pill);font-size:.81rem;font-weight:400;color:var(--blue-dark);background:#dbeafe}
+
+.writecheck-intro{padding:16px 18px;margin-bottom:16px;background:var(--cyan-soft);border-color:#a5f3fc}
+.writecheck-intro h3{margin:0 0 6px;font-family:var(--font-head);font-size:1.05rem;font-weight:400;color:var(--cyan-dark)}
+.writecheck-intro p{margin:0;color:var(--gray-700)}
+.writecheck-grid{display:grid;gap:14px}
+.writecheck-task{padding:15px;background:#fff}
+.writecheck-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.writecheck-task-num{font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--cyan-dark);background:var(--cyan-soft);border:1px solid #a5f3fc;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.writecheck-skill{font-size:.76rem;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:999px;padding:3px 8px;background:#fff;white-space:nowrap}
+.writecheck-prompt{font-size:1rem;color:var(--gray-800);margin:0 0 8px}
+.writecheck-context{font-size:.9rem;color:var(--gray-600);background:#fff;border:1px dashed var(--gray-300);border-radius:12px;padding:8px 10px;margin:0 0 8px}
+.writecheck-input-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.writecheck-input{flex:1;min-width:220px;border:1px solid var(--gray-300);border-radius:12px;padding:10px 12px;background:#fff;color:var(--gray-800)}
+.writecheck-input:focus{outline:3px solid #a5f3fc;border-color:var(--cyan)}
+.writecheck-btn,.writecheck-check-all,.notes-save-btn{border-color:#a5f3fc;background:var(--cyan-soft);color:var(--cyan-dark)}
+.writecheck-reset,.notes-clear-btn{border-color:var(--gray-300);background:#fff;color:var(--gray-600)}
+.writecheck-feedback{margin-top:8px;border-radius:12px;padding:9px 10px;font-size:.9rem;display:none}
+.writecheck-feedback.is-visible{display:block}
+.writecheck-feedback.is-correct{border:1px solid #bbf7d0;background:#f0fdf4;color:#166534}
+.writecheck-feedback.is-almost{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-feedback.is-wrong{border:1px solid #fecaca;background:#fef2f2;color:#991b1b}
+.writecheck-feedback.is-empty{border:1px solid #fde68a;background:#fffbeb;color:#92400e}
+.writecheck-solution-btn{margin-top:7px}
+.writecheck-task.is-correct{border-color:#86efac;background:#f0fdf4}
+.writecheck-task.is-almost{border-color:#fcd34d;background:#fffbeb}
+.writecheck-task.is-wrong{border-color:#fca5a5;background:#fef2f2}
+.writecheck-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.writecheck-summary{display:none;border:1px solid var(--gray-200);border-radius:18px;background:#fff;padding:16px;margin-top:14px;box-shadow:var(--shadow-sm)}
+.writecheck-summary.is-visible{display:block}
+.writecheck-summary-title{margin:0 0 8px;font-family:var(--font-head);font-size:1.05rem;font-weight:400;color:var(--gray-800)}
+.writecheck-score{font-family:var(--font-head);font-size:1.05rem;font-weight:400;color:var(--cyan-dark);margin-bottom:8px}
+
+.notes-title{font-family:var(--font-head);font-weight:400;font-size:.97rem;color:var(--gray-800);margin:0 0 14px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:12px}
+.note-field-label,.note-example-label{display:block;font-family:var(--font-head);font-weight:400;font-size:.78rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note-help{margin:0 0 7px;font-size:.82rem;line-height:1.45;color:var(--gray-500)}
+.note-textarea{width:100%;min-height:88px;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.86rem;color:var(--gray-800);background:var(--gray-25);resize:vertical;transition:border-color .18s}
+.note-textarea:focus{outline:none;border-color:var(--cyan);background:#fff}
+.note-field:nth-child(1) .note-textarea{border-top:3px solid var(--cyan)}
+.note-field:nth-child(2) .note-textarea{border-top:3px solid var(--red)}
+.note-field:nth-child(3) .note-textarea{border-top:3px solid var(--green)}
+.note-example-wrap{margin-bottom:12px}
+.note-example-input{width:100%;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.89rem;color:var(--gray-800);background:var(--gray-25);transition:border-color .18s;border-top:3px solid var(--violet)}
+.note-example-input:focus{outline:none;border-color:var(--violet);background:#fff}
+.notes-save-row{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.notes-saved{font-size:.82rem;color:var(--green);font-family:var(--font-head);font-weight:400;opacity:0;transition:opacity .3s}
+.notes-saved.is-visible{opacity:1}
+
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,
+body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),
+body.hausaufgaben-mode .learn-step-nav,
+body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+body.hausaufgaben-mode .ref-intro,
+body.hausaufgaben-mode .homework-hide,
+body.hausaufgaben-mode .ref-special{display:none!important}
+body.hausaufgaben-mode .homework-note{display:flex}
+body.hausaufgaben-mode .ref-wrap{gap:14px}
+
+body.tia-spickzettel-print .spickzettel-title{display:block;margin:0 0 8px;font-family:var(--font-head);font-size:1.2rem;font-weight:400;color:#111}
+body.tia-spickzettel-print .site-nav,
+body.tia-spickzettel-print .overview-return-wrap,
+body.tia-spickzettel-print .learning-card{display:none!important}
+body.tia-spickzettel-print .tia-print-spickzettel{display:block!important;max-width:760px;margin:0 auto;padding:18px;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+body.tia-spickzettel-print .tia-print-spickzettel h1{margin:0 0 10px;font-size:1.35rem;font-weight:400;color:#111}
+body.tia-spickzettel-print .tia-print-spickzettel h2{margin:14px 0 6px;font-size:1rem;font-weight:400;color:#111}
+body.tia-spickzettel-print .tia-print-spickzettel p,
+body.tia-spickzettel-print .tia-print-spickzettel li{font-size:.92rem;line-height:1.35;color:#111}
+body.tia-spickzettel-print .tia-print-spickzettel ul{margin:6px 0 0 18px;padding:0}
+body.tia-spickzettel-print .tia-print-spickzettel section{border-top:1px solid #ddd;padding-top:8px;margin-top:8px}
+
+@media print{
+  body.tia-spickzettel-print{background:#fff;color:#111}
+  body.tia-spickzettel-print .site-nav,
+  body.tia-spickzettel-print .overview-return-wrap,
+  body.tia-spickzettel-print .learning-card{display:none!important}
+  body.tia-spickzettel-print .tia-print-spickzettel{display:block!important;max-width:760px;margin:0 auto;padding:18px;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+}
+
+@media(max-width:760px){
+  html,body{max-width:100%}
+  .page-content,.overview-return-wrap{width:auto;max-width:100%;padding-left:12px;padding-right:12px}
+  .site-nav-inner{padding-left:12px;padding-right:12px}
+  .nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+  .compass-head{padding:16px 14px}.compass-emoji{font-size:1.8rem}
+  .compass-mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}
+  .learn-step-btn{flex:0 0 auto}
+  .learn-panel,.connections-panel,.writecheck-panel,.notes-panel,.ref-wrap{padding:14px 12px}
+  .entry-card,.scanner-grid,.machine-grid,.trap-grid,.rule-grid,.ref-grid,.ref-grid-three,.notes-grid{grid-template-columns:1fr}
+  .room-scene{min-height:230px}
+  .writecheck-input-row{display:block}
+  .writecheck-input{width:100%;min-width:0;margin-bottom:8px}
+  .writecheck-btn{width:100%;justify-content:center}
+  .ref-ex-row{grid-template-columns:1fr}
+  .conn-card{grid-template-columns:1fr}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Themennavigation">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-icon" aria-hidden="true">🧭</span><span class="nav-logo-text">Hannas Kompass</span></a>
+    <div class="nav-links" aria-label="Weitere Themen">
+      <a href="tobe.html" class="nav-link">🟦 to be</a>
+      <a href="pronouns.html" class="nav-link">👤 Pronouns</a>
+      <a href="havegot.html" class="nav-link">🎒 have got</a>
+      <a href="simplepresent.html" class="nav-link">🔁 Simple Present</a>
+      <a href="questions.html" class="nav-link">❓ Questions</a>
+      <a href="progressive.html" class="nav-link">🎬 Progressive</a>
+      <a href="simplepast.html" class="nav-link">📖 Simple Past</a><a href="wordorder.html" class="nav-link">🚂 Word Order</a>
+      <a href="thereisthereare.html" class="nav-link is-active" aria-current="page">📍 there is/are</a>
+      <a href="articles.html" class="nav-link">🔤 Articles</a>
+      <a href="adjectives.html" class="nav-link">🎨 Adjectives</a>
+<a class="nav-link" href="listening.html">🎧 Listening</a>
+      <a href="index.html" class="nav-link nav-link-overview">Alle Themen →</a>
+    </div>
+    <div class="nav-actions">
+      <button type="button" class="ha-btn" id="ha-btn">📚 Hausaufgaben</button>
+      <button type="button" class="print-btn" id="print-ref-btn">🖨️ Spickzettel drucken</button>
+    </div>
+  </div>
+</nav>
+
+<div class="overview-return-wrap">
+  <a class="overview-return" href="index.html" aria-label="Zur Startseite mit Themenübersicht">← Zurück zur Übersicht</a>
+</div>
+
+<main class="page-content">
+  <article class="learning-card" id="top">
+    <header class="compass-head">
+      <div>
+        <p class="compass-kicker">Englisch-Kompass · Klasse 5</p>
+        <h1 class="compass-title">There is / There are</h1>
+        <p class="compass-subtitle">Der Raum-Scanner hilft dir: Erst schauen, ob eine Sache oder mehrere Sachen da sind. Dann entscheidest du: <span lang="en">there is</span> oder <span lang="en">there are</span>.</p>
+      </div>
+      <div class="compass-emoji" aria-hidden="true">🔎</div>
+    </header>
+
+    <nav class="compass-mode-grid" aria-label="Hauptbereiche">
+      <button class="compass-mode-btn" type="button" data-val="learn" aria-pressed="true" aria-controls="lernen">
+        <span class="compass-mode-icon" aria-hidden="true">🎯</span>
+        <span>Lernen</span>
+        <span class="compass-mode-hint">erst verstehen</span>
+      </button>
+      <button class="compass-mode-btn" type="button" data-val="reference" aria-pressed="false" aria-controls="nachschlagen">
+        <span class="compass-mode-icon" aria-hidden="true">📖</span>
+        <span>Nachschlagen</span>
+        <span class="compass-mode-hint">Regeln & Spickzettel</span>
+      </button>
+      <button class="compass-mode-btn" type="button" data-val="connections" aria-pressed="false" aria-controls="verbindungen">
+        <span class="compass-mode-icon" aria-hidden="true">🔗</span>
+        <span>Verbindungen</span>
+        <span class="compass-mode-hint">nicht verwechseln</span>
+      </button>
+      <button class="compass-mode-btn" type="button" data-val="writecheck" aria-pressed="false" aria-controls="schreibcheck">
+        <span class="compass-mode-icon" aria-hidden="true">✍️</span>
+        <span>Schreib-Check</span>
+        <span class="compass-mode-hint">selbst schreiben</span>
+      </button>
+      <button class="compass-mode-btn" type="button" data-val="notes" aria-pressed="false" aria-controls="notizen">
+        <span class="compass-mode-icon" aria-hidden="true">✏️</span>
+        <span>Notizen</span>
+        <span class="compass-mode-hint">Lernjournal</span>
+      </button>
+    </nav>
+
+    <section class="compass-mode-panel is-active" id="lernen" data-val="learn">
+      <nav class="learn-step-nav" aria-label="Lernschritte">
+        <button class="learn-step-btn" type="button" data-step="entry" aria-pressed="true" aria-controls="tia-learn-entry"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button>
+        <button class="learn-step-btn" type="button" data-step="scanner" aria-pressed="false" aria-controls="tia-learn-scanner"><span class="step-badge">2</span><span class="step-label">Raum-Scanner</span></button>
+        <button class="learn-step-btn" type="button" data-step="machine" aria-pressed="false" aria-controls="tia-learn-machine"><span class="step-badge">3</span><span class="step-label">Satzmaschine</span></button>
+        <button class="learn-step-btn" type="button" data-step="traps" aria-pressed="false" aria-controls="tia-learn-traps"><span class="step-badge">4</span><span class="step-label">Denkfallen</span></button>
+        <button class="learn-step-btn" type="button" data-step="can" aria-pressed="false" aria-controls="tia-learn-can"><span class="step-badge">5</span><span class="step-label">Kann ich's?</span></button>
+      </nav>
+      <div class="learn-progress-bar" aria-hidden="true"><div class="learn-progress-fill" id="learnProgress"></div></div>
+
+      <section class="learn-panel is-active" id="tia-learn-entry" data-step="entry">
+        <div class="entry-card">
+          <div class="entry-visual" aria-hidden="true">🏠</div>
+          <div>
+            <p class="entry-hook">Du benutzt <span lang="en">there is / there are</span>, wenn du sagen willst: Da ist etwas. Es gibt etwas.</p>
+            <p class="entry-text">Die wichtigste Frage ist nicht: Wer macht etwas? Sondern: Wie viele Sachen sind da?</p>
+            <div class="entry-examples" aria-label="Beispiele">
+              <span class="entry-ex" lang="en">There is a bag.</span>
+              <span class="entry-ex" lang="en">There are two books.</span>
+              <span class="entry-ex" lang="en">Are there any pencils?</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rule-grid">
+          <div class="rule-card">
+            <span class="rule-label">Eine Sache</span>
+            <span class="rule-main" lang="en">There is</span>
+            <span class="rule-note">Bei <span lang="en">a bag, an apple, one book</span>.</span>
+          </div>
+          <div class="rule-card">
+            <span class="rule-label">Mehrere Sachen</span>
+            <span class="rule-main" lang="en">There are</span>
+            <span class="rule-note">Bei Zahlen, Plural und Wörtern wie <span lang="en">many</span>.</span>
+          </div>
+          <div class="rule-card">
+            <span class="rule-label">Erst zählen</span>
+            <span class="rule-main">Zahl entscheidet</span>
+            <span class="rule-note">Nicht das deutsche „es gibt“ entscheidet, sondern Singular oder Plural.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="tia-learn-scanner" data-step="scanner">
+        <div class="feature-card">
+          <h2 class="feature-title">Raum-Scanner: Was ist da?</h2>
+          <p class="feature-subtitle">Klicke auf eine Sache im Zimmer. Der Scanner zeigt dir den Denkweg: zählen → entscheiden → Satz bauen.</p>
+
+          <div class="scanner-grid">
+            <div class="room-picture">
+              <div class="room-scene" aria-label="Zimmer mit anklickbaren Dingen">
+                <div class="room-floor" aria-hidden="true"></div>
+                <button class="room-item is-active" type="button" data-item="bag" aria-label="eine Tasche">🎒</button>
+                <button class="room-item" type="button" data-item="books" aria-label="drei Bücher">📚</button>
+                <button class="room-item" type="button" data-item="pencil" aria-label="ein Bleistift">✏️</button>
+                <button class="room-item" type="button" data-item="posters" aria-label="zwei Poster">🖼️</button>
+                <button class="room-item" type="button" data-item="dog" aria-label="ein Hund">🐕</button>
+              </div>
+              <p class="room-hint">Merke: Der Scanner fragt nicht „Was heißt es auf Deutsch?“, sondern „eine Sache oder mehrere?“</p>
+            </div>
+
+            <div class="scanner-panel">
+              <div>
+                <p class="scan-question">Welche Satzart möchtest du sehen?</p>
+                <div class="choice-row" role="group" aria-label="Satzart auswählen">
+                  <button class="choice-btn is-active" type="button" data-scan-mode="statement">Aussage</button>
+                  <button class="choice-btn" type="button" data-scan-mode="question">Frage</button>
+                  <button class="choice-btn" type="button" data-scan-mode="negative">Verneinung</button>
+                </div>
+              </div>
+
+              <div class="scan-output" id="scanOutput" aria-live="polite">
+                <p class="scan-question" id="scanItemTitle">eine Tasche</p>
+                <div class="scan-path" id="scanPath"></div>
+                <div class="scan-sentence" id="scanSentence"></div>
+                <p class="machine-note" id="scanNote">Eine Sache: Deshalb brauchst du <span lang="en">there is</span>.</p>
+              </div>
+
+              <div class="ref-line">
+                Mini-Merksatz: Erst zählen, dann Form wählen. Eine Sache: <span lang="en">there is</span>. Mehrere Sachen: <span lang="en">there are</span>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="tia-learn-machine" data-step="machine">
+        <div class="feature-card">
+          <h2 class="feature-title">Satzmaschine: Aussage, Verneinung, Frage</h2>
+          <p class="feature-subtitle">Wähle Satzart und Menge. Achte darauf, was sich nach vorne bewegt und wo <span lang="en">not</span> oder <span lang="en">any</span> steht.</p>
+
+          <div class="machine-grid">
+            <div class="machine-card">
+              <h3 class="machine-title">Baue den Satz</h3>
+              <div class="machine-chips" role="group" aria-label="Satzart">
+                <button class="machine-btn is-active" type="button" data-machine-mode="statement">Aussage</button>
+                <button class="machine-btn" type="button" data-machine-mode="negative">Verneinung</button>
+                <button class="machine-btn" type="button" data-machine-mode="question">Frage</button>
+              </div>
+              <div class="machine-chips" role="group" aria-label="Menge">
+                <button class="machine-btn is-active" type="button" data-machine-count="singular">eine Sache</button>
+                <button class="machine-btn" type="button" data-machine-count="plural">mehrere Sachen</button>
+              </div>
+              <div class="machine-output" id="machineOutput" aria-live="polite"></div>
+            </div>
+
+            <div class="machine-card">
+              <h3 class="machine-title">Was verändert sich?</h3>
+              <div class="pattern-list">
+                <p class="pattern-line"><span>Aussage</span> <span lang="en">There is/are + Sache + Ort.</span></p>
+                <p class="pattern-line"><span>Verneinung</span> <span lang="en">There isn't + Singular.</span> / <span lang="en">There aren't any + Plural.</span></p>
+                <p class="pattern-line"><span>Frage</span> <span lang="en">Is/Are there + Sache + Ort?</span></p>
+                <p class="pattern-line"><span>Kurzantwort</span> <span lang="en">Yes, there is/are.</span> · <span lang="en">No, there isn't/aren't.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="tia-learn-traps" data-step="traps">
+        <div class="feature-card">
+          <h2 class="feature-title">Denkfallen: Erst klicken, dann Lösung sehen</h2>
+          <p class="feature-subtitle">Klick zuerst auf den Teil, der die Entscheidung verrät. Die Lösung erscheint erst danach.</p>
+
+          <div class="trap-grid">
+            <div class="trap-card trap-interactive" data-trap="count">
+              <h3 class="trap-title">Falle 1: Zahl übersehen</h3>
+              <p class="trap-question">Im Satz ist etwas falsch. Welcher Teil verrät dir, dass <span lang="en">is</span> nicht passt?</p>
+              <div class="trap-choice-row" aria-label="Denkfalle 1 Auswahl">
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There</button>
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">is</button>
+                <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">two books</button>
+              </div>
+              <p class="trap-feedback" data-trap-feedback hidden></p>
+              <div class="trap-solution" data-trap-solution hidden>
+                <span class="wrong-line" lang="en">There is two books.</span>
+                <span class="right-line" lang="en">There are two books.</span>
+                <p class="trap-text">Zwei Bücher sind Plural. Deshalb brauchst du <span lang="en">are</span>.</p>
+              </div>
+            </div>
+            <div class="trap-card trap-interactive" data-trap="question">
+              <h3 class="trap-title">Falle 2: Frage falsch gestartet</h3>
+              <p class="trap-question">Welche Information entscheidet, ob die Frage mit <span lang="en">Is</span> oder <span lang="en">Are</span> beginnt?</p>
+              <div class="trap-choice-row" aria-label="Denkfalle 2 Auswahl">
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">Are</button>
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">there</button>
+                <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">a pencil</button>
+              </div>
+              <p class="trap-feedback" data-trap-feedback hidden></p>
+              <div class="trap-solution" data-trap-solution hidden>
+                <span class="wrong-line" lang="en">Are there a pencil?</span>
+                <span class="right-line" lang="en">Is there a pencil?</span>
+                <p class="trap-text">Ein Bleistift ist Singular. In der Frage wandert <span lang="en">is</span> nach vorne.</p>
+              </div>
+            </div>
+            <div class="trap-card trap-interactive" data-trap="any">
+              <h3 class="trap-title">Falle 3: Schulform in der Verneinung</h3>
+              <p class="trap-question">Welche Form ist für Klasse 5 die bessere Standardform?</p>
+              <div class="trap-choice-row" aria-label="Denkfalle 3 Auswahl">
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There aren't pencils.</button>
+                <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">There aren't any pencils.</button>
+              </div>
+              <p class="trap-feedback" data-trap-feedback hidden></p>
+              <div class="trap-solution" data-trap-solution hidden>
+                <span class="right-line" lang="en">There aren't any pencils.</span>
+                <p class="trap-text"><span lang="en">There aren't pencils</span> ist verständlich, aber im Schulenglisch übst du bei Plural-Verneinungen die saubere Standardform mit <span lang="en">any</span>.</p>
+              </div>
+            </div>
+            <div class="trap-card trap-interactive good" data-trap="itthere">
+              <h3 class="trap-title">Nicht verwechseln: <span lang="en">It is</span> oder <span lang="en">There is</span>?</h3>
+              <p class="trap-question">Du willst sagen: „Es ist ein Buch.“ Welcher englische Satz passt?</p>
+              <div class="trap-choice-row" aria-label="Denkfalle 4 Auswahl">
+                <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">It is a book.</button>
+                <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There is a book.</button>
+              </div>
+              <p class="trap-feedback" data-trap-feedback hidden></p>
+              <div class="trap-solution" data-trap-solution hidden>
+                <span class="right-line" lang="en">It is a book.</span>
+                <span class="right-line" lang="en">There is a book on the desk.</span>
+                <p class="trap-text"><span lang="en">It is</span> sagt, was etwas ist. <span lang="en">There is</span> sagt, dass etwas da ist oder irgendwo steht.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="tia-learn-can" data-step="can">
+        <div class="can-shell">
+          <div class="can-card">
+            <h2 class="can-title">Kann ich's? Entscheiden, reparieren, erklären</h2>
+            <p class="can-task">Das ist keine reine Checkliste. Du musst zuerst entscheiden, dann einen Fehler reparieren und am Ende deinen Lernstand einschätzen.</p>
+          </div>
+
+          <div class="can-card">
+            <h3 class="can-title">1. Entscheidung: Was passt?</h3>
+            <p class="can-task">Wähle die richtige Lösung. Denk zuerst: eine Sache oder mehrere?</p>
+            <div class="can-options" data-can-question="decision">
+              <label class="can-option"><input type="radio" name="can-decision" value="wrong"> <span lang="en">There is three cats in the garden.</span></label>
+              <label class="can-option"><input type="radio" name="can-decision" value="right"> <span lang="en">There are three cats in the garden.</span></label>
+              <label class="can-option"><input type="radio" name="can-decision" value="wrong"> <span lang="en">There are a cat in the garden.</span></label>
+            </div>
+            <button class="can-btn" type="button" data-check-can="decision">Prüfen</button>
+            <div class="can-feedback" id="canDecisionFeedback" hidden></div>
+          </div>
+
+          <div class="can-card can-card-trap">
+            <h3 class="can-title">2. Fehler-Scanner: Was ist falsch?</h3>
+            <p class="can-task"><span lang="en">There is two posters on the wall.</span></p>
+            <p class="can-task">Klicke auf die Stelle, die repariert werden muss.</p>
+            <div class="repair-row">
+              <button class="can-btn" type="button" data-repair-pick="there">There</button>
+              <button class="can-btn" type="button" data-repair-pick="is">is</button>
+              <button class="can-btn" type="button" data-repair-pick="two posters">two posters</button>
+              <button class="can-btn" type="button" data-repair-pick="wall">wall</button>
+            </div>
+            <div class="repair-feedback" id="repairFeedback" hidden></div>
+          </div>
+
+          <div class="can-card">
+            <h3 class="can-title">3. Erklär-Check</h3>
+            <label class="can-task" for="explainCheck">Erkläre in einem Satz: Warum heißt es <span lang="en">There are two posters</span> und nicht <span lang="en">There is two posters</span>?</label>
+            <textarea class="explain-textarea" id="explainCheck" rows="4" placeholder="Schreibe deine Erklärung hier hinein."></textarea>
+            <button class="can-btn" type="button" id="checkExplain">Erklärung prüfen</button>
+            <div class="can-explanation" id="explainFeedback" hidden></div>
+          </div>
+
+          <div class="can-card">
+            <h3 class="can-title">4. Lernstand</h3>
+            <p class="can-task">Wähle ehrlich. Das ist für Wiederholung später wichtiger als „alles grün“.</p>
+            <div class="status-grid" role="group" aria-label="Lernstand auswählen">
+              <button class="status-btn" type="button" data-status="red">Noch unsicher</button>
+              <button class="status-btn" type="button" data-status="yellow">Fast verstanden</button>
+              <button class="status-btn" type="button" data-status="green">Kann ich</button>
+            </div>
+            <p class="status-output" id="statusOutput" hidden></p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="compass-mode-panel" id="nachschlagen" data-val="reference">
+      <div class="ref-wrap">
+        <h2 class="spickzettel-title">Spickzettel: There is / There are</h2>
+        <div class="ref-intro">
+          <span aria-hidden="true">📖</span>
+          <span>Hier steht die schnelle Regelübersicht. Für den Spickzettel werden nur Kernregel, Satzmuster, wichtigste Denkfallen und wenige Beispiele gedruckt.</span>
+        </div>
+        <div class="homework-note">
+          <span aria-hidden="true">📝</span>
+          <span>Hausaufgabenmodus: Hier siehst du nur die wichtigsten Regeln zum schnellen Nachsehen.</span>
+        </div>
+
+        <section class="ref-section ref-core">
+          <h2 class="ref-title" data-step="1">Kurz merken</h2>
+          <div class="ref-grid ref-grid-three">
+            <div class="ref-mini">
+              <span class="ref-mini-title">Bedeutung</span>
+              <span lang="en">There is / there are</span> bedeutet: da ist, da sind oder es gibt.
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Kernregel</span>
+              Eine Sache → <span lang="en">there is</span>. Mehrere Sachen → <span lang="en">there are</span>.
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Merksatz</span>
+              Erst zählen, dann entscheiden: <span lang="en">is</span> für eins, <span lang="en">are</span> für mehrere.
+            </div>
+          </div>
+        </section>
+
+        <section class="ref-section">
+          <h2 class="ref-title" data-step="2">Satzmuster</h2>
+          <div class="ref-grid">
+            <div class="ref-mini">
+              <span class="ref-mini-title">Aussage</span>
+              <span lang="en">There is a bag in the room.</span><br>
+              <span lang="en">There are two books on the desk.</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Verneinung</span>
+              <span lang="en">There isn't a bag.</span><br>
+              <span lang="en">There aren't any books.</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Frage</span>
+              <span lang="en">Is there a bag?</span><br>
+              <span lang="en">Are there any books?</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Kurzantwort</span>
+              <span lang="en">Yes, there is.</span> / <span lang="en">No, there isn't.</span><br>
+              <span lang="en">Yes, there are.</span> / <span lang="en">No, there aren't.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="ref-section ref-traps">
+          <h2 class="ref-title" data-step="3">Denkfallen</h2>
+          <div class="ref-grid">
+            <div class="ref-mini">
+              <span class="ref-mini-title">Zahl übersehen</span>
+              Falsch: <span lang="en">There is two books.</span><br>
+              Richtig: <span lang="en">There are two books.</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Frage falsch</span>
+              Falsch: <span lang="en">Are there a pencil?</span><br>
+              Richtig: <span lang="en">Is there a pencil?</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Plural-Verneinung</span>
+              Schulnah: <span lang="en">There aren't any pencils.</span>
+            </div>
+            <div class="ref-mini">
+              <span class="ref-mini-title">Nicht verwechseln</span>
+              <span lang="en">It is a book.</span> = Es ist ein Buch.<br>
+              <span lang="en">There is a book.</span> = Da ist ein Buch.
+            </div>
+          </div>
+        </section>
+
+        <section class="ref-section ref-special homework-hide">
+          <h2 class="ref-title" data-step="4">Sonderhinweise</h2>
+          <ul class="ref-list">
+            <li><span lang="en">a</span> oder <span lang="en">an</span> steht vor einer einzelnen zählbaren Sache: <span lang="en">a bag</span>, <span lang="en">an apple</span>.</li>
+            <li>Zahlen, <span lang="en">many</span> und Plural-Endungen zeigen meistens: Du brauchst <span lang="en">there are</span>.</li>
+            <li><span lang="en">any</span> ist besonders wichtig in Fragen und Verneinungen: <span lang="en">Are there any books?</span></li>
+          </ul>
+        </section>
+
+        <section class="ref-section">
+          <h2 class="ref-title" data-step="5">Beispiele</h2>
+          <div class="ref-ex-list">
+            <div class="ref-ex-row"><span lang="en">There is a dog in the garden.</span><span>Da ist ein Hund im Garten.</span><span class="ref-chip">Singular</span></div>
+            <div class="ref-ex-row"><span lang="en">There are three chairs in the kitchen.</span><span>Es gibt drei Stühle in der Küche.</span><span class="ref-chip">Plural</span></div>
+            <div class="ref-ex-row"><span lang="en">Is there a computer in your room?</span><span>Gibt es einen Computer in deinem Zimmer?</span><span class="ref-chip">Frage</span></div>
+            <div class="ref-ex-row"><span lang="en">There aren't any posters on the wall.</span><span>Es sind keine Poster an der Wand.</span><span class="ref-chip">Verneinung</span></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="compass-mode-panel" id="verbindungen" data-val="connections">
+      <div class="connections-panel">
+        <div class="conn-intro">Grammatik hängt zusammen. Diese Verbindungen helfen dir, <span lang="en">there is / there are</span> nicht isoliert zu lernen.</div>
+        <div class="conn-map">
+          <div class="conn-card">
+            <div class="conn-icon" aria-hidden="true">🔤</div>
+            <div>
+              <h2 class="conn-title">Verbindung zu <span lang="en">to be</span></h2>
+              <p class="conn-text"><span lang="en">is</span> und <span lang="en">are</span> kennst du aus <span lang="en">to be</span>. Hier stehen sie nicht bei Personen, sondern bei Dingen, die da sind.</p>
+              <div class="conn-examples"><span class="conn-ex" lang="en">There is a bag.</span><span class="conn-ex" lang="en">There are books.</span></div>
+            </div>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon" aria-hidden="true">1️⃣</div>
+            <div>
+              <h2 class="conn-title">Verbindung zu <span lang="en">a/an</span> und Plural</h2>
+              <p class="conn-text"><span lang="en">a/an</span> zeigt meistens Singular. Zahlen und Plural-Endungen zeigen meistens Plural.</p>
+              <div class="conn-examples"><span class="conn-ex" lang="en">an apple → there is</span><span class="conn-ex" lang="en">two apples → there are</span></div>
+            </div>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon" aria-hidden="true">❓</div>
+            <div>
+              <h2 class="conn-title">Verbindung zu Fragen</h2>
+              <p class="conn-text">In der Frage wandert <span lang="en">is</span> oder <span lang="en">are</span> nach vorne. Das kennst du auch von <span lang="en">to be</span>.</p>
+              <div class="conn-examples"><span class="conn-ex" lang="en">Is there ...?</span><span class="conn-ex" lang="en">Are there ...?</span></div>
+            </div>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon" aria-hidden="true">⚖️</div>
+            <div>
+              <h2 class="conn-title">Nicht verwechseln: <span lang="en">It is</span> und <span lang="en">There is</span></h2>
+              <p class="conn-text"><span lang="en">It is</span> beschreibt etwas. <span lang="en">There is</span> sagt, dass etwas irgendwo vorhanden ist.</p>
+              <div class="conn-examples"><span class="conn-ex" lang="en">It is a desk.</span><span class="conn-ex" lang="en">There is a desk in my room.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="compass-mode-panel" id="schreibcheck" data-val="writecheck">
+      <div class="writecheck-panel">
+        <div class="writecheck-intro">
+          <h2>Schreib-Check</h2>
+          <p>Schreibe selbst. Die Lösung wird nicht vor der Eingabe angezeigt. Nach einem Fehler bekommst du zuerst eine Denkfrage.</p>
+        </div>
+
+        <div class="writecheck-grid" id="writecheckGrid">
+          <section class="writecheck-task" data-writecheck-id="th-wc-01" data-review-id="th-wc-01" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There is a bag in the room">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 1</span>
+              <span class="writecheck-skill">Singular · Aussage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Da ist eine Tasche im Zimmer.</p>
+            <p class="writecheck-context">Denke zuerst: eine Tasche oder mehrere Taschen?</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 1">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-01">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-02" data-review-id="th-wc-02" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There are two books on the desk">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 2</span>
+              <span class="writecheck-skill">Plural · Aussage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Da sind zwei Bücher auf dem Schreibtisch.</p>
+            <p class="writecheck-context">Achte auf die Zahl.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 2">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-02">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-03" data-review-id="th-wc-03" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Is there a pencil in your bag">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 3</span>
+              <span class="writecheck-skill">Singular · Frage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Ist ein Bleistift in deiner Tasche?</p>
+            <p class="writecheck-context">In der Frage steht <span lang="en">is</span> vorne.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 3">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-03">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-04" data-review-id="th-wc-04" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Are there any posters on the wall;Are there posters on the wall">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 4</span>
+              <span class="writecheck-skill">Plural · Frage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Gibt es Poster an der Wand?</p>
+            <p class="writecheck-context">Bei Plural-Fragen ist <span lang="en">any</span> schulnah und passend.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 4">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-04">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-05" data-review-id="th-wc-05" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There aren't any chairs in the kitchen;There are not any chairs in the kitchen;There are no chairs in the kitchen">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 5</span>
+              <span class="writecheck-skill">Plural · Verneinung</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Es sind keine Stühle in der Küche.</p>
+            <p class="writecheck-context">Denke an <span lang="en">aren't any</span>.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 5">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-05">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <div class="writecheck-actions">
+          <button class="writecheck-check-all" type="button" id="checkAllWrite">Alle prüfen</button>
+          <button class="writecheck-reset" type="button" id="resetWrite">Eingaben löschen</button>
+        </div>
+
+        <div class="writecheck-summary" id="writeSummary" aria-live="polite">
+          <h3 class="writecheck-summary-title">Auswertung</h3>
+          <div class="writecheck-score" id="writeScore"></div>
+          <p id="writeAdvice"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="compass-mode-panel" id="notizen" data-val="notes">
+      <div class="notes-panel">
+        <h2 class="notes-title">Lernjournal</h2>
+        <div class="notes-grid">
+          <div class="note-field">
+            <label class="note-field-label" for="noteUnderstood">💡 Das habe ich verstanden</label>
+            <p class="note-help">Zum Beispiel: Wann nehme ich <span lang="en">there is</span>?</p>
+            <textarea class="note-textarea" id="noteUnderstood" rows="4"></textarea>
+          </div>
+          <div class="note-field">
+            <label class="note-field-label" for="noteUnclear">🤔 Das ist noch unklar</label>
+            <p class="note-help">Zum Beispiel: Frage oder Verneinung?</p>
+            <textarea class="note-textarea" id="noteUnclear" rows="4"></textarea>
+          </div>
+          <div class="note-field">
+            <label class="note-field-label" for="noteAsk">❓ Das möchte ich fragen</label>
+            <p class="note-help">Hier passt eine konkrete Frage an Mama, Papa oder die Lehrerin.</p>
+            <textarea class="note-textarea" id="noteAsk" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="note-example-wrap">
+          <label class="note-example-label" for="noteExample">✍️ Mein eigener Beispielsatz</label>
+          <input class="note-example-input" id="noteExample" type="text" placeholder="There is ... / There are ...">
+        </div>
+        <div class="notes-save-row">
+          <button class="notes-save-btn" type="button" id="saveNotes">Notizen speichern</button>
+          <button class="notes-clear-btn" type="button" id="clearNotes">Notizen löschen</button>
+          <span class="notes-saved" id="notesSaved">Gespeichert.</span>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="tia-print-spickzettel" id="thereisthereare-print-spickzettel" aria-hidden="true">
+    <h1>Spickzettel: There is / There are</h1>
+    <section>
+      <h2>Kurz merken</h2>
+      <p><span lang="en">There is</span> benutzt du für eine Sache. <span lang="en">There are</span> benutzt du für mehrere Sachen.</p>
+    </section>
+    <section>
+      <h2>Satzmuster</h2>
+      <ul>
+        <li><span lang="en">There is + eine Sache + Ort.</span></li>
+        <li><span lang="en">There are + mehrere Sachen + Ort.</span></li>
+        <li><span lang="en">Is there + eine Sache + Ort?</span></li>
+        <li><span lang="en">Are there + mehrere Sachen + Ort?</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Wichtigste Denkfalle</h2>
+      <p>Erst zählen, dann entscheiden. <span lang="en">two books</span> ist Plural, also: <span lang="en">There are two books.</span></p>
+    </section>
+    <section>
+      <h2>Typische Beispiele</h2>
+      <ul>
+        <li><span lang="en">There is a bag in the room.</span></li>
+        <li><span lang="en">There are two books on the desk.</span></li>
+        <li><span lang="en">Are there any posters on the wall?</span></li>
+        <li><span lang="en">There aren’t any chairs in the kitchen.</span></li>
+      </ul>
+    </section>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  var topicKey = 'thereisthereare';
+  var notesKey = 'kompass_' + topicKey + '_notes';
+  var statusKey = 'kompass_' + topicKey + '_status';
+
+  /* kompass_last_topic setzen */
+  try { localStorage.setItem('kompass_last_topic', topicKey); } catch(e) {}
+
+  function getStored(key){
+    try{return window.localStorage.getItem(key);}catch(e){return null;}
+  }
+  function setStored(key, value){
+    try{window.localStorage.setItem(key, value);}catch(e){}
+  }
+  function removeStored(key){
+    try{window.localStorage.removeItem(key);}catch(e){}
+  }
+
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  function readWriteStore(){
+    try{return JSON.parse(window.localStorage.getItem(WRITE_KEY) || '{}');}catch(e){return {};}
+  }
+  function writeWriteStore(store){
+    try{window.localStorage.setItem(WRITE_KEY, JSON.stringify(store));}catch(e){}
+  }
+  function saveWriteResult(task, status){
+    var id = task.getAttribute('data-review-id');
+    if(!id){return;}
+    var skillEl = qs('.writecheck-skill', task);
+    var store = readWriteStore();
+    store[id] = {
+      status: status,
+      topic: topicKey,
+      topicId: task.getAttribute('data-topic-id') || topicKey,
+      skill: skillEl ? skillEl.textContent.trim() : id,
+      reviewId: id,
+      reviewLabel: skillEl ? skillEl.textContent.trim() : id,
+      reviewType: task.getAttribute('data-type') || 'stolperstelle',
+      reviewSource: task.getAttribute('data-review-source') || 'writecheck',
+      updatedAt: new Date().toISOString()
+    };
+    writeWriteStore(store);
+  }
+  function deleteWriteResult(task){
+    var id = task.getAttribute('data-review-id');
+    if(!id){return;}
+    var store = readWriteStore();
+    delete store[id];
+    writeWriteStore(store);
+  }
+
+
+  function qs(selector, root){return (root || document).querySelector(selector);}
+  function qsa(selector, root){return Array.prototype.slice.call((root || document).querySelectorAll(selector));}
+
+  function setMainTab(value){
+    qsa('.compass-mode-btn').forEach(function(btn){
+      var active = btn.dataset.val === value;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    qsa('.compass-mode-panel').forEach(function(panel){
+      panel.classList.toggle('is-active', panel.dataset.val === value);
+    });
+  }
+
+  qsa('.compass-mode-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){setMainTab(btn.dataset.val);});
+  });
+
+  function setLearnStep(step){
+    var steps = qsa('.learn-step-btn');
+    steps.forEach(function(btn){
+      var active = btn.dataset.step === step;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    qsa('.learn-panel').forEach(function(panel){
+      panel.classList.toggle('is-active', panel.dataset.step === step);
+    });
+    var index = steps.findIndex(function(btn){return btn.dataset.step === step;});
+    var progress = qs('#learnProgress');
+    if(progress && index >= 0){
+      ['progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5'].forEach(function(cls){progress.classList.remove(cls);});
+      progress.classList.add('progress-step-' + (index + 1));
+    }
+  }
+
+  qsa('.learn-step-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){setLearnStep(btn.dataset.step);});
+  });
+
+  var scanData = {
+    bag: {
+      title:'eine Tasche',
+      count:'eine Sache',
+      thing:'a bag',
+      place:'in the room',
+      verb:'is',
+      statement:['There','is','a bag','in the room'],
+      question:['Is','there','a bag','in the room?'],
+      negative:['There','isn\'t','a bag','in the room'],
+      note:'Eine Tasche ist Singular. Deshalb brauchst du there is.'
+    },
+    books: {
+      title:'drei Bücher',
+      count:'mehrere Sachen',
+      thing:'three books',
+      place:'on the desk',
+      verb:'are',
+      statement:['There','are','three books','on the desk'],
+      question:['Are','there','any books','on the desk?'],
+      negative:['There','aren\'t','any books','on the desk'],
+      note:'Drei Bücher sind Plural. Deshalb brauchst du there are.'
+    },
+    pencil: {
+      title:'ein Bleistift',
+      count:'eine Sache',
+      thing:'a pencil',
+      place:'in the bag',
+      verb:'is',
+      statement:['There','is','a pencil','in the bag'],
+      question:['Is','there','a pencil','in the bag?'],
+      negative:['There','isn\'t','a pencil','in the bag'],
+      note:'Ein Bleistift ist Singular. Deshalb brauchst du there is.'
+    },
+    posters: {
+      title:'zwei Poster',
+      count:'mehrere Sachen',
+      thing:'two posters',
+      place:'on the wall',
+      verb:'are',
+      statement:['There','are','two posters','on the wall'],
+      question:['Are','there','any posters','on the wall?'],
+      negative:['There','aren\'t','any posters','on the wall'],
+      note:'Zwei Poster sind Plural. Deshalb brauchst du there are.'
+    },
+    dog: {
+      title:'ein Hund',
+      count:'eine Sache',
+      thing:'a dog',
+      place:'in the garden',
+      verb:'is',
+      statement:['There','is','a dog','in the garden'],
+      question:['Is','there','a dog','in the garden?'],
+      negative:['There','isn\'t','a dog','in the garden'],
+      note:'Ein Hund ist Singular. Deshalb brauchst du there is.'
+    }
+  };
+  var currentItem = 'bag';
+  var currentScanMode = 'statement';
+
+  function renderToken(word, index, mode){
+    var cls = 'tok ';
+    if(word === 'There' || word === 'there'){cls += 'tok-there';}
+    else if(word === 'is' || word === 'are' || word === 'Is' || word === 'Are'){cls += 'tok-verb';}
+    else if(word.indexOf("n't") > -1 || word === 'not'){cls += 'tok-neg';}
+    else if(index === 2){cls += 'tok-thing';}
+    else{cls += 'tok-place';}
+    return '<span class="' + cls + '" lang="en">' + word + '</span>';
+  }
+
+  function renderScan(){
+    var data = scanData[currentItem];
+    var title = qs('#scanItemTitle');
+    var path = qs('#scanPath');
+    var sentence = qs('#scanSentence');
+    var note = qs('#scanNote');
+    var output = qs('#scanOutput');
+    if(!data || !title || !path || !sentence || !note){return;}
+    title.textContent = data.title;
+    path.innerHTML =
+      '<span class="path-chip">' + data.count + '</span>' +
+      '<span class="path-arrow">→</span>' +
+      '<span class="path-chip" lang="en">' + (data.verb === 'is' ? 'there is' : 'there are') + '</span>' +
+      '<span class="path-arrow">→</span>' +
+      '<span class="path-chip">' + (currentScanMode === 'statement' ? 'Aussage' : currentScanMode === 'question' ? 'Frage' : 'Verneinung') + '</span>';
+    sentence.innerHTML = data[currentScanMode].map(function(word, index){return renderToken(word,index,currentScanMode);}).join('');
+    note.textContent = data.note;
+    output.classList.remove('is-pop');
+    void output.offsetWidth;
+    output.classList.add('is-pop');
+  }
+
+  qsa('.room-item').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('.room-item').forEach(function(item){item.classList.remove('is-active');});
+      btn.classList.add('is-active');
+      currentItem = btn.dataset.item;
+      renderScan();
+    });
+  });
+  qsa('[data-scan-mode]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-scan-mode]').forEach(function(modeBtn){modeBtn.classList.remove('is-active');});
+      btn.classList.add('is-active');
+      currentScanMode = btn.dataset.scanMode;
+      renderScan();
+    });
+  });
+
+  var machineMode = 'statement';
+  var machineCount = 'singular';
+  function renderMachine(){
+    var output = qs('#machineOutput');
+    if(!output){return;}
+    var parts;
+    var note;
+    if(machineMode === 'statement' && machineCount === 'singular'){
+      parts = ['There','is','a computer','in the room'];
+      note = 'Eine Sache: there is.';
+    } else if(machineMode === 'statement' && machineCount === 'plural'){
+      parts = ['There','are','two computers','in the room'];
+      note = 'Mehrere Sachen: there are.';
+    } else if(machineMode === 'negative' && machineCount === 'singular'){
+      parts = ['There','isn\'t','a computer','in the room'];
+      note = 'Verneinung Singular: there isn\'t.';
+    } else if(machineMode === 'negative' && machineCount === 'plural'){
+      parts = ['There','aren\'t','any computers','in the room'];
+      note = 'Verneinung Plural: there aren\'t any.';
+    } else if(machineMode === 'question' && machineCount === 'singular'){
+      parts = ['Is','there','a computer','in the room?'];
+      note = 'Frage Singular: Is there ...?';
+    } else {
+      parts = ['Are','there','any computers','in the room?'];
+      note = 'Frage Plural: Are there any ...?';
+    }
+    output.innerHTML = '<div class="scan-sentence">' + parts.map(renderToken).join('') + '</div><p class="machine-note">' + note + '</p>';
+    output.classList.remove('is-pop');
+    void output.offsetWidth;
+    output.classList.add('is-pop');
+  }
+
+  qsa('[data-machine-mode]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-machine-mode]').forEach(function(b){b.classList.remove('is-active');});
+      btn.classList.add('is-active');
+      machineMode = btn.dataset.machineMode;
+      renderMachine();
+    });
+  });
+  qsa('[data-machine-count]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-machine-count]').forEach(function(b){b.classList.remove('is-active');});
+      btn.classList.add('is-active');
+      machineCount = btn.dataset.machineCount;
+      renderMachine();
+    });
+  });
+
+  function setFeedback(el, text, cls){
+    if(!el){return;}
+    el.hidden = false;
+    el.className = el.className.replace(/\bis-correct\b|\bis-wrong\b/g,'').trim();
+    if(cls){el.classList.add(cls);}
+    el.textContent = text;
+  }
+
+  qs('[data-check-can="decision"]').addEventListener('click', function(){
+    var checked = qs('input[name="can-decision"]:checked');
+    var fb = qs('#canDecisionFeedback');
+    if(!checked){
+      setFeedback(fb, 'Wähle zuerst eine Lösung. Entscheidend ist: three cats = mehrere Katzen.', 'is-wrong');
+      return;
+    }
+    if(checked.value === 'right'){
+      setFeedback(fb, 'Richtig. Three cats ist Plural, also: There are three cats.', 'is-correct');
+    } else {
+      setFeedback(fb, 'Noch nicht. Denkfrage: Wie viele Katzen sind es? Bei three cats brauchst du are.', 'is-wrong');
+    }
+  });
+
+  qsa('[data-repair-pick]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-repair-pick]').forEach(function(b){b.classList.remove('is-correct','is-wrong');});
+      var fb = qs('#repairFeedback');
+      if(btn.dataset.repairPick === 'is'){
+        btn.classList.add('is-correct');
+        setFeedback(fb, 'Richtig. Two posters ist Plural. Reparatur: There are two posters on the wall.', 'is-correct');
+      } else {
+        btn.classList.add('is-wrong');
+        setFeedback(fb, 'Diese Stelle ist nicht der Kernfehler. Denkfrage: Welche Form passt zu two posters?', 'is-wrong');
+      }
+    });
+  });
+
+  qs('#checkExplain').addEventListener('click', function(){
+    var text = (qs('#explainCheck').value || '').toLowerCase();
+    var fb = qs('#explainFeedback');
+    var hasPlural = /plural|mehrere|zwei|two|posters/.test(text);
+    var hasAre = /\bare\b|there are/.test(text);
+    if(text.trim().length < 12){
+      fb.hidden = false;
+      fb.textContent = 'Schreibe erst eine richtige Erklärung. Nicht nur ein Wort.';
+    } else if(hasPlural && hasAre){
+      fb.hidden = false;
+      fb.textContent = 'Das passt. Deine Erklärung nennt den entscheidenden Grund: two posters ist Plural, deshalb brauchst du are.';
+    } else {
+      fb.hidden = false;
+      fb.textContent = 'Fast. In deiner Erklärung sollte stehen: two posters ist Plural, deshalb heißt es there are.';
+    }
+  });
+
+
+  var trapFeedback = {
+    count: {
+      correct: 'Genau. Two books sind mehrere Sachen. Deshalb brauchst du there are.',
+      wrong: 'Noch nicht. Such den Teil, der dir Singular oder Plural zeigt.'
+    },
+    question: {
+      correct: 'Genau. A pencil ist eine Sache. Deshalb beginnt die Frage mit Is.',
+      wrong: 'Noch nicht. In Fragen entscheidet die Sache nach there: eine Sache oder mehrere Sachen?'
+    },
+    any: {
+      correct: 'Richtig. In Klasse 5 ist there aren’t any pencils die saubere Standardform.',
+      wrong: 'Verständlich, aber nicht die beste Schulform. Bei Plural-Verneinungen brauchst du hier any.'
+    },
+    itthere: {
+      correct: 'Richtig. It is beschreibt, was etwas ist. There is sagt, dass etwas da ist.',
+      wrong: 'Noch nicht. There is heißt eher: Da ist / es gibt ein Buch.'
+    }
+  };
+
+  qsa('[data-trap]').forEach(function(card){
+    var key = card.dataset.trap;
+    var feedback = qs('[data-trap-feedback]', card);
+    var solution = qs('[data-trap-solution]', card);
+    qsa('[data-trap-choice]', card).forEach(function(btn){
+      btn.addEventListener('click', function(){
+        qsa('[data-trap-choice]', card).forEach(function(other){
+          other.classList.remove('is-correct','is-wrong');
+        });
+        var correct = btn.dataset.trapChoice === 'correct';
+        btn.classList.add(correct ? 'is-correct' : 'is-wrong');
+        if(feedback){
+          feedback.hidden = false;
+          feedback.classList.toggle('is-wrong', !correct);
+          feedback.textContent = trapFeedback[key] ? trapFeedback[key][correct ? 'correct' : 'wrong'] : '';
+        }
+        if(solution){
+          solution.hidden = !correct;
+        }
+      });
+    });
+  });
+
+  qsa('[data-status]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      qsa('[data-status]').forEach(function(b){b.classList.remove('is-active');});
+      btn.classList.add('is-active');
+      setStored(statusKey, btn.dataset.status);
+      var out = qs('#statusOutput');
+      out.hidden = false;
+      if(btn.dataset.status === 'green'){
+        out.textContent = 'Gespeichert: Kann ich. Dieses Thema braucht nur kurze Wiederholung.';
+      } else if(btn.dataset.status === 'yellow'){
+        out.textContent = 'Gespeichert: Fast verstanden. Wiederhole besonders Fragen und Verneinungen.';
+      } else {
+        out.textContent = 'Gespeichert: Noch unsicher. Wiederhole zuerst den Raum-Scanner und die Denkfallen.';
+      }
+    });
+  });
+
+  function normalizeAnswer(value){
+    return (value || '')
+      .toLowerCase()
+      .replace(/[?.!’']/g,'')
+      .replace(/\s+/g,' ')
+      .trim();
+  }
+
+  function checkTask(task){
+    var input = qs('.writecheck-input', task);
+    var feedback = qs('.writecheck-feedback', task);
+    var raw = input.value;
+    var answers = (task.dataset.answer || '').split(';').map(normalizeAnswer);
+    var user = normalizeAnswer(raw);
+    task.classList.remove('is-correct','is-almost','is-wrong');
+    feedback.className = 'writecheck-feedback is-visible';
+    feedback.innerHTML = '';
+    if(!user){
+      feedback.classList.add('is-empty');
+      feedback.textContent = 'Schreibe zuerst einen Satz.';
+      deleteWriteResult(task);
+      return false;
+    }
+    if(answers.indexOf(user) !== -1){
+      task.classList.add('is-correct');
+      feedback.classList.add('is-correct');
+      feedback.textContent = 'Richtig.';
+      saveWriteResult(task, 'correct');
+      return true;
+    }
+    task.classList.add('is-wrong');
+    feedback.classList.add('is-wrong');
+    saveWriteResult(task, 'wrong');
+    var hint = 'Noch nicht. Denkfrage: Ist die Sache Singular oder Plural? Steht in der Aufgabe eine Frage oder Verneinung?';
+    var solution = (task.dataset.answer || '').split(';')[0];
+    var id = task.getAttribute('data-writecheck-id') || task.getAttribute('data-review-id') || '';
+    feedback.dataset.hint = hint;
+    feedback.dataset.solution = solution;
+    feedback.innerHTML = '<span>' + hint + '</span><br><button class="can-btn writecheck-solution-btn" type="button" data-writecheck-solution="' + id + '">Lösung anzeigen</button>';
+    return false;
+  }
+
+  qsa('[data-writecheck-id].writecheck-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var task = btn.closest('.writecheck-task');
+      if(task){checkTask(task);}
+    });
+  });
+
+  document.addEventListener('click', function(event){
+    var btn = event.target.closest('[data-writecheck-solution]');
+    if(!btn){return;}
+    var task = btn.closest('.writecheck-task');
+    if(!task){return;}
+    var feedback = qs('.writecheck-feedback', task);
+    if(!feedback){return;}
+    var hint = feedback.dataset.hint || 'Noch nicht. Denkfrage: Ist die Sache Singular oder Plural?';
+    var solution = feedback.dataset.solution || (task.dataset.answer || '').split(';')[0];
+    feedback.innerHTML = hint + '<br><span lang="en">Lösung: ' + solution + '.</span>';
+  });
+
+  qs('#checkAllWrite').addEventListener('click', function(){
+    var tasks = qsa('.writecheck-task');
+    var correct = 0;
+    tasks.forEach(function(task){if(checkTask(task)){correct += 1;}});
+    var summary = qs('#writeSummary');
+    var score = qs('#writeScore');
+    var advice = qs('#writeAdvice');
+    summary.classList.add('is-visible');
+    score.textContent = correct + ' von ' + tasks.length + ' Aufgaben richtig.';
+    if(correct === tasks.length){
+      advice.textContent = 'Stabil. Achte beim nächsten Mal nur weiter auf any in Fragen und Verneinungen.';
+    } else if(correct >= 3){
+      advice.textContent = 'Solide Grundlage. Prüfe noch einmal die Aufgaben mit Frage oder Verneinung.';
+    } else {
+      advice.textContent = 'Noch nicht stabil. Geh zurück zum Raum-Scanner und zähle bei jeder Aufgabe zuerst die Dinge.';
+    }
+  });
+
+  qs('#resetWrite').addEventListener('click', function(){
+    qsa('.writecheck-task').forEach(function(task){
+      task.classList.remove('is-correct','is-almost','is-wrong');
+      qs('.writecheck-input', task).value = '';
+      var fb = qs('.writecheck-feedback', task);
+      fb.className = 'writecheck-feedback';
+      fb.innerHTML = '';
+      deleteWriteResult(task);
+    });
+    qs('#writeSummary').classList.remove('is-visible');
+  });
+
+  function loadNotes(){
+    try{
+      var data = JSON.parse(getStored(notesKey) || '{}');
+      ['noteUnderstood','noteUnclear','noteAsk','noteExample'].forEach(function(id){
+        var el = qs('#' + id);
+        if(el && data[id]){el.value = data[id];}
+      });
+    } catch(e){}
+    var storedStatus = getStored(statusKey);
+    if(storedStatus){
+      var btn = qs('[data-status="' + storedStatus + '"]');
+      if(btn){btn.classList.add('is-active');}
+    }
+  }
+
+  qs('#saveNotes').addEventListener('click', function(){
+    var data = {};
+    ['noteUnderstood','noteUnclear','noteAsk','noteExample'].forEach(function(id){
+      var el = qs('#' + id);
+      data[id] = el ? el.value : '';
+    });
+    setStored(notesKey, JSON.stringify(data));
+    var saved = qs('#notesSaved');
+    saved.classList.add('is-visible');
+    window.setTimeout(function(){saved.classList.remove('is-visible');},1800);
+  });
+
+  qs('#clearNotes').addEventListener('click', function(){
+    removeStored(notesKey);
+    ['noteUnderstood','noteUnclear','noteAsk','noteExample'].forEach(function(id){
+      var el = qs('#' + id);
+      if(el){el.value = '';}
+    });
+  });
+
+  var homeworkBtn = qs('#ha-btn') || qs('#toggleHomework');
+  if(homeworkBtn){
+    homeworkBtn.addEventListener('click', function(){
+      var isOn = document.body.classList.toggle('hausaufgaben-mode');
+      homeworkBtn.textContent = isOn ? '📚 Normal-Modus' : '📚 Hausaufgaben';
+      setMainTab('reference');
+    });
+  }
+
+  var printBtn = qs('#print-ref-btn') || qs('#printCheat') || qs('.print-btn');
+  if(printBtn){
+    printBtn.addEventListener('click', function(){
+      document.body.classList.add('tia-spickzettel-print');
+      setMainTab('reference');
+      window.setTimeout(function(){window.print();},80);
+    });
+  }
+
+  window.addEventListener('afterprint', function(){
+    document.body.classList.remove('tia-spickzettel-print');
+  });
+
+  function openSectionFromHash(){
+    var raw = '';
+    try{raw = decodeURIComponent((window.location.hash || '').replace(/^#/, '')).toLowerCase().trim();}
+    catch(e){raw = (window.location.hash || '').replace(/^#/, '').toLowerCase().trim();}
+    if(!raw){return;}
+    var aliases = {
+      'lernen':'learn','learn':'learn','verstehen':'learn',
+      'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
+      'verbindungen':'connections','connections':'connections',
+      'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck','pruefen':'writecheck','prüfen':'writecheck','check':'writecheck',
+      'notizen':'notes','notes':'notes'
+    };
+    if(aliases[raw]){
+      setMainTab(aliases[raw]);
+      window.setTimeout(function(){
+        var card = qs('.learning-card') || qs('#top');
+        if(card && typeof card.scrollIntoView === 'function'){card.scrollIntoView({block:'start'});}
+      }, 0);
+    }
+  }
+  window.addEventListener('hashchange', openSectionFromHash);
+  openSectionFromHash();
+
+  renderScan();
+  renderMachine();
+  loadNotes();
+})();
+</script>
+</body>
+</html>
