@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hannas Englisch-Kompass: Adjectives verstehen, mit Satzmaschine und Bedeutungs-Detektiv lernen, knifflig üben und ohne Hilfen schreiben.">
+<title>Adjectives – Kompass · Vorschau v03</title>
+<style>
+
+:root{--blue:#2563eb;--ink:#243b5a;--muted:#566c8c;--line:#cdd7e6;--pale:#edf4fc;--bg:#d9e7fa;--white:#fff;--good:#0e714a;--warn:#9c4b16;--focus:#b45309}
+*{box-sizing:border-box}body{margin:0;font:400 15px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#e9f0f8}h1,h2,h3,p{margin:0}h1,h2,h3{font-weight:400;line-height:1.35}h1{font-size:27px}h2{font-size:22px}h3{font-size:17px}p+ p{margin-top:10px}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}a{color:#1e56c9}.site-actions{padding:13px max(18px,calc((100% - 1250px)/2));display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.site-actions a,.site-actions button{color:#2353c2;background:white;border:1px solid #dbe4f2;padding:7px 13px;border-radius:25px;text-decoration:none;font-size:13px}.site-actions .right{display:flex;gap:8px;flex-wrap:wrap}.hero{background:linear-gradient(105deg,#254ee0,#7020d8);color:white;padding:29px max(20px,calc((100% - 1250px)/2))}.eyebrow{font-size:12px;letter-spacing:.09em;opacity:.9;text-transform:uppercase}.hero p{margin-top:7px;color:#eff4ff}.thinking{background:#f2f6fc;border-bottom:1px solid var(--line);padding:12px max(20px,calc((100% - 1250px)/2));color:#3e5676;font-size:14px}.mode-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:white;border-bottom:1px solid var(--line);padding:0 max(14px,calc((100% - 1300px)/2))}.mode-btn{background:white;border:0;border-bottom:3px solid transparent;color:#475b78;padding:15px 8px 11px;text-align:center}.mode-btn span{display:block;font-size:13px;color:#7183a0}.mode-btn[aria-selected=true]{border-bottom-color:var(--blue);background:#f6f9ff;color:#1353df}.main{background:linear-gradient(180deg,#d8e8ff,#c8ddf5);padding:16px 20px 52px;min-height:65vh}.panel-shell{max-width:1280px;margin:0 auto}.panel-shell [data-panel][hidden],.subpanel[hidden],.learn-view[hidden],.tool-result[hidden],.task-feedback[hidden],.solution[hidden]{display:none!important}.study-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:white;border-radius:19px;padding:8px;border:1px solid var(--line);margin-bottom:15px}.study-tabs button{text-align:left;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink);padding:11px 15px}.study-tabs button[aria-selected=true]{background:#e9f2ff;border-color:#77a5fb}.study-tabs small{display:block;color:var(--muted)}.step-tabs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;background:white;margin:0 0 15px;border:1px solid #dde4ec}.step-tabs button{background:#fff;border:0;border-bottom:3px solid transparent;padding:13px 8px;color:#405574}.step-tabs button[aria-selected=true]{color:#1754df;border-bottom-color:#2563eb;background:#f9fbff}.card{background:rgba(255,255,255,.96);border:1px solid #d1dce9;border-radius:20px;box-shadow:0 8px 20px #223d6519;padding:22px;margin-bottom:14px}.card-header{margin-bottom:18px}.minor{color:#4d678a;font-size:12px;letter-spacing:.065em;text-transform:uppercase;margin-bottom:5px}.lead{font-size:16px;color:#3c5271;margin-top:9px}.grid-2,.grid-3,.grid-4{display:grid;gap:13px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.mini{background:#fbfdff;border:1px solid #d4deeb;border-radius:13px;padding:16px;min-width:0}.mini h3{margin-bottom:8px}.mini p{font-size:14px}.rule{margin-top:12px;border-left:3px solid #72a6fc;padding-left:13px;color:#344d70}.eng{font-size:17px;margin:8px 0;color:#174a9c}.muted{color:var(--muted)}.chip{display:inline-block;padding:3px 10px;background:#eef5ff;border:1px solid #c1d6ff;border-radius:20px;color:#2252ad;font-size:13px}.route{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0 4px}.route span{background:#f0f6ff;border:1px solid #d0dfff;border-radius:12px;padding:9px 12px}.route i{font-style:normal;color:#406eaa}.choice-row{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.choice-row button,.button{border:1px solid #8eb1e9;border-radius:10px;background:#f0f6ff;color:#1c4baf;padding:10px 15px}.choice-row button:hover,.button:hover{background:#dfeeff}.button.primary{background:#2563eb;color:white;border-color:#2563eb}.button.secondary{background:white}.feedback{border-left:4px solid #a8c1e6;background:#f3f7fc;padding:13px;border-radius:8px;margin-top:12px;min-height:40px}.feedback.good{border-left-color:#2b936d;background:#eefbf5}.feedback.bad{border-left-color:#c4864f;background:#fff7ee}.task-card{background:#fff;border:1px solid #cdd7e5;border-radius:15px;padding:20px;margin-top:13px}.task-meta{font-size:13px;color:var(--muted);margin-bottom:8px}.task-prompt{font-size:17px;line-height:1.6;margin-bottom:10px}.task-card textarea{display:block;width:100%;min-height:75px;border:1px solid #adbed3;border-radius:10px;padding:12px;resize:vertical;color:var(--ink);background:#fff}.task-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.task-actions button:disabled{opacity:.5;cursor:not-allowed}.score{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}.score-value{font-size:18px}.note-label{display:block;margin:12px 0 5px}.note-input{width:100%;padding:12px;border:1px solid #adbed3;border-radius:12px;background:white;min-height:82px}.reference-list{display:grid;gap:10px}.reference-list .mini{background:white}.spick{border:1px dashed #8ea9ca;background:#f9fbff;padding:14px;border-radius:12px;margin-top:12px}.link-card a{display:block;margin-top:10px}.small{font-size:13px}.top-space{margin-top:14px}.print-banner{display:none}.test-info{border-left:4px solid #5084d4;background:#f4f8ff;padding:12px 15px;border-radius:8px}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.inert-view{display:none}.mode-panel{padding-top:0}.challenge-field{width:100%;padding:11px 13px;background:white;border:1px solid #adbed3;border-radius:10px;color:var(--ink)}.challenge-label{display:block;font-size:13px;margin:12px 0 5px;color:var(--ink)}.challenge-feedback{margin-top:12px}.challenge-counter{color:var(--muted);font-size:13px;margin-bottom:8px}.subtle-note{font-size:13px;color:var(--muted);margin-top:9px}.practice-mark{display:inline-block;padding:2px 9px;border:1px solid #becfe4;border-radius:20px;font-size:12px;color:#315176}.challenge-prompt{font-size:18px;line-height:1.6;margin:10px 0}.practice-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.divider-line{border:0;border-top:1px solid #d9e3ed;margin:20px 0}.print-only{display:none}
+@media(max-width:760px){.site-actions{padding:10px 14px}.hero{padding:26px 18px}.thinking{padding:11px 15px}.mode-tabs{grid-template-columns:repeat(5,minmax(0,1fr));overflow-x:auto;padding:0 4px}.mode-btn{padding:12px 4px;font-size:11px;min-width:0}.mode-btn span{font-size:11px}.main{padding:12px 10px 35px}.card{padding:17px 14px;border-radius:15px}.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.study-tabs{grid-template-columns:1fr}.step-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.step-tabs button{font-size:13px}.score{align-items:flex-start}}
+@media print{body{background:white;color:black}.site-actions,.mode-tabs,.study-tabs,.step-tabs,.choice-row,.button,.task-actions,.nonprint{display:none!important}.hero{background:white;color:black;border-bottom:2px solid #999;padding:10px 0}.hero p{color:black}.thinking{padding:10px 0}.main{background:white;padding:0}.card{box-shadow:none;break-inside:avoid;border:1px solid #aaa;margin:12px 0}.print-only{display:block}.mode-panel[hidden],.subpanel[hidden],.learn-view[hidden]{display:block!important}.mode-panel[data-panel="notizen"],.mode-panel[data-panel="schreibcheck"]{display:none!important}}
+
+
+/* Adjectives: same calm design language as Articles / Simple Past */
+.sentence-showcase{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:17px;border:1px solid #d1dff2;background:#f6faff;border-radius:14px;margin:14px 0}
+.word{border-radius:10px;padding:8px 11px;background:#fff;border:1px solid #b8cae4;color:#2d496d;min-width:38px;text-align:center}
+.word.quality{background:#e8f8ef;border-color:#a9dac4;color:#116344}
+.word.verb{background:#e9f1ff;border-color:#bdd0f9;color:#214b9c}
+.word.arrow{border:0;background:transparent;padding:0;min-width:0;color:#7a88a2}
+.result-phrase{min-height:55px;padding:12px;background:#f7fbff;border:1px solid #cbd9ec;border-radius:10px;margin-top:10px}
+.result-phrase p+p{margin-top:7px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.form-grid label{display:block;font-size:13px;margin-bottom:6px}
+.form-grid select{width:100%;border:1px solid #adbed3;border-radius:10px;background:#fff;color:var(--ink);padding:12px;font:inherit}
+.reveal-box{margin-top:12px;border-left:3px solid #75a6df;background:#f5f9ff;border-radius:9px;padding:14px}
+.test-group-title{color:#4b6588;font-size:13px;margin:10px 0 0}
+.status-tag{border:1px solid #c8d7eb;background:#f5f9ff;border-radius:9px;display:inline-block;padding:3px 9px;font-size:12px}
+.mission-mark{font-size:12px;color:#476582;border:1px solid #d2deeb;border-radius:16px;padding:3px 9px;display:inline-block;margin:7px 0}
+.progress-track{height:8px;background:#e6eef8;border-radius:10px;overflow:hidden;margin:12px 0}
+.progress-fill{height:100%;background:#3a75d7;width:0;transition:width .2s}
+.mini-list{margin:8px 0 0;padding-left:20px}
+.mini-list li{margin:4px 0}
+.input-answer{display:block;width:100%;border:1px solid #aebed2;border-radius:10px;padding:12px;color:var(--ink);background:white}
+.progress-native{display:block;width:100%;height:12px;accent-color:#3a75d7;margin:12px 0}
+.help-line{font-size:13px;color:var(--muted);margin-top:9px}
+[data-panel][hidden],[data-study-panel][hidden],[data-step-panel][hidden],[hidden]{display:none!important}
+.tabs-ready [data-panel][hidden],.tabs-ready [data-study-panel][hidden],.tabs-ready [data-step-panel][hidden]{display:none!important}
+@media (max-width:760px){.form-grid{grid-template-columns:1fr}.sentence-showcase{padding:12px 9px}.word{padding:7px 8px}.mode-btn span{font-size:10px}}
+@media print{.reveal-box{display:block}.mode-panel[hidden],.subpanel[hidden],.learn-view[hidden]{display:block!important}.practice-actions,.test-group-title{display:none!important}}
+
+</style>
+</head>
+<body>
+<div class="site-actions"><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/">← Zur Übersicht</a><div class="right"><button type="button" id="homework-toggle">Hausaufgabenmodus</button><button type="button" id="print-page">Seite drucken</button></div></div>
+<header class="hero"><div class="eyebrow">Beschreiben · Kompass-Vorschau v03</div><h1>Adjectives – Wie ist etwas?</h1><p>Erst verstehen, dann Sätze selbst bauen, Bedeutungen unterscheiden und knifflige Fälle lösen. Zum Schluss ohne Hilfe zeigen, was du kannst.</p></header>
+<div class="thinking">Dein Denkweg: <span>Wen oder was beschreibe ich?</span> → <span>Wo steht das Adjektiv?</span> → <span>Was bedeutet es genau?</span> → <span>Selbst schreiben</span></div>
+<nav class="mode-tabs" role="tablist" aria-label="Bereiche im Englisch-Kompass">
+<button type="button" class="mode-btn" role="tab" data-tab="verstehen" aria-controls="panel-verstehen" aria-selected="true">Verstehen<span>erst verstehen</span></button>
+<button type="button" class="mode-btn" role="tab" data-tab="nachschlagen" aria-controls="panel-nachschlagen" aria-selected="false">Nachschlagen<span>Regeln ansehen</span></button>
+<button type="button" class="mode-btn" role="tab" data-tab="verbindungen" aria-controls="panel-verbindungen" aria-selected="false">Verbindungen<span>Themen verknüpfen</span></button>
+<button type="button" class="mode-btn" role="tab" data-tab="schreibcheck" aria-controls="panel-schreibcheck" aria-selected="false">Schreib-Check<span>ohne Hilfe</span></button>
+<button type="button" class="mode-btn" role="tab" data-tab="notizen" aria-controls="panel-notizen" aria-selected="false">Notizen<span>Lernjournal</span></button>
+</nav>
+<main class="main"><div class="panel-shell">
+<section class="mode-panel" data-panel="verstehen" id="panel-verstehen" role="tabpanel" aria-label="Verstehen">
+<div class="study-tabs" role="tablist" aria-label="Verstehen – Lernweg">
+<button type="button" role="tab" data-study="orientierung" aria-controls="study-orientierung" aria-selected="true">Orientierung<small>Start, Gesamtbild, Lernweg</small></button>
+<button type="button" role="tab" data-study="lernen" aria-controls="study-lernen" aria-selected="false">Lernen<small>Erkennen, ausprobieren, sicher anwenden</small></button>
+</div>
+<div class="subpanel" data-study-panel="orientierung" id="study-orientierung" role="tabpanel">
+<div class="card"><div class="minor">Wegweiser</div><h2>Startorientierung Adjectives</h2><p class="lead">Adjektive sagen, <em>wie</em> jemand oder etwas ist: <span lang="en">happy, big, tired, boring</span>. Im Englischen stehen sie oft an zwei Stellen im Satz.</p>
+<div class="grid-2 top-space"><div class="mini"><h3>Vor einem Nomen</h3><div class="sentence-showcase" lang="en"><span class="word">a</span><span class="word quality">small</span><span class="word">dog</span></div><p>Das Adjektiv gehört <em>vor</em> das Nomen.</p></div><div class="mini"><h3>Nach <span lang="en">to be</span></h3><div class="sentence-showcase" lang="en"><span class="word">The dog</span><span class="word verb">is</span><span class="word quality">small</span></div><p>Das Adjektiv steht <em>nach</em> <span lang="en">am / is / are</span>.</p></div></div>
+<p class="rule">Achtung: Im Englischen wird aus <span lang="en">big</span> nicht <span lang="en">bige</span> oder <span lang="en">bigs</span>, nur weil das Nomen weiblich oder im Plural ist.</p>
+<div class="route"><span>Regel sehen</span><i>→</i><span>Satz vordenken</span><i>→</i><span>Vergleichen</span><i>→</i><span>Bedeutung prüfen</span><i>→</i><span>Fehler reparieren</span><i>→</i><span>ohne Hilfe schreiben</span></div>
+<p class="rule">Der Schwierigkeitsgrad steigt: 1. Grundform verstehen → 2. Sätze selbst bauen → 3. Vergleiche bilden → 4. Bedeutung unterscheiden → 5. Fehler reparieren → 6. knifflig übertragen → 7. Können ohne Hilfen zeigen. Du kannst jederzeit einen Schritt wiederholen.</p>
+<div class="choice-row"><button class="button primary" type="button" data-go-study="lernen">Mit Lernen beginnen →</button></div></div>
+<div class="card"><div class="minor">Gesamtbild</div><h2>Das kannst du hier lernen</h2><div class="grid-3"><div class="mini"><h3>1 · Satzstellung</h3><p><span lang="en">a friendly teacher</span> oder <span lang="en">The teacher is friendly.</span></p></div><div class="mini"><h3>2 · Vergleiche</h3><p><span lang="en">bigger than, the biggest, as big as</span>: Eigenschaften vergleichen. <span lang="en">bored / boring</span> ist eine zusätzliche Vertiefung.</p></div><div class="mini"><h3>3 · Selbstständig</h3><p>Schreiben, reparieren, übertragen – ohne Antwort zum Anklicken.</p></div></div></div>
+</div>
+<div class="subpanel" data-study-panel="lernen" id="study-lernen" role="tabpanel">
+<nav class="step-tabs" role="tablist" aria-label="Lernbausteine Adjectives">
+<button type="button" role="tab" data-step="denkweg" aria-controls="step-denkweg" aria-selected="true">1 Denkweg</button>
+<button type="button" role="tab" data-step="satzmaschine" aria-controls="step-satzmaschine" aria-selected="false">2 Satzmaschine</button>
+<button type="button" role="tab" data-step="vergleichen" aria-controls="step-vergleichen" aria-selected="false">3 Vergleichs-Kompass</button>
+<button type="button" role="tab" data-step="bedeutung" aria-controls="step-bedeutung" aria-selected="false">4 Bedeutungs-Detektiv</button>
+<button type="button" role="tab" data-step="labor" aria-controls="step-labor" aria-selected="false">5 Reparaturlabor</button>
+<button type="button" role="tab" data-step="profi" aria-controls="step-profi" aria-selected="false">6 Profi-Mission</button>
+<button type="button" role="tab" data-step="kannich" aria-controls="step-kannich" aria-selected="false">7 Kann ich's?</button>
+</nav>
+<div class="learn-view" data-step-panel="denkweg" id="step-denkweg" role="tabpanel">
+<div class="card"><div class="minor">Zuerst verstehen</div><h2>Wozu brauche ich Adjectives?</h2><p class="lead">Mit Adjektiven beschreibst du Personen, Tiere, Dinge oder Gefühle. Zum Beispiel: groß, klein, glücklich oder müde.</p>
+<div class="grid-2 top-space"><div class="mini"><h3>Weg A · vor dem Nomen</h3><p>Ein Adjektiv gehört vor das Nomen, das es beschreibt.</p><div class="sentence-showcase" lang="en"><span class="word">a</span><span class="word quality">happy</span><span class="word">girl</span></div><p>Das <span lang="en">a</span> steht <em>vor</em> dem Adjektiv.</p></div>
+<div class="mini"><h3>Weg B · nach <span lang="en">to be</span></h3><p>Nach <span lang="en">am / is / are</span> beschreibt ein Adjektiv das Subjekt.</p><div class="sentence-showcase" lang="en"><span class="word">She</span><span class="word verb">is</span><span class="word quality">happy</span></div><p>Hier steht kein zusätzliches Nomen nach <span lang="en">happy</span>.</p></div></div></div>
+<div class="card"><h2>Vier wichtige Regeln</h2><div class="grid-2 top-space">
+<div class="mini"><h3>Keine deutschen Adjektiv-Endungen</h3><p lang="en">a big dog · a big cat · two big dogs</p><p>Die Grundform <span lang="en">big</span> bleibt bei Singular und Plural gleich. Beim <em>Vergleichen</em> gibt es eigene Formen: <span lang="en">bigger, the biggest</span>.</p></div>
+<div class="mini"><h3>Verstärken mit <span lang="en">very / really</span></h3><p lang="en">She is <u>very happy</u>. · a <u>really small</u> dog</p><p><span lang="en">very</span> und <span lang="en">really</span> verstärken hier ein Adjektiv.</p></div>
+<div class="mini"><h3><span lang="en">bored</span> und <span lang="en">boring</span> · Vertiefung</h3><p lang="en">I am <u>bored</u>. · The film is <u>boring</u>.</p><p><span lang="en">bored</span> beschreibt das Gefühl. <span lang="en">boring</span> beschreibt, was Langeweile auslöst. Auch ein Mensch kann <span lang="en">boring</span> sein.</p></div>
+<div class="mini"><h3>Adjektive und <span lang="en">a / an</span></h3><p lang="en">an old dog · a big apple</p><p>Der erste <em>gesprochene</em> Laut nach dem Artikel entscheidet – oft beginnt dort das Adjektiv.</p></div></div>
+<p class="rule">Mini-Denkfrage: Ist „<span lang="en">She is a happy.</span>“ ein vollständiger Satz? Nein: <span lang="en">She is happy.</span> oder <span lang="en">She is a happy girl.</span></p></div>
+</div>
+<div class="learn-view" data-step-panel="satzmaschine" id="step-satzmaschine" role="tabpanel">
+<div class="card"><div class="minor">Feature 1 · zuerst vorhersagen</div><h2>Adjektiv-Satzmaschine</h2><p class="lead">Wähle eine Person oder ein Ding und eine Eigenschaft. <em>Bevor</em> du die Maschine prüfst, schreibe die beiden Satzformen selbst.</p>
+<div class="form-grid"><div><label for="machine-noun">Wen oder was beschreibst du?</label><select id="machine-noun"><option value="dog">a dog</option><option value="cat">a cat</option><option value="girl">a girl</option><option value="boy">a boy</option><option value="teacher">a teacher</option><option value="house">a house</option><option value="dogs">dogs (Mehrzahl)</option><option value="girls">girls (Mehrzahl)</option></select></div><div><label for="machine-adj">Welche Eigenschaft?</label><select id="machine-adj"><option value="big">big</option><option value="small">small</option><option value="happy">happy</option><option value="old">old</option><option value="nice">nice</option><option value="funny">funny</option><option value="friendly">friendly</option><option value="tired">tired</option></select></div></div>
+<div class="form-grid"><div><label for="machine-before">1. Schreibe die Wortgruppe: „ein/e ...“ (bei Mehrzahl: ohne Artikel).</label><input class="input-answer" id="machine-before" autocomplete="off" spellcheck="false" placeholder="Deine englische Wortgruppe"></div><div><label for="machine-after">2. Schreibe einen vollständigen Satz mit <span lang="en">to be</span>, der mit <span lang="en">The</span> beginnt.</label><input class="input-answer" id="machine-after" autocomplete="off" spellcheck="false" placeholder="Dein vollständiger Satz"></div></div>
+<div class="practice-actions"><button class="button primary" type="button" id="machine-check">Beide Formen prüfen</button><button class="button secondary" type="button" id="machine-reveal" hidden>Musterlösung und Denkweg ansehen</button><button class="button secondary" type="button" id="machine-new">Neue Kombination →</button></div>
+<div class="feedback" id="machine-feedback" role="status">Erst beide Formen selbst schreiben, dann vergleichen.</div><p class="help-line">Die Maschine zeigt ihre Musterlösung nicht vor deiner Entscheidung. Für eine andere sinnvolle Adjektiv-Kombination kannst du weiterüben.</p></div>
+</div>
+<div class="learn-view" data-step-panel="vergleichen" id="step-vergleichen" role="tabpanel">
+<div class="card"><div class="minor">Feature · erst verstehen, dann selbst schreiben</div><h2>Vergleichs-Kompass</h2><p class="lead">Wie groß? Größer als? Am größten? Entscheide erst, <em>was du aussagen möchtest</em>. Danach bildest du die englische Form.</p>
+<div class="grid-3 top-space">
+<div class="mini"><h3>Gleich</h3><p lang="en">Jane is <u>as old as</u> Alex.</p><p><span lang="en">as + Adjektiv + as</span> = genauso … wie; <span lang="en">not as ... as</span> = nicht so … wie.</p></div>
+<div class="mini"><h3>Größer, schneller, besser</h3><p lang="en">A bus is <u>longer than</u> a car.</p><p>Vergleiche zwei Dinge: meist <span lang="en">-er + than</span>, bei längeren Adjektiven oft <span lang="en">more + Adjektiv + than</span>.</p></div>
+<div class="mini"><h3>Am größten, am besten</h3><p lang="en">This is <u>the oldest</u> tree.</p><p>In einer Gruppe: meist <span lang="en">the ...-est</span> oder <span lang="en">the most + Adjektiv</span>.</p></div>
+</div>
+<div class="mini top-space"><h3>Schreibregeln und Ausnahmen</h3><p lang="en">small – smaller – the smallest · big – bigger – the biggest · nice – nicer – the nicest · happy – happier – the happiest · interesting – more interesting – the most interesting · good – better – the best · bad – worse – the worst</p><p>Bei <span lang="en">big</span> wird das <span lang="en">g</span> verdoppelt. Bei <span lang="en">happy</span> wird das <span lang="en">y</span> zu <span lang="en">i</span>. <span lang="en">Good</span> und <span lang="en">bad</span> sind unregelmäßig.</p></div>
+<div class="mini top-space"><p class="challenge-counter" id="comparison-count">Denkfall 1</p><p class="challenge-prompt" id="comparison-prompt">Ben ist größer als Tom.</p><label class="challenge-label" for="comparison-answer">Schreibe einen vollständigen englischen Satz:</label><textarea id="comparison-answer" class="challenge-field" rows="2" autocomplete="off" spellcheck="false"></textarea>
+<div class="practice-actions"><button class="button primary" type="button" id="comparison-check">Satz prüfen</button><button class="button secondary" type="button" id="comparison-reveal" hidden>Beispiel und Denkweg ansehen</button><button class="button secondary" type="button" id="comparison-next">Nächster Vergleich →</button></div><div id="comparison-feedback" class="feedback" role="status">Zuerst selbst bilden, dann prüfen. Keine vorgegebenen Antworten.</div><p class="help-line">Sprachlich richtige Alternativen werden nicht automatisch als falsch gewertet. Der Denkweg erscheint erst nach einem eigenen Versuch.</p></div>
+</div>
+</div>
+<div class="learn-view" data-step-panel="bedeutung" id="step-bedeutung" role="tabpanel">
+<div class="card"><div class="minor">Vertiefung · Bedeutungen unterscheiden</div><h2>Bedeutungs-Detektiv</h2><p class="lead">Zusatzwissen für den Unterricht: Zwei ähnliche Wörter – aber nicht dieselbe Bedeutung. Wähle <em>nicht</em> aus einer Liste: Schreibe das passende Wort und erkläre kurz warum.</p>
+<div class="mini top-space"><p id="meaning-count" class="challenge-counter">Fall 1</p><p class="challenge-prompt" id="meaning-prompt">I am ___ because the film is ___.</p><label class="challenge-label" for="meaning-answer">Schreibe die fehlenden Wörter in der richtigen Reihenfolge, durch Komma getrennt.</label><input id="meaning-answer" class="challenge-field" autocomplete="off" spellcheck="false" placeholder="Wort 1, Wort 2"><label class="challenge-label" for="meaning-why">Begründe mindestens eine Entscheidung.</label><textarea id="meaning-why" class="challenge-field" rows="2" placeholder="Ich habe ... gewählt, weil ..."></textarea>
+<div class="practice-actions"><button class="button primary" type="button" id="meaning-check">Entscheidung prüfen</button><button class="button secondary" type="button" id="meaning-reveal" hidden>Musterlösung ansehen</button><button class="button secondary" type="button" id="meaning-next">Nächster Denkfall →</button></div><div class="feedback" id="meaning-feedback" role="status">Erst eintragen und begründen. Danach wird deine Wortwahl geprüft.</div><p class="help-line">Die Begründung wird nicht automatisch benotet; vergleiche sie mit dem Denkweg.</p></div>
+<div class="mini top-space"><h3>Gegenteile-Radar</h3><p>Unser bisheriges Gegenteile-Quiz bleibt erhalten – jetzt ohne Antworten zum Anklicken. Schreibe das Gegenteil selbst.</p><p class="challenge-counter" id="opposite-count">Wort 1</p><p class="challenge-prompt" id="opposite-prompt">big → ?</p><label class="challenge-label" for="opposite-answer">Das passende englische Gegenteil:</label><input class="challenge-field" id="opposite-answer" autocomplete="off" spellcheck="false"><div class="practice-actions"><button type="button" class="button primary" id="opposite-check">Wort prüfen</button><button type="button" class="button secondary" id="opposite-reveal" hidden>Musterwort ansehen</button><button type="button" class="button secondary" id="opposite-next">Nächstes Gegenteil →</button></div><div class="feedback" id="opposite-feedback" role="status">Denke zuerst selbst nach.</div></div></div>
+</div>
+<div class="learn-view" data-step-panel="labor" id="step-labor" role="tabpanel">
+<div class="card"><div class="minor">Fehler verstehen · kein vorhersehbares Fehlermuster</div><h2>Satz-Reparaturlabor</h2><p class="lead">Der Satz kann <em>richtig</em> sein oder <em>einen, zwei oder mehrere Fehler</em> enthalten. Schreibe immer den vollständigen richtigen Satz. Ändere nur, was nötig ist.</p>
+<div class="mini top-space"><div class="challenge-counter" id="repair-count">Fall 1</div><p class="challenge-prompt" id="repair-prompt">She is a happy girl.</p><label class="challenge-label" for="repair-answer">Schreibe den Satz richtig – auch wenn du nichts verändern musst.</label><textarea id="repair-answer" class="challenge-field" rows="2" autocomplete="off" spellcheck="false"></textarea>
+<div class="practice-actions"><button type="button" id="repair-check" class="button primary">Satz prüfen</button><button type="button" id="repair-reveal" class="button secondary" hidden>Musterlösung und Erklärung ansehen</button><button type="button" id="repair-next" class="button secondary">Neuer Satz →</button></div><div id="repair-feedback" class="feedback" role="status">Du weißt vorher nicht, wie viele Fehler der Satz hat.</div></div></div>
+</div>
+<div class="learn-view" data-step-panel="profi" id="step-profi" role="tabpanel">
+<div class="card"><div class="minor">Profi-Aufgaben · knifflige Anwendung</div><h2>Profi-Mission</h2><p class="lead">Keine Antworten zum Anklicken. Übersetze, repariere oder formuliere selbst. Oft brauchst du gleichzeitig Adjektive, <span lang="en">to be</span>, <span lang="en">have got</span> und Artikel.</p><div class="mini top-space"><div class="challenge-counter" id="profi-counter">Mission 1</div><span class="mission-mark" id="profi-level">Stufe 1 · Satzsicherheit</span> <span class="mission-mark" id="profi-kind">Transfer</span><p class="challenge-prompt" id="profi-prompt">Das Mädchen ist glücklich. Es hat einen kleinen schwarzen Hund.</p><label class="challenge-label" for="profi-answer">Deine vollständige Lösung:</label><textarea id="profi-answer" class="challenge-field" rows="3" autocomplete="off" spellcheck="false"></textarea><div class="practice-actions"><button class="button primary" type="button" id="profi-check">Meine Lösung prüfen</button><button class="button secondary" type="button" id="profi-reveal" hidden>Musterlösung ansehen</button><button class="button secondary" type="button" id="profi-next">Andere Mission →</button></div><div id="profi-feedback" class="feedback" role="status">Erst selbst schreiben; danach gibt es eine Begründung zur Musterlösung.</div><p class="help-line">Die Schwierigkeit wächst in drei Stufen. Sprachlich richtige Varianten werden möglichst berücksichtigt. Nicht eindeutig automatisch prüfbare Antworten kannst du mit einer Musterlösung selbst abgleichen.</p></div></div>
+</div>
+<div class="learn-view" data-step-panel="kannich" id="step-kannich" role="tabpanel">
+<div class="card"><div class="minor">Selbst einschätzen</div><h2>Kann ich's wirklich?</h2><p class="lead">Versuche die kurzen Aufgaben ohne Nachschlagen. Wenn du stockst, wiederhole den passenden Lernbaustein.</p>
+<div class="grid-3 top-space"><div class="mini"><h3>Erklären</h3><p>Wo kann ein Adjektiv im Satz stehen? Gib für beide Stellen ein Beispiel.</p></div><div class="mini"><h3>Unterscheiden</h3><p>Wie bildest du <span lang="en">bigger than</span> und <span lang="en">the biggest</span>? Wenn du die Vertiefung gelernt hast: Was ist der Unterschied zwischen <span lang="en">bored</span> und <span lang="en">boring</span>?</p></div><div class="mini"><h3>Selbst schreiben</h3><p>Beschreibe eine Person mit <span lang="en">to be</span> und ein Tier mit <span lang="en">have got</span>.</p></div></div>
+<div class="choice-row"><button class="button primary" type="button" data-open="schreibcheck">Zum Schreib-Check ohne Hilfe →</button></div></div>
+<div class="card" id="review-card"><div class="minor">Langfristig behalten · auf diesem Gerät</div><h2>Wiederholen – weiß ich es später noch?</h2><p class="lead">Ein guter Erstversuch ist erst der Anfang. Nach dem vollständigen Schreib-Check wird eine kurze Wiederholung für den nächsten Tag und anschließend für etwa eine Woche später vorgemerkt.</p>
+<p id="review-status" class="feedback" role="status">Noch keine Wiederholung geplant. Zuerst den Schreib-Check abschließen.</p>
+<div class="practice-actions"><button class="button primary" type="button" id="review-start">Vier Aufgaben zum Üben starten</button></div>
+<div id="review-work" class="mini top-space" hidden><p class="challenge-counter" id="review-count">Aufgabe 1 von 4</p><p class="challenge-prompt" id="review-prompt"></p><label class="challenge-label" for="review-answer">Deine vollständige englische Antwort</label><textarea id="review-answer" class="challenge-field" rows="3" autocomplete="off" spellcheck="false"></textarea>
+<div class="practice-actions"><button class="button primary" type="button" id="review-check">Meine Antwort prüfen</button><button class="button secondary" type="button" id="review-reveal" hidden>Beispiel und Prüfhinweis ansehen</button><button class="button secondary" type="button" id="review-next" hidden>Nächste Aufgabe →</button></div>
+<div id="review-feedback" class="feedback" role="status">Ohne Nachschlagen lösen.</div><div id="review-self" class="reveal-box" hidden><p>Vergleiche deinen ersten Satz mit dem Beispiel. Ist deine eigene Formulierung vollständig richtig?</p><p id="review-first" class="small"></p><div class="practice-actions"><button class="button secondary" type="button" id="review-self-good">Ja, mein Satz ist richtig</button><button class="button secondary" type="button" id="review-self-bad">Nein, ich muss nachlernen</button></div><p class="small muted">Dies ist eine Selbsteinschätzung, keine automatische Bestätigung.</p></div></div>
+<p class="subtle-note">Die Erinnerung erscheint nur beim Öffnen dieser Seite im selben Browser. Es werden keine Benachrichtigungen verschickt. Du kannst jederzeit freiwillig eine Übungsrunde starten.</p></div>
+</div>
+</div>
+</section>
+<section class="mode-panel" data-panel="nachschlagen" id="panel-nachschlagen" role="tabpanel" aria-label="Nachschlagen">
+<div class="card"><div class="minor">Spickzettel</div><h2>Adjectives – kurz und vollständig</h2>
+<div class="grid-2 top-space"><div class="mini"><h3>Vor dem Nomen</h3><p lang="en">a happy girl · a very big dog · a small black cat</p><p>Artikel + (Verstärker +) Adjektiv + Nomen.</p></div><div class="mini"><h3>Nach <span lang="en">to be</span></h3><p lang="en">She is happy. · They are tired. · I am very excited.</p><p>Subjekt + <span lang="en">am / is / are</span> + (Verstärker +) Adjektiv.</p></div><div class="mini"><h3>Unveränderte Grundform</h3><p lang="en">a big dog · two big dogs · a big house</p><p>Keine Anpassung an Geschlecht oder Mehrzahl des Nomens. Die Steigerung folgt eigenen Regeln (siehe unten).</p></div><div class="mini"><h3>Gegenteile</h3><p lang="en">big – small · happy – sad · hot – cold · old – new · fast – slow · tall – short · loud – quiet</p><p><span lang="en">old – young</span> passt, wenn du über das Alter eines Menschen oder Tieres sprichst.</p></div><div class="mini"><h3><span lang="en">bored / boring</span></h3><p lang="en">I am bored. · The film is boring.</p><p><span lang="en">-ed</span>: wie sich jemand fühlt. <span lang="en">-ing</span>: was dieses Gefühl auslöst. Das ist eine Hilfe für solche Wortpaare, nicht für alle Adjektive. Wenn dieses Thema im Unterricht noch nicht vorkam, ist es eine zusätzliche Vertiefung.</p></div><div class="mini"><h3><span lang="en">very / really</span></h3><p lang="en">She is really nice. · a very old house</p><p><span lang="en">very</span> und <span lang="en">really</span> stehen hier direkt vor dem Adjektiv.</p></div></div>
+<div class="spick"><h3>Adjektive steigern und vergleichen</h3>
+<div class="grid-2 top-space"><div><p lang="en">small – smaller – the smallest<br>big – bigger – the biggest<br>happy – happier – the happiest<br>nice – nicer – the nicest</p><p>Bei vielen kurzen Adjektiven: <span lang="en">-er / -est</span>; Rechtschreibung beachten.</p></div><div><p lang="en">interesting – more interesting – the most interesting<br>good – better – the best<br>bad – worse – the worst</p><p>Bei längeren Adjektiven meist <span lang="en">more / most</span>; <span lang="en">good / bad</span> sind Ausnahmen.</p></div></div>
+<p class="rule" lang="en">My dog is bigger than yours. · This is the biggest dog. · My bag is as heavy as yours. · This book is not as interesting as that film.</p>
+<p>Vergleich zweier Dinge: <span lang="en">than</span>. Höchste Stufe: meist <span lang="en">the</span>. Gleichheit: <span lang="en">as ... as</span>. Ungleichheit: <span lang="en">not as ... as</span>.</p></div>
+<div class="spick"><h3>Wörter aus unserer bisherigen Adjectives-Seite</h3><div class="grid-3 top-space"><div><p class="small">Gefühle</p><p lang="en">happy · sad · tired · angry · excited · scared · bored · hungry · thirsty · sorry · sick</p></div><div><p class="small">Größe und Alter</p><p lang="en">big · large · small · little · tall · short · long · old · young · new</p></div><div><p class="small">Eigenschaften und Farben</p><p lang="en">nice · friendly · funny · great · boring · cool · hot · cold · warm · fast · slow · loud · quiet · red · blue · green · yellow · black · white · brown · orange · pink · purple · grey</p></div></div></div>
+<div class="spick"><h3>Besondere Verbindung: <span lang="en">good at</span></h3><p lang="en">He is good at football. · She is good at English.</p><p>Merke: <span lang="en">good at</span> (nicht <span lang="en">good in</span> in diesen Beispielen).</p></div></div>
+</section>
+<section class="mode-panel" data-panel="verbindungen" id="panel-verbindungen" role="tabpanel" aria-label="Verbindungen">
+<div class="card"><div class="minor">Themen-Netz</div><h2>Wo begegnen dir Adjectives?</h2><p class="lead">Die Satzstellung bleibt auch dann wichtig, wenn du andere Grammatikthemen lernst.</p>
+<div class="grid-2 top-space"><div class="mini link-card"><h3>to be</h3><p lang="en">She is happy. · They are tired.</p><p>Ein Adjektiv beschreibt das Subjekt nach <span lang="en">am / is / are</span>.</p><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/tobe.html">to be öffnen →</a></div>
+<div class="mini link-card"><h3>Articles</h3><p lang="en">a big apple · an old dog</p><p>Wenn ein Adjektiv davorsteht, entscheidet sein erster gesprochener Laut mit über <span lang="en">a / an</span>.</p><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/articles.html">Articles öffnen →</a></div>
+<div class="mini link-card"><h3>have got</h3><p lang="en">She has got a small black dog.</p><p>Mit Adjektiven beschreibst du, was jemand hat.</p><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/havegot.html">have got öffnen →</a></div>
+<div class="mini link-card"><h3>Word Order</h3><p lang="en">The happy girl plays with a small dog.</p><p>Adjektiv und Nomen bilden zusammen eine Wortgruppe.</p><a href="https://gabikloos13-afk.github.io/Englisch-Kompass/wordorder.html">Word Order öffnen →</a></div></div></div>
+</section>
+<section class="mode-panel" data-panel="schreibcheck" id="panel-schreibcheck" role="tabpanel" aria-label="Schreib-Check">
+<div class="card"><div class="minor">Echter Könnenstest</div><h2>Adjectives – Schreib-Check</h2><p class="lead">Zwölf Aufgaben aus sechs Grundlagenbereichen, darunter die Steigerung. Optional kommen zwei Aufgaben zu <span lang="en">bored / boring</span> hinzu. Du schreibst ganze Sätze ohne Auswahlantworten.</p>
+<div class="test-info">
+<label class="challenge-label" for="test-advanced"><input id="test-advanced" type="checkbox"> Vertiefung <span lang="en">bored / boring</span> mitprüfen (2 zusätzliche Aufgaben)</label>
+<p><span id="test-total">12</span> Aufgaben – aus jedem ausgewählten Regelbereich zwei. Die Aufgaben und ihre Reihenfolge wechseln bei einer neuen Runde. <em>Der erste vollständige Versuch zählt</em>; danach kannst du aus deinen Fehlern lernen.</p><p class="small top-space">Keine Hinweise oder Musterlösungen vor deiner Antwort. Schreibe vollständige Sätze mit Großbuchstaben und Satzzeichen. Die automatische Bewertung erkennt hinterlegte korrekte Varianten. Andere Formulierungen werden <em>nicht automatisch als falsch</em> gewertet und müssen mit der Musterlösung geprüft werden.</p></div>
+<div class="score"><p class="score-value" id="test-score">0 von 0 automatisch richtig</p><button type="button" class="button secondary" id="test-restart">Neue Aufgabenmischung</button></div><progress class="progress-native" id="test-progress" max="12" value="0" aria-label="Bearbeitete Aufgaben"></progress>
+<div id="test-tasks"><article class="task-card"><p class="task-meta">Beispiel-Aufgabe · Satzstellung</p><p class="task-prompt">Übersetze: „Der Hund ist klein.“</p><label class="challenge-label" for="fallback-answer">Dein vollständiger englischer Satz</label><textarea id="fallback-answer" rows="2" disabled>Aktiviere JavaScript für die zufällig gemischten Schreibaufgaben.</textarea></article></div><p id="test-summary" class="feedback" role="status">Schreibe deine Sätze selbst und prüfe anschließend deinen ersten Versuch.</p></div>
+</section>
+<section class="mode-panel" data-panel="notizen" id="panel-notizen" role="tabpanel" aria-label="Notizen">
+<div class="card"><div class="minor">Lernjournal</div><h2>Meine Notizen</h2><label for="note-understood" class="note-label">Das habe ich verstanden</label><textarea id="note-understood" class="note-input" placeholder="Meine wichtigste Regel ..."></textarea><label for="note-hard" class="note-label">Das verwechsle ich noch</label><textarea id="note-hard" class="note-input" placeholder="Zum Beispiel: bored und boring ..."></textarea><label for="note-example" class="note-label">Mein eigener Beispielsatz</label><textarea id="note-example" class="note-input" placeholder="Mein Satz mit einem Adjektiv ..."></textarea><div class="choice-row"><button type="button" class="button primary" id="note-save">Notizen speichern</button></div><p class="small" id="note-status" role="status">Deine Notizen bleiben auf diesem Gerät im Browser gespeichert.</p></div>
+</section>
+</div></main>
+<script>
+(()=>{'use strict';
+const byId=id=>document.getElementById(id);
+const all=(s,root=document)=>Array.from(root.querySelectorAll(s));
+// Normalize harmless writing differences without relaxing grammar rules such as articles or verb agreement.
+const norm=s=>String(s).toLowerCase().trim().replace(/[’‘`´]/g,"'")
+ .replace(/\bi'm\b/g,'i am').replace(/\byou're\b/g,'you are').replace(/\bwe're\b/g,'we are').replace(/\bthey're\b/g,'they are')
+ .replace(/\b(i|you|we|they)'ve\b/g,(_,pron)=>pron+' have')
+ .replace(/\bisn't\b/g,'is not').replace(/\baren't\b/g,'are not')
+ .replace(/\b(he|she|it|that|there)'s(?=\s+got\b)/g,(_,pron)=>pron+' has')
+ .replace(/\b(he|she|it|that|there)'s\b/g,(_,pron)=>pron+' is')
+ .replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+const matches=(answer,variants)=>variants.some(sample=>norm(answer)===norm(sample));
+// Writing checks require sentence boundaries, a capital at each sentence start and final punctuation.
+// Preserve sentence boundaries rather than stripping punctuation from whole multi-sentence answers.
+function sentences(s){
+ const t=String(s).trim();if(!t||!/[.!?]$/.test(t))return null;
+ const re=/([^.!?]+)([.!?]+)(?:\s+|$)/g;let parts=[],end=0,m;
+ while((m=re.exec(t))!==null){if(m.index!==end)return null;const segment=m[1].trim();if(!/^[A-Z]/.test(segment))return null;parts.push({words:norm(segment),mark:m[2]});end=re.lastIndex;}
+ return end===t.length&&parts.length?parts:null;
+}
+const matchesSentence=(answer,variants)=>{const a=sentences(answer);return Boolean(a&&variants.some(v=>{const b=sentences(v);return b&&a.length===b.length&&a.every((part,i)=>part.words===b[i].words&&part.mark===b[i].mark);}));};
+const shuffle=arr=>{const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+function feedback(id,msg,kind=''){const el=byId(id);el.className='feedback'+(kind?' '+kind:'');el.textContent=msg;}
+function wireTabs(buttonSelector,panelSelector,dataButton,dataPanel){
+ const buttons=all(buttonSelector),panels=all(panelSelector);
+ function activate(key,focus=false){buttons.forEach(b=>{const active=b.dataset[dataButton]===key;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;if(active&&focus)b.focus();});panels.forEach(p=>{p.hidden=p.dataset[dataPanel]!==key;});}
+ buttons.forEach((b,i)=>{b.addEventListener('click',()=>activate(b.dataset[dataButton]));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowRight')n=(i+1)%buttons.length;else if(e.key==='ArrowLeft')n=(i+buttons.length-1)%buttons.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=buttons.length-1;else return;e.preventDefault();activate(buttons[n].dataset[dataButton],true);});});
+ activate(buttons.find(b=>b.getAttribute('aria-selected')==='true')?.dataset[dataButton]||buttons[0].dataset[dataButton]);return activate;
+}
+const activateMode=wireTabs('[data-tab]','[data-panel]','tab','panel');
+const activateStudy=wireTabs('[data-study]','[data-study-panel]','study','studyPanel');
+const activateStep=wireTabs('[data-step]','[data-step-panel]','step','stepPanel');
+all('[data-go-study]').forEach(b=>b.addEventListener('click',()=>activateStudy(b.dataset.goStudy)));
+all('[data-open]').forEach(b=>b.addEventListener('click',()=>activateMode(b.dataset.open)));
+document.documentElement.classList.add('tabs-ready');
+// Machine: predictions required before checking. Article uses next spoken word; adjective basic starts are unambiguous here.
+const nouns={dog:{one:'dog',subject:'The dog',is:'is',plural:false},cat:{one:'cat',subject:'The cat',is:'is',plural:false},girl:{one:'girl',subject:'The girl',is:'is',plural:false},boy:{one:'boy',subject:'The boy',is:'is',plural:false},teacher:{one:'teacher',subject:'The teacher',is:'is',plural:false},house:{one:'house',subject:'The house',is:'is',plural:false},dogs:{one:'dogs',subject:'The dogs',is:'are',plural:true},girls:{one:'girls',subject:'The girls',is:'are',plural:true}};
+const naturalAdjs={dog:['big','small','happy','old','nice','funny','friendly','tired'],cat:['big','small','happy','old','nice','funny','friendly','tired'],girl:['small','happy','nice','funny','friendly','tired'],boy:['small','happy','nice','funny','friendly','tired'],teacher:['happy','old','nice','funny','friendly','tired'],house:['big','small','old','nice'],dogs:['big','small','happy','old','nice','funny','friendly','tired'],girls:['happy','nice','funny','friendly','tired']};
+function filterNaturalAdjs(){let allowed=naturalAdjs[byId('machine-noun').value];let select=byId('machine-adj');for(const o of select.options)o.disabled=!allowed.includes(o.value);if(!allowed.includes(select.value))select.value=allowed[0];}
+let machineTries=0;
+function machineKeys(){const noun=nouns[byId('machine-noun').value],adj=byId('machine-adj').value;const article=/^[aeiou]/.test(adj)?'an':'a';return {phrase:noun.plural?adj+' '+noun.one:article+' '+adj+' '+noun.one,sentence:noun.subject+' '+noun.is+' '+adj+'.',noun,adj};}
+function resetMachine(){machineTries=0;byId('machine-before').value='';byId('machine-after').value='';byId('machine-reveal').hidden=true;feedback('machine-feedback','Schreibe beide Formen selbst und prüfe sie danach.');}
+byId('machine-noun').addEventListener('change',()=>{filterNaturalAdjs();resetMachine();});byId('machine-adj').addEventListener('change',resetMachine);filterNaturalAdjs();
+byId('machine-new').addEventListener('click',()=>{const selects=['machine-noun','machine-adj'];{const noun=byId('machine-noun');noun.selectedIndex=Math.floor(Math.random()*noun.options.length);filterNaturalAdjs();const adj=byId('machine-adj');const options=Array.from(adj.options).filter(o=>!o.disabled);adj.value=options[Math.floor(Math.random()*options.length)].value;}resetMachine();});
+byId('machine-check').addEventListener('click',()=>{const a=byId('machine-before').value.trim(),b=byId('machine-after').value.trim();if(!a||!b){feedback('machine-feedback','Bitte beide Antworten schreiben, erst dann prüfen.','bad');return;}machineTries++;const key=machineKeys();const ok=norm(a)===norm(key.phrase)&&norm(b)===norm(key.sentence);if(ok){feedback('machine-feedback','Beide Formen stimmen! Das Adjektiv bleibt unverändert und wechselt nur seine Position.','good');byId('machine-reveal').hidden=true;}else{feedback('machine-feedback','Noch nicht als Musterlösung erkannt. Prüfe: Artikel vor Adjektiv? Nach to be die richtige Form is/are? Adjektiv unverändert?','bad');if(machineTries>=2)byId('machine-reveal').hidden=false;}});
+byId('machine-reveal').addEventListener('click',()=>{let x=machineKeys();feedback('machine-feedback','Muster: '+x.phrase+' · '+x.sentence+' Denkweg: '+(x.noun.plural?'Mehrzahl: hier kein a/an. ':'Einzahl: Artikel vor dem Adjektiv. ')+'Nach to be bleibt das Adjektiv unverändert.');});
+// Comparisons: independent, shuffled free writing with explanatory feedback after own try.
+const comparisonCases=[
+ {p:'Ben ist größer als Tom.',a:['Ben is taller than Tom.'],why:'Zwei Personen werden verglichen: taller than.'},
+ {p:'Der Hund ist kleiner als die Katze.',a:['The dog is smaller than the cat.'],why:'Small bekommt im Vergleich -er; danach folgt than.'},
+ {p:'Das ist der größte Hund.',a:['This is the biggest dog.','That is the biggest dog.','It is the biggest dog.'],why:'Big verdoppelt g: the biggest.'},
+ {p:'Meine Schwester ist jünger als ich.',a:['My sister is younger than me.','My sister is younger than I am.'],why:'Young → younger; im britischen Alltagsenglisch ist than me üblich.'},
+ {p:'Dieses Buch ist interessanter als der Film.',a:['This book is more interesting than the film.'],why:'Bei interesting wird mit more gesteigert; danach folgt than.'},
+ {p:'Das ist das interessanteste Buch.',a:['This is the most interesting book.','It is the most interesting book.'],why:'Superlativ von interesting: the most interesting.'},
+ {p:'Diese Tasche ist so schwer wie jene.',a:['This bag is as heavy as that one.','This bag is as heavy as that bag.'],why:'Gleichheit: as heavy as.'},
+ {p:'Dieser Test ist nicht so leicht wie der erste.',a:['This test is not as easy as the first one.','This test is not as easy as the first test.'],why:'Ungleichheit: not as easy as.'},
+ {p:'Das ist der beste Spieler in unserem Team.',a:['This is the best player in our team.','He is the best player in our team.'],why:'Good wird zu better / the best; hier wird the best benötigt.'},
+ {p:'Heute ist das Wetter schlechter als gestern.',a:['The weather is worse today than yesterday.','The weather is worse today than it was yesterday.'],why:'Bad wird zu worse / the worst; zwei Tage: worse than.'},
+ {p:'Das Mädchen ist glücklicher als der Junge.',a:['The girl is happier than the boy.'],why:'Happy wird zu happier: y → i + er.'},
+ {p:'Das ist die netteste Lehrerin.',a:['This is the nicest teacher.','That is the nicest teacher.','This is the kindest teacher.','That is the kindest teacher.'],why:'Nice → nicer → the nicest; bei -e nur -st anhängen.'}
+];
+let comparisonOrder=shuffle(comparisonCases),comparisonIndex=0,comparisonTries=0;
+function renderComparison(){comparisonTries=0;const x=comparisonOrder[comparisonIndex];byId('comparison-count').textContent='Vergleich '+(comparisonIndex+1)+' von '+comparisonOrder.length;byId('comparison-prompt').textContent=x.p;byId('comparison-answer').value='';byId('comparison-reveal').hidden=true;feedback('comparison-feedback','Schreibe selbst einen vollständigen Satz. Danach prüfen.');}
+byId('comparison-check').addEventListener('click',()=>{
+ const answer=byId('comparison-answer').value.trim();if(!answer){feedback('comparison-feedback','Schreibe zuerst deinen Satz.','bad');return;}
+ comparisonTries++;const x=comparisonOrder[comparisonIndex];
+ if(matchesSentence(answer,x.a)){feedback('comparison-feedback','Automatisch erkannt. '+x.why,'good');byId('comparison-reveal').hidden=true;}
+ else{feedback('comparison-feedback','Nicht eindeutig erkannt. Prüfe die Vergleichsform, than bzw. as ... as und deine Satzzeichen. Auch eine andere Formulierung kann korrekt sein.');if(comparisonTries>=2)byId('comparison-reveal').hidden=false;}
+});
+byId('comparison-reveal').addEventListener('click',()=>{const x=comparisonOrder[comparisonIndex];feedback('comparison-feedback','Beispiel: '+x.a[0]+' · '+x.why+' Prüfe deine eigene Formulierung.');});
+byId('comparison-next').addEventListener('click',()=>{comparisonIndex++;if(comparisonIndex>=comparisonOrder.length){comparisonOrder=shuffle(comparisonCases);comparisonIndex=0;}renderComparison();});renderComparison();
+// Meaning detective: distractors intentionally do not follow alternation patterns. Justifications are for self-comparison.
+const meaningCases=[
+ {p:'I am ___ because the film is ___. (Ich bin gelangweilt, weil der Film langweilig ist.)',a:['bored','boring'],why:'I am bored beschreibt mein Gefühl; the film is boring beschreibt, dass der Film die Langeweile auslöst.'},
+ {p:'The football match is ___. We are ___. (Das Spiel ist aufregend. Wir sind aufgeregt.)',a:['exciting','excited'],why:'The match is exciting: Das Spiel löst Aufregung aus. We are excited: Wir fühlen die Aufregung.'},
+ {p:'My sister is ___ after school. The long walk is ___. (Sie ist müde. Der Spaziergang ist anstrengend.)',a:['tired','tiring'],why:'Tired beschreibt ihr Gefühl. Tiring beschreibt den anstrengenden Spaziergang.'},
+ {p:'The story is ___. I am ___. (Die Geschichte ist langweilig. Ich bin gelangweilt.)',a:['boring','bored'],why:'Boring löst Langeweile aus; bored ist das Gefühl.'},
+ {p:'This is an ___ dog. The dog is ___. (alt; nicht jung)',a:['old','old'],why:'Ein Adjektiv kann sowohl vor einem Nomen als auch nach is stehen – ohne Endung.'},
+ {p:'The teacher is ___. I am ___ in the lesson. (Die Lehrkraft ist langweilig; ich langweile mich im Unterricht.)',a:['boring','bored'],why:'Auch ein Mensch kann boring sein, wenn er Langeweile auslöst. Die Person, die sich langweilt, ist bored.'},
+ {p:'This is a ___ house. The houses are ___. (groß)',a:['big','big'],why:'Big bekommt weder wegen Einzahl noch wegen Mehrzahl eine Endung.'},
+ {p:'She is ___. She has got a ___ dog. (glücklich; klein)',a:['happy','small'],why:'Nach is beschreibt happy die Person; vor dog steht small.'},
+];
+let meaningOrder=shuffle(meaningCases),meaningIndex=0,meaningTries=0;
+function renderMeaning(){meaningTries=0;let x=meaningOrder[meaningIndex];byId('meaning-count').textContent='Denkfall '+(meaningIndex+1)+' von '+meaningOrder.length;byId('meaning-prompt').textContent=x.p;byId('meaning-answer').value='';byId('meaning-why').value='';byId('meaning-reveal').hidden=true;feedback('meaning-feedback','Erst schreiben und begründen – dann prüfen.');}
+byId('meaning-check').addEventListener('click',()=>{let ans=byId('meaning-answer').value.trim(),why=byId('meaning-why').value.trim();if(!why||!ans){feedback('meaning-feedback','Schreibe beide Wörter und eine kurze Begründung.','bad');return;}let parts=ans.split(/[,;|]/).map(norm);if(parts.length!==2){feedback('meaning-feedback','Schreibe genau zwei Wörter und trenne sie mit Komma.','bad');return;}meaningTries++;let x=meaningOrder[meaningIndex];let ok=parts.every((p,i)=>p===x.a[i]);if(ok){feedback('meaning-feedback','Beide Wörter stimmen. Vergleiche deine Begründung: '+x.why+' (Die Begründung wird nicht automatisch bewertet.)','good');byId('meaning-reveal').hidden=true;}else{feedback('meaning-feedback','Noch nicht richtig. Prüfe: Beschreibst du ein Gefühl, die Ursache des Gefühls oder nur eine Eigenschaft?','bad');if(meaningTries>=2)byId('meaning-reveal').hidden=false;}});
+byId('meaning-reveal').addEventListener('click',()=>{let x=meaningOrder[meaningIndex];feedback('meaning-feedback','Muster: '+x.a.join(', ')+'. '+x.why);});
+byId('meaning-next').addEventListener('click',()=>{meaningIndex++;if(meaningIndex>=meaningOrder.length){meaningOrder=shuffle(meaningCases);meaningIndex=0;}renderMeaning();});renderMeaning();
+// Opposite recall: replaces the old click-to-guess exercise with active recall.
+const oppositeCases=[
+ {p:'big (groß) → Gegenteil?',a:['small','little'],why:'Small / little kann klein bedeuten.'},
+ {p:'hot (heiß) → Gegenteil?',a:['cold'],why:'Hot und cold sind Gegenteile.'},
+ {p:'happy (glücklich) → Gegenteil?',a:['sad','unhappy'],why:'Sad / unhappy kann traurig oder unglücklich bedeuten.'},
+ {p:'fast (schnell) → Gegenteil?',a:['slow'],why:'Fast und slow sind Gegenteile.'},
+ {p:'loud (laut) → Gegenteil?',a:['quiet'],why:'Loud und quiet.'},
+ {p:'tall (groß bei Menschen) → Gegenteil?',a:['short'],why:'Tall und short.'},
+ {p:'new (neu, zum Beispiel ein Fahrrad) → Gegenteil?',a:['old'],why:'New und old für neue und alte Gegenstände.'},
+ {p:'young (jung bei Menschen) → Gegenteil?',a:['old'],why:'Young und old für jung und alt.'},
+ {p:'long (lang) → Gegenteil?',a:['short'],why:'Long und short.'},
+];
+let oppositeOrder=shuffle(oppositeCases),oppositeIndex=0,oppositeTries=0;
+function renderOpposite(){oppositeTries=0;byId('opposite-count').textContent='Gegenteil '+(oppositeIndex+1)+' von '+oppositeOrder.length;byId('opposite-prompt').textContent=oppositeOrder[oppositeIndex].p;byId('opposite-answer').value='';byId('opposite-reveal').hidden=true;feedback('opposite-feedback','Schreibe das Gegenteil aus dem Gedächtnis.');}
+byId('opposite-check').addEventListener('click',()=>{const x=oppositeOrder[oppositeIndex],v=norm(byId('opposite-answer').value);if(!v){feedback('opposite-feedback','Schreibe erst dein Wort.','bad');return;}oppositeTries++;if(x.a.some(t=>norm(t)===v)){feedback('opposite-feedback','Richtig. '+x.why,'good');byId('opposite-reveal').hidden=true;}else{feedback('opposite-feedback','Noch nicht als Musterwort erkannt. Denke an die Gegenbedeutung.','bad');if(oppositeTries>=2)byId('opposite-reveal').hidden=false;}});
+byId('opposite-reveal').addEventListener('click',()=>{const x=oppositeOrder[oppositeIndex];feedback('opposite-feedback','Muster: '+x.a.join(' / ')+'. '+x.why);});
+byId('opposite-next').addEventListener('click',()=>{oppositeIndex++;if(oppositeIndex>=oppositeOrder.length){oppositeOrder=shuffle(oppositeCases);oppositeIndex=0;}renderOpposite();});renderOpposite();
+// Repair lab: 0-3 errors; cases shuffled, no repeated fixed pattern.
+const repairCases=[
+ {p:'She is a happy girl.',a:['She is a happy girl.'],why:'Der Satz ist bereits richtig: a happy girl.'},
+ {p:'The dogs are bigs.',a:['The dogs are big.'],why:'Big bekommt wegen Mehrzahl kein -s.'},
+ {p:'He is very tall boy.',a:['He is a very tall boy.'],why:'Vor einem einzelnen zählbaren Nomen wie boy fehlt hier a.'},
+ {p:'My teacher is friendly.',a:['My teacher is friendly.'],why:'Friendly steht korrekt nach is.'},
+ {p:'I have an small black dog.',a:['I have a small black dog.','I have got a small black dog.'],why:'Vor small steht a: Das erste gesprochene Wort nach dem Artikel ist small.'},
+ {p:'The girls is happys.',a:['The girls are happy.'],why:'Mehrzahl verlangt are; das Adjektiv bleibt happy.'},
+ {p:'This a house old.',a:['This is an old house.'],why:'Nach This fehlt is, und das Adjektiv steht vor house. Vor old steht an.'},
+ {p:'The film is boring.',a:['The film is boring.'],why:'Ein Film kann boring sein, wenn er Langeweile auslöst.'},
+ {p:'I am boring because the film is bored.',a:['I am bored because the film is boring.'],why:'Ich fühle mich bored. Der Film wirkt boring.'},
+ {p:'She has got a blues bike.',a:['She has got a blue bike.'],why:'Ein Adjektiv bekommt kein Plural-s.'},
+ {p:'They are really tired.',a:['They are really tired.'],why:'Really verstärkt hier tired und steht direkt davor.'},
+ {p:'It is very.',a:[],why:'Nach very fehlt ein Adjektiv; mehrere sinnvolle Ergänzungen sind möglich.'},
+ {p:'She has got a smalls dog and they is happy.',a:['She has got a small dog and they are happy.'],why:'Small ohne -s; zu they gehört are.'},
+ {p:'An old dog is happy.',a:['An old dog is happy.'],why:'Vor old steht an, und happy steht korrekt nach is.'},
+];
+// A sentence with infinite possible completions cannot be auto-assessed fairly; replace it with a uniquely repairable case.
+repairCases[11]={p:'He is a very nice. (Entferne nur das überflüssige Wort, ergänze kein Nomen.)',a:['He is very nice.'],why:'Ohne nachfolgendes Nomen heißt es He is very nice. (Eine zusätzliche Nomenergänzung könnte ebenfalls sinnvoll sein – diese Aufgabe verlangt nur das Entfernen des überflüssigen a.)'};
+let repairOrder=shuffle(repairCases),repairIndex=0,repairTries=0;
+function renderRepair(){repairTries=0;let x=repairOrder[repairIndex];byId('repair-count').textContent='Reparaturfall '+(repairIndex+1)+' von '+repairOrder.length;byId('repair-prompt').textContent=x.p;byId('repair-answer').value='';byId('repair-reveal').hidden=true;feedback('repair-feedback','Kann richtig sein oder Fehler enthalten. Schreibe den ganzen Satz.');}
+byId('repair-check').addEventListener('click',()=>{let a=byId('repair-answer').value.trim();if(!a){feedback('repair-feedback','Erst den vollständigen Satz selbst schreiben.','bad');return;}repairTries++;let x=repairOrder[repairIndex];let ok=matches(a,x.a);if(ok){feedback('repair-feedback','Richtig – eine hinterlegte Lösung erkannt! '+x.why,'good');byId('repair-reveal').hidden=true;}else{feedback('repair-feedback','Nicht eindeutig automatisch erkannt. Das bedeutet nicht sicher, dass dein Satz falsch ist. Prüfe Satzstellung, to be, Artikel und Adjektivform; vergleiche bei Bedarf mit der Musterlösung.','');if(repairTries>=2)byId('repair-reveal').hidden=false;}});
+byId('repair-reveal').addEventListener('click',()=>{let x=repairOrder[repairIndex];feedback('repair-feedback','Musterlösung: '+x.a[0]+' – '+x.why);});
+byId('repair-next').addEventListener('click',()=>{repairIndex++;if(repairIndex>=repairOrder.length){repairOrder=shuffle(repairCases);repairIndex=0;}renderRepair();});renderRepair();
+// Profi writing transfer: no answer choice, mixed grammar with explicit task constraints.
+const profiCases=[
+ {kind:'Zwei eigene Sätze',p:'Das Mädchen ist glücklich. Sie hat einen kleinen schwarzen Hund. (Verwende has got.)',a:['The girl is happy. She has got a small black dog.'],why:'Happy steht nach is. Small und black stehen vor dog und verändern sich nicht.'},
+ {kind:'Übersetzen',p:'Der alte Hund ist müde. Er hat eine blaue Decke. (Verwende has got.)',a:['The old dog is tired. He has got a blue blanket.','The old dog is tired. It has got a blue blanket.'],why:'Old steht vor dog. Tired nach is. A blue blanket beginnt mit a.'},
+ {kind:'Reparieren',p:'Korrigiere alle Fehler: „The cats is hungrys. They has got a bigs bowl.“',a:['The cats are hungry. They have got a big bowl.'],why:'Cats → are; they → have got. Hungry und big bleiben ohne solche Endungen.'},
+ {kind:'Zwei Sätze verknüpfen',p:'Ich habe eine neue Tasche. Die Tasche ist wirklich schön. (Verwende have got.)',a:['I have got a new bag. The bag is really nice.','I have got a new bag. The bag is really beautiful.'],why:'A new bag: vor dem Nomen. Really nice: nach is.'},
+ {kind:'Bedeutung unterscheiden',p:'Der Film ist langweilig. Ich bin gelangweilt.',a:['The film is boring. I am bored.','The movie is boring. I am bored.'],why:'Boring löst Langeweile aus, bored beschreibt das Gefühl.'},
+ {kind:'Eigenschaft + Artikel',p:'Sie hat einen alten Regenschirm. Der Regenschirm ist sehr groß. (Verwende has got.)',a:['She has got an old umbrella. The umbrella is very big.'],why:'An old umbrella: old beginnt mit Vokallaut. Very big steht nach is.'},
+ {kind:'Reparieren',p:'Lass die Bedeutung gleich und repariere den Satz: „She is very nice girl. The girl have a reds bike.“',a:['She is a very nice girl. The girl has a red bike.'],why:'A vor very nice girl; girl verlangt has; red bleibt unverändert.'},
+ {kind:'Zwei Sätze',p:'Die Jungen sind müde. Sie haben einen großen Hund. (Verwende have got.)',a:['The boys are tired. They have got a big dog.'],why:'Boys → are, they → have got. Big vor dog ohne Plural-s.'},
+ {kind:'Eigene Wörter einordnen',p:'Das Haus ist alt. Es ist ein sehr altes Haus.',a:['The house is old. It is a very old house.'],why:'Old kann nach is und vor house stehen. A vor very old house.'},
+ {kind:'Unterschied fühlen/auslösen',p:'Das Spiel ist aufregend. Die Kinder sind aufgeregt.',a:['The game is exciting. The children are excited.','The match is exciting. The children are excited.'],why:'Exciting: es löst das Gefühl aus. Excited: die Kinder fühlen es.'},
+ {kind:'Vergleich + Beschreibung',p:'Mein Hund ist kleiner als dein Hund. Er ist sehr freundlich.',a:['My dog is smaller than your dog. He is very friendly.','My dog is smaller than your dog. It is very friendly.'],why:'Smaller than vergleicht zwei Hunde; very friendly beschreibt den Hund.'},
+ {kind:'Vergleichs-Fehlerdetektiv',p:'Korrigiere: „This cat is more big then that cat. It is the bigger cat.“ (Es sind zwei Katzen.)',a:['This cat is bigger than that cat. It is the bigger cat.'],why:'Big → bigger; than und nicht then. Bigger ist hier richtig, weil zwei Katzen verglichen werden.'},
+ {kind:'Steigerung + Bedeutung',p:'Das ist das beste Buch. Es ist interessanter als der Film.',a:['This is the best book. It is more interesting than the film.','That is the best book. It is more interesting than the film.'],why:'Good → the best; interesting → more interesting than.'},
+];
+// Explicit progression: confidence with sentence patterns, then combinations, then complex repair/transfer.
+profiCases.forEach((c,i)=>{c.level=([0,7,8].includes(i)?1:[1,3,5,10].includes(i)?2:3);});
+const profiLevelNames={1:'Stufe 1 · Satzsicherheit',2:'Stufe 2 · Regeln kombinieren',3:'Stufe 3 · kniffliger Transfer'};
+function mixProfi(){return [1,2,3].flatMap(level=>shuffle(profiCases.filter(c=>c.level===level)));}
+let profiOrder=mixProfi(),profiIndex=0,profiTries=0;
+function renderProfi(){profiTries=0;let x=profiOrder[profiIndex];byId('profi-counter').textContent='Mission '+(profiIndex+1)+' von '+profiOrder.length;byId('profi-kind').textContent=x.kind;byId('profi-level').textContent=profiLevelNames[x.level];byId('profi-prompt').textContent=x.p;byId('profi-answer').value='';byId('profi-reveal').hidden=true;feedback('profi-feedback','Schreibe zuerst deine eigene Lösung.');}
+byId('profi-check').addEventListener('click',()=>{let a=byId('profi-answer').value.trim();if(!a){feedback('profi-feedback','Schreibe deine Lösung erst vollständig.','bad');return;}profiTries++;let x=profiOrder[profiIndex];let ok=matches(a,x.a);if(ok){feedback('profi-feedback','Richtig – eine hinterlegte Formulierung erkannt! '+x.why,'good');byId('profi-reveal').hidden=true;}else{feedback('profi-feedback','Nicht eindeutig automatisch prüfbar. Dein Satz kann trotzdem richtig sein. Kontrolliere die Adjektive, Artikel und Satzstellung. Nach einem weiteren Versuch kannst du mit dem Beispiel vergleichen.','');if(profiTries>=2)byId('profi-reveal').hidden=false;}});
+byId('profi-reveal').addEventListener('click',()=>{let x=profiOrder[profiIndex];feedback('profi-feedback','Musterlösung: '+x.a[0]+' – '+x.why+' Auch andere korrekte Varianten können möglich sein.');});
+byId('profi-next').addEventListener('click',()=>{profiIndex++;if(profiIndex>=profiOrder.length){profiOrder=mixProfi();profiIndex=0;}renderProfi();});renderProfi();
+// Final test: 6 skill families x 2 balanced tasks = 12, mixed order. First complete attempt scored exactly once.
+const testBank=[
+ {skill:'position',type:'Satzstellung · übersetzen',p:'Das Mädchen ist freundlich.',a:['The girl is friendly.','The girl is nice.'],why:'Friendly steht nach is.'},
+ {skill:'position',type:'Satzstellung · übersetzen',p:'Das ist ein kleines Haus.',a:['This is a small house.','That is a small house.','It is a small house.'],why:'Small steht vor dem Nomen house.'},
+ {skill:'position',type:'Satzstellung · übersetzen',p:'Die Hunde sind glücklich.',a:['The dogs are happy.'],why:'Nach are steht happy.'},
+ {skill:'position',type:'Satzstellung · übersetzen',p:'Sie ist eine nette Lehrerin.',a:['She is a nice teacher.','She is a friendly teacher.','She is a kind teacher.'],why:'Artikel + Adjektiv + Nomen.'},
+ {skill:'unchanged',type:'Form bleibt gleich',p:'Übersetze: Zwei große Hunde sind hier.',a:['Two big dogs are here.','There are two big dogs here.'],why:'Big bleibt auch im Plural unverändert.'},
+ {skill:'unchanged',type:'Form bleibt gleich',p:'Repariere: „The girls are happys.“',a:['The girls are happy.'],why:'Happy bekommt im Plural kein s.'},
+ {skill:'unchanged',type:'Form bleibt gleich',p:'Repariere: „We have got two smalls cats.“',a:['We have got two small cats.'],why:'Auch bei mehreren Katzen bleibt small unverändert.'},
+ {skill:'unchanged',type:'Form bleibt gleich',p:'Übersetze: Das sind drei alte Häuser.',a:['These are three old houses.','Those are three old houses.'],why:'Old bleibt auch bei mehreren Häusern unverändert.'},
+ {skill:'intensity',type:'very / really',p:'Übersetze: Sie ist wirklich müde.',a:['She is really tired.'],why:'Really steht direkt vor tired.'},
+ {skill:'intensity',type:'very / really',p:'Übersetze: Er hat einen sehr großen Hund. (Verwende has got.)',a:['He has got a very big dog.'],why:'A steht vor very big dog.'},
+ {skill:'intensity',type:'very / really',p:'Repariere: „She is a very happy.“ (Ohne weiteres Nomen.)',a:['She is very happy.'],why:'Ohne Nomen steht hier kein a.'},
+ {skill:'intensity',type:'very / really',p:'Übersetze: Es ist ein wirklich altes Haus.',a:['It is a really old house.'],why:'A really old house – der Artikel steht vor really.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Der Hund ist größer als die Katze.',a:['The dog is bigger than the cat.'],why:'Big → bigger, zwei Dinge → than.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Das ist die netteste Lehrerin.',a:['This is the nicest teacher.','That is the nicest teacher.','This is the kindest teacher.','That is the kindest teacher.'],why:'Nice → the nicest.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Dieser Film ist interessanter als das Buch.',a:['This film is more interesting than the book.','The film is more interesting than the book.'],why:'More interesting than bei längeren Adjektiven.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Ben ist so groß wie Tom.',a:['Ben is as tall as Tom.'],why:'Gleichheit: as ... as.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Das ist der beste Tag.',a:['This is the best day.','It is the best day.'],why:'Good → better → the best.'},
+ {skill:'comparison',type:'Vergleiche und Steigerung',p:'Übersetze: Mein Fahrrad ist nicht so alt wie dein Fahrrad.',a:['My bike is not as old as your bike.','My bicycle is not as old as your bicycle.'],why:'Not as old as für den Vergleich.'},
+ {skill:'meaning',type:'Bedeutung -ed / -ing',p:'Übersetze: Der Film ist langweilig. Ich bin gelangweilt.',a:['The film is boring. I am bored.','The movie is boring. I am bored.'],why:'Boring beschreibt die Ursache, bored das Gefühl.'},
+ {skill:'meaning',type:'Bedeutung -ed / -ing',p:'Übersetze: Die Kinder sind aufgeregt. Das Spiel ist aufregend.',a:['The children are excited. The game is exciting.','The children are excited. The match is exciting.'],why:'Excited beschreibt das Gefühl; exciting löst es aus.'},
+ {skill:'meaning',type:'Bedeutung -ed / -ing',p:'Repariere: „I am boring because the film is bored.“',a:['I am bored because the film is boring.'],why:'Ich fühle mich bored; der Film ist boring.'},
+ {skill:'meaning',type:'Bedeutung -ed / -ing',p:'Übersetze: Meine Schwester ist müde. Der Spaziergang ist anstrengend.',a:['My sister is tired. The walk is tiring.'],why:'Tired beschreibt das Gefühl; tiring, was ermüdet.'},
+ {skill:'repair',type:'Fehler finden · Anzahl unbekannt',p:'Prüfe und schreibe den Satz richtig: „They are nice.“',a:['They are nice.'],why:'Der Satz war richtig.'},
+ {skill:'repair',type:'Fehler finden · Anzahl unbekannt',p:'Prüfe und schreibe den Satz richtig: „The boy is a happy.“',a:['The boy is happy.'],why:'Nach is steht happy ohne a, solange kein Nomen folgt.'},
+ {skill:'repair',type:'Fehler finden · Anzahl unbekannt',p:'Prüfe und schreibe den Satz richtig: „The dogs is smalls.“',a:['The dogs are small.'],why:'Dogs braucht are; small bekommt kein s.'},
+ {skill:'repair',type:'Fehler finden · Anzahl unbekannt',p:'Prüfe und schreibe den Satz richtig: „She has got an olds cat. The cat are happy.“',a:['She has got an old cat. The cat is happy.'],why:'Old ohne s; cat im Singular braucht is.'},
+ {skill:'transfer',type:'Kombinieren · zwei Sätze',p:'Das Mädchen ist traurig. Sie hat eine neue Tasche. (Verwende has got.)',a:['The girl is sad. She has got a new bag.'],why:'Sad nach is, new vor bag.'},
+ {skill:'transfer',type:'Kombinieren · zwei Sätze',p:'Die Katzen sind hungrig. Sie haben eine kleine Schüssel. (Verwende have got.)',a:['The cats are hungry. They have got a small bowl.'],why:'Cats → are; hungry nach are; small vor bowl.'},
+ {skill:'transfer',type:'Kombinieren · zwei Sätze',p:'Das ist ein alter Hund. Der Hund ist sehr freundlich.',a:['This is an old dog. The dog is very friendly.','It is an old dog. The dog is very friendly.','That is an old dog. The dog is very friendly.'],why:'An old dog; very friendly nach is.'},
+ {skill:'transfer',type:'Kombinieren · zwei Sätze',p:'Der Film ist aufregend. Die Kinder sind sehr aufgeregt.',a:['The film is exciting. The children are very excited.','The movie is exciting. The children are very excited.'],why:'Exciting ist die Ursache, very excited das verstärkte Gefühl.'},
+];
+let currentTest=[];
+let reviewPlanKey='hanna_kompass_adjectives_v02_review_plan';
+const day=24*60*60*1000;
+function loadPlan(){try{let x=JSON.parse(localStorage.getItem(reviewPlanKey)||'null');return x&&typeof x==='object'?x:{stage:'unplanned',due:0,lastPrompts:[],lastSkills:[]};}catch(e){return {stage:'unplanned',due:0,lastPrompts:[],lastSkills:[]};}}
+let plan=loadPlan();
+function savePlan(){try{localStorage.setItem(reviewPlanKey,JSON.stringify(plan));return true;}catch(e){return false;}}
+function planText(){if(plan.stage==='unplanned')return 'Noch keine Wiederholung geplant. Schließe den Schreib-Check ab; danach wird eine kurze Wiederholung für morgen vorgemerkt.';
+if(plan.stage==='finished')return 'Die Wiederholungen nach einem Tag und einer Woche sind abgeschlossen. Du kannst weiterhin freiwillig üben.';
+const date=new Intl.DateTimeFormat('de-DE',{weekday:'long',day:'numeric',month:'long'}).format(new Date(plan.due));
+return plan.due<=Date.now()?'Deine kurze Wiederholung ist fällig. Löse vier gemischte Aufgaben ohne Nachschlagen.':'Die nächste Wiederholung ist für '+date+' vorgemerkt. Du kannst schon jetzt freiwillig üben.';}
+function refreshPlan(){byId('review-status').textContent=planText();byId('review-start').textContent=plan.stage!=='unplanned'&&plan.stage!=='finished'&&plan.due<=Date.now()?'Fällige Wiederholung starten':'Vier Aufgaben freiwillig üben';}
+function scheduleInitial(){if(plan.stage==='unplanned'){plan={stage:'day1',due:Date.now()+day,lastPrompts:[],lastSkills:[],advanced:byId('test-advanced').checked};savePlan();refreshPlan();}}
+function updateScore(){
+ const done=currentTest.filter(x=>x.done).length;
+ const auto=currentTest.filter(x=>x.done&&x.correct).length;
+ const selfGood=currentTest.filter(x=>x.done&&!x.correct&&x.selfRated==='yes').length;
+ const selfBad=currentTest.filter(x=>x.done&&!x.correct&&x.selfRated==='no').length;
+ const open=done-auto-selfGood-selfBad;
+ byId('test-score').textContent=auto+' automatisch richtig · '+selfGood+' selbst als richtig beurteilt · '+open+' offen';
+ byId('test-progress').value=done;
+ if(done===currentTest.length){
+  byId('test-summary').textContent='Alle '+currentTest.length+' Erstversuche abgegeben. '+auto+' automatisch erkannt, '+selfGood+' selbst bestätigt, '+selfBad+' zum Nachlernen, '+open+' noch zu vergleichen. Selbst bestätigte Antworten sind keine automatische Bewertung.';
+  if(open===0)scheduleInitial();
+ }else{byId('test-summary').textContent='Noch '+(currentTest.length-done)+' Erstversuch(e). Nicht automatisch erkannte Sätze kannst du anschließend selbst mit dem Beispiel vergleichen.';}
+}
+function renderTest(){
+ const categories=['position','unchanged','intensity','comparison','repair','transfer'];
+ if(byId('test-advanced').checked)categories.push('meaning');
+ currentTest=shuffle(categories.flatMap(skill=>shuffle(testBank.filter(x=>x.skill===skill)).slice(0,2))).map(x=>({...x,tries:0,done:false,correct:false,selfRated:null,firstAnswer:''}));
+ byId('test-total').textContent=String(currentTest.length);byId('test-progress').max=currentTest.length;
+ byId('test-tasks').replaceChildren();
+ currentTest.forEach((task,i)=>{
+ const card=document.createElement('article');card.className='task-card';
+ const meta=document.createElement('p');meta.className='task-meta';meta.textContent='Aufgabe '+(i+1)+' von '+currentTest.length;
+ const prompt=document.createElement('p');prompt.className='task-prompt';prompt.textContent=task.p;
+ const lab=document.createElement('label');lab.className='challenge-label';lab.textContent='Schreibe deine vollständige englische Lösung';lab.htmlFor='test-answer-'+i;
+ const entry=document.createElement('textarea');entry.id='test-answer-'+i;entry.rows=2;entry.autocomplete='off';entry.spellcheck=false;
+ const actions=document.createElement('div');actions.className='task-actions';
+ const check=document.createElement('button');check.type='button';check.className='button primary';check.textContent='Ersten Versuch prüfen';
+ const solutionButton=document.createElement('button');solutionButton.type='button';solutionButton.className='button secondary';solutionButton.textContent='Beispiel und Prüfhinweis ansehen';solutionButton.hidden=true;
+ const msg=document.createElement('div');msg.className='feedback';msg.setAttribute('role','status');msg.textContent='Erst vollständig schreiben, dann prüfen.';
+ const reviewBox=document.createElement('div');reviewBox.className='reveal-box';reviewBox.hidden=true;
+ const first=document.createElement('p');first.className='small';
+ const guide=document.createElement('p');guide.textContent='Vergleiche nur deinen ersten Versuch. Entspricht dein Satz vollständig der Bedeutung und allen Regeln?';
+ const yes=document.createElement('button');yes.type='button';yes.className='button secondary';yes.textContent='Mein erster Satz war richtig';
+ const no=document.createElement('button');no.type='button';no.className='button secondary';no.textContent='Ich muss diesen Satz verbessern';
+ const buttons=document.createElement('div');buttons.className='practice-actions';buttons.append(yes,no);
+ reviewBox.append(first,guide,buttons);
+ actions.append(check,solutionButton);card.append(meta,prompt,lab,entry,actions,msg,reviewBox);byId('test-tasks').append(card);
+ check.addEventListener('click',()=>{
+  const answer=entry.value.trim();if(!answer){msg.className='feedback bad';msg.textContent='Schreibe erst eine vollständige Antwort.';return;}
+  task.tries++;const ok=matchesSentence(answer,task.a);
+  if(!task.done){task.done=true;task.firstAnswer=answer;task.correct=ok;check.textContent='Korrektur prüfen';}
+  if(ok){msg.className='feedback good';msg.textContent=task.correct?'Automatisch richtig erkannt. '+task.why:'Nach deiner Korrektur ist die Antwort richtig. Der erste Versuch wird dadurch nicht nachträglich als automatisch richtig gezählt.';if(task.correct){solutionButton.hidden=true;reviewBox.hidden=true;}}
+  else{msg.className='feedback';msg.textContent=task.tries===1?'Noch nicht eindeutig automatisch erkannt. Prüfe auch Großschreibung, Satzzeichen und vollständige Sätze. Andere richtige Formulierungen sind möglich.':'Weiterhin nicht erkannt. Vergleiche nach deinem zweiten Versuch deinen ersten Satz mit dem Beispiel und den Regeln.';}
+  if(!task.correct&&task.tries>=2)solutionButton.hidden=false;
+  updateScore();
+ });
+ solutionButton.addEventListener('click',()=>{
+  msg.className='feedback';msg.textContent='Beispiel: '+task.a[0]+' · Prüfkriterium: '+task.why+' Andere sprachlich richtige Varianten können möglich sein.';
+  first.textContent='Dein erster Versuch: '+task.firstAnswer;
+  solutionButton.hidden=true;check.disabled=true;reviewBox.hidden=false;
+ });
+ function selfRate(grade){task.selfRated=grade;reviewBox.hidden=true;msg.className='feedback'+(grade==='yes'?' good':'');msg.textContent=grade==='yes'?'Als eigene Kontrolle erfasst (nicht automatisch bestätigt).':'Zum Nachlernen markiert. Vergleiche den Beispielsatz mit deiner ersten Antwort.';updateScore();}
+ yes.addEventListener('click',()=>selfRate('yes'));no.addEventListener('click',()=>selfRate('no'));
+ });updateScore();
+}
+byId('test-restart').addEventListener('click',renderTest);byId('test-advanced').addEventListener('change',renderTest);renderTest();
+// Retrieval practice: new prompts are drawn in mixed order, never from visible answer choices.
+const reviewBank=[
+ {skill:'position',p:'Übersetze: Das ist ein freundlicher Hund.',a:['This is a friendly dog.','It is a friendly dog.','That is a friendly dog.'],why:'Friendly steht vor dog.'},
+ {skill:'position',p:'Übersetze: Meine Schwester ist sehr nett.',a:['My sister is very nice.','My sister is very kind.','My sister is very friendly.'],why:'Nach is steht very + Adjektiv.'},
+ {skill:'unchanged',p:'Prüfe und repariere bei Bedarf: „The three dogs are smalls.“',a:['The three dogs are small.'],why:'Auch in der Mehrzahl bleibt small unverändert.'},
+ {skill:'unchanged',p:'Übersetze: Zwei alte Katzen sind hier.',a:['Two old cats are here.','There are two old cats here.'],why:'Old bekommt wegen der Mehrzahl kein -s.'},
+ {skill:'intensity',p:'Übersetze: Es ist ein wirklich kleines Haus.',a:['It is a really small house.','This is a really small house.','That is a really small house.'],why:'Really steht vor small, der Artikel vor really.'},
+ {skill:'intensity',p:'Übersetze: Die Mädchen sind sehr glücklich.',a:['The girls are very happy.'],why:'Very steht vor happy; im Plural bleibt happy unverändert.'},
+ {skill:'comparison',p:'Übersetze: Das ist der größte Hund.',a:['This is the biggest dog.','It is the biggest dog.'],why:'Big → the biggest, g wird verdoppelt.'},
+ {skill:'comparison',p:'Übersetze: Meine Schwester ist jünger als ich.',a:['My sister is younger than me.','My sister is younger than I am.'],why:'Younger than für zwei Personen.'},
+ {skill:'meaning',p:'Übersetze: Ich bin gelangweilt. Das Buch ist langweilig.',a:['I am bored. The book is boring.'],why:'Bored ist das Gefühl; boring löst es aus.'},
+ {skill:'meaning',p:'Übersetze: Wir sind aufgeregt. Das Spiel ist aufregend.',a:['We are excited. The game is exciting.','We are excited. The match is exciting.'],why:'Excited und exciting sind nicht austauschbar.'},
+ {skill:'repair',p:'Schreibe richtig oder unverändert: „The dog is very old.“',a:['The dog is very old.'],why:'Der Satz ist bereits richtig.'},
+ {skill:'repair',p:'Schreibe richtig oder unverändert: „She has got an very olds dog.“',a:['She has got a very old dog.'],why:'A vor very old; old bleibt unverändert.'},
+ {skill:'transfer',p:'Übersetze beide Sätze: Die Katzen sind hungrig. Sie haben eine kleine Schüssel. (Verwende have got.)',a:['The cats are hungry. They have got a small bowl.'],why:'Are bei cats, have got bei they, small vor bowl.'},
+ {skill:'transfer',p:'Übersetze beide Sätze: Der Junge ist glücklich. Er hat einen alten Hund. (Verwende has got.)',a:['The boy is happy. He has got an old dog.'],why:'Happy nach is, an old dog, has got bei he.'},
+];
+let reviewTasks=[],reviewIndex=0,reviewRight=0,reviewSelfRight=0,reviewDueSession=false;
+function chooseReviewTasks(){
+ const last=Array.isArray(plan.lastSkills)?plan.lastSkills:[];
+ const skills=shuffle(['position','unchanged','intensity','comparison','repair','transfer',...(plan.advanced?['meaning']:[])]);
+ skills.sort((a,b)=>Number(last.includes(a))-Number(last.includes(b)));
+ const chosen=skills.slice(0,4);
+ const recent=Array.isArray(plan.lastPrompts)?plan.lastPrompts:[];
+ return shuffle(chosen.map(skill=>{
+  const cases=reviewBank.filter(t=>t.skill===skill),candidates=cases.filter(t=>!recent.includes(t.p));
+  return {...shuffle(candidates.length?candidates:cases)[0]};
+ }));
+}
+function showReviewTask(){
+ const task=reviewTasks[reviewIndex];byId('review-count').textContent='Aufgabe '+(reviewIndex+1)+' von '+reviewTasks.length;
+ byId('review-prompt').textContent=task.p;byId('review-answer').value='';byId('review-answer').disabled=false;
+ byId('review-check').hidden=false;byId('review-reveal').hidden=true;byId('review-next').hidden=true;byId('review-self').hidden=true;
+ feedback('review-feedback','Schreibe deinen ganzen Satz selbst. Es gibt keine vorgegebenen Antworten.');
+}
+byId('review-start').addEventListener('click',()=>{
+ reviewTasks=chooseReviewTasks();reviewIndex=0;reviewRight=0;reviewSelfRight=0;
+ reviewDueSession=plan.stage!=='unplanned'&&plan.stage!=='finished'&&plan.due<=Date.now();
+ byId('review-work').hidden=false;byId('review-start').hidden=true;showReviewTask();
+});
+byId('review-check').addEventListener('click',()=>{
+ const a=byId('review-answer').value.trim();if(!a){feedback('review-feedback','Erst einen ganzen Satz schreiben.','bad');return;}
+ const t=reviewTasks[reviewIndex];t.firstAnswer=a;t.recognized=matchesSentence(a,t.a);
+ byId('review-answer').disabled=true;byId('review-check').hidden=true;
+ if(t.recognized){reviewRight++;feedback('review-feedback','Automatisch richtig erkannt. '+t.why,'good');byId('review-next').hidden=false;}
+ else{feedback('review-feedback','Nicht eindeutig automatisch prüfbar. Vergleiche deinen ersten Satz mit dem Beispiel, bevor du selbst einschätzt.');byId('review-reveal').hidden=false;}
+});
+byId('review-reveal').addEventListener('click',()=>{
+ const t=reviewTasks[reviewIndex];feedback('review-feedback','Beispiel: '+t.a[0]+' · Prüfkriterium: '+t.why);
+ byId('review-first').textContent='Dein erster Versuch: '+t.firstAnswer;
+ byId('review-reveal').hidden=true;byId('review-self').hidden=false;
+});
+function reviewRate(yes){if(yes)reviewSelfRight++;byId('review-self').hidden=true;feedback('review-feedback',yes?'Als eigene richtige Antwort erfasst – nicht automatisch bestätigt.':'Zum Nachlernen markiert.');byId('review-next').hidden=false;}
+byId('review-self-good').addEventListener('click',()=>reviewRate(true));
+byId('review-self-bad').addEventListener('click',()=>reviewRate(false));
+byId('review-next').addEventListener('click',()=>{
+ reviewIndex++;
+ if(reviewIndex<reviewTasks.length){showReviewTask();return;}
+ const achieved=reviewRight+reviewSelfRight;
+ if(reviewDueSession){
+  plan.lastPrompts=reviewTasks.map(t=>t.p);plan.lastSkills=reviewTasks.map(t=>t.skill);
+  if(achieved<3){plan.due=Date.now()+day;}
+  else if(plan.stage==='day1'){plan.stage='week';plan.due=Date.now()+6*day;}
+  else{plan.stage='finished';plan.due=0;}
+  savePlan();
+ }
+ byId('review-work').hidden=true;byId('review-start').hidden=false;
+ refreshPlan();
+ byId('review-status').textContent=(reviewDueSession?'Fällige Wiederholung bearbeitet: ':'Freiwillige Übung abgeschlossen: ')+reviewRight+' automatisch erkannt, '+reviewSelfRight+' selbst als richtig beurteilt – insgesamt '+achieved+' von '+reviewTasks.length+'. '+(reviewDueSession?(achieved>=3?'Nächster Wiederholungsschritt vorgemerkt.':'Wiederhole die unsicheren Regeln; morgen gibt es einen erneuten Check.'):'Der Termin deiner geplanten Wiederholung bleibt unverändert.');
+});
+refreshPlan();
+// Notes and practical controls
+const key='hanna_kompass_adjectives_v01_notes';try{const notes=JSON.parse(localStorage.getItem(key)||'{}');[['note-understood','understood'],['note-hard','hard'],['note-example','example']].forEach(([id,k])=>{if(typeof notes[k]==='string')byId(id).value=notes[k];});}catch(e){}
+byId('note-save').addEventListener('click',()=>{try{localStorage.setItem(key,JSON.stringify({understood:byId('note-understood').value,hard:byId('note-hard').value,example:byId('note-example').value}));byId('note-status').textContent='Notizen gespeichert.';}catch(e){byId('note-status').textContent='Speichern in diesem Browser nicht möglich.';}});
+byId('homework-toggle').addEventListener('click',()=>{activateMode('nachschlagen');byId('homework-toggle').textContent='Hausaufgaben: Nachschlagen geöffnet';});
+byId('print-page').addEventListener('click',()=>window.print());
+let fragment=location.hash.slice(1);if(['verstehen','nachschlagen','verbindungen','schreibcheck','notizen'].includes(fragment))activateMode(fragment);
+})();
+</script>
+</body></html>
