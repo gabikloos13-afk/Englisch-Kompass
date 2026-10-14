@@ -343,6 +343,31 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 .compass-mode-panel{background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;margin:0 0 16px!important}
 .learn-step-nav{background:#f8fafc!important}
 @media(max-width:650px){.page-content{padding:0 12px 24px!important}.compass-head{padding:20px!important}.compass-mode-grid{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
+
+/* Designabgleich 2026-10-14: nur neutrale Anzeigeflaechen.
+   Didaktische Farben von Karten, Reglern und Denkwerkzeugen bleiben erhalten. */
+@media screen {
+  body .page-content .compass-mode-panel {
+    background:#fff!important;
+    background-image:none!important;
+  }
+  body .page-content .compass-mode-panel > :is(
+    .learn-panel,
+    .ref-wrap,
+    .hg-reference-wrap,
+    .sp-reference-wrap,
+    .sp-ref-wrap,
+    .wo-ref-wrap,
+    .connections-panel,
+    .connections-wrap,
+    .writecheck-panel,
+    .notes-panel
+  ){
+    background:#fff!important;
+    background-image:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
