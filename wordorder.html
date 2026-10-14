@@ -1050,6 +1050,13 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 .sp-thinking-line,.wo-thinking-line,.past-thinking-line,.path{max-width:1110px!important;margin:0 auto 15px!important;padding:11px 16px!important;background:#fff!important;color:#52657b!important;border:1px solid #cfdce9!important;border-radius:11px!important;box-shadow:none!important}
 @media(max-width:650px){.overview-return-wrap.page-action-bar,.toolbar{padding:0 12px!important}.page-content,.topic-page-content{padding:0 12px 26px!important}.compass-head,.head{padding:19px!important}.compass-mode-grid,.mainnav{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn,.mainnav>button{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
 @media print{.compass-mode-grid,.mainnav{display:none!important}}
+
+/* Fix: Wozu?-Karte ohne leere Symbolspalte */
+#wo-learn-entry-panel .wo-style-002{display:block!important;grid-template-columns:none!important;padding:20px 22px!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:12px!important;box-shadow:none!important}
+#wo-learn-entry-panel .wo-style-002>div{min-width:0!important}
+#wo-learn-entry-panel .wo-style-003{display:none!important}
+#wo-learn-entry-panel .wo-style-005{max-width:78ch}
+@media(max-width:650px){#wo-learn-entry-panel .wo-style-002{padding:16px!important}}
 </style>
 </head>
 <body><main class="topic-page topic-page--word-order" id="wordorder-refactor-root">
