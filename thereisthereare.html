@@ -304,36 +304,36 @@ body.tia-spickzettel-print .tia-print-spickzettel section{border-top:1px solid #
   .conn-card{grid-template-columns:1fr}
   table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
+
+/* Einheitliche Seitenhülle nach index.html – nur äußere Gestaltung */
+:root{--unified-ink:#243b55;--unified-muted:#52657b;--unified-border:#cfdce9;--unified-bg:#e7eef4}
+body{background:var(--unified-bg);color:var(--unified-ink)}
+.site-nav{display:none!important}
+.unified-actions{max-width:1180px;margin:18px auto 14px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.unified-back,.unified-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 15px;background:#fff;color:var(--unified-ink);border:1px solid var(--unified-border);border-radius:11px;text-decoration:none;font:inherit;font-size:14px;line-height:1.3;box-shadow:none}
+.unified-actions button{cursor:pointer}
+.unified-actions button:hover,.unified-back:hover{background:#eef4fb;border-color:#a7bed3}
+.unified-actions button:focus-visible,.unified-back:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.unified-tools{display:flex;flex-wrap:wrap;gap:8px}
+.overview-return-wrap{display:none!important}
+.page-content{max-width:1180px;margin:0 auto;padding:0 20px 36px;box-sizing:border-box}
+.page-content>.learning-card,.page-content>article.learning-card{max-width:100%;margin:0;box-sizing:border-box;background:transparent;border:0;box-shadow:none;padding:0}
+.compass-head{background:#fff!important;color:var(--unified-ink)!important;border:1px solid var(--unified-border)!important;border-radius:16px!important;box-shadow:none!important;padding:25px 30px!important;margin:0 0 16px!important;min-height:0!important}
+.compass-head h1,.compass-head .compass-title{color:var(--unified-ink)!important;text-shadow:none!important}
+.compass-head .compass-subtitle,.compass-head .lead,.compass-head .eyebrow,.compass-head .compass-kicker{color:var(--unified-muted)!important}
+.compass-head .compass-emoji,.compass-head .head-badge{display:none!important}
+.compass-mode-grid{margin-top:0!important}
+@media(max-width:640px){.unified-actions{padding:0 14px;margin-top:12px}.unified-tools{width:100%}.unified-tools button{flex:1 1 auto}.page-content{padding:0 14px 24px}.compass-head{padding:18px!important}}
+@media print{.unified-actions{display:none!important}}
+
 </style>
 </head>
 <body>
-<nav class="site-nav" aria-label="Themennavigation">
-  <div class="site-nav-inner">
-    <a href="index.html" class="nav-logo"><span class="nav-logo-icon" aria-hidden="true">🧭</span><span class="nav-logo-text">Hannas Kompass</span></a>
-    <div class="nav-links" aria-label="Weitere Themen">
-      <a href="tobe.html" class="nav-link">🟦 to be</a>
-      <a href="pronouns.html" class="nav-link">👤 Pronouns</a>
-      <a href="havegot.html" class="nav-link">🎒 have got</a>
-      <a href="simplepresent.html" class="nav-link">🔁 Simple Present</a>
-      <a href="questions.html" class="nav-link">❓ Questions</a>
-      <a href="progressive.html" class="nav-link">🎬 Progressive</a>
-      <a href="simplepast.html" class="nav-link">📖 Simple Past</a><a href="wordorder.html" class="nav-link">🚂 Word Order</a>
-      <a href="thereisthereare.html" class="nav-link is-active" aria-current="page">📍 there is/are</a>
-      <a href="articles.html" class="nav-link">🔤 Articles</a>
-      <a href="adjectives.html" class="nav-link">🎨 Adjectives</a>
-<a class="nav-link" href="listening.html">🎧 Listening</a>
-      <a href="index.html" class="nav-link nav-link-overview">Alle Themen →</a>
-    </div>
-    <div class="nav-actions">
-      <button type="button" class="ha-btn" id="ha-btn">📚 Hausaufgaben</button>
-      <button type="button" class="print-btn" id="print-ref-btn">🖨️ Spickzettel drucken</button>
-    </div>
-  </div>
-</nav>
+<div class="unified-actions" aria-label="Seitenaktionen"><a class="unified-back" href="index.html">← Zurück zur Übersicht</a><div class="unified-tools"><button type="button" class="ha-btn" id="ha-btn">Hausaufgabenmodus</button><button type="button" class="print-btn" id="print-ref-btn">Spickzettel drucken</button></div></div>
 
-<div class="overview-return-wrap">
-  <a class="overview-return" href="index.html" aria-label="Zur Startseite mit Themenübersicht">← Zurück zur Übersicht</a>
-</div>
+
+
+
 
 <main class="page-content">
   <article class="learning-card" id="top">
