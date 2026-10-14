@@ -1018,6 +1018,31 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 #nachschlagen .hg-ref-table-wrap,#nachschlagen .table-wrap{max-width:100%;overflow-x:auto}
 #schreibcheck input,#schreibcheck textarea,#notizen textarea{max-width:100%!important;width:100%!important}
 @media(max-width:700px){#nachschlagen>.hg-reference-wrap,#verbindungen>.connections-wrap,#schreibcheck>.writecheck-panel,#notizen>.notes-panel{padding:15px!important}#verbindungen .connection-compare,#notizen .notes-grid{grid-template-columns:minmax(0,1fr)!important}}
+
+/* Designabgleich 2026-10-14: nur neutrale Anzeigeflaechen.
+   Didaktische Farben von Karten, Reglern und Denkwerkzeugen bleiben erhalten. */
+@media screen {
+  body .page-content .compass-mode-panel {
+    background:#fff!important;
+    background-image:none!important;
+  }
+  body .page-content .compass-mode-panel > :is(
+    .learn-panel,
+    .ref-wrap,
+    .hg-reference-wrap,
+    .sp-reference-wrap,
+    .sp-ref-wrap,
+    .wo-ref-wrap,
+    .connections-panel,
+    .connections-wrap,
+    .writecheck-panel,
+    .notes-panel
+  ){
+    background:#fff!important;
+    background-image:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
