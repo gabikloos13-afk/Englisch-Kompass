@@ -148,10 +148,8 @@ function shuffle(list){const copy=list.slice();for(let i=copy.length-1;i>0;i--){
 /* Nur eindeutig gleichwertige Varianten automatisch anerkennen.
    Freie, nicht hinterlegte Antworten werden nicht als Grammatikfehler bewertet. */
 const extraAccepted={
- 'Hunde sind freundlich. (Hunde allgemein, keine bestimmten Hunde.)':['Dogs are nice.'],
  'Wir frühstücken um sieben.':['We have breakfast at seven o’clock.','We eat breakfast at seven o’clock.'],
  'Das Buch ist blau. (Es ist das bestimmte Buch, über das ihr gerade sprecht.)':['The book is blue in colour.'],
- 'Das Mädchen ist glücklich. (Ihr sprecht über ein ganz bestimmtes Mädchen.)':['The girl is glad.'],
  'Er hat einen roten Ball.':['He owns a red ball.'],
  'Ich sehe einen alten Hund. Der Hund ist klein.':['I can see an old dog. The dog is small.']
 };
@@ -201,7 +199,7 @@ function renderTest(){
   });
   function selfRate(alsoCorrect){
    t.done=true;t.selfChecked=alsoCorrect;review.hidden=true;
-   fb.className=alsoCorrect?'feedback good':'feedback';
+   fb.className='feedback';
    fb.textContent=alsoCorrect?'Als eigene Einschätzung vermerkt: möglicherweise ebenfalls richtig. Nicht automatisch bestätigt und nicht als automatisch richtig gezählt.':'Zum Nachlernen markiert. Vergleiche besonders den Artikel und die Satzbedeutung.';
    updateScore();
   }
