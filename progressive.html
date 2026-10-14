@@ -442,15 +442,25 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   function initSpelling(){
     var words=['play','read','make','write','run','swim','sit','get','dance','watch','come','stop']; var i=0;
     var word=document.querySelector('[data-spell-word]'), input=document.querySelector('[data-spell-input]'), fb=document.querySelector('[data-spell-feedback]');
-    function show(){ if(word) word.textContent=words[i]; if(input) input.value=''; if(fb){fb.className='feedback'; fb.textContent='Tippe die -ing-Form ein.';} }
-    function check(){ var correct=ing(words[i]); var val=(input.value||'').trim().toLowerCase(); if(!val){fb.className='feedback is-hint'; fb.textContent='Erst eine Form eintippen.'; return;} if(val===correct){fb.className='feedback is-good'; fb.textContent='Richtig: '+correct+'.';} else {fb.className='feedback is-careful'; fb.textContent='Noch nicht. Die richtige Form ist: '+correct+'. Prüfe e weg oder Verdopplung.';} }
+    var attempts=0, reveal=document.createElement('button');
+    reveal.type='button'; reveal.className='btn'; reveal.textContent='Lösung ansehen'; reveal.hidden=true;
+    if(fb && fb.parentNode) fb.parentNode.appendChild(reveal);
+    function show(){ attempts=0; reveal.hidden=true; if(word) word.textContent=words[i]; if(input) input.value=''; if(fb){fb.className='feedback'; fb.textContent='Tippe die -ing-Form ein.';} }
+    function check(){ var correct=ing(words[i]), val=(input.value||'').trim().toLowerCase();
+      if(!val){fb.className='feedback is-hint'; fb.textContent='Erst eine Form eintippen.'; return;}
+      if(val===correct){fb.className='feedback is-good';fb.textContent='Richtig. Du hast die -ing-Form selbst gebildet.';reveal.hidden=true;return;}
+      attempts++; fb.className='feedback is-careful';
+      fb.textContent=attempts===1?'Noch nicht. Prüfe die Endung des Grundverbs: Bleibt sie gleich, fällt ein stummes e weg oder wird der letzte Konsonant verdoppelt?':'Prüfe noch einmal: Bei kurzem betontem Vokal mit nur einem Endkonsonanten wird dieser oft verdoppelt; ein stummes e fällt meist weg. Schreibe einen zweiten Versuch oder sieh dir danach die Lösung an.';
+      reveal.hidden=attempts<2;
+    }
+    reveal.addEventListener('click',function(){if(attempts<2)return;fb.className='feedback is-hint';fb.textContent='Lösung: '+ing(words[i])+'. Vergleiche die Schreibregel mit deinem Versuch.';reveal.hidden=true;});
     var cb=document.querySelector('[data-spell-check]'), nb=document.querySelector('[data-spell-next]'); if(cb) cb.addEventListener('click',check); if(nb) nb.addEventListener('click',function(){i=(i+1)%words.length; show();}); if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter') check(); }); show();
   }
   function initState(){
     var items=[['play','action','play ist eine Handlung: playing ist möglich.'],['want','state','want ist ein Zustand/Wunsch: I want, nicht I am wanting.'],['read','action','read ist eine Handlung: reading ist möglich.'],['know','state','know ist ein Zustand im Kopf: I know, nicht I am knowing.'],['run','action','run ist eine Handlung: running ist möglich.'],['like','state','like ist eine Meinung/Vorliebe: I like, nicht I am liking.'],['understand','state','understand ist ein Zustand im Kopf: I understand.'],['watch','action','watch ist eine Handlung: watching ist möglich.']]; var i=0;
     var word=document.querySelector('[data-state-word]'), fb=document.querySelector('[data-state-feedback]'), quiz=document.querySelector('[data-state-quiz]');
     function show(){ if(word) word.textContent=items[i][0]; if(fb){fb.className='feedback'; fb.textContent='Entscheide zuerst.';} if(quiz) resetChoices(quiz); }
-    qa('[data-state-choice]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){ resetChoices(quiz); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true'); var ok=btn.getAttribute('data-state-choice')===items[i][1]; if(ok){btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+items[i][2];} else {btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. '+items[i][2];} }); });
+    qa('[data-state-choice]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){ resetChoices(quiz); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true'); var ok=btn.getAttribute('data-state-choice')===items[i][1]; if(ok){btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+items[i][2];} else {btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. Überlege: Beschreibt das Wort eine sichtbare Tätigkeit oder einen Zustand, einen Wunsch oder eine Meinung? Entscheide noch einmal.';} }); });
     var next=document.querySelector('[data-state-next]'); if(next) next.addEventListener('click',function(){i=(i+1)%items.length; show();}); show();
   }
   initMachine(); initRadar(); initSpelling(); initState();
@@ -458,20 +468,34 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 </script>
 <script>
 (function(){
-  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
-  function norm(s){ return (s||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim(); }
-  function answers(task){ var arr=[task.getAttribute('data-answer')||'']; var alt=task.getAttribute('data-alt'); if(alt){ alt.split('|').forEach(function(a){arr.push(a);}); } return arr.map(norm); }
-  function checkTask(task){
-    var input=task.querySelector('input'), fb=task.querySelector('.write-feedback'), sol=task.querySelector('[data-show-solution]'), val=norm(input.value), ok=answers(task).indexOf(val)>-1;
-    if(!val){ fb.className='write-feedback is-hint'; fb.textContent='Schreibe zuerst eine Antwort.'; if(sol) sol.hidden=true; return false; }
-    if(ok){ fb.className='write-feedback is-good'; fb.textContent='Richtig.'; if(sol) sol.hidden=true; return true; }
-    fb.className='write-feedback is-careful'; fb.textContent='Noch nicht. Tipp: '+(task.getAttribute('data-hint')||'Prüfe die Kernregel.'); if(sol) sol.hidden=false; return false;
+  function all(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+  function norm(v){return String(v||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim();}
+  function alternatives(task){var values=[task.getAttribute('data-answer')||''];var extra=task.getAttribute('data-alt');if(extra)extra.split('|').forEach(function(v){values.push(v);});return values.map(norm);}
+  function mark(task){
+    var input=task.querySelector('input'),fb=task.querySelector('.write-feedback'),sol=task.querySelector('[data-show-solution]');
+    if(!input||!fb)return false;
+    var value=norm(input.value);
+    if(!value){fb.className='write-feedback is-hint';fb.textContent='Schreibe zuerst deinen eigenen Satz.';if(sol)sol.hidden=true;return false;}
+    if(alternatives(task).indexOf(value)!==-1){fb.className='write-feedback is-good';fb.textContent='Richtig. Die Satzform passt.';if(sol)sol.hidden=true;task.dataset.reviewCorrect='true';return true;}
+    task.dataset.reviewCorrect='false';
+    var attempts=Number(task.dataset.reviewAttempts||0)+1;task.dataset.reviewAttempts=String(attempts);
+    fb.className='write-feedback is-careful';
+    if(attempts===1)fb.textContent='Noch nicht. Prüfe zuerst: Was passiert gerade, wer handelt, und steht am/is/are vor dem Verb mit -ing?';
+    else fb.textContent='Überarbeite deinen Satz. Denke an die Stellung von am/is/are, not oder das Fragezeichen. '+(task.getAttribute('data-hint')||'Kontrolliere die Form des Verbs.')+' Falls deine Antwort ebenfalls richtig sein könnte, vergleiche sie mit dem Beispiel.';
+    if(sol)sol.hidden=attempts<2;
+    return false;
   }
   document.addEventListener('click',function(e){
-    var one=e.target.closest('[data-check-one]'); if(one){ checkTask(one.closest('.write-task')); }
-    var solution=e.target.closest('[data-show-solution]'); if(solution){ var task=solution.closest('.write-task'), fb=task.querySelector('.write-feedback'); fb.className='write-feedback is-hint'; fb.textContent='Lösung: '+task.getAttribute('data-answer'); }
-    if(e.target.closest('[data-check-all]')){ var tasks=qa('.write-task'), right=0; tasks.forEach(function(t){ if(checkTask(t)) right++; }); var box=document.querySelector('[data-write-summary]'); if(box){ box.className='summary-box '+(right===tasks.length?'is-good':'is-careful'); box.textContent= right+' von '+tasks.length+' Aufgaben sicher. Entscheidend ist, welche Denkstelle noch wackelt.'; } }
-    if(e.target.closest('[data-reset-writecheck]')){ qa('.write-task').forEach(function(t){ var input=t.querySelector('input'), fb=t.querySelector('.write-feedback'), sol=t.querySelector('[data-show-solution]'); if(input) input.value=''; if(fb){fb.className='write-feedback'; fb.textContent='Noch nicht geprüft.';} if(sol) sol.hidden=true; }); var box=document.querySelector('[data-write-summary]'); if(box){box.className='summary-box'; box.textContent='Bearbeite die Aufgaben und prüfe danach.';} }
+    var check=e.target.closest('[data-check-one]');if(check){mark(check.closest('.write-task'));return;}
+    var solution=e.target.closest('[data-show-solution]');if(solution){
+      var task=solution.closest('.write-task');if(!task||Number(task.dataset.reviewAttempts||0)<2)return;
+      var fb=task.querySelector('.write-feedback');fb.className='write-feedback is-hint';
+      fb.textContent='Beispiellösung: '+task.getAttribute('data-answer')+'. Vergleiche Bedeutung, Satzstellung und Verbform. Eine andere korrekte Formulierung kann ebenfalls passen.';
+      solution.hidden=true;return;
+    }
+    if(e.target.closest('[data-check-all]')){var tasks=all('.write-task'),right=0;tasks.forEach(function(t){if(mark(t))right++;});
+      var box=document.querySelector('[data-write-summary]');if(box){box.className='summary-box '+(right===tasks.length?'is-good':'is-careful');box.textContent=right+' von '+tasks.length+' Antworten automatisch erkannt. Eine richtige Alternative kannst du anhand der Beispiellösung prüfen.';}return;}
+    if(e.target.closest('[data-reset-writecheck]')){all('.write-task').forEach(function(t){var input=t.querySelector('input'),fb=t.querySelector('.write-feedback'),sol=t.querySelector('[data-show-solution]');if(input)input.value='';if(fb){fb.className='write-feedback';fb.textContent='Noch nicht geprüft.';}if(sol)sol.hidden=true;delete t.dataset.reviewAttempts;delete t.dataset.reviewCorrect;});var box=document.querySelector('[data-write-summary]');if(box){box.className='summary-box';box.textContent='Bearbeite die Aufgaben und prüfe danach.';}}
   });
 })();
 </script>
