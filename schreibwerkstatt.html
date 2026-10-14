@@ -908,6 +908,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   }
 }
 
+
+/* CI 2026-10-14: einheitliche Seitenhülle nach index.html */
+body{background:#e7eef4!important;background-image:none!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.6!important}
+.site-actions,.overview-return-wrap.page-action-bar{width:auto!important;max-width:1140px!important;margin:14px auto!important;padding:0 15px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important;background:transparent!important;border:none!important;box-shadow:none!important}
+.site-actions a,.site-actions button,.overview-return-wrap .overview-return,.overview-return-wrap button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:9px 14px!important;background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:10px!important;text-decoration:none!important;font:400 14px/1.4 Arial,Helvetica,sans-serif!important;box-shadow:none!important}
+.site-actions .right,.overview-return-wrap .return-actions{display:flex!important;gap:8px!important;flex-wrap:wrap!important}
+.hero,.compass-head.topic-header{display:block!important;max-width:1110px!important;margin:0 auto 15px!important;padding:26px 30px!important;background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;min-height:0!important}
+.hero h1,.compass-head.topic-header .compass-title{font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif!important;color:#243b55!important;text-shadow:none!important}
+.hero p,.compass-head.topic-header .compass-subtitle{color:#52657b!important;font-size:15px!important;line-height:1.55!important}
+.hero .eyebrow,.compass-head.topic-header .compass-kicker{color:#52657b!important;font:400 12px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:.065em!important}
+.thinking,.past-thinking-line.sw-writing-line{max-width:1110px!important;margin:0 auto 15px!important;padding:11px 16px!important;background:#fff!important;color:#52657b!important;border:1px solid #cfdce9!important;border-radius:11px!important;box-shadow:none!important}
+.mode-tabs,.compass-mode-grid.topic-tabs{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;max-width:1110px!important;margin:0 auto 15px!important;padding:12px!important;background:#fff!important;background-image:none!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;overflow:visible!important}
+.mode-tabs>.mode-btn,.compass-mode-grid.topic-tabs>.compass-mode-btn{display:inline-flex!important;flex:0 1 auto!important;align-items:center!important;justify-content:center!important;min-height:42px!important;min-width:0!important;padding:10px 17px!important;background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:9px!important;box-shadow:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important;transform:none!important}
+.mode-tabs>.mode-btn[aria-selected="true"],.compass-mode-grid.topic-tabs>.compass-mode-btn[aria-selected="true"]{background:#e7eef4!important;color:#19344f!important;border-color:#9cb1c9!important}
+.mode-tabs>.mode-btn:hover,.compass-mode-grid.topic-tabs>.compass-mode-btn:hover{background:#eef4fb!important}
+.mode-tabs>.mode-btn:focus-visible,.compass-mode-grid.topic-tabs>.compass-mode-btn:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
+.compass-mode-icon,.compass-head.topic-header .compass-emoji{display:none!important}
+@media(max-width:650px){.site-actions,.overview-return-wrap.page-action-bar{padding:0 12px!important}.hero,.compass-head.topic-header{margin:0 12px 13px!important;padding:19px!important}.thinking,.past-thinking-line.sw-writing-line{margin:0 12px 13px!important}.mode-tabs,.compass-mode-grid.topic-tabs{margin:0 12px 13px!important;gap:6px!important;padding:9px!important}.mode-tabs>.mode-btn,.compass-mode-grid.topic-tabs>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
+
+.page-content.topic-page-content{max-width:1140px!important;margin:0 auto!important;padding:0 15px 35px!important}
+.learning-card.topic-shell{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important}
+.compass-mode-panel{border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important}
 </style>
 </head>
 <body>
@@ -916,9 +938,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 <div class="overview-return-wrap page-action-bar">
 <a class="overview-return" href="index.html">← Zurück zur Übersicht</a>
 <div class="return-actions page-action-buttons">
-<a class="overview-return overview-return-topic" href="simplepast.html#lernen">📖 Simple Past</a>
-<button class="print-btn print-page-btn" id="print-btn" type="button">🖨️ Diese Seite drucken</button>
-<button class="print-btn learning-reset-btn" id="sw-learning-reset" type="button">🧹 Lernstand löschen</button>
+<a class="overview-return overview-return-topic" href="simplepast.html#lernen">Simple Past</a>
+<button class="print-btn print-page-btn" id="print-btn" type="button">Diese Seite drucken</button>
+<button class="print-btn learning-reset-btn" id="sw-learning-reset" type="button">Lernstand löschen</button>
 </div>
 </div>
 <div class="page-content topic-page-content">
@@ -930,7 +952,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 <h1 class="compass-title">Schreibwerkstatt</h1>
 <p class="compass-subtitle">Sätze und kurze Texte schreiben, prüfen und verbessern.</p>
 </div>
-<span aria-hidden="true" class="compass-emoji">📝</span>
+
 </header>
 <div aria-label="Schreibweg" class="past-thinking-line sw-writing-line">
 <span>Auftrag lesen</span>
@@ -941,24 +963,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ── Level 2: Haupt-Tabs ── -->
 <nav aria-label="Bereiche der Schreibwerkstatt" class="compass-mode-grid topic-tabs" role="tablist">
 <button aria-controls="sw-verbbox" aria-pressed="true" aria-selected="true" class="compass-mode-btn is-active" data-tab="sw-mode" data-val="verbbox" id="tab-sw-verbbox" role="tab" type="button">
-<span class="compass-mode-icon">✍️</span><span>Verbbox-Text</span>
-<span class="compass-mode-hint">Text ergänzen</span>
+<span>Verbbox-Text</span>
 </button>
 <button aria-controls="sw-weekend" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="weekend" id="tab-sw-weekend" role="tab" type="button">
-<span class="compass-mode-icon">🌤️</span><span>My last weekend</span>
-<span class="compass-mode-hint">freier Text</span>
+<span>My last weekend</span>
 </button>
 <button aria-controls="sw-diary" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="diary" id="tab-sw-diary" role="tab" type="button">
-<span class="compass-mode-icon">📔</span><span>Dear Diary</span>
-<span class="compass-mode-hint">Eintrag schreiben</span>
+<span>Dear Diary</span>
 </button>
 <button aria-controls="sw-party" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="party" id="tab-sw-party" role="tab" type="button">
-<span class="compass-mode-icon">🎉</span><span>A great party</span>
-<span class="compass-mode-hint">Klassenarbeit</span>
+<span>A great party</span>
 </button>
 <button aria-controls="sw-reference" aria-pressed="false" aria-selected="false" class="compass-mode-btn" data-tab="sw-mode" data-val="reference" id="tab-sw-reference" role="tab" type="button">
-<span class="compass-mode-icon">🧭</span><span>Mini-Hilfe</span>
-<span class="compass-mode-hint">kurz nachsehen</span>
+<span>Mini-Hilfe</span>
 </button>
 </nav>
 <!-- ══════════ VERBBOX-TEXT ══════════ -->
