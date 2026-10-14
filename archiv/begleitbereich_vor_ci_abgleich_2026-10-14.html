@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Begleitbereich · Hannas Englisch-Kompass</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+  --green:#15803d;--green-soft:#f0fdf4;
+  --yellow:#92400e;--yellow-soft:#fffbeb;
+  --red:#b91c1c;--red-soft:#fef2f2;
+  --violet:#6d28d9;--violet-soft:#f5f3ff;
+  --gray-25:#fcfcfd;--gray-50:#f8fafc;--gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;--gray-300:#cbd5e1;--gray-400:#94a3b8;
+  --gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --radius:18px;--radius-sm:12px;--radius-pill:999px;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --shadow-sm:0 4px 14px rgba(15,23,42,.06);
+  --line:1px solid var(--gray-200);
+  --font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0 0 56px;font-family:var(--font-body);font-size:15px;line-height:1.62;color:var(--gray-800);background:linear-gradient(180deg,#14213d 0%,#1d4ed8 26%,var(--gray-50) 26%)}
+h1,h2,h3,p,ul,ol{margin-top:0}p,ul,ol{margin-bottom:0}button,a{font:inherit}a{color:inherit}
+.page{max-width:1060px;margin:0 auto;padding:26px 18px 0}
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;margin:0 0 18px;color:#fff}
+.logo-mark{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#38bdf8 0%,#1d4ed8 38%,#0f172a 100%);box-shadow:0 14px 32px rgba(15,23,42,.35);border:3px solid rgba(255,255,255,.88);font-size:2.2rem;flex-shrink:0}
+.kicker{margin:0 0 5px;font-family:var(--font-head);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+h1{margin:0;font-family:var(--font-head);font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.08;letter-spacing:-.02em;color:#fff}
+.hero-text{margin:8px 0 0;color:rgba(255,255,255,.84);font-size:1rem;max-width:720px}
+.top-actions{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 14px;border-radius:var(--radius-pill);text-decoration:none;border:1px solid #bfdbfe;font-family:var(--font-head);font-size:.9rem;cursor:pointer;background:#fff;color:var(--blue-dark);transition:box-shadow .18s,transform .18s,border-color .18s}
+.btn:hover{box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.btn-muted{color:var(--gray-600);border-color:var(--gray-200);background:var(--gray-50)}
+.btn-danger{color:var(--red);border-color:#fecaca;background:#fff}
+.btn-small{padding:6px 10px;font-size:.82rem}
+.btn-accent{background:var(--blue-soft);border-color:#bfdbfe;color:var(--blue-dark)}
+.tab-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:8px;background:#fff;border:var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.tab-button{border:1px solid var(--gray-200);background:var(--gray-50);color:var(--gray-600);border-radius:var(--radius-pill);padding:8px 12px;cursor:pointer;font-family:var(--font-head);font-size:.9rem}
+.tab-button[aria-selected="true"]{background:var(--blue-soft);border-color:#bfdbfe;color:var(--blue-dark)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.summary-grid{display:grid;grid-template-columns:1.25fr repeat(3,minmax(0,.75fr));gap:12px;margin-bottom:14px}
+.card{background:#fff;border:var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:17px}
+.card + .card{margin-top:14px}
+.card-soft{background:linear-gradient(135deg,#fff,var(--blue-soft))}
+.card-title{font-family:var(--font-head);font-size:1.04rem;color:var(--gray-800);margin:0 0 7px;display:flex;align-items:center;gap:8px}
+.card-text{font-size:.92rem;color:var(--gray-600);margin:0}
+.metric{display:block;font-family:var(--font-head);font-size:1.75rem;line-height:1.1;color:var(--gray-800);margin:6px 0 2px}
+.metric-label{font-size:.82rem;color:var(--gray-500)}
+.layout{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr);gap:14px;align-items:start}
+.stack{display:grid;gap:14px}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.topic-card{border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);padding:12px;display:grid;gap:8px}
+.topic-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.topic-title{font-family:var(--font-head);font-size:.98rem;color:var(--gray-800);margin:0}
+.topic-sub{font-size:.83rem;color:var(--gray-500);margin:0}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.75rem;white-space:nowrap;background:var(--gray-100);color:var(--gray-600)}
+.status-stable{background:var(--green-soft);color:var(--green)}
+.status-small{background:var(--yellow-soft);color:var(--yellow)}
+.status-focus{background:var(--red-soft);color:var(--red)}
+.status-empty{background:var(--gray-100);color:var(--gray-600)}
+.status-note{background:var(--blue-soft);color:var(--blue-dark)}
+.topic-details{font-size:.84rem;color:var(--gray-600)}
+.list{display:grid;gap:9px;margin-top:10px}
+.item{border:var(--line);border-radius:var(--radius-sm);padding:11px 12px;background:var(--gray-25)}
+.item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:3px}
+.item-title{font-family:var(--font-head);color:var(--gray-800)}
+.item-meta{font-size:.84rem;color:var(--gray-500)}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:3px 8px;border-radius:var(--radius-pill);background:var(--yellow-soft);color:var(--yellow);font-family:var(--font-head);font-size:.82rem;white-space:nowrap}
+.empty{padding:13px 14px;border-radius:var(--radius-sm);background:var(--green-soft);color:var(--green);font-size:.92rem}
+.help-list{display:grid;gap:8px;margin-top:10px}
+.help-step{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;border:var(--line);border-radius:var(--radius-sm);padding:10px 11px;background:var(--gray-25);font-size:.9rem;color:var(--gray-700)}
+.step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue-soft);color:var(--blue-dark);font-family:var(--font-head);font-size:.82rem;flex-shrink:0}
+.notice{margin-top:14px;padding:14px 16px;border-radius:var(--radius);background:#fff;border:var(--line);color:var(--gray-600);font-size:.88rem;box-shadow:var(--shadow-sm)}
+.data-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.small{font-size:.82rem;color:var(--gray-500)}
+.table-wrap{overflow-x:auto;margin-top:12px;border:var(--line);border-radius:var(--radius-sm);background:#fff}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:10px 12px;border-bottom:var(--line);text-align:left;vertical-align:middle}
+th{font-family:var(--font-head);font-size:.86rem;color:var(--gray-600);background:var(--gray-50)}
+td{font-size:.9rem;color:var(--gray-700)}
+tr:last-child td{border-bottom:0}
+.row-actions{display:flex;flex-wrap:wrap;gap:7px}
+.danger-box{margin-top:12px;padding:14px;border-radius:var(--radius-sm);border:1px solid #fecaca;background:var(--red-soft)}
+.danger-box .card-title{color:var(--red)}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.guide-card{border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);padding:13px}
+.guide-card h3{font-family:var(--font-head);font-size:.98rem;color:var(--gray-800);margin:0 0 6px}
+.guide-card p{font-size:.9rem;color:var(--gray-600);margin:0}
+.rule-list{display:grid;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.rule-list li{border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);padding:10px 12px;color:var(--gray-700);font-size:.9rem}
+.checklist{margin:10px 0 0;padding-left:18px;color:var(--gray-700);font-size:.9rem}
+.checklist li{margin:4px 0}
+.code-pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:var(--radius-pill);background:var(--gray-100);color:var(--gray-700);font-size:.82rem;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+@media(max-width:900px){.summary-grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.guide-grid{grid-template-columns:1fr}}
+@media(max-width:620px){body{background:linear-gradient(180deg,#14213d 0%,#1d4ed8 22%,var(--gray-50) 22%)}.page{padding:18px 12px 0}.hero{grid-template-columns:1fr;text-align:center;justify-items:center;gap:12px}.logo-mark{width:74px;height:74px;font-size:2rem}.summary-grid,.topic-grid{grid-template-columns:1fr}.top-actions,.tab-nav{display:grid;grid-template-columns:1fr}.btn,.tab-button{justify-content:center}table{min-width:520px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero" aria-labelledby="main-title">
+    <div class="logo-mark" aria-hidden="true">🧭</div>
+    <div>
+      <p class="kicker">Für Erwachsene</p>
+      <h1 id="main-title">Begleitbereich</h1>
+      <p class="hero-text">Kurze Übersicht, getrennte Register und eine zentrale Datenverwaltung.</p>
+    </div>
+  </header>
+
+  <div class="top-actions">
+    <a class="btn" href="index.html">← Zurück zum Kompass</a>
+    <a class="btn btn-accent" href="schreibwerkstatt.html">📝 Schreibwerkstatt</a>
+  </div>
+
+  <nav class="tab-nav" role="tablist" aria-label="Begleitbereich">
+    <button class="tab-button" type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Überblick</button>
+    <button class="tab-button" type="button" role="tab" id="tab-stumbles" aria-controls="panel-stumbles" aria-selected="false" data-tab="stumbles">Stolperstellen</button>
+    <button class="tab-button" type="button" role="tab" id="tab-learning" aria-controls="panel-learning" aria-selected="false" data-tab="learning">Lernstand löschen</button>
+    <button class="tab-button" type="button" role="tab" id="tab-writechecks" aria-controls="panel-writechecks" aria-selected="false" data-tab="writechecks">Schreib-Checks löschen</button>
+    <button class="tab-button" type="button" role="tab" id="tab-structure" aria-controls="panel-structure" aria-selected="false" data-tab="structure">Aufbauplan</button>
+    <button class="tab-button" type="button" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data">Daten & alles löschen</button>
+  </nav>
+
+  <section class="tab-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" data-panel="overview">
+    <section class="summary-grid" aria-label="Kurzübersicht">
+      <article class="card card-soft">
+        <h2 class="card-title">📌 Wichtigster Fokus</h2>
+        <p class="card-text" id="focus-text">Die Übersicht wird geladen.</p>
+      </article>
+      <article class="card">
+        <h2 class="card-title">Word Order</h2>
+        <span class="metric" id="wo-total">0</span>
+        <span class="metric-label">gezählte Stolperstellen</span>
+      </article>
+      <article class="card">
+        <h2 class="card-title">Schreib-Checks</h2>
+        <span class="metric" id="write-total">0</span>
+        <span class="metric-label">offene Stellen</span>
+      </article>
+      <article class="card">
+        <h2 class="card-title">Notizen</h2>
+        <span class="metric" id="note-total">0</span>
+        <span class="metric-label">Themen mit Eintrag</span>
+      </article>
+    </section>
+
+    <section class="layout">
+      <section class="card" aria-labelledby="ampel-title">
+        <h2 class="card-title" id="ampel-title">Themen-Ampel</h2>
+        <p class="card-text">Sie zeigt, wo gemeinsames Wiederholen gerade am meisten bringt.</p>
+        <div class="topic-grid" id="topic-grid"></div>
+      </section>
+      <aside class="stack" aria-label="Begleithilfe">
+        <section class="card" aria-labelledby="next-title">
+          <h2 class="card-title" id="next-title">Was jetzt hilft</h2>
+          <p class="card-text">Nicht alles auf einmal anfassen. Ein Mini-Fokus reicht.</p>
+          <div class="help-list" id="help-list"></div>
+        </section>
+        <section class="card" aria-labelledby="notes-title">
+          <h2 class="card-title" id="notes-title">Offene Fragen aus den Notizen</h2>
+          <p class="card-text">Wenn Hanna etwas notiert hat, ist das oft wichtiger als eine Zahl.</p>
+          <div class="list" id="notes-list"></div>
+        </section>
+      </aside>
+    </section>
+  </section>
+
+  <section class="tab-panel" id="panel-stumbles" role="tabpanel" aria-labelledby="tab-stumbles" data-panel="stumbles">
+    <section class="layout">
+      <section class="card" aria-labelledby="wordorder-title">
+        <h2 class="card-title" id="wordorder-title">Word Order: gezählte Stolperstellen</h2>
+        <p class="card-text">Diese Liste kommt aus der vorhandenen Word-Order-Zählung.</p>
+        <div class="list" id="wordorder-list"></div>
+      </section>
+      <section class="card" aria-labelledby="write-title">
+        <h2 class="card-title" id="write-title">Schreib-Checks: offene Stellen</h2>
+        <p class="card-text">Hier erscheinen Aufgaben, deren letzter gespeicherter Stand noch nicht sicher war.</p>
+        <div class="list" id="write-list"></div>
+      </section>
+    </section>
+  </section>
+
+  <section class="tab-panel" id="panel-learning" role="tabpanel" aria-labelledby="tab-learning" data-panel="learning">
+    <section class="card" aria-labelledby="learning-title">
+      <h2 class="card-title" id="learning-title">Lernstand löschen</h2>
+      <p class="card-text">Löscht pro Thema die abgehakten Lernpunkte und Notizen. Schreib-Checks bleiben erhalten.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thema</th><th>Gespeicherter Lernstand</th><th>Aktion</th></tr></thead>
+          <tbody id="learning-reset-list"></tbody>
+        </table>
+      </div>
+      <div class="data-actions">
+        <button class="btn btn-danger" type="button" id="reset-all-learning">Lernstand aller Themen löschen</button>
+      </div>
+    </section>
+  </section>
+
+  <section class="tab-panel" id="panel-writechecks" role="tabpanel" aria-labelledby="tab-writechecks" data-panel="writechecks">
+    <section class="card" aria-labelledby="write-reset-title">
+      <h2 class="card-title" id="write-reset-title">Schreib-Checks löschen</h2>
+      <p class="card-text">Löscht pro Thema gespeicherte Schreib-Check-Ergebnisse. Lernstand und Notizen bleiben erhalten.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thema</th><th>Gespeicherte Schreib-Check-Stellen</th><th>Aktion</th></tr></thead>
+          <tbody id="write-reset-list"></tbody>
+        </table>
+      </div>
+      <div class="data-actions">
+        <button class="btn btn-danger" type="button" id="reset-all-writechecks">Schreib-Checks aller Themen löschen</button>
+      </div>
+    </section>
+  </section>
+
+  <section class="tab-panel" id="panel-structure" role="tabpanel" aria-labelledby="tab-structure" data-panel="structure">
+    <section class="card" aria-labelledby="structure-title">
+      <h2 class="card-title" id="structure-title">Aufbauplan für spätere Erweiterungen</h2>
+      <p class="card-text">Dieser Bereich sammelt die festen Regeln, damit Klasse 6, 7 und spätere Themen später ergänzt werden können, ohne die bestehenden Klasse-5-Themen zu beschädigen.</p>
+
+      <div class="guide-grid" aria-label="Grundstruktur">
+        <article class="guide-card">
+          <h3>Startseite</h3>
+          <p>Nicht als harte Klassen-Reiter beginnen. Besser: Themen nach Lernlogik gruppieren und Klasse 5, 6 oder 7 nur als kleine Markierung an den Karten zeigen. Erst wenn sehr viele Themen da sind, kommt oben ein Filter.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Neue Themen</h3>
+          <p>Neue Themen werden angedockt, nicht in alte Themen hineingeschrieben. Jede neue Seite bekommt eine eigene Datei, eine feste ID und dieselbe Grundstruktur.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Begleitbereich</h3>
+          <p>Lernstand, Schreib-Checks, Stolperstellen und Löschen müssen über feste Themen-IDs laufen. Dadurch kann später jedes Thema einzeln verwaltet werden.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Archiv</h3>
+          <p>Alte Versionen oder ersetzte Themen werden nicht gelöscht, sondern archiviert. So bleibt nachvollziehbar, was geändert wurde.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="card" aria-labelledby="fixed-index-rule-title">
+      <h2 class="card-title" id="fixed-index-rule-title">Feste Regel für die Startseite</h2>
+      <p class="card-text">Die Startseite bleibt nach Lernlogik sortiert. Klassenstufen dienen nur als Orientierung, nicht als harte Hauptnavigation.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">Grundlagen</span> zuerst: Pronomen, to be, have got und andere Basisthemen.</li>
+        <li><span class="code-pill">Sätze bauen</span> für Satzstellung, Fragen, there is / there are und ähnliche Themen.</li>
+        <li><span class="code-pill">Zeiten</span> für Simple Present, Present Progressive, Simple Past und spätere Zeiten.</li>
+        <li><span class="code-pill">Wiederholung</span> aktuell nur als Platzhalter mit Hinweis „Kommt später“; kein Fake-Link auf Nachschlagen.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="index-learning-logic-title">
+      <h2 class="card-title" id="index-learning-logic-title">Startseite: Lernwege statt Linkliste</h2>
+      <p class="card-text">Die Startseite ist kein alphabetisches Inhaltsverzeichnis. Sie führt Hanna nach ihrer Absicht: verstehen, nachschlagen, prüfen oder später wiederholen.</p>
+      <div class="guide-grid" aria-label="Lernlogik der Startseite">
+        <article class="guide-card">
+          <h3>Verstehen</h3>
+          <p>Dieser Einstieg führt zu den Lernbereichen. Er ist für Themen gedacht, die Hanna neu aufbaut oder noch nicht sicher verstanden hat.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nachschlagen</h3>
+          <p>Dieser Einstieg führt zu Kurzregel, Satzmustern, Denkfallen und Spickzettel-Kern. Er ist für Hausaufgaben und schnelle Regelklärung gedacht.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Prüfen</h3>
+          <p>Dieser Einstieg führt zu Schreib-Checks oder kurzen Selbstprüfungen. Lösungen bleiben geschützt und erscheinen erst nach eigenem Versuch.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Wiederholen</h3>
+          <p>Dieser Einstieg bleibt bis zur Umsetzung des Wiederholungs-Modus ein klar gekennzeichneter Platzhalter. Später zeigt er bewusst markierte Stolperstellen.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Sortierung</span> Themen werden nach Lernlogik gruppiert, zum Beispiel Grundlagen, Sätze bauen und Zeiten, nicht alphabetisch.</li>
+        <li><span class="code-pill">Absicht zuerst</span> Die Startseite fragt sinngemäß: Was will Hanna jetzt tun?</li>
+        <li><span class="code-pill">Klassenstufe nachrangig</span> Klasse 5, 6 oder 7 bleibt eine Markierung an der Karte, aber nicht die Hauptlogik der Startseite.</li>
+        <li><span class="code-pill">keine Doppelstruktur</span> Der Index darf nicht zusätzliche Lerninhalte erklären, sondern führt ruhig zu den passenden Bereichen.</li>
+      </ul>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="index-repeat-placeholder-title">
+      <h2 class="card-title" id="index-repeat-placeholder-title">Startseite: Wiederholung als Platzhalter</h2>
+      <p class="card-text">Der Bereich „Wiederholung“ auf der Startseite bleibt sichtbar, ist aktuell aber noch kein echter Wiederholungs-Modus. Er darf nicht so tun, als gäbe es bereits gespeicherte Stolperstellen.</p>
+      <div class="guide-grid" aria-label="Regeln für den Wiederholungsbereich auf der Startseite">
+        <article class="guide-card">
+          <h3>Aktueller Zustand</h3>
+          <p>Solange der Wiederholungs-Modus nicht gebaut ist, zeigt der Bereich nur einen Hinweis wie „Kommt später“. Er verlinkt nicht ersatzweise auf Nachschlagen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine Fake-Links</h3>
+          <p>Leere Links, Blindlinks und Umleitungen auf <span class="code-pill">#nachschlagen</span> werden nicht verwendet. Ein nicht fertiger Bereich ist nicht klickbar und klar als geplant gekennzeichnet.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Spätere Umsetzung</h3>
+          <p>Der echte Wiederholungs-Modus wird später als eigener schlanker Bereich oder als eigene Datei, zum Beispiel <span class="code-pill">review.html</span>, umgesetzt.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Zweck</span> Wiederholung sammelt später bewusst markierte Stolperstellen, nicht alle Aufgaben und nicht alle Nachschlagekarten.</li>
+        <li><span class="code-pill">Speicherbasis</span> Grundlage ist ein zentraler Speicher wie <span class="code-pill">hanna_review_items_v1</span>.</li>
+        <li><span class="code-pill">Datenbasis</span> Themen bereiten nur stabile <span class="code-pill">data-review-id</span>, <span class="code-pill">data-topic-id</span> und <span class="code-pill">data-type="stolperstelle"</span> vor.</li>
+        <li><span class="code-pill">Bedienung später</span> Erlaubt sind einfache Aktionen wie „Nochmal üben“, „Kann ich“ und optional „Unsicher“.</li>
+        <li><span class="code-pill">Grenze</span> Keine Punkte, Sterne, Ranglisten, Quizplattform und keine automatische Sammlung aller Fehler.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="index-last-topic-title">
+      <h2 class="card-title" id="index-last-topic-title">Startseite: Zuletzt geöffnet</h2>
+      <p class="card-text">Die Startseite darf das zuletzt geöffnete Thema anzeigen. Diese Funktion ist eine Orientierungshilfe und kein Lernstand.</p>
+      <div class="guide-grid" aria-label="Regeln für zuletzt geöffnete Themen">
+        <article class="guide-card">
+          <h3>Speichern</h3>
+          <p>Gespeichert wird nur die stabile Themen-ID, zum Beispiel in <span class="code-pill">kompass_last_topic</span>. Der Wert wird gesetzt, wenn ein Thema bewusst geöffnet wird.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Löschen</h3>
+          <p>Beim vollständigen Zurücksetzen aller Kompass-Daten wird auch <span class="code-pill">kompass_last_topic</span> gelöscht. Beim Löschen einzelner Themen wird der Wert nur gelöscht, wenn genau dieses Thema betroffen ist.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Export und Import</h3>
+          <p>Der Wert darf beim Export mitgenommen werden, wird aber als Komfortwert behandelt. Beim Import wird er nur übernommen, wenn die Themen-ID im aktuellen Themenkatalog existiert.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">kein Lernstand</span> „Zuletzt geöffnet“ sagt nur, welches Thema zuletzt benutzt wurde, nicht ob Hanna es kann.</li>
+        <li><span class="code-pill">Themenkatalog</span> Neue Themen müssen mit stabiler ID, Titel und Datei im Index-Themenkatalog eingetragen werden, sonst kann „Zuletzt geöffnet“ sie nicht sauber anzeigen.</li>
+        <li><span class="code-pill">Fallback</span> Ist die gespeicherte ID unbekannt, wird der Hinweis ausgeblendet und der alte Wert darf gelöscht werden.</li>
+        <li><span class="code-pill">Linkziel</span> Der Link öffnet das Thema neutral oder im zuletzt sinnvollen Einstiegsbereich. Er darf keine Lösung oder keinen Schreib-Check-Erfolg vortäuschen.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="class-marker-title">
+      <h2 class="card-title" id="class-marker-title">Klasse 5, 6 und 7 später ergänzen</h2>
+      <p class="card-text">Neue Klassenstufen werden nicht als große Reiter oben aufgebaut. Die Themenkarten bekommen später nur eine kleine Markierung.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">Klasse 5</span> bestehende Grundlagen bleiben unverändert.</li>
+        <li><span class="code-pill">Klasse 6</span> neue Themen werden als eigene Dateien angedockt.</li>
+        <li><span class="code-pill">Klasse 7</span> später genauso: eigene Datei, eigene Themen-ID, gleiche Grundstruktur.</li>
+        <li><span class="code-pill">Filter erst später</span> Erst wenn sehr viele Themen da sind: Alle, Klasse 5, Klasse 6, Klasse 7, Wiederholung.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="protection-rule-title">
+      <h2 class="card-title" id="protection-rule-title">Schutzregel gegen kaputte alte Themen</h2>
+      <p class="card-text">Neue Klasse-6- oder Klasse-7-Themen dürfen bestehende Klasse-5-Dateien nicht verändern. Erweiterungen werden angedockt, nicht in alte Seiten hineingebaut.</p>
+      <ul class="checklist">
+        <li>Für jedes neue Thema eine neue HTML-Datei anlegen.</li>
+        <li>Bestehende Klasse-5-Dateien nur anfassen, wenn dort wirklich ein Fehler behoben werden muss.</li>
+        <li>Index und Begleitbereich sollen langfristig aus einem zentralen Themenkatalog lesen.</li>
+        <li>Neue Themen bekommen eigene IDs, damit Lernstand, Schreib-Check und Löschen getrennt bleiben.</li>
+        <li>Vor jeder Erweiterung zuerst prüfen: Wird eine alte Datei verändert? Falls ja, stoppen und neu planen.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="index-structure-title">
+      <h2 class="card-title" id="index-structure-title">Empfohlene Struktur der Startseite</h2>
+      <p class="card-text">Die Startseite soll für Hanna einfach bleiben. Deshalb nicht oben sofort Klasse 5, 6 und 7 als große Hauptnavigation zeigen.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">jetzt</span> Gruppen nach Lernlogik: Grundlagen, Sätze bauen, Zeiten; Wiederholung nur als nicht klickbarer Platzhalter.</li>
+        <li><span class="code-pill">später</span> kleine Klassen-Markierung an der Themenkarte: Klasse 5, Klasse 6, Klasse 7.</li>
+        <li><span class="code-pill">erst bei vielen Themen</span> dezenter Filter oben: Alle, Klasse 5, Klasse 6, Klasse 7, Wiederholung.</li>
+        <li><span class="code-pill">nicht empfohlen</span> harte Startseiten-Reiter nur nach Klasse, weil Hanna dann bei Wiederholung und Grundlagen zu schnell suchen muss.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="topic-catalog-title">
+      <h2 class="card-title" id="topic-catalog-title">Zentraler Themenkatalog als Ziel</h2>
+      <p class="card-text">Langfristig sollte jedes Thema nur noch einmal in einer festen Liste gepflegt werden. Index, Begleitbereich und Löschfunktionen greifen dann auf dieselbe Liste zu.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feld</th><th>Bedeutung</th><th>Beispiel</th></tr></thead>
+          <tbody>
+            <tr><td>ID</td><td>stabiler technischer Name</td><td><span class="code-pill">wordorder</span></td></tr>
+            <tr><td>Titel</td><td>sichtbarer Themenname</td><td>Word Order</td></tr>
+            <tr><td>Datei</td><td>HTML-Datei des Themas</td><td><span class="code-pill">wordorder.html</span></td></tr>
+            <tr><td>Klasse</td><td>Orientierung, keine harte Grenze</td><td>5 oder 6</td></tr>
+            <tr><td>Gruppe</td><td>Sortierung auf der Startseite</td><td>Sätze bauen</td></tr>
+            <tr><td>Status</td><td>sichtbar, geplant, archiviert</td><td>active, planned, archive</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="new-topic-title">
+      <h2 class="card-title" id="new-topic-title">Pflichtregeln für jede neue HTML-Seite</h2>
+      <ul class="checklist">
+        <li>Neue Seite immer aus einer Vorlage bauen, nicht aus einem alten Thema wild kopieren.</li>
+        <li>Jede Seite braucht eine eindeutige Themen-ID, zum Beispiel <span class="code-pill">goingto</span>.</li>
+        <li>Grundstruktur bleibt gleich: Lernen, Nachschlagen, Schreib-Check, Notizen.</li>
+        <li>Pro Thema nur ein starkes Denkwerkzeug, keine Spielerei und keine zweite Hauptlogik.</li>
+        <li>Schreib-Check verrät keine Lösung vorher: erst Antwort, dann prüfen, dann optional Lösung anzeigen. Die Detailregeln stehen im Abschnitt Schreib-Checks.</li>
+        <li>Speicherwerte immer mit Themen-ID anlegen, damit der Begleitbereich gezielt löschen kann.</li>
+        <li>Bestehende Klasse-5-Dateien nicht anfassen, wenn nur ein Klasse-6-Thema ergänzt wird.</li>
+        <li>Nach jeder Erweiterung prüfen: Index, Navigation, Begleitbereich, Export/Import, Löschen, mobile Ansicht und toten Code.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="reference-standard-v1-title">
+      <h2 class="card-title" id="reference-standard-v1-title">Referenzstandard Version 1: have got</h2>
+      <p class="card-text"><span lang="en">have got</span> ist ab jetzt der Qualitätsmaßstab für den Aufbau und die technische Prüfung anderer Einzelthemen. Es ist keine starre Kopiervorlage für Inhalte, sondern ein Referenzschema für Struktur, Didaktik und Code-Qualität.</p>
+      <div class="guide-grid" aria-label="Referenzschema für Einzelthemen">
+        <article class="guide-card">
+          <h3>Struktur übernehmen</h3>
+          <p>Jedes Thema braucht die klar getrennten Bereiche Lernen, Nachschlagen, Verbindungen, Schreib-Check und Notizen. Die Bereiche dürfen sich nicht gegenseitig doppeln.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Inhalt passend entwickeln</h3>
+          <p>Das Thema wird nicht aus <span lang="en">have got</span> kopiert. Hauptfeature, Stolperstellen, Beispiele und Schreib-Check müssen zur Grammatikregel des jeweiligen Themas passen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Technik sauber halten</h3>
+          <p>Die technische Qualität von <span lang="en">have got</span> ist der Mindeststandard: klare IDs, echte Anker, keine Inline-Styles, keine Inline-Handler und keine tote Altlogik.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="topic-build-schema-title">
+      <h2 class="card-title" id="topic-build-schema-title">Aufbau- und Prüfschema für Einzelthemen</h2>
+      <p class="card-text">Neue und überarbeitete Themen werden künftig nach diesem Schema aufgebaut und geprüft. Erst wenn alle Punkte erfüllt sind, gilt ein Thema als Kompass-tauglich.</p>
+
+      <h3>Dateiaufbau</h3>
+      <ul class="rule-list">
+        <li><span class="code-pill">Kopfbereich</span> Kurzer Titel, Thema klar benannt, kein großer platzraubender Banner.</li>
+        <li><span class="code-pill">Navigation</span> Die Hauptbereiche sind klar erreichbar und mit echten Zielankern verbunden.</li>
+        <li><span class="code-pill">Lernen</span> Kurzer Lernweg mit genau einem starken Hauptfeature und der wichtigsten Denkfalle.</li>
+        <li><span class="code-pill">Nachschlagen</span> Vollständiges Regelwissen mit druckbarem Kern, Satzmustern und typischen Denkfallen.</li>
+        <li><span class="code-pill">Verbindungen</span> Klare Abgrenzung zu verwandten Themen, keine neue zweite Erklärseite.</li>
+        <li><span class="code-pill">Schreib-Check</span> Eigener Versuch zuerst, dann Prüfung, dann Rückmeldung, Lösung nur bei Bedarf.</li>
+        <li><span class="code-pill">Notizen</span> Persönliche Lernjournal-Funktion bleibt ruhig und getrennt vom Fachinhalt.</li>
+      </ul>
+
+      <h3>Fachliche Prüfung</h3>
+      <ul class="checklist">
+        <li>Hat das Thema genau ein starkes Hauptfeature?</li>
+        <li>Erklärt dieses Hauptfeature die zentrale Grammatikentscheidung?</li>
+        <li>Sind Lernen, Nachschlagen, Verbindungen und Schreib-Check sauber getrennt?</li>
+        <li>Gibt es keine unnötigen Spielereien oder zweite Lernsysteme?</li>
+        <li>Sind Stolperstellen sinnvoll eingeordnet und nicht als eigener Aufgabenblock aufgebläht?</li>
+        <li>Sind Beispiele schulnah, eindeutig richtig oder eindeutig falsch und passend für Klasse 5?</li>
+        <li>Werden unnatürliche, aber mögliche englische Varianten nicht fälschlich als falsch markiert?</li>
+      </ul>
+
+      <h3>Schreib-Check-Prüfung</h3>
+      <ul class="checklist">
+        <li>Gibt es nur eine aktive Schreib-Check-Logik?</li>
+        <li>Bleiben genaue Denkfragen und Reparaturhinweise erhalten?</li>
+        <li>Werden Lösungen nicht verraten, bevor Hanna selbst geschrieben oder gedacht hat?</li>
+        <li>Werden leere Felder nicht als Fehler bewertet?</li>
+        <li>Gibt es keine nachträglichen Guard-Skripte, die die Hauptlogik überschreiben?</li>
+      </ul>
+
+      <h3>Technische Prüfung</h3>
+      <ul class="checklist">
+        <li>Sind die Pflichtanker <span class="code-pill">#lernen</span> und <span class="code-pill">#nachschlagen</span> vorhanden? Hat ein Thema einen Schreib-Check, muss zusätzlich <span class="code-pill">#schreibcheck</span> vorhanden sein. Simple Past nutzt stattdessen <span class="code-pill">#simplepast-denkzentrale</span>.</li>
+        <li>Stimmen Index-Links, Themen-Navigation und interne Sprungmarken?</li>
+        <li>Gibt es keine doppelten IDs?</li>
+        <li>Sind alle <span class="code-pill">aria-controls</span>, <span class="code-pill">aria-labelledby</span> und Label-Verknüpfungen gültig?</li>
+        <li>Ist der Code frei von Inline-Styles, <span class="code-pill">onclick</span>, <span class="code-pill">strong</span>, totem Code und alter Score-Logik?</li>
+        <li>Sind CSS-Blöcke nicht unnötig doppelt definiert?</li>
+        <li>Läuft die JavaScript-Syntax ohne Fehler?</li>
+      </ul>
+
+      <h3>Wiederholung vorbereiten</h3>
+      <ul class="checklist">
+        <li>Sind echte Stolperstellen mit stabilen <span class="code-pill">data-review-id</span>s vorbereitet?</li>
+        <li>Haben reviewfähige Elemente <span class="code-pill">data-topic-id</span> und <span class="code-pill">data-type="stolperstelle"</span>?</li>
+        <li>Wird keine fertige Wiederholungsfunktion versteckt eingebaut?</li>
+      </ul>
+
+      <p class="card-text">Kurzregel: <span lang="en">have got</span> zeigt den Qualitätsstandard. Jedes andere Thema übernimmt Struktur und Prüfmaßstab, aber bekommt seine eigene passende Denklogik.</p>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="index-anchor-rule-title">
+      <h2 class="card-title" id="index-anchor-rule-title">Index-Verknüpfungen und Sprungmarken</h2>
+      <p class="card-text">Alle Links aus der Startseite auf ein Thema müssen auf echte Zielbereiche zeigen. Die JavaScript-Umschaltung allein reicht nicht aus.</p>
+      <ul class="clean-list">
+        <li>Der Bereich Lernen bekommt die feste Sprungmarke <span class="code-pill">#lernen</span>.</li>
+        <li>Der Bereich Nachschlagen bekommt die feste Sprungmarke <span class="code-pill">#nachschlagen</span>.</li>
+        <li>Der Bereich Schreib-Check bekommt die feste Sprungmarke <span class="code-pill">#schreibcheck</span>, wenn ein Thema noch einen eigenen Schreib-Check hat. Simple Past ist die Ausnahme: Dort führt die Prüfung über <span class="code-pill">#simplepast-denkzentrale</span> und die eigene Schreibwerkstatt-Seite.</li>
+        <li>Empfohlen: Verbindungen bekommt <span class="code-pill">#verbindungen</span> und Notizen bekommt <span class="code-pill">#notizen</span>.</li>
+        <li>Die Hash-Logik darf zusätzlich das passende Panel öffnen, ersetzt aber keine echten HTML-IDs.</li>
+        <li>Nach jeder Themenänderung müssen alle internen Links aus <span class="code-pill">index.html</span> auf vorhandene Dateien und vorhandene Ziel-IDs zeigen.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="release-check-title">
+      <h2 class="card-title" id="release-check-title">Freigabeprüfung vor jeder neuen Themen-Version</h2>
+      <p class="card-text">Ein Thema gilt erst dann als fertig, wenn es technisch sauber, fachlich korrekt und für Hanna ruhig nutzbar ist. Die Prüfung erfolgt nicht nur am Einzelthema, sondern auch gegen Startseite und Begleitbereich.</p>
+
+      <h3>Technische Freigabe</h3>
+      <ul class="clean-list">
+        <li>Die HTML-Struktur ist vollständig: kein Inhalt nach <span class="code-pill">&lt;/html&gt;</span>, keine losen Abschnitte außerhalb des Dokuments.</li>
+        <li>Alle Dateien, internen Links und Sprungmarken funktionieren.</li>
+        <li>Alle IDs sind eindeutig; <span class="code-pill">aria-controls</span>, <span class="code-pill">aria-labelledby</span> und Labels zeigen auf vorhandene Ziele.</li>
+        <li>Die JavaScript-Syntax ist fehlerfrei; es gibt keine übereinandergelegten Guard-Skripte, keine doppelten Handler und keine alte überschreibende Logik.</li>
+        <li>Der Code enthält keine unnötigen Inline-Styles, keine Inline-Handler, keine <span class="code-pill">strong</span>-Altlasten, keinen toten Code und keine alte Score-Logik.</li>
+        <li>Speichern, Löschen, Export und Import passen zur Themen-ID und zum Begleitbereich.</li>
+        <li>Tabs, Buttons, Schreib-Checks, Lernjournal, mobile Ansicht und gegebenenfalls Druckansicht werden nach Änderungen praktisch getestet.</li>
+      </ul>
+
+      <h3>Fachliche Freigabe als Schulenglisch</h3>
+      <ul class="clean-list">
+        <li>Die Erklärung bleibt auf passendem Niveau der Klassenstufe und geht nicht unnötig über den Schulstoff hinaus.</li>
+        <li>Die Kernregel ist zuerst sichtbar; Sonderfälle und Zusatzwissen stehen im Nachschlagen.</li>
+        <li>Das Hauptfeature erklärt die zentrale Grammatikentscheidung und ist keine Dekoration.</li>
+        <li>Beispiele sind schulnah, eindeutig, altersangemessen und nicht künstlich kompliziert.</li>
+        <li>Richtige englische Varianten werden nicht fälschlich als Fehler markiert.</li>
+        <li>Typische Denkfallen sind priorisiert: wichtigste Klassenarbeitsfehler zuerst, Randfälle später.</li>
+        <li>Verbindungen zu anderen Themen helfen beim Abgrenzen, erzeugen aber keine zweite Erklärseite.</li>
+        <li>Schreib-Checks prüfen echte Anwendung und verraten die Lösung nicht vor dem eigenen Versuch.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="main-feature-rule-title">
+      <h2 class="card-title" id="main-feature-rule-title">Hauptfeature je Thema</h2>
+      <p class="card-text">Jedes Grammatikthema im Englisch-Kompass bekommt genau ein starkes Denkwerkzeug. Dieses Hauptfeature macht die zentrale Regel sichtbar und hilft Hanna beim Entscheiden. Es ist keine Dekoration und kein Spiel.</p>
+      <div class="guide-grid" aria-label="Regeln für das Hauptfeature je Thema">
+        <article class="guide-card">
+          <h3>Ein zentrales Denkwerkzeug</h3>
+          <p>Pro Thema gibt es ein Hauptfeature. Es zeigt, welche Frage Hanna zuerst stellen muss, welche Entscheidung folgt und wo die wichtigste Falle liegt.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine Spielerei-Sammlung</h3>
+          <p>Zusätzliche Buttons, Mini-Spiele, Animationen oder Trainer sind nur erlaubt, wenn sie das Hauptfeature unterstützen. Sie dürfen kein zweites Lernsystem bilden.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Prüffrage</h3>
+          <p>Hilft dieses Feature Hanna wirklich beim Denken oder sieht es nur interessant aus? Wenn es nur interessant aussieht, bleibt es draußen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Systematische Prüfung</h3>
+          <p>Bei jedem bestehenden und neuen Thema wird geprüft, ob das Hauptfeature klar erkennbar ist, zur Kernregel passt und die Seite nicht überlädt.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Pflicht</span> Pro Thema ein zentrales Denkwerkzeug.</li>
+        <li><span class="code-pill">Funktion</span> Das Denkwerkzeug erklärt die Hauptregel und hilft bei echten Entscheidungen.</li>
+        <li><span class="code-pill">Grenze</span> Keine mehreren kleinen Spielereien nebeneinander.</li>
+        <li><span class="code-pill">Denkfalle</span> Das Hauptfeature muss die wichtigste typische Fehlerquelle sichtbar machen.</li>
+        <li><span class="code-pill">Ort</span> Das Hauptfeature gehört in den Bereich Lernen und führt dort den ersten Denkweg.</li>
+        <li><span class="code-pill">Wartung</span> Neue Features dürfen bestehende Themen nicht unruhiger oder schwerer pflegbar machen.</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thema</th><th>Beispiel für ein Hauptfeature</th><th>Kernentscheidung</th></tr></thead>
+          <tbody>
+            <tr><td><span lang="en">to be</span></td><td>Kontrollzentrum für <span lang="en">am / is / are</span></td><td>Welche Person steht vorne?</td></tr>
+            <tr><td><span lang="en">have got</span></td><td>Haben-Waage für <span lang="en">have got / has got</span></td><td>Wer hat etwas?</td></tr>
+            <tr><td><span lang="en">there is / there are</span></td><td>Raum-Scanner für eine Sache oder mehrere Sachen</td><td>Eine Sache oder mehrere Sachen?</td></tr>
+            <tr><td><span lang="en">Articles a / an</span></td><td>Ohr-Tor für den Anfangslaut</td><td>Welchen Laut höre ich am Anfang?</td></tr>
+            <tr><td><span lang="en">Word Order</span></td><td>Satz-Schiebe-Maschine für die richtige Reihenfolge</td><td>Wo stehen Person, Verb, Ort und Zeit?</td></tr>
+            <tr><td><span lang="en">Simple Present</span></td><td>Verbform-Entscheider mit <span lang="en">he / she / it → s</span></td><td>Ist es regelmäßig? Wer tut etwas? Welche Verbform passt?</td></tr>
+            <tr><td><span lang="en">Present Progressive</span></td><td>Jetzt-Kamera für gerade laufende Handlungen</td><td>Passiert es gerade jetzt?</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section class="card" aria-labelledby="stumble-rule-title">
+      <h2 class="card-title" id="stumble-rule-title">Umgang mit Stolperstellen</h2>
+      <p class="card-text">Stolperstellen bleiben im Englisch-Kompass erhalten, aber nicht als eigener großer Hauptbereich. Sie werden in die bestehende Kompass-Struktur eingeordnet, damit die Seite ruhig, übersichtlich und lernwirksam bleibt.</p>
+      <p class="card-text">Grundregel: Stolperstellen werden nur behalten, wenn sie Hanna wirklich helfen, typische Fehler zu erkennen, zu verstehen und später gezielt zu wiederholen. Sie dürfen keine doppelten Aufgaben erzeugen und keine zusätzliche Unruhe in die Seite bringen.</p>
+
+      <div class="guide-grid" aria-label="Einordnung der Stolperstellen">
+        <article class="guide-card">
+          <h3>Lernen</h3>
+          <p>Im Bereich Lernen steht höchstens eine zentrale Stolperstelle. Sie gehört direkt zur Kernregel des Themas und wirkt wie eine Denkweiche.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nachschlagen</h3>
+          <p>Im Nachschlagen gibt es den festen Abschnitt „Typische Denkfallen“. Dort stehen Fehler, Grund, richtige Form und eine kurze Reparatur-Frage.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Kann ich’s?</h3>
+          <p>Dort erscheinen Stolperstellen nur als kurze Selbstchecks. Sie prüfen, ob Hanna die Denkfalle erkennt, ersetzen aber keinen großen Übungsbereich.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Lernjournal</h3>
+          <p>Das Lernjournal sammelt nur persönliche Unsicherheiten, zum Beispiel „Das verwechsle ich noch“. Es ist kein Ort für fachliche Fehlerlisten.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Wiederholung später</h3>
+          <p>In den späteren Wiederholungs-Modus kommen nur ausgewählte Stolperstellen, die gezielt mit „Nochmal üben“ markiert werden.</p>
+        </article>
+      </div>
+
+      <h3>Prüfkriterien</h3>
+      <p class="card-text">Eine Stolperstelle wird nur behalten, wenn mindestens zwei dieser Punkte zutreffen:</p>
+      <ul class="checklist">
+        <li>Der Fehler kommt in Klasse 5 häufig vor.</li>
+        <li>Die Stolperstelle erklärt einen Denkweg, nicht nur eine Lösung.</li>
+        <li>Sie ist nicht doppelt zu einer anderen Aufgabe.</li>
+        <li>Sie passt direkt zur Kernregel des Themas.</li>
+        <li>Sie kann später sinnvoll wiederholt werden.</li>
+      </ul>
+      <p class="card-text">Alles andere wird reduziert, zusammengeführt oder archiviert.</p>
+
+      <h3>Zielstruktur pro Grammatikthema</h3>
+      <ul class="rule-list">
+        <li><span class="code-pill">Lernen</span> Eine wichtigste Stolperstelle als Denkweiche.</li>
+        <li><span class="code-pill">Nachschlagen</span> Zwei bis vier typische Denkfallen.</li>
+        <li><span class="code-pill">Kann ich’s?</span> Ein bis drei kurze Selbstchecks.</li>
+        <li><span class="code-pill">Lernjournal</span> Persönliche Unsicherheiten von Hanna.</li>
+        <li><span class="code-pill">Wiederholung später</span> Nur gezielt markierte Stolperstellen.</li>
+      </ul>
+
+      <h3>Verbindliche Umsetzungsregel</h3>
+      <p class="card-text">Stolperstellen sind kein zusätzlicher Aufgabenbereich und kein Quiz. Sie dienen dazu, typische Denkfehler sichtbar zu machen und zu reparieren.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">1</span> Erst selbst denken oder schreiben.</li>
+        <li><span class="code-pill">2</span> Dann prüfen.</li>
+        <li><span class="code-pill">3</span> Dann Rückmeldung bekommen.</li>
+        <li><span class="code-pill">4</span> Dann bei Bedarf Lösung oder Reparaturhilfe anzeigen.</li>
+      </ul>
+      <p class="card-text">Lösungen dürfen nicht sichtbar sein, bevor Hanna selbst gedacht oder geschrieben hat.</p>
+    </section>
+
+
+    <section class="card" aria-labelledby="review-id-rules-title">
+      <h2 class="card-title" id="review-id-rules-title">Wiederholungs-IDs vorbereiten</h2>
+      <p class="card-text">Der Wiederholungs-Modus wird noch nicht gebaut. Die Themen dürfen aber jetzt schon saubere Andockstellen bekommen, damit später keine unsichtbare Umbaustelle entsteht.</p>
+      <div class="guide-grid" aria-label="Regeln für spätere Wiederholungs-IDs">
+        <article class="guide-card">
+          <h3>Nur echte Stolperstellen markieren</h3>
+          <p>Eine <span class="code-pill">data-review-id</span> bekommt nur ein Element, das später wirklich gezielt wiederholt werden kann: typische Fehler, zentrale Denkfallen oder eine bewusst wiederholbare Reparaturaufgabe.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Pflichtattribute</h3>
+          <p>Reviewfähige Stolperstellen bekommen immer <span class="code-pill">data-topic-id</span>, <span class="code-pill">data-type</span> und <span class="code-pill">data-review-id</span>. Optional kann <span class="code-pill">data-review-source</span> zeigen, ob die Stelle aus Lernen, Nachschlagen oder Schreib-Check kommt.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Stabile Namen</h3>
+          <p>Die <span class="code-pill">data-review-id</span> bleibt kurz, sprechend und dauerhaft. Sie beginnt mit der Themen-ID, nutzt Kleinschreibung und Bindestriche, zum Beispiel <span class="code-pill">havegot-he-she-it-has-got</span>.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Kein versteckter Modus</h3>
+          <p>Vorbereitung bedeutet nur Markierung. Es werden keine Punkte, Sterne, Ranglisten, zusätzlichen Buttons oder automatischen Wiederholungslisten eingebaut.</p>
+        </article>
+      </div>
+      <h3>Verbindliche Regeln</h3>
+      <ul class="checklist">
+        <li>Eine Review-ID steht für eine fachliche Stolperstelle, nicht für eine zufällige Aufgabe.</li>
+        <li>Wenn dieselbe Stolperstelle an mehreren Orten erscheint, darf dieselbe <span class="code-pill">data-review-id</span> verwendet werden. Dann muss die spätere Auswertung nach Review-ID zusammenführen.</li>
+        <li>Verschiedene Stolperstellen dürfen nie dieselbe <span class="code-pill">data-review-id</span> bekommen.</li>
+        <li>Schreib-Check-Aufgaben können zusätzlich ein Feld wie <span class="code-pill">reviewId</span> bekommen, wenn sie genau eine wiederholbare Stolperstelle prüfen.</li>
+        <li>Eine Review-ID wird nicht umbenannt, nur weil ein Text später schöner formuliert wird. Umbenennen nur bei fachlich anderer Stolperstelle.</li>
+      </ul>
+      <h3>Aktueller Stand bei <span lang="en">have got</span></h3>
+      <p class="card-text">Die wiederholungsfähigen Stolperstellen sind vorbereitet: <span class="code-pill">havegot-he-she-it-has-got</span>, <span class="code-pill">havegot-i-you-we-they-have-got</span>, <span class="code-pill">havegot-question-have-has-front</span>, <span class="code-pill">havegot-no-do-does-question</span>, <span class="code-pill">havegot-short-answer-no-got</span> und <span class="code-pill">havegot-you-question-answer-i</span>. Damit ist <span lang="en">have got</span> markiert, aber der Wiederholungs-Modus selbst bleibt weiterhin Phase 2.</p>
+    </section>
+
+
+    <section class="card" aria-labelledby="memory-aids-title">
+      <h2 class="card-title" id="memory-aids-title">Merkhilfen: feste Einordnung</h2>
+      <p class="card-text">Merkhilfen bleiben im Kompass, aber sie werden nicht mehr verstreut. Jede Merkhilfe braucht eine klare Funktion und einen passenden Ort.</p>
+      <div class="guide-grid" aria-label="Regeln für Merkhilfen">
+        <article class="guide-card">
+          <h3>Lernen / Wozu</h3>
+          <p>Hier steht höchstens eine zentrale Versteh-Merkhilfe. Sie hilft beim ersten Denken, löst aber keine Aufgabe. Beispiel: erst die Person suchen, dann have got oder has got wählen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nachschlagen</h3>
+          <p>Hier darf der vollständige Spickzettel stehen: Formen, Kurzformen, Fragen, Verneinungen, Kurzantworten und Sonderregeln. Dieser Bereich ist bewusst zum schnellen Nachsehen da.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Denkfallen und Stolperstellen</h3>
+          <p>Hier stehen Reparatur-Merkhilfen erst nach einem eigenen Versuch. Die Hilfe erklärt den Fehlerweg und zeigt, wie Hanna den Satz selbst repariert.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Schreib-Check</h3>
+          <p>Vor der Eingabe gibt es keine Merkhilfe, wenn sie die Lösung verrät. Nach einer falschen Antwort kommt zuerst eine Denkfrage. Die Musterlösung erscheint erst nach Klick auf Lösung anzeigen.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Orientierung ja</span> Merkhilfen dürfen den Denkweg zeigen.</li>
+        <li><span class="code-pill">Lösung nein</span> Merkhilfen dürfen keine Aufgabe lösen, bevor Hanna selbst gedacht hat.</li>
+        <li><span class="code-pill">Doppelte Tipps bündeln</span> verstreute Merke-, Tipp- und Achtung-Boxen werden zusammengeführt.</li>
+        <li><span class="code-pill">Pro Thema ein Hauptwerkzeug</span> Die zentrale Visualisierung bleibt führend, zum Beispiel bei have got die Haben-Waage.</li>
+      </ul>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="can-i-build-title">
+      <h2 class="card-title" id="can-i-build-title">Register: Kann ich’s? – verbindliche Bauweise</h2>
+      <p class="card-text">Das Register „Kann ich’s?“ ist eine kurze Selbstprüfung nach dem Lernen. Es ist kein zweiter Übungsbereich und kein Schreib-Check. Hanna soll merken, ob sie die Kernidee verstanden hat oder noch einmal zu Lernen oder Nachschlagen zurückgehen muss.</p>
+      <div class="guide-grid" aria-label="Bauweise für das Register Kann ich’s">
+        <article class="guide-card">
+          <h3>1. Mini-Entscheidung</h3>
+          <p>Prüft die Kernregel des Themas mit sehr wenigen Beispielen. Die Antwort bleibt zuerst verborgen. Erst denken, dann Antwort zeigen. Beispiel have got: I / you / we / they → have got; he / she / it → has got.</p>
+        </article>
+        <article class="guide-card">
+          <h3>2. Fehler-Scanner</h3>
+          <p>Zeigt einen typischen falschen Satz. Hanna sucht zuerst selbst die Fehlerstelle. Die Reparaturhilfe erscheint erst danach und erklärt den Denkweg, statt sofort die Lösung zu liefern.</p>
+        </article>
+        <article class="guide-card">
+          <h3>3. Kann ich es erklären?</h3>
+          <p>Eine kurze Erklärfrage prüft, ob Hanna die Regel in eigenen Worten wiedergeben kann. Keine Quizbewertung. Ziel ist Selbstdiagnose: sicher, fast sicher oder noch unklar.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Grenze zum Schreib-Check</h3>
+          <p>„Kann ich’s?“ arbeitet mit Entscheiden, Erkennen und Erklären. Der Schreib-Check bleibt der Ort für echte Eingabeaufgaben mit Prüfen-Button und optionaler Lösung nach dem Versuch.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Kurz halten</span> Pro Thema maximal drei Bausteine: Mini-Entscheidung, Fehler-Scanner, Erklärfrage.</li>
+        <li><span class="code-pill">Erst denken</span> Lösungen, Reparaturen und Erklärungen bleiben zunächst verborgen.</li>
+        <li><span class="code-pill">Keine Quizplattform</span> Keine Punkte, Sterne, Ranglisten oder Belohnungslogik.</li>
+        <li><span class="code-pill">Kein Zusatzstoff</span> Nur die wichtigste Kernlogik prüfen, nicht neue Regeln einführen.</li>
+        <li><span class="code-pill">Rückweg sichtbar</span> Wenn Hanna unsicher ist, soll klar sein: zurück zu Lernen oder Nachschlagen.</li>
+        <li><span class="code-pill">have got als Muster</span> Haben-Waage im Lernen, Mini-Entscheidung zu have/has, Fehler-Scanner mit Reparatur nach Klick, kurze Erklärfrage.</li>
+      </ul>
+    </section>
+
+
+
+
+
+    <section class="card" aria-labelledby="havegot-current-audit-title">
+      <h2 class="card-title" id="havegot-current-audit-title">Aktueller Abgleich: have got</h2>
+      <p class="card-text">Der aktuelle Stand von <span lang="en">have got</span> entspricht den neuen Regeln, muss aber bei späteren Änderungen erneut geprüft werden.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">Hauptfeature</span> Die Haben-Waage ist das zentrale Denkwerkzeug. Satzmaschine, Fehler-Scanner und Schreib-Check dürfen nur unterstützen und kein zweites Hauptsystem bilden.</li>
+        <li><span class="code-pill">Stolperstellen</span> Die typische Kernfalle <span lang="en">he / she / it → has got</span> ist im Lernen und Nachschlagen sichtbar. Weitere Stolperstellen bleiben kurz und reparierend.</li>
+        <li><span class="code-pill">Schreib-Check</span> Der aktuelle Schreib-Check hat eine zusammenhängende Logik. Die früheren zusätzlichen Guard-Skripte sind entfernt.</li>
+        <li><span class="code-pill">Denkfragen</span> Fehler bekommen konkrete Hinweise, zum Beispiel zur Person, zu <span lang="en">have got / has got</span>, zur Verneinung, zur Frageform oder zur Kurzantwort.</li>
+        <li><span class="code-pill">Lösungsschutz</span> Die Musterlösung erscheint erst nach falscher Eingabe über „Lösung anzeigen“. Leere Felder zeigen keine Lösung und werden nicht als Fehler gespeichert.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="trainer-cards-title">
+      <h2 class="card-title" id="trainer-cards-title">Tipp-Trainer und Karteikarten: verbindliche Lernlogik</h2>
+      <p class="card-text">Tipp-Trainer und Karteikarten werden nur eingesetzt, wenn ein Thema echte Wiederholung braucht. Sie sind kein Quiz und keine Belohnungsmechanik. Ziel ist, Stolperstellen so lange aktiv zu halten, bis Hanna sie sicher kann.</p>
+      <div class="guide-grid" aria-label="Lernlogik für Tipp-Trainer und Karteikarten">
+        <article class="guide-card">
+          <h3>Kann ich</h3>
+          <p>Dieser Button bedeutet: Hanna kann die Karte oder Stolperstelle sicher. Der Eintrag wird aus der aktiven Wiederholung genommen und erscheint nicht weiter als Übungspflicht.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nochmal üben</h3>
+          <p>Dieser Button bedeutet: Der Eintrag bleibt aktiv. Er soll später wieder auftauchen, weil die Form, Regel oder Denkfalle noch nicht sicher sitzt.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Unsicher</h3>
+          <p>Optionaler Zwischenstatus. Der Eintrag bleibt aktiv, bekommt aber eine kurze Reparaturhilfe oder Denkfrage. Keine vollständige Lösung vor dem eigenen Versuch.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nicht nur „Richtig“</h3>
+          <p>Ein einzelner Button „Richtig“ ist zu flach. Er prüft wie ein Quiz, aber er steuert keine Wiederholung. Im Kompass zählt, ob etwas aus der aktiven Wiederholung heraus darf oder weiter geübt werden muss.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Keine Quizlogik</span> Keine Punkte, Sterne, Ranglisten oder Gewinnmechanik.</li>
+        <li><span class="code-pill">Echte Wiederholung</span> Jede Karte braucht einen stabilen Status: aktiv, kann ich, nochmal üben oder unsicher.</li>
+        <li><span class="code-pill">Aktive Karten</span> Nur Einträge mit Nochmal üben oder Unsicher bleiben in der Wiederholung.</li>
+        <li><span class="code-pill">Gelernte Karten</span> Einträge mit Kann ich werden ausgeblendet oder in einen erledigten Bereich verschoben.</li>
+        <li><span class="code-pill">Hilfe gestuft</span> Erst eigener Versuch, dann Denkfrage, dann optional Lösung anzeigen.</li>
+        <li><span class="code-pill">Einsatz sparsam</span> Nicht jedes Thema braucht Karteikarten. Bei have got reicht das Register Kann ich’s; echte Karteikarten sind eher für Themen wie Irregular Verbs im Simple Past sinnvoll.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="signal-detector-title">
+      <h2 class="card-title" id="signal-detector-title">Signalwort-Detektor: nur bei klarem Lerneffekt</h2>
+      <p class="card-text">Ein Signalwort-Detektor wird nicht als allgemeines Standard-Feature in alle Themen eingebaut. Er ist nur sinnvoll, wenn Signalwörter wirklich die zentrale Denkentscheidung des Themas steuern.</p>
+      <div class="guide-grid" aria-label="Regeln für den Signalwort-Detektor">
+        <article class="guide-card">
+          <h3>Aktueller Einsatz: Word Order</h3>
+          <p>Bei Word Order hat der Detektor einen klaren Nutzen: Hanna erkennt Satzsignale, ordnet sie ein und entscheidet daraus die Satzstellung. Dort ist er ein echtes Denkwerkzeug.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nicht pauschal ausweiten</h3>
+          <p>Bei anderen Themen wird der Detektor nicht automatisch übernommen. Sonst bläht er die Seiten auf und wird schnell zur Spielerei statt zur Hilfe.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nur bei begründeter Relevanz</h3>
+          <p>Für spätere Themen ist der Detektor nur erlaubt, wenn Signalwörter eine echte Entscheidungsrolle haben und der Lerneffekt stärker ist als der zusätzliche Aufwand.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Kein Ersatz für Hauptwerkzeug</h3>
+          <p>Jedes Thema behält ein zentrales Denkwerkzeug. Ein Signalwort-Detektor darf dieses Werkzeug nur unterstützen, nicht ein zweites großes Feature daneben eröffnen.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Standard</span> Kein Signalwort-Detektor in jedem Thema.</li>
+        <li><span class="code-pill">Erlaubt</span> Bei Word Order, weil dort der Lerneffekt klar ist.</li>
+        <li><span class="code-pill">Später möglich</span> Nur bei Themen, bei denen Signalwörter wirklich die Grammatikentscheidung auslösen.</li>
+        <li><span class="code-pill">Prüffrage</span> Hilft der Detektor beim Denken oder sieht er nur interessant aus? Wenn er nur interessant aussieht, bleibt er draußen.</li>
+        <li><span class="code-pill">Schlank halten</span> Kein Zusatzfeature, wenn das Thema dadurch länger, unruhiger oder schwerer wartbar wird.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="lookup-print-core-title">
+      <h2 class="card-title" id="lookup-print-core-title">Nachschlagen: vollständiges Wissen mit druckbarem Kern</h2>
+      <p class="card-text">Das Register Nachschlagen bleibt vollständig. Damit daraus später sauber ein Spickzettel entstehen kann, steht oben immer ein kompakter Kern. Dieser Kern ist die fachlich geprüfte Grundlage für die Druckansicht.</p>
+      <div class="guide-grid" aria-label="Innenstruktur für das Register Nachschlagen">
+        <article class="guide-card">
+          <h3>1. Kurz merken</h3>
+          <p>Der erste Block ist der Spickzettel-Kern. Er enthält die Kernregel, die wichtigste Form, die wichtigste Denkfalle und höchstens einen kurzen Merksatz.</p>
+        </article>
+        <article class="guide-card">
+          <h3>2. Satzmuster</h3>
+          <p>Die Satzmuster stehen immer klar geordnet: Aussage, Verneinung, Frage und, wenn passend, Kurzantwort. Das hilft bei Hausaufgaben und Klassenarbeiten.</p>
+        </article>
+        <article class="guide-card">
+          <h3>3. Denkfallen</h3>
+          <p>Typische Fehler werden knapp gezeigt: falscher Satz, richtiger Satz und der Grund. Keine langen Fehlerlisten, sondern die wichtigsten Stolperstellen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>4. Sonderfälle und Beispiele</h3>
+          <p>Hier stehen ergänzende Hinweise wie any, Kurzformen, you → I bei Kurzantworten oder British/American English sowie wenige typische Schulbeispiele.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Grundsatz</span> Nachschlagen ist vollständig, aber oben steht ein druckbarer Kern.</li>
+        <li><span class="code-pill">Ableitung</span> Die Spickzettel-Druckansicht nutzt nur Kurz merken, Satzmuster, wichtigste Denkfalle und wenige Beispiele.</li>
+        <li><span class="code-pill">Nicht drucken</span> Lange Erklärungen, vollständige Zusatzhinweise, Elternhinweise, Schreib-Checks, Notizen, Buttons und Spiel-/Übungselemente bleiben außerhalb des Spickzettels.</li>
+        <li><span class="code-pill">Keine Doppelpflege</span> Der Spickzettel wird aus dem fachlich gesicherten Nachschlagen-Kern abgeleitet, nicht als zweite unabhängige Themenseite gepflegt.</li>
+        <li><span class="code-pill">Prüfschritt</span> Vor einer Druckansicht wird geprüft, ob der Nachschlagen-Kern schulenglisch korrekt, vollständig und kurz genug ist.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" aria-labelledby="homework-mode-title">
+      <h2 class="card-title" id="homework-mode-title">Hausaufgaben-Modus</h2>
+      <p class="card-text">Der Hausaufgaben-Modus ist ein reduzierter Arbeitsmodus. Er hilft Hanna, während der Hausaufgaben schnell die passende Regel zu finden, ohne die ganze Lernseite erneut durcharbeiten zu müssen.</p>
+      <div class="guide-grid" aria-label="Regeln für den Hausaufgaben-Modus">
+        <article class="guide-card">
+          <h3>Zweck</h3>
+          <p>Der Modus führt bevorzugt zum Nachschlagen und zeigt dort nur schnelle Orientierung: Kurzregel, Satzmuster, wichtigste Denkfallen und wenige direkt hilfreiche Hinweise.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Grenze</h3>
+          <p>Er ist kein zweites Lernsystem und kein Übungsbereich. Er darf nur vereinfachen, nicht neue Inhalte, Spiele oder Aufgabenlogik erzeugen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Lösungen geschützt</h3>
+          <p>Schreib-Checks, Lösungen und Reparaturhilfen bleiben geschützt. Der Hausaufgaben-Modus darf keine Lösung vor einem eigenen Versuch sichtbar machen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Technische Umsetzung</h3>
+          <p>Der Modus wird über eine Klasse oder einen klaren Zustand gesteuert, nicht über doppelte HTML-Bereiche. Inhalte werden nicht doppelt gepflegt.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">sichtbarer Hinweis</span> Im Modus muss erkennbar sein, dass gerade eine reduzierte Ansicht aktiv ist.</li>
+        <li><span class="code-pill">reduzieren</span> Lange Zusatzbereiche wie vollständige Formen, Sonderfälle, Fragewörter, British/American English oder lange Beispielbereiche dürfen ausgeblendet werden.</li>
+        <li><span class="code-pill">behalten</span> Kurz merken, Satzmuster und wichtigste Denkfallen bleiben sichtbar, weil sie bei Hausaufgaben direkt helfen.</li>
+        <li><span class="code-pill">keine Doppelpflege</span> Der Hausaufgaben-Modus nutzt die vorhandenen Nachschlagen-Inhalte und blendet nur gezielt aus.</li>
+        <li><span class="code-pill">Prüffrage</span> Hilft diese Ansicht schneller zur passenden Regel? Wenn nein, gehört der Zusatz nicht in den Hausaufgaben-Modus.</li>
+      </ul>
+      <h3>Aktueller Stand bei <span lang="en">have got</span></h3>
+      <p class="card-text"><span class="code-pill">havegot.html</span> schaltet den Hausaufgaben-Modus über <span class="code-pill">hausaufgaben-mode</span>. Der Modus öffnet Nachschlagen, zeigt einen klaren Hinweis und reduziert die Ansicht auf Kurzregel, Satzmuster und typische Denkfallen. Vollständige Formen, Sonderfälle, Fragewort-Beispiele, British/American-English-Hinweise und längere Beispielbereiche werden im Modus ausgeblendet.</p>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="print-cheatsheet-title">
+      <h2 class="card-title" id="print-cheatsheet-title">Spickzettel-Druckansicht: Phase-2-Standard</h2>
+      <p class="card-text">Die Druckansicht ist kein neues Lernfeature. Sie ist eine kompakte Ausgabe aus dem Nachschlagen-Bereich und dient der Wiederholung vor Hausaufgaben, Tests und Klassenarbeiten.</p>
+      <div class="guide-grid" aria-label="Regeln für die Spickzettel-Druckansicht">
+        <article class="guide-card">
+          <h3>Nur Nachschlagen</h3>
+          <p>Gedruckt wird der kompakte Spickzettel eines Themas. Die Druckansicht enthält keine neuen Inhalte, sondern verdichtet das, was im Nachschlagen ohnehin fachlich gesichert steht.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Inhalt pro Thema</h3>
+          <p>Der Ausdruck enthält Kernregel, Satzmuster, wichtigste Denkfalle, einen kurzen Merksatz und wenige typische Beispiele. Mehr nicht.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nicht drucken</h3>
+          <p>Navigation, Lernweg, Schreib-Check, Buttons, Notizen, Elternhinweise, Spielmechanik und lange Erklärtexte gehören nicht auf den Spickzettel.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Umsetzung</h3>
+          <p>Die Druckansicht wird als Druckmodus innerhalb der Themenseite umgesetzt. Keine separate neue Druckseite und keine doppelte Pflege ganzer Inhalte.</p>
+        </article>
+      </div>
+      <ul class="rule-list">
+        <li><span class="code-pill">Phase 2</span> Erst nach der inhaltlichen Aufräumung systematisch auf alle Themen übertragen.</li>
+        <li><span class="code-pill">Pilot</span> have got eignet sich als Testthema, weil es übersichtlich ist und der Nachschlagen-Bereich bereits sauber gegliedert ist.</li>
+        <li><span class="code-pill">Kein Spielkram</span> Die Druckansicht enthält keine Interaktion, keine Aufgabenlogik und keine Belohnung.</li>
+        <li><span class="code-pill">Prüffrage</span> Würde Hanna diesen Ausdruck kurz vor einer Klassenarbeit wirklich nutzen? Wenn nein, ist zu viel Inhalt darauf.</li>
+        <li><span class="code-pill">Wartung</span> Die Druckfassung darf nicht zu einer zweiten vollständigen Themenseite werden. Sie bleibt kurz und aus dem Nachschlagen abgeleitet.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="writecheck-build-title">
+      <h2 class="card-title" id="writecheck-build-title">Schreib-Checks: verbindliche Bauweise</h2>
+      <p class="card-text">Schreib-Checks sind zum Denken da. Sie dürfen die Lösung nicht verraten, bevor Hanna geschrieben oder bewusst geprüft hat.</p>
+      <div class="guide-grid" aria-label="Schreib-Check-Regeln">
+        <article class="guide-card">
+          <h3>Ablauf</h3>
+          <p>Immer gleich: Eingabe zuerst, dann prüfen, dann Rückmeldung, dann Lösung anzeigen, falls nötig. Leere Felder werden nicht bewertet.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine Verräter</h3>
+          <p>Keine sichtbaren Skill-Tags, Musterlösungen, Beispiele oder Merkhilfen im Schreib-Check, wenn sie die Antwort lösen. Rechts oben steht nur neutral: Schreib-Aufgabe.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Rückmeldung</h3>
+          <p>Falsche Antworten bekommen zuerst nur eine kurze Rückmeldung. Die Musterlösung erscheint erst nach Klick auf Lösung anzeigen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Speicherung</h3>
+          <p>Gespeicherte alte Lösungen und Rückmeldungen werden beim Öffnen nicht automatisch sichtbar. Der Begleitbereich darf Daten auswerten, aber Hanna sieht keine alte Lösung als Vorgabe.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="writecheck-technical-title">
+      <h2 class="card-title" id="writecheck-technical-title">Technische Pflichtregeln für Schreib-Checks</h2>
+      <ul class="checklist">
+        <li>Jede Aufgabe bekommt eine stabile ID, zum Beispiel <span class="code-pill">art-wc-01</span>.</li>
+        <li>Die sichtbare Aufgabenkarte zeigt nur Aufgabe, Eingabefeld und Prüfen-Button. Der sichtbare Aufgaben-Tag bleibt neutral: <span class="code-pill">Schreib-Aufgabe</span>.</li>
+        <li>Interne Felder wie <span class="code-pill">skill</span>, <span class="code-pill">skillLabel</span>, <span class="code-pill">canonical</span> und <span class="code-pill">accepted</span> dürfen nicht vor dem Prüfen sichtbar gerendert werden.</li>
+        <li>Leeres Feld: Rückmeldung <span class="code-pill">Schreib erst eine Antwort hinein.</span> Keine Musterlösung, kein Fehlerpunkt, keine Speicherung als falsch.</li>
+        <li>Button <span class="code-pill">Alle Antworten prüfen</span> überspringt leere Felder und zeigt bei leeren Feldern keine Lösungen.</li>
+        <li>Falsche Antwort: kurze Rückmeldung plus Button <span class="code-pill">Lösung anzeigen</span>. Die Lösung wird erst nach diesem Klick sichtbar.</li>
+        <li>Richtige Antwort: kurze Bestätigung und höchstens eine Erklärung zur Regel. Das ist erlaubt, weil Hanna vorher schon gedacht hat.</li>
+        <li>Keine alten gespeicherten Feedbacktexte beim Öffnen einblenden. Gespeicherte Daten sind für Begleitbereich und Export/Import da, nicht als sichtbare Vorgabe.</li>
+        <li>Sprungmarke für diesen Bereich bleibt bei Themen mit Schreib-Check einheitlich <span class="code-pill">#schreibcheck</span>. Simple Past hat keinen eigenen Schreib-Check mehr und nutzt <span class="code-pill">#simplepast-denkzentrale</span>. Für Notizen gilt nur <span class="code-pill">#notizen</span>.</li>
+        <li>Nach jeder Änderung prüfen: Einzel-Prüfen, Alle prüfen, leere Felder, falsche Antwort, Lösung anzeigen, Zurücksetzen und Begleitbereich-Löschung.</li>
+        <li>Pro Thema darf es nur eine aktive Schreib-Check-Logik geben. Keine zusätzlichen Guard-Skripte, Wrapper oder nachträglichen Überschreibungen von <span class="code-pill">checkWriteTask</span>, <span class="code-pill">checkWritecheckAll</span> oder <span class="code-pill">Lösung anzeigen</span>.</li>
+        <li>Wenn eine Schutzlogik nötig ist, wird sie in die vorhandene Hauptlogik integriert. Sie darf nicht als zweites Skript daruntergesetzt werden.</li>
+        <li>Genaue Denkfragen und Diagnosemeldungen bleiben erhalten. Eine Bereinigung darf sie nicht durch allgemeine Standardtexte ersetzen.</li>
+        <li>Nach einer Korrektur wird geprüft, ob alte Guard-Skripte, tote Funktionen, doppelte Event-Listener oder nicht mehr verwendete Speicherlogik entfernt werden können.</li>
+      </ul>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="writecheck-cleanup-title">
+      <h2 class="card-title" id="writecheck-cleanup-title">Schreib-Checks: technische Bereinigung nach Änderungen</h2>
+      <p class="card-text">Wenn ein Schreib-Check korrigiert wird, reicht es nicht, ein Schutzskript darunterzusetzen. Danach muss der Code bereinigt werden, damit nur eine klare Logik übrig bleibt.</p>
+      <div class="guide-grid" aria-label="Bereinigung von Schreib-Check-Code">
+        <article class="guide-card">
+          <h3>Eine Hauptlogik</h3>
+          <p>Prüfen, Auswerten, Rückmeldung, Speichern und Lösung anzeigen laufen über eine zusammenhängende Logik. Mehrere übereinandergelegte Guards sind verboten.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Denkfragen behalten</h3>
+          <p>Falsche Antworten bekommen weiterhin passende Denkfragen zur konkreten Fehlerart. Die Bereinigung darf diese Diagnose nicht verflachen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Lösung geschützt</h3>
+          <p>Die Musterlösung erscheint erst nach einem eigenen Versuch und erst nach Klick auf „Lösung anzeigen“. Leere Felder zeigen keine Lösung.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Altlasten raus</h3>
+          <p>Doppelte Event-Listener, nachträgliche Überschreibungen, tote Funktionen und nicht mehr passende Speicherreste werden entfernt oder klar angebunden.</p>
+        </article>
+      </div>
+      <h3>Pflichtprüfung nach jeder Schreib-Check-Korrektur</h3>
+      <ul class="checklist">
+        <li>Gibt es genau eine Funktion oder zusammenhängende Logik für das Prüfen der Einzelaufgabe?</li>
+        <li>Gibt es genau eine Logik für „Alle Antworten prüfen“?</li>
+        <li>Gibt es genau eine Logik für „Lösung anzeigen“?</li>
+        <li>Bleiben die genauen Denkfragen aus der Diagnose erhalten?</li>
+        <li>Bleibt die Lösung verborgen, bis Hanna selbst geschrieben oder bewusst geprüft hat?</li>
+        <li>Werden leere Felder übersprungen und nicht als Fehler gespeichert?</li>
+        <li>Ist der Begleitbereich weiterhin in der Lage, Schreib-Check-Daten gezielt pro Thema zu löschen?</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="dead-code-cleanup-title">
+      <h2 class="card-title" id="dead-code-cleanup-title">Toten Code und alte Score-Logik bereinigen</h2>
+      <p class="card-text">Wenn ein sichtbares Element entfernt oder durch eine neue Kompass-Struktur ersetzt wurde, muss der dazugehörige JavaScript- und CSS-Code ebenfalls geprüft werden. Nicht mehr angebundener Code bleibt nicht „für später“ stehen.</p>
+      <div class="guide-grid" aria-label="Regeln gegen toten Code und alte Score-Logik">
+        <article class="guide-card">
+          <h3>Element weg, Code weg</h3>
+          <p>Wenn eine ID im HTML nicht mehr existiert, dürfen Funktionen, Event-Handler und Styles zu dieser ID nicht weiter im Thema hängen.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine Score-Altlasten</h3>
+          <p>Alte Elemente wie <span class="code-pill">score-text</span>, <span class="code-pill">score-fill</span> oder <span class="code-pill">score-emoji</span> werden nicht als versteckte Vorbereitung behalten. Punkte-, Balken- und Emoji-Logik passt nicht zur neuen Kompass-Richtung.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Bewusste Zukunftsstruktur</h3>
+          <p>Vorbereitung ist nur erlaubt, wenn sie eindeutig angebunden ist, zum Beispiel über stabile <span class="code-pill">data-review-id</span>s für den späteren Wiederholungs-Modus.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Begleitbereich abgleichen</h3>
+          <p>Der Begleitbereich darf kein altes Checklisten-System als aktuellen Lernstand anzeigen, wenn das Thema diese Checkliste nicht mehr besitzt.</p>
+        </article>
+      </div>
+      <h3>Pflichtprüfung nach Strukturänderungen</h3>
+      <ul class="checklist">
+        <li>Alle IDs suchen, die im JavaScript per <span class="code-pill">getElementById</span> oder Query angesprochen werden.</li>
+        <li>Prüfen, ob diese IDs im HTML wirklich noch existieren.</li>
+        <li>Funktionen löschen, die nur nicht mehr vorhandene Elemente bedienen.</li>
+        <li>Unbenutzte CSS-Klassen entfernen, wenn sie nur zu gelöschten Elementen gehören.</li>
+        <li>Alte Speicher-Keys nur dann behalten, wenn der Begleitbereich sie gezielt zum Löschen alter Daten braucht.</li>
+        <li>Keine neue Punkte-, Stern-, Balken- oder Emoji-Bewertung einbauen.</li>
+      </ul>
+      <h3>Aktueller Stand bei <span lang="en">have got</span></h3>
+      <p class="card-text">Der alte Checklisten-/Score-Code zu <span class="code-pill">check-list-havegot</span>, <span class="code-pill">score-text</span>, <span class="code-pill">score-fill</span> und <span class="code-pill">score-emoji</span> ist aus <span class="code-pill">havegot.html</span> entfernt. Der Begleitbereich behandelt <span lang="en">have got</span> nicht mehr als Thema mit aktueller Checklisten-Punktzahl; alte gespeicherte Daten können aber weiterhin über den Löschbereich bereinigt werden.</p>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="code-clean-style-title">
+      <h2 class="card-title" id="code-clean-style-title">Code-Stil und CSS-Bereinigung</h2>
+      <p class="card-text">Nach jeder größeren Themenkorrektur wird nicht nur geprüft, ob die Seite funktioniert. Der Code muss auch gegen die Kompass-Regeln bereinigt werden, damit alte Formatierungsreste nicht weiterwandern.</p>
+      <div class="guide-grid" aria-label="Regeln für sauberen HTML-, CSS- und JavaScript-Code">
+        <article class="guide-card">
+          <h3>Keine Inline-Styles</h3>
+          <p>Sichtbare Gestaltung steht in CSS-Klassen. Attribute wie <span class="code-pill">style="..."</span> bleiben nicht im HTML stehen, außer es gibt einen bewusst begründeten technischen Sonderfall.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine Inline-Handler</h3>
+          <p>Buttons verwenden keine <span class="code-pill">onclick</span>-Attribute. Klicks werden im JavaScript mit <span class="code-pill">addEventListener</span> angebunden.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Keine starken Formatierungsbrüche</h3>
+          <p><span class="code-pill">strong</span>-Tags und viele <span class="code-pill">font-weight</span>-Werte über 400 werden vermieden. Orientierung entsteht über Struktur, Karten, Farbe, Abstand und klare Überschriften.</p>
+        </article>
+        <article class="guide-card">
+          <h3>CSS nicht stapeln</h3>
+          <p>Doppelte CSS-Blöcke für Navigation, Panels, Karten oder Buttons werden zusammengeführt oder entfernt. Erlaubt bleiben nur bewusst gesetzte responsive oder Druck-Overrides.</p>
+        </article>
+      </div>
+      <h3>Pflichtprüfung bei jeder technischen Bereinigung</h3>
+      <ul class="checklist">
+        <li>Gibt es noch <span class="code-pill">style=</span>-Attribute im sichtbaren HTML?</li>
+        <li>Gibt es noch <span class="code-pill">onclick=</span>-Attribute?</li>
+        <li>Gibt es noch <span class="code-pill">strong</span>-Tags, obwohl eine neutrale Markierung reichen würde?</li>
+        <li>Gibt es unnötige <span class="code-pill">font-weight</span>-Werte über 400?</li>
+        <li>Gibt es exakt doppelte CSS-Blöcke oder alte überschreibende Stilreste?</li>
+        <li>Sind dynamische Änderungen im JavaScript über Klassen gelöst und nicht über neue Inline-Styles?</li>
+        <li>Bleiben Druckansicht und mobile Ansicht nach der Bereinigung funktionsfähig?</li>
+      </ul>
+      <h3>Aktueller Stand bei <span lang="en">have got</span></h3>
+      <p class="card-text"><span class="code-pill">havegot.html</span> wurde technisch bereinigt: Inline-Styles wurden in Klassen ausgelagert, <span class="code-pill">onclick</span>-Attribute durch Event-Listener ersetzt, <span class="code-pill">strong</span>-Tags entfernt, starke <span class="code-pill">font-weight</span>-Werte neutralisiert und exakt doppelte CSS-Blöcke reduziert. Responsive und Druck-Overrides bleiben nur dort bestehen, wo sie funktional nötig sind.</p>
+    </section>
+
+
+
+    <section class="card" aria-labelledby="external-fonts-title">
+      <h2 class="card-title" id="external-fonts-title">Externe Ressourcen und Schriften</h2>
+      <p class="card-text">Der Englisch-Kompass soll ohne externe Schrift- oder Designressourcen funktionieren. Reine Optik ist kein ausreichender Grund für externe Abhängigkeiten.</p>
+      <div class="guide-grid" aria-label="Regeln für externe Ressourcen und Schriften">
+        <article class="guide-card">
+          <h3>Keine Google-Fonts</h3>
+          <p>HTML-Dateien verwenden keine Imports von <span class="code-pill">fonts.googleapis.com</span> oder <span class="code-pill">fonts.gstatic.com</span>. Die Standardschrift ist <span class="code-pill">Arial, Helvetica, sans-serif</span>.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Offline sicher</h3>
+          <p>Index, Begleitbereich und Einzelthemen müssen auch lokal oder bei schwacher Internetverbindung lesbar und nutzbar bleiben. Externe Schriftarten dürfen dafür nicht nötig sein.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Ausnahmen nur mit Nutzen</h3>
+          <p>Externe Ressourcen sind nur erlaubt, wenn sie fachlich oder funktional notwendig sind. Ein schöneres Schriftbild reicht nicht als Begründung.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Prüfung nach Bereinigung</h3>
+          <p>Nach jeder technischen Bereinigung wird geprüft, ob noch <span class="code-pill">fonts.googleapis</span>, <span class="code-pill">fonts.gstatic</span> oder alte <span class="code-pill">Nunito</span>-Fontvariablen vorhanden sind.</p>
+        </article>
+      </div>
+      <h3>Aktueller Stand</h3>
+      <p class="card-text"><span class="code-pill">index.html</span>, <span class="code-pill">havegot.html</span> und der Begleitbereich verwenden keine Google-Fonts mehr und nutzen Systemschrift über <span class="code-pill">Arial, Helvetica, sans-serif</span>. Weitere Einzelthemen werden bei ihrer nächsten technischen Bereinigung ebenfalls an diese Regel angepasst.</p>
+    </section>
+
+    <section class="card" aria-labelledby="index-code-standard-title">
+      <h2 class="card-title" id="index-code-standard-title">Startseite: gleicher Code-Standard wie Einzelthemen</h2>
+      <p class="card-text">Die Startseite ist kein technischer Sonderfall. Sie muss denselben sauberen CSS- und HTML-Standard erfüllen wie die Einzelthemen, weil sie sonst alte Muster wieder in das Projekt zurückträgt.</p>
+      <div class="guide-grid" aria-label="Regeln für den technischen Standard der Startseite">
+        <article class="guide-card">
+          <h3>Keine eigene Altlasten-Zone</h3>
+          <p><span class="code-pill">index.html</span> folgt denselben Regeln wie <span class="code-pill">havegot.html</span>: keine Inline-Styles, keine Inline-Handler, keine <span class="code-pill">strong</span>-Tags und keine unnötigen <span class="code-pill">font-weight</span>-Werte über 400.</p>
+        </article>
+        <article class="guide-card">
+          <h3>CSS gezielt für die Startseite</h3>
+          <p>Die Startseite enthält nur CSS-Klassen, die sie wirklich nutzt oder die bewusst als responsive Anpassung nötig sind. Kopierte Themen-Klassen, alte Progress-Balken, Score-Reste oder nicht mehr angebundene Sicherheits-Patches werden entfernt.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Klare Klassennamen</h3>
+          <p>Klassen dürfen nicht nach alten Funktionen klingen, wenn sie diese Funktion nicht mehr haben. Ein reiner Öffnen-Hinweis heißt nicht <span class="code-pill">progress</span>, wenn keine Lernfortschrittsanzeige gemeint ist.</p>
+        </article>
+        <article class="guide-card">
+          <h3>Nach jeder Index-Änderung prüfen</h3>
+          <p>Nach Änderungen an der Startseite werden CSS, interne Links, Themenkatalog, <span class="code-pill">kompass_last_topic</span>, mobile Ansicht und JavaScript-Syntax zusammen geprüft.</p>
+        </article>
+      </div>
+      <h3>Aktueller Stand bei <span class="code-pill">index.html</span></h3>
+      <p class="card-text">Die Startseite wurde an den Referenzstandard angeglichen: überstarke <span class="code-pill">font-weight</span>-Werte wurden entfernt, mehrfach gestapelte CSS-Regeln bereinigt, ungenutzte Progress-/Panel-Altlasten entfernt und der alte Klassenname <span class="code-pill">topic-progress</span> durch <span class="code-pill">topic-open-hint</span> ersetzt.</p>
+    </section>
+
+    <section class="card" aria-labelledby="writecheck-content-title">
+      <h2 class="card-title" id="writecheck-content-title">Inhaltliche Prüfung vor jedem neuen Schreib-Check</h2>
+      <p class="card-text">Jeder neue Schreib-Check wird fachlich wie von einer Englischlehrerin geprüft. Gleichzeitig muss das Niveau zur jeweiligen Klassenstufe passen.</p>
+      <ul class="checklist">
+        <li>Klasse 5 bleibt Klasse 5: kurze Sätze, schulnahe Beispiele, keine unnötige Oberstufen-Grammatik.</li>
+        <li>Klasse 6 wird analog Klasse 6 aufgebaut: neue Inhalte dürfen anspruchsvoller werden, aber nur passend zum Schulstoff.</li>
+        <li>Klasse 7 wird analog Klasse 7 aufgebaut: fachlich genauer, aber weiterhin klar, knapp und anwendbar.</li>
+        <li>Accepted answers müssen echte richtige Varianten enthalten, zum Beispiel Kurzformen und ausgeschriebene Formen, wenn beide schulisch richtig sind.</li>
+        <li>Falsch-Beispiele nur verwenden, wenn sie eindeutig falsch sind. Unnatürliche, aber mögliche Sätze nicht als klare Fehler verkaufen.</li>
+        <li>Prompt und Kontext dürfen helfen, aber nicht lösen. Keine Merkhilfe direkt daneben, wenn dadurch die Antwort klar wird.</li>
+        <li>Rechts sichtbare Lösungshinweise wie <span class="code-pill">a vor Konsonanten-Klang</span>, <span class="code-pill">Ort vor Zeit</span> oder <span class="code-pill">go → went</span> sind im Schreib-Check verboten.</li>
+        <li>Merkhilfen gehören nach Lernen oder Nachschlagen. Im Schreib-Check nur dann, wenn sie die konkrete Antwort nicht verraten.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="writecheck-status-title">
+      <h2 class="card-title" id="writecheck-status-title">Aktueller Prüfstand: Lösungen verstecken</h2>
+      <p class="card-text">Dieser Stand gilt für die aktuelle Aufräumrunde. Bei späteren Änderungen wieder gegen diese Liste prüfen.</p>
+      <ul class="rule-list">
+        <li><span class="code-pill">Articles</span> Aufgaben-Tag neutral, keine sichtbare Lösung vor dem Prüfen, Lösung erst nach Klick.</li>
+        <li><span class="code-pill">Adjectives</span> Aufgaben-Tag neutral, keine sichtbare Lösung vor dem Prüfen, Lösung erst nach Klick.</li>
+        <li><span class="code-pill">Present Progressive / Spelling</span> Schreib-Check ohne lösende Merkhilfe im Check; -ing-Aufgaben erst schreiben, dann prüfen.</li>
+        <li><span class="code-pill">Irregular Verbs im Simple Past</span> Tipp-Trainer zeigt bei falscher Eingabe nicht sofort die Lösung; Lösung erst nach Klick. Karteikarten nutzen Kann ich und Nochmal üben.</li>
+        <li><span class="code-pill">have got</span> Stand geprüft: Haben-Waage als Hauptfeature im Lernen, Stolperstellen als Denkfallen eingeordnet, Schreib-Check technisch bereinigt mit einer Logik, genauen Denkfragen und Lösung erst nach eigenem Versuch per Button. Alter Checklisten-/Score-Code ist entfernt; der Begleitbereich zeigt dafür keinen aktuellen Checklisten-Lernstand mehr an. Wiederholungsfähige Stolperstellen sind mit stabilen <span class="code-pill">data-review-id</span>s vorbereitet, ohne einen Wiederholungs-Modus einzubauen.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="future-topics-title">
+      <h2 class="card-title" id="future-topics-title">Vorbereitete spätere Themen</h2>
+      <p class="card-text">Noch nicht einbauen. Nur als Andockstellen merken.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Klasse</th><th>Mögliche Themen</th><th>Hinweis</th></tr></thead>
+          <tbody>
+            <tr><td>Klasse 6</td><td>Going-to future, will-future, Present Perfect, Comparisons, Modal verbs, some/any, much/many</td><td>Erst nach stabiler Klasse-5-Aufräumrunde ergänzen.</td></tr>
+            <tr><td>Klasse 7</td><td>Past Progressive, conditional sentences einfach, relative clauses, passive basics</td><td>Nur bei echtem Schulbedarf ergänzen.</td></tr>
+            <tr><td>Wiederholung</td><td>Grundlagen aus Klasse 5</td><td>Als Wiederholung markieren, nicht duplizieren.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+
+  <section class="tab-panel" id="panel-data" role="tabpanel" aria-labelledby="tab-data" data-panel="data">
+    <section class="card" aria-labelledby="transfer-title">
+      <h2 class="card-title" id="transfer-title">Daten sichern und einlesen</h2>
+      <p class="card-text">Die Daten liegen im jeweiligen Browser. Für Notebook und Handy kannst du sie sichern und auf dem anderen Gerät wieder einlesen.</p>
+      <div class="data-actions">
+        <button class="btn" type="button" id="export-data">Daten sichern</button>
+        <button class="btn btn-muted" type="button" id="import-data">Daten einlesen</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="topic-full-title">
+      <h2 class="card-title" id="topic-full-title">Alles zu einem Thema löschen</h2>
+      <p class="card-text">Löscht bei einem Thema Lernstand und Schreib-Check. Bei Word Order wird zusätzlich die vorhandene Stolperstellen-Zählung gelöscht.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thema</th><th>Was wird gelöscht?</th><th>Aktion</th></tr></thead>
+          <tbody id="topic-full-reset-list"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card danger-box" aria-labelledby="all-delete-title">
+      <h2 class="card-title" id="all-delete-title">Alle Kompass-Daten löschen</h2>
+      <p class="card-text">Löscht alle gespeicherten Kompass-Daten in diesem Browser.</p>
+      <div class="data-actions">
+        <button class="btn btn-danger" type="button" id="reset-all-kompass">Alle Kompass-Daten löschen</button>
+      </div>
+    </section>
+
+    <p class="notice" id="data-message" aria-live="polite"></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var TASKS = [{"id": "adj-wc-01", "topic": "Adjectives", "skill": "Adjektiv nach to be"}, {"id": "adj-wc-02", "topic": "Adjectives", "skill": "Adjektiv vor dem Nomen"}, {"id": "adj-wc-03", "topic": "Adjectives", "skill": "Keine deutschen Endungen"}, {"id": "adj-wc-04", "topic": "Adjectives", "skill": "Kein Plural-s am Adjektiv"}, {"id": "adj-wc-05", "topic": "Adjectives", "skill": "Artikel vor Adjektiv + Singular-Nomen"}, {"id": "adj-wc-06", "topic": "Adjectives", "skill": "very/really braucht ein Adjektiv"}, {"id": "adj-wc-07", "topic": "Adjectives", "skill": "bored oder boring"}, {"id": "adj-wc-08", "topic": "Adjectives", "skill": "good at"}, {"id": "adj-wc-09", "topic": "Adjectives", "skill": "Gegenteil"}, {"id": "art-wc-01", "topic": "Articles", "skill": "a vor Konsonanten-Klang"}, {"id": "art-wc-02", "topic": "Articles", "skill": "an vor Vokal-Klang"}, {"id": "art-wc-03", "topic": "Articles", "skill": "Das Adjektiv entscheidet"}, {"id": "art-wc-04", "topic": "Articles", "skill": "Denkfalle: uniform"}, {"id": "art-wc-05", "topic": "Articles", "skill": "Denkfalle: hour"}, {"id": "art-wc-06", "topic": "Articles", "skill": "the bei etwas Bekanntem"}, {"id": "art-wc-07", "topic": "Articles", "skill": "the bei etwas Einzigartigem"}, {"id": "art-wc-08", "topic": "Articles", "skill": "Kein Artikel bei Sportarten"}, {"id": "art-wc-09", "topic": "Articles", "skill": "Kein Artikel bei Mahlzeiten"}, {"id": "art-wc-10", "topic": "Articles", "skill": "Kein a/an bei Plural"}, {"id": "art-wc-11", "topic": "Articles", "skill": "Kein a/an vor Besitzwörtern"}, {"id": "art-wc-12", "topic": "Articles", "skill": "Kein Artikel bei Schulfächern"}, {"id": "pg-wc-01", "topic": "Present Progressive", "skill": "Aussage"}, {"id": "pg-wc-02", "topic": "Present Progressive", "skill": "Verneinung"}, {"id": "pg-wc-03", "topic": "Present Progressive", "skill": "Frage"}, {"id": "pg-wc-04", "topic": "Present Progressive", "skill": "Fragewort"}, {"id": "pg-wc-05", "topic": "Present Progressive", "skill": "Kurzantwort"}, {"id": "pg-wc-06", "topic": "Present Progressive", "skill": "Signalwort Look!"}, {"id": "pg-wc-07", "topic": "Present Progressive", "skill": "-ing-Regel"}, {"id": "pg-wc-08", "topic": "Present Progressive", "skill": "-ing-Regel"}, {"id": "pg-wc-09", "topic": "Present Progressive", "skill": "Denkfalle"}, {"id": "pron-wc-01", "topic": "Pronouns", "skill": "Hanna → she"}, {"id": "pron-wc-02", "topic": "Pronouns", "skill": "Ben → he"}, {"id": "pron-wc-03", "topic": "Pronouns", "skill": "the book → it"}, {"id": "pron-wc-04", "topic": "Pronouns", "skill": "Mia and Ben → they"}, {"id": "pron-wc-05", "topic": "Pronouns", "skill": "wessen? her"}, {"id": "pron-wc-06", "topic": "Pronouns", "skill": "wessen? his"}, {"id": "pron-wc-07", "topic": "Pronouns", "skill": "wessen? their"}, {"id": "pron-wc-08", "topic": "Pronouns", "skill": "its / it’s"}, {"id": "q-wc-01", "topic": "Questions", "skill": "Frage ohne Fragewort"}, {"id": "q-wc-02", "topic": "Questions", "skill": "Frage mit Where"}, {"id": "q-wc-03", "topic": "Questions", "skill": "Frage mit How often"}, {"id": "q-wc-04", "topic": "Questions", "skill": "Frage mit When"}, {"id": "q-wc-05", "topic": "Questions", "skill": "does + Grundform reparieren"}, {"id": "q-wc-06", "topic": "Questions", "skill": "Frage mit What"}, {"id": "sp-wc-01", "topic": "Simple Present", "skill": "Satz bauen"}, {"id": "sp-wc-02", "topic": "Simple Present", "skill": "Person prüfen"}, {"id": "sp-wc-03", "topic": "Simple Present", "skill": "Verbform prüfen"}, {"id": "sp-wc-04", "topic": "Simple Present", "skill": "Verbform prüfen"}, {"id": "sp-wc-05", "topic": "Simple Present", "skill": "Sonderform prüfen"}, {"id": "sp-wc-06", "topic": "Simple Present", "skill": "Verneinung prüfen"}, {"id": "th-wc-01", "topic": "there is / there are", "skill": "Singular · Aussage"}, {"id": "th-wc-02", "topic": "there is / there are", "skill": "Plural · Aussage"}, {"id": "th-wc-03", "topic": "there is / there are", "skill": "Singular · Frage"}, {"id": "th-wc-04", "topic": "there is / there are", "skill": "Plural · Frage"}, {"id": "th-wc-05", "topic": "there is / there are", "skill": "Plural · Verneinung"}, {"id": "tobe-wc-01", "topic": "to be", "skill": "Formen"}, {"id": "tobe-wc-02", "topic": "to be", "skill": "Formen"}, {"id": "tobe-wc-03", "topic": "to be", "skill": "Fehlerdetektiv"}, {"id": "tobe-wc-04", "topic": "to be", "skill": "Verneinung"}, {"id": "tobe-wc-05", "topic": "to be", "skill": "Fehlerdetektiv"}, {"id": "tobe-wc-06", "topic": "to be", "skill": "Fragen"}, {"id": "tobe-wc-07", "topic": "to be", "skill": "Fragen"}, {"id": "tobe-wc-08", "topic": "to be", "skill": "Kurzantworten"}, {"id": "tobe-wc-09", "topic": "to be", "skill": "Denkfalle"}, {"id": "wo-wc-01", "topic": "Word Order", "skill": "Subject · Verb · Object"}, {"id": "wo-wc-02", "topic": "Word Order", "skill": "Ort vor Zeit"}, {"id": "wo-wc-03", "topic": "Word Order", "skill": "Zeit vorne"}, {"id": "wo-wc-04", "topic": "Word Order", "skill": "Häufigkeitswort + normales Verb"}, {"id": "wo-wc-05", "topic": "Word Order", "skill": "Häufigkeitswort + to be"}, {"id": "wo-wc-06", "topic": "Word Order", "skill": "Frage"}, {"id": "wo-wc-07", "topic": "Word Order", "skill": "Denkfalle"}, {"id": "aof-review-01", "topic": "Adverbs of frequency", "skill": "Adverb einsetzen"}, {"id": "aof-review-02", "topic": "Adverbs of frequency", "skill": "Wortsalat ordnen"}, {"id": "aof-review-03", "topic": "Adverbs of frequency", "skill": "Negativsatz mit doesn’t usually"}, {"id": "aof-review-04", "topic": "Adverbs of frequency", "skill": "Objekt-Falle korrigieren"}, {"id": "aof-review-05", "topic": "Adverbs of frequency", "skill": "Doppeltes Häufigkeitswort vermeiden"}, {"id": "aof-review-06", "topic": "Adverbs of frequency", "skill": "How often + do/does"}, {"id": "aof-review-07", "topic": "Adverbs of frequency", "skill": "Eigener Satz mit Häufigkeitswort"}];
+  var TOPICS = [
+    {id:'tobe', title:'to be', href:'tobe.html#lernen', key:'kompass_tobe_checks', notesKey:'kompass_tobe_notes', total:9, help:'to be mit Kontrollzentrum üben: Person finden, am/is/are wählen, Satzart prüfen und Fehler reparieren.'},
+    {id:'pronouns', title:'Pronouns', href:'pronouns.html#lernen', key:'kompass_pronouns_checks', notesKey:'kompass_pronouns_notes', total:0, hasChecklist:false, help:'Wer oder wessen? she/her, they/their und its/it’s sicher unterscheiden.'},
+    {id:'havegot', title:'have got', href:'havegot.html#lernen', key:'kompass_havegot_checks', notesKey:'kompass_havegot_notes', total:0, hasChecklist:false, help:'Wer hat etwas? I/you/we/they have got, he/she/it has got.'},
+    {id:'simplepresent', title:'Simple Present', href:'simplepresent.html#lernen', key:'kompass_simplepresent_checks', notesKey:'kompass_simplepresent_notes', canStatusKey:'kompass_simplepresent_cancheck_status', total:0, hasChecklist:false, help:'Person prüfen: I/you/we/they nehmen die Grundform. He/she/it braucht meistens -s. Bei do/does steht wieder die Grundform.'},
+    {id:'adverbsoffrequency', title:'Adverbs of frequency', href:'adverbsoffrequency.html#lernen', key:'kompass_adverbsoffrequency_checks', notesKey:'kompass_adverbsoffrequency_notes', oldNotesKey:'kompass_adverbsoffrequency_notes_v03', canStatusKey:'kompass_adverbsoffrequency_can_status', total:0, hasChecklist:false, help:'Häufigkeitswörter mit Verb-Signal-Weiche üben: Vollverb, be und don’t/doesn’t.'},
+    {id:'questions', title:'Questions', href:'questions.html#lernen', key:'kompass_questions_checks', notesKey:'kompass_questions_journal', oldNotesKey:'kompass_questions_notes', canStatusKey:'kompass_questions_can_status', total:0, hasChecklist:false, help:'Fragewort prüfen, do/does wählen, Person einsetzen und Verb in Grundform schreiben.'},
+    {id:'progressive', title:'Present Progressive', href:'progressive.html#lernen', key:'kompass_progressive_checks', notesKey:'kompass_progressive_notes', total:7, help:'Jetzt-Kamera: am/is/are + Verb mit -ing.'},
+    {id:'simplepast', title:'Simple Past', href:'simplepast.html#lernen', key:'kompass_simplepast_checks', notesKey:'kompass_simplepast_notes', total:0, hasChecklist:false, help:'Simple Past zusammen üben: positive statements, negative statements, questions, to be und irregular verbs.'},
+    {id:'wordorder', title:'Word Order', href:'wordorder.html#lernen', key:'kompass_wordorder_checks', notesKey:'kompass_wordorder_journal', oldNotesKey:'kompass_wordorder_notes', canStatusKey:'kompass_wordorder_can_status', total:0, hasChecklist:false, help:'Erst Signalwort finden, dann Satzteile sortieren.'},
+    {id:'thereisthereare', title:'there is / there are', href:'thereisthereare.html#lernen', key:'kompass_thereisthereare_checks', notesKey:'kompass_thereisthereare_notes', canStatusKey:'kompass_thereisthereare_status', total:0, hasChecklist:false, help:'Erst zählen: eine Sache = there is, mehrere = there are.'},
+    {id:'articles', title:'Articles', href:'articles.html#lernen', key:'kompass_articles_checks', notesKey:'kompass_articles_notes', total:8, help:'Ohr-Regel: a oder an nach Klang entscheiden.'},
+    {id:'adjectives', title:'Adjectives', href:'adjectives.html#lernen', key:'kompass_adjectives_checks', notesKey:'kompass_adjectives_notes', total:7, help:'Adjektiv bleibt gleich: kein Plural-s, keine deutsche Endung.'},
+    {id:'listening', title:'Listening-Kompass', href:'listening.html#buchtraining', key:'hanna_listening_kompass_v2', notesKey:'hanna_listening_lernjournal_v1', extraKeys:['hanna_listening_buchtraining_v2'], total:8, help:'Täglich kurz hören: Hauptidee, Schlüsselwörter, Transcript prüfen.'}
+  ];
+  var WORDORDER_KEY = 'kompass_wordorder_parent_mistakes_v1';
+  var WRITE_KEY = 'kompass_writecheck_results_v1';
+  var LEGACY_SIMPLEPAST_IRR_TASK_IDS = ["irr-wc-01", "irr-wc-02", "irr-wc-03", "irr-wc-04", "irr-wc-05", "irr-wc-06", "irr-wc-07", "irr-wc-08", "irr-wc-09", "irr-wc-10", "irr-wc-11", "irr-wc-12"];
+
+  function readJSON(key, fallback){
+    try{var raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}
+  }
+  function writeJSON(key, value){try{localStorage.setItem(key, JSON.stringify(value));}catch(e){}}
+  function escapeHTML(value){
+    return String(value || '').replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];});
+  }
+  function checkedCount(topic){
+    if(topic.hasChecklist === false || !topic.total) return 0;
+    var data=readJSON(topic.key, []);
+    if(topic.id === 'listening' && data && typeof data === 'object'){
+      var count=0;
+      for(var i=1;i<=8;i++){ if(data['day'+i] && data['day'+i].done) count++; }
+      return count;
+    }
+    return Array.isArray(data)?data.filter(Boolean).length:0;
+  }
+  function topicCanStatus(topic){
+    if(!topic.canStatusKey) return null;
+    var raw=null;
+    try{raw=localStorage.getItem(topic.canStatusKey);}catch(e){}
+    if(!raw) return null;
+    var status=null;
+    try{
+      var data=JSON.parse(raw);
+      if(data && typeof data === 'object' && data.status) status=String(data.status);
+      else if(typeof data === 'string') status=data;
+    }catch(e){
+      status=String(raw);
+    }
+    if(!status) return null;
+    var map={
+      'sicher':{label:'sicher',status:'stabil',cls:'status-stable',load:0},
+      'fast-sicher':{label:'fast sicher',status:'fast sicher',cls:'status-small',load:1},
+      'fast sicher':{label:'fast sicher',status:'fast sicher',cls:'status-small',load:1},
+      'nochmal-pruefen':{label:'nochmal prüfen',status:'nochmal prüfen',cls:'status-focus',load:2},
+      'nochmal prüfen':{label:'nochmal prüfen',status:'nochmal prüfen',cls:'status-focus',load:2},
+      'offen':{label:'offen',status:'offen',cls:'status-note',load:1},
+      'green':{label:'kann ich',status:'stabil',cls:'status-stable',load:0},
+      'yellow':{label:'fast verstanden',status:'fast verstanden',cls:'status-small',load:1},
+      'red':{label:'noch unsicher',status:'noch unsicher',cls:'status-focus',load:2}
+    };
+    return map[status] || {label:String(status),status:String(status),cls:'status-small',load:1};
+  }
+  function topicNotes(topic){
+    var data=readJSON(topic.notesKey, null);
+    if((!data || typeof data !== 'object') && topic.oldNotesKey){
+      data=readJSON(topic.oldNotesKey, null);
+    }
+    if(!data || typeof data !== 'object') return [];
+    return Object.keys(data).map(function(k){return String(data[k]||'').trim();}).filter(Boolean);
+  }
+  function normalTopic(name){
+    var n=String(name||'').toLowerCase();
+    if(n.indexOf('adjectives')>-1)return 'adjectives';
+    if(n.indexOf('articles')>-1)return 'articles';
+    if(n.indexOf('irregular')>-1)return 'simplepast';
+    if(n.indexOf('simple past')>-1)return 'simplepast';
+    if(n.indexOf('progressive')>-1)return 'progressive';
+    if(n.indexOf('pronouns')>-1)return 'pronouns';
+    if(n.indexOf('questions')>-1)return 'questions';
+    if(n.indexOf('there')>-1)return 'thereisthereare';
+    if(n.indexOf('to be')>-1)return 'tobe';
+    if(n.indexOf('word order')>-1)return 'wordorder';
+    if(n.indexOf('simple present')>-1)return 'simplepresent';
+    return n.replace(/[^a-z]/g,'');
+  }
+  function allWriteData(){return readJSON(WRITE_KEY, {});}
+  function migrateLegacySimplePastIrregular(){
+    try{
+      var oldNotesRaw=localStorage.getItem('kompass_irregularpast_notes');
+      var newNotesRaw=localStorage.getItem('kompass_simplepast_notes');
+      if(oldNotesRaw && !newNotesRaw){
+        localStorage.setItem('kompass_simplepast_notes', oldNotesRaw);
+      } else if(oldNotesRaw && newNotesRaw){
+        try{
+          var oldNotes=JSON.parse(oldNotesRaw);
+          var newNotes=JSON.parse(newNotesRaw);
+          if(oldNotes && newNotes && typeof oldNotes==='object' && typeof newNotes==='object'){
+            Object.keys(oldNotes).forEach(function(k){
+              if(!String(newNotes[k]||'').trim() && String(oldNotes[k]||'').trim()) newNotes[k]=oldNotes[k];
+            });
+            localStorage.setItem('kompass_simplepast_notes', JSON.stringify(newNotes));
+          }
+        }catch(e){}
+      }
+      localStorage.removeItem('kompass_irregularpast_checks');
+      localStorage.removeItem('kompass_irregularpast_notes');
+    }catch(e){}
+    try{
+      var store=allWriteData();
+      var changed=false;
+      if(store.irregularpast){ delete store.irregularpast; changed=true; }
+      if(store.irregularpastTasks){ delete store.irregularpastTasks; changed=true; }
+      if(store.simplepastTasks && typeof store.simplepastTasks==='object'){
+        LEGACY_SIMPLEPAST_IRR_TASK_IDS.forEach(function(id){
+          if(store.simplepastTasks[id]){ delete store.simplepastTasks[id]; changed=true; }
+        });
+      }
+      LEGACY_SIMPLEPAST_IRR_TASK_IDS.forEach(function(id){
+        if(store[id]){ delete store[id]; changed=true; }
+      });
+      if(changed) writeJSON(WRITE_KEY, store);
+    }catch(e){}
+  }
+  function flatTaskStatus(store, task){
+    var r=store[task.id];
+    if(!r || typeof r !== 'object') return null;
+    return r.status || null;
+  }
+  function topicTasks(topic){
+    return TASKS.filter(function(t){return normalTopic(t.topic)===topic.id;});
+  }
+  function topicWriteSummary(store, topic){
+    var direct=store[topic.id];
+    var taskMap=store[topic.id+'Tasks'];
+    var wrong=0, almost=0, correct=0, focus=[];
+    if(direct && typeof direct === 'object'){
+      wrong += Number(direct.wrong)||0;
+      almost += Number(direct.almost)||0;
+      correct += Number(direct.correct)||0;
+      if(Array.isArray(direct.focusSkills)) focus = focus.concat(direct.focusSkills);
+      if(Array.isArray(direct.needsReview)) focus = focus.concat(direct.needsReview);
+    }
+    var activeTaskIds={};
+    topicTasks(topic).forEach(function(t){ activeTaskIds[t.id]=true; });
+    if(taskMap && typeof taskMap === 'object'){
+      Object.keys(taskMap).forEach(function(id){
+        if(topic.id==='simplepast' && !activeTaskIds[id]) return;
+        var r=taskMap[id]||{};
+        if(r.status==='wrong'){wrong++; focus.push(r.skill||id);}
+        else if(r.status==='almost'){almost++; focus.push(r.skill||id);}
+        else if(r.status==='correct') correct++;
+      });
+    }
+    topicTasks(topic).forEach(function(t){
+      var s=flatTaskStatus(store,t);
+      if(s==='wrong'){wrong++; focus.push(t.skill);}
+      else if(s==='almost'){almost++; focus.push(t.skill);}
+      else if(s==='correct') correct++;
+    });
+    focus = focus.filter(Boolean).filter(function(x,i,a){return a.indexOf(x)===i;});
+    return {wrong:wrong, almost:almost, correct:correct, focus:focus};
+  }
+  function wordOrderEntries(){
+    var data=readJSON(WORDORDER_KEY, {});
+    return Object.keys(data).map(function(k){return {skill:k,count:Number(data[k])||0};}).filter(function(e){return e.count>0;}).sort(function(a,b){return b.count-a.count;});
+  }
+  function buildStates(){
+    var store=allWriteData();
+    var wo=wordOrderEntries();
+    return TOPICS.map(function(topic){
+      var notes=topicNotes(topic);
+      var ws=topicWriteSummary(store,topic);
+      var done=checkedCount(topic);
+      var can=topicCanStatus(topic);
+      var woCount = topic.id==='wordorder' ? wo.reduce(function(s,e){return s+e.count;},0) : 0;
+      var load=ws.wrong + ws.almost + woCount + (can ? can.load : 0);
+      var status='noch wenig Daten', cls='status-empty';
+      if(load>=3){status='öfter unsicher';cls='status-focus';}
+      else if(ws.wrong + ws.almost + woCount > 0){status='einzelne Stolperstellen';cls='status-small';}
+      else if(can){status=can.status;cls=can.cls;}
+      else if(notes.length){status='Frage offen';cls='status-note';}
+      else if(topic.hasChecklist !== false && topic.total && done>=topic.total){status='stabil';cls='status-stable';}
+      return Object.assign({}, topic, {done:done, can:can, notes:notes, write:ws, woCount:woCount, load:load, status:status, cls:cls});
+    });
+  }
+  function renderSummary(states, woEntries){
+    var woTotal=woEntries.reduce(function(s,e){return s+e.count;},0);
+    var writeTotal=states.reduce(function(s,t){return s+t.write.wrong+t.write.almost;},0);
+    var noteTotal=states.filter(function(t){return t.notes.length>0;}).length;
+    document.getElementById('wo-total').textContent=String(woTotal);
+    document.getElementById('write-total').textContent=String(writeTotal);
+    document.getElementById('note-total').textContent=String(noteTotal);
+    var focus=document.getElementById('focus-text');
+    var top=states.slice().sort(function(a,b){return b.load-a.load || b.notes.length-a.notes.length;})[0];
+    if(!woTotal && !writeTotal && !noteTotal){focus.textContent='Es sind noch keine Stolperstellen gespeichert.';return;}
+    if(top && top.load>0){focus.textContent='Zuerst '+top.title+' anschauen. Sinnvoller Mini-Schritt: '+top.help;return;}
+    if(top && top.notes.length){focus.textContent='Zuerst die offenen Notizen anschauen. Dort steht wahrscheinlich genauer, was unklar ist.';return;}
+    focus.textContent='Aktuell wirkt nichts auffällig. Eine kurze Wiederholung reicht.';
+  }
+  function renderTopics(states){
+    var grid=document.getElementById('topic-grid');
+    if(!grid)return;
+    grid.innerHTML=states.map(function(t){
+      var detail=[];
+      if(t.load>0) detail.push(t.load+' gespeicherte Stolperstelle'+(t.load===1?'':'n'));
+      if(t.notes.length) detail.push('Notiz vorhanden');
+      if(t.can && t.can.label) detail.push('Kann ich’s: '+t.can.label);
+      if(!detail.length){
+        if(t.hasChecklist === false) detail.push('kein aktueller Checklisten-Lernstand');
+        else detail.push(t.done+' / '+t.total+' Lernpunkte abgehakt');
+      }
+      var openLink=t.href ? '<div class="row-actions"><a class="btn btn-small" href="'+escapeHTML(t.href)+'">Thema öffnen →</a></div>' : '';
+      return '<article class="topic-card"><div class="topic-head"><div><h3 class="topic-title">'+escapeHTML(t.title)+'</h3><p class="topic-sub">'+escapeHTML(detail.join(' · '))+'</p></div><span class="status-pill '+t.cls+'">'+escapeHTML(t.status)+'</span></div><p class="topic-details">'+escapeHTML(t.help)+'</p>'+openLink+'</article>';
+    }).join('');
+  }
+  function renderWordOrder(entries){
+    var list=document.getElementById('wordorder-list');
+    if(!list)return;
+    if(!entries.length){list.innerHTML='<div class="empty">Noch keine Word-Order-Stolperstellen gespeichert.</div>';return;}
+    list.innerHTML=entries.slice(0,8).map(function(e){
+      return '<div class="item"><div class="item-head"><span class="item-title">'+escapeHTML(e.skill)+'</span><span class="badge">'+e.count+'×</span></div><div class="item-meta">Nächster Schritt: Signalwort markieren, dann Satzmaschine anwenden.</div></div>';
+    }).join('');
+  }
+  function renderWriteList(states){
+    var list=document.getElementById('write-list');
+    if(!list)return;
+    var entries=[];
+    states.forEach(function(t){
+      t.write.focus.forEach(function(f){entries.push({topic:t.title, skill:f, count:1});});
+      if(!t.write.focus.length && (t.write.wrong+t.write.almost)>0) entries.push({topic:t.title, skill:'Schreib-Check wiederholen', count:t.write.wrong+t.write.almost});
+    });
+    if(!entries.length){list.innerHTML='<div class="empty">Aktuell sind keine offenen Schreib-Check-Stellen gespeichert.</div>';return;}
+    list.innerHTML=entries.slice(0,12).map(function(e){
+      return '<div class="item"><div class="item-head"><span class="item-title">'+escapeHTML(e.skill)+'</span><span class="badge">offen</span></div><div class="item-meta">'+escapeHTML(e.topic)+'</div></div>';
+    }).join('');
+  }
+  function renderNotes(states){
+    var list=document.getElementById('notes-list');
+    if(!list)return;
+    var entries=[];
+    states.forEach(function(t){t.notes.slice(0,3).forEach(function(n){entries.push({topic:t.title,note:n});});});
+    if(!entries.length){list.innerHTML='<div class="empty">Keine offenen Notizen gespeichert.</div>';return;}
+    list.innerHTML=entries.slice(0,8).map(function(e){return '<div class="item"><div class="item-title">'+escapeHTML(e.topic)+'</div><div class="item-meta">'+escapeHTML(e.note)+'</div></div>';}).join('');
+  }
+  function renderHelp(states, woEntries){
+    var list=document.getElementById('help-list');
+    if(!list)return;
+    var top=states.slice().sort(function(a,b){return b.load-a.load || b.notes.length-a.notes.length;})[0];
+    var steps=[];
+    if(woEntries.length){
+      steps.push('Bei Word Order zuerst „'+woEntries[0].skill+'“ nehmen. Ein Beispielsatz reicht.');
+      steps.push('Hanna zuerst das Signalwort finden lassen, nicht sofort korrigieren.');
+    } else if(top && top.load>0){
+      steps.push('Ein Thema wählen: '+top.title+'. Nicht mehrere Baustellen gleichzeitig.');
+      steps.push(top.help);
+    } else if(top && top.notes.length){
+      steps.push('Eine offene Notiz vorlesen lassen und gemeinsam in eigenen Worten klären.');
+      steps.push('Danach genau ein Beispiel dazu im Kompass anschauen.');
+    } else {
+      steps.push('Kein besonderer Fokus sichtbar. Normal weiterlernen.');
+      steps.push('Erst nach mehreren Schreib-Checks erneut hier hineinschauen.');
+    }
+    steps.push('Nach fünf bis zehn Minuten stoppen. Lieber kurz und klar als lang und zäh.');
+    list.innerHTML=steps.map(function(s,i){return '<div class="help-step"><span class="step-num">'+(i+1)+'</span><span>'+escapeHTML(s)+'</span></div>';}).join('');
+  }
+  function renderResetTables(states){
+    var learning=document.getElementById('learning-reset-list');
+    if(learning){
+      learning.innerHTML=states.map(function(t){
+        var count = t.can && t.can.label ? 'Kann ich’s: '+t.can.label : (t.hasChecklist === false ? 'kein aktueller Checklisten-Lernstand' : t.done+' / '+t.total+' Lernpunkte');
+        if(t.notes.length) count += ' · Notiz vorhanden';
+        return '<tr><td>'+escapeHTML(t.title)+'</td><td>'+escapeHTML(count)+'</td><td><button class="btn btn-danger btn-small" type="button" data-reset-learning="'+escapeHTML(t.id)+'">Lernstand löschen</button></td></tr>';
+      }).join('');
+    }
+    var write=document.getElementById('write-reset-list');
+    if(write){
+      write.innerHTML=states.map(function(t){
+        var count=(t.write.wrong+t.write.almost)+' offen';
+        if(t.write.correct) count += ' · '+t.write.correct+' sicher';
+        return '<tr><td>'+escapeHTML(t.title)+'</td><td>'+escapeHTML(count)+'</td><td><button class="btn btn-danger btn-small" type="button" data-reset-write="'+escapeHTML(t.id)+'">Schreib-Check löschen</button></td></tr>';
+      }).join('');
+    }
+    var full=document.getElementById('topic-full-reset-list');
+    if(full){
+      full.innerHTML=states.map(function(t){
+        var text='Lernstand und Schreib-Check';
+        if(t.id==='wordorder') text += ' · inklusive Word-Order-Stolperstellen';
+        return '<tr><td>'+escapeHTML(t.title)+'</td><td>'+escapeHTML(text)+'</td><td><button class="btn btn-danger btn-small" type="button" data-reset-topic="'+escapeHTML(t.id)+'">Alles zum Thema löschen</button></td></tr>';
+      }).join('');
+    }
+  }
+  function renderAll(){
+    var states=buildStates();
+    var wo=wordOrderEntries();
+    renderSummary(states,wo);
+    renderTopics(states);
+    renderWordOrder(wo);
+    renderWriteList(states);
+    renderNotes(states);
+    renderHelp(states,wo);
+    renderResetTables(states);
+  }
+
+  function kompassKeys(){
+    var keys=[];
+    try{
+      for(var i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        if(key && (key.indexOf('kompass_')===0 || key.indexOf('hanna_listening_')===0)) keys.push(key);
+      }
+    }catch(e){}
+    return keys;
+  }
+  function setDataMessage(text){
+    var el=document.getElementById('data-message');
+    if(el) el.textContent=text||'';
+  }
+  function findTopic(id){return TOPICS.filter(function(t){return t.id===id;})[0] || null;}
+  function deleteLearning(topic){
+    try{localStorage.removeItem(topic.key);}catch(e){}
+    if(topic.id==='simplepast'){try{localStorage.removeItem('kompass_irregularpast_checks');localStorage.removeItem('kompass_irregularpast_notes');}catch(e){}}
+    try{if(topic.canStatusKey)localStorage.removeItem(topic.canStatusKey);}catch(e){}
+    try{localStorage.removeItem(topic.notesKey);}catch(e){}
+    try{if(topic.oldNotesKey)localStorage.removeItem(topic.oldNotesKey);}catch(e){}
+    try{if(Array.isArray(topic.extraKeys)){topic.extraKeys.forEach(function(key){localStorage.removeItem(key);});}}catch(e){}
+  }
+  function deleteWrite(topic){
+    var store=allWriteData();
+    delete store[topic.id];
+    delete store[topic.id+'Tasks'];
+    if(topic.id==='simplepast'){
+      delete store.irregularpast;
+      delete store.irregularpastTasks;
+      if(store.simplepastTasks && typeof store.simplepastTasks==='object'){
+        LEGACY_SIMPLEPAST_IRR_TASK_IDS.forEach(function(id){ delete store.simplepastTasks[id]; });
+      }
+      LEGACY_SIMPLEPAST_IRR_TASK_IDS.forEach(function(id){ delete store[id]; });
+    }
+    topicTasks(topic).forEach(function(task){delete store[task.id];});
+    writeJSON(WRITE_KEY,store);
+  }
+  function deleteTopic(topic){
+    deleteLearning(topic);
+    deleteWrite(topic);
+    if(topic.id==='wordorder'){try{localStorage.removeItem(WORDORDER_KEY);}catch(e){}}
+  }
+  function deleteAllLearning(){TOPICS.forEach(deleteLearning);}
+  function deleteAllWrite(){try{localStorage.removeItem(WRITE_KEY);}catch(e){}}
+  function exportKompassData(){
+    var data={version:2,createdAt:new Date().toISOString(),items:{}};
+    kompassKeys().forEach(function(key){
+      try{data.items[key]=localStorage.getItem(key);}catch(e){}
+    });
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    var date=new Date().toISOString().slice(0,10);
+    a.href=url;
+    a.download='englisch-kompass-daten-'+date+'.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},500);
+    setDataMessage('Daten wurden als Datei gesichert.');
+  }
+  function importKompassData(file){
+    if(!file) return;
+    var reader=new FileReader();
+    reader.onload=function(){
+      try{
+        var data=JSON.parse(String(reader.result||''));
+        var items=data && data.items;
+        if(!items || typeof items!=='object') throw new Error('Ungültige Datei');
+        Object.keys(items).forEach(function(key){
+          if(key.indexOf('kompass_')===0 || key.indexOf('hanna_listening_')===0){
+            localStorage.setItem(key, String(items[key]));
+          }
+        });
+        setDataMessage('Daten wurden eingelesen.');
+        renderAll();
+      }catch(e){
+        setDataMessage('Diese Datei konnte nicht eingelesen werden.');
+      }
+    };
+    reader.readAsText(file);
+  }
+  function requireConfirm(message){return confirm(message+'\n\nDas kann nicht rückgängig gemacht werden.');}
+  function requireDeleteWord(){
+    var answer=prompt('Zum Löschen aller Kompass-Daten bitte LÖSCHEN eingeben.');
+    return answer==='LÖSCHEN';
+  }
+  function activateTab(name, focusButton){
+    var buttons=[].slice.call(document.querySelectorAll('[data-tab]'));
+    var panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+    buttons.forEach(function(btn){
+      var active=btn.getAttribute('data-tab')===name;
+      btn.setAttribute('aria-selected',active?'true':'false');
+      btn.tabIndex=active?0:-1;
+      if(active && focusButton) btn.focus();
+    });
+    panels.forEach(function(panel){panel.classList.toggle('active',panel.getAttribute('data-panel')===name);});
+  }
+  function initTabs(){
+    var buttons=[].slice.call(document.querySelectorAll('[data-tab]'));
+    buttons.forEach(function(btn,index){
+      btn.addEventListener('click',function(){activateTab(btn.getAttribute('data-tab'),false);});
+      btn.addEventListener('keydown',function(e){
+        if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+        e.preventDefault();
+        var next=index+(e.key==='ArrowRight'?1:-1);
+        if(next<0) next=buttons.length-1;
+        if(next>=buttons.length) next=0;
+        activateTab(buttons[next].getAttribute('data-tab'),true);
+      });
+    });
+  }
+
+  document.addEventListener('click',function(e){
+    var learning=e.target.closest('[data-reset-learning]');
+    if(learning){
+      var lt=findTopic(learning.getAttribute('data-reset-learning'));
+      if(lt && requireConfirm('Lernstand für „'+lt.title+'“ löschen?')){deleteLearning(lt);setDataMessage('Lernstand für „'+lt.title+'“ wurde gelöscht.');renderAll();}
+      return;
+    }
+    var write=e.target.closest('[data-reset-write]');
+    if(write){
+      var wt=findTopic(write.getAttribute('data-reset-write'));
+      if(wt && requireConfirm('Schreib-Check-Daten für „'+wt.title+'“ löschen?')){deleteWrite(wt);setDataMessage('Schreib-Check-Daten für „'+wt.title+'“ wurden gelöscht.');renderAll();}
+      return;
+    }
+    var topic=e.target.closest('[data-reset-topic]');
+    if(topic){
+      var tt=findTopic(topic.getAttribute('data-reset-topic'));
+      if(tt && requireConfirm('Alles zu „'+tt.title+'“ löschen?')){deleteTopic(tt);setDataMessage('Alles zu „'+tt.title+'“ wurde gelöscht.');renderAll();}
+    }
+  });
+
+  var exportBtn=document.getElementById('export-data');
+  if(exportBtn) exportBtn.addEventListener('click',exportKompassData);
+  var importBtn=document.getElementById('import-data');
+  var importFile=document.getElementById('import-file');
+  if(importBtn && importFile) importBtn.addEventListener('click',function(){importFile.click();});
+  if(importFile) importFile.addEventListener('change',function(){importKompassData(importFile.files && importFile.files[0]);importFile.value='';});
+
+  var resetAllLearning=document.getElementById('reset-all-learning');
+  if(resetAllLearning) resetAllLearning.addEventListener('click',function(){
+    if(!requireConfirm('Lernstand aller Themen löschen?')) return;
+    deleteAllLearning();
+    setDataMessage('Lernstand aller Themen wurde gelöscht.');
+    renderAll();
+  });
+  var resetAllWrite=document.getElementById('reset-all-writechecks');
+  if(resetAllWrite) resetAllWrite.addEventListener('click',function(){
+    if(!requireConfirm('Schreib-Checks aller Themen löschen?')) return;
+    deleteAllWrite();
+    setDataMessage('Schreib-Checks aller Themen wurden gelöscht.');
+    renderAll();
+  });
+  var resetAll=document.getElementById('reset-all-kompass');
+  if(resetAll) resetAll.addEventListener('click',function(){
+    if(!requireDeleteWord()){setDataMessage('Löschen wurde abgebrochen.');return;}
+    kompassKeys().forEach(function(key){try{localStorage.removeItem(key);}catch(e){}});
+    setDataMessage('Alle Kompass-Daten in diesem Browser wurden gelöscht.');
+    renderAll();
+  });
+  migrateLegacySimplePastIrregular();
+  initTabs();
+  renderAll();
+})();
+</script>
+</body>
+</html>
+
