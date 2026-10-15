@@ -152,7 +152,7 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
  }
  function secondHint(task){
    if(isSubjectQuestion(task))return isPresentSubjectWho(task)?'Bei „Wer tut etwas?“ folgt auf Who die passende Verbform im Simple Present. Achte auf die Endung des Verbs.':'Bei „Wer hat etwas getan?“ folgt auf Who das Verb im Simple Past. Du brauchst hier kein did.';
-   if(isObjectQuestion(task)){const past=/^(Who|What) did\b/i.test(task.answers[0]),prep=task.answers[0].includes(' with ')||task.answers[0].includes(' to ');return (past?'Simple Past: Who + did + handelnde Person + Grundform.':'Simple Present: Who + do/does + handelnde Person + Grundform.')+(prep?' Bei „mit wem“ bleibt auch die passende Präposition in der Frage.':'');}
+   if(isObjectQuestion(task)){const past=/^(Who|What) did\b/i.test(task.answers[0]),prep=task.answers[0].includes(' with ')||task.answers[0].includes(' to ');return (past?'Simple Past: Fragewort (Who/What) + did + handelnde Person + Grundform.':'Simple Present: Fragewort (Who/What) + do/does + handelnde Person + Grundform.')+(prep?' Bei Fragen mit einer Präposition bleibt sie in der Frage erhalten.':'');}
    if(task.kind==='short')return 'Kurzantwort: Yes oder No + Person + kleines Verb. Bei he, she, it wird do in der Verneinung zu does not.';
    if(task.kind==='repair')return 'Nach do, does und did steht die Grundform. Bei to be stehen is, are, was oder were vor der Person. Einige Fragen sind schon richtig.';
    if(task.skill==='did')return 'Simple Past: (Fragewort) + did + Person + Grundform des Verbs.';
@@ -257,7 +257,7 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
         btn.setAttribute('aria-label','Aufgabe '+(i+1)+': '+label);
         btn.addEventListener('click',()=>{
           if(!st.whoStatus||typeof st.whoStatus!=='object')st.whoStatus={};
-          st.whoStatus[r.id]=status;save();summary();
+          st.whoStatus[r.id]=status;save();summary();const cardAfter=document.querySelectorAll('#summary-body .review')[i];const buttonAfter=cardAfter&&Array.from(cardAfter.querySelectorAll('button')).find(b=>b.textContent===label);if(buttonAfter)buttonAfter.focus();
         });
         choices.append(btn);
       });
