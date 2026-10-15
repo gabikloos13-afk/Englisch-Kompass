@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On the phone – Hannas Englisch-Kompass</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#243244;background:#e7eef4;font-size:16px}
+*{box-sizing:border-box}body{margin:0;line-height:1.55}a{color:#1d4ed8}
+header{background:linear-gradient(125deg,#1d4ed8,#6d28d9);color:white;padding:24px max(20px,calc((100vw - 1020px)/2))}
+header h1{margin:0;font-size:1.65rem}header p{margin:5px 0 0;color:#f0eaff}
+.top{padding:12px max(20px,calc((100vw - 1020px)/2));background:white}
+main{max-width:1020px;margin:20px auto;padding:0 20px 45px;display:grid;gap:16px}
+.card{background:white;border:1px solid #cbd5e1;border-radius:16px;padding:20px;box-shadow:0 4px 14px #24324410}
+h2{font-size:1.18rem;margin:0 0 10px}p{margin:7px 0 12px}.soft{background:#eff6ff;border-radius:10px;padding:12px;margin:12px 0}.scene{font-size:1.06rem;font-weight:bold}
+label{display:block;font-weight:bold;margin:12px 0 6px}textarea{width:100%;min-height:90px;padding:12px;border:1px solid #94a3b8;border-radius:10px;font:inherit}
+button{font:inherit;cursor:pointer;border:1px solid #2563eb;background:#fff;color:#1d4ed8;border-radius:999px;padding:10px 15px;min-height:43px}
+button.primary{background:#2563eb;color:white}button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.feedback{padding:12px;border-radius:10px;margin-top:14px;background:#eff6ff;border:1px solid #93c5fd}
+.feedback.warn{background:#fffbeb;border-color:#fbbf24}
+.feedback.good{background:#f0fdf4;border-color:#86efac}
+.meta{font-size:.88rem;color:#526277}
+.progress{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-top:12px}
+.bar{height:100%;background:#2563eb;width:0;transition:width .2s}
+[hidden]{display:none!important}
+.small{font-size:.91rem}
+.list{padding-left:22px;margin-bottom:0}.list li{margin-bottom:6px}
+@media(max-width:580px){header{padding:18px 20px}.card{padding:16px}}
+
+/* Gemeinsamer ruhiger Kompass-Rahmen; Telefontraining bleibt funktional unverändert */
+body{background:#e7eef4;color:#243b55;font:15px/1.6 Arial,Helvetica,sans-serif}
+.top{max-width:1140px;margin:12px auto 14px;padding:0 15px;background:transparent;border:0}
+.top a{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;background:#fff;border:1px solid #cfdce9;border-radius:10px;color:#243b55;text-decoration:none}
+header{max-width:1110px;margin:0 auto 15px;padding:25px 30px;background:#fff;color:#243b55;border:1px solid #cfdce9;border-radius:14px}
+header h1{color:#243b55;font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif}
+header p{color:#52657b}
+main{max-width:1140px;padding:0 15px 45px}
+.card{border:1px solid #cfdce9;border-radius:13px;box-shadow:none}
+button{border-radius:10px;min-height:42px}
+button.primary{background:#2563eb;color:#fff;border-color:#2563eb}
+@media(max-width:650px){.top{padding:0 12px}header{margin:0 12px 12px;padding:19px}main{padding:0 12px 35px}.card{padding:16px}}
+
+/* Telefontraining – gleiche äußere Gestaltung, Übungsablauf unverändert */
+body{background:#e7eef4;color:#243b55;font:15px/1.6 Arial,Helvetica,sans-serif}
+.top{max-width:1140px;margin:12px auto 14px;padding:0 15px;background:transparent;border:0}
+.top a{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;background:#fff;border:1px solid #cfdce9;border-radius:10px;color:#243b55;text-decoration:none}
+header{max-width:1110px;margin:0 auto 15px;padding:25px 30px;background:#fff;background-image:none;color:#243b55;border:1px solid #cfdce9;border-radius:14px;box-shadow:none}
+header h1{font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif;color:#243b55;margin:0 0 8px}
+header p{color:#52657b}
+main{max-width:1140px;margin:0 auto;padding:0 15px 50px;gap:14px}
+.card{border:1px solid #cfdce9;border-radius:13px;background:#fff;box-shadow:none;padding:20px}
+.card h2{font-weight:500;color:#243b55}
+.soft,.scene+ .soft{background:#f1f5f9}
+button{border-radius:10px;min-height:42px}
+button.primary{background:#2563eb;border-color:#2563eb}
+textarea{border-radius:10px}
+@media(max-width:650px){.top{padding:0 12px}header{margin:0 12px 12px;padding:19px}main{padding:0 12px 35px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Zurück"><a href="index.html">← Zur Themenübersicht</a></nav>
+<header><h1>On the phone · Telefontraining</h1><p>Erst selbst sprechen oder schreiben, dann eine Denkfrage nutzen, anschließend vergleichen.</p></header>
+<main>
+<section class="card" aria-labelledby="intro"><h2 id="intro">Dein Lernweg</h2><p>Du möchtest mit Sam telefonieren. In acht kurzen Telefonsituationen formulierst du die Redemittel aus deinem Unterrichtsblatt selbst. Es gibt keine Punkte.</p><p class="meta">Alle acht Redemittel aus deinem Unterrichtsblatt „On the phone“ sind enthalten. Die kurzen Situationen verbinden die Formulierungen zum Üben.</p><div class="progress" role="progressbar" aria-label="Gesprächsschritte bearbeitet" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="progress"><div id="bar" class="bar"></div></div><p id="counter" class="meta" aria-live="polite">Schritt 1 von 8</p></section>
+<section class="card" id="task" aria-labelledby="prompt-title"><h2 id="prompt-title">Gespräch üben</h2><p class="meta" id="speaker"></p><p id="prompt" class="scene"></p><p class="soft" id="context"></p><label for="answer">Dein englischer Satz</label><textarea id="answer" spellcheck="false" autocomplete="off" placeholder="Schreibe zuerst selbst …"></textarea><div class="actions"><button type="button" class="primary" id="check">Antwort prüfen</button><button type="button" id="hint" disabled>Denkfrage</button><button type="button" id="solution" disabled>Musterlösung</button></div><div id="feedback" aria-live="polite" hidden></div><div class="actions"><button type="button" id="next" disabled>Nächster Schritt →</button></div></section>
+<section class="card" id="result" hidden><h2>Dein Gesprächsrückblick</h2><p id="result-intro"></p><div id="result-items"></div><p class="small">„Kann ich“ ist erst nach einem neuen, sofort richtigen Versuch ohne Hilfe möglich. Andernfalls bleibt die Formulierung für die Wiederholung aktiv.</p><div class="actions"><button class="primary" type="button" id="repeat">Unsichere Formulierungen erneut üben</button><button type="button" id="restart">Alle vier erneut üben</button></div></section>
+<section class="card" aria-labelledby="reference-heading"><h2 id="reference-heading">Kurz nachschlagen</h2><p>Die Redemittel werden erst nach einem eigenen Versuch freigeschaltet. So kannst du zuerst selbst überlegen.</p><button type="button" id="reference-toggle" aria-controls="reference-content" aria-expanded="false" disabled>Alle acht Redemittel nachschlagen</button><div id="reference-content" hidden><p>Alle acht Redemittel aus Hannas Unterrichtsblatt „On the phone“:</p><ol class="list"><li>Hello.</li><li>It’s Lucy here.</li><li>Can I speak to Sam, please?</li><li>Can you phone back later, please?</li><li>Hold a minute.</li><li>Do you want to leave a message?</li><li>Can he phone me back?</li><li>I got your message.</li></ol></div></section>
+</main>
+<script>
+(function(){
+'use strict';
+const tasks=[
+{id:'hello',speaker:'Du rufst an.',prompt:'Lucy ruft bei Sam an. Wie begrüßt sie die Person am Telefon?',context:'Ein Telefonat beginnt. → Du begrüßt.',answers:['Hello.'],hint:'Eine ganz kurze englische Begrüßung genügt.'},
+{id:'lucy',speaker:'Lucy stellt sich vor.',prompt:'Du bist Lucy. Sage am Telefon, wer spricht.',context:'Gespräch: Hello. → Du stellst dich als Lucy vor.',answers:["It's Lucy here."],hint:'Beginne mit It’s ... und ergänze Lucy here.'},
+{id:'speak',speaker:'Lucy fragt nach Sam.',prompt:'Bitte höflich darum, mit Sam sprechen zu dürfen.',context:'Gespräch: It’s Lucy here. → Du möchtest Sam sprechen.',answers:['Can I speak to Sam, please?'],hint:'Wie beginnst du eine höfliche Bitte: Can I ... ?'},
+{id:'later',speaker:'Sam kann gerade nicht sprechen.',prompt:'Du bist Sams Mutter. Bitte Lucy höflich, später zurückzurufen.',context:'Gespräch: Sam can’t speak right now. → Du antwortest.',answers:['Can you phone back later, please?'],hint:'Beginne mit Can you ... ? Verwende phone back later.'},
+{id:'hold',speaker:'Sams Mutter bittet zu warten.',prompt:'Du bist Sams Mutter. Bitte Lucy, einen Moment zu warten.',context:'Gespräch: Can I speak to Sam, please? → Du antwortest.',answers:['Hold a minute.'],hint:'Du brauchst eine kurze Aufforderung: Hold ...'},
+{id:'message',speaker:'Sam ist nicht da.',prompt:'Du bist Sams Mutter. Frage Lucy, ob sie eine Nachricht hinterlassen möchte.',context:'Gespräch: Sam isn’t here right now. → Du antwortest.',answers:['Do you want to leave a message?'],hint:'Beginne mit Do you want to ... ?'},
+{id:'callback',speaker:'Lucy bittet um einen Rückruf.',prompt:'Bitte darum, dass Sam dich zurückruft.',context:'Gespräch: Do you want to leave a message? → Du antwortest.',answers:['Can he phone me back?'],hint:'Beginne mit Can he ... ? und verwende phone ... back.'},
+{id:'got',speaker:'Sam hat die Nachricht erhalten.',prompt:'Du bist Sam. Sage Lucy, dass du ihre Nachricht bekommen hast.',context:'Gespräch: Lucy hat eine Nachricht hinterlassen. → Du antwortest.',answers:['I got your message.'],hint:'Beginne mit I got ... und denke an your message.'}
+];
+const $=id=>document.getElementById(id), KEY='kompass_phone_v1';
+let statuses={};try{statuses=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){statuses={}}
+let queue=tasks.map(x=>x.id),position=0,attempts=0,helps=0,finished=false,seen=[],hintLevel=0;
+const norm=s=>String(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+const current=()=>tasks.find(x=>x.id===queue[position]);
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(statuses))}catch(e){}};
+const feedback=(t,kind='')=>{let f=$('feedback');f.hidden=false;f.className='feedback '+kind;f.textContent=t};
+function render(){
+let q=current();$('task').hidden=false;$('result').hidden=true;$('speaker').textContent=q.speaker;$('prompt').textContent=q.prompt;$('context').textContent=q.context;
+$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('hint').disabled=true;$('solution').disabled=true;$('next').disabled=true;$('feedback').hidden=true;
+$('counter').textContent='Schritt '+(position+1)+' von '+queue.length;$('bar').style.width=(position/queue.length*100)+'%';$('progress').setAttribute('aria-valuemax',String(queue.length));$('progress').setAttribute('aria-valuenow',String(position));
+attempts=0;helps=0;hintLevel=0;finished=false;
+}
+function finish(correct){
+if(finished)return;finished=true;
+let q=current(),independent=correct&&attempts===1&&helps===0;
+seen.push({id:q.id,independent});
+if(independent){statuses[q.id]='can';feedback('Beim ersten Versuch ohne Hilfe richtig. Diese Formulierung ist als „Kann ich“ erkannt.','good')}
+else{statuses[q.id]='again';feedback(correct?'Nach dem Überarbeiten richtig. Diese Formulierung bleibt zum erneuten selbstständigen Üben aktiv.':'Musterlösung angeschaut. Diese Formulierung bleibt zum Üben aktiv.', 'warn')}
+save();$('answer').disabled=true;$('check').disabled=true;$('hint').disabled=true;$('solution').disabled=true;$('next').disabled=false;
+}
+function unlockReference(){const b=$('reference-toggle');if(b)b.disabled=false}
+$('reference-toggle').addEventListener('click',()=>{const b=$('reference-toggle'),p=$('reference-content');const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));p.hidden=open;b.textContent=open?'Alle acht Redemittel nachschlagen':'Redemittel ausblenden'});
+$('check').addEventListener('click',()=>{
+if(finished)return;const q=current(),v=$('answer').value.trim();if(!v){feedback('Schreibe zuerst einen englischen Satz.','warn');return}
+attempts++;unlockReference();
+if(q.answers.some(a=>norm(a)===norm(v))){finish(true);return}
+feedback('Nicht automatisch erkannt. Das muss nicht bedeuten, dass deine Antwort falsch ist. Vergleiche die Formulierung oder überarbeite deinen Satz.','warn');
+$('hint').disabled=false;$('solution').disabled=false;
+});
+$('hint').addEventListener('click',()=>{if(finished||attempts<1)return;helps++;hintLevel++;feedback(hintLevel===1?current().hint:'Denkfrage: Welche Wörter brauchst du genau in welcher Reihenfolge?','warn')});
+$('solution').addEventListener('click',()=>{if(finished||attempts<1)return;helps++;finish(false);feedback('Musterlösung: '+current().answers[0]+'. Diese Formulierung bleibt für die Wiederholung aktiv.','warn')});
+$('next').addEventListener('click',()=>{if(position+1<queue.length){position++;render()}else summary()});
+function summary(){
+$('task').hidden=true;$('result').hidden=false;$('counter').textContent='Gesprächsdurchgang abgeschlossen';$('bar').style.width='100%';$('progress').setAttribute('aria-valuenow',String(queue.length));
+$('result-intro').textContent='Prüfe, was du beim ersten Versuch ohne Hilfe formuliert hast und was du erneut üben solltest.';
+let items=$('result-items');items.replaceChildren();
+tasks.forEach(t=>{let p=document.createElement('p');p.textContent=(statuses[t.id]==='can'?'Kann ich: ':'Nochmal üben: ')+t.answers[0];items.append(p)});
+$('repeat').disabled=!tasks.some(t=>statuses[t.id]!=='can');
+}
+function start(ids){queue=ids;position=0;seen=[];render();$('answer').focus()}
+$('repeat').addEventListener('click',()=>start(tasks.filter(t=>statuses[t.id]!=='can').map(t=>t.id)));
+$('restart').addEventListener('click',()=>start(tasks.map(t=>t.id)));
+render();
+})();
+</script>
+</body></html>
