@@ -7460,6 +7460,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <button aria-controls="questions-v64-machine" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="machine" type="button">Satzmaschine</button>
 <button aria-controls="questions-v64-basic" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="basic" type="button">did + person + basic form</button>
 <button aria-controls="questions-v64-trap" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="trap" type="button">Denkfalle</button>
+<button aria-controls="questions-v64-check" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="check" type="button">Kann ich’s?</button>
 </nav>
 <div class="past-tool-stage questions-v64-stage">
 <div class="past-tool-panel is-active" data-panel="questions-v64" data-val="understand" id="questions-v64-understand">
@@ -7710,10 +7711,41 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 </article>
 </div>
+<div class="past-tool-panel" data-panel="questions-v64" data-val="check" id="questions-v64-check">
+<section class="past-subcard did-quality-check" id="did-quality-mini" aria-labelledby="did-quality-mini-title">
+<p class="feature-kicker">Schulnaher Mini-Abschluss · ohne Punkte</p>
+<h3 id="did-quality-mini-title">Kann ich’s? – Questions with did</h3>
+<p>Schreibe zuerst selbst, prüfe dann die Antwort. Vergleiche bei Unsicherheit mit der Lösung und entscheide, ob du die Frage kannst oder später wiederholen möchtest.</p>
+<div id="did-quality-mini-task">
+<p class="did-quality-progress" id="did-quality-mini-progress" aria-live="polite"></p>
+<p class="did-quality-prompt" id="did-quality-mini-prompt"></p>
+<label class="did-v59-input-label" for="did-quality-mini-input">Deine Lösung</label>
+<input class="did-v59-input" id="did-quality-mini-input" type="text" spellcheck="false" autocomplete="off" placeholder="Schreibe deine Antwort …"/>
+<div class="did-v59-actions">
+<button class="past-action-btn" id="did-quality-mini-check" type="button">Prüfen</button>
+<button class="past-action-btn is-secondary" id="did-quality-mini-hint" type="button">Denkfrage</button>
+<button class="past-action-btn is-secondary" id="did-quality-mini-solution" type="button" disabled>Lösung vergleichen</button>
+</div>
+<p class="past-feedback did-quality-feedback" id="did-quality-mini-feedback" aria-live="polite" role="status"></p>
+<fieldset class="did-quality-status" id="did-quality-mini-status" disabled>
+<legend>Deine Entscheidung nach dem Vergleich</legend>
+<div class="did-v59-actions">
+<button class="past-action-btn is-secondary" data-did-quality-status="can" aria-pressed="false" type="button">Kann ich</button>
+<button class="past-action-btn is-secondary" data-did-quality-status="again" aria-pressed="false" type="button">Nochmal üben</button>
+<button class="past-action-btn is-secondary" data-did-quality-status="unsure" aria-pressed="false" type="button">Unsicher</button>
+</div>
+</fieldset>
+<button class="past-action-btn" id="did-quality-mini-next" type="button" disabled>Weiter</button>
+</div>
+<div class="did-quality-recap" id="did-quality-mini-recap" hidden aria-live="polite"></div>
+<p class="did-quality-journal">Notiere unsichere Beispiele im bestehenden Simple-Past-Bereich „Notizen“: War es das Fragewort, die Grundform, die Kurzantwort oder die Who-Ausnahme?</p>
+<button class="past-action-btn is-secondary" id="did-quality-mini-notes" type="button">Zu meinen Simple-Past-Notizen</button>
+</section>
+</div>
 </div>
 </section>
 </div>
-<div class="learn-panel" data-panel="past-learn" data-val="tobe" id="past-learn-tobe">
+<div class="learn-panel" data-panel="past-learn" data-val="tobe" id="past-learn-tobe"
 <section aria-labelledby="tobe-v67-title" class="past-topic-card past-topic-card-tools simplepast-learning-shell simplepast-tobe-v67">
 <div class="simplepast-learning-head">
 <span aria-hidden="true" class="simplepast-learning-icon">🧭</span>
@@ -12364,6 +12396,82 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  input.addEventListener('input',()=>{checked=false;hints=0;solution.disabled=true});
  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();by('did-quality-w-check').click()}});
  show();
+})();
+</script>
+<script id="did-quality-mini-v1">
+(function(){
+ 'use strict';
+ const root=document.getElementById('did-quality-mini');if(!root)return;
+ const $=id=>document.getElementById(id);
+ const tasks=[
+  {id:'yesno',focus:'Ja-/Nein-Frage',prompt:'Sam saw a bear. Frage, OB Sam einen Bären gesehen hat.',answers:['Did Sam see a bear?'],why:'Nach did steht see statt saw.'},
+  {id:'what',focus:'W-Frage',prompt:'Lucy bought a ticket yesterday. Frage, WAS Lucy gestern gekauft hat.',answers:['What did Lucy buy yesterday?','What did Lucy buy?'],why:'What fragt nach der Sache. Nach did steht buy statt bought.'},
+  {id:'when',focus:'W-Frage',prompt:'They visited their grandparents on Sunday. Frage, WANN sie ihre Großeltern besucht haben.',answers:['When did they visit their grandparents?'],why:'When fragt nach der Zeit. Die Zeitangabe wird erfragt und nicht wiederholt.'},
+  {id:'why',focus:'W-Frage',prompt:'Maya went to the farm because she likes animals. Frage, WARUM Maya zum Bauernhof gefahren ist.',answers:['Why did Maya go to the farm?'],why:'Why fragt nach dem Grund. Nach did steht go statt went.'},
+  {id:'how',focus:'W-Frage',prompt:'Justin went to Plymouth by bus. Frage, WIE Justin nach Plymouth gekommen ist.',answers:['How did Justin get to Plymouth?','How did Justin go to Plymouth?'],why:'How fragt nach der Art und Weise. Nach did steht get oder go.'},
+  {id:'short',focus:'Kurzantwort',prompt:'Did Lucy visit the farm? Antworte kurz mit Ja.',answers:['Yes, she did.'],why:'Yes + she + did. Das Vollverb wird nicht wiederholt.'},
+  {id:'repair',focus:'Grundform',prompt:'Fehler reparieren: Where did Sam went yesterday?',answers:['Where did Sam go yesterday?'],why:'Nach did folgt go, nicht went.'},
+  {id:'who',focus:'Who-Ausnahme',prompt:'Lucy called Sam yesterday. Frage, WER Sam angerufen hat.',answers:['Who called Sam yesterday?','Who called Sam?'],why:'Who ist die handelnde Person und ersetzt das Subjekt. Deshalb steht called direkt nach Who.'}
+ ];
+ const norm=s=>String(s||'').toLowerCase().replace(/[?.!,]/g,'').replace(/\s+/g,' ').trim();
+ const input=$('did-quality-mini-input'),prompt=$('did-quality-mini-prompt'),progress=$('did-quality-mini-progress'),feedback=$('did-quality-mini-feedback');
+ const solution=$('did-quality-mini-solution'),next=$('did-quality-mini-next'),fieldset=$('did-quality-mini-status');
+ const buttons=Array.from(fieldset.querySelectorAll('[data-did-quality-status]'));
+ const area=$('did-quality-mini-task'),recap=$('did-quality-mini-recap'),key='kompass_simplepast_did_mini_v1';
+ let statuses={};try{const found=JSON.parse(localStorage.getItem(key));if(found&&typeof found==='object'&&!Array.isArray(found))statuses=found}catch(e){}
+ const save=()=>{try{localStorage.setItem(key,JSON.stringify(statuses))}catch(e){}};
+ let queue=[],index=0,tried=false,hintCount=0,choice=null;
+ const active=()=>queue[index];
+ function present(){
+  const t=active();if(!t){summarize();return}
+  area.hidden=false;recap.hidden=true;
+  progress.textContent='Aufgabe '+(index+1)+' von '+queue.length+' · '+t.focus;
+  prompt.textContent=t.prompt;input.value='';tried=false;choice=null;hintCount=0;
+  next.disabled=true;solution.disabled=true;fieldset.disabled=true;
+  buttons.forEach(b=>b.setAttribute('aria-pressed','false'));
+  feedback.textContent='Erst selbst schreiben, dann prüfen.';
+ }
+ function start(){queue=tasks.filter(t=>statuses[t.id]!=='can');index=0;present()}
+ function summarize(){
+  area.hidden=true;recap.hidden=false;recap.replaceChildren();
+  const make=(tag,text)=>{const e=document.createElement(tag);e.textContent=text;return e};
+  const mastered=tasks.filter(t=>statuses[t.id]==='can').length;
+  const open=tasks.filter(t=>statuses[t.id]!=='can');
+  recap.append(make('h4','Dein Lernstand'),make('p',mastered+' Aufgaben hast du als „Kann ich“ markiert. '+open.length+' bleiben für die Wiederholung aktiv.'));
+  if(open.length)recap.append(make('p','Dein nächster Fokus: '+[...new Set(open.map(t=>t.focus))].join(', ')+'.'));
+  const button=make('button',open.length?'Offene Aufgaben noch einmal üben':'Für einen neuen Selbsttest zurücksetzen');
+  button.className='past-action-btn';button.type='button';
+  button.addEventListener('click',()=>{if(!open.length){tasks.forEach(t=>delete statuses[t.id]);save()}start()});
+  recap.append(button);
+ }
+ $('did-quality-mini-check').addEventListener('click',()=>{
+  if(!active()||!input.value.trim()){feedback.textContent='Schreibe zuerst eine eigene Lösung.';return}
+  tried=true;solution.disabled=false;
+  if(active().answers.some(a=>norm(a)===norm(input.value))){
+   fieldset.disabled=false;
+   feedback.textContent='Die Antwort ist richtig erkannt. '+active().why+' Markiere selbst deinen Lernstand.';
+  }else{
+   fieldset.disabled=true;
+   feedback.textContent='Nicht automatisch erkannt. Überlege zuerst: Fragewort, did, Grundform oder Who-Ausnahme? Vergleiche danach mit der Musterlösung.';
+  }
+ });
+ $('did-quality-mini-hint').addEventListener('click',()=>{
+  if(!tried){feedback.textContent='Schreibe und prüfe zuerst deinen eigenen Versuch.';return}
+  hintCount=Math.min(2,hintCount+1);
+  feedback.textContent=hintCount===1?'Wer tut etwas? Fragst du nach Wer, Wen, Wo, Wann, Warum oder Wie?':active().id==='who'?'Who fragt hier nach der handelnden Person, darum brauchst du kein did.':active().id==='short'?'Eine Kurzantwort: Yes oder No + Person + did/didn’t.':'Bei normalen Fragen im Simple Past: (Fragewort) + did + Person + Grundform.';
+ });
+ solution.addEventListener('click',()=>{if(!tried)return;fieldset.disabled=false;feedback.textContent='Musterlösung: '+active().answers[0]+' '+active().why+' Entscheide jetzt selbst über deinen Lernstand.'});
+ buttons.forEach(b=>b.addEventListener('click',()=>{
+  if(fieldset.disabled)return;choice=b.dataset.didQualityStatus;
+  buttons.forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
+  next.disabled=false;
+  feedback.textContent='Du hast „'+b.textContent+'“ gewählt. Die Einstufung wird beim Weitergehen gespeichert.';
+ }));
+ next.addEventListener('click',()=>{if(!choice)return;statuses[active().id]=choice;save();index++;if(index===queue.length)summarize();else{present();input.focus()}});
+ input.addEventListener('input',()=>{tried=false;choice=null;hintCount=0;solution.disabled=true;fieldset.disabled=true;next.disabled=true;buttons.forEach(b=>b.setAttribute('aria-pressed','false'))});
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('did-quality-mini-check').click()}});
+ $('did-quality-mini-notes').addEventListener('click',()=>{const btn=document.querySelector('.compass-mode-btn[data-tab="past-mode"][data-val="notes"]');if(btn){btn.click();btn.focus()}});
+ start();
 })();
 </script>
 </body>
