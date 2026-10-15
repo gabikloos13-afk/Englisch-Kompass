@@ -237,7 +237,7 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
   }else if(st.whoFocus||st.presentFocus){
     const first=st.results.filter(x=>x&&x.status==='first').length;
     body.append(make('p','Beim ersten Versuch ohne Hilfe gelöst: '+first+' von '+st.results.length+'.'));
-    body.append(make('p',st.presentFocus?'„Kann ich“ ist nur nach einer sofort richtigen Antwort ohne Hilfe möglich. Nach Fehlern oder Hilfen bleibt die Frage aktiv. Vergleiche bei Bedarf mit der Lösung und markiere „Nochmal üben“ oder „Unsicher“.':'Wähle zu jeder Frage: „Kann ich“ nimmt sie aus der aktiven Wiederholung; „Nochmal üben“ und „Unsicher“ behalten sie für später. Ohne eigene Einstufung bleibt die Frage ebenfalls aktiv. Vergleiche zuerst deine Antwort und die Erklärung.'));
+    body.append(make('p','„Kann ich“ ist nur nach einer sofort richtigen Antwort ohne Hilfe möglich. Nach Fehlern oder Hilfen bleibt die Frage aktiv. Vergleiche bei Bedarf mit der Lösung und markiere „Nochmal üben“ oder „Unsicher“.'));
     st.results.forEach((r,i)=>{
       if(!r)return;
       const task=BANK[r.id],card=make('div',undefined,'review');
@@ -253,11 +253,11 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
       [['can','Kann ich'],['again','Nochmal üben'],['unsure','Unsicher']].forEach(([status,label])=>{
         const btn=make('button',label);
         btn.type='button';
-        if(st.presentFocus&&status==='can'&&r.status!=='first')btn.disabled=true;
+        if(status==='can'&&r.status!=='first')btn.disabled=true;
         btn.setAttribute('aria-pressed',String(current===status));
         btn.setAttribute('aria-label','Aufgabe '+(i+1)+': '+label);
         btn.addEventListener('click',()=>{
-          if(st.presentFocus&&status==='can'&&r.status!=='first')return;
+          if(status==='can'&&r.status!=='first')return;
           const key=st.presentFocus?'presentStatus':'whoStatus';if(!st[key]||typeof st[key]!=='object')st[key]={};
           st[key][r.id]=status;save();summary();const cardAfter=document.querySelectorAll('#summary-body .review')[i];const buttonAfter=cardAfter&&Array.from(cardAfter.querySelectorAll('button')).find(b=>b.textContent===label);if(buttonAfter)buttonAfter.focus();
         });
