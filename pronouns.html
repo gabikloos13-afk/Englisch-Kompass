@@ -131,7 +131,11 @@ h1,h2,h3,p,ul,ol,table{margin-top:0}p,ul,ol{margin-bottom:0}
 .pron-card-note{color:var(--gray-600)!important;font-size:.86rem!important}
 .pron-choice-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:9px}
 .pron-small-option{display:block;padding:8px 10px;border:var(--line);border-radius:var(--radius-sm);background:var(--gray-25);font-size:.86rem}
-.pron-small-option-good{border-color:#bbf7d0;background:var(--green-soft);color:var(--green)}
+.pron-small-option[data-pron-intro-choice]{cursor:pointer;text-align:left;font-family:inherit;color:inherit;line-height:1.45;width:100%}
+.pron-small-option[data-pron-intro-choice]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pron-small-option[data-pron-intro-choice].is-correct{border-color:#86efac;background:var(--green-soft);color:var(--green)}
+.pron-small-option[data-pron-intro-choice].is-wrong{border-color:#fca5a5;background:#fef2f2}
+.pron-small-option[data-pron-intro-choice]:not(.is-correct):not(.is-wrong):hover{border-color:var(--gray-400)}
 .pron-feature-card{background:linear-gradient(135deg,#fff,var(--blue-soft))}
 .pron-swap-grid{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
 .pron-swap-btn,.pron-option-btn{min-height:34px;padding:7px 14px;border:2px solid var(--gray-200);border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.88rem;color:var(--gray-700);background:#fff;cursor:pointer;transition:all .18s}
@@ -716,14 +720,14 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <p class="pron-example-line">Hanna has a dog. Her dog is funny.</p>
 </article>
 </div>
-<div class="pron-think-card">
+<div class="pron-think-card" data-pron-intro>
 <p class="pron-card-title">Denkfrage</p>
-<p>Was klingt besser?</p>
+<p>Welche Version klingt natürlicher? Entscheide zuerst selbst.</p>
 <div class="pron-choice-row">
-<span class="pron-small-option">Ben is my friend. Ben likes football.</span>
-<span class="pron-small-option pron-small-option-good">Ben is my friend. He likes football.</span>
+<button type="button" class="pron-small-option" data-pron-intro-choice data-correct="false">Ben is my friend. Ben likes football.</button>
+<button type="button" class="pron-small-option" data-pron-intro-choice data-correct="true">Ben is my friend. He likes football.</button>
 </div>
-<p class="pron-card-note">Die zweite Version klingt natürlicher, weil he den Namen Ben ersetzt.</p>
+<p class="pron-card-note" data-pron-intro-feedback aria-live="polite">Wähle eine Version, dann siehst du die Erklärung.</p>
 </div>
 </div>
 
@@ -735,7 +739,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <div class="pron-swap-grid" aria-label="Namens-Tausch-Maschine">
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Hanna" data-pronoun="she" data-sentence="Hanna is nice." data-result="She is nice.">Hanna</button>
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Ben" data-pronoun="he" data-sentence="Ben is funny." data-result="He is funny.">Ben</button>
-<button class="pron-swap-btn" type="button" data-pron-swap data-name="my dog" data-pronoun="it" data-sentence="My dog is hungry." data-result="It is hungry.">my dog</button>
+<button class="pron-swap-btn" type="button" data-pron-swap data-name="the book" data-pronoun="it" data-sentence="The book is on the table." data-result="It is on the table.">the book</button>
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Ben and Hanna" data-pronoun="they" data-sentence="Ben and Hanna are friends." data-result="They are friends.">Ben and Hanna</button>
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Tom and I" data-pronoun="we" data-sentence="Tom and I are happy." data-result="We are happy.">Tom and I</button>
 </div>
@@ -752,7 +756,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 </div>
 <div class="pron-think-card">
 <p class="pron-card-title">Denkweg</p>
-<p>Name sehen → Wer ist gemeint? → Pronoun wählen: Hanna wird she, Ben wird he, mehrere Personen werden they.</p>
+<p>Name sehen → Wer oder was ist gemeint? → Pronoun wählen: Hanna wird she, Ben wird he, ein Gegenstand wird it, mehrere Personen werden they.</p><p>Bei Tieren kann it passen. Bei einem Haustier mit bekanntem Geschlecht verwendet man auch he oder she.</p>
 </div>
 </div>
 
@@ -893,38 +897,38 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <p class="cancheck-block-text">Wähle die passende Form. Die Rückmeldung kommt erst nach deiner Entscheidung.</p>
 <div class="cancheck-task-grid" aria-label="Mini-Entscheidung Pronouns">
 <article class="cancheck-task">
-<p class="cancheck-prompt">___ is my friend.</p>
+<p class="cancheck-prompt">Mia and I are at school. ___ classroom is upstairs.</p>
 <span class="cancheck-question">Welche Form passt?</span>
 <div class="cancheck-choice-row">
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="she" data-correct="she" data-correct-message="Richtig: Hier geht es um eine Person. Deshalb brauchst du she." data-wrong-message="Noch nicht: her zeigt Besitz und steht vor einem Nomen, zum Beispiel her dog.">she</button>
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="her" data-correct="she" data-correct-message="Richtig: Hier geht es um eine Person. Deshalb brauchst du she." data-wrong-message="Noch nicht: her zeigt Besitz und steht vor einem Nomen, zum Beispiel her dog.">her</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="we" data-correct="our" data-correct-message="Richtig. Mia und ich sind we. Vor classroom passt das Besitzwort our." data-wrong-message="Noch nicht. Vor classroom brauchst du das Besitzwort zu we.">we</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="our" data-correct="our" data-correct-message="Richtig. Mia und ich sind we. Vor classroom passt das Besitzwort our." data-wrong-message="Noch nicht. Vor classroom brauchst du das Besitzwort zu we.">our</button>
 </div>
 <p class="cancheck-feedback" aria-live="polite">Erst entscheiden, dann klicken.</p>
 </article>
 <article class="cancheck-task">
-<p class="cancheck-prompt">___ dog is funny.</p>
+<p class="cancheck-prompt">Ben has got a new bike. ___ bike is red.</p>
 <span class="cancheck-question">Welche Form passt?</span>
 <div class="cancheck-choice-row">
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="she" data-correct="her" data-correct-message="Richtig: Vor dog steht ein Besitzwort. Deshalb brauchst du her." data-wrong-message="Noch nicht: she ist eine Person. Vor dog brauchst du das Besitzwort her.">she</button>
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="her" data-correct="her" data-correct-message="Richtig: Vor dog steht ein Besitzwort. Deshalb brauchst du her." data-wrong-message="Noch nicht: she ist eine Person. Vor dog brauchst du das Besitzwort her.">her</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="he" data-correct="his" data-correct-message="Richtig. Ben besitzt das Fahrrad. Vor bike steht his." data-wrong-message="Noch nicht. Wem gehört das Fahrrad? Hier brauchst du ein Besitzwort.">he</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="his" data-correct="his" data-correct-message="Richtig. Ben besitzt das Fahrrad. Vor bike steht his." data-wrong-message="Noch nicht. Wem gehört das Fahrrad? Hier brauchst du ein Besitzwort.">his</button>
 </div>
 <p class="cancheck-feedback" aria-live="polite">Erst entscheiden, dann klicken.</p>
 </article>
 <article class="cancheck-task">
-<p class="cancheck-prompt">___ are at school.</p>
+<p class="cancheck-prompt">Lily and Tom are my friends. ___ live in London.</p>
 <span class="cancheck-question">Welche Form passt?</span>
 <div class="cancheck-choice-row">
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="they" data-correct="they" data-correct-message="Richtig: Hier geht es um mehrere Personen. Deshalb brauchst du they." data-wrong-message="Noch nicht: their zeigt Besitz und steht vor einem Nomen, zum Beispiel their school.">they</button>
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="their" data-correct="they" data-correct-message="Richtig: Hier geht es um mehrere Personen. Deshalb brauchst du they." data-wrong-message="Noch nicht: their zeigt Besitz und steht vor einem Nomen, zum Beispiel their school.">their</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="they" data-correct="they" data-correct-message="Richtig. Lily und Tom sind mehrere Personen. Als Subjekt passt they." data-wrong-message="Noch nicht. Hier ersetzt du beide Namen, ohne Besitz zu zeigen.">they</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="their" data-correct="they" data-correct-message="Richtig. Lily und Tom sind mehrere Personen. Als Subjekt passt they." data-wrong-message="Noch nicht. Hier ersetzt du beide Namen, ohne Besitz zu zeigen.">their</button>
 </div>
 <p class="cancheck-feedback" aria-live="polite">Erst entscheiden, dann klicken.</p>
 </article>
 <article class="cancheck-task">
-<p class="cancheck-prompt">___ school is big.</p>
+<p class="cancheck-prompt">Look at the computer. ___ is old.</p>
 <span class="cancheck-question">Welche Form passt?</span>
 <div class="cancheck-choice-row">
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="they" data-correct="their" data-correct-message="Richtig: Vor school steht ein Besitzwort. Deshalb brauchst du their." data-wrong-message="Noch nicht: they ist eine Personengruppe. Vor school brauchst du das Besitzwort their.">they</button>
-<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="their" data-correct="their" data-correct-message="Richtig: Vor school steht ein Besitzwort. Deshalb brauchst du their." data-wrong-message="Noch nicht: they ist eine Personengruppe. Vor school brauchst du das Besitzwort their.">their</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="it" data-correct="it" data-correct-message="Richtig. The computer ist eine Sache. Als Subjekt passt it." data-wrong-message="Noch nicht. Es geht um die Sache selbst, nicht um ihren Besitz.">it</button>
+<button class="cancheck-choice" type="button" data-cancheck-choice data-answer="its" data-correct="it" data-correct-message="Richtig. The computer ist eine Sache. Als Subjekt passt it." data-wrong-message="Noch nicht. Es geht um die Sache selbst, nicht um ihren Besitz.">its</button>
 </div>
 <p class="cancheck-feedback" aria-live="polite">Erst entscheiden, dann klicken.</p>
 </article>
@@ -1016,7 +1020,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <div class="cancheck-explain-card">
 <p class="cancheck-prompt">Erklär dir selbst: Wann nehme ich <span class="cancheck-token">she</span>, wann <span class="cancheck-token">her</span>?</p>
 <textarea class="cancheck-self-input" rows="2" placeholder="Erst eigene Erklärung denken oder kurz eintippen."></textarea>
-<button class="cancheck-reveal-btn" type="button" data-cancheck-toggle aria-controls="explain-she-her" aria-expanded="false">Musterantwort anzeigen</button>
+<button class="cancheck-reveal-btn" type="button" data-cancheck-toggle aria-controls="explain-she-her" aria-expanded="false" disabled>Musterantwort anzeigen</button>
 <div class="cancheck-answer" id="explain-she-her" hidden>
 <p><span class="cancheck-token">she</span> nehme ich, wenn ich über eine Person spreche: She is my friend.</p>
 <p><span class="cancheck-token">her</span> nehme ich, wenn ich zeige, wem etwas gehört: Her dog is funny.</p>
@@ -1025,7 +1029,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <div class="cancheck-explain-card">
 <p class="cancheck-prompt">Erklär dir selbst: Wann nehme ich <span class="cancheck-token">they</span>, wann <span class="cancheck-token">their</span>?</p>
 <textarea class="cancheck-self-input" rows="2" placeholder="Erst eigene Erklärung denken oder kurz eintippen."></textarea>
-<button class="cancheck-reveal-btn" type="button" data-cancheck-toggle aria-controls="explain-they-their" aria-expanded="false">Musterantwort anzeigen</button>
+<button class="cancheck-reveal-btn" type="button" data-cancheck-toggle aria-controls="explain-they-their" aria-expanded="false" disabled>Musterantwort anzeigen</button>
 <div class="cancheck-answer" id="explain-they-their" hidden>
 <p><span class="cancheck-token">they</span> bedeutet: Wer? Mehrere Personen oder Dinge.</p>
 <p><span class="cancheck-token">their</span> bedeutet: Wessen? Es steht vor einem Nomen: their school, their dog.</p>
@@ -1177,6 +1181,10 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
   <section class="ref-section ref-ha-hide ref-print-hide" aria-labelledby="pron-ref-specials-title">
     <h2 class="ref-section-title" id="pron-ref-specials-title">4. Sonderfälle und Hinweise</h2>
     <div class="ref-special-grid">
+      <article class="ref-special-card">
+        <h3>Tiere: it, he oder she?</h3>
+        <p>Bei Tieren kannst du <span lang="en">it</span> verwenden. Wenn du das Geschlecht eines Haustiers kennst, sind auch <span lang="en">he</span> oder <span lang="en">she</span> üblich: <span lang="en">Kaya is hungry. She wants her food.</span></p>
+      </article>
       <article class="ref-special-card">
         <h3>you = eine oder mehrere Personen</h3>
         <p><span lang="en">you</span> kann du, ihr oder Sie bedeuten. Das Besitzwort ist in allen Fällen <span lang="en">your</span>.</p>
@@ -1422,6 +1430,19 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 
   /* Pronouns Block 1: Namens-Tausch-Maschine und Wer/Wessen */
   document.addEventListener('click', function(e) {
+    var introBtn = e.target.closest('[data-pron-intro-choice]');
+    if (introBtn) {
+      var introCard = introBtn.closest('[data-pron-intro]');
+      if (!introCard) return;
+      introCard.querySelectorAll('[data-pron-intro-choice]').forEach(function(b){b.classList.remove('is-correct','is-wrong');});
+      var natural = introBtn.dataset.correct === 'true';
+      introBtn.classList.add(natural ? 'is-correct' : 'is-wrong');
+      var response = introCard.querySelector('[data-pron-intro-feedback]');
+      if (response) response.textContent = natural
+        ? 'Richtig. He ersetzt beim zweiten Satz den Namen Ben.'
+        : 'Noch nicht. Der Name Ben steht zweimal. Kannst du ihn beim zweiten Mal ersetzen?';
+      return;
+    }
     var swapBtn = e.target.closest('[data-pron-swap]');
     if (swapBtn) {
       document.querySelectorAll('[data-pron-swap]').forEach(function(b){ b.classList.remove('is-active'); });
@@ -1467,6 +1488,16 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 
 
 
+  document.addEventListener('input', function(e) {
+    if (!e.target.matches('.cancheck-explain-card .cancheck-self-input')) return;
+    var card = e.target.closest('.cancheck-explain-card');
+    var btn = card ? card.querySelector('[data-cancheck-toggle]') : null;
+    if (btn) btn.disabled = !e.target.value.trim();
+  });
+  document.querySelectorAll('.cancheck-explain-card .cancheck-self-input').forEach(function(field) {
+    var btn = field.closest('.cancheck-explain-card').querySelector('[data-cancheck-toggle]');
+    if (btn) btn.disabled = !field.value.trim();
+  });
   /* Kann-ich's-Denkcheck */
   document.addEventListener('click', function(e) {
     var choice = e.target.closest('[data-cancheck-choice]');
@@ -1520,6 +1551,10 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
     }
     var toggle = e.target.closest('[data-cancheck-toggle]');
     if (toggle) {
+      if (toggle.disabled) return;
+      var explanation = toggle.closest('.cancheck-explain-card');
+      var userText = explanation ? explanation.querySelector('.cancheck-self-input') : null;
+      if (!userText || !userText.value.trim()) return;
       var id = toggle.getAttribute('aria-controls');
       var target = id ? document.getElementById(id) : null;
       if (!target) return;
