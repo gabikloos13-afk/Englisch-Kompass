@@ -1349,6 +1349,27 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <div class="writecheck-input-row"><input class="writecheck-input" id="input-pron-wc-08" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="pron-wc-08">Prüfen</button></div>
 <div class="writecheck-feedback" id="feedback-pron-wc-08"></div>
 </div>
+<div class="writecheck-task" id="write-task-pron-wc-09" data-review-id="pron-wc-09" data-topic-id="pronouns" data-type="stolperstelle" data-review-source="writecheck">
+<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 9</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>
+<p class="writecheck-context">I have got a guitar. ___ guitar is red.</p>
+<p class="writecheck-prompt">Schreibe den zweiten Satz vollständig.</p>
+<div class="writecheck-input-row"><input class="writecheck-input" id="input-pron-wc-09" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="pron-wc-09">Prüfen</button></div>
+<div class="writecheck-feedback" id="feedback-pron-wc-09"></div>
+</div>
+<div class="writecheck-task" id="write-task-pron-wc-10" data-review-id="pron-wc-10" data-topic-id="pronouns" data-type="stolperstelle" data-review-source="writecheck">
+<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 10</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>
+<p class="writecheck-context">You have got a cat. ___ cat is sleepy.</p>
+<p class="writecheck-prompt">Schreibe den zweiten Satz vollständig.</p>
+<div class="writecheck-input-row"><input class="writecheck-input" id="input-pron-wc-10" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="pron-wc-10">Prüfen</button></div>
+<div class="writecheck-feedback" id="feedback-pron-wc-10"></div>
+</div>
+<div class="writecheck-task" id="write-task-pron-wc-11" data-review-id="pron-wc-11" data-topic-id="pronouns" data-type="stolperstelle" data-review-source="writecheck">
+<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 11</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>
+<p class="writecheck-context">Mia and I are at school. ___ classroom is bright.</p>
+<p class="writecheck-prompt">Schreibe den zweiten Satz vollständig.</p>
+<div class="writecheck-input-row"><input class="writecheck-input" id="input-pron-wc-11" type="text" autocomplete="off" spellcheck="false" placeholder="Englischen Satz eintippen"><button type="button" class="writecheck-btn" data-writecheck-id="pron-wc-11">Prüfen</button></div>
+<div class="writecheck-feedback" id="feedback-pron-wc-11"></div>
+</div>
 </div>
 <div class="writecheck-actions">
 <button class="writecheck-check-all" data-writecheck-all type="button">Alle Antworten prüfen</button>
@@ -1702,6 +1723,33 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
       canonical:'Its tail is long.',
       correct:'Sicher. Its ohne Apostroph zeigt Besitz: its tail. It\'s würde it is bedeuten.',
       almost:'Fast sicher. Die Entscheidung stimmt. Achte noch auf Großschreibung oder Satzzeichen.'
+    },
+    {
+      id:'pron-wc-09', skill:'possessive-my', skillLabel:'I → my', reviewId:'pron-wc-09', reviewType:'stolperstelle', reviewSource:'writecheck', reviewLabel:'I und my unterscheiden',
+      context:'I have got a guitar. ___ guitar is red.',
+      prompt:'Schreibe den zweiten Satz vollständig.',
+      accepted:['My guitar is red.'],
+      canonical:'My guitar is red.',
+      correct:'Sicher. Die Gitarre gehört mir: my guitar.',
+      almost:'Fast sicher. Die Entscheidung stimmt. Achte noch auf Großschreibung oder Satzzeichen.'
+    },
+    {
+      id:'pron-wc-10', skill:'possessive-your', skillLabel:'you → your', reviewId:'pron-wc-10', reviewType:'stolperstelle', reviewSource:'writecheck', reviewLabel:'you und your unterscheiden',
+      context:'You have got a cat. ___ cat is sleepy.',
+      prompt:'Schreibe den zweiten Satz vollständig.',
+      accepted:['Your cat is sleepy.'],
+      canonical:'Your cat is sleepy.',
+      correct:'Sicher. Vor cat steht das Besitzwort zu you: your.',
+      almost:'Fast sicher. Die Entscheidung stimmt. Achte noch auf Großschreibung oder Satzzeichen.'
+    },
+    {
+      id:'pron-wc-11', skill:'possessive-our', skillLabel:'we → our', reviewId:'pron-wc-11', reviewType:'stolperstelle', reviewSource:'writecheck', reviewLabel:'we und our unterscheiden',
+      context:'Mia and I are at school. ___ classroom is bright.',
+      prompt:'Schreibe den zweiten Satz vollständig.',
+      accepted:['Our classroom is bright.'],
+      canonical:'Our classroom is bright.',
+      correct:'Sicher. Mia und ich sind we. Das Besitzwort dazu heißt our.',
+      almost:'Fast sicher. Die Entscheidung stimmt. Achte noch auf Großschreibung oder Satzzeichen.'
     }
   ];
   window.WRITE_TASKS = WRITE_TASKS;
@@ -1743,20 +1791,19 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
   function writeWriteStore(store) {
     try { localStorage.setItem(WRITE_KEY, JSON.stringify(store)); } catch(e) {}
   }
-  function diagnoseWriteMistake(task, raw) {
+  function diagnoseWriteMistake(task, raw, attempt) {
     var n = normalizeWriteAnswer(raw);
     if (!n) return 'Noch offen: Schreib erst eine Antwort hinein.';
-    if (/^her\b/.test(n) && task.id === 'pron-wc-01') return 'Nochmal prüfen: Hier geht es um Hanna als Person. Wer? → She.';
-    if (/^his\b/.test(n) && task.id === 'pron-wc-02') return 'Nochmal prüfen: His zeigt Besitz. Hier brauchst du he als Person.';
-    if (/^they\b/.test(n) && task.id === 'pron-wc-07') return 'Nochmal prüfen: Vor school brauchst du das Besitzwort their.';
-    if (/^she\b/.test(n) && task.id === 'pron-wc-05') return 'Nochmal prüfen: Vor dog brauchst du ein Besitzwort: her dog.';
-    if (/^he\b/.test(n) && task.id === 'pron-wc-06') return 'Nochmal prüfen: Vor bike brauchst du ein Besitzwort: his bike.';
-    if (/^it's\b|^it is\b/.test(n) && task.id === 'pron-wc-08') return 'Nochmal prüfen: It\'s bedeutet it is. Vor tail brauchst du its ohne Apostroph.';
-    if (/\b(they|we|you) is\b/.test(n)) return 'Nochmal prüfen: Zu you, we und they passt are.';
-    if (/\b(he|she|it) are\b/.test(n)) return 'Nochmal prüfen: Zu he, she und it passt is.';
-    if (/^my\b/.test(n) && task.skill.indexOf('replace') === 0) return 'Nochmal prüfen: My zeigt Besitz. Hier soll ein Name ersetzt werden.';
-    if (/^your\b|^our\b|^their\b/.test(n) && task.skill.indexOf('replace') === 0) return 'Nochmal prüfen: Das ist ein Besitzwort. Als Subjekt brauchst du ein personal pronoun.';
-    return 'Nochmal prüfen: Geht es um Wer? Dann brauchst du ein Pronomen. Geht es um wessen Sache? Dann brauchst du ein Besitzwort.';
+    if (attempt <= 1) {
+      if (task.skill.indexOf('replace') === 0)
+        return 'Noch nicht. Wer oder was soll den Namen im Satz ersetzen? Prüfe auch die Form von to be.';
+      return 'Noch nicht. Prüfe: Wessen Sache ist es? Vor dem Nomen brauchst du ein passendes Besitzwort.';
+    }
+    if (task.id === 'pron-wc-08' && (/^it's\b|^it is\b/.test(n)))
+      return 'Tipp 2: Die Form mit Apostroph bedeutet it is. Für Besitz brauchst du eine Form ohne Apostroph.';
+    if (task.skill.indexOf('replace') === 0)
+      return 'Tipp 2: Wähle das Personalpronomen für den Satzanfang, nicht das Besitzwort vor einem Nomen. Vergleiche dann die Verbform.';
+    return 'Tipp 2: Frage zuerst, zu welcher Person die Sache gehört. Nimm deren Besitzwort direkt vor dem Nomen und prüfe den ganzen Satz.';
   }
   function evaluateWriteTask(task, raw) {
     var norm = normalizeWriteAnswer(raw);
@@ -1766,11 +1813,12 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
       var almost = startsLowercase(raw) || missingExpectedPunctuation(task, raw);
       return {status: almost ? 'almost' : 'correct', message: almost ? task.almost : task.correct};
     }
-    return {status:'wrong', message:diagnoseWriteMistake(task, raw)};
+    return {status:'wrong', message:'Noch nicht richtig.'};
   }
   function renderWritecheck() {
     var wrap = document.getElementById('writecheck-tasks');
     if (!wrap) return;
+    if (wrap.querySelector('.writecheck-task')) return; // statische Kernaufgaben als verlässlicher Fallback
     wrap.innerHTML = WRITE_TASKS.map(function(task, index) {
       return '<div class="writecheck-task" id="write-task-' + task.id + '" data-review-id="' + escapeWriteHtml(task.reviewId || task.id) + '" data-topic-id="pronouns" data-type="' + escapeWriteHtml(task.reviewType || 'stolperstelle') + '" data-review-source="' + escapeWriteHtml(task.reviewSource || 'writecheck') + '">'
         + '<div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe ' + (index + 1) + '</span><span class="writecheck-skill">Schreib-Aufgabe</span></div>'
@@ -1791,7 +1839,16 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
     if (!feedback) return;
     feedback.className = 'writecheck-feedback is-visible is-' + result.status;
     if (result.status === 'wrong') {
-      feedback.innerHTML = escapeWriteHtml(result.message) + ' <button type="button" class="writecheck-btn writecheck-solution-btn" data-writecheck-solution="' + task.id + '">Lösung anzeigen</button>';
+      feedback.textContent = result.message;
+      if (result.attempts >= 2) {
+        var reveal = document.createElement('button');
+        reveal.type = 'button';
+        reveal.className = 'writecheck-btn writecheck-solution-btn';
+        reveal.setAttribute('data-writecheck-solution', task.id);
+        reveal.textContent = 'Lösung anzeigen';
+        feedback.appendChild(document.createTextNode(' '));
+        feedback.appendChild(reveal);
+      }
     } else {
       feedback.textContent = result.message;
     }
@@ -1817,7 +1874,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
     });
     var attempted = counts.correct + counts.almost + counts.wrong;
     var status = 'orange', label = 'noch offen';
-    if (attempted && counts.wrong === 0 && counts.open === 0) { status = 'green'; label = 'sicher'; }
+    if (counts.correct === WRITE_TASKS.length && counts.almost === 0 && counts.wrong === 0 && counts.open === 0) { status = 'green'; label = 'sicher'; }
     else if (attempted && (counts.correct + counts.almost) >= Math.ceil(WRITE_TASKS.length * 0.6)) { status = 'yellow'; label = 'fast sicher'; }
     return {counts:counts, total:WRITE_TASKS.length, attempted:attempted, status:status, label:label, strong:strong, focus:focus};
   }
@@ -1859,6 +1916,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
         reviewSource:task.reviewSource || 'writecheck',
         status:result.status,
         message:result.message,
+        attempts:result.attempts || 0,
         value:String(raw || '').trim(),
         updated:new Date().toISOString()
       };
@@ -1872,6 +1930,11 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
     var input = document.getElementById('input-' + id);
     var raw = input ? input.value : '';
     var result = evaluateWriteTask(task, raw);
+    if (result.status === 'wrong') {
+      var previous = readWriteStore()[task.id];
+      result.attempts = (previous && previous.status === 'wrong' ? (Number(previous.attempts) || 1) : 0) + 1;
+      result.message = diagnoseWriteMistake(task, raw, result.attempts);
+    }
     setWriteFeedback(task, result);
     saveWriteResult(task, result, raw);
   }
