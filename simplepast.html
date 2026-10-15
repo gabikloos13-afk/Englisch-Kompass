@@ -12416,12 +12416,36 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   {id:'repair',focus:'Grundform',prompt:'Fehler reparieren: Where did Sam went yesterday?',answers:['Where did Sam go yesterday?'],why:'Nach did folgt go, nicht went.'},
   {id:'who',focus:'Who-Ausnahme',prompt:'Lucy called Sam yesterday. Frage, WER Sam angerufen hat.',answers:['Who called Sam yesterday?','Who called Sam?'],why:'Who ist die handelnde Person und ersetzt das Subjekt. Deshalb steht called direkt nach Who.'}
  ];
+ const practiceAdvice={
+  yesno:'Ja-/Nein-Frage: Did + Person + Grundform',
+  shortNo:'Kurzantwort Nein: No + they + didn’t',
+  what:'What-Frage: nach einer Sache fragen; nach did Grundform',
+  when:'When-Frage: nach dem Zeitpunkt fragen',
+  why:'Why-Frage: nach dem Grund fragen',
+  how:'How-Frage: nach dem Weg oder der Art und Weise fragen',
+  short:'Kurzantwort Ja: Yes + she + did',
+  repair:'Grundform nach did: go statt went',
+  who:'Who als Subjekt: ohne did nach der handelnden Person fragen'
+ };
  const norm=s=>String(s||'').toLowerCase().replace(/[?.!,]/g,'').replace(/\s+/g,' ').trim();
  const input=$('did-quality-mini-input'),prompt=$('did-quality-mini-prompt'),progress=$('did-quality-mini-progress'),feedback=$('did-quality-mini-feedback');
  const solution=$('did-quality-mini-solution'),next=$('did-quality-mini-next'),fieldset=$('did-quality-mini-status');
  const buttons=Array.from(fieldset.querySelectorAll('[data-did-quality-status]'));
- const area=$('did-quality-mini-task'),recap=$('did-quality-mini-recap'),key='kompass_simplepast_did_mini_v1';
- let statuses={};try{const found=JSON.parse(localStorage.getItem(key));if(found&&typeof found==='object'&&!Array.isArray(found))statuses=found}catch(e){}
+ const area=$('did-quality-mini-task'),recap=$('did-quality-mini-recap'),key='kompass_simplepast_did_mini_v2',legacyKey='kompass_simplepast_did_mini_v1';
+ let statuses={},migrated=false;
+ try{
+  const saved=localStorage.getItem(key),found=saved?JSON.parse(saved):null;
+  if(found&&typeof found==='object'&&!Array.isArray(found))statuses=found;
+  else{
+   const raw=localStorage.getItem(legacyKey),old=raw?JSON.parse(raw):null;
+   if(old&&typeof old==='object'&&!Array.isArray(old)){
+    tasks.forEach(t=>{
+     if(old[t.id]==='can'){statuses[t.id]='again';migrated=true;}
+     else if(old[t.id]==='again'||old[t.id]==='unsure')statuses[t.id]=old[t.id];
+    });
+   }
+  }
+ }catch(e){}
  const save=()=>{try{localStorage.setItem(key,JSON.stringify(statuses))}catch(e){}};
  let queue=[],index=0,tried=false,hintCount=0,choice=null,hadError=false,helpUsed=false,cleanCorrect=false;
  const canButton=buttons.find(b=>b.dataset.didQualityStatus==='can');
@@ -12445,15 +12469,49 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  function start(){queue=tasks.filter(t=>statuses[t.id]!=='can');index=0;present()}
  function summarize(){
   area.hidden=true;recap.hidden=false;recap.replaceChildren();
-  const make=(tag,text)=>{const e=document.createElement(tag);e.textContent=text;return e};
-  const mastered=tasks.filter(t=>statuses[t.id]==='can').length;
-  const open=tasks.filter(t=>statuses[t.id]!=='can');
-  recap.append(make('h4','Dein Lernstand'),make('p',mastered+' Aufgaben hast du als „Kann ich“ markiert. '+open.length+' bleiben für die Wiederholung aktiv.'));
-  if(open.length)recap.append(make('p','Dein nächster Fokus: '+[...new Set(open.map(t=>t.focus))].join(', ')+'.'));
-  const button=make('button',open.length?'Offene Aufgaben noch einmal üben':'Für einen neuen Selbsttest zurücksetzen');
-  button.className='past-action-btn';button.type='button';
-  button.addEventListener('click',()=>{if(!open.length){tasks.forEach(t=>delete statuses[t.id]);save()}start()});
-  recap.append(button);
+  const make=(tag,text)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;return el};
+  const mastered=tasks.filter(t=>statuses[t.id]==='can');
+  const pending=tasks.filter(t=>statuses[t.id]!=='can');
+  recap.append(make('h4','Dein Lernstand'),make('p',mastered.length+' von '+tasks.length+' Aufgaben sind als „Kann ich“ bestätigt. '+pending.length+' bleiben für die Wiederholung aktiv.'));
+  if(migrated){
+   recap.append(make('p','Frühere „Kann ich“-Einträge müssen einmal selbstständig bestätigt werden, da die alte Version nicht zwischen einer Lösung mit und ohne Hilfe unterschied.'));
+  }
+  if(pending.length){
+   recap.append(make('h5','Diese Bereiche gezielt wiederholen'));
+   const list=make('ul');
+   pending.forEach(t=>{
+    const state=statuses[t.id];
+    const label=state==='unsure'?'Unsicher':state==='again'?'Nochmal üben':'Noch nicht geprüft';
+    list.append(make('li',practiceAdvice[t.id]+' – '+label));
+   });
+   recap.append(list);
+   recap.append(make('p','Dies sind die Themen der offenen Aufgaben – nicht automatisch die genaue Ursache eines Fehlers. Schreibe deine persönliche Denkfalle im Lernjournal auf.'));
+  }else recap.append(make('p','Alle Fragen sind bestätigt. Du kannst sie später jederzeit erneut üben.'));
+  if(mastered.length){
+   const details=make('details');
+   details.append(make('summary','Bereits als „Kann ich“ markierte Aufgaben wieder aufnehmen ('+mastered.length+')'));
+   mastered.forEach(t=>{
+    const row=make('p');
+    row.append(make('span',practiceAdvice[t.id]+' '));
+    const restore=make('button','Erneut üben');
+    restore.type='button';restore.className='past-action-btn is-secondary';
+    restore.setAttribute('aria-label',practiceAdvice[t.id]+': erneut üben');
+    restore.addEventListener('click',()=>{
+     statuses[t.id]='again';save();summarize();
+     const startButton=recap.querySelector('.did-quality-restart');
+     if(startButton)startButton.focus();
+    });
+    row.append(restore);details.append(row);
+   });
+   recap.append(details);
+  }
+  const restart=make('button',pending.length?'Offene Aufgaben erneut üben':'Alle neun Fragen erneut selbst prüfen');
+  restart.type='button';restart.className='past-action-btn did-quality-restart';
+  restart.addEventListener('click',()=>{
+   if(!tasks.some(t=>statuses[t.id]!=='can')){tasks.forEach(t=>delete statuses[t.id]);save();}
+   start();if(!area.hidden)input.focus();
+  });
+  recap.append(restart);
  }
  $('did-quality-mini-check').addEventListener('click',()=>{
   if(!active()||!input.value.trim()){feedback.textContent='Schreibe zuerst eine eigene Lösung.';return}
