@@ -87,7 +87,8 @@ const FREE_TASKS=[
 const GROUPS={tense:"Zeitformen",positive:"Aussagen",negative:"Verneinungen",question:"Fragen",who:"Subject/Object",order:"Wortstellung/Fehlerprüfung"};
 const STORE="engkompass_grammatiktraining_proto_v2";const $=id=>document.getElementById(id);
 function load(){try{return JSON.parse(localStorage.getItem(STORE))||{}}catch(e){return {}}}
-const state=Object.assign({trainMode:"free",seen:[],weak:{},solved:0,first:0,exam:null,train:null,stats:{started:0,first:0,retried:0,helped:0,skipped:0,unrecognised:0},review:[]},load());
+const state=Object.assign({trainMode:"free",seen:[],weak:{},solved:0,first:0,exam:null,train:null,stats:{started:0,first:0,retried:0,helped:0,skipped:0,unrecognised:0},review:[],errorReview:{}},load());
+if(!state.errorReview||typeof state.errorReview!=="object")state.errorReview={};
 function save(){try{localStorage.setItem(STORE,JSON.stringify(state))}catch(e){}}
 function norm(s){return String(s||"").toLowerCase().normalize("NFKC").replace(/[’‘`´]/g,"'").replace(/[.!?]+/g,"").replace(/\s+/g," ").trim()}
 function accepted(q,value){let n=norm(value);if(q.answers.some(a=>norm(a)===n))return true;
@@ -119,20 +120,25 @@ $("lpresent").onclick=()=>pickDemo("present");$("lpast").onclick=()=>pickDemo("p
 // Lehrerabgleich: Fragenbildung (do/does/did, Subject/Object) und Simple Past bewusst häufiger.
 // Keine Änderung an den Aufgaben, anerkannten Antworten oder am gesonderten Abschlusscheck.
 const PAST_FOCUS_IDS=new Set(["KF-02","KF-04","KF-06","KF-08","KF-09","KF-11","KF-13","KF-14","KF-18","KF-19","KF-21","KF-22","KF-23","KF-24","KF-25","KF-26","KF-27","KF-28","KF-29"]);
+function taskErrorTypes(q){const text=(q.prompt+" "+q.explain).toLowerCase();const result=[];if(q.group==="who")result.push("who");if(q.group==="question"||q.group==="who"||/\b(did|does|questions|frage)\b/.test(text))result.push("auxiliary");if(q.group==="negative"||/vernein/.test(text))result.push("negative");if(q.group==="tense"||/simple past|gestern|yesterday|last /i.test(text))result.push("past");return [...new Set(result)]}
 function choose(){
  const source=state.trainMode==="basic"?TASKS:FREE_TASKS;
  const recent=state.seen.slice(-3);
  const eligible=source.filter(t=>!recent.includes(t.id));
  const available=eligible.length?eligible:source;
  const due=available.filter(t=>Array.isArray(state.review)&&state.review.includes(t.id));
- // Wiederholungsaufgaben bleiben wichtig, verdrängen aber nicht dauerhaft neue Aufgaben.
- const pool=due.length&&Math.random()<0.55?due:available;
+ const needs=Object.keys(state.errorReview).filter(k=>state.errorReview[k]>0);
+ // Bei konkreter Unsicherheit zuerst eine ANDERE Aufgabe zum selben Fehlertyp,
+ // erst danach gegebenenfalls die ursprüngliche Aufgabe wiederholen.
+ const alternatives=available.filter(t=>needs.some(k=>taskErrorTypes(t).includes(k))&&!state.review.includes(t.id));
+ const pool=alternatives.length&&Math.random()<0.60?alternatives:(due.length&&Math.random()<0.55?due:available);
  const weights=pool.map(t=>{
   const focus=state.trainMode==="basic"?1:
     (t.group==="who"?4:t.group==="question"?3.4:t.group==="negative"?1.6:1);
   const past=state.trainMode==="basic"?1:(PAST_FOCUS_IDS.has(t.id)?1.7:1);
   const need=1+Math.min(7,state.weak[t.group]||0)*1.5;
-  return focus*past*need;
+  const specific=1+taskErrorTypes(t).reduce((sum,key)=>sum+Math.min(5,state.errorReview[key]||0)*1.4,0);
+  return focus*past*need*specific;
  });
  const total=weights.reduce((a,b)=>a+b,0);
  let roll=Math.random()*total;
@@ -152,12 +158,12 @@ function readValue(q,mode){if(q.type==="order")return(mode==="train"?state.train
 function feedback(id,value,kind){let el=$(id);el.hidden=!value;el.className="feedback "+(kind||"");el.textContent=value||""}
 function paintStats(){let z=state.stats||{};$("trainStats").textContent=(z.started||0)+" begonnen · "+(z.first||0)+" sofort richtig · "+(z.retried||0)+" nach Korrektur · "+(z.helped||0)+" mit Hilfe/Muster · "+(z.skipped||0)+" übersprungen · "+(z.unrecognised||0)+" zur Selbstkontrolle."}
 function paintTraining(fresh){$("modeFree").setAttribute("aria-pressed",String(state.trainMode!=="basic"));$("modeBasic").setAttribute("aria-pressed",String(state.trainMode==="basic"));$("modeFree").classList.toggle("primary",state.trainMode!=="basic");$("modeBasic").classList.toggle("primary",state.trainMode==="basic");$("modeHelp").textContent=state.trainMode==="basic"?"Regeltraining: Verbformen, Fehlerkorrekturen und Satzbau mit Hilfen.":"Klassenarbeit: eigene englische Sätze bilden. Fragen mit do/does/did, Who-Fragen und Simple Past kommen häufiger vor.";if(!currentTask()){newTraining();return}let q=currentTask(),t=state.train;$("trainTask").textContent=q.prompt;$("trainProgress").textContent="Bearbeitete Aufgaben: "+((state.stats.started||0)) +" begonnen · "+((state.review||[]).filter(id=>(state.trainMode==="basic"?TASKS:FREE_TASKS).some(t=>t.id===id)).length)+" Aufgaben zum Wiederholen vorgemerkt";$("trainMeter").style.width=((state.stats.started||0)%12)/12*100+"%";if(fresh!==false||$("trainInput").childElementCount===0||$("trainInput").dataset.task!==q.id){drawInput("trainInput",q,"train");$("trainInput").dataset.task=q.id}$("trainCheck").disabled=t.done;$("trainHint").hidden=t.attempts<1||t.done;$("trainSolution").hidden=!t.canShowSolution||t.done;$("trainManual").hidden=t.attempts<1||t.done;feedback("trainFeedback",t.feedback,t.feedbackKind);paintStats()}
-$("trainCheck").onclick=()=>{let q=currentTask(),t=state.train,v=readValue(q,"train");if(!v.trim()){t.feedback="Schreibe zuerst eine eigene Antwort.";t.feedbackKind="bad";save();paintTraining(false);return}t.attempts++;if(accepted(q,v)){state.solved++;if(t.attempts===1&&!t.hinted){state.first++;finishTraining("first")}else if(t.hinted){finishTraining("helped")}else{finishTraining("retried")}if(t.attempts===1&&!t.hinted)state.weak[q.group]=Math.max(0,(state.weak[q.group]||0)-1);t.done=true;t.feedback="Richtig. "+q.explain;t.feedbackKind="good"}else{state.weak[q.group]=(state.weak[q.group]||0)+1;t.canShowSolution=t.attempts>=2;const diagnosis=diagnoseAnswer(q,v);t.feedback=diagnosis.kind==="error"?"Konkreter Grammatikfehler: "+diagnosis.message:diagnosis.message;t.feedbackKind=diagnosis.kind==="error"?"bad":""}save();paintTraining(false)};
+$("trainCheck").onclick=()=>{let q=currentTask(),t=state.train,v=readValue(q,"train");if(!v.trim()){t.feedback="Schreibe zuerst eine eigene Antwort.";t.feedbackKind="bad";save();paintTraining(false);return}t.attempts++;if(accepted(q,v)){state.solved++;if(t.attempts===1&&!t.hinted){state.first++;finishTraining("first")}else if(t.hinted){finishTraining("helped")}else{finishTraining("retried")}if(t.attempts===1&&!t.hinted){state.weak[q.group]=Math.max(0,(state.weak[q.group]||0)-1);for(const key of taskErrorTypes(q))state.errorReview[key]=Math.max(0,(state.errorReview[key]||0)-1)}t.done=true;t.feedback="Richtig. "+q.explain;t.feedbackKind="good"}else{state.weak[q.group]=(state.weak[q.group]||0)+1;t.canShowSolution=t.attempts>=2;const diagnosis=diagnoseAnswer(q,v);if(diagnosis.kind==="error"&&t.attempts===1){const key=/Does übernimmt/.test(diagnosis.message)?"auxiliary":/Nach did/.test(diagnosis.message)?"past":/don\x27t/.test(diagnosis.message)?"negative":null;if(key)state.errorReview[key]=(state.errorReview[key]||0)+1}t.feedback=diagnosis.kind==="error"?"Konkreter Grammatikfehler: "+diagnosis.message:diagnosis.message;t.feedbackKind=diagnosis.kind==="error"?"bad":""}save();paintTraining(false)};
 $("trainManual").onclick=()=>{let t=state.train,q=currentTask();t.done=true;finishTraining("unrecognised");t.feedback="Nicht automatisch erkannt – eigene Selbsteinschätzung nach dem Vergleich mit: "+q.answers.join(" / ")+". "+q.explain+" Eine passende alternative Formulierung kann richtig sein. Sie wird hier aber nicht als überprüfter Kompetenznachweis gezählt und bleibt für einen neuen Versuch vorgemerkt.";t.feedbackKind="";save();paintTraining(false)};
 $("trainHint").onclick=()=>{let t=state.train;t.hinted=true;t.feedback="Denkfrage: "+currentTask().hint;t.feedbackKind="bad";save();paintTraining(false)};
 $("trainSolution").onclick=()=>{let t=state.train,q=currentTask();finishTraining("helped");t.done=true;t.feedback="Musterantwort: "+q.answers.join(" / ")+". "+q.explain;t.feedbackKind="bad";save();paintTraining(false)};
 function setTrainMode(mode){if(state.trainMode===mode)return;if(state.train&&!state.train.counted)finishTraining("skipped");state.trainMode=mode;state.train=null;save();newTraining()}$("modeFree").onclick=()=>setTrainMode("free");$("modeBasic").onclick=()=>setTrainMode("basic");
-$("trainNext").onclick=()=>newTraining();$("trainReset").onclick=()=>{if(!confirm("Gespeicherten Trainingsstand dieses Prototyps zurücksetzen?"))return;state.seen=[];state.weak={};state.review=[];state.solved=0;state.first=0;state.train=null;state.stats={started:0,first:0,retried:0,helped:0,skipped:0,unrecognised:0};newTraining()};
+$("trainNext").onclick=()=>newTraining();$("trainReset").onclick=()=>{if(!confirm("Gespeicherten Trainingsstand dieses Prototyps zurücksetzen?"))return;state.seen=[];state.weak={};state.review=[];state.errorReview={};state.solved=0;state.first=0;state.train=null;state.stats={started:0,first:0,retried:0,helped:0,skipped:0,unrecognised:0};newTraining()};
 function makeExam(){let ids=[];Object.keys(GROUPS).forEach(k=>{if(k==="order"){ids.push(shuffle(TASKS.filter(t=>t.group===k&&t.type==="order"))[0].id,shuffle(TASKS.filter(t=>t.group===k&&t.type==="repair"))[0].id)}else{ids.push(...shuffle(TASKS.filter(t=>t.group===k)).slice(0,2).map(t=>t.id))}});return{ids:shuffle(ids),i:0,results:[],value:"",picked:[],finished:false}}
 $("examBegin").onclick=()=>{state.exam=makeExam();save();$("examInput").dataset.task="";paintExam(true)};
 function paintExam(fresh){let x=state.exam;$("examStart").hidden=!!(x&&!x.finished);$("examActive").hidden=!(x&&!x.finished);$("examResult").hidden=!(x&&x.finished);if(!x)return;if(x.finished){paintResults();return}let q=TASKS.find(t=>t.id===x.ids[x.i]);$("examCounter").textContent="Aufgabe "+(x.i+1)+" von "+x.ids.length;$("examMeter").style.width=x.i/x.ids.length*100+"%";$("examTask").textContent=q.prompt;if(fresh!==false||$("examInput").childElementCount===0||$("examInput").dataset.task!==q.id){drawInput("examInput",q,"exam");$("examInput").dataset.task=q.id}}
