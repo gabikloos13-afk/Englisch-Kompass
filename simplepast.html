@@ -11325,7 +11325,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
       var subjectLower=state.subject.toLowerCase();
       var didWithPast=norm('Did '+subjectLower+' '+state.past+' '+state.rest);
       if(a===didWithPast){
-        setFeedback(feedback,'is-careful','Hier liegt die typische Falle: Nach Did darf nicht '+state.past+' stehen. Repariere zu '+state.basic+'.');
+        setFeedback(feedback,'is-careful','Hier liegt die typische Falle: Nach Did darf keine Past Form stehen. Welche Grundform gehört hierhin?');
         return;
       }
       var positiveOrder=norm(state.positive);
@@ -11342,7 +11342,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
         return;
       }
       if(a.indexOf(' '+state.basic+' ')===-1 && !a.endsWith(' '+state.basic)){
-        setFeedback(feedback,'is-careful','Prüfe die Verbform nach Did. Gesucht ist die Grundform '+state.basic+'.');
+        setFeedback(feedback,'is-careful','Prüfe das Verb nach Did. Welche Grundform passt zu dieser Handlung?');
         return;
       }
       setFeedback(feedback,'is-careful','Fast. Prüfe die Reihenfolge: Did, Person, basic form und den Rest der Frage.');
@@ -11384,7 +11384,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     var hintBtn=q('[data-v59-q-hint]', machine);
     if(hintBtn) hintBtn.addEventListener('click', function(){
       if(!state.positive){ setFeedback(feedback,'is-careful','Wähle zuerst einen Ausgangssatz.'); return; }
-      setFeedback(feedback,'is-info','Denk an den Bauplan: Did + Person + basic form + Rest. Aus '+state.past+' wird nach Did wieder '+state.basic+'.');
+      if(!state.tried){setFeedback(feedback,'is-info','Schreibe zuerst selbst eine ganze Frage und prüfe sie. Dann kommt die Denkfrage.');return;} setFeedback(feedback,'is-info','Denkfrage: Wo steht Did, und was passiert mit dem Verb aus der Aussage?');
     });
     if(solutionBtn) solutionBtn.addEventListener('click', function(){
       if(!state.positive){ setFeedback(feedback,'is-careful','Wähle zuerst einen Ausgangssatz.'); return; }
@@ -11727,12 +11727,14 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
           setFeedback(feedback, 'Wähle zuerst eine Frage.', 'is-info');
           return;
         }
-        if(state.task.status === 'right'){
-          setFeedback(feedback, 'Tipp: Die Frage ist richtig, wenn nach Did die basic form steht.', 'is-info');
-        }else if(state.task.error === 'was'){
-          setFeedback(feedback, 'Tipp: Das ist ein to-be-Stoppfall. Bei to be steht nicht Did vorne.', 'is-info');
+        if(!state.hasAttempt){
+          setFeedback(feedback, 'Prüfe die Frage zuerst selbst: richtig oder fehlerhaft? Markiere die Stelle und schreibe deinen Vorschlag.', 'is-info');
+          return;
+        }
+        if(state.task.error === 'was'){
+          setFeedback(feedback, 'Denkfrage: Ist das Verb to be? Wie funktionieren Fragen mit was und were?', 'is-info');
         }else{
-          setFeedback(feedback, 'Tipp: Suche das Verb nach Did. Es muss in die basic form zurück.', 'is-info');
+          setFeedback(feedback, 'Denkfrage: Ist das Verb nach Did schon die Grundform? Manche Fragen sind bereits richtig.', 'is-info');
         }
       });
     }
@@ -12389,7 +12391,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  by('did-quality-w-hint').addEventListener('click',()=>{
   if(!checked){feedback.textContent='Versuche zuerst eine eigene Frage und prüfe sie.';return}
   hints=Math.min(2,hints+1);
-  feedback.textContent=hints===1?'Suchst du Zeit, Ort, Sache, Grund, Art und Weise oder eine Person?':'Baue eine Objektfrage so: Fragewort + did + handelnde Person + Grundform. Die Who-Subjektfrage ist die Ausnahme.';
+  feedback.textContent=hints===1?'Suchst du Zeit, Ort, Sache, Grund, Art und Weise oder eine Person?':'Baue eine normale W-Frage so: Fragewort + did + handelnde Person + Grundform. Die Who-Subjektfrage ist die Ausnahme.';
  });
  solution.addEventListener('click',()=>{if(!checked)return;feedback.textContent='Musterlösung: '+tasks[index][1][0]+' '+tasks[index][2]});
  by('did-quality-w-next').addEventListener('click',()=>{index=(index+1)%tasks.length;show();input.focus()});
@@ -12405,9 +12407,9 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  const $=id=>document.getElementById(id);
  const tasks=[
   {id:'yesno',focus:'Ja-/Nein-Frage',prompt:'Sam saw a bear. Frage, OB Sam einen Bären gesehen hat.',answers:['Did Sam see a bear?'],why:'Nach did steht see statt saw.'},
-  {id:'what',focus:'W-Frage',prompt:'Lucy bought a ticket yesterday. Frage, WAS Lucy gestern gekauft hat.',answers:['What did Lucy buy yesterday?','What did Lucy buy?'],why:'What fragt nach der Sache. Nach did steht buy statt bought.'},
+  {id:'shortNo',focus:'Kurzantwort',prompt:'Did the children see a bear? Antworte kurz mit Nein.',answers:["No, they didn't.",'No, they did not.'],why:'No + they + didn’t. Das Vollverb wird nicht wiederholt.'},
   {id:'when',focus:'W-Frage',prompt:'They visited their grandparents on Sunday. Frage, WANN sie ihre Großeltern besucht haben.',answers:['When did they visit their grandparents?'],why:'When fragt nach der Zeit. Die Zeitangabe wird erfragt und nicht wiederholt.'},
-  {id:'why',focus:'W-Frage',prompt:'Maya went to the farm because she likes animals. Frage, WARUM Maya zum Bauernhof gefahren ist.',answers:['Why did Maya go to the farm?'],why:'Why fragt nach dem Grund. Nach did steht go statt went.'},
+  {id:'why',focus:'W-Frage',prompt:'Maya went to the farm because she likes animals. Frage, WARUM Maya zum Bauernhof gegangen ist.',answers:['Why did Maya go to the farm?'],why:'Why fragt nach dem Grund. Nach did steht go statt went.'},
   {id:'how',focus:'W-Frage',prompt:'Justin went to Plymouth by bus. Frage, WIE Justin nach Plymouth gekommen ist.',answers:['How did Justin get to Plymouth?','How did Justin go to Plymouth?'],why:'How fragt nach der Art und Weise. Nach did steht get oder go.'},
   {id:'short',focus:'Kurzantwort',prompt:'Did Lucy visit the farm? Antworte kurz mit Ja.',answers:['Yes, she did.'],why:'Yes + she + did. Das Vollverb wird nicht wiederholt.'},
   {id:'repair',focus:'Grundform',prompt:'Fehler reparieren: Where did Sam went yesterday?',answers:['Where did Sam go yesterday?'],why:'Nach did folgt go, nicht went.'},
