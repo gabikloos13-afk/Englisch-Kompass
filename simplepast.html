@@ -6359,6 +6359,19 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 .sp-ref-v99-trapgrid p:last-child{margin-bottom:0;color:#64748b;}
 @media(max-width:760px){.sp-ref-v99-ruleline,.sp-ref-v99-trapgrid{grid-template-columns:1fr}.sp-ref-v99-table{min-width:620px}.sp-ref-v99-card{padding:13px}.sp-ref-v99-examples span{min-width:0;display:block;margin-bottom:2px}}
 </style>
+<style id="did-quality-v1-style">
+#past-learn-questions .did-quality-note,#past-learn-questions .did-quality-work,#past-learn-questions .did-quality-check{margin-top:16px;padding:16px;border:1px solid #cbd5e1;border-radius:16px;background:#fff}
+#past-learn-questions .did-quality-note h3,#past-learn-questions .did-quality-work h3,#past-learn-questions .did-quality-check h3{margin:0 0 10px;color:#243447;font-size:1.13rem}
+#past-learn-questions .did-quality-note p,#past-learn-questions .did-quality-work p,#past-learn-questions .did-quality-check p{line-height:1.55}
+#past-learn-questions .did-quality-note a{text-decoration:underline;text-underline-offset:3px}
+#past-learn-questions .did-quality-progress{font-size:.9rem;font-weight:700;color:#475569;margin:12px 0 6px}
+#past-learn-questions .did-quality-prompt{font-size:1.06rem;font-weight:650;color:#1e293b;margin:10px 0}
+#past-learn-questions .did-quality-feedback{margin-top:12px;min-height:2.5em}
+#past-learn-questions .did-quality-status{border:1px solid #cbd5e1;border-radius:12px;padding:10px;margin:12px 0}
+#past-learn-questions .did-quality-status legend{font-weight:700;padding:0 8px}
+#past-learn-questions [data-did-quality-status][aria-pressed="true"]{background:#dbeafe;color:#1e40af;border-color:#2563eb}
+#past-learn-questions .did-quality-work :focus-visible,#past-learn-questions .did-quality-check :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7529,6 +7542,18 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 </div>
 </div>
+
+<aside class="past-subcard did-quality-note" aria-labelledby="did-quality-who-note-title">
+<h3 id="did-quality-who-note-title">Who-Ausnahme: Wer oder wen?</h3>
+<p><strong>Wer handelt?</strong> <em>Who called Sam?</em> – Subjektfrage ohne did.</p>
+<p><strong>Wen betrifft es?</strong> <em>Who did Sam call?</em> – Objektfrage mit did und Grundform.</p>
+<p>Übe die Unterscheidung ausführlich bei <a href="questions.html#learn/subject">Questions: Wer oder wen?</a>.</p>
+</aside>
+<aside class="past-subcard did-quality-note" aria-labelledby="did-quality-short-note-title">
+<h3 id="did-quality-short-note-title">Kurze Antworten</h3>
+<p><em>Did Lucy visit the farm? – Yes, she did. / No, she didn’t.</em></p>
+<p>Die Kurzantwort besteht aus <strong>Yes/No + Person + did/didn’t</strong>, ohne das Vollverb zu wiederholen. Im späteren „Kann ich’s?“-Check schreibst du eine Kurzantwort selbst.</p>
+</aside>
 </div>
 <div class="past-tool-panel" data-panel="questions-v64" data-val="machine" id="questions-v64-machine">
 <div class="past-subcard did-v59-machine-section" data-v59-question-machine="">
@@ -7571,6 +7596,23 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p>Sätze mit <span class="questions-v66-plain">was</span> oder <span class="questions-v66-plain">were</span> gehören nicht in diese Satzmaschine. Dafür kommt der eigene Lernbaustein.</p>
 </div>
 </div>
+
+<section class="past-subcard did-quality-work" id="did-quality-w-trainer" aria-labelledby="did-quality-w-heading">
+<p class="feature-kicker">Ergänzung · W-Fragen wie im Unterricht</p>
+<h3 id="did-quality-w-heading">W-Fragen selbstständig bauen</h3>
+<p>Finde heraus, wonach gefragt wird. Schreibe dann die ganze englische Frage selbst: Fragewort + did + Person + Grundform.</p>
+<p id="did-quality-w-progress" aria-live="polite" class="did-quality-progress"></p>
+<p id="did-quality-w-prompt" class="did-quality-prompt"></p>
+<label class="did-v59-input-label" for="did-quality-w-input">Deine ganze Frage</label>
+<input class="did-v59-input" id="did-quality-w-input" type="text" autocomplete="off" spellcheck="false" placeholder="Schreibe deine Frage …"/>
+<div class="did-v59-actions">
+<button class="past-action-btn" type="button" id="did-quality-w-check">Prüfen</button>
+<button class="past-action-btn is-secondary" type="button" id="did-quality-w-hint">Denkfrage</button>
+<button class="past-action-btn is-secondary" type="button" id="did-quality-w-solution" disabled>Lösung vergleichen</button>
+<button class="past-action-btn is-secondary" type="button" id="did-quality-w-next">Nächste Frage</button>
+</div>
+<p class="past-feedback did-quality-feedback" id="did-quality-w-feedback" aria-live="polite" role="status"></p>
+</section>
 </div>
 <div class="past-tool-panel" data-panel="questions-v64" data-val="basic" id="questions-v64-basic">
 <article aria-labelledby="did-v60-basic-title" class="past-subcard did-v60-basic-section" data-v60-q-basic-trainer="">
@@ -12286,5 +12328,43 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 })();
 </script>
 
+<script id="did-quality-w-v1">
+(function(){
+ 'use strict';
+ const box=document.getElementById('did-quality-w-trainer');if(!box)return;
+ const by=id=>document.getElementById(id);
+ const tasks=[
+  ['They visited the farm on Monday. Frage, WANN sie den Bauernhof besucht haben.',['When did they visit the farm?'],'When fragt nach der Zeit. Nach did steht visit.'],
+  ['Lucy bought a ticket yesterday. Frage, WAS Lucy gestern gekauft hat.',['What did Lucy buy yesterday?','What did Lucy buy?'],'What fragt nach der Sache. Nach did steht buy statt bought.'],
+  ['The children played football in the park. Frage, WO sie Fußball gespielt haben.',['Where did the children play football?'],'Where fragt nach dem Ort. Nach did steht play.'],
+  ['Sam visited the farm because he likes animals. Frage, WARUM Sam den Bauernhof besucht hat.',['Why did Sam visit the farm?'],'Why fragt nach dem Grund. Nach did steht visit.'],
+  ['Maya travelled to Plymouth by train. Frage, WIE Maya dorthin gekommen ist.',['How did Maya travel to Plymouth?','How did Maya get to Plymouth?'],'How fragt nach der Art und Weise. Nach did steht travel oder get.'],
+  ['Charlotte phoned Nina yesterday. Frage, WEN Charlotte angerufen hat.',['Who did Charlotte phone yesterday?','Who did Charlotte phone?'],'Charlotte handelt. Who fragt nach der anderen Person, also mit did.']
+ ];
+ const norm=s=>String(s||'').toLowerCase().replace(/[?.!,]/g,'').replace(/\s+/g,' ').trim();
+ const input=by('did-quality-w-input'),prompt=by('did-quality-w-prompt'),progress=by('did-quality-w-progress'),feedback=by('did-quality-w-feedback');
+ const solution=by('did-quality-w-solution');let index=0,checked=false,hints=0;
+ function show(){
+  input.value='';checked=false;hints=0;solution.disabled=true;
+  prompt.textContent=tasks[index][0];progress.textContent='Frage '+(index+1)+' von '+tasks.length;
+  feedback.textContent='Schreibe zuerst deine eigene Frage.';
+ }
+ by('did-quality-w-check').addEventListener('click',()=>{
+  if(!input.value.trim()){feedback.textContent='Bitte schreibe zuerst deinen Vorschlag.';return}
+  checked=true;solution.disabled=false;
+  feedback.textContent=tasks[index][1].some(a=>norm(a)===norm(input.value))?'Richtig erkannt. '+tasks[index][2]:'Nicht automatisch erkannt. Prüfe das Fragewort, did, die Person und die Grundform. Vergleiche dann mit der Musterlösung.';
+ });
+ by('did-quality-w-hint').addEventListener('click',()=>{
+  if(!checked){feedback.textContent='Versuche zuerst eine eigene Frage und prüfe sie.';return}
+  hints=Math.min(2,hints+1);
+  feedback.textContent=hints===1?'Suchst du Zeit, Ort, Sache, Grund, Art und Weise oder eine Person?':'Baue eine Objektfrage so: Fragewort + did + handelnde Person + Grundform. Die Who-Subjektfrage ist die Ausnahme.';
+ });
+ solution.addEventListener('click',()=>{if(!checked)return;feedback.textContent='Musterlösung: '+tasks[index][1][0]+' '+tasks[index][2]});
+ by('did-quality-w-next').addEventListener('click',()=>{index=(index+1)%tasks.length;show();input.focus()});
+ input.addEventListener('input',()=>{checked=false;hints=0;solution.disabled=true});
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();by('did-quality-w-check').click()}});
+ show();
+})();
+</script>
 </body>
 </html>
