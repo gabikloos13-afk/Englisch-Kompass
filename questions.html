@@ -234,14 +234,54 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
       }
       body.append(card);
     });
+  }else if(st.whoFocus){
+    const first=st.results.filter(x=>x&&x.status==='first').length;
+    body.append(make('p','Beim ersten Versuch ohne Hilfe gelöst: '+first+' von '+st.results.length+'.'));
+    body.append(make('p','Wähle zu jeder Frage: „Kann ich“ nimmt sie aus der aktiven Wiederholung; „Nochmal üben“ und „Unsicher“ behalten sie für später. Du kannst zuerst deine Antwort und die Erklärung vergleichen.'));
+    st.results.forEach((r,i)=>{
+      if(!r)return;
+      const task=BANK[r.id],card=make('div',undefined,'review');
+      card.append(make('p','Aufgabe '+(i+1)+': '+task.prompt));
+      const detail=make('details');
+      detail.append(make('summary','Meine Antwort und Musterlösung vergleichen'));
+      detail.append(make('p','Meine Antwort: '+(r.user||'(keine Antwort)')));
+      detail.append(make('p','Musterlösung: '+task.answers[0]));
+      if(task.explain)detail.append(make('p','Erklärung: '+task.explain));
+      card.append(detail);
+      const choices=make('div',undefined,'actions');
+      const current=st.whoStatus&&st.whoStatus[r.id]||(r.status==='first'?'can':'again');
+      [['can','Kann ich'],['again','Nochmal üben'],['unsure','Unsicher']].forEach(([status,label])=>{
+        const btn=make('button',label);
+        btn.type='button';
+        btn.setAttribute('aria-pressed',String(current===status));
+        btn.setAttribute('aria-label','Aufgabe '+(i+1)+': '+label);
+        btn.addEventListener('click',()=>{
+          if(!st.whoStatus||typeof st.whoStatus!=='object')st.whoStatus={};
+          st.whoStatus[r.id]=status;save();summary();
+        });
+        choices.append(btn);
+      });
+      card.append(choices);body.append(card);
+    });
   }else{
     const first=st.results.filter(x=>x&&x.status==='first').length;
     body.append(make('p','Ohne Hilfe gelöst: '+first+'. Nach einem weiteren Versuch gelöst: '+(automatic-first)+'. Zum Wiederholen oder Nachsehen: '+practice+'.'));
     body.append(make('p','Schau dir besonders die Aufgaben an, bei denen du noch unsicher bist. Du musst nicht alles auf einmal können.'));
   }
   const repeat=make('p');
-  const focus=targetedSkills();
-  repeat.textContent=focus.length?'Zum Wiederholen: '+focus.map(k=>({'subject-object':'Wer- und Wen-Fragen',did:'Fragen mit did',does:'Fragen mit does',do:'Fragen mit do',dialogue:'Fragen im Gespräch',short:'Kurzantworten',be:'Fragen mit to be',wordorder:'Wortstellung',other:'andere Frageformen'}[k]||k)).join(', ')+'.':'Du kannst zum nächsten Thema übergehen.';
+  if(st.whoFocus){
+    const pending=st.results.filter(r=>r&&(!st.whoStatus||st.whoStatus[r.id]!=='can')).length;
+    repeat.textContent=pending?'Für den nächsten Who-Durchgang vorgemerkt: '+pending+' Frage(n).':'Diese Fragen sind als „Kann ich“ markiert. Du kannst weitere neue Who-Fragen üben.';
+    $('summary-targeted').textContent='Unsichere Who-Fragen wiederholen';
+    $('summary-targeted').disabled=pending===0;
+    $('summary-restart').textContent='Weitere Who-Fragen üben';
+  }else{
+    const focus=targetedSkills();
+    repeat.textContent=focus.length?'Zum Wiederholen: '+focus.map(k=>({'subject-object':'Wer- und Wen-Fragen',did:'Fragen mit did',does:'Fragen mit does',do:'Fragen mit do',dialogue:'Fragen im Gespräch',short:'Kurzantworten',be:'Fragen mit to be',wordorder:'Wortstellung',other:'andere Frageformen'}[k]||k)).join(', ')+'.':'Du kannst zum nächsten Thema übergehen.';
+    $('summary-targeted').textContent='Schwierige Bereiche gezielt üben';
+    $('summary-targeted').disabled=false;
+    $('summary-restart').textContent='Neuen Durchgang starten';
+  }
   body.append(repeat);
  }
  $('training-start').addEventListener('click',()=>newRun(false));$('exam-start').addEventListener('click',()=>{if(confirm('Abschlusscheck starten? Ohne Hinweise und Lösungen während der Bearbeitung.'))newRun(true)});$('training-resume').addEventListener('click',()=>{if(st.queue.length){if(st.done)summary();else taskMarkup()}else newRun(false)});$('summary-restart').addEventListener('click',()=>st.whoFocus?startWhoFocus():newRun(false));$('summary-targeted').addEventListener('click',()=>{if(st.whoFocus)startWhoFocus();else{const focus=targetedSkills();newRun(false,focus.length?focus:null)}});$$('[data-mode]').forEach(b=>b.addEventListener('click',()=>{st.mode=b.dataset.mode;$$('[data-mode]').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));save()}));
