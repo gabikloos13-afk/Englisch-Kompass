@@ -1505,6 +1505,7 @@ Richtig: She doesn’t play.
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="connections" id="verbindungen">
 <div class="connections-panel">
 <p class="conn-intro">Simple Present klärt Bedeutung und Verbform. Für Fragen, Häufigkeitswörter und Satzstellung gibt es eigene Seiten.</p>
+<p class="conn-intro"><a href="questions.html#training">Do/Does-Fragen und Kurzantworten gezielt üben</a> – im Questions-Training den gleichnamigen Durchgang starten.</p>
 <div class="conn-map">
 <a aria-label="Questions öffnen" class="conn-card" href="questions.html#lernen">
 <div aria-hidden="true" class="conn-icon">❓</div>
@@ -2061,7 +2062,7 @@ Richtig: She doesn’t play.
       var status = r ? (r.mastery==='can'&&r.independent===true ? 'correct' : r.status==='wrong' ? 'wrong' : 'almost') : 'open';
       if (!counts.hasOwnProperty(status)) status = 'open';
       counts[status]++;
-      var key = task.skill || 'allgemein';
+      var key = task.id;
       if (!bySkill[key]) bySkill[key] = {label: task.reviewLabel || task.skillLabel || key, correct:0, almost:0, wrong:0, open:0};
       bySkill[key][status]++;
     });
@@ -2120,8 +2121,14 @@ Richtig: She doesn’t play.
     var raw = input ? input.value : '';
     var result = evaluateWriteTask(task, raw);
     var attempt=getWriteAttempt(id);
-    var independent=result.status==='correct'&&!attempt.failed&&!attempt.help&&attempt.checks===0;
-    if(result.status!=='empty'){attempt.checks++;if(result.status!=='correct')attempt.failed=true;}
+    var sameAnswer=attempt.lastAnswer===normalizeWriteAnswer(raw);
+    var independent=result.status==='correct'&&!attempt.failed&&!attempt.help&&(attempt.checks===0||(sameAnswer===true&&attempt.lastCertified===true));
+    if(result.status!=='empty'){
+      attempt.checks++;
+      if(result.status!=='correct')attempt.failed=true;
+      attempt.lastAnswer=normalizeWriteAnswer(raw);
+      attempt.lastCertified=independent;
+    }
     if (result.status === 'empty') {
       WRITE_RESULTS[id] = 'open';
     } else {
