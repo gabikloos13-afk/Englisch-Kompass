@@ -734,8 +734,8 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 <!-- Schritt 2: Namens-Tausch-Maschine -->
 <div class="learn-panel" data-panel="p-learn" data-val="replace">
 <div class="machine-card pron-feature-card">
-<p class="machine-question">👤 Namens-Tausch-Maschine: Wen möchtest du ersetzen?</p>
-<p class="pron-card-note">Klicke auf einen Namen. Die Maschine zeigt dir, welches Pronoun passt.</p>
+<p class="machine-question">👤 Tausch-Maschine: Wen oder was möchtest du ersetzen?</p>
+<p class="pron-card-note">Klicke auf einen Ausdruck. Die Maschine zeigt dir, welches Pronoun passt.</p>
 <div class="pron-swap-grid" aria-label="Namens-Tausch-Maschine">
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Hanna" data-pronoun="she" data-sentence="Hanna is nice." data-result="She is nice.">Hanna</button>
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Ben" data-pronoun="he" data-sentence="Ben is funny." data-result="He is funny.">Ben</button>
@@ -745,7 +745,7 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
 </div>
 <div class="pron-swap-output" id="pron-swap-output" aria-live="polite">
 <div class="sentence-built">
-<span class="tok tok-short">Name sehen</span>
+<span class="tok tok-short">Ausdruck ansehen</span>
 <span class="tok tok-short">→</span>
 <span class="tok tok-short">Wer ist gemeint?</span>
 <span class="tok tok-short">→</span>
@@ -1932,8 +1932,12 @@ body{background:#e7eef4!important;color:#243b55!important;font-family:Arial,Helv
     var result = evaluateWriteTask(task, raw);
     if (result.status === 'wrong') {
       var previous = readWriteStore()[task.id];
-      result.attempts = (previous && previous.status === 'wrong' ? (Number(previous.attempts) || 1) : 0) + 1;
-      result.message = diagnoseWriteMistake(task, raw, result.attempts);
+      var priorWrong = previous && previous.status === 'wrong';
+      var sameAnswer = priorWrong && normalizeWriteAnswer(previous.value) === normalizeWriteAnswer(raw);
+      result.attempts = (priorWrong ? (Number(previous.attempts) || 1) : 0) + (sameAnswer ? 0 : 1);
+      result.message = sameAnswer
+        ? 'Bitte überarbeite deine Antwort, bevor du erneut prüfst. Nur ein geänderter Versuch schaltet die nächste Hilfe frei.'
+        : diagnoseWriteMistake(task, raw, result.attempts);
     }
     setWriteFeedback(task, result);
     saveWriteResult(task, result, raw);
