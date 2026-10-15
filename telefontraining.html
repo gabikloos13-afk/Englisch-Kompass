@@ -50,8 +50,8 @@ textarea{display:block;width:100%;min-height:90px;resize:vertical;padding:12px;b
 <main>
 <section class="card" aria-labelledby="intro"><h2 id="intro">Dein Lernweg</h2><p>Du möchtest mit Sam telefonieren. In acht kurzen Telefonsituationen formulierst du die Redemittel aus deinem Unterrichtsblatt selbst. Es gibt keine Punkte.</p><p class="meta">Alle acht Redemittel aus deinem Unterrichtsblatt „On the phone“ sind enthalten. Die kurzen Situationen verbinden die Formulierungen zum Üben.</p><div class="progress" role="progressbar" aria-label="Gesprächsschritte bearbeitet" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="progress"><div id="bar" class="bar"></div></div><p id="counter" class="meta" aria-live="polite">Schritt 1 von 8</p></section>
 <section class="card" id="task" aria-labelledby="prompt-title"><h2 id="prompt-title">Gespräch üben</h2><p class="meta" id="speaker"></p><p id="prompt" class="scene"></p><p class="soft" id="context"></p><label for="answer">Dein englischer Satz</label><textarea id="answer" spellcheck="false" autocomplete="off" placeholder="Schreibe zuerst selbst …"></textarea><div class="actions"><button type="button" class="primary" id="check">Antwort prüfen</button><button type="button" id="hint" disabled>Denkfrage</button><button type="button" id="solution" disabled>Musterlösung</button></div><div id="feedback" aria-live="polite" hidden></div><div class="actions"><button type="button" id="next" disabled>Nächster Schritt →</button></div></section>
-<section class="card" id="result" hidden><h2>Dein Gesprächsrückblick</h2><p id="result-intro"></p><div id="result-items"></div><p class="small">„Kann ich“ ist erst nach einem neuen, sofort richtigen Versuch ohne Hilfe möglich. Andernfalls bleibt die Formulierung für die Wiederholung aktiv.</p><div class="actions"><button class="primary" type="button" id="repeat">Unsichere Formulierungen erneut üben</button><button type="button" id="restart">Alle vier erneut üben</button></div></section>
-<section class="card" aria-labelledby="reference-heading"><h2 id="reference-heading">Kurz nachschlagen</h2><p>Die Redemittel werden erst nach einem eigenen Versuch freigeschaltet. So kannst du zuerst selbst überlegen.</p><button type="button" id="reference-toggle" aria-controls="reference-content" aria-expanded="false" disabled>Alle acht Redemittel nachschlagen</button><div id="reference-content" hidden><p>Alle acht Redemittel aus Hannas Unterrichtsblatt „On the phone“:</p><ol class="list"><li>Hello.</li><li>It’s Lucy here.</li><li>Can I speak to Sam, please?</li><li>Can you phone back later, please?</li><li>Hold a minute.</li><li>Do you want to leave a message?</li><li>Can he phone me back?</li><li>I got your message.</li></ol></div></section>
+<section class="card" id="result" hidden><h2>Dein Gesprächsrückblick</h2><p id="result-intro"></p><div id="result-items"></div><p class="small">„Kann ich“ ist erst nach einem neuen, sofort richtigen Versuch ohne Hilfe möglich. Andernfalls bleibt die Formulierung für die Wiederholung aktiv.</p><div class="actions"><button class="primary" type="button" id="repeat">Unsichere Formulierungen erneut üben</button><button type="button" id="restart">Alle acht erneut üben</button></div></section>
+<section class="card" aria-labelledby="reference-heading"><h2 id="reference-heading">Kurz nachschlagen</h2><p>Nach deinem ersten eigenen Versuch kannst du ausschließlich die Formulierung der aktuellen Situation nachschlagen. Die übrigen Antworten bleiben verborgen.</p><button type="button" id="reference-toggle" aria-controls="reference-content" aria-expanded="false" disabled>Aktuelle Formulierung nachschlagen</button><div id="reference-content" hidden><p id="reference-answer"></p><p class="small">Nach dem Nachschlagen bleibt die Formulierung für einen neuen selbstständigen Versuch aktiv.</p></div></section>
 </main>
 <script>
 (function(){
@@ -68,6 +68,8 @@ const tasks=[
 ];
 const $=id=>document.getElementById(id), KEY='kompass_phone_v1';
 let statuses={};try{statuses=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){statuses={}}
+// Frühere Gesamtliste konnte spätere Antworten verraten: alte Erfolgsnachweise erneut unabhängig prüfen.
+const STATUS_VERSION_KEY='kompass_phone_status_version';try{if(localStorage.getItem(STATUS_VERSION_KEY)!=='2'){for(const id of Object.keys(statuses)){if(statuses[id]==='can')statuses[id]='again'}localStorage.setItem(KEY,JSON.stringify(statuses));localStorage.setItem(STATUS_VERSION_KEY,'2')}}catch(e){}
 let queue=tasks.map(x=>x.id),position=0,attempts=0,helps=0,finished=false,seen=[],hintLevel=0;
 const norm=s=>String(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
 const current=()=>tasks.find(x=>x.id===queue[position]);
@@ -78,6 +80,7 @@ let q=current();$('task').hidden=false;$('result').hidden=true;$('speaker').text
 $('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('hint').disabled=true;$('solution').disabled=true;$('next').disabled=true;$('feedback').hidden=true;
 $('counter').textContent='Schritt '+(position+1)+' von '+queue.length;$('bar').style.width=(position/queue.length*100)+'%';$('progress').setAttribute('aria-valuemax',String(queue.length));$('progress').setAttribute('aria-valuenow',String(position));
 attempts=0;helps=0;hintLevel=0;finished=false;
+const referenceButton=$('reference-toggle'),reference=$('reference-content');referenceButton.disabled=true;referenceButton.setAttribute('aria-expanded','false');referenceButton.textContent='Aktuelle Formulierung nachschlagen';reference.hidden=true;$('reference-answer').textContent='';
 }
 function finish(correct){
 if(finished)return;finished=true;
@@ -88,7 +91,7 @@ else{statuses[q.id]='again';feedback(correct?'Nach dem Überarbeiten richtig. Di
 save();$('answer').disabled=true;$('check').disabled=true;$('hint').disabled=true;$('solution').disabled=true;$('next').disabled=false;
 }
 function unlockReference(){const b=$('reference-toggle');if(b)b.disabled=false}
-$('reference-toggle').addEventListener('click',()=>{const b=$('reference-toggle'),p=$('reference-content');const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));p.hidden=open;b.textContent=open?'Alle acht Redemittel nachschlagen':'Redemittel ausblenden'});
+$('reference-toggle').addEventListener('click',()=>{if(attempts<1)return;const b=$('reference-toggle'),p=$('reference-content');const open=b.getAttribute('aria-expanded')==='true';if(!open){$('reference-answer').textContent='Musterformulierung: '+current().answers[0];helps++;if(!finished)feedback('Musterformulierung nachgeschlagen. Dieser Versuch zählt nicht als „Kann ich“. Übe die Formulierung später erneut ohne Hilfe.','warn')}b.setAttribute('aria-expanded',String(!open));p.hidden=open;b.textContent=open?'Aktuelle Formulierung nachschlagen':'Formulierung ausblenden'});
 $('check').addEventListener('click',()=>{
 if(finished)return;const q=current(),v=$('answer').value.trim();if(!v){feedback('Schreibe zuerst einen englischen Satz.','warn');return}
 attempts++;unlockReference();
