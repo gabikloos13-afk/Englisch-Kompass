@@ -5,58 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>On the phone – Hannas Englisch-Kompass</title>
 <style>
-:root{font-family:Arial,Helvetica,sans-serif;color:#243244;background:#e7eef4;font-size:16px}
-*{box-sizing:border-box}body{margin:0;line-height:1.55}a{color:#1d4ed8}
-header{background:linear-gradient(125deg,#1d4ed8,#6d28d9);color:white;padding:24px max(20px,calc((100vw - 1020px)/2))}
-header h1{margin:0;font-size:1.65rem}header p{margin:5px 0 0;color:#f0eaff}
-.top{padding:12px max(20px,calc((100vw - 1020px)/2));background:white}
-main{max-width:1020px;margin:20px auto;padding:0 20px 45px;display:grid;gap:16px}
-.card{background:white;border:1px solid #cbd5e1;border-radius:16px;padding:20px;box-shadow:0 4px 14px #24324410}
-h2{font-size:1.18rem;margin:0 0 10px}p{margin:7px 0 12px}.soft{background:#eff6ff;border-radius:10px;padding:12px;margin:12px 0}.scene{font-size:1.06rem;font-weight:bold}
-label{display:block;font-weight:bold;margin:12px 0 6px}textarea{width:100%;min-height:90px;padding:12px;border:1px solid #94a3b8;border-radius:10px;font:inherit}
-button{font:inherit;cursor:pointer;border:1px solid #2563eb;background:#fff;color:#1d4ed8;border-radius:999px;padding:10px 15px;min-height:43px}
-button.primary{background:#2563eb;color:white}button:disabled{opacity:.45;cursor:not-allowed}
-button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.feedback{padding:12px;border-radius:10px;margin-top:14px;background:#eff6ff;border:1px solid #93c5fd}
-.feedback.warn{background:#fffbeb;border-color:#fbbf24}
-.feedback.good{background:#f0fdf4;border-color:#86efac}
-.meta{font-size:.88rem;color:#526277}
-.progress{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-top:12px}
-.bar{height:100%;background:#2563eb;width:0;transition:width .2s}
+:root{--bg:#e7eef4;--ink:#243b55;--muted:#52657b;--line:#cfdce9;--blue:#2563eb;--soft:#f1f5f9;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Arial,Helvetica,sans-serif}
+a{color:#1d4ed8}
+button,textarea{font:inherit}
+button{cursor:pointer;min-height:42px;padding:9px 15px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#1d4ed8}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.top{max-width:1140px;margin:12px auto 14px;padding:0 15px;background:transparent}
+.top a{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);text-decoration:none}
+.top a:hover{background:#eff6ff}
+header{max-width:1110px;margin:0 auto 15px;padding:25px 30px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+header h1{margin:0 0 8px;font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif;color:var(--ink)}
+header p{margin:0;color:var(--muted)}
+main{display:grid;gap:14px;max-width:1140px;margin:0 auto;padding:0 15px 50px}
+.card{margin:0;padding:20px;border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:none}
+.card h2{margin:0 0 10px;font-size:1.2rem;font-weight:500;color:var(--ink)}
+p{margin:7px 0 12px}
+.meta,.small{font-size:.89rem;color:var(--muted)}
+.scene{font-size:1.06rem;font-weight:600}
+.soft{margin:12px 0;padding:12px;border-radius:10px;background:var(--soft);color:var(--ink)}
+label{display:block;margin:12px 0 6px;font-weight:600}
+textarea{display:block;width:100%;min-height:90px;resize:vertical;padding:12px;border:1px solid #a9bdd2;border-radius:10px;background:#fff;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.feedback{padding:12px;margin-top:14px;border:1px solid #93c5fd;border-radius:10px;background:#eff6ff}
+.feedback.warn{border-color:#fbbf24;background:#fffbeb}
+.feedback.good{border-color:#86efac;background:#f0fdf4}
+.progress{height:8px;margin-top:12px;overflow:hidden;border-radius:999px;background:#e2e8f0}
+.bar{height:100%;width:0;background:var(--blue);transition:width .2s}
 [hidden]{display:none!important}
-.small{font-size:.91rem}
-.list{padding-left:22px;margin-bottom:0}.list li{margin-bottom:6px}
-@media(max-width:580px){header{padding:18px 20px}.card{padding:16px}}
+.list{padding-left:22px;margin:8px 0 0}
+.list li{margin-bottom:6px}
+@media(max-width:650px){.top{padding:0 12px}.top a{max-width:100%}header{margin:0 12px 12px;padding:19px}main{padding:0 12px 35px}.card{padding:16px}.actions button{max-width:100%}}
+@media print{.top,.actions,button{display:none!important}body{background:#fff}header,main,.card{max-width:none;border:0;box-shadow:none}main{display:block}.card{break-inside:avoid;margin-bottom:14px}}
 
-/* Gemeinsamer ruhiger Kompass-Rahmen; Telefontraining bleibt funktional unverändert */
-body{background:#e7eef4;color:#243b55;font:15px/1.6 Arial,Helvetica,sans-serif}
-.top{max-width:1140px;margin:12px auto 14px;padding:0 15px;background:transparent;border:0}
-.top a{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;background:#fff;border:1px solid #cfdce9;border-radius:10px;color:#243b55;text-decoration:none}
-header{max-width:1110px;margin:0 auto 15px;padding:25px 30px;background:#fff;color:#243b55;border:1px solid #cfdce9;border-radius:14px}
-header h1{color:#243b55;font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif}
-header p{color:#52657b}
-main{max-width:1140px;padding:0 15px 45px}
-.card{border:1px solid #cfdce9;border-radius:13px;box-shadow:none}
-button{border-radius:10px;min-height:42px}
-button.primary{background:#2563eb;color:#fff;border-color:#2563eb}
-@media(max-width:650px){.top{padding:0 12px}header{margin:0 12px 12px;padding:19px}main{padding:0 12px 35px}.card{padding:16px}}
-
-/* Telefontraining – gleiche äußere Gestaltung, Übungsablauf unverändert */
-body{background:#e7eef4;color:#243b55;font:15px/1.6 Arial,Helvetica,sans-serif}
-.top{max-width:1140px;margin:12px auto 14px;padding:0 15px;background:transparent;border:0}
-.top a{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;background:#fff;border:1px solid #cfdce9;border-radius:10px;color:#243b55;text-decoration:none}
-header{max-width:1110px;margin:0 auto 15px;padding:25px 30px;background:#fff;background-image:none;color:#243b55;border:1px solid #cfdce9;border-radius:14px;box-shadow:none}
-header h1{font:400 clamp(25px,3vw,34px)/1.25 Arial,Helvetica,sans-serif;color:#243b55;margin:0 0 8px}
-header p{color:#52657b}
-main{max-width:1140px;margin:0 auto;padding:0 15px 50px;gap:14px}
-.card{border:1px solid #cfdce9;border-radius:13px;background:#fff;box-shadow:none;padding:20px}
-.card h2{font-weight:500;color:#243b55}
-.soft,.scene+ .soft{background:#f1f5f9}
-button{border-radius:10px;min-height:42px}
-button.primary{background:#2563eb;border-color:#2563eb}
-textarea{border-radius:10px}
-@media(max-width:650px){.top{padding:0 12px}header{margin:0 12px 12px;padding:19px}main{padding:0 12px 35px}.card{padding:16px}}
 </style>
 </head>
 <body>
