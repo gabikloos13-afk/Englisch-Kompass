@@ -102,8 +102,29 @@ const demo=[["Mia plays football every Sunday.","present","Eine regelmäßige Ge
 function paintDemo(){ $("learnPrompt").textContent=demo[di][0];$("learnFeedback").hidden=true;$("lnext").hidden=true;$("lpresent").disabled=false;$("lpast").disabled=false }
 function pickDemo(v){let d=demo[di];$("learnFeedback").hidden=false;$("learnFeedback").className="feedback "+(v===d[1]?"good":"bad");$("learnFeedback").textContent=(v===d[1]?"Richtig. ":"Noch nicht. ")+d[2];$("lpresent").disabled=$("lpast").disabled=true;$("lnext").hidden=false}
 $("lpresent").onclick=()=>pickDemo("present");$("lpast").onclick=()=>pickDemo("past");$("lnext").onclick=()=>{di=(di+1)%demo.length;paintDemo()};paintDemo();
-function choose(){const source=state.trainMode==="basic"?TASKS:FREE_TASKS;const due=source.filter(t=>state.review&&state.review.includes(t.id));let pool=due.length?due:source.filter(t=>!state.seen.slice(-12).includes(t.id));if(!pool.length)pool=source;
- let sum=0,weights=pool.map(t=>{let w=1+Math.min(7,state.weak[t.group]||0)*1.5;sum+=w;return w});let r=Math.random()*sum;for(let i=0;i<pool.length;i++){r-=weights[i];if(r<=0)return pool[i]}return pool[0]}
+// Lehrerabgleich: Fragenbildung (do/does/did, Subject/Object) und Simple Past bewusst häufiger.
+// Keine Änderung an den Aufgaben, anerkannten Antworten oder am gesonderten Abschlusscheck.
+const PAST_FOCUS_IDS=new Set(["KF-02","KF-04","KF-06","KF-08","KF-09","KF-11","KF-13","KF-14","KF-18","KF-19","KF-21","KF-22","KF-23","KF-24","KF-25","KF-26","KF-27","KF-28","KF-29"]);
+function choose(){
+ const source=state.trainMode==="basic"?TASKS:FREE_TASKS;
+ const recent=state.seen.slice(-3);
+ const eligible=source.filter(t=>!recent.includes(t.id));
+ const available=eligible.length?eligible:source;
+ const due=available.filter(t=>Array.isArray(state.review)&&state.review.includes(t.id));
+ // Wiederholungsaufgaben bleiben wichtig, verdrängen aber nicht dauerhaft neue Aufgaben.
+ const pool=due.length&&Math.random()<0.55?due:available;
+ const weights=pool.map(t=>{
+  const focus=state.trainMode==="basic"?1:
+    (t.group==="who"?4:t.group==="question"?3.4:t.group==="negative"?1.6:1);
+  const past=state.trainMode==="basic"?1:(PAST_FOCUS_IDS.has(t.id)?1.7:1);
+  const need=1+Math.min(7,state.weak[t.group]||0)*1.5;
+  return focus*past*need;
+ });
+ const total=weights.reduce((a,b)=>a+b,0);
+ let roll=Math.random()*total;
+ for(let i=0;i<pool.length;i++){roll-=weights[i];if(roll<=0)return pool[i]}
+ return pool[pool.length-1];
+}
 function finishTraining(outcome){let t=state.train;if(!t||t.counted)return;t.counted=true;
  state.stats=state.stats||{started:0,first:0,retried:0,helped:0,skipped:0,unrecognised:0};state.stats[outcome]=(state.stats[outcome]||0)+1;
  if(outcome==="skipped"||outcome==="unrecognised")state.weak[currentTask().group]=(state.weak[currentTask().group]||0)+1;const id=currentTask().id;state.review=Array.isArray(state.review)?state.review:[];if(outcome==="first"||outcome==="retried"){if(outcome==="first")state.review=state.review.filter(x=>x!==id);else if(!state.review.includes(id))state.review.push(id)}else if(!state.review.includes(id))state.review.push(id)}
@@ -116,7 +137,7 @@ function draw(){target.textContent="";bank.textContent="";if(!picked.length){let
 function readValue(q,mode){if(q.type==="order")return(mode==="train"?state.train.picked:state.exam.picked).map(i=>q.tokens[i]).join(" ");return mode==="train"?state.train.value:state.exam.value}
 function feedback(id,value,kind){let el=$(id);el.hidden=!value;el.className="feedback "+(kind||"");el.textContent=value||""}
 function paintStats(){let z=state.stats||{};$("trainStats").textContent=(z.started||0)+" begonnen · "+(z.first||0)+" sofort richtig · "+(z.retried||0)+" nach Korrektur · "+(z.helped||0)+" mit Hilfe/Muster · "+(z.skipped||0)+" übersprungen · "+(z.unrecognised||0)+" zur Selbstkontrolle."}
-function paintTraining(fresh){$("modeFree").setAttribute("aria-pressed",String(state.trainMode!=="basic"));$("modeBasic").setAttribute("aria-pressed",String(state.trainMode==="basic"));$("modeFree").classList.toggle("primary",state.trainMode!=="basic");$("modeBasic").classList.toggle("primary",state.trainMode==="basic");$("modeHelp").textContent=state.trainMode==="basic"?"Regeltraining: Verbformen, Fehlerkorrekturen und Satzbau mit Hilfen.":"Klassenarbeit: eigene englische Sätze aus schulnahen Situationen bilden.";if(!currentTask()){newTraining();return}let q=currentTask(),t=state.train;$("trainTask").textContent=q.prompt;$("trainProgress").textContent="Bearbeitete Aufgaben: "+((state.stats.started||0)) +" begonnen · "+((state.review||[]).filter(id=>(state.trainMode==="basic"?TASKS:FREE_TASKS).some(t=>t.id===id)).length)+" Aufgaben zum Wiederholen vorgemerkt";$("trainMeter").style.width=((state.stats.started||0)%12)/12*100+"%";if(fresh!==false||$("trainInput").childElementCount===0||$("trainInput").dataset.task!==q.id){drawInput("trainInput",q,"train");$("trainInput").dataset.task=q.id}$("trainCheck").disabled=t.done;$("trainHint").hidden=t.attempts<1||t.done;$("trainSolution").hidden=!t.canShowSolution||t.done;$("trainManual").hidden=t.attempts<1||t.done;feedback("trainFeedback",t.feedback,t.feedbackKind);paintStats()}
+function paintTraining(fresh){$("modeFree").setAttribute("aria-pressed",String(state.trainMode!=="basic"));$("modeBasic").setAttribute("aria-pressed",String(state.trainMode==="basic"));$("modeFree").classList.toggle("primary",state.trainMode!=="basic");$("modeBasic").classList.toggle("primary",state.trainMode==="basic");$("modeHelp").textContent=state.trainMode==="basic"?"Regeltraining: Verbformen, Fehlerkorrekturen und Satzbau mit Hilfen.":"Klassenarbeit: eigene englische Sätze bilden. Fragen mit do/does/did, Who-Fragen und Simple Past kommen häufiger vor.";if(!currentTask()){newTraining();return}let q=currentTask(),t=state.train;$("trainTask").textContent=q.prompt;$("trainProgress").textContent="Bearbeitete Aufgaben: "+((state.stats.started||0)) +" begonnen · "+((state.review||[]).filter(id=>(state.trainMode==="basic"?TASKS:FREE_TASKS).some(t=>t.id===id)).length)+" Aufgaben zum Wiederholen vorgemerkt";$("trainMeter").style.width=((state.stats.started||0)%12)/12*100+"%";if(fresh!==false||$("trainInput").childElementCount===0||$("trainInput").dataset.task!==q.id){drawInput("trainInput",q,"train");$("trainInput").dataset.task=q.id}$("trainCheck").disabled=t.done;$("trainHint").hidden=t.attempts<1||t.done;$("trainSolution").hidden=!t.canShowSolution||t.done;$("trainManual").hidden=t.attempts<1||t.done;feedback("trainFeedback",t.feedback,t.feedbackKind);paintStats()}
 $("trainCheck").onclick=()=>{let q=currentTask(),t=state.train,v=readValue(q,"train");if(!v.trim()){t.feedback="Schreibe zuerst eine eigene Antwort.";t.feedbackKind="bad";save();paintTraining(false);return}t.attempts++;if(accepted(q,v)){state.solved++;if(t.attempts===1&&!t.hinted){state.first++;finishTraining("first")}else if(t.hinted){finishTraining("helped")}else{finishTraining("retried")}if(t.attempts===1&&!t.hinted)state.weak[q.group]=Math.max(0,(state.weak[q.group]||0)-1);t.done=true;t.feedback="Richtig. "+q.explain;t.feedbackKind="good"}else{state.weak[q.group]=(state.weak[q.group]||0)+1;t.canShowSolution=t.attempts>=2;t.feedback="Noch nicht passend. Überprüfe deine Entscheidung. Du kannst einen Hinweis öffnen.";t.feedbackKind="bad"}save();paintTraining(false)};
 $("trainManual").onclick=()=>{let t=state.train,q=currentTask();t.done=true;finishTraining("unrecognised");t.feedback="Automatisch nicht erkannt. Vergleiche deine Antwort selbst mit: "+q.answers.join(" / ")+". "+q.explain+" Wenn deine Formulierung dieselbe gefragte Information korrekt wiedergibt, kannst du sie als richtige Variante betrachten; der automatische Fortschritt wertet sie nicht als sicher richtig.";t.feedbackKind="";save();paintTraining(false)};
 $("trainHint").onclick=()=>{let t=state.train;t.hinted=true;t.feedback="Denkfrage: "+currentTask().hint;t.feedbackKind="bad";save();paintTraining(false)};
