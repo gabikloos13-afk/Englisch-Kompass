@@ -138,7 +138,7 @@ body.questions-homework .questions-homework-note{display:block!important;margin:
      return 'Die Frage handelt von he, she oder it. Wie lautet die passende Verneinung mit does?';
    if(/\bdid\b.+\b(went|bought|saw|found|played|visited|called|ate|made|phoned|talked|invited|met|knew|sent|fed|broke|took|wrote|left|ran|came|had|gave|told|drank|slept|spoke|thought)\b/i.test(a))
      return 'Nach did steht die Grundform. Welches Verb musst du ändern?';
-   if(/\bdoes\b.+\b(plays|goes|knows|likes|visits|watches|begins|starts)\b/i.test(a))
+   if(/\bdoes\b.+\b(plays|goes|knows|likes|visits|watches|begins|starts|learns|gets|walks|skypes|phones|calls)\b/i.test(a))
      return 'Nach does steht das Verb ohne -s. Welches Verb musst du ändern?';
    const helpers=['do','does','did','is','are','was','were','can','has','have'];
    if(words.length>=2&&words[0]===model[0]&&helpers.includes(model[1])&&!helpers.includes(words[1])){
