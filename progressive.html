@@ -94,6 +94,8 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 .pg-lab-practice[open]{background:#f8fafc}
 .pg-visual-tool button:focus-visible,.pg-lab-practice summary:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.pg-visual-tool *{transition:none!important;animation:none!important}}
+
+[data-spelling-examples][hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -273,7 +275,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <h2 class="section-title">Wie schreiben? – Die -ing-Werkstatt</h2>
         <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
         <div class="pg-visual-tool interactive-only" data-spell-path><h3>Welcher Weg passt zum Verb?</h3>
- <div class="pg-rule-grid"><div class="pg-rule-card pg-rule-normal"><p class="mini-label">NORMAL</p><strong>play</strong><span aria-hidden="true">↓</span><strong>playing</strong><small>+ ing</small></div><div class="pg-rule-card pg-rule-e"><p class="mini-label">STUMMES E</p><strong>come</strong><span aria-hidden="true">↓</span><strong>com<span class="pg-cross">e</span> + ing</strong><small>coming</small></div><div class="pg-rule-card pg-rule-double"><p class="mini-label">VERDOPPELN</p><strong>stop</strong><span aria-hidden="true">↓</span><strong>sto<span class="pg-accent">pp</span>ing</strong><small>p wird pp</small></div></div>
+ <button type="button" class="tool-btn" data-show-spelling-rules aria-expanded="true">Regelkarten ausblenden</button><div class="pg-rule-grid" data-spelling-examples><div class="pg-rule-card pg-rule-normal"><p class="mini-label">NORMAL</p><strong>play</strong><span aria-hidden="true">↓</span><strong>playing</strong><small>+ ing</small></div><div class="pg-rule-card pg-rule-e"><p class="mini-label">STUMMES E</p><strong>come</strong><span aria-hidden="true">↓</span><strong>com<span class="pg-cross">e</span> + ing</strong><small>coming</small></div><div class="pg-rule-card pg-rule-double"><p class="mini-label">VERDOPPELN</p><strong>stop</strong><span aria-hidden="true">↓</span><strong>sto<span class="pg-accent">pp</span>ing</strong><small>p wird pp</small></div></div>
  <p class="mini-label">Erst Regel erkennen, dann selbst schreiben</p><div class="pg-toggle" role="group" aria-label="Regeltyp des aktuellen Verbs"><button type="button" data-rule-choice="normal" aria-pressed="false">Normal</button><button type="button" data-rule-choice="e" aria-pressed="false">Stummes e</button><button type="button" data-rule-choice="double" aria-pressed="false">Verdoppeln</button><button type="button" data-rule-choice="wy" aria-pressed="false">w / y</button></div><p class="feedback" data-rule-feedback aria-live="polite">Wähle die passende Regel für das Verb unten.</p></div>
         <div class="grid-3">
           <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
@@ -488,13 +490,13 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
           var first=card.querySelector('[data-radar-slot="first"]').value,second=card.querySelector('[data-radar-slot="second"]').value;
           if(!first||!second){feedback(card,'is-hint','Entscheide dich zuerst für beide Lücken.');return;}
           var ok=first===card.dataset.correctFirst&&second===card.dataset.correctSecond;
-          feedback(card,ok?'is-good':'is-careful',(ok?'Beide Verbformen sind richtig. ':'Noch nicht beide Verbformen richtig. Versuche es erneut. ')+(ok?card.dataset.note:'Prüfe die Gewohnheit und den Gegensatz nach but.'));
+          feedback(card,ok?'is-good':'is-careful',(ok?'Beide Verbformen sind richtig. Deine Begründung wird nicht automatisch bewertet. Vergleiche sie: ':'Noch nicht beide Verbformen richtig. Versuche es erneut. ')+(ok?card.dataset.note:'Prüfe die Gewohnheit und den Gegensatz nach but.'));
         }else{
           var btn=card.querySelector('[data-radar-choice].is-selected');
           if(!btn){feedback(card,'is-hint','Wähle zuerst eine Verbform.');return;}
           var ok=btn.dataset.radarChoice===card.dataset.answer;
           btn.classList.add(ok?'is-correct':'is-careful');
-          feedback(card,ok?'is-good':'is-careful',(ok?'Richtig. '+card.dataset.note:'Noch nicht. Prüfe: Gewohnheit oder gerade jetzt?'));
+          feedback(card,ok?'is-good':'is-careful',(ok?'Die Verbform ist richtig. Deine Begründung wird nicht automatisch bewertet. Vergleiche sie: '+card.dataset.note:'Noch nicht. Prüfe: Gewohnheit oder gerade jetzt?'));
         }
       });
     });
@@ -654,7 +656,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   function drawBuild(){var pool=needed().slice().reverse();var choice=one('[data-build-choices]',lab);choice.innerHTML='';pool.forEach(function(v){var b=document.createElement('button');b.type='button';b.textContent=v;b.disabled=chosen.includes(v);b.addEventListener('click',function(){chosen.push(v);drawBuild();});choice.appendChild(b);});setHTML(one('[data-build-answer]',lab),tokens(chosen.map(function(v){return [v,style(v)];})));}
   many('[data-lab-mode]',lab).forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.labMode;chosen=[];one('[data-build-feedback]',lab).textContent='Wähle die Bausteine nacheinander.';draw();});});one('[data-build-check]',lab).addEventListener('click',function(){var correct=needed(),ok=chosen.length===correct.length&&chosen.every(function(v,i){return v===correct[i];});var feedback=one('[data-build-feedback]',lab);feedback.className='feedback '+(ok?'is-good':'is-careful');feedback.textContent=ok?'Richtig zusammengesetzt.':'Noch nicht richtig. Prüfe, wo is und not stehen. Versuche es erneut.';});one('[data-build-reset]',lab).addEventListener('click',function(){chosen=[];drawBuild();});draw();
  }
- var path=one('[data-spell-path]');if(path){var word=one('[data-spell-word]'),fb=one('[data-rule-feedback]',path);var rules={normal:['play','read','watch','help','jump','look'],e:['make','write','come','dance','take','ride'],double:['run','swim','sit','get','stop','shop'],wy:['show','enjoy']};
+ var path=one('[data-spell-path]');if(path){var word=one('[data-spell-word]'),fb=one('[data-rule-feedback]',path),examples=one('[data-spelling-examples]',path),show=one('[data-show-spelling-rules]',path),spellInput=one('[data-spell-input]');function toggleExamples(visible){examples.hidden=!visible;show.setAttribute('aria-expanded',String(visible));show.textContent=visible?'Regelkarten ausblenden':'Regelkarten anzeigen';}if(spellInput)spellInput.addEventListener('focus',function(){toggleExamples(false);});show.addEventListener('click',function(){toggleExamples(examples.hidden);});var rules={normal:['play','read','watch','help','jump','look'],e:['make','write','come','dance','take','ride'],double:['run','swim','sit','get','stop','shop'],wy:['show','enjoy']};
   many('[data-rule-choice]',path).forEach(function(b){b.addEventListener('click',function(){var value=b.dataset.ruleChoice,chosen=word?word.textContent.trim():'';select(path,'data-rule-choice',value);var correct=Object.keys(rules).find(function(k){return rules[k].includes(chosen);});fb.className='feedback '+(correct===value?'is-good':'is-careful');fb.textContent=correct===value?'Richtig erkannt. Schreibe jetzt die -ing-Form selbst.':'Schau auf die Endung von '+chosen+' und prüfe die Regel noch einmal.';});});var next=one('[data-spell-next]');if(next)next.addEventListener('click',function(){many('[data-rule-choice]',path).forEach(function(b){b.setAttribute('aria-pressed','false');});fb.className='feedback';fb.textContent='Wähle die passende Regel für das neue Verb.';});}
 })();
 </script>
