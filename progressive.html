@@ -88,6 +88,12 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 /* Vierstufiger Lernweg: Navigation mit klaren Titeln */
 .learn-step-nav .learn-step-btn{min-width:190px;white-space:normal;line-height:1.35;padding:12px 10px}
 @media(max-width:650px){.learn-step-nav .learn-step-btn{min-width:170px}}
+
+/* Lernmodus: Musterlösung nicht sichtbar während aktiver Selbstbau-Aufgabe */
+.pg-visual-output[hidden]{display:none!important}
+.pg-lab-practice[open]{background:#f8fafc}
+.pg-visual-tool button:focus-visible,.pg-lab-practice summary:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.pg-visual-tool *{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -207,8 +213,8 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
             <label class="pg-reason-label" for="pg-reason-7">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-7" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
             <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
           </div>
-          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Normally beschreibt den üblichen Ablauf. This evening ist hier die abweichende Planung für heute Abend.">
-            <p class="mini-label">Mischsatz 4: Gewohnheit und Ausnahme</p><p>My parents normally ___ dinner at six, but this evening they ___ at eight.</p>
+          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually beschreibt die Gewohnheit. But today beschreibt eine Ausnahme am heutigen Tag.">
+            <p class="mini-label">Mischsatz 4: Gewohnheit und Ausnahme</p><p>My parents usually ___ dinner at six, but today they ___ at seven.</p>
             <div class="pg-mixed-fields">
               <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
               <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
@@ -221,7 +227,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <button class="tool-btn interactive-only" type="button" data-reset-radar>Alle Aufgaben zurücksetzen</button>
       
         
-        <p class="section-text">Das Thema ist erst sicher, wenn Hanna die Weiche selbst stellen kann.</p>
+        <p class="section-text">Signalwörter geben Hinweise. Entscheidend ist, was der Satz bedeutet. Auch ohne Signalwort kannst du die richtige Zeitform erkennen.</p>
         <div class="rule-list">
           <div class="rule-item"><div class="rule-name">Gewohnheit</div><div><span class="chip green">Simple Present</span> — every day, always, usually, on Mondays</div></div>
           <div class="rule-item"><div class="rule-name">Gerade jetzt</div><div><span class="chip blue">Present Progressive</span> — now, right now, at the moment, Look!, Listen!</div></div>
@@ -286,12 +292,12 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 
 <section class="learn-panel" id="pg-learn-check" role="tabpanel" aria-labelledby="tab-pg-learn-check" data-panel="pg-learn" data-val="check"><p class="section-kicker">Schritt 4 · Fehler erkennen</p><h2 class="section-title">Stimmt alles? – Der Denkfallen-Check</h2>
         
-        <p class="section-text">Das Stoppschild ist kein zweiter Satzbau. Erst kommt die normale Form: am/is/are + Verb-ing. Danach prüfst du kurz, ob das Verb überhaupt eine laufende Handlung beschreibt.</p>
+        <p class="section-text">Das Stoppschild zeigt eine wichtige Grundregel für Klasse 6, keine ausnahmslose Regel für jedes englische Gespräch. Erst kommt die normale Form: am/is/are + Verb-ing. Danach prüfst du kurz, ob das Verb überhaupt eine laufende Handlung beschreibt.</p>
         <div class="grid-2">
           <div class="card green-card"><h3>Handlungen: Progressive möglich</h3><p>play, read, run, write, eat, watch</p><p>Diese Verben zeigen etwas, das jemand tun kann: She is reading.</p></div>
           <div class="card red-card"><h3>Zustände: Stoppschild prüfen</h3><p>like, love, hate, know, want, need, have (Besitz), understand</p><p>Grundregel für den Unterricht: I want a dog. Nicht: I am wanting a dog.</p></div>
         </div>
-        <div class="card yellow-card mt-16"><h3>So wichtig ist das Stoppschild</h3><p>Für sichere Testsätze brauchst du es als Zusatzprüfung. Der wichtigste Lernkern bleibt: Bedeutung erkennen, am/is/are setzen und die -ing-Form richtig schreiben.</p></div>
+        <div class="card yellow-card mt-16"><h3>So wichtig ist das Stoppschild</h3><p>Für typische Schulaufgaben brauchst du das Stoppschild als Zusatzprüfung. Der wichtigste Lernkern bleibt: Bedeutung erkennen, am/is/are setzen und die -ing-Form richtig schreiben.</p></div>
         <div class="tool-card interactive-only mt-16" data-state-quiz>
           <h3>Stoppschild-Check</h3>
           <p>Verb: <span class="chip blue" data-state-word>play</span></p>
@@ -305,7 +311,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <div class="grid-3">
           <div class="card soft-card"><h3>1. Unterschied erklären</h3><p>Erkläre den Unterschied zwischen <span class="chip green">She plays tennis.</span> und <span class="chip blue">She is playing tennis.</span></p><details><summary>Kontrollantwort anzeigen</summary><p>She plays tennis. = Gewohnheit. She is playing tennis. = sie spielt gerade jetzt oder gerade in dieser Zeit.</p></details></div>
           <div class="card red-card"><h3>2. Fehler finden</h3><p>Was ist falsch an <span class="chip red">Does she playing tennis?</span></p><details><summary>Kontrollantwort anzeigen</summary><p>Bei Present Progressive-Fragen nimmt man nicht do/does. Richtig ist: Is she playing tennis?</p></details></div>
-          <div class="card green-card"><h3>3. Eigenen Satz bilden</h3><p>Schreibe einen Satz über etwas, das gerade wirklich passiert.</p><p class="mini-label">Beispiel</p><p><span class="chip blue">I am sitting at my desk.</span></p></div>
+          <div class="card green-card"><h3>3. Eigenen Satz bilden</h3><p>Schreibe einen Satz über etwas, das gerade wirklich passiert.</p><p class="mini-label">Denke selbst: Wer macht gerade was? Verwende am, is oder are.</p></div>
         </div>
         <div class="card yellow-card mt-16"><h3>Bestanden, wenn ...</h3><p>Hanna kann erklären, wann Simple Present und Present Progressive verschieden sind, baut am/is/are + Verb-ing sicher und erkennt die wichtigste do/does-Denkfalle.</p></div>
       </section>
@@ -423,39 +429,16 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 
 <script>
 (function(){
-  document.body.classList.add('tabs-ready');
-  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
-  function activate(group, value){
-    var buttons = qa('[data-tab="' + group + '"]');
-    var panels = qa('[data-panel="' + group + '"]');
-    buttons.forEach(function(btn){
-      var on = btn.getAttribute('data-val') === value;
-      btn.classList.toggle('is-active', on);
-      btn.setAttribute('aria-selected', on ? 'true' : 'false');
-      btn.setAttribute('tabindex', on ? '0' : '-1');
-    });
-    panels.forEach(function(panel){ panel.classList.toggle('is-active', panel.getAttribute('data-val') === value); });
-  }
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('[data-tab]');
-    if (!btn) return;
-    activate(btn.getAttribute('data-tab'), btn.getAttribute('data-val'));
-  });
-  document.addEventListener('keydown', function(e){
-    var btn = e.target.closest('[data-tab]');
-    if (!btn || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
-    var group = btn.getAttribute('data-tab');
-    var buttons = qa('[data-tab="' + group + '"]');
-    var i = buttons.indexOf(btn);
-    var next = e.key === 'ArrowRight' ? (i + 1) % buttons.length : (i - 1 + buttons.length) % buttons.length;
-    buttons[next].focus(); buttons[next].click(); e.preventDefault();
-  });
-  var aliases = {lernen:'learn',learn:'learn',nachschlagen:'reference',reference:'reference',schreibcheck:'writecheck','schreib-check':'writecheck',verbindungen:'connections',connections:'connections',notizen:'notes',notes:'notes',schreibwerkstatt:'workshop',workshop:'workshop'};
-  function openHash(){
-    var h = (location.hash || '').replace('#','').toLowerCase();
-    if (aliases[h]) activate('pg-mode', aliases[h]);
-  }
-  window.addEventListener('hashchange', openHash); openHash();
+ document.body.classList.add('tabs-ready');
+ function all(q){return Array.from(document.querySelectorAll(q));}
+ var alias={lernen:'learn',learn:'learn',nachschlagen:'reference',reference:'reference',schreibcheck:'writecheck','schreib-check':'writecheck',verbindungen:'connections',connections:'connections',notizen:'notes',notes:'notes',schreibwerkstatt:'workshop',workshop:'workshop'};
+ var mode='learn',step='radar';
+ function activate(group,value){all('[data-tab="'+group+'"]').forEach(function(b){var active=b.dataset.val===value;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});all('[data-panel="'+group+'"]').forEach(function(p){p.classList.toggle('is-active',p.dataset.val===value);});}
+ function sync(){var part=decodeURIComponent(location.hash.slice(1)).split('/');var next=alias[part[0]]||'learn',nextStep=['radar','machine','spelling','check'].includes(part[1])?part[1]:'radar';mode=next;step=nextStep;activate('pg-mode',mode);activate('pg-learn',step);}
+ function navigate(group,value){if(group==='pg-mode')mode=value;else if(group==='pg-learn')step=value;var hash='#'+mode+(mode==='learn'?'/'+step:'');if(location.hash!==hash)history.pushState(null,'',hash);sync();}
+ document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(b){e.preventDefault();navigate(b.dataset.tab,b.dataset.val);}});
+ document.addEventListener('keydown',function(e){var b=e.target.closest('[data-tab]');if(!b||!['ArrowRight','ArrowLeft'].includes(e.key))return;var buttons=all('[data-tab="'+b.dataset.tab+'"]'),i=buttons.indexOf(b),next=buttons[(i+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length];next.focus();next.click();e.preventDefault();});
+ window.addEventListener('popstate',sync);window.addEventListener('hashchange',sync);sync();
 })();
 </script>
 <script>
@@ -664,15 +647,29 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   select(tense,'data-mixed-mode',mixed);var today=mixed==='today';setHTML(one('[data-mixed-output]',tense),tokens(today?[['but today','pg-signal'],['Maya','pg-person'],['is','pg-be'],['taking','pg-ing'],['the bus.','']]:[['usually','pg-signal'],['Maya','pg-person'],['walks','pg-simple'],['to school.','']]));one('[data-mixed-explain]',tense).textContent=today?'Ausnahme heute → Present Progressive.':'Gewohnheit → Simple Present.';}
   many('[data-tense]',tense).forEach(function(b){b.addEventListener('click',function(){state=b.dataset.tense;draw();});});many('[data-mixed-mode]',tense).forEach(function(b){b.addEventListener('click',function(){mixed=b.dataset.mixedMode;draw();});});one('[data-tense-highlight]',tense).addEventListener('change',draw);draw();
  }
- var lab=one('[data-visual-lab]');if(lab){var mode='positive',chosen=[];
+ var lab=one('[data-visual-lab]');if(lab){var mode='positive',chosen=[];var practice=one('.pg-lab-practice',lab),demo=one('.pg-visual-output',lab);practice.addEventListener('toggle',function(){demo.hidden=practice.open;});
   function needed(){return mode==='question'?['Is','she','playing','tennis?']:mode==='negative'?['she','is','not','playing','tennis.']:['she','is','playing','tennis.'];}
   function style(v){return v.toLowerCase()==='is'?'pg-be':v==='playing'?'pg-ing':v==='not'?'pg-not':v==='she'?'pg-person':'';}
-  function draw(){select(lab,'data-lab-mode',mode);setHTML(one('[data-lab-output]',lab),tokens(needed().map(function(v){return [v,style(v)];})));one('[data-lab-explain]',lab).textContent=mode==='question'?'Frage: Is wandert an den Satzanfang.':mode==='negative'?'Verneinung: not steht hinter is.':'Aussage: is steht hinter she.';drawBuild();}
+  function draw(){demo.hidden=practice.open;select(lab,'data-lab-mode',mode);setHTML(one('[data-lab-output]',lab),tokens(needed().map(function(v){return [v,style(v)];})));one('[data-lab-explain]',lab).textContent=mode==='question'?'Frage: Is wandert an den Satzanfang.':mode==='negative'?'Verneinung: not steht hinter is.':'Aussage: is steht hinter she.';drawBuild();}
   function drawBuild(){var pool=needed().slice().reverse();var choice=one('[data-build-choices]',lab);choice.innerHTML='';pool.forEach(function(v){var b=document.createElement('button');b.type='button';b.textContent=v;b.disabled=chosen.includes(v);b.addEventListener('click',function(){chosen.push(v);drawBuild();});choice.appendChild(b);});setHTML(one('[data-build-answer]',lab),tokens(chosen.map(function(v){return [v,style(v)];})));}
   many('[data-lab-mode]',lab).forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.labMode;chosen=[];one('[data-build-feedback]',lab).textContent='Wähle die Bausteine nacheinander.';draw();});});one('[data-build-check]',lab).addEventListener('click',function(){var correct=needed(),ok=chosen.length===correct.length&&chosen.every(function(v,i){return v===correct[i];});var feedback=one('[data-build-feedback]',lab);feedback.className='feedback '+(ok?'is-good':'is-careful');feedback.textContent=ok?'Richtig zusammengesetzt.':'Noch nicht richtig. Prüfe, wo is und not stehen. Versuche es erneut.';});one('[data-build-reset]',lab).addEventListener('click',function(){chosen=[];drawBuild();});draw();
  }
  var path=one('[data-spell-path]');if(path){var word=one('[data-spell-word]'),fb=one('[data-rule-feedback]',path);var rules={normal:['play','read','watch','help','jump','look'],e:['make','write','come','dance','take','ride'],double:['run','swim','sit','get','stop','shop'],wy:['show','enjoy']};
   many('[data-rule-choice]',path).forEach(function(b){b.addEventListener('click',function(){var value=b.dataset.ruleChoice,chosen=word?word.textContent.trim():'';select(path,'data-rule-choice',value);var correct=Object.keys(rules).find(function(k){return rules[k].includes(chosen);});fb.className='feedback '+(correct===value?'is-good':'is-careful');fb.textContent=correct===value?'Richtig erkannt. Schreibe jetzt die -ing-Form selbst.':'Schau auf die Endung von '+chosen+' und prüfe die Regel noch einmal.';});});var next=one('[data-spell-next]');if(next)next.addEventListener('click',function(){many('[data-rule-choice]',path).forEach(function(b){b.setAttribute('aria-pressed','false');});fb.className='feedback';fb.textContent='Wähle die passende Regel für das neue Verb.';});}
+})();
+</script>
+<script>
+(function(){
+ var key='kompass.progressive.interactions.v1';
+ function qs(s,r){return (r||document).querySelector(s);}
+ function qsa(s,r){return Array.from((r||document).querySelectorAll(s));}
+ function get(){try{return JSON.parse(localStorage.getItem(key)||'{}');}catch(e){return {};}}
+ function put(){try{var data={radar:[],lab:{}};qsa('[data-radar-card],[data-radar-mixed]').forEach(function(c){data.radar.push({id:c.dataset.radarCard?c.dataset.radarCard:c.dataset.radarMixed===undefined?'single':'mixed',reason:(qs('.pg-reason',c)||{}).value||'',selected:(qs('[data-radar-choice].is-selected',c)||{}).dataset?.radarChoice||'',slots:qsa('[data-radar-slot]',c).map(function(e){return e.value;})});});var lab=qs('[data-visual-lab]');if(lab)data.lab={mode:(qs('[data-lab-mode][aria-pressed="true"]',lab)||{}).dataset?.labMode||'positive',open:qs('.pg-lab-practice',lab)?.open||false};localStorage.setItem(key,JSON.stringify(data));}catch(e){}}
+ function restore(){var data=get();qsa('[data-radar-card],[data-radar-mixed]').forEach(function(c,i){var d=(data.radar||[])[i];if(!d)return;var reason=qs('.pg-reason',c);if(reason)reason.value=d.reason||'';if(d.selected){var b=qs('[data-radar-choice="'+d.selected+'"]',c);if(b)b.click();}qsa('[data-radar-slot]',c).forEach(function(el,j){el.value=(d.slots||[])[j]||'';});});var lab=qs('[data-visual-lab]');if(lab&&data.lab&&data.lab.mode){var b=qs('[data-lab-mode="'+data.lab.mode+'"]',lab);if(b)b.click();}}
+ document.addEventListener('input',function(e){if(e.target.closest('[data-radar-card],[data-radar-mixed]'))put();});
+ document.addEventListener('change',function(e){if(e.target.closest('[data-radar-card],[data-radar-mixed]'))put();});
+ document.addEventListener('click',function(e){if(e.target.closest('[data-radar-choice],[data-radar-check],[data-lab-mode],[data-build-check],[data-build-reset]'))queueMicrotask(put);if(e.target.closest('[data-reset-radar]')){try{localStorage.removeItem(key);}catch(x){}}});
+ restore();
 })();
 </script>
 </body>
