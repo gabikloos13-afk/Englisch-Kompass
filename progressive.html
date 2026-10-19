@@ -80,6 +80,10 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 .pg-mixed-fields select{width:100%;min-width:0}
 .pg-radar-note{margin:12px 0;color:var(--gray-600);font-size:.84rem}
 @media(max-width:560px){.pg-mixed-fields{grid-template-columns:1fr}}
+
+/* Visual tools: tense switch, sentence laboratory, spelling decision path */
+.pg-visual-tool{background:#fff;border:1px solid #cbd5e1;border-radius:18px;padding:18px;margin:0 0 20px;box-shadow:0 4px 14px rgba(15,23,42,.06)}
+.pg-visual-tool h3{font-size:1.05rem;margin:3px 0 12px}.pg-visual-tool h4{font-size:.95rem;margin:0 0 9px}.pg-toggle{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pg-toggle button{border:1px solid #cbd5e1;background:#fff;color:#334155;padding:8px 12px;border-radius:999px;cursor:pointer}.pg-toggle button[aria-pressed=true]{background:#2563eb;border-color:#2563eb;color:white}.pg-visual-output{background:#f8fafc;padding:16px;border-radius:14px;margin:10px 0;text-align:center}.pg-visual-output p{margin-top:9px}.pg-token-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;min-height:46px}.pg-tok{display:inline-flex;align-items:center;border-radius:9px;padding:7px 11px;background:#fff;border:1px solid #cbd5e1}.pg-person{background:#f1f5f9}.pg-simple{color:#15803d;background:#dcfce7;border-color:#86efac}.pg-be{color:#1d4ed8;background:#dbeafe;border-color:#93c5fd}.pg-ing{color:#6d28d9;background:#ede9fe;border-color:#c4b5fd}.pg-not{color:#b91c1c;background:#fee2e2;border-color:#fca5a5}.pg-signal{background:#fef3c7;color:#92400e}.pg-checklabel{display:flex;gap:8px;align-items:center;margin:12px 0}.pg-signal-sentence{margin-top:8px;text-align:center}.pg-signal-sentence mark{background:#fde68a;border-radius:5px;padding:2px 4px;color:#713f12}.pg-mini-divider{height:1px;background:#e2e8f0;margin:16px 0}.pg-lab-practice{margin-top:14px;border:1px solid #cbd5e1;border-radius:12px;padding:12px}.pg-lab-practice summary{cursor:pointer;color:#1d4ed8}.pg-build-choices{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.pg-build-choices button{padding:7px 11px;border:1px solid #94a3b8;border-radius:9px;background:white;cursor:pointer}.pg-build-choices button:disabled{opacity:.4;cursor:default}.pg-build-answer{justify-content:flex-start;min-height:50px;padding:8px;border:1px dashed #94a3b8;border-radius:10px}.pg-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}.pg-rule-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;min-width:0;text-align:center}.pg-rule-card strong{overflow-wrap:anywhere}.pg-rule-card small{font-size:.78rem}.pg-rule-normal{background:#f0fdf4}.pg-rule-e{background:#fffbeb}.pg-rule-double{background:#f5f3ff}.pg-cross{text-decoration:line-through;color:#b91c1c}.pg-accent{color:#6d28d9;text-decoration:underline}@media(max-width:540px){.pg-rule-grid{gap:5px}.pg-rule-card{padding:9px 3px}.pg-rule-card .mini-label{font-size:.62rem}}
 </style>
 </head>
 <body>
@@ -149,6 +153,16 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <p class="section-kicker">Denkweg 1</p>
         <h2 class="section-title">Zeitformen-Weiche: Gewohnheit oder Ausnahme?</h2>
         <p class="section-text">Lies den Satz. Suche die Hinweise. Entscheide dich für die Verbform und schreibe, warum du sie gewählt hast. Erst danach prüfst du deine Lösung. Bei den Mischsätzen brauchst du beide Zeitformen.</p>
+        <div class="pg-visual-tool interactive-only" data-visual-tense>
+ <p class="mini-label">INTERAKTIVE DESIGNIDEE</p><h3>Gleiche Person – andere Bedeutung</h3>
+ <div class="pg-toggle" role="group" aria-label="Zeitform wählen"><button type="button" data-tense="habit" aria-pressed="true">Gewohnheit</button><button type="button" data-tense="now" aria-pressed="false">Gerade jetzt</button></div>
+ <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-tense-output><span class="pg-tok pg-person">She</span><span class="pg-tok pg-simple">plays</span><span class="pg-tok">tennis.</span></div><p data-tense-explain>Sie spielt regelmäßig Tennis. → Simple Present</p><p class="mini-label" data-tense-rule>he/she/it → Verb + s</p></div>
+ <label class="pg-checklabel"><input type="checkbox" data-tense-highlight checked/> Signalwörter hervorheben</label>
+ <p class="pg-signal-sentence" data-tense-signal>She <mark>usually</mark> plays tennis.</p>
+ <div class="pg-mini-divider"></div><h4>Normalerweise – aber heute anders</h4>
+ <div class="pg-toggle" role="group" aria-label="Satzhälfte wählen"><button type="button" data-mixed-mode="usual" aria-pressed="true">Normalerweise</button><button type="button" data-mixed-mode="today" aria-pressed="false">Ausnahmsweise heute</button></div>
+ <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-mixed-output><span class="pg-tok pg-signal">usually</span><span class="pg-tok pg-person">Maya</span><span class="pg-tok pg-simple">walks</span><span class="pg-tok">to school.</span></div><p data-mixed-explain>Gewohnheit → Simple Present.</p></div>
+ </div>
         <div class="grid-2 interactive-only" data-radar-list>
           <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
             <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
@@ -214,6 +228,12 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
       <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
         <p class="section-kicker">Denkweg 2</p>
         <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
+        <div class="pg-visual-tool interactive-only" data-visual-lab>
+ <p class="mini-label">VISUELLES SATZLABOR</p><h3>Wörter verändern ihre Position</h3>
+ <div class="pg-toggle" role="group" aria-label="Satzart auswählen"><button type="button" data-lab-mode="positive" aria-pressed="true">Aussage</button><button type="button" data-lab-mode="negative" aria-pressed="false">Verneinung</button><button type="button" data-lab-mode="question" aria-pressed="false">Frage</button></div>
+ <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-lab-output><span class="pg-tok pg-person">she</span><span class="pg-tok pg-be">is</span><span class="pg-tok pg-ing">playing</span><span class="pg-tok">tennis.</span></div><p data-lab-explain>Aussage: is steht hinter she.</p></div>
+ <details class="pg-lab-practice"><summary>Jetzt selbst zusammensetzen</summary><p>Wähle die Satzart oben und ordne die Bausteine in der richtigen Reihenfolge. Die Lösung ist zunächst verdeckt.</p><div class="pg-build-choices" data-build-choices></div><div class="pg-token-row pg-build-answer" data-build-answer></div><div class="write-actions"><button type="button" class="tool-btn" data-build-check>Prüfen</button><button type="button" class="tool-btn" data-build-reset>Neu ordnen</button></div><p class="feedback" data-build-feedback aria-live="polite">Wähle die Bausteine nacheinander.</p></details>
+ </div>
         <div class="formula-row">
           <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
           <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
@@ -235,6 +255,9 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <p class="section-kicker">Denkweg 3</p>
         <h2 class="section-title">-ing-Zauberer: Wie schreibe ich die Form?</h2>
         <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
+        <div class="pg-visual-tool interactive-only" data-spell-path><h3>Welcher Weg passt zum Verb?</h3>
+ <div class="pg-rule-grid"><div class="pg-rule-card pg-rule-normal"><p class="mini-label">NORMAL</p><strong>play</strong><span aria-hidden="true">↓</span><strong>playing</strong><small>+ ing</small></div><div class="pg-rule-card pg-rule-e"><p class="mini-label">STUMMES E</p><strong>come</strong><span aria-hidden="true">↓</span><strong>com<span class="pg-cross">e</span> + ing</strong><small>coming</small></div><div class="pg-rule-card pg-rule-double"><p class="mini-label">VERDOPPELN</p><strong>stop</strong><span aria-hidden="true">↓</span><strong>sto<span class="pg-accent">pp</span>ing</strong><small>p wird pp</small></div></div>
+ <p class="mini-label">Erst Regel erkennen, dann selbst schreiben</p><div class="pg-toggle" role="group" aria-label="Regeltyp des aktuellen Verbs"><button type="button" data-rule-choice="normal" aria-pressed="false">Normal</button><button type="button" data-rule-choice="e" aria-pressed="false">Stummes e</button><button type="button" data-rule-choice="double" aria-pressed="false">Verdoppeln</button><button type="button" data-rule-choice="wy" aria-pressed="false">w / y</button></div><p class="feedback" data-rule-feedback aria-live="polite">Wähle die passende Regel für das Verb unten.</p></div>
         <div class="grid-3">
           <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
           <div class="card yellow-card"><h3>Stummes -e weg</h3><p>make → making<br/>write → writing<br/>come → coming</p></div>
@@ -640,6 +663,30 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 (function(){
   var homework=document.querySelector('[data-homework-toggle]'); if(homework) homework.addEventListener('click',function(){ document.body.classList.toggle('hausaufgaben-mode'); var ref=document.querySelector('[data-tab="pg-mode"][data-val="reference"]'); if(document.body.classList.contains('hausaufgaben-mode') && ref) ref.click(); });
   var printBtn=document.querySelector('[data-print-cheatsheet]'); if(printBtn) printBtn.addEventListener('click',function(){ document.body.classList.add('print-cheatsheet'); window.print(); setTimeout(function(){document.body.classList.remove('print-cheatsheet');},500); });
+})();
+</script>
+<script>
+(function(){
+ function one(s,r){return (r||document).querySelector(s);}
+ function many(s,r){return Array.from((r||document).querySelectorAll(s));}
+ function tokens(arr){return arr.map(function(t){return '<span class="pg-tok '+(t[1]||'')+'">'+t[0]+'</span>';}).join('');}
+ function select(root,attr,value){many('button['+attr+']',root).forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute(attr)===value));});}
+ function setHTML(el,str){if(el)el.innerHTML=str;}
+ var tense=one('[data-visual-tense]');
+ if(tense){var state='habit',mixed='usual';
+  function draw(){select(tense,'data-tense',state);var now=state==='now';setHTML(one('[data-tense-output]',tense),tokens(now?[['She','pg-person'],['is','pg-be'],['playing','pg-ing'],['tennis.','']]:[['She','pg-person'],['plays','pg-simple'],['tennis.','']]));one('[data-tense-explain]',tense).textContent=now?'Sie spielt gerade Tennis. → Present Progressive':'Sie spielt regelmäßig Tennis. → Simple Present';one('[data-tense-rule]',tense).textContent=now?'she → is + Verb-ing':'he/she/it → Verb + s';var signal=now?'She is playing tennis right now.':'She usually plays tennis.',word=now?'right now':'usually';if(one('[data-tense-highlight]',tense).checked)signal=signal.replace(word,'<mark>'+word+'</mark>');setHTML(one('[data-tense-signal]',tense),signal);
+  select(tense,'data-mixed-mode',mixed);var today=mixed==='today';setHTML(one('[data-mixed-output]',tense),tokens(today?[['but today','pg-signal'],['Maya','pg-person'],['is','pg-be'],['taking','pg-ing'],['the bus.','']]:[['usually','pg-signal'],['Maya','pg-person'],['walks','pg-simple'],['to school.','']]));one('[data-mixed-explain]',tense).textContent=today?'Ausnahme heute → Present Progressive.':'Gewohnheit → Simple Present.';}
+  many('[data-tense]',tense).forEach(function(b){b.addEventListener('click',function(){state=b.dataset.tense;draw();});});many('[data-mixed-mode]',tense).forEach(function(b){b.addEventListener('click',function(){mixed=b.dataset.mixedMode;draw();});});one('[data-tense-highlight]',tense).addEventListener('change',draw);draw();
+ }
+ var lab=one('[data-visual-lab]');if(lab){var mode='positive',chosen=[];
+  function needed(){return mode==='question'?['Is','she','playing','tennis?']:mode==='negative'?['she','is','not','playing','tennis.']:['she','is','playing','tennis.'];}
+  function style(v){return v.toLowerCase()==='is'?'pg-be':v==='playing'?'pg-ing':v==='not'?'pg-not':v==='she'?'pg-person':'';}
+  function draw(){select(lab,'data-lab-mode',mode);setHTML(one('[data-lab-output]',lab),tokens(needed().map(function(v){return [v,style(v)];})));one('[data-lab-explain]',lab).textContent=mode==='question'?'Frage: Is wandert an den Satzanfang.':mode==='negative'?'Verneinung: not steht hinter is.':'Aussage: is steht hinter she.';drawBuild();}
+  function drawBuild(){var pool=needed().slice().reverse();var choice=one('[data-build-choices]',lab);choice.innerHTML='';pool.forEach(function(v){var b=document.createElement('button');b.type='button';b.textContent=v;b.disabled=chosen.includes(v);b.addEventListener('click',function(){chosen.push(v);drawBuild();});choice.appendChild(b);});setHTML(one('[data-build-answer]',lab),tokens(chosen.map(function(v){return [v,style(v)];})));}
+  many('[data-lab-mode]',lab).forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.labMode;chosen=[];one('[data-build-feedback]',lab).textContent='Wähle die Bausteine nacheinander.';draw();});});one('[data-build-check]',lab).addEventListener('click',function(){var correct=needed(),ok=chosen.length===correct.length&&chosen.every(function(v,i){return v===correct[i];});var feedback=one('[data-build-feedback]',lab);feedback.className='feedback '+(ok?'is-good':'is-careful');feedback.textContent=ok?'Richtig zusammengesetzt.':'Noch nicht richtig. Prüfe, wo is und not stehen. Versuche es erneut.';});one('[data-build-reset]',lab).addEventListener('click',function(){chosen=[];drawBuild();});draw();
+ }
+ var path=one('[data-spell-path]');if(path){var word=one('[data-spell-word]'),fb=one('[data-rule-feedback]',path);var rules={normal:['play','read','watch','help','jump','look'],e:['make','write','come','dance','take','ride'],double:['run','swim','sit','get','stop','shop'],wy:['show','enjoy']};
+  many('[data-rule-choice]',path).forEach(function(b){b.addEventListener('click',function(){var value=b.dataset.ruleChoice,chosen=word?word.textContent.trim():'';select(path,'data-rule-choice',value);var correct=Object.keys(rules).find(function(k){return rules[k].includes(chosen);});fb.className='feedback '+(correct===value?'is-good':'is-careful');fb.textContent=correct===value?'Richtig erkannt. Schreibe jetzt die -ing-Form selbst.':'Schau auf die Endung von '+chosen+' und prüfe die Regel noch einmal.';});});var next=one('[data-spell-next]');if(next)next.addEventListener('click',function(){many('[data-rule-choice]',path).forEach(function(b){b.setAttribute('aria-pressed','false');});fb.className='feedback';fb.textContent='Wähle die passende Regel für das neue Verb.';});}
 })();
 </script>
 </body>
