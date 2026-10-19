@@ -241,7 +241,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
           <div class="card violet-card"><h3>Konsonant verdoppeln</h3><p>Bei kurzen Verben: kurzer Vokal + ein Endkonsonant → Endkonsonant oft verdoppeln.</p><p>run → running<br/>sit → sitting<br/>swim → swimming<br/>get → getting</p><p>Nicht bei w/y: play → playing, show → showing.</p></div>
         </div>
         <div class="tool-card interactive-only mt-16">
-          <h3>Prüfe die -ing-Form</h3>
+          <h3>Prüfe die -ing-Form</h3><p>20 Verben in wechselnder Reihenfolge. Du siehst die Lösung erst nach zwei Fehlversuchen, wenn du sie selbst öffnest.</p>
           <p>Verb: <span class="chip blue" data-spell-word>play</span></p>
           <label class="visually-hidden" for="spell-input">-ing-Form eingeben</label>
           <input id="spell-input" type="text" autocomplete="off" data-spell-input placeholder="z. B. playing"/>
@@ -506,21 +506,65 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
     if(reset)reset.addEventListener('click',function(){cards.forEach(function(card){resetChoices(card);qa('select',card).forEach(function(el){el.value='';});var reason=card.querySelector('.pg-reason');if(reason)reason.value='';feedback(card,'','Entscheide zuerst und begründe deine Wahl.');});});
   }
   function initSpelling(){
-    var words=['play','read','make','write','run','swim','sit','get','dance','watch','come','stop']; var i=0;
-    var word=document.querySelector('[data-spell-word]'), input=document.querySelector('[data-spell-input]'), fb=document.querySelector('[data-spell-feedback]');
-    var attempts=0, reveal=document.createElement('button');
-    reveal.type='button'; reveal.className='btn'; reveal.textContent='Lösung ansehen'; reveal.hidden=true;
-    if(fb && fb.parentNode) fb.parentNode.appendChild(reveal);
-    function show(){ attempts=0; reveal.hidden=true; if(word) word.textContent=words[i]; if(input) input.value=''; if(fb){fb.className='feedback'; fb.textContent='Tippe die -ing-Form ein.';} }
-    function check(){ var correct=ing(words[i]), val=(input.value||'').trim().toLowerCase();
-      if(!val){fb.className='feedback is-hint'; fb.textContent='Erst eine Form eintippen.'; return;}
-      if(val===correct){fb.className='feedback is-good';fb.textContent='Richtig. Du hast die -ing-Form selbst gebildet.';reveal.hidden=true;return;}
-      attempts++; fb.className='feedback is-careful';
-      fb.textContent=attempts===1?'Noch nicht. Prüfe die Endung des Grundverbs: Bleibt sie gleich, fällt ein stummes e weg oder wird der letzte Konsonant verdoppelt?':'Prüfe noch einmal: Bei kurzem betontem Vokal mit nur einem Endkonsonanten wird dieser oft verdoppelt; ein stummes e fällt meist weg. Schreibe einen zweiten Versuch oder sieh dir danach die Lösung an.';
+    var items=[
+      {word:'play',form:'playing',rule:'normal'},
+      {word:'read',form:'reading',rule:'normal'},
+      {word:'watch',form:'watching',rule:'normal'},
+      {word:'help',form:'helping',rule:'normal'},
+      {word:'jump',form:'jumping',rule:'normal'},
+      {word:'look',form:'looking',rule:'normal'},
+      {word:'make',form:'making',rule:'e'},
+      {word:'write',form:'writing',rule:'e'},
+      {word:'come',form:'coming',rule:'e'},
+      {word:'dance',form:'dancing',rule:'e'},
+      {word:'take',form:'taking',rule:'e'},
+      {word:'ride',form:'riding',rule:'e'},
+      {word:'run',form:'running',rule:'double'},
+      {word:'swim',form:'swimming',rule:'double'},
+      {word:'sit',form:'sitting',rule:'double'},
+      {word:'get',form:'getting',rule:'double'},
+      {word:'stop',form:'stopping',rule:'double'},
+      {word:'shop',form:'shopping',rule:'double'},
+      {word:'show',form:'showing',rule:'wy'},
+      {word:'enjoy',form:'enjoying',rule:'wy'}
+    ];
+    var pool=[],current=null,attempts=0;
+    var word=document.querySelector('[data-spell-word]'),input=document.querySelector('[data-spell-input]'),fb=document.querySelector('[data-spell-feedback]');
+    if(!word||!input||!fb)return;
+    var reveal=document.createElement('button');
+    reveal.type='button';reveal.className='tool-btn';reveal.textContent='Lösung ansehen';reveal.hidden=true;fb.parentNode.appendChild(reveal);
+    function ruleHint(item){
+      if(item.rule==='e')return 'Das Verb endet auf ein stummes e. Streiche das e und hänge -ing an.';
+      if(item.rule==='double')return 'Vor dem letzten Konsonanten steht ein kurzer betonter Vokal. Verdopple den letzten Konsonanten und hänge -ing an.';
+      if(item.rule==='wy')return 'Verben mit w oder y am Ende verdoppeln diesen Buchstaben nicht. Hänge einfach -ing an.';
+      return 'Hier bleibt das Grundverb unverändert. Hänge einfach -ing an.';
+    }
+    function tailoredHint(item,value){
+      var base=item.word;
+      if(item.rule==='double'&&value===base+'ing')return 'Bei '+base+' wird der letzte Buchstabe '+base.slice(-1)+' verdoppelt. Versuche es noch einmal.';
+      if(item.rule==='e'&&value===base+'ing')return 'Das e am Ende von '+base+' ist stumm. Es fällt vor -ing weg. Versuche es noch einmal.';
+      if(item.rule==='normal'&&value===base.slice(0,-1)+'ing')return 'Hier darfst du keinen Buchstaben streichen. Hänge -ing an das ganze Verb.';
+      if(item.rule==='wy'&&value===base+base.slice(-1)+'ing')return 'Den letzten Buchstaben w oder y verdoppeln wir hier nicht.';
+      return ruleHint(item);
+    }
+    function next(){
+      if(pool.length===0){pool=items.slice();for(var j=pool.length-1;j>0;j--){var n=Math.floor(Math.random()*(j+1)),tmp=pool[j];pool[j]=pool[n];pool[n]=tmp;}
+        if(current&&pool.length>1&&pool[pool.length-1].word===current.word){var t=pool[0];pool[0]=pool[pool.length-1];pool[pool.length-1]=t;}}
+      current=pool.pop();attempts=0;word.textContent=current.word;input.value='';reveal.hidden=true;fb.className='feedback';fb.textContent='Tippe die -ing-Form ein.';input.focus();
+    }
+    function check(){
+      var value=input.value.trim().toLowerCase();
+      if(!value){fb.className='feedback is-hint';fb.textContent='Schreibe zuerst deine -ing-Form.';return;}
+      if(value===current.form){fb.className='feedback is-good';fb.textContent='Richtig: '+current.form+'. '+ruleHint(current);reveal.hidden=true;return;}
+      attempts++;fb.className='feedback is-careful';fb.textContent=tailoredHint(current,value);
       reveal.hidden=attempts<2;
     }
-    reveal.addEventListener('click',function(){if(attempts<2)return;fb.className='feedback is-hint';fb.textContent='Lösung: '+ing(words[i])+'. Vergleiche die Schreibregel mit deinem Versuch.';reveal.hidden=true;});
-    var cb=document.querySelector('[data-spell-check]'), nb=document.querySelector('[data-spell-next]'); if(cb) cb.addEventListener('click',check); if(nb) nb.addEventListener('click',function(){i=(i+1)%words.length; show();}); if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter') check(); }); show();
+    reveal.addEventListener('click',function(){if(attempts<2)return;fb.className='feedback is-hint';fb.textContent='Lösung: '+current.word+' → '+current.form+'. '+ruleHint(current);reveal.hidden=true;});
+    var checkBtn=document.querySelector('[data-spell-check]'),nextBtn=document.querySelector('[data-spell-next]');
+    if(checkBtn)checkBtn.addEventListener('click',check);
+    if(nextBtn)nextBtn.addEventListener('click',next);
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();check();}});
+    next();
   }
   function initState(){
     var items=[['play','action','play ist eine Handlung: playing ist möglich.'],['want','state','want ist ein Zustand/Wunsch: I want, nicht I am wanting.'],['read','action','read ist eine Handlung: reading ist möglich.'],['know','state','know ist ein Zustand im Kopf: I know, nicht I am knowing.'],['run','action','run ist eine Handlung: running ist möglich.'],['like','state','like ist eine Meinung/Vorliebe: I like, nicht I am liking.'],['understand','state','understand ist ein Zustand im Kopf: I understand.'],['watch','action','watch ist eine Handlung: watching ist möglich.']]; var i=0;
