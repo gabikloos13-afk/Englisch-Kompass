@@ -70,6 +70,16 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 .compass-mode-panel{background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;margin:0 0 16px!important}
 .learn-step-nav{background:#f8fafc!important}
 @media(max-width:650px){.page-content{padding:0 12px 24px!important}.compass-head{padding:20px!important}.compass-mode-grid{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
+
+/* Zeitformen-Weiche */
+.pg-reason-label{display:block;margin-top:12px;margin-bottom:5px;font-size:.87rem;color:var(--gray-700)}
+.pg-reason{display:block;width:100%;min-height:66px;resize:vertical}
+.pg-check-radar{margin-top:9px;margin-bottom:8px}
+.pg-mixed-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.pg-mixed-fields label{display:grid;gap:5px;font-size:.85rem;color:var(--gray-700)}
+.pg-mixed-fields select{width:100%;min-width:0}
+.pg-radar-note{margin:12px 0;color:var(--gray-600);font-size:.84rem}
+@media(max-width:560px){.pg-mixed-fields{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -137,31 +147,68 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 
       <section class="learn-panel" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar">
         <p class="section-kicker">Denkweg 1</p>
-        <h2 class="section-title">Jetzt-Radar: Läuft die Handlung gerade?</h2>
-        <p class="section-text">Klicke zuerst auf deine Entscheidung. Die Lösung erscheint erst danach.</p>
+        <h2 class="section-title">Zeitformen-Weiche: Gewohnheit oder Ausnahme?</h2>
+        <p class="section-text">Lies den Satz. Suche die Hinweise. Entscheide dich für die Verbform und schreibe, warum du sie gewählt hast. Erst danach prüfst du deine Lösung. Bei den Mischsätzen brauchst du beide Zeitformen.</p>
         <div class="grid-2 interactive-only" data-radar-list>
           <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
             <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
+            <label class="pg-reason-label" for="pg-reason-1">Warum passt diese Zeitform?</label><textarea id="pg-reason-1" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="simple" data-note="Every day zeigt Gewohnheit. Also: plays.">
             <p class="mini-label">Satz</p><p>She ___ tennis every day.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
+            <label class="pg-reason-label" for="pg-reason-2">Warum passt diese Zeitform?</label><textarea id="pg-reason-2" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="progressive" data-note="At the moment zeigt: Die Handlung läuft jetzt. Also: are eating.">
             <p class="mini-label">Satz</p><p>At the moment they ___ pizza.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">eat</button><button class="choice-btn" type="button" data-radar-choice="progressive">are eating</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
+            <label class="pg-reason-label" for="pg-reason-3">Warum passt diese Zeitform?</label><textarea id="pg-reason-3" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="simple" data-note="Usually zeigt Gewohnheit. Also: walk.">
             <p class="mini-label">Satz</p><p>We usually ___ to school.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">walk</button><button class="choice-btn" type="button" data-radar-choice="progressive">are walking</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
+            <label class="pg-reason-label" for="pg-reason-4">Warum passt diese Zeitform?</label><textarea id="pg-reason-4" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
+          </div>
+          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually zeigt eine Gewohnheit. Today ist hier der Gegensatz und beschreibt die vorübergehende Ausnahme.">
+            <p class="mini-label">Mischsatz 1: Gewohnheit und Ausnahme</p><p>Maya usually ___ up early, but today she ___ late.</p>
+            <div class="pg-mixed-fields">
+              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">gets</option><option value="progressive">is getting</option></select></label>
+              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">sleeps</option><option value="progressive">is sleeping</option></select></label>
+            </div>
+            <label class="pg-reason-label" for="pg-reason-5">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-5" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
+            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
+          </div>
+          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Normally beschreibt die Gewohnheit. This week zeigt eine vorübergehende Änderung.">
+            <p class="mini-label">Mischsatz 2: Gewohnheit und Ausnahme</p><p>We normally ___ to school, but this week we ___ the bus.</p>
+            <div class="pg-mixed-fields">
+              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">walk</option><option value="progressive">are walking</option></select></label>
+              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">take</option><option value="progressive">are taking</option></select></label>
+            </div>
+            <label class="pg-reason-label" for="pg-reason-6">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-6" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
+            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
+          </div>
+          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually zeigt die Gewohnheit. But today zeigt die Ausnahme.">
+            <p class="mini-label">Mischsatz 3: Gewohnheit und Ausnahme</p><p>Tom usually ___ football on Saturdays, but today he ___ at home.</p>
+            <div class="pg-mixed-fields">
+              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">plays</option><option value="progressive">is playing</option></select></label>
+              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">stays</option><option value="progressive">is staying</option></select></label>
+            </div>
+            <label class="pg-reason-label" for="pg-reason-7">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-7" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
+            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
+          </div>
+          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Normally beschreibt den üblichen Ablauf. This evening ist hier die abweichende Planung für heute Abend.">
+            <p class="mini-label">Mischsatz 4: Gewohnheit und Ausnahme</p><p>My parents normally ___ dinner at six, but this evening they ___ at eight.</p>
+            <div class="pg-mixed-fields">
+              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
+              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
+            </div>
+            <label class="pg-reason-label" for="pg-reason-8">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-8" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
+            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
           </div>
         </div>
-        <button class="tool-btn interactive-only" type="button" data-reset-radar>Zurücksetzen</button>
+        <p class="pg-radar-note">Deine Erklärung wird nicht automatisch bewertet. Vergleiche sie nach dem Prüfen mit der Erklärung.</p>
+        <button class="tool-btn interactive-only" type="button" data-reset-radar>Alle Aufgaben zurücksetzen</button>
       </section>
 
       <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
@@ -430,14 +477,33 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   }
   function resetChoices(card){ qa('.choice-btn',card).forEach(function(b){b.classList.remove('is-selected','is-correct','is-careful'); b.setAttribute('aria-pressed','false');}); }
   function initRadar(){
-    qa('[data-radar-card]').forEach(function(card){
-      qa('[data-radar-choice]',card).forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){
-        var expected=card.getAttribute('data-answer'), choice=btn.getAttribute('data-radar-choice'), fb=card.querySelector('.feedback'); resetChoices(card); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true');
-        if(choice===expected){ btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+card.getAttribute('data-note'); }
-        else { btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. Frage zuerst: gerade jetzt oder Gewohnheit?'; }
-      }); });
+    var cards=qa('[data-radar-card], [data-radar-mixed]');
+    function feedback(card,kind,msg){var fb=card.querySelector('.feedback');fb.className='feedback '+kind;fb.textContent=msg;}
+    cards.forEach(function(card){
+      qa('[data-radar-choice]',card).forEach(function(btn){
+        btn.setAttribute('aria-pressed','false');
+        btn.addEventListener('click',function(){resetChoices(card);btn.classList.add('is-selected');btn.setAttribute('aria-pressed','true');feedback(card,'','Begründe deine Wahl und klicke dann auf Prüfen.');});
+      });
+      var check=card.querySelector('[data-radar-check]');
+      check.addEventListener('click',function(){
+        var reason=card.querySelector('.pg-reason').value.trim();
+        if(!reason){feedback(card,'is-hint','Schreibe zuerst deine Begründung. Welche Wörter im Satz helfen dir?');return;}
+        if(card.hasAttribute('data-radar-mixed')){
+          var first=card.querySelector('[data-radar-slot="first"]').value,second=card.querySelector('[data-radar-slot="second"]').value;
+          if(!first||!second){feedback(card,'is-hint','Entscheide dich zuerst für beide Lücken.');return;}
+          var ok=first===card.dataset.correctFirst&&second===card.dataset.correctSecond;
+          feedback(card,ok?'is-good':'is-careful',(ok?'Beide Verbformen sind richtig. ':'Noch nicht beide Verbformen richtig. Versuche es erneut. ')+(ok?card.dataset.note:'Prüfe die Gewohnheit und den Gegensatz nach but.'));
+        }else{
+          var btn=card.querySelector('[data-radar-choice].is-selected');
+          if(!btn){feedback(card,'is-hint','Wähle zuerst eine Verbform.');return;}
+          var ok=btn.dataset.radarChoice===card.dataset.answer;
+          btn.classList.add(ok?'is-correct':'is-careful');
+          feedback(card,ok?'is-good':'is-careful',(ok?'Richtig. '+card.dataset.note:'Noch nicht. Prüfe: Gewohnheit oder gerade jetzt?'));
+        }
+      });
     });
-    var reset=document.querySelector('[data-reset-radar]'); if(reset) reset.addEventListener('click',function(){ qa('[data-radar-card]').forEach(function(card){ resetChoices(card); var fb=card.querySelector('.feedback'); fb.className='feedback'; fb.textContent='Entscheide zuerst.'; }); });
+    var reset=document.querySelector('[data-reset-radar]');
+    if(reset)reset.addEventListener('click',function(){cards.forEach(function(card){resetChoices(card);qa('select',card).forEach(function(el){el.value='';});var reason=card.querySelector('.pg-reason');if(reason)reason.value='';feedback(card,'','Entscheide zuerst und begründe deine Wahl.');});});
   }
   function initSpelling(){
     var words=['play','read','make','write','run','swim','sit','get','dance','watch','come','stop']; var i=0;
