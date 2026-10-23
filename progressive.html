@@ -31,117 +31,77 @@ h1,h2,h3,h4,p,ul,ol,table{margin-top:0;font-weight:400}p,ul,ol{margin-bottom:0}.
 body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]),body.hausaufgaben-mode .interactive-only{display:none!important}body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}body.hausaufgaben-mode .homework-only{display:block}body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
 @media (max-width:900px){.compass-head{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}.nav-links{display:none}.site-nav-inner{justify-content:center}.page-content{padding:14px 10px}.compass-mode-panel,.learn-panel{padding:18px 14px}.compass-head{padding:22px 18px}}
 @media print{body{background:#fff;color:#000;padding:0}.site-nav,.page-content{display:none!important}body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
-
-/* Einheitliche Seitenhülle nach index.html – nur äußere Gestaltung */
-:root{--unified-ink:#243b55;--unified-muted:#52657b;--unified-border:#cfdce9;--unified-bg:#e7eef4}
-body{background:var(--unified-bg);color:var(--unified-ink)}
-.site-nav{display:none!important}
-.unified-actions{max-width:1180px;margin:18px auto 14px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.unified-back,.unified-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 15px;background:#fff;color:var(--unified-ink);border:1px solid var(--unified-border);border-radius:11px;text-decoration:none;font:inherit;font-size:14px;line-height:1.3;box-shadow:none}
-.unified-actions button{cursor:pointer}
-.unified-actions button:hover,.unified-back:hover{background:#eef4fb;border-color:#a7bed3}
-.unified-actions button:focus-visible,.unified-back:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
-.unified-tools{display:flex;flex-wrap:wrap;gap:8px}
-.overview-return-wrap{display:none!important}
-.page-content{max-width:1180px;margin:0 auto;padding:0 20px 36px;box-sizing:border-box}
-.page-content>.learning-card,.page-content>article.learning-card{max-width:100%;margin:0;box-sizing:border-box;background:transparent;border:0;box-shadow:none;padding:0}
-.compass-head{background:#fff!important;color:var(--unified-ink)!important;border:1px solid var(--unified-border)!important;border-radius:16px!important;box-shadow:none!important;padding:25px 30px!important;margin:0 0 16px!important;min-height:0!important}
-.compass-head h1,.compass-head .compass-title{color:var(--unified-ink)!important;text-shadow:none!important}
-.compass-head .compass-subtitle,.compass-head .lead,.compass-head .eyebrow,.compass-head .compass-kicker{color:var(--unified-muted)!important}
-.compass-head .compass-emoji,.compass-head .head-badge{display:none!important}
-.compass-mode-grid{margin-top:0!important}
-@media(max-width:640px){.unified-actions{padding:0 14px;margin-top:12px}.unified-tools{width:100%}.unified-tools button{flex:1 1 auto}.page-content{padding:0 14px 24px}.compass-head{padding:18px!important}}
-@media print{.unified-actions{display:none!important}}
-
-
-/* Einheitliches Index-Design: strukturell vereinfachte Hauptnavigation */
-body{background:#e7eef4!important;background-image:none!important;color:#243b55!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.6!important}
-.page-content{max-width:1140px!important;margin:0 auto!important;padding:0 20px 36px!important;box-sizing:border-box!important}
-.page-content>.learning-card{max-width:100%!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
-.compass-head{background:#fff!important;background-image:none!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;padding:26px 30px!important;margin:0 0 16px!important;min-height:0!important}
-.compass-head h1,.compass-head .compass-title{color:#243b55!important;font:400 clamp(25px,3vw,34px)/1.2 Arial,Helvetica,sans-serif!important;text-shadow:none!important}
-.compass-head .eyebrow,.compass-head .compass-kicker,.compass-head .lead,.compass-head .compass-subtitle{color:#52657b!important}
-.compass-head .head-badge,.compass-head .compass-emoji{display:none!important}
-.compass-mode-grid{display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;margin:0 0 16px!important;padding:12px!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important}
-.compass-mode-grid>.compass-mode-btn{display:inline-flex!important;flex:0 1 auto!important;min-width:0!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:10px 17px!important;border:1px solid #cfdce9!important;border-radius:9px!important;background:#fff!important;color:#243b55!important;box-shadow:none!important;transform:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important}
-.compass-mode-grid>.compass-mode-btn:hover{background:#eef4fb!important;border-color:#9fb5cb!important}
-.compass-mode-grid>.compass-mode-btn[aria-selected="true"],.compass-mode-grid>.compass-mode-btn[aria-pressed="true"],.compass-mode-grid>.compass-mode-btn.is-active{background:#e7eef4!important;border-color:#9cb1c9!important;color:#19344f!important}
-.compass-mode-grid>.compass-mode-btn:focus-visible{outline:3px solid #2563eb!important;outline-offset:2px!important}
-.compass-mode-panel{background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;margin:0 0 16px!important}
-.learn-step-nav{background:#f8fafc!important}
-@media(max-width:650px){.page-content{padding:0 12px 24px!important}.compass-head{padding:20px!important}.compass-mode-grid{gap:6px!important;padding:9px!important}.compass-mode-grid>.compass-mode-btn{flex:1 1 calc(50% - 6px)!important;padding:9px!important}}
-
-/* Zeitformen-Weiche */
-.pg-reason-label{display:block;margin-top:12px;margin-bottom:5px;font-size:.87rem;color:var(--gray-700)}
-.pg-reason{display:block;width:100%;min-height:66px;resize:vertical}
-.pg-check-radar{margin-top:9px;margin-bottom:8px}
-.pg-mixed-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
-.pg-mixed-fields label{display:grid;gap:5px;font-size:.85rem;color:var(--gray-700)}
-.pg-mixed-fields select{width:100%;min-width:0}
-.pg-radar-note{margin:12px 0;color:var(--gray-600);font-size:.84rem}
-@media(max-width:560px){.pg-mixed-fields{grid-template-columns:1fr}}
-
-/* Visual tools: tense switch, sentence laboratory, spelling decision path */
-.pg-visual-tool{background:#fff;border:1px solid #cbd5e1;border-radius:18px;padding:18px;margin:0 0 20px;box-shadow:0 4px 14px rgba(15,23,42,.06)}
-.pg-visual-tool h3{font-size:1.05rem;margin:3px 0 12px}.pg-visual-tool h4{font-size:.95rem;margin:0 0 9px}.pg-toggle{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pg-toggle button{border:1px solid #cbd5e1;background:#fff;color:#334155;padding:8px 12px;border-radius:999px;cursor:pointer}.pg-toggle button[aria-pressed=true]{background:#2563eb;border-color:#2563eb;color:white}.pg-visual-output{background:#f8fafc;padding:16px;border-radius:14px;margin:10px 0;text-align:center}.pg-visual-output p{margin-top:9px}.pg-token-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;min-height:46px}.pg-tok{display:inline-flex;align-items:center;border-radius:9px;padding:7px 11px;background:#fff;border:1px solid #cbd5e1}.pg-person{background:#f1f5f9}.pg-simple{color:#15803d;background:#dcfce7;border-color:#86efac}.pg-be{color:#1d4ed8;background:#dbeafe;border-color:#93c5fd}.pg-ing{color:#6d28d9;background:#ede9fe;border-color:#c4b5fd}.pg-not{color:#b91c1c;background:#fee2e2;border-color:#fca5a5}.pg-signal{background:#fef3c7;color:#92400e}.pg-checklabel{display:flex;gap:8px;align-items:center;margin:12px 0}.pg-signal-sentence{margin-top:8px;text-align:center}.pg-signal-sentence mark{background:#fde68a;border-radius:5px;padding:2px 4px;color:#713f12}.pg-mini-divider{height:1px;background:#e2e8f0;margin:16px 0}.pg-lab-practice{margin-top:14px;border:1px solid #cbd5e1;border-radius:12px;padding:12px}.pg-lab-practice summary{cursor:pointer;color:#1d4ed8}.pg-build-choices{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.pg-build-choices button{padding:7px 11px;border:1px solid #94a3b8;border-radius:9px;background:white;cursor:pointer}.pg-build-choices button:disabled{opacity:.4;cursor:default}.pg-build-answer{justify-content:flex-start;min-height:50px;padding:8px;border:1px dashed #94a3b8;border-radius:10px}.pg-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}.pg-rule-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;min-width:0;text-align:center}.pg-rule-card strong{overflow-wrap:anywhere}.pg-rule-card small{font-size:.78rem}.pg-rule-normal{background:#f0fdf4}.pg-rule-e{background:#fffbeb}.pg-rule-double{background:#f5f3ff}.pg-cross{text-decoration:line-through;color:#b91c1c}.pg-accent{color:#6d28d9;text-decoration:underline}@media(max-width:540px){.pg-rule-grid{gap:5px}.pg-rule-card{padding:9px 3px}.pg-rule-card .mini-label{font-size:.62rem}}
-
-/* Vierstufiger Lernweg: Navigation mit klaren Titeln */
-.learn-step-nav .learn-step-btn{min-width:190px;white-space:normal;line-height:1.35;padding:12px 10px}
-@media(max-width:650px){.learn-step-nav .learn-step-btn{min-width:170px}}
-
-/* Lernmodus: Musterlösung nicht sichtbar während aktiver Selbstbau-Aufgabe */
-.pg-visual-output[hidden]{display:none!important}
-.pg-lab-practice[open]{background:#f8fafc}
-.pg-visual-tool button:focus-visible,.pg-lab-practice summary:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
-@media(prefers-reduced-motion:reduce){.pg-visual-tool *{transition:none!important;animation:none!important}}
-
-[data-spelling-examples][hidden]{display:none!important}
-
-.pg-exam-list{display:grid;gap:16px}.pg-exam-task{padding:18px;border:1px solid #cbd5e1;border-radius:16px;background:white}.pg-exam-head{font-size:.85rem;color:#475569}.pg-exam-task h3{font-size:1.08rem;margin:8px 0}.pg-exam-task label{display:block;margin-top:8px}.pg-exam-task input,.pg-exam-task textarea{display:block;width:100%;margin-top:4px}.pg-exam-progress,.pg-exam-solution{padding:12px;margin:12px 0;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px}.pg-exam-solution[hidden],[data-exam-rating][hidden]{display:none!important}.pg-exam-footer{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.pg-future-answer{display:block;width:100%;max-width:620px;padding:10px;margin:10px 0;border:1px solid #94a3b8;border-radius:8px}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
-<div class="unified-actions" aria-label="Seitenaktionen"><a class="unified-back" href="index.html">← Zurück zur Übersicht</a><div class="unified-tools"><button class="nav-action homework" type="button" data-homework-toggle>Hausaufgabenmodus</button><button class="nav-action print" type="button" data-print-cheatsheet>Spickzettel drucken</button></div></div>
-
-
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html"><span class="nav-logo-icon" aria-hidden="true">🧭</span><span class="nav-logo-text">Hannas Englisch-Kompass</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="tobe.html">to be</a>
+      <a class="nav-link" href="pronouns.html">Pronouns</a>
+      <a class="nav-link" href="havegot.html">have got</a>
+      <a class="nav-link" href="simplepresent.html">Simple Present</a>
+      <a class="nav-link" href="questions.html">Questions</a>
+      <a class="nav-link is-active" href="progressive.html" aria-current="page">Progressive</a>
+      <a class="nav-link" href="simplepast.html">Simple Past</a>
+      <a class="nav-link" href="wordorder.html">Word Order</a>
+      <a class="nav-link" href="index.html">Alle Themen</a>
+    </div>
+    <div class="nav-links" aria-label="Werkzeuge">
+      <button class="nav-action homework" type="button" data-homework-toggle>Hausaufgabenmodus</button>
+      <button class="nav-action print" type="button" data-print-cheatsheet>Spickzettel drucken</button>
+    </div>
+  </div>
+</nav>
 <main id="main-content" class="page-content">
   <article class="learning-card" data-topic="present-progressive">
     <header class="compass-head">
       <div>
-        <p class="eyebrow">ENGLISCH-KOMPASS · GRAMMATIK</p>
+        <p class="eyebrow">Present Progressive</p>
         <h1>Present Progressive</h1>
         <p class="lead">Du benutzt es, wenn etwas gerade jetzt passiert oder gerade in dieser Zeit läuft: <span class="chip blue">I am reading.</span> Der Denkweg ist nicht „einfach -ing“, sondern immer: <span class="chip green">Person</span> + <span class="chip blue">am/is/are</span> + <span class="chip violet">Verb-ing</span>.</p>
       </div>
-      
+      <aside class="head-badge" aria-label="Kernregel">
+        <div class="head-badge-title">Kernregel</div>
+        <div class="head-badge-main">to be + Verb-ing</div>
+        <div class="head-badge-sub">I am playing. She is playing. They are playing.</div>
+      </aside>
     </header>
 
     <div class="compass-mode-grid" role="tablist" aria-label="Hauptbereiche">
-      <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span class="tab-title">Lernen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span class="tab-title">Nachschlagen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span class="tab-title">Verbindungen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="tab-title">Schreib-Check</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span class="tab-title">Schreibwerkstatt</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span class="tab-title">Notizen</span></button>
+      <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span class="tab-title">🎯 Lernen</span><span class="tab-sub">erst verstehen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span class="tab-title">📖 Nachschlagen</span><span class="tab-sub">Regeln ansehen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span class="tab-title">🔗 Verbindungen</span><span class="tab-sub">Themen verknüpfen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="tab-title">✍️ Schreib-Check</span><span class="tab-sub">selbst prüfen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span class="tab-title">📝 Schreibwerkstatt</span><span class="tab-sub">eigene Sätze</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span class="tab-title">✏️ Notizen</span><span class="tab-sub">Fragen sammeln</span></button>
     </div>
 
     <section class="compass-mode-panel is-active" id="lernen" role="tabpanel" aria-labelledby="tab-lernen" data-panel="pg-mode" data-val="learn">
-      <div class="learn-step-nav" role="tablist" aria-label="Vier Lernschritte">
-<button class="learn-step-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="pg-learn-radar" id="tab-pg-learn-radar" data-tab="pg-learn" data-val="radar">1 Wann? – Zeitformen-Weiche</button>
-<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-machine" id="tab-pg-learn-machine" data-tab="pg-learn" data-val="machine">2 Wie? – Satzlabor</button>
-<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-spelling" id="tab-pg-learn-spelling" data-tab="pg-learn" data-val="spelling">3 Wie schreiben? – -ing-Werkstatt</button>
-<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-check" id="tab-pg-learn-check" data-tab="pg-learn" data-val="check">4 Stimmt alles? – Denkfallen-Check</button>
-</div>
+      <div class="learn-step-nav" role="tablist" aria-label="Lernschritte">
+        <button class="learn-step-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="pg-learn-wozu" id="tab-pg-learn-wozu" data-tab="pg-learn" data-val="wozu">1 Wozu?</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-radar" id="tab-pg-learn-radar" data-tab="pg-learn" data-val="radar">2 Jetzt-Radar</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-machine" id="tab-pg-learn-machine" data-tab="pg-learn" data-val="machine">3 Satzmaschine</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-spelling" id="tab-pg-learn-spelling" data-tab="pg-learn" data-val="spelling">4 -ing-Zauberer</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-questions" id="tab-pg-learn-questions" data-tab="pg-learn" data-val="questions">5 Fragen</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-contrast" id="tab-pg-learn-contrast" data-tab="pg-learn" data-val="contrast">6 Wechsel</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-state" id="tab-pg-learn-state" data-tab="pg-learn" data-val="state">7 Stoppschild</button>
+        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-check" id="tab-pg-learn-check" data-tab="pg-learn" data-val="check">8 Kann ich’s?</button>
+      </div>
 
-      <section class="learn-panel is-active" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar"><p class="section-kicker">Schritt 1 · Bedeutung erkennen</p><h2 class="section-title">Wann? – Die Zeitformen-Weiche</h2>
-        
+      <section class="learn-panel is-active" id="pg-learn-wozu" role="tabpanel" aria-labelledby="tab-pg-learn-wozu" data-panel="pg-learn" data-val="wozu">
+        <p class="section-kicker">Erst Bedeutung, dann Form</p>
+        <h2 class="section-title">Wozu brauche ich Present Progressive?</h2>
         <p class="section-text">Deutsch sagt oft einfach „sie spielt“. Englisch fragt genauer: Passiert es gerade jetzt, läuft es gerade in dieser Zeit oder ist es eine Gewohnheit? Genau hier entscheidet sich Simple Present oder Present Progressive.</p>
         <div class="split-example">
           <div class="card green-card">
             <h3>Gewohnheit</h3>
             <div class="sentence"><span class="chip green">She plays tennis.</span></div>
             <p>Sie spielt Tennis. Das ist allgemein oder regelmäßig.</p>
-            <div class="signal-list"><span class="chip">every day</span><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">never</span><span class="chip">on Mondays</span></div><p class="mini-label">Häufigkeitswörter zeigen oft Gewohnheiten an. Entscheide trotzdem immer nach der Bedeutung des ganzen Satzes.</p>
+            <div class="signal-list"><span class="chip">every day</span><span class="chip">always</span><span class="chip">on Mondays</span></div>
           </div>
           <div class="vs">vs.</div>
           <div class="card soft-card">
@@ -152,103 +112,44 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
             <div class="signal-list"><span class="chip">now</span><span class="chip">right now</span><span class="chip">at the moment</span><span class="chip">Look!</span><span class="chip">this week</span></div>
           </div>
         </div>
-        <div class="card soft-card mt-16"><h3>Beispiel wie im Unterricht</h3><p><span class="chip green">Maya usually gets up early</span>, but <span class="chip blue">today she is getting up late.</span></p><p><strong>usually</strong> beschreibt die Gewohnheit. <strong>but today</strong> beschreibt die heutige Ausnahme. Das Verb wechselt deshalb von <strong>gets up</strong> zu <strong>is getting up</strong>.</p></div>
         <div class="card yellow-card mt-16">
           <h3>Deutsch-Falle</h3>
           <p>„Ich lese“ kann auf Deutsch beides heißen. Englisch braucht die Entscheidung: <span class="chip green">I read every day.</span>, <span class="chip blue">I am reading now.</span> oder <span class="chip blue">I am reading an exciting book this week.</span></p>
         </div>
-      
-        
-        <p class="section-text">Lies den Satz. Suche die Hinweise. Entscheide dich für die Verbform und schreibe, warum du sie gewählt hast. Erst danach prüfst du deine Lösung. Bei den Mischsätzen brauchst du beide Zeitformen.</p>
-        <div class="pg-visual-tool interactive-only" data-visual-tense>
- <p class="mini-label">INTERAKTIVE DESIGNIDEE</p><h3>Gleiche Person – andere Bedeutung</h3>
- <div class="pg-toggle" role="group" aria-label="Zeitform wählen"><button type="button" data-tense="habit" aria-pressed="true">Gewohnheit</button><button type="button" data-tense="now" aria-pressed="false">Gerade jetzt</button></div>
- <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-tense-output><span class="pg-tok pg-person">She</span><span class="pg-tok pg-simple">plays</span><span class="pg-tok">tennis.</span></div><p data-tense-explain>Sie spielt regelmäßig Tennis. → Simple Present</p><p class="mini-label" data-tense-rule>he/she/it → Verb + s</p></div>
- <label class="pg-checklabel"><input type="checkbox" data-tense-highlight checked/> Signalwörter hervorheben</label>
- <p class="pg-signal-sentence" data-tense-signal>She <mark>usually</mark> plays tennis.</p>
- <div class="pg-mini-divider"></div><h4>Normalerweise – aber heute anders</h4>
- <div class="pg-toggle" role="group" aria-label="Satzhälfte wählen"><button type="button" data-mixed-mode="usual" aria-pressed="true">Normalerweise</button><button type="button" data-mixed-mode="today" aria-pressed="false">Ausnahmsweise heute</button></div>
- <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-mixed-output><span class="pg-tok pg-signal">usually</span><span class="pg-tok pg-person">Maya</span><span class="pg-tok pg-simple">walks</span><span class="pg-tok">to school.</span></div><p data-mixed-explain>Gewohnheit → Simple Present.</p></div>
- </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar">
+        <p class="section-kicker">Denkweg 1</p>
+        <h2 class="section-title">Jetzt-Radar: Läuft die Handlung gerade?</h2>
+        <p class="section-text">Klicke zuerst auf deine Entscheidung. Die Lösung erscheint erst danach.</p>
         <div class="grid-2 interactive-only" data-radar-list>
           <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
             <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <label class="pg-reason-label" for="pg-reason-1">Warum passt diese Zeitform?</label><textarea id="pg-reason-1" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
+            <div class="feedback">Entscheide zuerst.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="simple" data-note="Every day zeigt Gewohnheit. Also: plays.">
             <p class="mini-label">Satz</p><p>She ___ tennis every day.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <label class="pg-reason-label" for="pg-reason-2">Warum passt diese Zeitform?</label><textarea id="pg-reason-2" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
+            <div class="feedback">Entscheide zuerst.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="progressive" data-note="At the moment zeigt: Die Handlung läuft jetzt. Also: are eating.">
             <p class="mini-label">Satz</p><p>At the moment they ___ pizza.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">eat</button><button class="choice-btn" type="button" data-radar-choice="progressive">are eating</button></div>
-            <label class="pg-reason-label" for="pg-reason-3">Warum passt diese Zeitform?</label><textarea id="pg-reason-3" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
+            <div class="feedback">Entscheide zuerst.</div>
           </div>
           <div class="trap-card" data-radar-card data-answer="simple" data-note="Usually zeigt Gewohnheit. Also: walk.">
             <p class="mini-label">Satz</p><p>We usually ___ to school.</p>
             <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">walk</button><button class="choice-btn" type="button" data-radar-choice="progressive">are walking</button></div>
-            <label class="pg-reason-label" for="pg-reason-4">Warum passt diese Zeitform?</label><textarea id="pg-reason-4" class="pg-reason" rows="2" placeholder="Mein Hinweis im Satz und meine Begründung …"></textarea><button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle eine Form und begründe deine Wahl.</div>
-          </div>
-          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually zeigt eine Gewohnheit. Today ist hier der Gegensatz und beschreibt die vorübergehende Ausnahme.">
-            <p class="mini-label">Mischsatz 1: Gewohnheit und Ausnahme</p><p>Emma usually ___ books, but today she ___ a film.</p>
-            <div class="pg-mixed-fields">
-              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">reads</option><option value="progressive">is reading</option></select></label>
-              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">watches</option><option value="progressive">is watching</option></select></label>
-            </div>
-            <label class="pg-reason-label" for="pg-reason-5">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-5" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
-            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
-          </div>
-          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Normally beschreibt die Gewohnheit. This week zeigt eine vorübergehende Änderung.">
-            <p class="mini-label">Mischsatz 2: Gewohnheit und Ausnahme</p><p>We normally ___ to school, but this week we ___ the bus.</p>
-            <div class="pg-mixed-fields">
-              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">walk</option><option value="progressive">are walking</option></select></label>
-              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">take</option><option value="progressive">are taking</option></select></label>
-            </div>
-            <label class="pg-reason-label" for="pg-reason-6">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-6" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
-            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
-          </div>
-          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually zeigt die Gewohnheit. But today zeigt die Ausnahme.">
-            <p class="mini-label">Mischsatz 3: Gewohnheit und Ausnahme</p><p>Tom usually ___ football on Saturdays, but today he ___ at home.</p>
-            <div class="pg-mixed-fields">
-              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">plays</option><option value="progressive">is playing</option></select></label>
-              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">stays</option><option value="progressive">is staying</option></select></label>
-            </div>
-            <label class="pg-reason-label" for="pg-reason-7">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-7" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
-            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
-          </div>
-          <div class="trap-card pg-mixed-card" data-radar-mixed data-correct-first="simple" data-correct-second="progressive" data-note="Usually beschreibt die Gewohnheit. But today beschreibt eine Ausnahme am heutigen Tag.">
-            <p class="mini-label">Mischsatz 4: Gewohnheit und Ausnahme</p><p>My parents usually ___ dinner at six, but today they ___ at seven.</p>
-            <div class="pg-mixed-fields">
-              <label>1. Lücke<select data-radar-slot="first"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
-              <label>2. Lücke<select data-radar-slot="second"><option value="">Bitte wählen</option><option value="simple">eat</option><option value="progressive">are eating</option></select></label>
-            </div>
-            <label class="pg-reason-label" for="pg-reason-8">Welche Hinweise verraten dir die beiden Zeitformen?</label><textarea id="pg-reason-8" class="pg-reason" rows="2" placeholder="Ich erkenne die Gewohnheit an … und die Ausnahme an …"></textarea>
-            <button class="tool-btn pg-check-radar" type="button" data-radar-check>Prüfen</button><div class="feedback" aria-live="polite">Wähle beide Verbformen und begründe deine Wahl.</div>
+            <div class="feedback">Entscheide zuerst.</div>
           </div>
         </div>
-        <p class="pg-radar-note">Deine Erklärung wird nicht automatisch bewertet. Vergleiche sie nach dem Prüfen mit der Erklärung.</p>
-        <button class="tool-btn interactive-only" type="button" data-reset-radar>Alle Aufgaben zurücksetzen</button>
-      
-        
-        <p class="section-text">Signalwörter geben Hinweise. Entscheidend ist, was der Satz bedeutet. Auch ohne Signalwort kannst du die richtige Zeitform erkennen.</p>
-        <div class="rule-list">
-          <div class="rule-item"><div class="rule-name">Gewohnheit</div><div><span class="chip green">Simple Present</span> — every day, always, usually, on Mondays</div></div>
-          <div class="rule-item"><div class="rule-name">Gerade jetzt</div><div><span class="chip blue">Present Progressive</span> — now, right now, at the moment, Look!, Listen!</div></div>
-          <div class="rule-item"><div class="rule-name">Zustand / Meinung</div><div>Meist <span class="chip green">Simple Present</span>: like, know, want, need, understand</div></div>
-        </div>
+        <button class="tool-btn interactive-only" type="button" data-reset-radar>Zurücksetzen</button>
       </section>
 
-<section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
-        <p class="section-kicker">Schritt 2 · Satz bilden</p>
-        <h2 class="section-title">Wie? – Das Satzlabor</h2>
-        <div class="pg-visual-tool interactive-only" data-visual-lab>
- <p class="mini-label">VISUELLES SATZLABOR</p><h3>Wörter verändern ihre Position</h3>
- <div class="pg-toggle" role="group" aria-label="Satzart auswählen"><button type="button" data-lab-mode="positive" aria-pressed="true">Aussage</button><button type="button" data-lab-mode="negative" aria-pressed="false">Verneinung</button><button type="button" data-lab-mode="question" aria-pressed="false">Frage</button></div>
- <div class="pg-visual-output" aria-live="polite"><div class="pg-token-row" data-lab-output><span class="pg-tok pg-person">she</span><span class="pg-tok pg-be">is</span><span class="pg-tok pg-ing">playing</span><span class="pg-tok">tennis.</span></div><p data-lab-explain>Aussage: is steht hinter she.</p></div>
- <details class="pg-lab-practice"><summary>Jetzt selbst zusammensetzen</summary><p>Wähle die Satzart oben und ordne die Bausteine in der richtigen Reihenfolge. Die Lösung ist zunächst verdeckt.</p><div class="pg-build-choices" data-build-choices></div><div class="pg-token-row pg-build-answer" data-build-answer></div><div class="write-actions"><button type="button" class="tool-btn" data-build-check>Prüfen</button><button type="button" class="tool-btn" data-build-reset>Neu ordnen</button></div><p class="feedback" data-build-feedback aria-live="polite">Wähle die Bausteine nacheinander.</p></details>
- </div>
+      <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
+        <p class="section-kicker">Denkweg 2</p>
+        <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
         <div class="formula-row">
           <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
           <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
@@ -264,29 +165,19 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
           <div class="output-box" aria-live="polite"><div class="output-sentence" data-machine-output>I am playing.</div><div class="output-note" data-machine-note>I braucht am. Das Vollverb bekommt -ing.</div></div>
         </div>
         <div class="card red-card mt-16"><h3>Nicht verhandelbar</h3><p>Ohne <span class="chip blue">am/is/are</span> ist es kein Present Progressive. <span class="chip red">She playing.</span> ist falsch.</p></div>
-      
-        
-        <div class="grid-2">
-          <div class="card soft-card"><h3>Verneinung</h3><p>Setze <span class="chip red">not</span> hinter am/is/are.</p><div class="sentence"><span class="chip blue">She</span><span class="chip blue">is not</span><span class="chip violet">playing</span><span>tennis.</span></div><p>Kurzer: She isn’t playing tennis.</p></div>
-          <div class="card green-card"><h3>Frage</h3><p>Stelle am/is/are nach vorne.</p><div class="sentence"><span class="chip blue">Is</span><span class="chip blue">she</span><span class="chip violet">playing</span><span>tennis?</span></div><p>Kurzantwort: Yes, she is. / No, she isn’t.</p></div>
-        </div>
-        <div class="card red-card mt-16"><h3>Harte Denkfalle</h3><p>Bei Present Progressive-Fragen brauchst du nicht do/does. <span class="chip red">Does she playing?</span> ist falsch. Richtig ist <span class="chip green">Is she playing?</span></p></div>
       </section>
 
-<section class="learn-panel" id="pg-learn-spelling" role="tabpanel" aria-labelledby="tab-pg-learn-spelling" data-panel="pg-learn" data-val="spelling">
-        <p class="section-kicker">Schritt 3 · Richtig schreiben</p>
-        <h2 class="section-title">Wie schreiben? – Die -ing-Werkstatt</h2>
+      <section class="learn-panel" id="pg-learn-spelling" role="tabpanel" aria-labelledby="tab-pg-learn-spelling" data-panel="pg-learn" data-val="spelling">
+        <p class="section-kicker">Denkweg 3</p>
+        <h2 class="section-title">-ing-Zauberer: Wie schreibe ich die Form?</h2>
         <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
-        <div class="pg-visual-tool interactive-only" data-spell-path><h3>Welcher Weg passt zum Verb?</h3>
- <button type="button" class="tool-btn" data-show-spelling-rules aria-expanded="true">Regelkarten ausblenden</button><div class="pg-rule-grid" data-spelling-examples><div class="pg-rule-card pg-rule-normal"><p class="mini-label">NORMAL</p><strong>play</strong><span aria-hidden="true">↓</span><strong>playing</strong><small>+ ing</small></div><div class="pg-rule-card pg-rule-e"><p class="mini-label">STUMMES E</p><strong>come</strong><span aria-hidden="true">↓</span><strong>com<span class="pg-cross">e</span> + ing</strong><small>coming</small></div><div class="pg-rule-card pg-rule-double"><p class="mini-label">VERDOPPELN</p><strong>stop</strong><span aria-hidden="true">↓</span><strong>sto<span class="pg-accent">pp</span>ing</strong><small>p wird pp</small></div></div>
- <p class="mini-label">Erst Regel erkennen, dann selbst schreiben</p><div class="pg-toggle" role="group" aria-label="Regeltyp des aktuellen Verbs"><button type="button" data-rule-choice="normal" aria-pressed="false">Normal</button><button type="button" data-rule-choice="e" aria-pressed="false">Stummes e</button><button type="button" data-rule-choice="double" aria-pressed="false">Verdoppeln</button><button type="button" data-rule-choice="wy" aria-pressed="false">w / y</button></div><p class="feedback" data-rule-feedback aria-live="polite">Wähle die passende Regel für das Verb unten.</p></div>
         <div class="grid-3">
           <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
           <div class="card yellow-card"><h3>Stummes -e weg</h3><p>make → making<br/>write → writing<br/>come → coming</p></div>
           <div class="card violet-card"><h3>Konsonant verdoppeln</h3><p>Bei kurzen Verben: kurzer Vokal + ein Endkonsonant → Endkonsonant oft verdoppeln.</p><p>run → running<br/>sit → sitting<br/>swim → swimming<br/>get → getting</p><p>Nicht bei w/y: play → playing, show → showing.</p></div>
         </div>
         <div class="tool-card interactive-only mt-16">
-          <h3>Prüfe die -ing-Form</h3><p>20 Verben in wechselnder Reihenfolge. Du siehst die Lösung erst nach zwei Fehlversuchen, wenn du sie selbst öffnest.</p>
+          <h3>Prüfe die -ing-Form</h3>
           <p>Verb: <span class="chip blue" data-spell-word>play</span></p>
           <label class="visually-hidden" for="spell-input">-ing-Form eingeben</label>
           <input id="spell-input" type="text" autocomplete="off" data-spell-input placeholder="z. B. playing"/>
@@ -295,12 +186,62 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         </div>
       </section>
 
-<section class="learn-panel" id="pg-learn-check" role="tabpanel" aria-labelledby="tab-pg-learn-check" data-panel="pg-learn" data-val="check"><p class="section-kicker">Schritt 4 · Echte Selbstprüfung</p><h2 class="section-title">Stimmt alles? – Der Denkfallen-Check</h2><p class="section-text">Erst denken und selbst schreiben. Nach dem ersten Fehler gibt es einen Denkanstoß, nach dem zweiten einen genaueren Hinweis. Erst danach darfst du die Lösung ansehen. Die Musterlösung für deine eigene Erklärung erscheint erst nach deiner Eingabe.</p><div class="pg-exam-progress" data-exam-progress aria-live="polite">Noch keine Ergebnisse.</div><div class="pg-exam-list"><article class="pg-exam-task" data-exam-task="time" data-exam-answer="is taking" data-exam-hint-one="Was ist heute anders als normalerweise?" data-exam-hint-two="But today beschreibt die Ausnahme. Bilde is + -ing." data-exam-explanation="Maya usually walks to school, but today she is taking the bus. Der zweite Teil beschreibt die heutige Ausnahme."><div class="pg-exam-head">Aufgabe 1 von 8 · <span data-exam-status>Offen</span></div><h3>Zeitform und Ausnahme</h3><p>Maya usually walks to school, but today she ___ the bus.</p><label for="exam-time">Deine Antwort</label><input id="exam-time" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="helper" data-exam-answer="are" data-exam-hint-one="Die Kinder: Einzahl oder Mehrzahl?" data-exam-hint-two="The children entspricht they. Welche to-be-Form passt?" data-exam-explanation="The children are playing outside."><div class="pg-exam-head">Aufgabe 2 von 8 · <span data-exam-status>Offen</span></div><h3>Fehlendes Hilfsverb</h3><p>Look! The children ___ playing outside.</p><label for="exam-helper">Deine Antwort</label><input id="exam-helper" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="question" data-exam-answer="Is he playing tennis now?" data-exam-hint-one="Bei Progressive-Fragen steht kein does." data-exam-hint-two="Stelle is an den Anfang. Das Verb behält -ing." data-exam-explanation="Is he playing tennis now?"><div class="pg-exam-head">Aufgabe 3 von 8 · <span data-exam-status>Offen</span></div><h3>Frage berichtigen</h3><p>Korrigiere: Does he playing tennis now?</p><label for="exam-question">Deine Antwort</label><input id="exam-question" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="negative" data-exam-answer="She is not reading." data-exam-hint-one="Wo gehört not hin?" data-exam-hint-two="Stelle not unmittelbar nach is." data-exam-explanation="She is not reading. Auch She isn't reading ist richtig."><div class="pg-exam-head">Aufgabe 4 von 8 · <span data-exam-status>Offen</span></div><h3>Verneinung bilden</h3><p>Verneine vollständig: She is reading.</p><label for="exam-negative">Deine Antwort</label><input id="exam-negative" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="spelling" data-exam-answer="stopping" data-exam-hint-one="Ein kurzer Vokal steht vor dem Endkonsonanten." data-exam-hint-two="Verdopple das p und hänge -ing an." data-exam-explanation="stop → stopping"><div class="pg-exam-head">Aufgabe 5 von 8 · <span data-exam-status>Offen</span></div><h3>-ing-Endung</h3><p>Wie lautet die -ing-Form von stop?</p><label for="exam-spelling">Deine Antwort</label><input id="exam-spelling" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="state" data-exam-answer="She knows the answer." data-exam-hint-one="Beschreibt know hier eine Handlung oder einen Zustand?" data-exam-hint-two="Nimm hier Simple Present und beachte he/she/it + s." data-exam-explanation="She knows the answer."><div class="pg-exam-head">Aufgabe 6 von 8 · <span data-exam-status>Offen</span></div><h3>Zustandsverb erkennen</h3><p>Korrigiere: She is knowing the answer.</p><label for="exam-state">Deine Antwort</label><input id="exam-state" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="mixed" data-exam-answer="Ben usually plays football, but this week he is learning to swim." data-exam-hint-one="Usually ist die Gewohnheit; this week die Ausnahme." data-exam-hint-two="Ben: plays; vorübergehend: is learning." data-exam-explanation="Ben usually plays football, but this week he is learning to swim."><div class="pg-exam-head">Aufgabe 7 von 8 · <span data-exam-status>Offen</span></div><h3>Mischsatz bilden</h3><p>Setze beide Verben richtig ein: Ben usually ___ (play) football, but this week he ___ (learn) to swim.</p><label for="exam-mixed">Deine Antwort</label><input id="exam-mixed" data-exam-input autocomplete="off" type="text" placeholder="Deine Antwort"/><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p></article><article class="pg-exam-task" data-exam-task="own" data-exam-answer="" data-exam-hint-one="Denke an Gewohnheit und etwas, das gerade geschieht." data-exam-hint-two="Beschreibe beide Zeitformen mit ihrer Bedeutung." data-exam-explanation="Simple Present: Gewohnheiten und allgemeine Tatsachen. Present Progressive: gerade laufende oder vorübergehende Handlungen."><div class="pg-exam-head">Aufgabe 8 von 8 · <span data-exam-status>Offen</span></div><h3>Eigenständig erklären</h3><p>Erkläre den Unterschied zwischen Simple Present und Present Progressive in eigenen Worten.</p><label for="exam-own">Deine Antwort</label><textarea id="exam-own" data-exam-input placeholder="Deine eigene Erklärung" rows="3"></textarea><div class="write-actions"><button type="button" class="tool-btn" data-exam-check>Prüfen</button><button type="button" class="mini-btn" data-exam-reveal hidden>Musterlösung vergleichen</button><button type="button" class="mini-btn" data-exam-retry>Noch einmal versuchen</button></div><div class="feedback" data-exam-feedback aria-live="polite">Noch nicht geprüft.</div><p class="pg-exam-solution" data-exam-solution hidden></p><div data-exam-rating hidden><p>Vergleiche deine Erklärung ehrlich mit dem Muster.</p><button type="button" class="tool-btn" data-exam-rate="yes">Verstanden</button><button type="button" class="tool-btn" data-exam-rate="no">Noch unklar</button></div></article></div><div class="pg-exam-footer"><button type="button" class="tool-btn" data-exam-wrong>Offene Fehler wiederholen</button><button type="button" class="tool-btn" data-exam-all>Alle zeigen</button><button type="button" class="mini-btn" data-exam-reset-all>Alle Aufgaben zurücksetzen</button></div><p>„Sicher“ bedeutet beim ersten Versuch richtig. „Mit Hilfe“ bedeutet später richtig. Eigene Erklärungen werden bewusst nicht automatisch bewertet. Der Lernstand bleibt auf diesem Gerät gespeichert.</p></section>
+      <section class="learn-panel" id="pg-learn-questions" role="tabpanel" aria-labelledby="tab-pg-learn-questions" data-panel="pg-learn" data-val="questions">
+        <p class="section-kicker">Denkweg 4</p>
+        <h2 class="section-title">Fragen und Verneinungen</h2>
+        <div class="grid-2">
+          <div class="card soft-card"><h3>Verneinung</h3><p>Setze <span class="chip red">not</span> hinter am/is/are.</p><div class="sentence"><span class="chip blue">She</span><span class="chip blue">is not</span><span class="chip violet">playing</span><span>tennis.</span></div><p>Kurzer: She isn’t playing tennis.</p></div>
+          <div class="card green-card"><h3>Frage</h3><p>Stelle am/is/are nach vorne.</p><div class="sentence"><span class="chip blue">Is</span><span class="chip blue">she</span><span class="chip violet">playing</span><span>tennis?</span></div><p>Kurzantwort: Yes, she is. / No, she isn’t.</p></div>
+        </div>
+        <div class="card red-card mt-16"><h3>Harte Denkfalle</h3><p>Bei Present Progressive-Fragen brauchst du nicht do/does. <span class="chip red">Does she playing?</span> ist falsch. Richtig ist <span class="chip green">Is she playing?</span></p></div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-contrast" role="tabpanel" aria-labelledby="tab-pg-learn-contrast" data-panel="pg-learn" data-val="contrast">
+        <p class="section-kicker">Denkweg 5</p>
+        <h2 class="section-title">Wechsel: Simple Present oder Present Progressive?</h2>
+        <p class="section-text">Das Thema ist erst sicher, wenn Hanna die Weiche selbst stellen kann.</p>
+        <div class="rule-list">
+          <div class="rule-item"><div class="rule-name">Gewohnheit</div><div><span class="chip green">Simple Present</span> — every day, always, usually, on Mondays</div></div>
+          <div class="rule-item"><div class="rule-name">Gerade jetzt</div><div><span class="chip blue">Present Progressive</span> — now, right now, at the moment, Look!, Listen!</div></div>
+          <div class="rule-item"><div class="rule-name">Zustand / Meinung</div><div>Meist <span class="chip green">Simple Present</span>: like, know, want, need, understand</div></div>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-state" role="tabpanel" aria-labelledby="tab-pg-learn-state" data-panel="pg-learn" data-val="state">
+        <p class="section-kicker">Sicherheitsregel</p>
+        <h2 class="section-title">Stoppschild: Manche Verben laufen nicht</h2>
+        <p class="section-text">Das Stoppschild ist kein zweiter Satzbau. Erst kommt die normale Form: am/is/are + Verb-ing. Danach prüfst du kurz, ob das Verb überhaupt eine laufende Handlung beschreibt.</p>
+        <div class="grid-2">
+          <div class="card green-card"><h3>Handlungen: Progressive möglich</h3><p>play, read, run, write, eat, watch</p><p>Diese Verben zeigen etwas, das jemand tun kann: She is reading.</p></div>
+          <div class="card red-card"><h3>Zustände: Stoppschild prüfen</h3><p>like, love, hate, know, want, need, have (Besitz), understand</p><p>Schulregel Klasse 5: I want a dog. Nicht: I am wanting a dog.</p></div>
+        </div>
+        <div class="card yellow-card mt-16"><h3>So wichtig ist das Stoppschild</h3><p>Für sichere Testsätze brauchst du es als Zusatzprüfung. Der wichtigste Lernkern bleibt: Bedeutung erkennen, am/is/are setzen und die -ing-Form richtig schreiben.</p></div>
+        <div class="tool-card interactive-only mt-16" data-state-quiz>
+          <h3>Stoppschild-Check</h3>
+          <p>Verb: <span class="chip blue" data-state-word>play</span></p>
+          <div class="choice-row"><button class="choice-btn" type="button" data-state-choice="action">Handlung: -ing möglich</button><button class="choice-btn" type="button" data-state-choice="state">Zustand: lieber Simple Present</button></div>
+          <div class="feedback" data-state-feedback>Entscheide zuerst.</div>
+          <button class="tool-btn" type="button" data-state-next>Nächstes Verb</button>
+        </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-check" role="tabpanel" aria-labelledby="tab-pg-learn-check" data-panel="pg-learn" data-val="check">
+        <p class="section-kicker">Selbstprüfung</p>
+        <h2 class="section-title">Kann ich’s wirklich?</h2>
+        <p class="section-text">Hier reicht kein Abhaken. Hanna muss kurz selbst denken, erklären und einen eigenen Satz bilden.</p>
+        <div class="grid-3">
+          <div class="card soft-card"><h3>1. Unterschied erklären</h3><p>Erkläre den Unterschied zwischen <span class="chip green">She plays tennis.</span> und <span class="chip blue">She is playing tennis.</span></p><details><summary>Kontrollantwort anzeigen</summary><p>She plays tennis. = Gewohnheit. She is playing tennis. = sie spielt gerade jetzt oder gerade in dieser Zeit.</p></details></div>
+          <div class="card red-card"><h3>2. Fehler finden</h3><p>Was ist falsch an <span class="chip red">Does she playing tennis?</span></p><details><summary>Kontrollantwort anzeigen</summary><p>Bei Present Progressive-Fragen nimmt man nicht do/does. Richtig ist: Is she playing tennis?</p></details></div>
+          <div class="card green-card"><h3>3. Eigenen Satz bilden</h3><p>Schreibe einen Satz über etwas, das gerade wirklich passiert.</p><p class="mini-label">Beispiel</p><p><span class="chip blue">I am sitting at my desk.</span></p></div>
+        </div>
+        <div class="card yellow-card mt-16"><h3>Bestanden, wenn ...</h3><p>Hanna kann erklären, wann Simple Present und Present Progressive verschieden sind, baut am/is/are + Verb-ing sicher und erkennt die wichtigste do/does-Denkfalle.</p></div>
+<div class="tool-card mt-16" id="progressive-zukunft"><h3>Neu: Present Progressive für feste Zukunftspläne</h3><p>Diese Form kann auch eine <em>bereits vereinbarte</em> Handlung in der Zukunft beschreiben: <span lang="en">I am meeting Emma tomorrow.</span> Der Satzbau bleibt gleich: <span lang="en">am/is/are + Verb-ing</span>. Das Zeitwort zeigt hier, dass das Treffen noch kommt.</p><div class="grid-2"><div class="card"><h3>Jetzt</h3><p><span lang="en">I am meeting Emma now.</span> – Das Treffen findet gerade statt.</p></div><div class="card"><h3>Feste Verabredung</h3><p><span lang="en">I am meeting Emma tomorrow.</span> – Das Treffen ist vereinbart.</p></div></div><p>Vergleiche: <span lang="en">I usually meet Emma on Fridays.</span> (Gewohnheit) · <span lang="en">I'm meeting Emma this Friday.</span> (konkreter Plan).</p><label for="future-write">Schreibe auf Englisch: „Wir treffen Tom morgen um drei.“</label><input class="answer pg-future-answer" id="future-write" type="text"><div class="actions"><button class="tool-btn" type="button" id="future-check">Prüfen</button><button class="tool-btn" type="button" id="future-hint">Denkfrage</button><button class="tool-btn" type="button" id="future-reveal" disabled>Lösung anzeigen</button></div><p class="feedback" id="future-feedback" role="status" aria-live="polite">Zuerst selbst schreiben.</p><div class="card"><h3>Drei Bedeutungen unterscheiden</h3><p><span lang="en">I usually go to the gym on Fridays.</span> – regelmäßig (Simple Present).</p><p><span lang="en">Look, Dad is running.</span> – passiert jetzt (Present Progressive).</p><p><span lang="en">We are visiting our friends next Saturday.</span> – konkrete Zukunftsverabredung (Present Progressive).</p><p>Wichtig: <span lang="en">tomorrow</span> allein erzwingt keine Zeitform. Entscheide zuerst, ob die Handlung bereits verabredet ist. Zukunftsangaben wie <span lang="en">next week</span> oder <span lang="en">next term</span> machen den Zukunftsbezug deutlich.</p></div><div class="card"><h3>So übst du wie im Workbook (S. 12)</h3><p><span lang="en">Usually … but today …</span>: Schreibe einen vollständigen Satz, der die Gewohnheit und die heutige Ausnahme verbindet.</p><p><span lang="en">Next Saturday …</span>: Eine Aussage über einen fest geplanten Termin ist falsch. Schreibe zuerst die Verneinung, dann den richtigen Termin im Present Progressive.</p><p><a href="klassenarbeitscheck.html#tasks">Beide Aufgabenformen selbstständig im Klassenarbeits-Check üben</a>. Die Lösung bleibt bis nach deinem Versuch gesperrt.</p></div><p><a href="klassenarbeitscheck.html">Gemischten Klassenarbeits-Check öffnen</a></p></div>
+      </section>
     </section>
 
     <section class="compass-mode-panel" id="nachschlagen" role="tabpanel" aria-labelledby="tab-nachschlagen" data-panel="pg-mode" data-val="reference">
       <p class="section-kicker">Regelübersicht</p>
-      <h2 class="section-title">Present Progressive – Spickzettel</h2>
+      <h2 class="section-title">Present Progressive – Spickzettel</h2><p>Auch feste Zukunftspläne: <span lang="en">We are visiting Tom tomorrow.</span> Entscheidend ist die Vereinbarung, nicht allein das Wort <em>tomorrow</em>. <a href="#progressive-zukunft">Im Bereich „Kann ich’s?“ üben</a>.</p>
       <p class="section-text homework-only">Hausaufgabenmodus: Hier bleiben nur die schnellen Regeln sichtbar.</p>
       <div class="grid-2">
         <div class="card soft-card"><h3>Kurz merken</h3><p>Present Progressive bedeutet: etwas passiert gerade jetzt oder gerade in dieser Zeit. Die Form ist immer <span class="chip blue">am/is/are</span> + <span class="chip violet">Verb-ing</span>.</p></div>
@@ -348,7 +289,7 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
     <section class="compass-mode-panel" id="schreibcheck" role="tabpanel" aria-labelledby="tab-schreibcheck" data-panel="pg-mode" data-val="writecheck">
       <p class="section-kicker">Selbst schreiben</p>
       <h2 class="section-title">Schreib-Check: Present Progressive</h2>
-      <p class="section-text">Die Aufgaben decken die Kernentscheidungen ab: Bedeutung, Form, -ing-Schreibung, Frage, Verneinung, Kurzantwort und Simple-Present-Kontrast. Schreibe auch vollständige Sätze. Nach einem Fehler bekommst du erst einen Denkanstoß, dann einen genaueren Hinweis. Deine Eingaben und Ergebnisse bleiben auf diesem Gerät gespeichert.</p>
+      <p class="section-text">Die Aufgaben decken die Kernentscheidungen ab: Bedeutung, Form, -ing-Schreibung, Frage, Verneinung, Kurzantwort und Simple-Present-Kontrast.</p>
       <div class="writecheck-list" data-writecheck-list>
         <div class="write-task" data-review-id="pg-now-positive" data-answer="I am reading a book." data-alt="I'm reading a book" data-hint="Baue: I + am + reading."><div class="write-task-head"><div><div class="write-task-title">1. Übersetze</div><p>Ich lese gerade ein Buch.</p></div><div class="write-task-meta">Jetzt-Satz</div></div><input type="text" aria-label="Antwort 1"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
         <div class="write-task" data-review-id="pg-negative" data-answer="She isn't playing tennis." data-alt="She is not playing tennis|She's not playing tennis" data-hint="Verneinung: is + not + playing."><div class="write-task-head"><div><div class="write-task-title">2. Verneine</div><p>She is playing tennis.</p></div><div class="write-task-meta">Verneinung</div></div><input type="text" aria-label="Antwort 2"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
@@ -357,13 +298,9 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
         <div class="write-task" data-review-id="pg-ing-run" data-answer="running" data-hint="run hat kurzen Vokal + n am Ende: n wird verdoppelt."><div class="write-task-head"><div><div class="write-task-title">5. -ing-Form</div><p>run → ?</p></div><div class="write-task-meta">Spelling</div></div><input type="text" aria-label="Antwort 5"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
         <div class="write-task" data-review-id="pg-e-drop" data-answer="making" data-hint="make endet auf stummes e. e fällt weg, dann -ing."><div class="write-task-head"><div><div class="write-task-title">6. -ing-Form</div><p>make → ?</p></div><div class="write-task-meta">Spelling</div></div><input type="text" aria-label="Antwort 6"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
         <div class="write-task" data-review-id="pg-contrast" data-answer="He plays football every day." data-hint="every day = Gewohnheit. Also Simple Present, nicht Progressive."><div class="write-task-head"><div><div class="write-task-title">7. Wähle die richtige Zeitform</div><p>Er spielt jeden Tag Fußball.</p></div><div class="write-task-meta">Kontrast</div></div><input type="text" aria-label="Antwort 7"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
-        <div class="write-task" data-review-id="pg-state" data-answer="Do you like music?" data-hint="like ist ein Zustandsverb. Im Schulenglisch: Simple Present-Frage mit do."><div class="write-task-head"><div><div class="write-task-title">8. Verbessere den Satz</div><p>Are you liking music?</p></div><div class="write-task-meta">Stoppschild</div></div><input type="text" aria-label="Antwort 8"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
-        <div class="write-task" data-review-id="pg-translate-now" data-answer="The children are playing in the garden." data-hint="The children brauchen are. play wird playing."><div class="write-task-head"><div><div class="write-task-title">9. Übersetze den ganzen Satz</div><p>Die Kinder spielen gerade im Garten.</p></div><div class="write-task-meta">Jetzt-Satz</div></div><input type="text" aria-label="Antwort 9"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
-        <div class="write-task" data-review-id="pg-mixed-sentence" data-answer="Mia usually walks to school, but today she is taking the bus." data-alt="Usually Mia walks to school, but today she is taking the bus." data-hint="usually = Gewohnheit mit walks; today = Ausnahme mit is taking."><div class="write-task-head"><div><div class="write-task-title">10. Gewohnheit und Ausnahme</div><p>Übersetze: Normalerweise geht Mia zu Fuß zur Schule, aber heute fährt sie mit dem Bus.</p></div><div class="write-task-meta">Zwei Zeitformen</div></div><input type="text" aria-label="Antwort 10"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
-        <div class="write-task" data-review-id="pg-question-now" data-answer="Are the boys playing football now?" data-hint="Stelle are an den Anfang, dann the boys und playing."><div class="write-task-head"><div><div class="write-task-title">11. Schreibe eine vollständige Frage</div><p>Frage: Spielen die Jungen gerade Fußball?</p></div><div class="write-task-meta">Frage</div></div><input type="text" aria-label="Antwort 11"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
-        <div class="write-task" data-review-id="pg-correct-sentence" data-answer="She is swimming in the pool now." data-hint="Bei swim wird das m verdoppelt: swimming."><div class="write-task-head"><div><div class="write-task-title">12. Korrigiere den ganzen Satz</div><p>She is swiming in the pool now.</p></div><div class="write-task-meta">Fehler finden</div></div><input type="text" aria-label="Antwort 12"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
+        <div class="write-task" data-review-id="pg-state" data-answer="Do you like music?" data-hint="like ist ein Zustandsverb. In Klasse 5: Simple Present-Frage mit do."><div class="write-task-head"><div><div class="write-task-title">8. Verbessere den Satz</div><p>Are you liking music?</p></div><div class="write-task-meta">Stoppschild</div></div><input type="text" aria-label="Antwort 8"/><div class="write-actions"><button class="tool-btn" type="button" data-check-one>Prüfen</button><button class="mini-btn solution-btn" type="button" data-show-solution hidden>Lösung anzeigen</button></div><div class="write-feedback">Noch nicht geprüft.</div></div>
       </div>
-      <div class="write-actions"><button class="tool-btn" type="button" data-check-all>Alle prüfen</button><button class="tool-btn" type="button" data-reset-writecheck>Zurücksetzen</button><button class="tool-btn" type="button" data-repeat-errors>Nur Fehler wiederholen</button><button class="tool-btn" type="button" data-show-all-write>Alle Aufgaben zeigen</button></div>
+      <div class="write-actions"><button class="tool-btn" type="button" data-check-all>Alle prüfen</button><button class="tool-btn" type="button" data-reset-writecheck>Zurücksetzen</button></div>
       <div class="summary-box" data-write-summary>Bearbeite die Aufgaben und prüfe danach.</div>
     </section>
 
@@ -410,16 +347,39 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 
 <script>
 (function(){
- document.body.classList.add('tabs-ready');
- function all(q){return Array.from(document.querySelectorAll(q));}
- var alias={lernen:'learn',learn:'learn',nachschlagen:'reference',reference:'reference',schreibcheck:'writecheck','schreib-check':'writecheck',verbindungen:'connections',connections:'connections',notizen:'notes',notes:'notes',schreibwerkstatt:'workshop',workshop:'workshop'};
- var mode='learn',step='radar';
- function activate(group,value){all('[data-tab="'+group+'"]').forEach(function(b){var active=b.dataset.val===value;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});all('[data-panel="'+group+'"]').forEach(function(p){p.classList.toggle('is-active',p.dataset.val===value);});}
- function sync(){var part=decodeURIComponent(location.hash.slice(1)).split('/');var next=alias[part[0]]||'learn',nextStep=['radar','machine','spelling','check'].includes(part[1])?part[1]:'radar';mode=next;step=nextStep;activate('pg-mode',mode);activate('pg-learn',step);}
- function navigate(group,value){if(group==='pg-mode')mode=value;else if(group==='pg-learn')step=value;var hash='#'+mode+(mode==='learn'?'/'+step:'');if(location.hash!==hash)history.pushState(null,'',hash);sync();}
- document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(b){e.preventDefault();navigate(b.dataset.tab,b.dataset.val);}});
- document.addEventListener('keydown',function(e){var b=e.target.closest('[data-tab]');if(!b||!['ArrowRight','ArrowLeft'].includes(e.key))return;var buttons=all('[data-tab="'+b.dataset.tab+'"]'),i=buttons.indexOf(b),next=buttons[(i+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length];next.focus();next.click();e.preventDefault();});
- window.addEventListener('popstate',sync);window.addEventListener('hashchange',sync);sync();
+  document.body.classList.add('tabs-ready');
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function activate(group, value){
+    var buttons = qa('[data-tab="' + group + '"]');
+    var panels = qa('[data-panel="' + group + '"]');
+    buttons.forEach(function(btn){
+      var on = btn.getAttribute('data-val') === value;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      btn.setAttribute('tabindex', on ? '0' : '-1');
+    });
+    panels.forEach(function(panel){ panel.classList.toggle('is-active', panel.getAttribute('data-val') === value); });
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-tab]');
+    if (!btn) return;
+    activate(btn.getAttribute('data-tab'), btn.getAttribute('data-val'));
+  });
+  document.addEventListener('keydown', function(e){
+    var btn = e.target.closest('[data-tab]');
+    if (!btn || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
+    var group = btn.getAttribute('data-tab');
+    var buttons = qa('[data-tab="' + group + '"]');
+    var i = buttons.indexOf(btn);
+    var next = e.key === 'ArrowRight' ? (i + 1) % buttons.length : (i - 1 + buttons.length) % buttons.length;
+    buttons[next].focus(); buttons[next].click(); e.preventDefault();
+  });
+  var aliases = {lernen:'learn',learn:'learn',nachschlagen:'reference',reference:'reference',schreibcheck:'writecheck','schreib-check':'writecheck',verbindungen:'connections',connections:'connections',notizen:'notes',notes:'notes',schreibwerkstatt:'workshop',workshop:'workshop'};
+  function openHash(){
+    var h = (location.hash || '').replace('#','').toLowerCase();
+    if (aliases[h]) activate('pg-mode', aliases[h]);
+  }
+  window.addEventListener('hashchange', openHash); openHash();
 })();
 </script>
 <script>
@@ -454,131 +414,49 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
   }
   function resetChoices(card){ qa('.choice-btn',card).forEach(function(b){b.classList.remove('is-selected','is-correct','is-careful'); b.setAttribute('aria-pressed','false');}); }
   function initRadar(){
-    var cards=qa('[data-radar-card], [data-radar-mixed]');
-    function feedback(card,kind,msg){var fb=card.querySelector('.feedback');fb.className='feedback '+kind;fb.textContent=msg;}
-    cards.forEach(function(card){
-      qa('[data-radar-choice]',card).forEach(function(btn){
-        btn.setAttribute('aria-pressed','false');
-        btn.addEventListener('click',function(){resetChoices(card);btn.classList.add('is-selected');btn.setAttribute('aria-pressed','true');feedback(card,'','Begründe deine Wahl und klicke dann auf Prüfen.');});
-      });
-      var check=card.querySelector('[data-radar-check]');
-      check.addEventListener('click',function(){
-        var reason=card.querySelector('.pg-reason').value.trim();
-        if(!reason){feedback(card,'is-hint','Schreibe zuerst deine Begründung. Welche Wörter im Satz helfen dir?');return;}
-        if(card.hasAttribute('data-radar-mixed')){
-          var first=card.querySelector('[data-radar-slot="first"]').value,second=card.querySelector('[data-radar-slot="second"]').value;
-          if(!first||!second){feedback(card,'is-hint','Entscheide dich zuerst für beide Lücken.');return;}
-          var ok=first===card.dataset.correctFirst&&second===card.dataset.correctSecond;
-          feedback(card,ok?'is-good':'is-careful',(ok?'Beide Verbformen sind richtig. Deine Begründung wird nicht automatisch bewertet. Vergleiche sie: ':'Noch nicht beide Verbformen richtig. Versuche es erneut. ')+(ok?card.dataset.note:'Prüfe die Gewohnheit und den Gegensatz nach but.'));
-        }else{
-          var btn=card.querySelector('[data-radar-choice].is-selected');
-          if(!btn){feedback(card,'is-hint','Wähle zuerst eine Verbform.');return;}
-          var ok=btn.dataset.radarChoice===card.dataset.answer;
-          btn.classList.add(ok?'is-correct':'is-careful');
-          feedback(card,ok?'is-good':'is-careful',(ok?'Die Verbform ist richtig. Deine Begründung wird nicht automatisch bewertet. Vergleiche sie: '+card.dataset.note:'Noch nicht. Prüfe: Gewohnheit oder gerade jetzt?'));
-        }
-      });
+    qa('[data-radar-card]').forEach(function(card){
+      qa('[data-radar-choice]',card).forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){
+        var expected=card.getAttribute('data-answer'), choice=btn.getAttribute('data-radar-choice'), fb=card.querySelector('.feedback'); resetChoices(card); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true');
+        if(choice===expected){ btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+card.getAttribute('data-note'); }
+        else { btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. Frage zuerst: gerade jetzt oder Gewohnheit?'; }
+      }); });
     });
-    var reset=document.querySelector('[data-reset-radar]');
-    if(reset)reset.addEventListener('click',function(){cards.forEach(function(card){resetChoices(card);qa('select',card).forEach(function(el){el.value='';});var reason=card.querySelector('.pg-reason');if(reason)reason.value='';feedback(card,'','Entscheide zuerst und begründe deine Wahl.');});});
+    var reset=document.querySelector('[data-reset-radar]'); if(reset) reset.addEventListener('click',function(){ qa('[data-radar-card]').forEach(function(card){ resetChoices(card); var fb=card.querySelector('.feedback'); fb.className='feedback'; fb.textContent='Entscheide zuerst.'; }); });
   }
   function initSpelling(){
-    var items=[
-      {word:'play',form:'playing',rule:'normal'},
-      {word:'read',form:'reading',rule:'normal'},
-      {word:'watch',form:'watching',rule:'normal'},
-      {word:'help',form:'helping',rule:'normal'},
-      {word:'jump',form:'jumping',rule:'normal'},
-      {word:'look',form:'looking',rule:'normal'},
-      {word:'make',form:'making',rule:'e'},
-      {word:'write',form:'writing',rule:'e'},
-      {word:'come',form:'coming',rule:'e'},
-      {word:'dance',form:'dancing',rule:'e'},
-      {word:'take',form:'taking',rule:'e'},
-      {word:'ride',form:'riding',rule:'e'},
-      {word:'run',form:'running',rule:'double'},
-      {word:'swim',form:'swimming',rule:'double'},
-      {word:'sit',form:'sitting',rule:'double'},
-      {word:'get',form:'getting',rule:'double'},
-      {word:'stop',form:'stopping',rule:'double'},
-      {word:'shop',form:'shopping',rule:'double'},
-      {word:'show',form:'showing',rule:'wy'},
-      {word:'enjoy',form:'enjoying',rule:'wy'}
-    ];
-    var pool=[],current=null,attempts=0;
-    var word=document.querySelector('[data-spell-word]'),input=document.querySelector('[data-spell-input]'),fb=document.querySelector('[data-spell-feedback]');
-    if(!word||!input||!fb)return;
-    var reveal=document.createElement('button');
-    reveal.type='button';reveal.className='tool-btn';reveal.textContent='Lösung ansehen';reveal.hidden=true;fb.parentNode.appendChild(reveal);
-    function ruleHint(item){
-      if(item.rule==='e')return 'Das Verb endet auf ein stummes e. Streiche das e und hänge -ing an.';
-      if(item.rule==='double')return 'Vor dem letzten Konsonanten steht ein kurzer betonter Vokal. Verdopple den letzten Konsonanten und hänge -ing an.';
-      if(item.rule==='wy')return 'Verben mit w oder y am Ende verdoppeln diesen Buchstaben nicht. Hänge einfach -ing an.';
-      return 'Hier bleibt das Grundverb unverändert. Hänge einfach -ing an.';
-    }
-    function tailoredHint(item,value){
-      var base=item.word;
-      if(item.rule==='double'&&value===base+'ing')return 'Bei '+base+' wird der letzte Buchstabe '+base.slice(-1)+' verdoppelt. Versuche es noch einmal.';
-      if(item.rule==='e'&&value===base+'ing')return 'Das e am Ende von '+base+' ist stumm. Es fällt vor -ing weg. Versuche es noch einmal.';
-      if(item.rule==='normal'&&value===base.slice(0,-1)+'ing')return 'Hier darfst du keinen Buchstaben streichen. Hänge -ing an das ganze Verb.';
-      if(item.rule==='wy'&&value===base+base.slice(-1)+'ing')return 'Den letzten Buchstaben w oder y verdoppeln wir hier nicht.';
-      return ruleHint(item);
-    }
-    function next(){
-      if(pool.length===0){pool=items.slice();for(var j=pool.length-1;j>0;j--){var n=Math.floor(Math.random()*(j+1)),tmp=pool[j];pool[j]=pool[n];pool[n]=tmp;}
-        if(current&&pool.length>1&&pool[pool.length-1].word===current.word){var t=pool[0];pool[0]=pool[pool.length-1];pool[pool.length-1]=t;}}
-      current=pool.pop();attempts=0;word.textContent=current.word;input.value='';reveal.hidden=true;fb.className='feedback';fb.textContent='Tippe die -ing-Form ein.';input.focus();
-    }
-    function check(){
-      var value=input.value.trim().toLowerCase();
-      if(!value){fb.className='feedback is-hint';fb.textContent='Schreibe zuerst deine -ing-Form.';return;}
-      if(value===current.form){fb.className='feedback is-good';fb.textContent='Richtig: '+current.form+'. '+ruleHint(current);reveal.hidden=true;return;}
-      attempts++;fb.className='feedback is-careful';fb.textContent=tailoredHint(current,value);
-      reveal.hidden=attempts<2;
-    }
-    reveal.addEventListener('click',function(){if(attempts<2)return;fb.className='feedback is-hint';fb.textContent='Lösung: '+current.word+' → '+current.form+'. '+ruleHint(current);reveal.hidden=true;});
-    var checkBtn=document.querySelector('[data-spell-check]'),nextBtn=document.querySelector('[data-spell-next]');
-    if(checkBtn)checkBtn.addEventListener('click',check);
-    if(nextBtn)nextBtn.addEventListener('click',next);
-    input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();check();}});
-    next();
+    var words=['play','read','make','write','run','swim','sit','get','dance','watch','come','stop']; var i=0;
+    var word=document.querySelector('[data-spell-word]'), input=document.querySelector('[data-spell-input]'), fb=document.querySelector('[data-spell-feedback]');
+    function show(){ if(word) word.textContent=words[i]; if(input) input.value=''; if(fb){fb.className='feedback'; fb.textContent='Tippe die -ing-Form ein.';} }
+    function check(){ var correct=ing(words[i]); var val=(input.value||'').trim().toLowerCase(); if(!val){fb.className='feedback is-hint'; fb.textContent='Erst eine Form eintippen.'; return;} if(val===correct){fb.className='feedback is-good'; fb.textContent='Richtig: '+correct+'.';} else {fb.className='feedback is-careful'; fb.textContent='Noch nicht. Die richtige Form ist: '+correct+'. Prüfe e weg oder Verdopplung.';} }
+    var cb=document.querySelector('[data-spell-check]'), nb=document.querySelector('[data-spell-next]'); if(cb) cb.addEventListener('click',check); if(nb) nb.addEventListener('click',function(){i=(i+1)%words.length; show();}); if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter') check(); }); show();
   }
-  initMachine(); initRadar(); initSpelling();
+  function initState(){
+    var items=[['play','action','play ist eine Handlung: playing ist möglich.'],['want','state','want ist ein Zustand/Wunsch: I want, nicht I am wanting.'],['read','action','read ist eine Handlung: reading ist möglich.'],['know','state','know ist ein Zustand im Kopf: I know, nicht I am knowing.'],['run','action','run ist eine Handlung: running ist möglich.'],['like','state','like ist eine Meinung/Vorliebe: I like, nicht I am liking.'],['understand','state','understand ist ein Zustand im Kopf: I understand.'],['watch','action','watch ist eine Handlung: watching ist möglich.']]; var i=0;
+    var word=document.querySelector('[data-state-word]'), fb=document.querySelector('[data-state-feedback]'), quiz=document.querySelector('[data-state-quiz]');
+    function show(){ if(word) word.textContent=items[i][0]; if(fb){fb.className='feedback'; fb.textContent='Entscheide zuerst.';} if(quiz) resetChoices(quiz); }
+    qa('[data-state-choice]').forEach(function(btn){ btn.setAttribute('aria-pressed','false'); btn.addEventListener('click',function(){ resetChoices(quiz); btn.classList.add('is-selected'); btn.setAttribute('aria-pressed','true'); var ok=btn.getAttribute('data-state-choice')===items[i][1]; if(ok){btn.classList.add('is-correct'); fb.className='feedback is-good'; fb.textContent='Richtig. '+items[i][2];} else {btn.classList.add('is-careful'); fb.className='feedback is-careful'; fb.textContent='Noch nicht. '+items[i][2];} }); });
+    var next=document.querySelector('[data-state-next]'); if(next) next.addEventListener('click',function(){i=(i+1)%items.length; show();}); show();
+  }
+  initMachine(); initRadar(); initSpelling(); initState();
 })();
 </script>
 <script>
 (function(){
-  var KEY='kompass.progressive.writecheck.v2';
-  function all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
-  function norm(v){return String(v||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim();}
-  function tasks(){return all('.write-task[data-review-id]');}
-  function store(){
-    try{var data={};tasks().forEach(function(t){data[t.dataset.reviewId]={value:t.querySelector('input').value,attempts:Number(t.dataset.reviewAttempts||0),correct:t.dataset.reviewCorrect||'',hadError:t.dataset.hadError==='true'};});localStorage.setItem(KEY,JSON.stringify(data));}catch(e){}
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function norm(s){ return (s||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim(); }
+  function answers(task){ var arr=[task.getAttribute('data-answer')||'']; var alt=task.getAttribute('data-alt'); if(alt){ alt.split('|').forEach(function(a){arr.push(a);}); } return arr.map(norm); }
+  function checkTask(task){
+    var input=task.querySelector('input'), fb=task.querySelector('.write-feedback'), sol=task.querySelector('[data-show-solution]'), val=norm(input.value), ok=answers(task).indexOf(val)>-1;
+    if(!val){ fb.className='write-feedback is-hint'; fb.textContent='Schreibe zuerst eine Antwort.'; if(sol) sol.hidden=true; return false; }
+    if(ok){ fb.className='write-feedback is-good'; fb.textContent='Richtig.'; if(sol) sol.hidden=true; return true; }
+    fb.className='write-feedback is-careful'; fb.textContent='Noch nicht. Tipp: '+(task.getAttribute('data-hint')||'Prüfe die Kernregel.'); if(sol) sol.hidden=false; return false;
   }
-  function restore(){
-    try{var data=JSON.parse(localStorage.getItem(KEY)||'{}');tasks().forEach(function(t){var d=data[t.dataset.reviewId];if(!d)return;t.querySelector('input').value=d.value||'';t.dataset.reviewAttempts=String(d.attempts||0);t.dataset.reviewCorrect=d.correct||'';if(d.hadError)t.dataset.hadError='true';if(d.correct==='true'){var fb=t.querySelector('.write-feedback');fb.className='write-feedback is-good';fb.textContent='Bereits richtig gelöst. Du kannst den Satz erneut bearbeiten.';}});}catch(e){}
-  }
-  function accepted(t){var values=[t.dataset.answer||''];if(t.dataset.alt)values=values.concat(t.dataset.alt.split('|'));return values.map(norm);}
-  function feedback(t,cls,message){var fb=t.querySelector('.write-feedback');fb.className='write-feedback '+cls;fb.textContent=message;}
-  function mark(t){
-    var value=norm(t.querySelector('input').value),sol=t.querySelector('[data-show-solution]');
-    if(!value){feedback(t,'is-hint','Schreibe zuerst deine eigene Antwort.');if(sol)sol.hidden=true;return false;}
-    if(accepted(t).indexOf(value)!==-1){feedback(t,'is-good','Richtig. Deine Antwort passt.');t.dataset.reviewCorrect='true';if(sol)sol.hidden=true;store();return true;}
-    var attempts=Number(t.dataset.reviewAttempts||0)+1;t.dataset.reviewAttempts=String(attempts);t.dataset.reviewCorrect='false';t.dataset.hadError='true';
-    if(attempts===1)feedback(t,'is-careful','Noch nicht. Prüfe: Welche Zeitform passt? Wer handelt? Brauchst du am/is/are?');
-    else feedback(t,'is-careful','Zweiter Hinweis: '+(t.dataset.hint||'Prüfe die Satzstellung und die Schreibweise des Verbs.')+' Versuche es erneut.');
-    if(sol)sol.hidden=attempts<2;store();return false;
-  }
-  document.addEventListener('input',function(e){var t=e.target.closest('.write-task[data-review-id]');if(t){t.dataset.reviewCorrect='';var sol=t.querySelector('[data-show-solution]');if(sol)sol.hidden=true;store();}});
   document.addEventListener('click',function(e){
-    var b=e.target.closest('[data-check-one]');if(b){mark(b.closest('.write-task'));return;}
-    if(e.target.closest('[data-show-solution]')){var t=e.target.closest('.write-task');if(!t||Number(t.dataset.reviewAttempts||0)<2)return;feedback(t,'is-hint','Beispiellösung: '+t.dataset.answer+'. Vergleiche Satzbau und Schreibweise.');e.target.hidden=true;return;}
-    if(e.target.closest('[data-check-all]')){var visible=tasks().filter(function(t){return !t.hidden;}),right=0;visible.forEach(function(t){if(mark(t))right++;});var box=document.querySelector('[data-write-summary]');if(box){box.className='summary-box '+(right===visible.length?'is-good':'is-careful');box.textContent=right+' von '+visible.length+' Aufgaben richtig erkannt. Bei sinnvollen alternativen Formulierungen ist eine eigene Prüfung nötig.';}return;}
-    if(e.target.closest('[data-repeat-errors]')){var wrong=tasks().filter(function(t){return t.dataset.hadError==='true'&&t.dataset.reviewCorrect!=='true';});tasks().forEach(function(t){t.hidden=wrong.indexOf(t)===-1;});var box=document.querySelector('[data-write-summary]');if(box)box.textContent=wrong.length?wrong.length+' offene Fehleraufgaben zum Wiederholen.':'Keine offenen Fehleraufgaben. Alle Aufgaben können über „Alle Aufgaben zeigen“ geöffnet werden.';return;}
-    if(e.target.closest('[data-show-all-write]')){tasks().forEach(function(t){t.hidden=false;});return;}
-    if(e.target.closest('[data-reset-writecheck]')){tasks().forEach(function(t){t.hidden=false;t.querySelector('input').value='';feedback(t,'','Noch nicht geprüft.');var sol=t.querySelector('[data-show-solution]');if(sol)sol.hidden=true;delete t.dataset.reviewAttempts;delete t.dataset.reviewCorrect;delete t.dataset.hadError;});var box=document.querySelector('[data-write-summary]');if(box){box.className='summary-box';box.textContent='Bearbeite die Aufgaben und prüfe danach.';}store();}
+    var one=e.target.closest('[data-check-one]'); if(one){ checkTask(one.closest('.write-task')); }
+    var solution=e.target.closest('[data-show-solution]'); if(solution){ var task=solution.closest('.write-task'), fb=task.querySelector('.write-feedback'); fb.className='write-feedback is-hint'; fb.textContent='Lösung: '+task.getAttribute('data-answer'); }
+    if(e.target.closest('[data-check-all]')){ var tasks=qa('.write-task'), right=0; tasks.forEach(function(t){ if(checkTask(t)) right++; }); var box=document.querySelector('[data-write-summary]'); if(box){ box.className='summary-box '+(right===tasks.length?'is-good':'is-careful'); box.textContent= right+' von '+tasks.length+' Aufgaben sicher. Entscheidend ist, welche Denkstelle noch wackelt.'; } }
+    if(e.target.closest('[data-reset-writecheck]')){ qa('.write-task').forEach(function(t){ var input=t.querySelector('input'), fb=t.querySelector('.write-feedback'), sol=t.querySelector('[data-show-solution]'); if(input) input.value=''; if(fb){fb.className='write-feedback'; fb.textContent='Noch nicht geprüft.';} if(sol) sol.hidden=true; }); var box=document.querySelector('[data-write-summary]'); if(box){box.className='summary-box'; box.textContent='Bearbeite die Aufgaben und prüfe danach.';} }
   });
-  restore();
 })();
 </script>
 <script>
@@ -609,60 +487,6 @@ body{background:#e7eef4!important;background-image:none!important;color:#243b55!
 })();
 </script>
 <script>
-(function(){
- function one(s,r){return (r||document).querySelector(s);}
- function many(s,r){return Array.from((r||document).querySelectorAll(s));}
- function tokens(arr){return arr.map(function(t){return '<span class="pg-tok '+(t[1]||'')+'">'+t[0]+'</span>';}).join('');}
- function select(root,attr,value){many('button['+attr+']',root).forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute(attr)===value));});}
- function setHTML(el,str){if(el)el.innerHTML=str;}
- var tense=one('[data-visual-tense]');
- if(tense){var state='habit',mixed='usual';
-  function draw(){select(tense,'data-tense',state);var now=state==='now';setHTML(one('[data-tense-output]',tense),tokens(now?[['She','pg-person'],['is','pg-be'],['playing','pg-ing'],['tennis.','']]:[['She','pg-person'],['plays','pg-simple'],['tennis.','']]));one('[data-tense-explain]',tense).textContent=now?'Sie spielt gerade Tennis. → Present Progressive':'Sie spielt regelmäßig Tennis. → Simple Present';one('[data-tense-rule]',tense).textContent=now?'she → is + Verb-ing':'he/she/it → Verb + s';var signal=now?'She is playing tennis right now.':'She usually plays tennis.',word=now?'right now':'usually';if(one('[data-tense-highlight]',tense).checked)signal=signal.replace(word,'<mark>'+word+'</mark>');setHTML(one('[data-tense-signal]',tense),signal);
-  select(tense,'data-mixed-mode',mixed);var today=mixed==='today';setHTML(one('[data-mixed-output]',tense),tokens(today?[['but today','pg-signal'],['Maya','pg-person'],['is','pg-be'],['taking','pg-ing'],['the bus.','']]:[['usually','pg-signal'],['Maya','pg-person'],['walks','pg-simple'],['to school.','']]));one('[data-mixed-explain]',tense).textContent=today?'Ausnahme heute → Present Progressive.':'Gewohnheit → Simple Present.';}
-  many('[data-tense]',tense).forEach(function(b){b.addEventListener('click',function(){state=b.dataset.tense;draw();});});many('[data-mixed-mode]',tense).forEach(function(b){b.addEventListener('click',function(){mixed=b.dataset.mixedMode;draw();});});one('[data-tense-highlight]',tense).addEventListener('change',draw);draw();
- }
- var lab=one('[data-visual-lab]');if(lab){var mode='positive',chosen=[];var practice=one('.pg-lab-practice',lab),demo=one('.pg-visual-output',lab);practice.addEventListener('toggle',function(){demo.hidden=practice.open;});
-  function needed(){return mode==='question'?['Is','she','playing','tennis?']:mode==='negative'?['she','is','not','playing','tennis.']:['she','is','playing','tennis.'];}
-  function style(v){return v.toLowerCase()==='is'?'pg-be':v==='playing'?'pg-ing':v==='not'?'pg-not':v==='she'?'pg-person':'';}
-  function draw(){demo.hidden=practice.open;select(lab,'data-lab-mode',mode);setHTML(one('[data-lab-output]',lab),tokens(needed().map(function(v){return [v,style(v)];})));one('[data-lab-explain]',lab).textContent=mode==='question'?'Frage: Is wandert an den Satzanfang.':mode==='negative'?'Verneinung: not steht hinter is.':'Aussage: is steht hinter she.';drawBuild();}
-  function drawBuild(){var pool=needed().slice().reverse();var choice=one('[data-build-choices]',lab);choice.innerHTML='';pool.forEach(function(v){var b=document.createElement('button');b.type='button';b.textContent=v;b.disabled=chosen.includes(v);b.addEventListener('click',function(){chosen.push(v);drawBuild();});choice.appendChild(b);});setHTML(one('[data-build-answer]',lab),tokens(chosen.map(function(v){return [v,style(v)];})));}
-  many('[data-lab-mode]',lab).forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.labMode;chosen=[];one('[data-build-feedback]',lab).textContent='Wähle die Bausteine nacheinander.';draw();});});one('[data-build-check]',lab).addEventListener('click',function(){var correct=needed(),ok=chosen.length===correct.length&&chosen.every(function(v,i){return v===correct[i];});var feedback=one('[data-build-feedback]',lab);feedback.className='feedback '+(ok?'is-good':'is-careful');feedback.textContent=ok?'Richtig zusammengesetzt.':'Noch nicht richtig. Prüfe, wo is und not stehen. Versuche es erneut.';});one('[data-build-reset]',lab).addEventListener('click',function(){chosen=[];drawBuild();});draw();
- }
- var path=one('[data-spell-path]');if(path){var word=one('[data-spell-word]'),fb=one('[data-rule-feedback]',path),examples=one('[data-spelling-examples]',path),show=one('[data-show-spelling-rules]',path),spellInput=one('[data-spell-input]');function toggleExamples(visible){examples.hidden=!visible;show.setAttribute('aria-expanded',String(visible));show.textContent=visible?'Regelkarten ausblenden':'Regelkarten anzeigen';}if(spellInput)spellInput.addEventListener('focus',function(){toggleExamples(false);});show.addEventListener('click',function(){toggleExamples(examples.hidden);});var rules={normal:['play','read','watch','help','jump','look'],e:['make','write','come','dance','take','ride'],double:['run','swim','sit','get','stop','shop'],wy:['show','enjoy']};
-  many('[data-rule-choice]',path).forEach(function(b){b.addEventListener('click',function(){var value=b.dataset.ruleChoice,chosen=word?word.textContent.trim():'';select(path,'data-rule-choice',value);var correct=Object.keys(rules).find(function(k){return rules[k].includes(chosen);});fb.className='feedback '+(correct===value?'is-good':'is-careful');fb.textContent=correct===value?'Richtig erkannt. Schreibe jetzt die -ing-Form selbst.':'Schau auf die Endung von '+chosen+' und prüfe die Regel noch einmal.';});});var next=one('[data-spell-next]');if(next)next.addEventListener('click',function(){many('[data-rule-choice]',path).forEach(function(b){b.setAttribute('aria-pressed','false');});fb.className='feedback';fb.textContent='Wähle die passende Regel für das neue Verb.';});}
-})();
-</script>
-<script>
-(function(){
- var key='kompass.progressive.interactions.v1';
- function qs(s,r){return (r||document).querySelector(s);}
- function qsa(s,r){return Array.from((r||document).querySelectorAll(s));}
- function get(){try{return JSON.parse(localStorage.getItem(key)||'{}');}catch(e){return {};}}
- function put(){try{var data={radar:[],lab:{}};qsa('[data-radar-card],[data-radar-mixed]').forEach(function(c){data.radar.push({id:c.dataset.radarCard?c.dataset.radarCard:c.dataset.radarMixed===undefined?'single':'mixed',reason:(qs('.pg-reason',c)||{}).value||'',selected:(qs('[data-radar-choice].is-selected',c)||{}).dataset?.radarChoice||'',slots:qsa('[data-radar-slot]',c).map(function(e){return e.value;})});});var lab=qs('[data-visual-lab]');if(lab)data.lab={mode:(qs('[data-lab-mode][aria-pressed="true"]',lab)||{}).dataset?.labMode||'positive',open:qs('.pg-lab-practice',lab)?.open||false};localStorage.setItem(key,JSON.stringify(data));}catch(e){}}
- function restore(){var data=get();qsa('[data-radar-card],[data-radar-mixed]').forEach(function(c,i){var d=(data.radar||[])[i];if(!d)return;var reason=qs('.pg-reason',c);if(reason)reason.value=d.reason||'';if(d.selected){var b=qs('[data-radar-choice="'+d.selected+'"]',c);if(b)b.click();}qsa('[data-radar-slot]',c).forEach(function(el,j){el.value=(d.slots||[])[j]||'';});});var lab=qs('[data-visual-lab]');if(lab&&data.lab&&data.lab.mode){var b=qs('[data-lab-mode="'+data.lab.mode+'"]',lab);if(b)b.click();}}
- document.addEventListener('input',function(e){if(e.target.closest('[data-radar-card],[data-radar-mixed]'))put();});
- document.addEventListener('change',function(e){if(e.target.closest('[data-radar-card],[data-radar-mixed]'))put();});
- document.addEventListener('click',function(e){if(e.target.closest('[data-radar-choice],[data-radar-check],[data-lab-mode],[data-build-check],[data-build-reset]'))queueMicrotask(put);if(e.target.closest('[data-reset-radar]')){try{localStorage.removeItem(key);}catch(x){}}});
- restore();
-})();
-</script>
-<script>
-(function(){
-var KEY='kompass.progressive.denkfallen.v1',tasks=Array.from(document.querySelectorAll('[data-exam-task]'));if(!tasks.length)return;
-function q(t,s){return t.querySelector(s);}
-function norm(v){return String(v||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ').trim();}
-function matches(t,val){var v=norm(val),a=norm(t.dataset.examAnswer);if(t.dataset.examTask==='negative')return [a,"she isn't reading","she's not reading"].includes(v);return v===a;}
-function state(t,v){t.dataset.status=v;q(t,'[data-exam-status]').textContent={open:'Offen',secure:'Sicher',helped:'Mit Hilfe',review:'Noch üben'}[v];}
-function fb(t,c,m){var e=q(t,'[data-exam-feedback]');e.className='feedback '+c;e.textContent=m;}
-function count(){var n=v=>tasks.filter(t=>t.dataset.status===v).length;document.querySelector('[data-exam-progress]').textContent=n('secure')+' sicher · '+n('helped')+' mit Hilfe · '+n('review')+' noch üben · '+n('open')+' offen.';}
-function save(){try{var d={};tasks.forEach(t=>d[t.dataset.examTask]={answer:q(t,'[data-exam-input]').value,status:t.dataset.status||'open',tries:Number(t.dataset.tries||0),revealed:t.dataset.revealed==='true',hadHelp:t.dataset.hadHelp==='true'});localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
-function reveal(t){q(t,'[data-exam-solution]').textContent=t.dataset.examExplanation;q(t,'[data-exam-solution]').hidden=false;q(t,'[data-exam-reveal]').hidden=true;t.dataset.revealed='true';var r=q(t,'[data-exam-rating]');if(r)r.hidden=false;save();}
-function check(t){var answer=q(t,'[data-exam-input]').value.trim(),n=Number(t.dataset.tries||0);if(!answer){fb(t,'is-hint','Schreibe zuerst eine eigene Antwort.');return;}if(t.dataset.examTask==='own'){t.dataset.tries=String(n+1);fb(t,'is-hint','Vergleiche deine Erklärung selbst mit der Musterlösung.');reveal(t);return;}if(matches(t,answer)){state(t,n===0&&!t.dataset.revealed&&!t.dataset.hadHelp?'secure':'helped');fb(t,'is-good',n===0&&!t.dataset.revealed&&!t.dataset.hadHelp?'Richtig – ohne Hilfe.':'Richtig – nach erneutem Versuch.');q(t,'[data-exam-reveal]').hidden=true;q(t,'[data-exam-solution]').hidden=true;save();count();return;}n++;t.dataset.tries=String(n);t.dataset.hadHelp='true';state(t,'review');fb(t,'is-careful',n===1?t.dataset.examHintOne:t.dataset.examHintTwo);q(t,'[data-exam-reveal]').hidden=n<2;save();count();}
-function reset(t){q(t,'[data-exam-input]').value='';t.dataset.tries='0';delete t.dataset.revealed;t.dataset.hadHelp='true';state(t,'open');q(t,'[data-exam-reveal]').hidden=true;q(t,'[data-exam-solution]').hidden=true;var r=q(t,'[data-exam-rating]');if(r)r.hidden=true;fb(t,'','Noch nicht geprüft.');t.hidden=false;save();count();}
-document.addEventListener('click',function(e){var t=e.target.closest('[data-exam-task]');if(t){if(e.target.closest('[data-exam-check]'))check(t);else if(e.target.closest('[data-exam-reveal]')&&!e.target.hidden)reveal(t);else if(e.target.closest('[data-exam-retry]'))reset(t);else if(e.target.closest('[data-exam-rate]')){var ok=e.target.dataset.examRate==='yes';state(t,ok?'helped':'review');fb(t,ok?'is-good':'is-careful',ok?'Selbsteinschätzung gespeichert.':'Diese Erklärung nochmals üben.');save();count();}return;}if(e.target.closest('[data-exam-wrong]'))tasks.forEach(t=>t.hidden=['secure','helped'].includes(t.dataset.status));if(e.target.closest('[data-exam-all]'))tasks.forEach(t=>t.hidden=false);if(e.target.closest('[data-exam-reset-all]')){tasks.forEach(function(t){reset(t);delete t.dataset.hadHelp;});save();}});
-document.addEventListener('input',function(e){if(e.target.closest('[data-exam-task]'))save();});
-try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');tasks.forEach(function(t){var d=saved[t.dataset.examTask];state(t,d&&d.status||'open');if(!d)return;q(t,'[data-exam-input]').value=d.answer||'';t.dataset.tries=String(d.tries||0);if(d.hadHelp)t.dataset.hadHelp='true';if(d.revealed){t.dataset.revealed='true';q(t,'[data-exam-solution]').textContent=t.dataset.examExplanation;q(t,'[data-exam-solution]').hidden=false;var r=q(t,'[data-exam-rating]');if(r)r.hidden=false;}else if(d.tries>=2&&d.status==='review')q(t,'[data-exam-reveal]').hidden=false;});}catch(e){tasks.forEach(t=>state(t,'open'));}count();
-})();
-</script>
-</body>
+(function(){const input=document.getElementById('future-write'), feedback=document.getElementById('future-feedback'), reveal=document.getElementById('future-reveal');if(!input)return;document.getElementById('future-check').addEventListener('click',()=>{if(!input.value.trim()){feedback.textContent='Schreibe zuerst einen Satz.';return}reveal.disabled=false;const n=x=>x.toLowerCase().replace(/[’]/g,"'").replace(/\s+/g,' ').replace(/[.!?]$/,'').trim();feedback.textContent=['we are meeting tom tomorrow at three','we are meeting tom at three tomorrow',"we're meeting tom tomorrow at three","we're meeting tom at three tomorrow",'we are meeting tom tomorrow at 3','we are meeting tom at 3 tomorrow'].some(x=>n(input.value)===x)?'Richtig! Fester Plan: are meeting.':'Prüfe Person, are, -ing und die Zeitangabe. Du kannst jetzt die Lösung ansehen.'});document.getElementById('future-hint').addEventListener('click',()=>feedback.textContent='We + are + meet-ing. Tomorrow zeigt hier den fest vereinbarten Zeitpunkt.');reveal.addEventListener('click',()=>{if(!reveal.disabled)feedback.textContent='Mögliche Lösung: We are meeting Tom tomorrow at three.'})})();
+</script></body>
 </html>
