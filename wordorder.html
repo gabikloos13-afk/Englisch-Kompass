@@ -1125,6 +1125,25 @@ html,body{background:#e7eef4!important;color:#243b55}
 .compass-mode-btn,.mode-tabs button,.learn-step-btn,.subtab-btn{font-weight:400!important}
 .card,.task,.topic-card{box-shadow:none!important}
 @media(max-width:700px){.page-content,.topic-page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar{padding:12px!important}.compass-head,.topic-header{padding:20px 18px!important}}
+
+/* Word Order: gezielte Reparatur nach Screenshot – Header und Reiter */
+body .topic-page--word-order .page-content.topic-page-content{max-width:1100px!important;width:100%!important;margin:0 auto!important;padding:0 0 48px!important}
+body .topic-page--word-order .learning-card.topic-shell{max-width:1100px!important;width:100%!important;margin:0 auto!important;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+body .topic-page--word-order .compass-head.topic-header{display:flex!important;visibility:visible!important;min-height:125px!important;align-items:center!important;max-width:1100px!important;width:100%!important;margin:0 auto 16px!important;padding:24px 28px!important;background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;background-image:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;border:0!important;border-radius:14px!important;box-shadow:none!important}
+body .topic-page--word-order .compass-head.topic-header *{visibility:visible!important;opacity:1!important}
+body .topic-page--word-order .compass-head.topic-header .compass-title,body .topic-page--word-order .compass-head.topic-header .compass-subtitle,body .topic-page--word-order .compass-head.topic-header .compass-kicker{color:#fff!important}
+body .topic-page--word-order .compass-head.topic-header .compass-title{font-size:clamp(24px,3vw,34px)!important;line-height:1.2!important}
+body .topic-page--word-order .wo-thinking-line{max-width:1100px!important;margin:0 auto 14px!important;border:1px solid #cfdce9!important;border-radius:12px!important;background:#fff!important;color:#243b55!important}
+body .topic-page--word-order .compass-mode-grid.topic-tabs{display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;gap:8px!important;max-width:1100px!important;margin:0 auto 16px!important;padding:12px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#f8fafc!important}
+body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn{flex:0 1 auto!important;min-height:42px!important;margin:0!important;padding:9px 15px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;color:#243b55!important;background:#fff!important;box-shadow:none!important}
+body .topic-page--word-order .compass-mode-grid.topic-tabs .compass-mode-btn[aria-pressed="true"]{color:#234f74!important;background:#e8f0f8!important;border-color:#93b3d0!important}
+body .topic-page--word-order .learn-step-nav{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:stretch!important;gap:8px!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;padding:12px!important;overflow:visible!important;background:#f8fafc!important;border:1px solid #cfdce9!important;border-radius:14px!important}
+body .topic-page--word-order .learn-step-nav .learn-step-btn{display:flex!important;flex:0 1 135px!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;min-width:120px!important;min-height:70px!important;width:auto!important;max-width:165px!important;white-space:normal!important;overflow-wrap:anywhere!important;gap:5px!important;padding:8px 10px!important;border:1px solid #d1ddec!important;border-radius:12px!important;background:#fff!important;color:#243b55!important}
+body .topic-page--word-order .learn-step-nav .step-label{display:block!important;width:100%!important;font-size:12px!important;line-height:1.3!important;text-align:center!important;white-space:normal!important;word-break:normal!important}
+body .topic-page--word-order .learn-step-nav .step-badge{flex-shrink:0!important}
+body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"]{border-color:#93b3d0!important;background:#e8f0f8!important;color:#234f74!important}
+@media(max-width:700px){body .topic-page--word-order .compass-head.topic-header{padding:20px 18px!important;margin:0 12px 12px!important;width:calc(100% - 24px)!important}body .topic-page--word-order .learn-step-nav .learn-step-btn{flex:1 1 125px!important;max-width:none!important}}
+
 </style>
 </head>
 <body><main class="topic-page topic-page--word-order" id="wordorder-refactor-root">
