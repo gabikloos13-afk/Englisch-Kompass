@@ -196,88 +196,6 @@ body{
 
 .overview-return-wrap{max-width:1100px;margin:10px auto -6px;padding:0 20px}
 
-/* FINAL LAYOUT PATCH: wider desktop layout + calm return link.
-   Content, exercises, answers and tab structure are unchanged. */
-@media (min-width: 901px){
-  .site-nav-inner,.page-content,.page-wrap,.progress-banner,.overview-return-wrap{
-    max-width:1320px;
-  }
-  .page-content{
-    width:min(1320px, calc(100% - 48px));
-  }
-  .overview-return-wrap{
-    width:min(1320px, calc(100% - 48px));
-  }
-}
-
-.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#1d4ed8,#6d28d9);color:#fff;}
-
-
-@media (min-width:901px){
-  .page-content,.page-wrap,.progress-banner,.overview-return-wrap{
-    max-width:1320px!important;
-    width:min(1320px, calc(100% - 48px))!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-  .page-content{
-    padding:20px 0 0!important;
-  }
-  .overview-return-wrap{
-    padding-left:0!important;
-    padding-right:0!important;
-  }
-  .learning-card{
-    width:100%!important;
-  }
-}
-
-
-@media (min-width:901px){
-  .page-content,.overview-return-wrap,.page-wrap,.page-content{padding-top:20px!important;}
-  .learning-card{width:100%!important;max-width:none!important;}
-  .compass-head,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{width:100%!important;}
-  .compass-mode-btn{flex:1 1 0!important;}
-  .learn-step-btn{flex:1 1 0!important;min-width:115px;}
-}
-
-@media (min-width:901px){
-  html,body{width:100%;max-width:100%;overflow-x:hidden;}
-  .overview-return-wrap.page-action-bar,.page-content{
-    width:100%!important;
-    max-width:none!important;
-    margin-left:0!important;
-    margin-right:0!important;
-  }
-  .overview-return-wrap.page-action-bar{
-    padding:14px clamp(18px,3vw,38px)!important;
-  }
-  .page-content{
-    padding:0 0 46px!important;
-  }
-  .learning-card{
-    width:100%!important;
-    max-width:none!important;
-    border-left:0!important;
-    border-right:0!important;
-    border-radius:0!important;
-  }
-  .compass-head{
-    width:100%!important;
-    padding-left:clamp(24px,4vw,56px)!important;
-    padding-right:clamp(24px,4vw,56px)!important;
-    border-radius:0!important;
-  }
-  .past-thinking-line,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{
-    width:100%!important;
-    max-width:none!important;
-  }
-  .learn-panel,.ref-wrap,.connections-panel,.notes-panel{
-    padding-left:clamp(22px,4vw,58px)!important;
-    padding-right:clamp(22px,4vw,58px)!important;
-  }
-}
-
 /* ============================================================
    4. Navigation und Tabs
    ============================================================ */
@@ -12301,6 +12219,21 @@ body .topic-page--simple-past .learn-step-nav .step-label{display:block!importan
 body .topic-page--simple-past .overview-return:focus-visible,body .topic-page--simple-past button:focus-visible{outline:3px solid #245ec9!important;outline-offset:3px!important}
 @media(max-width:700px){body .topic-page--simple-past .overview-return-wrap.page-action-bar{padding:12px!important}body .topic-page--simple-past .page-content.topic-page-content{padding:0 12px 36px!important}body .topic-page--simple-past .compass-head.past-compass-head.topic-header{padding:20px 18px!important}body .topic-page--simple-past .compass-mode-grid.topic-tabs{margin:12px!important}body .topic-page--simple-past .compass-mode-grid.topic-tabs .compass-mode-btn{flex:1 1 140px!important}body .topic-page--simple-past .compass-mode-panel{padding:0 12px 18px!important}body .topic-page--simple-past .learn-step-nav .learn-step-btn{flex:1 1 120px!important;max-width:none!important}}
 @media print{body .topic-page--simple-past .page-action-bar{display:none!important}}
+
+/* Innenflächen: Referenzmaß und keine horizontale Schritt-Navigation */
+body .topic-page--simple-past .learning-card.topic-shell,
+body .topic-page--simple-past .compass-mode-panel,
+body .topic-page--simple-past .learn-panel,
+body .topic-page--simple-past .ref-wrap,
+body .topic-page--simple-past .connections-panel,
+body .topic-page--simple-past .notes-panel{box-sizing:border-box!important;min-width:0!important;max-width:100%!important}
+body .topic-page--simple-past .learn-panel,
+body .topic-page--simple-past .ref-wrap,
+body .topic-page--simple-past .connections-panel,
+body .topic-page--simple-past .notes-panel{padding-left:20px!important;padding-right:20px!important}
+body .topic-page--simple-past .learn-step-nav{overflow-x:visible!important;overflow-y:visible!important;-webkit-overflow-scrolling:auto!important}
+body .topic-page--simple-past .learn-step-nav .learn-step-btn{overflow-wrap:break-word!important}
+@media(max-width:700px){body .topic-page--simple-past .learn-panel,body .topic-page--simple-past .ref-wrap,body .topic-page--simple-past .connections-panel,body .topic-page--simple-past .notes-panel{padding-left:12px!important;padding-right:12px!important}}
 </style>
 </body>
 </html>
