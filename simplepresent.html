@@ -650,31 +650,6 @@ body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-
 }
 
 
-/* FINAL LAYOUT PATCH: wider desktop layout + calm return link.
-   Content, exercises, answers and tab structure are unchanged. */
-@media (min-width: 901px){
-  .site-nav-inner,.page-content,.overview-return-wrap{
-    max-width:1320px;
-  }
-  .page-content{
-    width:min(1320px, calc(100% - 48px));
-  }
-  .overview-return-wrap{
-    width:min(1320px, calc(100% - 48px));
-  }
-}
-.overview-return{
-  min-height:36px;
-  line-height:1.2;
-}
-@media (max-width:700px){
-  .page-content,.overview-return-wrap{
-    width:auto;
-    max-width:100%;
-  }
-}
-
-
 .conn-card{color:inherit;text-decoration:none}.conn-open{display:inline-flex;margin-top:6px;border-radius:999px;border:1px solid var(--gray-200);padding:4px 9px;font-size:.82rem;color:var(--blue-dark);background:#fff}
 
 
@@ -952,6 +927,17 @@ body{
 
 
 /* Simple Present – gezieltes Layout nach havegot.html */
+/* Konsistenz: Gestaltungsvorgaben nur in der Referenzsektion.
+   Alle fachlichen Farbcodes und Funktionen bleiben erhalten. */
+body .topic-page--simple-present .overview-return-wrap.page-action-bar,
+body .topic-page--simple-present .page-content.topic-page-content{max-width:1100px!important}
+body .topic-page--simple-present .compass-mode-grid.topic-tabs{overflow:visible!important}
+body .topic-page--simple-present .learn-step-nav{overflow:visible!important}
+@media(max-width:700px){
+body .topic-page--simple-present .page-content.topic-page-content{width:100%!important;max-width:1100px!important}
+body .topic-page--simple-present .overview-return-wrap.page-action-bar{width:100%!important;max-width:1100px!important}
+}
+
 html,body{background:#e7eef4!important;color:#243b55!important}
 body .topic-page--simple-present{background:#e7eef4!important;min-height:100vh}
 body .topic-page--simple-present .overview-return-wrap.page-action-bar{box-sizing:border-box!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;padding:16px 20px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important;border:0!important;background:transparent!important;box-shadow:none!important}
