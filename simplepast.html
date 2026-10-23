@@ -3303,31 +3303,6 @@ body.hausaufgaben-mode .sp-reference-wrap{
   color:#64748b!important;
 }.exam-related{background:#fff;padding:12px 24px;border-top:1px solid #cbd5e1}
 
-/* Einheitliches Kompass-Design · reine Darstellungsanpassung 2026-10-23 */
-:root{--kompass-bg:#e7eef4;--kompass-header-start:#3a7198;--kompass-header-end:#6e8fa9;--kompass-border:#cfdce9;--kompass-width:1160px}
-body{background:#e7eef4!important;color:#243b55}
-.page-content{max-width:1160px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;padding-left:18px!important;padding-right:18px!important}
-.learning-card{border:1px solid #cfdce9!important;border-radius:22px!important;background:#fff!important;box-shadow:none!important;overflow:hidden}
-.compass-head{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;border-bottom:1px solid #cfdce9!important;padding:26px 28px!important}
-.compass-head h1,.compass-head .compass-title,.compass-head .lead,.compass-head .compass-subtitle,.compass-head .eyebrow,.compass-head .compass-kicker{color:#fff!important}
-.hero{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important}
-.hero h1,.hero p{color:#fff!important}
-.compass-mode-btn,.learn-step-btn,.subtab-btn,.nav-link,.overview-return,.action-btn,.tool-btn,.mini-btn{border-radius:999px!important;font-weight:400!important}
-.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"],.subtab-btn[aria-selected="true"]{border-bottom-color:#28699a!important;color:#28699a!important}
-.card,.task{box-shadow:none!important}
-@media(max-width:650px){.page-content{padding-left:12px!important;padding-right:12px!important}.compass-head{padding:22px 18px!important}}
-
-/* Kompass-Layoutabgleich 2026-10-23 — nur CSS */
-html,body{background:#e7eef4!important}body{color:#243b55!important}
-.compass-head,.hero,.head.index-header{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important}
-.compass-head h1,.compass-head .compass-title,.compass-head .compass-subtitle,.compass-head .lead,.compass-head .eyebrow,.compass-head .compass-kicker,.hero h1,.hero p,.head.index-header h1,.head.index-header p{color:#fff!important;font-weight:400!important}
-.page-content,.page-shell,.shell,.learning-card,.hero,.head.index-header{box-sizing:border-box;max-width:1160px!important;margin-left:auto!important;margin-right:auto!important}
-.page-content{width:100%!important}.compass-head{padding:26px 28px!important}
-.compass-mode-grid,.learn-step-nav,.subtab-grid,.thinking-line{background:#f8fafc!important}
-.compass-mode-btn,.learn-step-btn,.subtab-btn,.choice-btn,.mini-btn,.tool-btn,.nav-link,.overview-return,.action-btn{font-weight:400!important;border-radius:999px!important}
-.card,.task{box-shadow:none!important}
-@media(max-width:650px){.compass-head{padding:22px 18px!important}.page-content{padding-left:12px!important;padding-right:12px!important}}
-
 </style>
 <script>
 (function(){
@@ -6376,20 +6351,20 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="overview-return-wrap page-action-bar">
 <a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
 <div aria-label="Seitenaktionen" class="page-action-buttons">
-<button class="ha-btn" id="ha-btn" type="button">📚 Hausaufgaben</button>
-<button class="print-btn spickzettel-btn" id="spickzettel-print-btn" type="button">🧾 Spickzettel drucken</button>
-<button class="print-btn print-page-btn" id="print-page-btn" type="button">🖨️ Diese Seite drucken</button>
+<button class="ha-btn" id="ha-btn" type="button">Hausaufgaben</button>
+<button class="print-btn spickzettel-btn" id="spickzettel-print-btn" type="button">Spickzettel drucken</button>
+<button class="print-btn print-page-btn" id="print-page-btn" type="button">Diese Seite drucken</button>
 </div>
 </div>
 <div class="page-content topic-page-content">
 <article class="learning-card topic-shell">
 <header class="compass-head past-compass-head topic-header">
 <div>
-<p class="compass-kicker">Vergangenheit erkennen</p>
+<p class="compass-kicker">ENGLISCH-KOMPASS · GRAMMATIK</p>
 <h1 class="compass-title">Simple Past</h1>
 <p class="compass-subtitle">So erzählst du, was schon passiert ist.</p>
 </div>
-<span aria-hidden="true" class="compass-emoji">⏰</span>
+
 </header>
 <div aria-label="Denkweg Simple Past" class="past-thinking-line">
 <span>Vergangenheit erkennen</span>
@@ -6399,24 +6374,24 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <nav aria-label="Bereiche" class="compass-mode-grid topic-tabs">
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="past-mode" data-val="learn" type="button">
-<span class="compass-mode-icon">🎯</span><span>Verstehen</span>
-<span class="compass-mode-hint">erst verstehen</span>
+<span>Lernen</span>
+
 </button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="reference" type="button">
-<span class="compass-mode-icon">📖</span><span>Nachschlagen</span>
-<span class="compass-mode-hint">Regeln ansehen</span>
+<span>Nachschlagen</span>
+
 </button>
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="connections" type="button">
-<span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
-<span class="compass-mode-hint">Themen verknüpfen</span>
+<span>Verbindungen</span>
+
 </button>
 <button aria-controls="schreibwerkstatt" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="writingworkshop" type="button">
-<span class="compass-mode-icon">📝</span><span>Schreibwerkstatt</span>
-<span class="compass-mode-hint">eigene Sätze</span>
+<span>Schreibwerkstatt</span>
+
 </button>
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="past-mode" data-val="notes" type="button">
-<span class="compass-mode-icon">✏️</span><span>Notizen</span>
-<span class="compass-mode-hint">Eigene Fragen</span>
+<span>Notizen</span>
+
 </button>
 </nav>
 <!-- LERNEN -->
@@ -6541,22 +6516,6 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 .sp-action-btn{border-radius:999px;border:1px solid #c5d2e3;background:#fff;color:#27415f;font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
 .sp-action-btn:hover{background:#eaf1f8;border-color:#8aa4c0;color:#1e3a8a}
 .sp-action-btn:disabled{opacity:.6;cursor:not-allowed}
-/* EINHEITLICHES HAVEGOT-REFERENZDESIGN · CSS-only */
-:root{--hg-bg:#e7eef4;--hg-head-start:#3a7198;--hg-head-end:#6e8fa9;--hg-border:#cfdce9;--hg-width:1100px;}
-html,body{background:#e7eef4!important;color:#243b55}
-.page-content,.topic-page-content,.topic-page .page-content,.page-content.topic-page-content{max-width:1100px!important;width:100%!important;margin:0 auto!important;padding:18px 20px 0!important}
-.learning-card,.topic-shell{max-width:1100px!important;width:100%!important;margin:0 auto!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;background:#fff!important;overflow:hidden}
-.compass-head,.topic-header,.past-compass-head,.sp-compass-head,.havegot-head-gradient{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;border-radius:14px!important;padding:24px 28px!important;box-shadow:none!important}
-.compass-head h1,.compass-head .compass-title,.compass-head .compass-subtitle,.compass-head .compass-kicker,.compass-head .lead,.compass-head .eyebrow{color:#fff!important}
-.compass-head .chip{color:inherit}
-.overview-return-wrap,.page-action-bar{max-width:1100px!important;margin:0 auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:16px 0!important;flex-wrap:wrap!important}
-.page-action-buttons{display:flex!important;gap:8px!important;flex-wrap:wrap!important}
-.overview-return,.ha-btn,.print-btn,.action-btn,.overview-return-wrap a,.page-action-bar button{display:inline-flex!important;align-items:center!important;min-height:40px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;padding:8px 13px!important;color:#234f74!important;background:#fff!important;text-decoration:none!important;box-shadow:none!important;font-weight:400!important}
-.compass-mode-grid,.topic-tabs,.mode-tabs,.compass-mode-nav{background:#f8fafc!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;max-width:1100px!important}
-.compass-mode-btn,.mode-tabs button,.learn-step-btn,.subtab-btn{font-weight:400!important}
-.card,.task,.topic-card{box-shadow:none!important}
-@media(max-width:700px){.page-content,.topic-page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar{padding:12px!important}.compass-head,.topic-header{padding:20px 18px!important}}
-
 </style>
 <!-- V82 BLOCK 2F KORREKTUR ZIELBEREICH: Denkzentrale/Orientierung. Hier werden die Mixed-Datenpools in Block 2 funktional integriert. -->
 <section aria-labelledby="sp-dz-v14-title" class="sp-dz-v14 simplepast-orientation-shell" id="simplepast-denkzentrale">
@@ -12318,5 +12277,30 @@ html,body{background:#e7eef4!important;color:#243b55}
 })();
 </script>
 
+<style id="simplepast-havegot-visual-v1">
+/* Gemeinsames Referenzlayout: havegot.html. Fachliche Komponenten unberührt. */
+html,body{background:#e7eef4!important;color:#243b55}
+body .topic-page--simple-past{background:#e7eef4!important}
+body .topic-page--simple-past .overview-return-wrap.page-action-bar{box-sizing:border-box!important;max-width:1100px!important;width:100%!important;margin:0 auto!important;padding:16px 20px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;flex-wrap:wrap!important;background:transparent!important;border:0!important;box-shadow:none!important}
+body .topic-page--simple-past .page-action-buttons{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:8px!important}
+body .topic-page--simple-past .overview-return,body .topic-page--simple-past .ha-btn,body .topic-page--simple-past .print-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:8px 13px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;background:#fff!important;color:#234f74!important;box-shadow:none!important;text-decoration:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important}
+body .topic-page--simple-past .page-content.topic-page-content{box-sizing:border-box!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;padding:0 20px 48px!important}
+body .topic-page--simple-past .learning-card.topic-shell{box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin:0!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:14px!important;box-shadow:none!important;overflow:hidden!important}
+body .topic-page--simple-past .compass-head.past-compass-head.topic-header{box-sizing:border-box!important;display:block!important;min-height:0!important;width:100%!important;max-width:100%!important;margin:0!important;padding:24px 28px!important;border:0!important;border-radius:14px 14px 0 0!important;background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;background-image:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;box-shadow:none!important}
+body .topic-page--simple-past .compass-head .compass-kicker,body .topic-page--simple-past .compass-head .compass-title,body .topic-page--simple-past .compass-head .compass-subtitle{color:#fff!important;visibility:visible!important;opacity:1!important;font-weight:400!important}
+body .topic-page--simple-past .compass-head .compass-title{font-size:clamp(24px,3vw,34px)!important;line-height:1.2!important;margin:0 0 7px!important}
+body .topic-page--simple-past .past-thinking-line{box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;margin:0!important;padding:12px 20px!important;border-bottom:1px solid #cfdce9!important;background:#f8fafc!important;color:#243b55!important}
+body .topic-page--simple-past .compass-mode-grid.topic-tabs{box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;align-items:stretch!important;gap:8px!important;width:auto!important;max-width:100%!important;margin:14px 16px!important;padding:12px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#f8fafc!important;box-shadow:none!important;overflow:visible!important}
+body .topic-page--simple-past .compass-mode-grid.topic-tabs .compass-mode-btn{display:inline-flex!important;flex:0 1 auto!important;justify-content:center!important;align-items:center!important;min-width:0!important;min-height:44px!important;margin:0!important;padding:9px 15px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;background:#fff!important;color:#243b55!important;box-shadow:none!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important;white-space:normal!important}
+body .topic-page--simple-past .compass-mode-grid.topic-tabs .compass-mode-btn[aria-pressed="true"]{background:#e8f0f8!important;color:#234f74!important;border-color:#93b3d0!important}
+body .topic-page--simple-past .compass-mode-panel{box-sizing:border-box!important;max-width:100%!important;padding:0 18px 24px!important}
+body .topic-page--simple-past .learn-step-nav{box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:stretch!important;gap:8px!important;width:100%!important;margin:0!important;padding:12px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#f8fafc!important;overflow:visible!important}
+body .topic-page--simple-past .learn-step-nav .learn-step-btn{display:flex!important;flex:1 1 130px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:120px!important;max-width:200px!important;min-height:70px!important;margin:0!important;padding:10px 12px!important;white-space:normal!important;text-align:center!important;border:1px solid #cbd9e8!important;border-radius:12px!important;background:#fff!important;color:#243b55!important;box-shadow:none!important;font:400 13px/1.35 Arial,Helvetica,sans-serif!important}
+body .topic-page--simple-past .learn-step-nav .learn-step-btn[aria-pressed="true"]{background:#e8f0f8!important;border-color:#93b3d0!important;color:#234f74!important}
+body .topic-page--simple-past .learn-step-nav .step-label{display:block!important;white-space:normal!important;text-align:center!important;line-height:1.35!important;font-size:12px!important}
+body .topic-page--simple-past .overview-return:focus-visible,body .topic-page--simple-past button:focus-visible{outline:3px solid #245ec9!important;outline-offset:3px!important}
+@media(max-width:700px){body .topic-page--simple-past .overview-return-wrap.page-action-bar{padding:12px!important}body .topic-page--simple-past .page-content.topic-page-content{padding:0 12px 36px!important}body .topic-page--simple-past .compass-head.past-compass-head.topic-header{padding:20px 18px!important}body .topic-page--simple-past .compass-mode-grid.topic-tabs{margin:12px!important}body .topic-page--simple-past .compass-mode-grid.topic-tabs .compass-mode-btn{flex:1 1 140px!important}body .topic-page--simple-past .compass-mode-panel{padding:0 12px 18px!important}body .topic-page--simple-past .learn-step-nav .learn-step-btn{flex:1 1 120px!important;max-width:none!important}}
+@media print{body .topic-page--simple-past .page-action-bar{display:none!important}}
+</style>
 </body>
 </html>
