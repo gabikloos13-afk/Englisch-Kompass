@@ -32,6 +32,20 @@ body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .le
 @media (max-width:900px){.compass-head{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}.nav-links{display:none}.site-nav-inner{justify-content:center}.page-content{padding:14px 10px}.compass-mode-panel,.learn-panel{padding:18px 14px}.compass-head{padding:22px 18px}}
 @media print{body{background:#fff;color:#000;padding:0}.site-nav,.page-content{display:none!important}body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
 .pg-future-answer{display:block;width:100%;max-width:620px;padding:10px;margin:10px 0;border:1px solid #94a3b8;border-radius:8px}
+
+/* Einheitliches Kompass-Design · reine Darstellungsanpassung 2026-10-23 */
+:root{--kompass-bg:#e7eef4;--kompass-header-start:#3a7198;--kompass-header-end:#6e8fa9;--kompass-border:#cfdce9;--kompass-width:1160px}
+body{background:#e7eef4!important;color:#243b55}
+.page-content{max-width:1160px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;padding-left:18px!important;padding-right:18px!important}
+.learning-card{border:1px solid #cfdce9!important;border-radius:22px!important;background:#fff!important;box-shadow:none!important;overflow:hidden}
+.compass-head{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;border-bottom:1px solid #cfdce9!important;padding:26px 28px!important}
+.compass-head h1,.compass-head .compass-title,.compass-head .lead,.compass-head .compass-subtitle,.compass-head .eyebrow,.compass-head .compass-kicker{color:#fff!important}
+.hero{background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important}
+.hero h1,.hero p{color:#fff!important}
+.compass-mode-btn,.learn-step-btn,.subtab-btn,.nav-link,.overview-return,.action-btn,.tool-btn,.mini-btn{border-radius:999px!important;font-weight:400!important}
+.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"],.subtab-btn[aria-selected="true"]{border-bottom-color:#28699a!important;color:#28699a!important}
+.card,.task{box-shadow:none!important}
+@media(max-width:650px){.page-content{padding-left:12px!important;padding-right:12px!important}.compass-head{padding:22px 18px!important}}
 </style>
 </head>
 <body>
