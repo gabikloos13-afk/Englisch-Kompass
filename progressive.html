@@ -69,7 +69,7 @@ body{font:15px/1.65 Arial,Helvetica,sans-serif!important}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
-<div class="progressive-actions" aria-label="Seitennavigation und Aktionen"><a href="index.html" aria-label="Zur Startseite mit Themenübersicht">← Zurück zur Übersicht</a><div class="progressive-action-links"><button type="button" data-homework-toggle>Hausaufgaben</button><button type="button" data-print-cheatsheet>Spickzettel drucken</button><button type="button" onclick="window.print()">Diese Seite drucken</button></div></div>
+<div class="progressive-actions" aria-label="Seitennavigation und Aktionen"><a href="index.html" aria-label="Zur Startseite mit Themenübersicht">← Zurück zur Übersicht</a><div class="progressive-action-links"><button type="button" data-homework-toggle>Hausaufgaben</button><button type="button" data-print-cheatsheet>Spickzettel drucken</button><button type="button" data-print-page>Diese Seite drucken</button></div></div>
 <main id="main-content" class="page-content">
   <article class="learning-card" data-topic="present-progressive">
     <header class="compass-head">
@@ -497,6 +497,7 @@ body{font:15px/1.65 Arial,Helvetica,sans-serif!important}
 <script>
 (function(){
   var homework=document.querySelector('[data-homework-toggle]'); if(homework) homework.addEventListener('click',function(){ document.body.classList.toggle('hausaufgaben-mode'); var ref=document.querySelector('[data-tab="pg-mode"][data-val="reference"]'); if(document.body.classList.contains('hausaufgaben-mode') && ref) ref.click(); });
+  var pagePrintBtn=document.querySelector('[data-print-page]'); if(pagePrintBtn) pagePrintBtn.addEventListener('click',function(){window.print();});
   var printBtn=document.querySelector('[data-print-cheatsheet]'); if(printBtn) printBtn.addEventListener('click',function(){ document.body.classList.add('print-cheatsheet'); window.print(); setTimeout(function(){document.body.classList.remove('print-cheatsheet');},500); });
 })();
 </script>
