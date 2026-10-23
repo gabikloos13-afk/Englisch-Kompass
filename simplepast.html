@@ -12263,6 +12263,19 @@ body .topic-page--simple-past .topic-panel--writing-workshop .sp-clean-inline-40
 body .topic-page--simple-past .exam-related{box-sizing:border-box!important;width:100%!important;max-width:1100px!important;margin:12px auto 24px!important;padding:12px 20px!important;background:#fff!important;border:1px solid #cfdce9!important;border-radius:12px!important}
 body .topic-page--simple-past .exam-related a{display:inline-flex!important;align-items:center!important;min-height:40px!important;color:#234f74!important;text-decoration:none!important;border-bottom:1px solid #9eb5c9!important}
 @media(max-width:700px){body .topic-page--simple-past .compass-mode-panel[data-panel="past-mode"]{padding:12px!important}body .topic-page--simple-past .topic-panel--connections .connections-panel,body .topic-page--simple-past .topic-panel--notes .notes-panel,body .topic-page--simple-past .topic-panel--reference .sp-reference-wrap,body .topic-page--simple-past .topic-panel--writing-workshop .sp-clean-inline-40{padding:10px!important}body .topic-page--simple-past .exam-related{margin:10px 12px 20px!important;width:calc(100% - 24px)!important}}
+
+/* Verbindungen: lesbares Referenz-Kartenraster statt gedrängter Viererspalten */
+body .topic-page--simple-past .topic-panel--connections .sp-v119-network-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;align-items:stretch!important;width:100%!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-network-card{display:grid!important;grid-template-columns:40px minmax(0,1fr)!important;grid-template-rows:1fr auto!important;gap:12px!important;min-width:0!important;min-height:0!important;padding:20px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-network-card>div:nth-child(2){min-width:0!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-card-actions{grid-column:2!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;flex-wrap:wrap!important;margin:8px 0 0!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-network-card h3{font-size:16px!important;line-height:1.4!important;font-weight:400!important;overflow-wrap:normal!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-network-card p{font-size:14px!important;line-height:1.6!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-mini-compare{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-mini-compare>div{min-width:0!important;overflow-wrap:break-word!important}
+body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-space:normal!important;min-height:38px!important;padding:7px 12px!important;text-align:center!important}
+@media(max-width:740px){body .topic-page--simple-past .topic-panel--connections .sp-v119-network-grid{grid-template-columns:1fr!important}body .topic-page--simple-past .topic-panel--connections .sp-v119-network-card{padding:16px!important}}
+@media(max-width:440px){body .topic-page--simple-past .topic-panel--connections .sp-v119-mini-compare{grid-template-columns:1fr!important}}
 </style>
 </body>
 </html>
