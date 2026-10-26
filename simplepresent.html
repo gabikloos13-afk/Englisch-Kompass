@@ -545,12 +545,13 @@ body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-
 .adv-scale-fill{height:100%;border-radius:var(--radius-pill);transition:width .4s ease,background .4s}
 
 /* Priorität 3: Inline-Styles und direkte JS-Stilzugriffe durch Klassen ersetzt */
-.learn-progress-fill.progress-step-1{width:16.667%}
-.learn-progress-fill.progress-step-2{width:33.333%}
+.learn-progress-fill.progress-step-1{width:14.286%}
+.learn-progress-fill.progress-step-2{width:28.571%}
 .learn-progress-fill.progress-step-3{width:50.0%}
-.learn-progress-fill.progress-step-4{width:66.667%}
-.learn-progress-fill.progress-step-5{width:83.333%}
-.learn-progress-fill.progress-step-6{width:100%}
+.learn-progress-fill.progress-step-4{width:57.143%}
+.learn-progress-fill.progress-step-5{width:71.429%}
+.learn-progress-fill.progress-step-6{width:85.714%}
+.learn-progress-fill.progress-step-7{width:100%}
 .sp-out-person-I{border-color:rgba(37,99,235,.27)}
 .sp-out-person-you{border-color:rgba(8,145,178,.27)}
 .sp-out-person-he{border-color:rgba(234,88,12,.27)}
@@ -1055,6 +1056,10 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 .sp-rules-card p{max-width:100%}
 @media(max-width:760px){.sp-explain-pair,.sp-shift-grid{grid-template-columns:1fr}}
 
+
+/* Der Schreib-Check ist der siebte Lernschritt, bleibt aber inhaltlich unverändert. */
+#schreibcheck.learn-panel{width:100%}
+#schreibcheck .writecheck-panel{max-width:100%}
 </style>
 </head>
 <body>
@@ -1095,10 +1100,6 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <span class="compass-mode-icon">🔗</span><span>Verbindungen</span>
 <span class="compass-mode-hint">Was hängt damit zusammen?</span>
 </button>
-<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="sp-mode" data-val="writecheck" type="button">
-<span class="compass-mode-icon">✍️</span><span>Schreib-Check</span>
-<span class="compass-mode-hint">Kannst du es selbst schreiben?</span>
-</button>
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="sp-mode" data-val="notes" type="button">
 <span class="compass-mode-icon">✏️</span><span>Notizen</span>
 <span class="compass-mode-hint">Meine eigenen Notizen</span>
@@ -1115,6 +1116,7 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <button aria-controls="sp-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="sp-learn" data-val="machine" type="button"><span class="step-badge">4</span><span class="step-label">Verbform-Entscheider</span></button>
 <button aria-controls="sp-learn-trap" aria-pressed="false" class="learn-step-btn" data-tab="sp-learn" data-val="trap" type="button"><span class="step-badge">5</span><span class="step-label">Denkfalle: das -s</span></button>
 <button aria-controls="sp-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="sp-learn" data-val="check" type="button"><span class="step-badge">6</span><span class="step-label">Kann ich's?</span></button>
+<button aria-controls="schreibcheck" aria-pressed="false" class="learn-step-btn" data-tab="sp-learn" data-val="writecheck" type="button"><span class="step-badge">7</span><span class="step-label">Schreib-Check</span></button>
 </nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="sp-progress"></div></div>
 <!-- Schritt 1 -->
@@ -1485,6 +1487,30 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 </section>
 </div>
 </div>
+<!-- ══════════════ SCHREIB-CHECK ══════════════ -->
+<div class="learn-panel" data-panel="sp-learn" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>✍️ Schreib-Check</h3>
+<p>Hier wird alles gemischt: Aussagen, Fragen, Verneinungen, Umformungen und Fehlerkorrektur. Überlege selbst, welche Regel du brauchst. Die Lösung erscheint nicht vor deinem Versuch.</p>
+</div>
+<div class="writecheck-grid" id="writecheck-tasks"><div class="writecheck-task" data-review-id="sp-wc-v2-01" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Meine Schwester spielt jeden Samstag Tennis.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-01" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-01" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-01" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-01"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-02" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Wir mögen keine Spinnen.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-02" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-02" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-02" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-02"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-03" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Spielt Tom nach der Schule Fußball?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-03" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-03" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-03" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-03"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-04" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Sie schaut abends nicht fern.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-04" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-04" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-04" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-04"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-05" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-05"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 5</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Lernen deine Freunde Englisch?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-05" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-05" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-05" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-05"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-06" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span></div><p class="writecheck-prompt">Forme die Aussage in eine Frage um: Emma likes music.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-06" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-06" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-06" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-06"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-07" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span></div><p class="writecheck-prompt">Forme die Aussage in eine Verneinung um: My parents work on Sundays.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-07" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-07" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-07" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-07"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-08" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-08"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 8</span></div><p class="writecheck-prompt">Verbessere den fehlerhaften Satz: Does she plays tennis?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-08" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-08" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-08" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-08"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-09" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-09"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 9</span></div><p class="writecheck-prompt">Verbessere den fehlerhaften Satz: He don't like carrots.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-09" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-09" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-09" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-09"></div></div>
+<div class="writecheck-task" data-review-id="sp-wc-v2-10" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-10"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 10</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Hat sie gestern Fußball gespielt?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-10" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-10" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-10" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-10"></div></div></div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div>
 </div><!-- /LERNEN -->
 <!-- NACHSCHLAGEN -->
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="reference" id="nachschlagen">
@@ -1699,30 +1725,6 @@ Richtig: She doesn’t play.
 </div>
 </div>
 </div><!-- /VERBINDUNGEN -->
-<!-- ══════════════ SCHREIB-CHECK ══════════════ -->
-<div class="compass-mode-panel" data-panel="sp-mode" data-val="writecheck" id="schreibcheck">
-<div class="writecheck-panel">
-<div class="writecheck-intro">
-<h3>✍️ Schreib-Check</h3>
-<p>Hier wird alles gemischt: Aussagen, Fragen, Verneinungen, Umformungen und Fehlerkorrektur. Überlege selbst, welche Regel du brauchst. Die Lösung erscheint nicht vor deinem Versuch.</p>
-</div>
-<div class="writecheck-grid" id="writecheck-tasks"><div class="writecheck-task" data-review-id="sp-wc-v2-01" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Meine Schwester spielt jeden Samstag Tennis.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-01" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-01" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-01" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-01"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-02" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Wir mögen keine Spinnen.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-02" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-02" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-02" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-02"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-03" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Spielt Tom nach der Schule Fußball?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-03" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-03" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-03" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-03"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-04" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Sie schaut abends nicht fern.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-04" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-04" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-04" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-04"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-05" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-05"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 5</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Lernen deine Freunde Englisch?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-05" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-05" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-05" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-05"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-06" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span></div><p class="writecheck-prompt">Forme die Aussage in eine Frage um: Emma likes music.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-06" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-06" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-06" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-06"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-07" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span></div><p class="writecheck-prompt">Forme die Aussage in eine Verneinung um: My parents work on Sundays.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-07" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-07" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-07" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-07"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-08" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-08"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 8</span></div><p class="writecheck-prompt">Verbessere den fehlerhaften Satz: Does she plays tennis?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-08" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-08" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-08" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-08"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-09" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-09"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 9</span></div><p class="writecheck-prompt">Verbessere den fehlerhaften Satz: He don't like carrots.</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-09" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-09" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-09" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-09"></div></div>
-<div class="writecheck-task" data-review-id="sp-wc-v2-10" data-review-source="writecheck" data-topic-id="simplepresent" data-type="stolperstelle" id="write-task-sp-wc-v2-10"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 10</span></div><p class="writecheck-prompt">Schreibe auf Englisch: Hat sie gestern Fußball gespielt?</p><div class="writecheck-input-row"><input aria-describedby="feedback-sp-wc-v2-10" autocomplete="off" class="writecheck-input" id="input-sp-wc-v2-10" placeholder="Deine Antwort auf Englisch" spellcheck="false" type="text"/><button class="writecheck-btn" data-writecheck-id="sp-wc-v2-10" type="button">Prüfen</button></div><div aria-live="polite" class="writecheck-feedback" id="feedback-sp-wc-v2-10"></div></div></div>
-<div class="writecheck-actions">
-<button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
-<button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button>
-</div>
-<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
-</div>
-</div>
 <!-- NOTIZEN -->
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
@@ -2045,7 +2047,7 @@ Richtig: She doesn’t play.
       steps.forEach(function(s, i) { if (s.getAttribute('data-val') === val) idx = i; });
       var bar = document.getElementById('sp-progress');
       if (bar) {
-        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5','progress-step-6');
+        bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5','progress-step-6','progress-step-7');
         bar.classList.add('progress-step-' + (idx + 1));
       }
     }
@@ -2666,7 +2668,7 @@ Richtig: She doesn’t play.
       rules:'rules', regel:'rules', regeln:'rules', 'saetze-bilden':'rules', 'sp-learn-rules':'rules',
       machine:'machine', maschine:'machine', entscheidung:'machine', 'verbform-entscheider':'machine', 'sp-learn-machine':'machine',
       trap:'trap', denkfalle:'trap', fallen:'trap', 'do-does':'trap', 'sp-learn-trap':'trap',
-      check:'check', kannich:'check', 'kann-ich':'check', 'sp-learn-check':'check'
+      check:'check', kannich:'check', 'kann-ich':'check', 'sp-learn-check':'check', writecheck:'writecheck', schreibcheck:'writecheck', 'schreib-check':'writecheck'
     };
     return map[String(learn || '').toLowerCase()] || '';
   }
@@ -2686,11 +2688,12 @@ Richtig: She doesn’t play.
         if (idx === -1) return;
         data[part.slice(0, idx).trim()] = part.slice(idx + 1).trim();
       });
-      return { mode: normaliseMode(data.mode) || 'learn', learn: normaliseLearn(data.learn) || 'entry' };
+      return { mode: normaliseMode(data.mode) === 'writecheck' ? 'learn' : (normaliseMode(data.mode) || 'learn'), learn: normaliseMode(data.mode) === 'writecheck' ? 'writecheck' : (normaliseLearn(data.learn) || 'entry') };
     }
     var mode = normaliseMode(lower);
     var learn = normaliseLearn(lower);
     if (learn && !mode) return {mode:'learn', learn:learn};
+    if (mode === 'writecheck') return {mode:'learn',learn:'writecheck'};
     if (mode) return {mode:mode, learn:'entry'};
     var byId = {
       'sp-learn-entry':{mode:'learn',learn:'entry'},
@@ -2698,7 +2701,7 @@ Richtig: She doesn’t play.
       'sp-learn-machine':{mode:'learn',learn:'machine'},
       'sp-learn-trap':{mode:'learn',learn:'trap'},
       'sp-learn-check':{mode:'learn',learn:'check'},
-      lernen:{mode:'learn',learn:'entry'}, nachschlagen:{mode:'reference',learn:'entry'}, verbindungen:{mode:'connections',learn:'entry'}, schreibcheck:{mode:'writecheck',learn:'entry'}, notizen:{mode:'notes',learn:'entry'}
+      lernen:{mode:'learn',learn:'entry'}, nachschlagen:{mode:'reference',learn:'entry'}, verbindungen:{mode:'connections',learn:'entry'}, schreibcheck:{mode:'learn',learn:'writecheck'}, notizen:{mode:'notes',learn:'entry'}
     };
     return byId[lower] || null;
   }
@@ -2723,11 +2726,11 @@ Richtig: She doesn’t play.
     return true;
   }
   function updateLearnProgress(val){
-    var order = ['entry','rules','does','machine','trap','check'];
+    var order = ['entry','rules','does','machine','trap','check','writecheck'];
     var idx = Math.max(0, order.indexOf(val));
     var bar = qs('#sp-progress');
     if (!bar) return;
-    bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5','progress-step-6');
+    bar.classList.remove('progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5','progress-step-6','progress-step-7');
     bar.classList.add('progress-step-' + (idx + 1));
   }
   function applyHashState(state){
