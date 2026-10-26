@@ -1083,6 +1083,25 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 .sp-entry-rule-pair>div{padding:12px;border-radius:10px;border:1px solid #cfdfd7;background:#f4faf6}
 .sp-entry-rule-pair p{margin:5px 0}
 @media(max-width:620px){.sp-entry-rule-pair{grid-template-columns:1fr}}
+/* Farbige Satzbausteine auch im Einführungsbereich */
+.sp-color-steps{display:grid;gap:10px;margin-top:12px}
+.sp-color-step{padding:12px;border:1px solid var(--gray-200);border-radius:12px;background:#fff}
+.sp-color-step h4{margin:0 0 7px;font-size:.96rem;font-weight:400;color:var(--blue-dark)}
+.sp-chip-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 6px}
+.sp-chip{display:inline-flex;align-items:center;padding:5px 10px;border-radius:10px;border:1px solid var(--gray-200);background:#f6f8fb;font-size:.92rem;line-height:1.2}
+.sp-chip-person{background:#eef2f6}
+.sp-chip-helper{background:#f1ecff;border-color:#d8cbff;color:#5d3ea8}
+.sp-chip-verb{background:#eaf7ef;border-color:#c6ead2;color:#216847}
+.sp-chip-rest{background:#f4f6fa}
+.sp-chip-rule{background:#eef6ff;border-color:#cfe1ff;color:#28587d}
+.sp-pronoun-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.sp-pronoun-group{padding:12px;border:1px solid var(--gray-200);border-radius:12px;background:#fff}
+.sp-pronoun-group h4{margin:0 0 8px;font-size:.95rem;font-weight:400;color:var(--blue-dark)}
+.sp-pronoun-line{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.sp-mini-note{font-size:.92rem;color:var(--gray-700)}
+.sp-compare-line{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+@media(max-width:760px){.sp-s-shift-grid,.sp-s-remember,.sp-time-grid,.sp-pronoun-groups{grid-template-columns:1fr}}
+@media(max-width:560px){.sp-rules-people{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1201,15 +1220,7 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 </div>
 <!-- Schritt 2: Aussagen erst verstehen -->
 <div class="learn-panel" data-panel="sp-learn" data-val="rules" id="sp-learn-rules">
-<section class="sp-rules-intro" aria-labelledby="sp-rules-title">
-<h2 id="sp-rules-title">Aussagen bilden – so geht es</h2>
-<p>Eine Aussage erzählt, <strong>was jemand tut</strong>. Im Simple Present musst du zuerst herausfinden, <strong>wer</strong> etwas tut.</p>
-<div class="sp-explain-steps">
-<div><span class="sp-step-no">1</span><div><h3>Finde die Person</h3><p>Ist es <em>I, you, we, they</em> oder <em>he, she, it</em>? Ein einzelner Name kann ebenfalls dazugehören: <em>Anna</em> = <em>she</em>, <em>Tom</em> = <em>he</em>, <em>the dog</em> = <em>it</em>.</p></div></div>
-<div><span class="sp-step-no">2</span><div><h3>Wähle die richtige Verbform</h3><p><em>I, you, we, they</em> → Verb in der Grundform: <em>play</em>.</p><p><em>He, she, it</em> → in positiven Aussagen meistens <strong>-s</strong>: <em>plays</em>.</p></div></div>
-<div><span class="sp-step-no">3</span><div><h3>Setze den Satz zusammen</h3><p><strong>Person → Verb → Rest</strong>. Die Reihenfolge bleibt gleich; nur die Verbform kann sich ändern.</p></div></div>
-</div>
-</section>
+<section class="sp-rules-intro" aria-labelledby="sp-rules-title"><h2 id="sp-rules-title">So bildest du eine Aussage</h2><p>Im Simple Present steht zuerst die Person, dann das Verb. Entscheidend ist: <strong>Wer macht etwas?</strong></p><div class="sp-color-steps"><div class="sp-color-step"><h4>1. Finde die Person</h4><div class="sp-pronoun-groups"><div class="sp-pronoun-group"><h4>I / you / we / they</h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-person">you</span><span class="sp-chip sp-chip-person">we</span><span class="sp-chip sp-chip-person">they</span></div><p class="sp-mini-note">Bei diesen Personen bleibt das Verb in der Grundform.</p></div><div class="sp-pronoun-group"><h4>he / she / it</h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">he</span><span class="sp-chip sp-chip-person">she</span><span class="sp-chip sp-chip-person">it</span></div><p class="sp-mini-note">Bei diesen Personen bekommt das Verb in einer positiven Aussage meistens ein <strong>-s</strong>.</p></div></div></div><div class="sp-color-step"><h4>2. Wähle die richtige Verbform</h4><div class="sp-compare-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-verb">play</span><span class="sp-chip sp-chip-rest">football.</span></div><div class="sp-compare-line"><span class="sp-chip sp-chip-person">She</span><span class="sp-chip sp-chip-verb">play<strong>s</strong></span><span class="sp-chip sp-chip-rest">football.</span></div><p class="sp-mini-note">Hier kannst du die Form direkt vergleichen: <em>I play</em>, aber <em>She plays</em>.</p></div><div class="sp-color-step"><h4>3. Merksatz</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-rule">Person</span><span class="sp-chip sp-chip-rule">Verb</span><span class="sp-chip sp-chip-rule">Rest</span></div><p class="sp-mini-note">Eine positive Aussage baust du so: <strong>Person → Verb → Rest</strong>.</p></div></div></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-statement">
 <h3 id="sp-rules-statement">Vergleiche zwei Aussagen</h3>
 <div class="sp-explain-pair"><div><span class="sp-small-label">I → Grundform</span><p class="sp-sentence-block"><span>I</span><span class="sp-word-verb">play</span><span>football.</span></p></div><div><span class="sp-small-label">She → Verb mit -s</span><p class="sp-sentence-block"><span>She</span><span class="sp-word-verb">play<strong>s</strong></span><span>football.</span></p></div></div>
@@ -1224,13 +1235,7 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 </div>
 <!-- Schritt 3: do / does bei Fragen und Verneinungen -->
 <div class="learn-panel" data-panel="sp-learn" data-val="does" id="sp-learn-does">
-<section class="sp-rules-intro" aria-labelledby="sp-does-title"><h2 id="sp-does-title">do und does – was ist der Unterschied?</h2>
-<p>Bei Fragen und Verneinungen mit normalen Tätigkeitsverben hilft dir ein zusätzliches Wort: <strong>do</strong> oder <strong>does</strong>. Das nennt man ein <strong>Hilfsverb</strong>.</p>
-<div class="sp-explain-steps">
-<div><span class="sp-step-no">1</span><div><h3>Prüfe die Zeit</h3><p>Geht es um etwas Regelmäßiges in der Gegenwart? Dann bist du beim <strong>Simple Present</strong>. Bei Ereignissen in der Vergangenheit brauchst du stattdessen <strong>did</strong> – dazu kommt unten ein Vergleich.</p></div></div>
-<div><span class="sp-step-no">2</span><div><h3>Prüfe die Person</h3><p><em>I, you, we, they</em> → <strong>do / don't</strong>.</p><p><em>He, she, it</em> → <strong>does / doesn't</strong>.</p></div></div>
-<div><span class="sp-step-no">3</span><div><h3>Prüfe die Satzart</h3><p>Bei einer <strong>Frage</strong> steht <em>do / does</em> am Anfang. Bei einer <strong>Verneinung</strong> steht <em>don't / doesn't</em> nach der Person. Das Tätigkeitsverb bleibt danach in der <strong>Grundform</strong>.</p></div></div></div>
-</section>
+<section class="sp-rules-intro" aria-labelledby="sp-does-title"><h2 id="sp-does-title">Wann brauche ich do und wann does?</h2><p>Bei <strong>Fragen und Verneinungen</strong> mit gewöhnlichen Tätigkeitsverben brauchst du ein Hilfsverb: <em>do</em> oder <em>does</em>. Oben entscheidest du Schritt für Schritt.</p><div class="sp-color-steps"><div class="sp-color-step"><h4>1. Prüfe die Zeit</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-rule">regelmäßig / heute allgemein</span><span class="sp-chip sp-chip-helper">Simple Present</span></div><p class="sp-mini-note">Geht es um etwas Regelmäßiges oder allgemein Gültiges? Dann passt <strong>Simple Present</strong>. Für Vergangenes brauchst du später <em>did</em>.</p></div><div class="sp-color-step"><h4>2. Prüfe die Person</h4><div class="sp-pronoun-groups"><div class="sp-pronoun-group"><h4>I / you / we / they</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-person">you</span><span class="sp-chip sp-chip-person">we</span><span class="sp-chip sp-chip-person">they</span><span class="sp-chip sp-chip-helper">do / don't</span></div></div><div class="sp-pronoun-group"><h4>he / she / it</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-person">he</span><span class="sp-chip sp-chip-person">she</span><span class="sp-chip sp-chip-person">it</span><span class="sp-chip sp-chip-helper">does / doesn't</span></div></div></div></div><div class="sp-color-step"><h4>3. Prüfe die Satzart</h4><div class="sp-compare-line"><span class="sp-chip sp-chip-helper">Do</span><span class="sp-chip sp-chip-person">they</span><span class="sp-chip sp-chip-verb">play</span><span class="sp-chip sp-chip-rest">football?</span></div><div class="sp-compare-line"><span class="sp-chip sp-chip-person">She</span><span class="sp-chip sp-chip-helper">doesn't</span><span class="sp-chip sp-chip-verb">play</span><span class="sp-chip sp-chip-rest">football.</span></div><p class="sp-mini-note">Bei einer Frage steht <em>do / does</em> am Anfang. Bei einer Verneinung steht <em>don't / doesn't</em> nach der Person. Das Tätigkeitsverb bleibt danach in der <strong>Grundform</strong>.</p></div></div></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-negative"><h3 id="sp-rules-negative">Verneinung – etwas passiert nicht</h3>
 <p><strong>Satzbau:</strong> Person → don't / doesn't → Grundform → Rest.</p>
 <div class="sp-explain-pair"><div><span class="sp-small-label">I / you / we / they</span><p class="sp-sentence-block"><span>We</span><span class="sp-word-helper">don't</span><span class="sp-word-verb">like</span><span>spiders.</span></p></div><div><span class="sp-small-label">he / she / it</span><p class="sp-sentence-block"><span>She</span><span class="sp-word-helper">doesn't</span><span class="sp-word-verb">like</span><span>spiders.</span></p></div></div>
