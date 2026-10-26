@@ -838,14 +838,15 @@ body{background:#e7eef4}
       'lernen':'learn','learn':'learn','verstehen':'learn',
       'nachschlagen':'reference','reference':'reference','regel':'reference','regeln':'reference',
       'verbindungen':'connections','connections':'connections',
-      'schreibcheck':'writecheck','schreib-check':'writecheck','writecheck':'writecheck',
+      'schreibcheck':'learn','schreib-check':'learn','writecheck':'learn',
       'notizen':'notes','notes':'notes'
     };
     var learnLegacy = {
       'q-learn-start':'start','start':'start','wozu':'start',
       'q-learn-machine':'machine','machine':'machine','maschine':'machine',
       'q-learn-traps':'traps','traps':'traps','denkfallen':'traps',
-      'q-learn-check':'check','check':'check','kannich':'check'
+      'q-learn-check':'check','check':'check','kannich':'check',
+      'q-learn-writecheck':'writecheck'
     };
     if (raw.indexOf('kompass:') === 0) {
       var body = raw.slice('kompass:'.length);
@@ -854,9 +855,9 @@ body{background:#e7eef4}
         var pair = part.split('=');
         if (pair[0]) out[pair[0]] = dec(pair.slice(1).join('='));
       });
-      return { mode: out.mode || 'learn', learn: out.learn || 'start' };
+      return { mode: out.mode === 'writecheck' ? 'learn' : (out.mode || 'learn'), learn: out.mode === 'writecheck' ? 'writecheck' : (out.learn || 'start') };
     }
-    if (legacy[lower]) return {mode: legacy[lower], learn: getCurrentNav().learn};
+    if (legacy[lower]) return {mode: legacy[lower], learn: /^(schreibcheck|schreib-check|writecheck)$/.test(lower) ? 'writecheck' : getCurrentNav().learn};
     if (learnLegacy[lower]) return {mode:'learn', learn: learnLegacy[lower]};
     var byId = document.getElementById(raw);
     if (byId) {
