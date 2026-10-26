@@ -927,6 +927,70 @@ body{
 .sp-clear-progress-btn:hover,.sp-clear-progress-btn:focus-visible{background:#b91c1c!important;color:#fff!important;border-color:#b91c1c!important}
 @media print{.sp-clear-progress-btn{display:none!important}}
 
+/* Designabgleich 2026-10-14: nur neutrale Anzeigeflaechen.
+   Didaktische Farben von Karten, Reglern und Denkwerkzeugen bleiben erhalten. */
+@media screen {
+  body .page-content .compass-mode-panel {
+    background:#fff!important;
+    background-image:none!important;
+  }
+  body .page-content .compass-mode-panel > :is(
+    .learn-panel,
+    .ref-wrap,
+    .hg-reference-wrap,
+    .sp-reference-wrap,
+    .sp-ref-wrap,
+    .wo-ref-wrap,
+    .connections-panel,
+    .connections-wrap,
+    .writecheck-panel,
+    .notes-panel
+  ){
+    background:#fff!important;
+    background-image:none!important;
+  }
+}
+
+
+
+/* Simple Present – gezieltes Layout nach havegot.html */
+/* Konsistenz: Gestaltungsvorgaben nur in der Referenzsektion.
+   Alle fachlichen Farbcodes und Funktionen bleiben erhalten. */
+body .topic-page--simple-present .overview-return-wrap.page-action-bar,
+body .topic-page--simple-present .page-content.topic-page-content{max-width:1100px!important}
+body .topic-page--simple-present .compass-mode-grid.topic-tabs{overflow:visible!important}
+body .topic-page--simple-present .learn-step-nav{overflow:visible!important}
+@media(max-width:700px){
+body .topic-page--simple-present .page-content.topic-page-content{width:100%!important;max-width:1100px!important}
+body .topic-page--simple-present .overview-return-wrap.page-action-bar{width:100%!important;max-width:1100px!important}
+}
+
+html,body{background:#e7eef4!important;color:#243b55!important}
+body .topic-page--simple-present{background:#e7eef4!important;min-height:100vh}
+body .topic-page--simple-present .overview-return-wrap.page-action-bar{box-sizing:border-box!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;padding:16px 20px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important;border:0!important;background:transparent!important;box-shadow:none!important}
+body .topic-page--simple-present .page-action-buttons{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:8px!important}
+body .topic-page--simple-present .overview-return,body .topic-page--simple-present .ha-btn,body .topic-page--simple-present .print-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:8px 13px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;background:#fff!important;color:#234f74!important;box-shadow:none!important;text-decoration:none!important;font:400 14px/1.3 Arial,Helvetica,sans-serif!important}
+body .topic-page--simple-present .sp-clear-progress-btn{border-color:#fecaca!important;color:#991b1b!important;background:#fff!important}
+body .topic-page--simple-present .page-content.topic-page-content{box-sizing:border-box!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;padding:0 20px 48px!important}
+body .topic-page--simple-present .learning-card.topic-shell{box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin:0!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important;overflow:hidden!important}
+body .topic-page--simple-present .compass-head.sp-compass-head.topic-header{box-sizing:border-box!important;display:block!important;width:100%!important;max-width:100%!important;min-height:0!important;margin:0!important;padding:24px 28px!important;border:0!important;border-radius:14px 14px 0 0!important;background:linear-gradient(135deg,#3a7198,#6e8fa9)!important;background-image:linear-gradient(135deg,#3a7198,#6e8fa9)!important;color:#fff!important;box-shadow:none!important}
+body .topic-page--simple-present .compass-head .compass-kicker,body .topic-page--simple-present .compass-head .compass-title,body .topic-page--simple-present .compass-head .compass-subtitle{color:#fff!important;opacity:1!important;visibility:visible!important;font-weight:400!important}
+body .topic-page--simple-present .compass-head .compass-title{font-size:clamp(24px,3vw,34px)!important;line-height:1.2!important;margin:0 0 7px!important}
+body .topic-page--simple-present .sp-thinking-line{display:flex!important;gap:8px!important;flex-wrap:wrap!important;align-items:center!important;padding:12px 20px!important;margin:0!important;border-bottom:1px solid #cfdce9!important;background:#f8fafc!important;color:#243b55!important}
+body .topic-page--simple-present .sp-thinking-line span{color:#27415f!important;font-size:13px!important}
+body .topic-page--simple-present .compass-mode-grid.topic-tabs{box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;align-items:stretch!important;gap:8px!important;width:auto!important;max-width:100%!important;margin:14px 16px!important;padding:12px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#f8fafc!important;box-shadow:none!important;overflow:visible!important}
+body .topic-page--simple-present .compass-mode-grid.topic-tabs .compass-mode-btn{flex:0 1 auto!important;display:inline-flex!important;justify-content:center!important;align-items:center!important;min-width:0!important;min-height:44px!important;margin:0!important;padding:9px 15px!important;border:1px solid #cbd9e8!important;border-radius:10px!important;background:#fff!important;color:#243b55!important;font:400 14px/1.35 Arial,Helvetica,sans-serif!important;white-space:normal!important;box-shadow:none!important}
+body .topic-page--simple-present .compass-mode-grid.topic-tabs .compass-mode-btn[aria-pressed="true"]{border-color:#93b3d0!important;background:#e8f0f8!important;color:#234f74!important}
+body .topic-page--simple-present .compass-mode-panel{box-sizing:border-box!important;max-width:100%!important;padding:0 18px 24px!important}
+body .topic-page--simple-present .learn-step-nav{box-sizing:border-box!important;display:flex!important;justify-content:center!important;align-items:stretch!important;flex-wrap:wrap!important;gap:8px!important;padding:12px!important;margin:0!important;background:#f8fafc!important;border:1px solid #cfdce9!important;border-radius:14px!important;overflow:visible!important}
+body .topic-page--simple-present .learn-step-nav .learn-step-btn{display:flex!important;flex:1 1 155px!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:5px!important;min-width:130px!important;max-width:230px!important;min-height:70px!important;margin:0!important;padding:10px 12px!important;white-space:normal!important;border:1px solid #cbd9e8!important;border-radius:12px!important;background:#fff!important;color:#243b55!important;font:400 13px/1.35 Arial,Helvetica,sans-serif!important;box-shadow:none!important}
+body .topic-page--simple-present .learn-step-nav .learn-step-btn[aria-pressed="true"]{border-color:#93b3d0!important;background:#e8f0f8!important;color:#234f74!important}
+body .topic-page--simple-present .learn-step-nav .step-label{display:block!important;white-space:normal!important;text-align:center!important;line-height:1.35!important;font-size:12px!important}
+body .topic-page--simple-present .card,body .topic-page--simple-present .tool-card{box-shadow:none!important;border-radius:14px!important}
+body .topic-page--simple-present .overview-return:focus-visible,body .topic-page--simple-present button:focus-visible{outline:3px solid #245ec9!important;outline-offset:3px!important}
+@media(max-width:700px){body .topic-page--simple-present .overview-return-wrap.page-action-bar{padding:12px!important}body .topic-page--simple-present .page-content.topic-page-content{padding:0 12px 35px!important}body .topic-page--simple-present .compass-head.sp-compass-head.topic-header{padding:20px 18px!important}body .topic-page--simple-present .compass-mode-grid.topic-tabs{margin:12px!important}body .topic-page--simple-present .compass-mode-grid.topic-tabs .compass-mode-btn{flex:1 1 140px!important}body .topic-page--simple-present .compass-mode-panel{padding:0 12px 18px!important}body .topic-page--simple-present .learn-step-nav .learn-step-btn{flex:1 1 130px!important;max-width:none!important}}
+@media print{body .topic-page--simple-present .page-action-bar{display:none!important}}
+
 /* Simple Present: verständliche Regeln vor dem Verbform-Entscheider */
 .sp-rules-intro,.sp-rules-card{padding:17px 19px;margin-bottom:13px;background:#fff;border:1px solid var(--sp-card-border);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
 .sp-rules-intro h2,.sp-rules-card h3{font-size:1.08rem;line-height:1.35;font-weight:400;color:var(--blue-dark);margin:0 0 8px}
