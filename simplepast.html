@@ -12371,6 +12371,54 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
    width:100%!important;max-width:100%!important;box-sizing:border-box!important;
  }
 }
+
+/* Abgleich Simple Present: ruhige, einheitliche Interaktionssignale.
+   Nur bestehende Elemente; keine Lernlogik und keine Unterregister entfernt. */
+.topic-page--simple-past .past-term,
+.topic-page--simple-past .past-code,
+.topic-page--simple-past .sp-overview-chip-row span{
+  cursor:default!important;
+  user-select:text;
+  text-decoration:none;
+}
+.topic-page--simple-past .past-term,
+.topic-page--simple-past .past-code{
+  border:1px solid #cbd9e8;
+  border-radius:7px;
+  background:#f1f5f9;
+  color:#334155;
+}
+.topic-page--simple-past .sp-overview-chip-row span{
+  background:#f1f5f9;
+  border-color:#cbd9e8;
+  color:#334155;
+}
+.topic-page--simple-past .past-tool-tabs{
+  background:#f8fafc;
+  border-color:#cbd9e8;
+}
+.topic-page--simple-past .past-tool-tab:focus-visible,
+.topic-page--simple-past .compass-mode-btn:focus-visible,
+.topic-page--simple-past .learn-step-btn:focus-visible,
+.topic-page--simple-past .sp-dz-v14-input:focus-visible{
+  outline:3px solid #2563eb!important;
+  outline-offset:3px;
+}
+.topic-page--simple-past .sp-dz-v14-feedback.is-good{
+  background:#f0fdf4!important;
+  border-color:#86efac!important;
+  color:#166534!important;
+}
+.topic-page--simple-past .sp-dz-v14-feedback.is-careful{
+  background:#fff7ed!important;
+  border-color:#fdba74!important;
+  color:#9a3412!important;
+}
+@media(max-width:700px){
+  .topic-page--simple-past .past-tool-tabs{gap:6px;}
+  .topic-page--simple-past .past-tool-tab{min-height:42px;}
+}
+
 </style>
 </body>
 </html>
