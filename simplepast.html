@@ -7351,6 +7351,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p class="simplepast-learning-lead questions-v64-lead">Questions with did sind Fragen im Simple Past mit normalen Verben. Bei Fragen ohne Fragewort steht <span class="past-code">Did</span> vorne. Bei Fragen mit <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> steht das Fragewort vorne, danach kommt <span class="past-code">did</span>. Nach <span class="past-code">did</span> kommt die <span class="past-code">basic form</span>.</p>
 </div>
 </div>
+<aside class="past-question-bridge" aria-label="Questions with did: Kurzantworten und Fragearten"><h3>Damit du die Frage richtig einordnest</h3><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></aside>
 <nav aria-label="Questions with did" class="past-tool-tabs questions-v64-tabs">
 <button aria-controls="questions-v64-understand" aria-pressed="true" class="past-tool-tab is-active" data-tab="questions-v64" data-val="understand" type="button">Verstehen</button>
 <button aria-controls="questions-v64-machine" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="machine" type="button">Satzmaschine</button>
@@ -12301,6 +12302,17 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
 @media(max-width:430px){
  #verbindungen .sp-connections-two-col .sp-v119-mini-compare{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* Gezielt angeglichene Orientierung: bestehende Werkzeuge bleiben unverändert */
+@media screen{
+ .simplepast-study-tab{font-weight:400!important;border-radius:14px!important}
+ .past-question-bridge{max-width:100%;margin:14px 0 18px;padding:16px 18px;border:1px solid #d6e1e9;border-left:5px solid #5d85a5;border-radius:14px;background:#fff;box-shadow:0 2px 8px rgba(33,56,78,.05)}
+ .past-question-bridge h3,.past-question-bridge h4{font-weight:400!important;color:#305d79;margin:0 0 9px}
+ .past-question-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .past-question-bridge-grid>div{min-width:0;padding:13px;border:1px solid #d8e3ec;border-radius:12px;background:#f8fafc}
+ .past-question-bridge p{margin:7px 0;line-height:1.6}
+}
+@media(max-width:720px){.past-question-bridge-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </body>
 </html>
