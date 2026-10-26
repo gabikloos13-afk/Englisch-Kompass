@@ -1060,6 +1060,17 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 /* Der Schreib-Check ist der siebte Lernschritt, bleibt aber inhaltlich unverändert. */
 #schreibcheck.learn-panel{width:100%}
 #schreibcheck .writecheck-panel{max-width:100%}
+
+/* Verständliche Merkkästen: Regel, Beispiel, Begründung klar getrennt */
+.sp-memory-explained h4{margin:0 0 10px;font-size:1rem;font-weight:400;color:#284f70}
+.sp-memory-explained>p{margin:0 0 10px}
+.sp-memory-rows{display:grid;gap:8px;margin:12px 0}
+.sp-memory-rows>div{display:grid;grid-template-columns:minmax(92px,120px) minmax(0,1fr);gap:12px;align-items:start;background:#fff;border:1px solid #d7e3ec;border-radius:10px;padding:12px}
+.sp-memory-type{font-size:.9rem;color:#335e7c;background:#eaf2f8;border-radius:8px;padding:5px 8px;text-align:center}
+.sp-memory-rows p{margin:0 0 6px!important;line-height:1.55}
+.sp-memory-rows .sp-memory-sentence{font-size:1rem;color:#253f57;margin-bottom:5px!important}
+.sp-memory-bottom{padding:10px 12px;border-radius:9px;background:#f8fbfd;border:1px solid #d7e3ec;margin-top:11px!important}
+@media(max-width:520px){.sp-memory-rows>div{grid-template-columns:1fr;gap:7px}.sp-memory-type{text-align:left;width:max-content}}
 </style>
 </head>
 <body>
@@ -1223,14 +1234,23 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <div><h4>2 · Frage</h4><p class="sp-sentence-block"><span class="sp-word-helper">Doe<strong>s</strong></span><span>she</span><span class="sp-word-verb">play?</span></p><p>Das <strong>-s</strong> steckt in <em>does</em>. Deshalb <em>play</em> ohne -s.</p></div>
 <div><h4>3 · Verneinung</h4><p class="sp-sentence-block"><span>She</span><span class="sp-word-helper">doesn't</span><span class="sp-word-verb">play.</span></p><p><em>Doesn't</em> zeigt ebenfalls <em>she</em>. Deshalb bleibt <em>play</em> die Grundform.</p></div>
 </div>
-<div class="sp-rule-memory"><strong>Merke:</strong> Aussage: <em>She plays.</em> Frage: <em>Does she play?</em> Verneinung: <em>She doesn't play.</em></div>
+<div class="sp-rule-memory sp-memory-explained" aria-label="Merkhilfe zur Endung s">
+<h4>Merke: Wo steht das -s?</h4>
+<p>Schau zuerst, <strong>welche Satzart</strong> du bilden möchtest. Bei <em>he, she, it</em> gilt:</p>
+<div class="sp-memory-rows">
+<div><span class="sp-memory-type">Aussage</span><div><p class="sp-memory-sentence">She <strong>plays</strong>.</p><p>Hier steht <strong>kein does</strong>. Deshalb bekommt das Tätigkeitsverb <em>play</em> selbst ein <strong>-s</strong>.</p></div></div>
+<div><span class="sp-memory-type">Frage</span><div><p class="sp-memory-sentence"><strong>Does</strong> she play?</p><p><em>Does</em> zeigt schon die Form für <em>she</em>. Deshalb bleibt das Tätigkeitsverb <em>play</em> <strong>ohne -s</strong>.</p></div></div>
+<div><span class="sp-memory-type">Verneinung</span><div><p class="sp-memory-sentence">She <strong>doesn't</strong> play.</p><p><em>Doesn't</em> enthält <em>does not</em> und zeigt ebenfalls die Form für <em>she</em>. Deshalb bleibt <em>play</em> wieder <strong>ohne -s</strong>.</p></div></div>
+</div>
+<p class="sp-memory-bottom"><strong>Entscheidungsregel:</strong> Steht <em>does</em> oder <em>doesn't</em> im Satz? Dann verwende beim Tätigkeitsverb immer die Grundform. Schreibe also <em>Does she play?</em> und niemals <em>Does she plays?</em>.</p>
+</div>
 <div class="sp-explain-pair"><div class="sp-wrong-box"><span class="sp-small-label">Nicht so</span><p>Does she <strong>plays</strong>?</p><p>She doesn't <strong>plays</strong>.</p></div><div class="sp-right-box"><span class="sp-small-label">Sondern so</span><p>Does she <strong>play</strong>?</p><p>She doesn't <strong>play</strong>.</p></div></div>
 <p><strong>Ausnahme:</strong> Bei <em>to be</em> nutzt du diese Regel nicht. Es heißt <em>Is she happy?</em> – nicht <em>Does she be happy?</em>.</p>
 </section>
 <section class="sp-rules-card sp-tense-compare" aria-labelledby="sp-tense-compare-title"><h3 id="sp-tense-compare-title">Do, does oder did? Erst auf die Zeit schauen!</h3>
 <p><strong>Do / does</strong> gehören zur Gegenwart (<strong>Simple Present</strong>); <strong>did</strong> gehört zur Vergangenheit (<strong>Simple Past</strong>). Bei <em>did</em> ist die Person egal.</p>
 <div class="sp-explain-pair"><div class="sp-present-box"><h4>Gegenwart · regelmäßig</h4><p><strong>Do</strong> you play football?</p><p><strong>Does</strong> she play football?</p><p>She <strong>doesn't</strong> play football.</p><p class="sp-small-label">I / you / we / they → do<br>he / she / it → does</p></div><div class="sp-past-box"><h4>Vergangenheit · gestern</h4><p><strong>Did</strong> you play football yesterday?</p><p><strong>Did</strong> she play football yesterday?</p><p>She <strong>didn't</strong> play football yesterday.</p><p class="sp-small-label">Bei allen Personen → did</p></div></div>
-<div class="sp-rule-memory"><strong>Grundform-Regel:</strong> Nach <em>does, doesn't, did, didn't</em> steht das Tätigkeitsverb in der Grundform. <em>Does she play?</em> und <em>Did she play?</em> sind richtig.</div>
+<div class="sp-rule-memory sp-memory-explained" aria-label="Merkhilfe zur Grundform bei Hilfsverben"><h4>Merke: Das Hilfsverb zeigt die Zeit – das Tätigkeitsverb bleibt einfach.</h4><div class="sp-memory-rows"><div><span class="sp-memory-type">Gegenwart</span><div><p class="sp-memory-sentence"><strong>Does</strong> she <strong>play</strong>?</p><p><em>Does</em> zeigt Simple Present und <em>she</em>. Deshalb heißt das Tätigkeitsverb <em>play</em>, nicht <em>plays</em>.</p></div></div><div><span class="sp-memory-type">Vergangenheit</span><div><p class="sp-memory-sentence"><strong>Did</strong> she <strong>play</strong>?</p><p><em>Did</em> zeigt Simple Past. Deshalb heißt das Tätigkeitsverb <em>play</em>, nicht <em>played</em>.</p></div></div></div><p class="sp-memory-bottom"><strong>Für beide Zeiten gilt:</strong> Nach <em>does, doesn't, did</em> und <em>didn't</em> steht das Tätigkeitsverb in der <strong>Grundform</strong>.</p></div>
 <details class="sp-rules-reveal"><summary>Denkfrage aufdecken: „yesterday“ – does oder did?</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtige Antwort</p><p class="sp-sentence-block"><span class="sp-word-helper">Did</span><span>she</span><span class="sp-word-verb">play</span><span>yesterday?</span></p><p><strong>Schritt 1:</strong> <em>Yesterday</em> bedeutet gestern.</p><p><strong>Schritt 2:</strong> Der Satz steht in der Vergangenheit: Simple Past.</p><p><strong>Schritt 3:</strong> In einer Vergangenheitsfrage nimmst du <em>did</em>, bei jeder Person.</p></div></details>
 <p>Die Vergangenheitsformen werden im Thema <a href="simplepast.html">Simple Past</a> ausführlicher behandelt.</p>
 </section>
