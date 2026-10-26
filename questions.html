@@ -269,6 +269,17 @@ body{background:#e7eef4}
 #q-learn-subject .q-application>p{margin:0 0 9px}
 #q-learn-subject .q-teacher-note{padding:12px;border-left:4px solid #7294ae;border-radius:8px;background:#eef5fa}
 #q-learn-subject .q-comparison p{max-width:100%}
+
+/* Questions: sieben Lernreiter und gemeinsames Schreibkarten-Layout */
+.compass-mode-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.learn-step-nav{grid-template-columns:repeat(7,minmax(0,1fr))}
+#schreibcheck.learn-panel{background:#e7eef4;padding:22px 20px}
+#schreibcheck .writecheck-panel{background:transparent;padding:0}
+#schreibcheck .write-task,#schreibcheck .writecheck-panel>.panel-intro,#schreibcheck .write-summary{background:#fff;border:1px solid #d6e1e9;border-radius:14px;padding:16px;margin-bottom:12px}
+#schreibcheck .writecheck-panel>.panel-intro{padding:14px 17px}
+.q-reference-map{margin:12px 0}
+@media(max-width:990px){.learn-step-nav{display:flex;overflow-x:auto}.learn-step-btn{flex:0 0 145px}}
+@media(max-width:650px){.compass-mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -295,14 +306,14 @@ body{background:#e7eef4}
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="q-main" data-val="learn" type="button"><span>🎯 Lernen</span><span class="mode-hint">Frage-Maschine</span></button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="reference" type="button"><span>📖 Nachschlagen</span><span class="mode-hint">Spickzettel</span></button>
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="connections" type="button"><span>🔗 Verbindungen</span><span class="mode-hint">Nachbarthemen</span></button>
-<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="writecheck" type="button"><span>✍️ Schreib-Check</span><span class="mode-hint">selbst schreiben</span></button>
+
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="notes" type="button"><span>✏️ Notizen</span><span class="mode-hint">Lernjournal</span></button>
 </nav>
 <section class="compass-mode-panel is-active" data-panel="q-main" data-val="learn" id="lernen">
-<nav aria-label="Lernschritte" class="learn-step-nav"><button aria-controls="q-learn-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="q-learn" data-val="start" type="button"><span class="step-badge">1</span><span>Wozu?</span></button><button aria-controls="q-learn-rules" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="rules" type="button"><span class="step-badge">2</span><span>Fragen verstehen</span></button><button aria-controls="q-learn-subject" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="subject" type="button"><span class="step-badge">3</span><span>Subjekt oder Objekt?</span></button><button aria-controls="q-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="machine" type="button"><span class="step-badge">4</span><span>Frage-Maschine</span></button><button aria-controls="q-learn-traps" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="traps" type="button"><span class="step-badge">5</span><span>Denkfallen</span></button><button aria-controls="q-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="check" type="button"><span class="step-badge">6</span><span>Kann ich's?</span></button></nav>
+<nav aria-label="Lernschritte" class="learn-step-nav"><button aria-controls="q-learn-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="q-learn" data-val="start" type="button"><span class="step-badge">1</span><span>Wozu?</span></button><button aria-controls="q-learn-rules" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="rules" type="button"><span class="step-badge">2</span><span>Fragen verstehen</span></button><button aria-controls="q-learn-subject" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="subject" type="button"><span class="step-badge">3</span><span>Subjekt oder Objekt?</span></button><button aria-controls="q-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="machine" type="button"><span class="step-badge">4</span><span>Frage-Maschine</span></button><button aria-controls="q-learn-traps" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="traps" type="button"><span class="step-badge">5</span><span>Denkfallen</span></button><button aria-controls="q-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="check" type="button"><span class="step-badge">6</span><span>Kann ich's?</span></button><button aria-controls="schreibcheck" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="writecheck" type="button"><span class="step-badge">7</span><span>Schreib-Check</span></button></nav>
 <div class="learn-panel is-active" data-panel="q-learn" data-val="start" id="q-learn-start"><section class="q-intro-card"><h2>Wozu brauche ich Fragen?</h2><p>Mit einer Frage möchtest du etwas wissen. Du fragst zum Beispiel nach einer Person, einem Ort, einem Zeitpunkt oder einer Handlung.</p><div class="q-example-grid"><div><h3>Ja-oder-Nein-Frage</h3><p class="q-sentence"><span class="q-aux">Does</span><span>she</span><span class="q-verb">play</span><span>tennis?</span></p><p>Du kannst mit <em>Yes</em> oder <em>No</em> antworten.</p></div><div><h3>Frage mit Fragewort</h3><p class="q-sentence"><span class="q-question">Where</span><span class="q-aux">does</span><span>she</span><span class="q-verb">play</span><span>tennis?</span></p><p>Du möchtest etwas Genaueres wissen: <em>Wo?</em></p></div></div></section><section class="q-explain-card"><h3>Wichtig: Erst herausfinden, wonach gefragt wird</h3><div class="q-comparison"><div><p><strong>Who plays tennis?</strong></p><p>Wer spielt? <strong>Who</strong> ist selbst die handelnde Person. Deshalb steht <strong>kein does</strong>.</p></div><div><p><strong>Who does Mia meet?</strong></p><p>Wen trifft Mia? <strong>Mia</strong> handelt. Deshalb brauchst du bei der Objektfrage <strong>does</strong>.</p></div></div><p>Die beiden Arten lernst du in Reiter 3 ausführlich kennen.</p></section></div>
 <div class="learn-panel" data-panel="q-learn" data-val="rules" id="q-learn-rules">
-<section class="q-intro-card"><h2>Fragen mit do und does bilden</h2><p>Für viele Fragen mit normalen Tätigkeitsverben im <strong>Simple Present</strong> brauchst du ein Hilfsverb. Bei <strong>to be</strong> gilt eine andere Regel.</p><div class="q-steps"><div><b>1</b><section><h3>Frageart wählen</h3><p>Eine Ja-/Nein-Frage beginnt meist direkt mit <em>do/does</em>. Bei einer Frage nach Ort, Zeit oder Grund steht das Fragewort davor.</p></section></div><div><b>2</b><section><h3>Person prüfen</h3><p><em>I, you, we, they</em> → <strong>do</strong>; <em>he, she, it</em> → <strong>does</strong>.</p></section></div><div><b>3</b><section><h3>Verb in Grundform schreiben</h3><p><em>Does Mia play?</em> – nicht <em>Does Mia plays?</em>. In <em>does</em> steckt schon die Form für <em>she</em>.</p></section></div></div></section>
+<section class="q-intro-card"><h2>Fragen mit do und does bilden</h2><p>Für <strong>Ja-/Nein-Fragen</strong> und viele <strong>Objektfragen</strong> mit gewöhnlichen Verben im Simple Present brauchst du <em>do/does</em>. <strong>Subjektfragen</strong> und Fragen mit <em>to be</em> funktionieren anders. Entscheide zuerst, welche Frageart du hast.</p><div class="q-steps"><div><b>1</b><section><h3>Frageart wählen</h3><p>Eine Ja-/Nein-Frage beginnt meist direkt mit <em>do/does</em>. Bei einer Frage nach Ort, Zeit oder Grund steht das Fragewort davor.</p></section></div><div><b>2</b><section><h3>Person prüfen</h3><p><em>I, you, we, they</em> → <strong>do</strong>; <em>he, she, it</em> → <strong>does</strong>.</p></section></div><div><b>3</b><section><h3>Verb in Grundform schreiben</h3><p><em>Does Mia play?</em> – nicht <em>Does Mia plays?</em>. In <em>does</em> steckt schon die Form für <em>she</em>.</p></section></div></div></section>
 <section class="q-explain-card"><h3>So sehen die Satzbausteine aus</h3><p class="q-sentence"><span class="q-question">Where</span><span class="q-aux">does</span><span class="q-person">Mia</span><span class="q-verb">play</span><span>football?</span></p><p>Ein Fragewort wie <em>where</em> steht ganz vorne. Bei einer Frage ohne Fragewort beginnst du direkt mit <em>does</em>.</p><div class="q-comparison"><div><h4>Kurzantwort mit do</h4><p>Do they play? → <strong>Yes, they do.</strong> / <strong>No, they don't.</strong></p></div><div><h4>Kurzantwort mit does</h4><p>Does she play? → <strong>Yes, she does.</strong> / <strong>No, she doesn't.</strong></p></div></div></section>
 <section class="q-explain-card"><h3>Grenze: to be</h3><p>Bei <em>am, is, are</em> benutzt du kein <em>do/does</em>: <strong>Is she happy?</strong> und nicht <em>Does she is happy?</em></p></section></div>
 <div class="learn-panel" data-panel="q-learn" data-val="subject" id="q-learn-subject">
@@ -321,8 +332,8 @@ body{background:#e7eef4}
 </div>
 <div class="learn-panel" data-panel="q-learn" data-val="machine" id="q-learn-machine">
 <h2 class="panel-title">Frage-Maschine</h2>
-<p class="panel-intro">Wähle die Teile aus. Entscheide selbst, ob do oder does passt. Dann baust du die Frage.</p>
-<div class="machine-box" id="question-machine">
+<p class="panel-intro">Diese Maschine übt gezielt Ja-/Nein-Fragen und Fragen mit Fragewort und <em>do/does</em>. Sie bildet keine Subjektfragen oder Fragen mit <em>to be</em>. Entscheide die Frageart zuerst mit der Übersicht darunter.</p>
+<section class="q-explain-card q-question-switch" aria-labelledby="q-switch-title"><h3 id="q-switch-title">Welche Frage muss ich bilden?</h3><div class="q-steps"><div><b>1</b><section><h3>Zeit erkennen</h3><p>Regelmäßig oder allgemein? <strong>Simple Present.</strong> Gestern? <strong>Simple Past.</strong> Gerade jetzt? Häufig <strong>Present Progressive.</strong></p></section></div><div><b>2</b><section><h3>Verbart erkennen</h3><p><em>To be</em> bildet Fragen mit <strong>am/is/are</strong> beziehungsweise <strong>was/were</strong>; <em>have got</em> verwendet <strong>have/has</strong>. Bei gewöhnlichen Verben prüfst du <em>do/does/did</em>.</p></section></div><div><b>3</b><section><h3>Wonach wird gefragt?</h3><p>Gesucht ist der Handelnde? <strong>Subjektfrage.</strong> Gesucht ist eine andere Person oder Sache? <strong>Objektfrage.</strong> Reicht Ja oder Nein? <strong>Entscheidungsfrage.</strong></p></section></div></div><div class="q-comparison"><div class="q-subject-card"><h4>Subjektfrage</h4><p class="q-sentence"><span class="q-question">Who</span><span class="q-verb">plays</span><span>tennis?</span></p><p>Who ist selbst das Subjekt. Kein does.</p></div><div class="q-object-card"><h4>Objektfrage</h4><p class="q-sentence"><span class="q-question">Who</span><span class="q-aux">does</span><span class="q-person">Mia</span><span class="q-verb">meet?</span></p><p>Mia ist Subjekt. Does + Grundform.</p></div><div><h4>Ja-/Nein-Frage</h4><p class="q-sentence"><span class="q-aux">Does</span><span>Mia</span><span class="q-verb">play?</span></p><p>Normales Verb im Simple Present.</p></div><div><h4>Frage mit to be</h4><p class="q-sentence"><span class="q-aux">Is</span><span>Mia</span><span>happy?</span></p><p>Kein do/does.</p></div></div><p><strong>Andere Zeiten:</strong> <em>Did Mia play?</em> (Simple Past), <em>Is Mia playing?</em> (Present Progressive). Vergleiche jeweils die Verbform.</p></section><div class="machine-box" id="question-machine">
 <div class="choice-group">
 <p class="choice-label">1. Fragewort</p>
 <div class="choice-row" data-choice-group="qword">
@@ -394,6 +405,7 @@ body{background:#e7eef4}
 <div class="feedback">is ist to be. Bei am, is, are brauchst du kein do oder does.</div>
 <button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button>
 </article>
+<article class="trap-card" data-trap="4"><p class="trap-question">Du fragst nach der handelnden Person. Welche Frage ist richtig?</p><div class="trap-options"><button class="trap-option" data-correct="false" type="button">Who does play football?</button><button class="trap-option" data-correct="true" type="button">Who plays football?</button></div><div class="feedback">Who ist das Subjekt. In dieser normalen Subjektfrage steht kein does.</div><button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button></article><article class="trap-card" data-trap="5"><p class="trap-question">Mia trifft Leo. Du fragst nach Leo. Welche Frage ist richtig?</p><div class="trap-options"><button class="trap-option" data-correct="false" type="button">Who Mia meets?</button><button class="trap-option" data-correct="true" type="button">Who does Mia meet?</button></div><div class="feedback">Mia ist das Subjekt. Who fragt nach dem Objekt, deshalb does + meet.</div><button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button></article><article class="trap-card" data-trap="6"><p class="trap-question">Die Handlung ist gerade jetzt. Welche Frage passt?</p><div class="trap-options"><button class="trap-option" data-correct="false" type="button">Does Mia playing?</button><button class="trap-option" data-correct="true" type="button">Is Mia playing?</button></div><div class="feedback">Im Present Progressive verwendest du is + Verb-ing, nicht does + -ing.</div><button class="secondary-btn" data-reset-trap="" type="button">Zurücksetzen</button></article>
 </div>
 </div>
 <div class="learn-panel" data-panel="q-learn" data-val="check" id="q-learn-check">
@@ -429,6 +441,62 @@ body{background:#e7eef4}
 <button class="choice-btn" data-status="frage" type="button">Frage offen</button>
 </div>
 <p aria-live="polite" class="feedback" id="can-status-feedback"></p>
+</div>
+<section class="q-explain-card"><h3>Kannst du die Frageart erkennen?</h3><p>Entscheide erst selbst. Öffne danach die Erklärung.</p><div class="q-comparison"><div><p><strong>Who reads the book?</strong></p><details class="q-reveal"><summary>Frageart und Grund aufdecken</summary><p>Subjektfrage: Who ist die lesende Person. Kein does.</p></details></div><div><p><strong>What does Anna read?</strong></p><details class="q-reveal"><summary>Frageart und Grund aufdecken</summary><p>Objektfrage: Anna handelt. What fragt nach dem Buch; does + read.</p></details></div><div><p><strong>Were they late?</strong></p><details class="q-reveal"><summary>Frageart und Grund aufdecken</summary><p>Frage mit to be im Simple Past: were, kein did.</p></details></div><div><p><strong>Did he play yesterday?</strong></p><details class="q-reveal"><summary>Frageart und Grund aufdecken</summary><p>Simple Past mit einem gewöhnlichen Verb: did + Grundform play.</p></details></div></div></section>
+</div>
+<div class="learn-panel" data-panel="q-learn" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<h2 class="panel-title">Schreib-Check</h2>
+<p class="panel-intro">Schreibe zuerst deine Frage. Prüfe danach. Hilfe und Lösung werden erst nach dem Prüfen frei.</p>
+<div class="grid" id="write-task-grid">
+<article class="write-task" data-review-id="q-wc-01" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 1</span><span class="write-skill">Frage ohne Fragewort</span></div>
+<p class="write-prompt">Schreibe die Frage: Spielst du Tennis?</p>
+<label for="q-wc-01-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-01-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">you gehört zu I/you/we/they. Nimm do und die Grundform.</div><div class="solution-box">Do you play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-02" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 2</span><span class="write-skill">Frage mit Where</span></div>
+<p class="write-prompt">Schreibe die Frage: Wo spielt sie Tennis?</p>
+<label for="q-wc-02-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-02-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">Where steht vorne. she braucht does. Das Verb bleibt play.</div><div class="solution-box">Where does she play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-03" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 3</span><span class="write-skill">Frage mit How often</span></div>
+<p class="write-prompt">Schreibe die Frage: Wie oft schaut er TV?</p>
+<label for="q-wc-03-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-03-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">How often steht vorne. he braucht does. Nach does steht watch.</div><div class="solution-box">How often does he watch TV?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-04" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 4</span><span class="write-skill">Frage mit When</span></div>
+<p class="write-prompt">Schreibe die Frage: Wann gehen sie zur Schule?</p>
+<label for="q-wc-04-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-04-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">When steht vorne. they braucht do. Danach steht go.</div><div class="solution-box">When do they go to school?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-05" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 5</span><span class="write-skill">Fehler reparieren</span></div>
+<p class="write-prompt">Verbessere: Does she plays tennis?</p>
+<label for="q-wc-05-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-05-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">Does trägt das -s. Das Verb darf kein -s mehr haben.</div><div class="solution-box">Does she play tennis?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-06" data-topic-id="questions">
+<div class="write-task-head"><span>Aufgabe 6</span><span class="write-skill">Frage mit What</span></div>
+<p class="write-prompt">Schreibe die Frage: Was spielt sie?</p>
+<label for="q-wc-06-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-06-input" placeholder="Deine Frage ..." type="text"/>
+<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
+<div class="help-box">What steht vorne. she braucht does. Nach does steht play.</div><div class="solution-box">What does she play?</div><div aria-live="polite" class="feedback"></div>
+</article>
+<article class="write-task" data-review-id="q-wc-07" data-topic-id="questions"><div class="write-task-head"><span>Aufgabe 7</span><span class="write-skill">Subjektfrage</span></div><p class="write-prompt">Leo likes Emma. Frage: Wer mag Emma?</p><label for="q-wc-07-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-07-input" placeholder="Deine Frage ..." type="text"/><div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div><div class="help-box">Gesucht ist Leo, also das Subjekt. Who + likes, ohne does.</div><div class="solution-box">Who likes Emma?</div><div aria-live="polite" class="feedback"></div></article>
+<article class="write-task" data-review-id="q-wc-08" data-topic-id="questions"><div class="write-task-head"><span>Aufgabe 8</span><span class="write-skill">Objektfrage</span></div><p class="write-prompt">Leo likes Emma. Frage: Wen mag Leo?</p><label for="q-wc-08-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-08-input" placeholder="Deine Frage ..." type="text"/><div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div><div class="help-box">Leo handelt. Nach dem Objekt fragen: Who + does + Leo + like.</div><div class="solution-box">Who does Leo like?</div><div aria-live="polite" class="feedback"></div></article>
+<article class="write-task" data-review-id="q-wc-09" data-topic-id="questions"><div class="write-task-head"><span>Aufgabe 9</span><span class="write-skill">Present Progressive</span></div><p class="write-prompt">Schreibe auf Englisch: Spielt Mia gerade jetzt Tennis?</p><label for="q-wc-09-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-09-input" placeholder="Deine Frage ..." type="text"/><div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div><div class="help-box">Gerade jetzt: is + Mia + playing, kein does.</div><div class="solution-box">Is Mia playing tennis now?</div><div aria-live="polite" class="feedback"></div></article>
+<article class="write-task" data-review-id="q-wc-10" data-topic-id="questions"><div class="write-task-head"><span>Aufgabe 10</span><span class="write-skill">Simple Past</span></div><p class="write-prompt">Schreibe auf Englisch: Spielte Leo gestern Tennis?</p><label for="q-wc-10-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-10-input" placeholder="Deine Frage ..." type="text"/><div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div><div class="help-box">Gestern: did + Leo + Grundform play.</div><div class="solution-box">Did Leo play tennis yesterday?</div><div aria-live="polite" class="feedback"></div></article></div>
+<div class="write-actions"><button class="secondary-btn" id="check-all" type="button">Alle prüfen</button><button class="danger-btn" id="reset-writecheck" type="button">Schreib-Check zurücksetzen</button></div>
+<div aria-live="polite" class="write-summary" id="write-summary"></div>
 </div>
 </div>
 </section>
@@ -476,6 +544,7 @@ body{background:#e7eef4}
 </div>
 </section>
 </div>
+<section class="q-explain-card q-reference-map"><h3>Fragearten unterscheiden – ein Spickzettel</h3><div class="q-comparison"><div class="q-subject-card"><h4>Subjektfrage</h4><p><strong>Who plays football?</strong></p><p>Who handelt selbst: gewöhnlich kein do/does.</p></div><div class="q-object-card"><h4>Objektfrage</h4><p><strong>Who does Mia meet?</strong></p><p>Eine andere Person handelt: does + Grundform.</p></div><div><h4>to be</h4><p><strong>Is he tired?</strong></p><p>am/is/are stehen vorne, ohne do/does.</p></div><div><h4>Simple Past</h4><p><strong>Did she play?</strong></p><p>Did + Grundform. Bei to be: Was she tired?</p></div><div><h4>Present Progressive</h4><p><strong>Is she playing?</strong></p><p>am/is/are + Verb-ing.</p></div><div><h4>have got</h4><p><strong>Has she got a dog?</strong></p><p>Have/has steht in der Frage vor der Person.</p></div></div><p>Die allgemeinen Satzmuster mit do/does gelten für normale Ja-/Nein- und Objektfragen, nicht automatisch für jede Frage mit who oder what.</p></section>
 </section>
 <section class="compass-mode-panel" data-panel="q-main" data-val="connections" id="verbindungen">
 <h2 class="panel-title">Verbindungen</h2>
@@ -497,58 +566,6 @@ body{background:#e7eef4}
 <span aria-hidden="true" class="conn-icon">🧩</span>
 <div><h3 class="conn-title">to be</h3><p class="conn-text">am, is, are fragen ohne do/does. Das ist nur die Grenze zu Questions.</p><span class="conn-open">to be öffnen</span></div>
 </a>
-</div>
-</section>
-<section class="compass-mode-panel" data-panel="q-main" data-val="writecheck" id="schreibcheck">
-<div class="writecheck-panel">
-<h2 class="panel-title">Schreib-Check</h2>
-<p class="panel-intro">Schreibe zuerst deine Frage. Prüfe danach. Hilfe und Lösung werden erst nach dem Prüfen frei.</p>
-<div class="grid" id="write-task-grid">
-<article class="write-task" data-review-id="q-wc-01" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 1</span><span class="write-skill">Frage ohne Fragewort</span></div>
-<p class="write-prompt">Schreibe die Frage: Spielst du Tennis?</p>
-<label for="q-wc-01-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-01-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">you gehört zu I/you/we/they. Nimm do und die Grundform.</div><div class="solution-box">Do you play tennis?</div><div aria-live="polite" class="feedback"></div>
-</article>
-<article class="write-task" data-review-id="q-wc-02" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 2</span><span class="write-skill">Frage mit Where</span></div>
-<p class="write-prompt">Schreibe die Frage: Wo spielt sie Tennis?</p>
-<label for="q-wc-02-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-02-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">Where steht vorne. she braucht does. Das Verb bleibt play.</div><div class="solution-box">Where does she play tennis?</div><div aria-live="polite" class="feedback"></div>
-</article>
-<article class="write-task" data-review-id="q-wc-03" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 3</span><span class="write-skill">Frage mit How often</span></div>
-<p class="write-prompt">Schreibe die Frage: Wie oft schaut er TV?</p>
-<label for="q-wc-03-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-03-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">How often steht vorne. he braucht does. Nach does steht watch.</div><div class="solution-box">How often does he watch TV?</div><div aria-live="polite" class="feedback"></div>
-</article>
-<article class="write-task" data-review-id="q-wc-04" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 4</span><span class="write-skill">Frage mit When</span></div>
-<p class="write-prompt">Schreibe die Frage: Wann gehen sie zur Schule?</p>
-<label for="q-wc-04-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-04-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">When steht vorne. they braucht do. Danach steht go.</div><div class="solution-box">When do they go to school?</div><div aria-live="polite" class="feedback"></div>
-</article>
-<article class="write-task" data-review-id="q-wc-05" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 5</span><span class="write-skill">Fehler reparieren</span></div>
-<p class="write-prompt">Verbessere: Does she plays tennis?</p>
-<label for="q-wc-05-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-05-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">Does trägt das -s. Das Verb darf kein -s mehr haben.</div><div class="solution-box">Does she play tennis?</div><div aria-live="polite" class="feedback"></div>
-</article>
-<article class="write-task" data-review-id="q-wc-06" data-topic-id="questions">
-<div class="write-task-head"><span>Aufgabe 6</span><span class="write-skill">Frage mit What</span></div>
-<p class="write-prompt">Schreibe die Frage: Was spielt sie?</p>
-<label for="q-wc-06-input">Deine Antwort</label><input autocomplete="off" class="write-input" id="q-wc-06-input" placeholder="Deine Frage ..." type="text"/>
-<div class="write-actions"><button class="primary-btn" data-check-task="" type="button">Prüfen</button><button class="secondary-btn" data-show-help="" disabled="disabled" type="button">Hilfe</button><button class="secondary-btn" data-show-solution="" disabled="disabled" type="button">Lösung anzeigen</button></div>
-<div class="help-box">What steht vorne. she braucht does. Nach does steht play.</div><div class="solution-box">What does she play?</div><div aria-live="polite" class="feedback"></div>
-</article>
-</div>
-<div class="write-actions"><button class="secondary-btn" id="check-all" type="button">Alle prüfen</button><button class="danger-btn" id="reset-writecheck" type="button">Schreib-Check zurücksetzen</button></div>
-<div aria-live="polite" class="write-summary" id="write-summary"></div>
 </div>
 </section>
 <section class="compass-mode-panel" data-panel="q-main" data-val="notes" id="notizen">
@@ -578,7 +595,11 @@ body{background:#e7eef4}
     'q-wc-03':['How often does he watch TV?'],
     'q-wc-04':['When do they go to school?'],
     'q-wc-05':['Does she play tennis?'],
-    'q-wc-06':['What does she play?']
+    'q-wc-06':['What does she play?'],
+    'q-wc-07':['Who likes Emma?'],
+    'q-wc-08':['Who does Leo like?'],
+    'q-wc-09':['Is Mia playing tennis now?','Is Mia playing tennis right now?'],
+    'q-wc-10':['Did Leo play tennis yesterday?']
   };
   function qs(sel,root){return (root||document).querySelector(sel)}
   function qsa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))}
