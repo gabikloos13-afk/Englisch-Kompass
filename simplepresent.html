@@ -1120,6 +1120,58 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 .sp-reveal-stage p{margin:10px 0 0!important}
 .sp-reveal-reset{justify-self:start;border:1px solid #b8ccdd;background:#fff;border-radius:9px;padding:7px 12px;color:#285a80;cursor:pointer}
 .sp-reveal-reset:focus-visible,.sp-reveal-stage summary:focus-visible{outline:3px solid #7db5dc;outline-offset:3px}
+
+/* Simple Present: sieben Lernreiter einzeilig am Desktop; Schreib-Check im gleichen Lernlayout */
+@media screen and (min-width:1000px){
+ body .topic-page--simple-present .learn-step-nav{
+  display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  flex-wrap:nowrap!important;gap:6px!important;justify-content:stretch!important;
+  overflow:visible!important;padding:10px!important;
+ }
+ body .topic-page--simple-present .learn-step-nav .learn-step-btn{
+  width:auto!important;min-width:0!important;max-width:none!important;
+  flex:none!important;min-height:73px!important;padding:9px 5px!important;
+ }
+ body .topic-page--simple-present .learn-step-nav .step-label{
+  font-size:clamp(10px,.84vw,12px)!important;overflow-wrap:anywhere!important;
+ }
+}
+@media screen and (max-width:999px){
+ body .topic-page--simple-present .learn-step-nav{
+  display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;
+  overflow-x:auto!important;gap:7px!important;-webkit-overflow-scrolling:touch!important;
+ }
+ body .topic-page--simple-present .learn-step-nav .learn-step-btn{
+  flex:0 0 143px!important;min-width:143px!important;max-width:143px!important;
+ }
+}
+@media screen{
+ body .topic-page--simple-present #schreibcheck.learn-panel{
+  background:linear-gradient(180deg,var(--sp-topic-bg-top),var(--sp-topic-bg-bottom))!important;
+  padding:24px!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-panel{
+  background:transparent!important;padding:0!important;
+  display:grid!important;gap:15px!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-intro,
+ body .topic-page--simple-present #schreibcheck .writecheck-task{
+  background:#fff!important;border:1px solid var(--sp-card-border)!important;
+  border-radius:16px!important;box-shadow:var(--sp-card-shadow)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-grid{
+  display:grid!important;gap:14px!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-actions,
+ body .topic-page--simple-present #schreibcheck .writecheck-summary{
+  background:#fff!important;border:1px solid var(--sp-card-border)!important;
+  border-radius:14px!important;padding:14px!important;
+ }
+}
+@media screen and (max-width:700px){
+ body .topic-page--simple-present #schreibcheck.learn-panel{padding:14px 12px!important}
+}
+
 </style>
 </head>
 <body>
