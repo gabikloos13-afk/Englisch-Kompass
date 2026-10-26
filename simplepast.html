@@ -6444,7 +6444,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <h2 class="sp-dz-v14-title simplepast-orientation-title" id="sp-dz-v14-title">Simple-Past-Denkzentrale</h2>
 </div>
 </div>
-<p class="sp-dz-v14-lead">Starte mit der Aufgabe und gehe Schritt für Schritt weiter. Die Denkzentrale mischt jetzt Bilden, Umbauen und Reparieren – damit du wie in der Klassenarbeit selbst entscheiden musst.</p>
+<p class="sp-dz-v14-lead">Starte mit der Aufgabe und gehe Schritt für Schritt weiter. Die Denkzentrale mischt jetzt Bilden, Umbauen und Reparieren – damit du wie in der Klassenarbeit selbst entscheiden musst.</p><section class="sp-dz-checkroute" aria-label="So prüfst du deinen Lernstand"><h3>Klassenarbeits-Check: Erst selbst entscheiden</h3><p>Bearbeite zunächst einige Aufgaben im Modus <strong>Alles gemischt</strong>, ohne die Regeln nachzulesen. Achte danach darauf, <strong>welcher Fehlertyp</strong> in der Rückmeldung steht.</p><div class="sp-dz-checkroute-grid"><div><span class="sp-dz-checkroute-title">Zeitform</span><p>Ist der Satz vergangen oder beschreibt er eine Gewohnheit?</p></div><div><span class="sp-dz-checkroute-title">Verbart</span><p>Brauchst du <em>was/were</em> oder ein gewöhnliches Verb?</p></div><div><span class="sp-dz-checkroute-title">Satzart</span><p>Aussage, Frage oder Verneinung? Welche Form verändert sich?</p></div></div><p>Wiederhole anschließend gezielt den Lernbaustein, bei dem du unsicher warst, und versuche eine neue gemischte Aufgabe.</p></section>
 <div aria-label="Aufgabentyp in der Denkzentrale wählen" class="sp-dz-v80-modebox">
 <p class="sp-dz-v80-mode-title">Modus</p>
 <div class="sp-dz-v80-mode-row">
@@ -12324,6 +12324,15 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
 #past-learn-positive .positive-v31-sentence-main .sp-part-person,#past-learn-positive .positive-v31-sentence-main .sp-part-verb,#past-learn-positive .positive-v31-sentence-main .sp-part-rest,#past-learn-positive .positive-v31-readline .part{display:inline-block;border:1px solid #d6e1e9;border-radius:8px;padding:5px 9px;margin:2px;font-weight:400!important}
 #past-learn-positive .positive-v31-label-grid .sp-part-person-card,#past-learn-positive .positive-v31-label-grid .sp-part-verb-card,#past-learn-positive .positive-v31-label-grid .sp-part-rest-card{border:1px solid #d6e1e9!important;border-radius:12px!important;padding:13px!important}
 #past-learn-positive .positive-v31-label-grid article h4{color:inherit!important}
+
+/* Lernkontrolle: statische Hinweise eindeutig als Karten, nicht als Buttons */
+.sp-dz-checkroute{background:#fff;border:1px solid #d6e1e9;border-left:5px solid #5d85a5;border-radius:14px;margin:14px 0 18px;padding:16px 18px}
+.sp-dz-checkroute h3{font-weight:400;color:#305d79;font-size:1.05rem;margin:0 0 9px}
+.sp-dz-checkroute p{margin:7px 0;line-height:1.6}
+.sp-dz-checkroute-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.sp-dz-checkroute-grid>div{background:#f7fafc;border:1px solid #dae5ed;border-radius:10px;padding:12px}
+.sp-dz-checkroute-title{display:block;color:#305d79;margin-bottom:5px}
+@media(max-width:720px){.sp-dz-checkroute-grid{grid-template-columns:1fr}}
 </style>
 </body>
 </html>
