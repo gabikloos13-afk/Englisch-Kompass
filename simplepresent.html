@@ -1006,6 +1006,25 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 .sp-rules-reveal p{margin-top:8px}
 .sp-rules-next{color:var(--gray-600)}
 @media(max-width:560px){.sp-rules-people{grid-template-columns:1fr}}
+/* Farbleitsystem: nur die drei Erklärschritte */
+#sp-learn-entry .entry-card{border-left:5px solid #527dab!important;background:linear-gradient(100deg,#edf5fb,#fff 60%)!important}
+#sp-learn-rules .sp-rules-intro{border-left:5px solid #36836d;background:linear-gradient(100deg,#edf8f3,#fff 60%)}
+#sp-learn-rules .sp-rules-people>div:first-child{background:#edf5fb;border-color:#c1d9e9}
+#sp-learn-rules .sp-rules-people>div:last-child{background:#eaf7f0;border-color:#bddfcc}
+#sp-learn-rules .sp-rules-example{background:#eaf7f0;border-left:4px solid #73ab96}
+#sp-learn-does .sp-rules-intro{border-left:5px solid #7465a5;background:linear-gradient(100deg,#f4f0fa,#fff 60%)}
+#sp-learn-does .sp-rules-people>div:first-child{background:#edf5fb;border-color:#c1d9e9}
+#sp-learn-does .sp-rules-people>div:last-child{background:#f3eff9;border-color:#d7cbea}
+#sp-learn-does .sp-rules-key{border-left:5px solid #7465a5}
+.sp-tense-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.sp-tense-grid>div{padding:13px;border:1px solid #cbd8e4;border-radius:12px}
+.sp-tense-grid h4{margin:0 0 8px;font-size:.95rem;font-weight:400}
+.sp-tense-present{background:#edf8f3;border-color:#bcddcd!important}
+.sp-tense-past{background:#f3eff9;border-color:#d7cbea!important}
+.sp-tense-rule{padding:11px 13px;background:#f1f5f9;border-left:4px solid #8ca2b7;border-radius:7px}
+.sp-tense-compare a{text-decoration:underline;color:#235b89}
+@media(max-width:680px){.sp-tense-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1132,6 +1151,7 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <section class="sp-rules-intro" aria-labelledby="sp-does-title"><h2 id="sp-does-title">Wann brauche ich do und wann does?</h2><p>Bei <strong>Fragen und Verneinungen</strong> mit gewöhnlichen Tätigkeitsverben brauchst du <em>do</em> oder <em>does</em>. Entscheide zuerst, wer etwas tut.</p><div class="sp-rules-people"><div><h3>I · you · we · they</h3><p>Frage: <strong>Do</strong> you play?<br/>Verneinung: I <strong>don't</strong> play.</p></div><div><h3>he · she · it</h3><p>Frage: <strong>Does</strong> she play?<br/>Verneinung: She <strong>doesn't</strong> play.</p></div></div></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-negative"><h3 id="sp-rules-negative">Verneinung (negative statement)</h3><p><strong>Person + don't / doesn't + Verb in der Grundform + Rest.</strong></p><p class="sp-rules-example"><em>I don't like fish.</em> · <em>Tom doesn't like fish.</em></p><p><em>don't</em> bedeutet <em>do not</em>, <em>doesn't</em> bedeutet <em>does not</em>.</p></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-question"><h3 id="sp-rules-question">Frage (question)</h3><p><strong>Do / Does + Person + Verb in der Grundform + Rest?</strong> Das Hilfsverb steht am Anfang.</p><p class="sp-rules-example"><em>Do they play football?</em> · <em>Does she play football?</em></p><p>Kurzantworten: <em>Yes, she does.</em> / <em>No, she doesn't.</em> und <em>Yes, they do.</em> / <em>No, they don't.</em></p></section>
+<section class="sp-rules-card sp-tense-compare" aria-labelledby="sp-tense-compare-title"><h3 id="sp-tense-compare-title">Do, does oder did? Erst auf die Zeit schauen!</h3><p><strong>do / does</strong> gehört zum <strong>Simple Present</strong> (Gegenwart). <strong>did</strong> gehört zum <strong>Simple Past</strong> (Vergangenheit).</p><div class="sp-tense-grid"><div class="sp-tense-present"><h4>Simple Present · regelmäßig</h4><p><strong>Do</strong> you play football?</p><p><strong>Does</strong> she play football?</p><p>She <strong>doesn't</strong> play football.</p><p>I, you, we, they: do / don't<br>he, she, it: does / doesn't</p></div><div class="sp-tense-past"><h4>Simple Past · gestern</h4><p><strong>Did</strong> you play football yesterday?</p><p><strong>Did</strong> she play football yesterday?</p><p>She <strong>didn't</strong> play football yesterday.</p><p>Für alle Personen: did / didn't.</p></div></div><p class="sp-tense-rule">Nach <strong>does, doesn't, did, didn't</strong> steht das Hauptverb in der <strong>Grundform</strong>: <em>Does she play?</em> / <em>Did she play?</em> – nicht <em>Does she plays?</em> oder <em>Did she played?</em>.</p><details class="sp-rules-reveal"><summary>Denkfrage: Yesterday – does oder did?</summary><p><strong>Did she play yesterday?</strong> Yesterday bedeutet gestern: Vergangenheit, also did.</p></details><p>Ausführlich erklärt wird die Vergangenheit bei <a href="simplepast.html">Simple Past</a>.</p></section>
 <section class="sp-rules-card sp-rules-key" aria-labelledby="sp-rules-key"><h3 id="sp-rules-key">Wohin verschwindet das -s?</h3><p><em>She play<strong>s</strong>.</em> Aber: <em>Doe<strong>s</strong> she play?</em> und <em>She doe<strong>s</strong>n't play.</em> Bei <em>does / doesn't</em> steht das <strong>Hauptverb immer in der Grundform</strong> – also <em>play</em>, nicht <em>plays</em>.</p><p><strong>Achtung:</strong> <em>to be</em> ist anders. Es heißt <em>Is she happy?</em>, nicht <em>Does she be happy?</em></p></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Kurz nachdenken</h3><p>Aus <em>Tom likes dogs.</em> wird eine Frage. Steht nach <em>Does Tom</em> nun <em>like</em> oder <em>likes</em>?</p><details class="sp-rules-reveal"><summary>Regel prüfen und Lösung aufdecken</summary><p><em>Does Tom like dogs?</em> – Tom gehört zu <em>he / she / it</em>. Nach <em>does</em> bleibt <em>like</em> in der Grundform.</p></details><p class="sp-rules-next">Jetzt kennst du Aussagen, Fragen und Verneinungen. Im nächsten Schritt kannst du alle drei Satzarten selbst bauen.</p></section>
 </div>
