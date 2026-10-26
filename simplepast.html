@@ -10137,7 +10137,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     const got=norm(value), words=got.split(' ').filter(Boolean);
     if(words.length<3) return false;
     if(t.sentence==='question'){
-      if(!/^(did|was|were)\s+\w+/.test(got)) return false;
+      if(!/^(?:(?:who|what|where|when|why|how|how often)\s+)?(?:did|was|were)\s+\w+/.test(got) && !/^(?:who|what)\s+\w+/.test(got)) return false;
       if(words[0]==='did' && /^(play|visit|go|see|have|open|help|watch|study|buy|eat|make|come|take|give|write)$/.test(words[1]||'')) return false;
       return true;
     }
@@ -10173,7 +10173,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     if(t.verbtype==='verb'){
       if(hasDidPastForm(got)) return {type:'didPast'};
       if(t.sentence==='negative' && !/\b(didnt|did not)\b/.test(got)) return {type:'needsDidnt'};
-      if(t.sentence==='question' && !got.startsWith('did ')) return {type:'needsDid'};
+      if(t.sentence==='question' && !/^(?:(?:what|where|when|why|who|how|how often)\s+)?did\s+/.test(got)) return {type:'needsDid'};
       if(t.sentence==='positive'){
         const pastMarkers=answerHasAny(answerNorms,['played','visited','opened','helped','watched','studied','liked','stopped','tried','cleaned','went','saw','had','ate','bought','made','came','took','gave','wrote','did','got','said','knew','found','told','thought','read','met','left','ran','drank','spoke','slept','stood','swam','won','brought','caught','chose','broke','drew','heard','rode','sang','wore','woke','threw']);
         if(pastMarkers.length && !pastMarkers.some(w=>got.indexOf(w)>-1)) return {type:'form',message:(t.hints&&t.hints.form)||'Bei positiven Aussagen trägt das Verb die Past Form.'};
@@ -12349,6 +12349,28 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
 .sp-dz-sentence .sp-part-verb{background:#e2f4eb;color:#25694b}
 .sp-dz-sentence .sp-part-rest{background:#f0f3f6;color:#516477}
 @media(max-width:720px){.sp-dz-distinction-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* 2026-10: ruhige Basiskarten, ohne funktionierende Werkzeuge zu überschreiben */
+@media screen {
+ #past-learn-entry .past-route-mini span,
+ #past-learn-entry .simplepast-radar-signal-row span,
+ #past-learn-entry .simplepast-radar-trap-word {
+   cursor:default!important;box-shadow:none!important;transform:none!important;
+ }
+ #past-learn-entry .past-route-mini span {
+   background:#f7fafc!important;border:0!important;border-left:3px solid #cbd9e5!important;
+   border-radius:7px!important;text-align:left!important;
+ }
+ #past-learn-positive .positive-v31-formula>span:not(.arrow),
+ #past-learn-positive .positive-v31-readline .part {
+   box-shadow:none!important;cursor:default!important;
+ }
+ .topic-page--simple-past .past-question-bridge,
+ .topic-page--simple-past .sp-dz-checkroute,
+ .topic-page--simple-past .sp-dz-distinction {
+   width:100%!important;max-width:100%!important;box-sizing:border-box!important;
+ }
+}
 </style>
 </body>
 </html>
