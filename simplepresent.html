@@ -1025,6 +1025,36 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 .sp-tense-compare a{text-decoration:underline;color:#235b89}
 @media(max-width:680px){.sp-tense-grid{grid-template-columns:1fr}}
 
+
+/* Erklärdidaktik: klar getrennte Schritte, Satzbausteine und Auflösungen */
+#sp-learn-rules .sp-rules-intro,#sp-learn-does .sp-rules-intro{border-left:5px solid #5d85a5}
+#sp-learn-rules .sp-rules-intro{background:linear-gradient(110deg,#f0f8f4,#fff 60%)}
+#sp-learn-does .sp-rules-intro{background:linear-gradient(110deg,#f2f0f9,#fff 60%)}
+.sp-explain-steps{display:grid;gap:10px;margin-top:14px}
+.sp-explain-steps>div{display:flex;gap:12px;padding:12px 14px;border:1px solid #d6e1e9;border-radius:12px;background:#fff}
+.sp-explain-steps h3{margin:0 0 5px!important;font-size:.99rem!important;color:#2b5573!important}
+.sp-explain-steps p{margin:0 0 5px!important}
+.sp-step-no{display:grid;place-items:center;flex:0 0 26px;height:26px;border-radius:50%;background:#e3eef8;color:#285c86}
+.sp-explain-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:13px 0}
+.sp-explain-pair>div,.sp-shift-grid>div{padding:13px;border:1px solid #d8e3ec;border-radius:12px;background:#f9fbfd}
+.sp-small-label{display:block;color:#597184;font-size:.84rem;margin-bottom:7px!important}
+.sp-sentence-block{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:9px 0 10px!important}
+.sp-sentence-block>span{display:inline-block;padding:5px 9px;border-radius:8px;background:#edf2f6}
+.sp-sentence-block .sp-word-helper{background:#ebe7fa;color:#58418b}
+.sp-sentence-block .sp-word-verb{background:#e2f4eb;color:#25694b}
+.sp-shift-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0}
+.sp-shift-grid h4,.sp-explain-pair h4,.sp-subheading{margin:0 0 8px;font-size:.98rem;font-weight:400;color:#305d79}
+.sp-rule-memory{padding:13px 15px;margin:13px 0;background:#eef5fb;border-left:4px solid #648ba9;border-radius:8px}
+.sp-reveal-answer{display:grid;gap:4px;margin-top:12px}
+.sp-reveal-answer p{margin:0 0 6px!important}
+.sp-rules-reveal[open]{background:#f9fbfd;border-color:#b9d0df}
+.sp-wrong-box{background:#fff6f4!important;border-color:#efd1c9!important}
+.sp-right-box,.sp-present-box{background:#f0f9f4!important;border-color:#c3e0cf!important}
+.sp-past-box{background:#f4f1fa!important;border-color:#d7cdec!important}
+.sp-tense-compare{border-top:3px solid #a6b7c8}
+.sp-rules-card p{max-width:100%}
+@media(max-width:760px){.sp-explain-pair,.sp-shift-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1142,19 +1172,72 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 </div>
 <!-- Schritt 2: Aussagen erst verstehen -->
 <div class="learn-panel" data-panel="sp-learn" data-val="rules" id="sp-learn-rules">
-<section class="sp-rules-intro" aria-labelledby="sp-rules-title"><h2 id="sp-rules-title">So bildest du eine Aussage</h2><p>Im Simple Present steht zuerst die Person, dann das Verb. Entscheidend ist: <strong>Wer macht etwas?</strong></p><div class="sp-rules-people"><div><h3>I · you · we · they</h3><p>Das Verb bleibt in der Grundform: <em>I play.</em> · <em>They play.</em></p></div><div><h3>he · she · it</h3><p>In einer normalen positiven Aussage bekommt das Verb ein <strong>-s</strong>: <em>She plays.</em> · <em>He likes dogs.</em></p></div></div></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-statement"><h3 id="sp-rules-statement">Aussage (positive statement)</h3><p><strong>Person + Verb + Rest.</strong> Bei <em>he / she / it</em> heißt es normalerweise <em>plays</em> statt <em>play</em>.</p><p class="sp-rules-example"><em>I play football.</em> → <em>She plays football.</em></p><p>Auch Namen können für <em>he / she / it</em> stehen: <em>Tom plays.</em> · <em>My dog sleeps.</em></p></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-s-think"><h3 id="sp-rules-s-think">Erst selbst entscheiden</h3><p>Welche Form passt zu <em>Anna</em>: <em>read</em> oder <em>reads</em>? Sage die Antwort, bevor du sie öffnest.</p><details class="sp-rules-reveal"><summary>Antwort und Grund aufdecken</summary><p><em>Anna reads.</em> Anna ist eine Person und gehört zu <em>she</em>. Deshalb bekommt das Verb in der positiven Aussage ein <em>-s</em>.</p></details></section>
+<section class="sp-rules-intro" aria-labelledby="sp-rules-title">
+<h2 id="sp-rules-title">Aussagen bilden – so geht es</h2>
+<p>Eine Aussage erzählt, <strong>was jemand tut</strong>. Im Simple Present musst du zuerst herausfinden, <strong>wer</strong> etwas tut.</p>
+<div class="sp-explain-steps">
+<div><span class="sp-step-no">1</span><div><h3>Finde die Person</h3><p>Ist es <em>I, you, we, they</em> oder <em>he, she, it</em>? Ein einzelner Name kann ebenfalls dazugehören: <em>Anna</em> = <em>she</em>, <em>Tom</em> = <em>he</em>, <em>the dog</em> = <em>it</em>.</p></div></div>
+<div><span class="sp-step-no">2</span><div><h3>Wähle die richtige Verbform</h3><p><em>I, you, we, they</em> → Verb in der Grundform: <em>play</em>.</p><p><em>He, she, it</em> → in positiven Aussagen meistens <strong>-s</strong>: <em>plays</em>.</p></div></div>
+<div><span class="sp-step-no">3</span><div><h3>Setze den Satz zusammen</h3><p><strong>Person → Verb → Rest</strong>. Die Reihenfolge bleibt gleich; nur die Verbform kann sich ändern.</p></div></div>
+</div>
+</section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-statement">
+<h3 id="sp-rules-statement">Vergleiche zwei Aussagen</h3>
+<div class="sp-explain-pair"><div><span class="sp-small-label">I → Grundform</span><p class="sp-sentence-block"><span>I</span><span class="sp-word-verb">play</span><span>football.</span></p></div><div><span class="sp-small-label">She → Verb mit -s</span><p class="sp-sentence-block"><span>She</span><span class="sp-word-verb">play<strong>s</strong></span><span>football.</span></p></div></div>
+<p><strong>Warum?</strong> <em>She</em> gehört zu <em>he / she / it</em>. Deshalb bekommt <em>play</em> hier ein <strong>-s</strong>. Bei <em>I</em> bleibt <em>play</em> unverändert.</p>
+<p><strong>Gut zu wissen:</strong> Manchmal wird aus <em>-s</em> ein <em>-es</em> (<em>watches</em>) oder aus <em>-y</em> wird <em>-ies</em> (<em>studies</em>). Diese Schreibregeln findest du im Nachschlagen.</p>
+</section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-s-think"><h3 id="sp-rules-s-think">Jetzt selbst entscheiden</h3>
+<p><strong>Aufgabe:</strong> Anna (read / reads) books every day.</p>
+<p>Überlege zuerst: Für welches Pronomen könnte <em>Anna</em> stehen? Welche Regel passt dann?</p>
+<details class="sp-rules-reveal"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtiger Satz</p><p class="sp-sentence-block"><span>Anna</span><span class="sp-word-verb">reads</span><span>books every day.</span></p><p><strong>Schritt 1:</strong> Anna ist eine einzelne Person: <em>she</em>.</p><p><strong>Schritt 2:</strong> Es ist eine positive Aussage im Simple Present.</p><p><strong>Schritt 3:</strong> Bei <em>she</em> bekommt <em>read</em> ein <strong>-s</strong> → <em>reads</em>.</p></div></details>
+</section>
 </div>
 <!-- Schritt 3: do / does bei Fragen und Verneinungen -->
 <div class="learn-panel" data-panel="sp-learn" data-val="does" id="sp-learn-does">
-<section class="sp-rules-intro" aria-labelledby="sp-does-title"><h2 id="sp-does-title">Wann brauche ich do und wann does?</h2><p>Bei <strong>Fragen und Verneinungen</strong> mit gewöhnlichen Tätigkeitsverben brauchst du <em>do</em> oder <em>does</em>. Entscheide zuerst, wer etwas tut.</p><div class="sp-rules-people"><div><h3>I · you · we · they</h3><p>Frage: <strong>Do</strong> you play?<br/>Verneinung: I <strong>don't</strong> play.</p></div><div><h3>he · she · it</h3><p>Frage: <strong>Does</strong> she play?<br/>Verneinung: She <strong>doesn't</strong> play.</p></div></div></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-negative"><h3 id="sp-rules-negative">Verneinung (negative statement)</h3><p><strong>Person + don't / doesn't + Verb in der Grundform + Rest.</strong></p><p class="sp-rules-example"><em>I don't like fish.</em> · <em>Tom doesn't like fish.</em></p><p><em>don't</em> bedeutet <em>do not</em>, <em>doesn't</em> bedeutet <em>does not</em>.</p></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-question"><h3 id="sp-rules-question">Frage (question)</h3><p><strong>Do / Does + Person + Verb in der Grundform + Rest?</strong> Das Hilfsverb steht am Anfang.</p><p class="sp-rules-example"><em>Do they play football?</em> · <em>Does she play football?</em></p><p>Kurzantworten: <em>Yes, she does.</em> / <em>No, she doesn't.</em> und <em>Yes, they do.</em> / <em>No, they don't.</em></p></section>
-<section class="sp-rules-card sp-tense-compare" aria-labelledby="sp-tense-compare-title"><h3 id="sp-tense-compare-title">Do, does oder did? Erst auf die Zeit schauen!</h3><p><strong>do / does</strong> gehört zum <strong>Simple Present</strong> (Gegenwart). <strong>did</strong> gehört zum <strong>Simple Past</strong> (Vergangenheit).</p><div class="sp-tense-grid"><div class="sp-tense-present"><h4>Simple Present · regelmäßig</h4><p><strong>Do</strong> you play football?</p><p><strong>Does</strong> she play football?</p><p>She <strong>doesn't</strong> play football.</p><p>I, you, we, they: do / don't<br>he, she, it: does / doesn't</p></div><div class="sp-tense-past"><h4>Simple Past · gestern</h4><p><strong>Did</strong> you play football yesterday?</p><p><strong>Did</strong> she play football yesterday?</p><p>She <strong>didn't</strong> play football yesterday.</p><p>Für alle Personen: did / didn't.</p></div></div><p class="sp-tense-rule">Nach <strong>does, doesn't, did, didn't</strong> steht das Hauptverb in der <strong>Grundform</strong>: <em>Does she play?</em> / <em>Did she play?</em> – nicht <em>Does she plays?</em> oder <em>Did she played?</em>.</p><details class="sp-rules-reveal"><summary>Denkfrage: Yesterday – does oder did?</summary><p><strong>Did she play yesterday?</strong> Yesterday bedeutet gestern: Vergangenheit, also did.</p></details><p>Ausführlich erklärt wird die Vergangenheit bei <a href="simplepast.html">Simple Past</a>.</p></section>
-<section class="sp-rules-card sp-rules-key" aria-labelledby="sp-rules-key"><h3 id="sp-rules-key">Wohin verschwindet das -s?</h3><p><em>She play<strong>s</strong>.</em> Aber: <em>Doe<strong>s</strong> she play?</em> und <em>She doe<strong>s</strong>n't play.</em> Bei <em>does / doesn't</em> steht das <strong>Hauptverb immer in der Grundform</strong> – also <em>play</em>, nicht <em>plays</em>.</p><p><strong>Achtung:</strong> <em>to be</em> ist anders. Es heißt <em>Is she happy?</em>, nicht <em>Does she be happy?</em></p></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Kurz nachdenken</h3><p>Aus <em>Tom likes dogs.</em> wird eine Frage. Steht nach <em>Does Tom</em> nun <em>like</em> oder <em>likes</em>?</p><details class="sp-rules-reveal"><summary>Regel prüfen und Lösung aufdecken</summary><p><em>Does Tom like dogs?</em> – Tom gehört zu <em>he / she / it</em>. Nach <em>does</em> bleibt <em>like</em> in der Grundform.</p></details><p class="sp-rules-next">Jetzt kennst du Aussagen, Fragen und Verneinungen. Im nächsten Schritt kannst du alle drei Satzarten selbst bauen.</p></section>
+<section class="sp-rules-intro" aria-labelledby="sp-does-title"><h2 id="sp-does-title">do und does – was ist der Unterschied?</h2>
+<p>Bei Fragen und Verneinungen mit normalen Tätigkeitsverben hilft dir ein zusätzliches Wort: <strong>do</strong> oder <strong>does</strong>. Das nennt man ein <strong>Hilfsverb</strong>.</p>
+<div class="sp-explain-steps">
+<div><span class="sp-step-no">1</span><div><h3>Prüfe die Zeit</h3><p>Geht es um etwas Regelmäßiges in der Gegenwart? Dann bist du beim <strong>Simple Present</strong>. Bei Ereignissen in der Vergangenheit brauchst du stattdessen <strong>did</strong> – dazu kommt unten ein Vergleich.</p></div></div>
+<div><span class="sp-step-no">2</span><div><h3>Prüfe die Person</h3><p><em>I, you, we, they</em> → <strong>do / don't</strong>.</p><p><em>He, she, it</em> → <strong>does / doesn't</strong>.</p></div></div>
+<div><span class="sp-step-no">3</span><div><h3>Prüfe die Satzart</h3><p>Bei einer <strong>Frage</strong> steht <em>do / does</em> am Anfang. Bei einer <strong>Verneinung</strong> steht <em>don't / doesn't</em> nach der Person. Das Tätigkeitsverb bleibt danach in der <strong>Grundform</strong>.</p></div></div></div>
+</section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-negative"><h3 id="sp-rules-negative">Verneinung – etwas passiert nicht</h3>
+<p><strong>Satzbau:</strong> Person → don't / doesn't → Grundform → Rest.</p>
+<div class="sp-explain-pair"><div><span class="sp-small-label">I / you / we / they</span><p class="sp-sentence-block"><span>We</span><span class="sp-word-helper">don't</span><span class="sp-word-verb">like</span><span>spiders.</span></p></div><div><span class="sp-small-label">he / she / it</span><p class="sp-sentence-block"><span>She</span><span class="sp-word-helper">doesn't</span><span class="sp-word-verb">like</span><span>spiders.</span></p></div></div>
+<p><em>Don't</em> ist die Kurzform von <em>do not</em>; <em>doesn't</em> ist die Kurzform von <em>does not</em>. Beide bedeuten hier: <strong>nicht</strong>.</p>
+<p><strong>Wichtig:</strong> Nach <em>doesn't</em> heißt es <em>like</em>, nicht <em>likes</em>.</p></section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-question"><h3 id="sp-rules-question">Frage – wenn du etwas wissen möchtest</h3>
+<p><strong>Satzbau:</strong> Do / Does → Person → Grundform → Rest?</p>
+<div class="sp-explain-pair"><div><span class="sp-small-label">I / you / we / they</span><p class="sp-sentence-block"><span class="sp-word-helper">Do</span><span>they</span><span class="sp-word-verb">play</span><span>football?</span></p></div><div><span class="sp-small-label">he / she / it</span><p class="sp-sentence-block"><span class="sp-word-helper">Does</span><span>she</span><span class="sp-word-verb">play</span><span>football?</span></p></div></div>
+<p><strong>Warum heißt es nicht „Does she plays?“</strong> Weil <em>does</em> die besondere Form für <em>she</em> bereits zeigt. Das Hauptverb bleibt <em>play</em>.</p>
+<h4 class="sp-subheading">So funktionieren Kurzantworten</h4><div class="sp-explain-pair"><div><p><em>Does she play?</em></p><p><strong>Yes, she does.</strong></p><p><strong>No, she doesn't.</strong></p></div><div><p><em>Do they play?</em></p><p><strong>Yes, they do.</strong></p><p><strong>No, they don't.</strong></p></div></div>
+<p>Du wiederholst in der Kurzantwort das <strong>Hilfsverb</strong>, nicht das Tätigkeitsverb.</p>
+</section>
+<section class="sp-rules-card sp-rules-key" aria-labelledby="sp-rules-key"><h3 id="sp-rules-key">Wohin verschwindet das -s?</h3>
+<p>Es geht nicht verloren. Bei <em>he / she / it</em> steht die besondere Form <strong>entweder am Tätigkeitsverb oder im Hilfsverb does / doesn't</strong>. Beides zusammen ist falsch.</p>
+<div class="sp-shift-grid">
+<div><h4>1 · Aussage</h4><p class="sp-sentence-block"><span>She</span><span class="sp-word-verb">play<strong>s</strong>.</span></p><p>Kein Hilfsverb: Das <strong>-s</strong> steht bei <em>plays</em>.</p></div>
+<div><h4>2 · Frage</h4><p class="sp-sentence-block"><span class="sp-word-helper">Doe<strong>s</strong></span><span>she</span><span class="sp-word-verb">play?</span></p><p>Das <strong>-s</strong> steckt in <em>does</em>. Deshalb <em>play</em> ohne -s.</p></div>
+<div><h4>3 · Verneinung</h4><p class="sp-sentence-block"><span>She</span><span class="sp-word-helper">doesn't</span><span class="sp-word-verb">play.</span></p><p><em>Doesn't</em> zeigt ebenfalls <em>she</em>. Deshalb bleibt <em>play</em> die Grundform.</p></div>
 </div>
+<div class="sp-rule-memory"><strong>Merke:</strong> Aussage: <em>She plays.</em> Frage: <em>Does she play?</em> Verneinung: <em>She doesn't play.</em></div>
+<div class="sp-explain-pair"><div class="sp-wrong-box"><span class="sp-small-label">Nicht so</span><p>Does she <strong>plays</strong>?</p><p>She doesn't <strong>plays</strong>.</p></div><div class="sp-right-box"><span class="sp-small-label">Sondern so</span><p>Does she <strong>play</strong>?</p><p>She doesn't <strong>play</strong>.</p></div></div>
+<p><strong>Ausnahme:</strong> Bei <em>to be</em> nutzt du diese Regel nicht. Es heißt <em>Is she happy?</em> – nicht <em>Does she be happy?</em>.</p>
+</section>
+<section class="sp-rules-card sp-tense-compare" aria-labelledby="sp-tense-compare-title"><h3 id="sp-tense-compare-title">Do, does oder did? Erst auf die Zeit schauen!</h3>
+<p><strong>Do / does</strong> gehören zur Gegenwart (<strong>Simple Present</strong>); <strong>did</strong> gehört zur Vergangenheit (<strong>Simple Past</strong>). Bei <em>did</em> ist die Person egal.</p>
+<div class="sp-explain-pair"><div class="sp-present-box"><h4>Gegenwart · regelmäßig</h4><p><strong>Do</strong> you play football?</p><p><strong>Does</strong> she play football?</p><p>She <strong>doesn't</strong> play football.</p><p class="sp-small-label">I / you / we / they → do<br>he / she / it → does</p></div><div class="sp-past-box"><h4>Vergangenheit · gestern</h4><p><strong>Did</strong> you play football yesterday?</p><p><strong>Did</strong> she play football yesterday?</p><p>She <strong>didn't</strong> play football yesterday.</p><p class="sp-small-label">Bei allen Personen → did</p></div></div>
+<div class="sp-rule-memory"><strong>Grundform-Regel:</strong> Nach <em>does, doesn't, did, didn't</em> steht das Tätigkeitsverb in der Grundform. <em>Does she play?</em> und <em>Did she play?</em> sind richtig.</div>
+<details class="sp-rules-reveal"><summary>Denkfrage aufdecken: „yesterday“ – does oder did?</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtige Antwort</p><p class="sp-sentence-block"><span class="sp-word-helper">Did</span><span>she</span><span class="sp-word-verb">play</span><span>yesterday?</span></p><p><strong>Schritt 1:</strong> <em>Yesterday</em> bedeutet gestern.</p><p><strong>Schritt 2:</strong> Der Satz steht in der Vergangenheit: Simple Past.</p><p><strong>Schritt 3:</strong> In einer Vergangenheitsfrage nimmst du <em>did</em>, bei jeder Person.</p></div></details>
+<p>Die Vergangenheitsformen werden im Thema <a href="simplepast.html">Simple Past</a> ausführlicher behandelt.</p>
+</section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Überprüfe deinen Denkweg</h3>
+<p><strong>Aufgabe:</strong> Forme <em>Tom likes dogs.</em> in eine Frage um.</p>
+<p>Überlege: 1. Welche Zeit? 2. Welche Person? 3. Was passiert mit <em>likes</em>?</p>
+<details class="sp-rules-reveal"><summary>Antwort Schritt für Schritt aufdecken</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtige Frage</p><p class="sp-sentence-block"><span class="sp-word-helper">Does</span><span>Tom</span><span class="sp-word-verb">like</span><span>dogs?</span></p><p><strong>Schritt 1:</strong> Eine regelmäßige Vorliebe: Simple Present.</p><p><strong>Schritt 2:</strong> Tom = he. Also beginnt die Frage mit <em>Does</em>.</p><p><strong>Schritt 3:</strong> Nach <em>does</em> kommt die Grundform <em>like</em> – ohne -s.</p></div></details>
+<p class="sp-rules-next">Als Nächstes kannst du diese Regeln im Verbform-Entscheider selbst anwenden.</p>
+</section></div>
 <!-- Schritt 4: Verbform-Entscheider -->
 <div class="learn-panel" data-panel="sp-learn" data-val="machine" id="sp-learn-machine">
 <div aria-labelledby="sp-radar-title" class="alltags-radar-card sp-decision-stage">
