@@ -699,6 +699,7 @@ body{background:#e7eef4}
         var good=btn.getAttribute('data-correct')==='true';
         btn.classList.add(good?'is-correct':'is-wrong');
         var fb=qs('.feedback',card);
+        fb.classList.remove('good','bad','almost');
         fb.classList.add('is-visible',good?'good':'bad');
         fb.textContent=good?originalFeedback:'Noch nicht. Prüfe do/does, Person und Grundform.';
       });
@@ -717,7 +718,8 @@ body{background:#e7eef4}
         var good=btn.getAttribute('data-mini')===answer;
         qsa('.choice-btn',wrap).forEach(function(other){other.classList.remove('is-correct','is-wrong')});
         btn.classList.add(good?'is-correct':'is-wrong');
-        var fb=qs('.feedback',wrap.parentNode);fb.classList.add('is-visible',good?'good':'bad');
+        var fb=qs('.feedback',wrap.parentNode);fb.classList.remove('good','bad','almost');
+        fb.classList.add('is-visible',good?'good':'bad');
         fb.textContent=good?miniFeedback:'Noch nicht. Prüfe Person, do/does und Reihenfolge.';
       });
     });
