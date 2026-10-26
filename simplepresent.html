@@ -1113,13 +1113,6 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 #sp-learn-trap .sp-trap-explained>div p{margin:6px 0 0}
 #sp-learn-machine .machine-intro,#sp-learn-check .cancheck-intro p,#schreibcheck .writecheck-intro p{line-height:1.65;max-width:860px}
 
-.sp-progressive-reveal{display:grid;gap:9px;margin:12px 0}
-.sp-reveal-stage{padding:11px 13px;border:1px solid #d5e2eb;border-radius:10px;background:#fbfdff}
-.sp-reveal-stage summary{cursor:pointer;color:#285a80;line-height:1.5}
-.sp-reveal-stage[open]{background:#f2f7fc}
-.sp-reveal-stage p{margin:10px 0 0!important}
-.sp-reveal-reset{justify-self:start;border:1px solid #b8ccdd;background:#fff;border-radius:9px;padding:7px 12px;color:#285a80;cursor:pointer}
-.sp-reveal-reset:focus-visible,.sp-reveal-stage summary:focus-visible{outline:3px solid #7db5dc;outline-offset:3px}
 
 /* Simple Present: sieben Lernreiter einzeilig am Desktop; Schreib-Check im gleichen Lernlayout */
 @media screen and (min-width:1000px){
@@ -1352,13 +1345,13 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Überprüfe deinen Denkweg</h3>
 <p><strong>Aufgabe:</strong> Forme <em>Tom likes dogs.</em> in eine Frage um.</p>
 <p>Überlege: 1. Welche Zeit? 2. Welche Person? 3. Was passiert mit <em>likes</em>?</p>
-<div class="sp-progressive-reveal" aria-label="Denkweg in einzelnen Schritten aufdecken">
-<details class="sp-reveal-stage"><summary>Schritt 1 aufdecken: Welche Zeit?</summary><p><strong>Simple Present.</strong> Der Satz beschreibt eine Vorliebe. Überlege jetzt, welches Pronomen für Tom passt.</p></details>
-<details class="sp-reveal-stage" data-sp-unlock="2" hidden><summary>Schritt 2 aufdecken: Welche Person?</summary><p><strong>Tom = he.</strong> In Fragen mit he / she / it verwendest du <strong>does</strong>. Überlege jetzt, wie das Hauptverb lauten muss.</p></details>
-<details class="sp-reveal-stage" data-sp-unlock="3" hidden><summary>Schritt 3 aufdecken: Was passiert mit likes?</summary><p>Nach <strong>does</strong> steht die Grundform <strong>like</strong>, ohne -s. Jetzt kannst du die komplette Frage selbst formulieren.</p></details>
-<details class="sp-reveal-stage" data-sp-unlock="4" hidden><summary>Fertige Frage anzeigen</summary><p class="sp-sentence-block"><span class="sp-word-helper">Does</span><span>Tom</span><span class="sp-word-verb">like</span><span>dogs?</span></p><p>Die Frage lautet: <strong>Does Tom like dogs?</strong></p></details>
-<button type="button" class="sp-reveal-reset" data-sp-reveal-reset>Erneut beginnen</button>
-</div>
+<details class="sp-rules-reveal"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-answer">
+<p class="sp-small-label">Richtige Frage</p>
+<p class="sp-sentence-block"><span class="sp-word-helper">Does</span><span>Tom</span><span class="sp-word-verb">like</span><span>dogs?</span></p>
+<p><strong>Schritt 1:</strong> Der Satz beschreibt eine Vorliebe und steht im Simple Present.</p>
+<p><strong>Schritt 2:</strong> Tom ist eine einzelne Person und steht für <em>he</em>. Eine Frage im Simple Present beginnt bei <em>he</em> mit <em>Does</em>.</p>
+<p><strong>Schritt 3:</strong> Nach <em>does</em> steht das Tätigkeitsverb in der Grundform <em>like</em>, nicht <em>likes</em>.</p>
+</div></details>
 <p class="sp-rules-next">Als Nächstes kannst du diese Regeln im Verbform-Entscheider selbst anwenden.</p>
 </section></div>
 <!-- Schritt 4: Verbform-Entscheider -->
@@ -3083,20 +3076,6 @@ Richtig: She doesn’t play.
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initHistoryStorage);
   else initHistoryStorage();
 })();
-</script><script>
-/* Gestufte Denkhilfe: jeweils nur der nächste Schritt wird verfügbar. */
-document.querySelectorAll('.sp-progressive-reveal').forEach(function(wrap){
-  var stages=Array.from(wrap.querySelectorAll('.sp-reveal-stage'));
-  stages.forEach(function(stage,i){
-    stage.addEventListener('toggle',function(){
-      if(stage.open && stages[i+1]) stages[i+1].hidden=false;
-    });
-  });
-  var reset=wrap.querySelector('[data-sp-reveal-reset]');
-  if(reset)reset.addEventListener('click',function(){
-    stages.forEach(function(stage,i){stage.open=false;stage.hidden=i>0;});
-  });
-});
 </script>
 </body>
 </html>
