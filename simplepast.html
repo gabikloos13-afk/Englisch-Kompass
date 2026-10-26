@@ -6721,18 +6721,18 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p>Ein positive statement im Simple Past sagt, was passiert ist.</p>
 </div>
 <div class="positive-v31-sentence-card">
-<div class="positive-v31-sentence-main">She played football yesterday.</div>
+<div class="positive-v31-sentence-main" aria-label="She played football yesterday."><span class="sp-part-person">She</span> <span class="sp-part-verb">played</span> <span class="sp-part-rest">football yesterday.</span></div>
 <div aria-label="Beispielsatz in Teilen" class="positive-v31-readline">
-<span class="part">She</span>
+<span class="part sp-part-person">She</span>
 <span class="arrow">→</span>
-<span class="part">played</span>
+<span class="part sp-part-verb">played</span>
 <span class="arrow">→</span>
-<span class="part">football yesterday.</span>
+<span class="part sp-part-rest">football yesterday.</span>
 </div>
 <div aria-label="Satzteile erkennen" class="positive-v31-label-grid">
-<article><h4>Person</h4><p><span class="past-code">She</span> sagt, wer etwas gemacht hat.</p></article>
-<article><h4>Past Form</h4><p><span class="past-code">played</span> ist die Past Form. Sie zeigt hier die Vergangenheit.</p></article>
-<article><h4>Rest</h4><p><span class="past-code">football yesterday</span> ergänzt den Satz.</p></article>
+<article class="sp-part-person-card"><h4>Person</h4><p><span class="past-code">She</span> sagt, wer etwas gemacht hat.</p></article>
+<article class="sp-part-verb-card"><h4>Past Form</h4><p><span class="past-code">played</span> ist die Past Form. Sie zeigt hier die Vergangenheit.</p></article>
+<article class="sp-part-rest-card"><h4>Rest</h4><p><span class="past-code">football yesterday</span> ergänzt den Satz.</p></article>
 </div>
 </div>
 </div>
@@ -12313,6 +12313,17 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
  .past-question-bridge p{margin:7px 0;line-height:1.6}
 }
 @media(max-width:720px){.past-question-bridge-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Lesbare, nicht-interaktive Lernhilfen und konsistente Satzfarben */
+#past-learn-entry .past-route-mini span,#past-learn-entry .entry-examples .entry-ex,#past-learn-entry .simplepast-radar-signal-row span,#past-learn-entry .simplepast-radar-trap-word{cursor:default!important;border-radius:8px!important;box-shadow:none!important;transform:none!important}
+#past-learn-entry .past-route-mini span{border:0!important;border-left:3px solid #cbd9e5!important;background:#f6f9fb!important;text-align:left!important;padding:8px 10px!important}
+#past-learn-entry .entry-examples .entry-ex{background:#f7fafc!important;border:1px solid #dae5ed!important;color:#344f61!important;font-weight:400!important}
+#past-learn-positive .sp-part-person,#past-learn-positive .positive-v31-label-grid .sp-part-person-card{background:#e8edf2!important;color:#385468!important}
+#past-learn-positive .sp-part-verb,#past-learn-positive .positive-v31-label-grid .sp-part-verb-card{background:#e2f4eb!important;color:#25694b!important}
+#past-learn-positive .sp-part-rest,#past-learn-positive .positive-v31-label-grid .sp-part-rest-card{background:#f0f3f6!important;color:#516477!important}
+#past-learn-positive .positive-v31-sentence-main .sp-part-person,#past-learn-positive .positive-v31-sentence-main .sp-part-verb,#past-learn-positive .positive-v31-sentence-main .sp-part-rest,#past-learn-positive .positive-v31-readline .part{display:inline-block;border:1px solid #d6e1e9;border-radius:8px;padding:5px 9px;margin:2px;font-weight:400!important}
+#past-learn-positive .positive-v31-label-grid .sp-part-person-card,#past-learn-positive .positive-v31-label-grid .sp-part-verb-card,#past-learn-positive .positive-v31-label-grid .sp-part-rest-card{border:1px solid #d6e1e9!important;border-radius:12px!important;padding:13px!important}
+#past-learn-positive .positive-v31-label-grid article h4{color:inherit!important}
 </style>
 </body>
 </html>
