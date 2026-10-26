@@ -6640,8 +6640,8 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article class="past-radar-item" data-correct="not" data-not-feedback="Ja. every day passt meistens zu Simple Present: I play every day." data-past-feedback="Achtung: every day passt eher zu Gewohnheiten, also Simple Present." data-radar-item="">
 <h3>every day</h3><p>Was sagt dir das Wort?</p><div class="past-radar-actions"><button data-radar-choice="past" type="button">Vergangenheit</button><button data-radar-choice="not" type="button">nicht Vergangenheit</button></div><p aria-live="polite" class="past-radar-feedback">Wähle eine Antwort.</p>
 </article>
-<article class="past-radar-item" data-correct="past" data-not-feedback="Fast: Beim Erzählen über Erlebtes ist on Saturday meistens Vergangenheit. Ohne Kontext musst du auf den ganzen Satz achten." data-past-feedback="Ja, wenn jemand erzählt, was am Samstag passiert ist. Ohne Kontext kann on Saturday auch Zukunft sein." data-radar-item="">
-<h3>on Saturday</h3><p>Was sagt dir das Wort?</p><div class="past-radar-actions"><button data-radar-choice="past" type="button">Vergangenheit</button><button data-radar-choice="not" type="button">nicht Vergangenheit</button></div><p aria-live="polite" class="past-radar-feedback">Wähle eine Antwort.</p>
+<article class="past-radar-item" data-correct="context" data-not-feedback="Nicht eindeutig: on Saturday kann je nach Zusammenhang Vergangenheit, Gegenwart oder Zukunft meinen." data-past-feedback="Nicht eindeutig: on Saturday zeigt allein keine sichere Vergangenheit." data-context-feedback="Richtig: Nur on Saturday reicht nicht. I played on Saturday (Vergangenheit), I play on Saturdays (Gewohnheit), I'm playing on Saturday (Plan)." data-radar-item="">
+<h3>on Saturday</h3><p>Was sagt dir das Wort?</p><div class="past-radar-actions"><button data-radar-choice="past" type="button">Vergangenheit</button><button data-radar-choice="not" type="button">nicht Vergangenheit</button><button data-radar-choice="context" type="button">Kommt auf den Satz an</button></div><p aria-live="polite" class="past-radar-feedback">Wähle eine Antwort.</p>
 </article>
 </div></article>
 <article class="simplepast-radar-main-card simplepast-radar-trap-card">
@@ -8718,7 +8718,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     card.classList.remove('is-correct','is-careful');
     card.classList.add(choice === correct ? 'is-correct' : 'is-careful');
     if (feedback) {
-      feedback.textContent = choice === 'past' ? card.getAttribute('data-past-feedback') : card.getAttribute('data-not-feedback');
+      feedback.textContent = choice === 'past' ? card.getAttribute('data-past-feedback') : choice === 'context' ? (card.getAttribute('data-context-feedback') || 'Prüfe den ganzen Satz.') : card.getAttribute('data-not-feedback');
     }
   });
 })();
