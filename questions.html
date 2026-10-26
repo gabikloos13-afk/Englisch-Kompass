@@ -226,11 +226,45 @@ html,body{background:#e7eef4!important;color:#243b55}
 .compass-mode-btn,.mode-tabs button,.learn-step-btn,.subtab-btn{font-weight:400!important}
 .card,.task,.topic-card{box-shadow:none!important}
 @media(max-width:700px){.page-content,.topic-page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar{padding:12px!important}.compass-head,.topic-header{padding:20px 18px!important}}
+
+/* Questions: ruhiges Lernkarten-System nach Simple Present */
+body{background:#e7eef4}
+.learning-card{background:#fff;border-color:#d6e1e9}
+.compass-head{background:linear-gradient(135deg,#2c526c,#3d747f);padding:24px 28px}
+.q-thinking-text{margin:0;padding:14px 22px!important;background:#f5f8fa;border-bottom:1px solid #d8e3ec;color:#496076;line-height:1.5}
+.compass-mode-grid{background:#f6f9fb;padding:12px;gap:8px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.compass-mode-btn,.learn-step-btn{background:#fff;border:1px solid #d7e0ea;border-radius:13px;min-width:0;min-height:73px;padding:10px 8px}
+.compass-mode-btn.is-active,.learn-step-btn.is-active{border-color:#9dbad1;background:#eff5fa}
+.learn-step-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;padding:12px;background:#eef3f7;border-bottom:1px solid #d5e1eb;overflow:visible}
+.learn-panel{background:#e7eef4;padding:22px 20px}
+.q-intro-card,.q-explain-card{background:#fff;border:1px solid #d6e1e9;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 2px 7px rgba(33,56,78,.04)}
+.q-intro-card{border-left:5px solid #5d85a5}
+.q-intro-card h2,.q-explain-card h3{font-weight:400;color:#305d79;margin:0 0 10px;font-size:1.07rem}
+.q-explain-card h4,.q-intro-card h3,.q-steps h3{font-weight:400;color:#315b7b;margin:0 0 7px;font-size:.98rem}
+.q-intro-card p,.q-explain-card p{margin:0 0 11px;line-height:1.6}
+.q-example-grid,.q-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.q-example-grid>div,.q-comparison>div{background:#f7fafc;border:1px solid #d9e4ec;border-radius:12px;padding:13px}
+.q-subject-card{background:#edf8f3!important;border-color:#bfddce!important}
+.q-object-card{background:#f3eff9!important;border-color:#d9ccea!important}
+.q-sentence{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:12px 0!important}
+.q-sentence span{padding:5px 9px;border-radius:8px;background:#edf2f6}
+.q-sentence .q-question{background:#e0edf9;color:#285c84}
+.q-sentence .q-aux{background:#ebe7fa;color:#58418b}
+.q-sentence .q-person{background:#e9eef2;color:#344f61}
+.q-sentence .q-verb{background:#e2f4eb;color:#25694b}
+.q-steps{display:grid;gap:10px;margin:13px 0}
+.q-steps>div{display:flex;gap:12px;padding:13px;background:#f9fbfd;border:1px solid #d7e3ec;border-radius:12px}
+.q-steps b{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:50%;background:#e3eef8;color:#305d79;font-weight:400}
+.q-steps p{margin:0}
+.q-reveal{padding:11px 13px;border:1px solid #d6e3ed;background:#f7fafc;border-radius:11px;margin:9px 0 15px}
+.q-reveal summary{cursor:pointer;color:#285a80}
+.q-reveal[open]{background:#edf5fb}
+@media(max-width:850px){.compass-mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.learn-step-nav{display:flex;overflow-x:auto}.learn-step-btn{flex:0 0 150px}.q-comparison,.q-example-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="overview-return-wrap page-action-bar">
-<a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="index.html">← Zurück zur Übersicht</a>
+<a aria-label="Zur Startseite mit Themenübersicht" class="overview-return" href="grammatik.html">← Zur Grammatikübersicht</a>
 <div aria-label="Seitenaktionen" class="page-action-buttons">
 <button aria-pressed="false" class="action-btn" id="homework-toggle" type="button">📚 Hausaufgaben</button>
 <button class="action-btn" id="spickzettel-print" type="button">🧾 Spickzettel drucken</button>
@@ -247,13 +281,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 </div>
 <span aria-hidden="true" class="compass-emoji">❓</span>
 </header>
-<div aria-label="Denkweg Questions" class="thinking-line">
-<span class="thinking-chip">Fragewort?</span>
-<span class="thinking-chip">do oder does?</span>
-<span class="thinking-chip">Person?</span>
-<span class="thinking-chip">Grundform?</span>
-<span class="thinking-chip">Rest?</span>
-</div>
+<p class="thinking-line q-thinking-text">Denkweg: <strong>Frageart erkennen</strong> → Fragewort prüfen → Hilfsverb nur wenn nötig → Person → Grundform → Rest</p>
 <nav aria-label="Bereiche" class="compass-mode-grid">
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="q-main" data-val="learn" type="button"><span>🎯 Lernen</span><span class="mode-hint">Frage-Maschine</span></button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="reference" type="button"><span>📖 Nachschlagen</span><span class="mode-hint">Spickzettel</span></button>
@@ -262,34 +290,17 @@ html,body{background:#e7eef4!important;color:#243b55}
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="q-main" data-val="notes" type="button"><span>✏️ Notizen</span><span class="mode-hint">Lernjournal</span></button>
 </nav>
 <section class="compass-mode-panel is-active" data-panel="q-main" data-val="learn" id="lernen">
-<nav aria-label="Lernschritte" class="learn-step-nav">
-<button aria-controls="q-learn-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="q-learn" data-val="start" type="button"><span class="step-badge">1</span><span>Wozu?</span></button>
-<button aria-controls="q-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="machine" type="button"><span class="step-badge">2</span><span>Maschine</span></button>
-<button aria-controls="q-learn-traps" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="traps" type="button"><span class="step-badge">3</span><span>Denkfallen</span></button>
-<button aria-controls="q-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="check" type="button"><span class="step-badge">4</span><span>Kann ich's?</span></button>
-</nav>
-<div class="learn-panel is-active" data-panel="q-learn" data-val="start" id="q-learn-start">
-<h2 class="panel-title">Wozu brauche ich Questions?</h2>
-<p class="panel-intro">Du brauchst Questions, wenn du etwas fragen willst: Was? Wo? Wann? Wie oft?</p>
-<div class="grid">
-<article class="card blue">
-<h3 class="card-title">Der Kern</h3>
-<div class="example-row"><span class="token qword">Where</span><span class="arrow">→</span><span class="token aux">does</span><span class="arrow">→</span><span class="token person">she</span><span class="arrow">→</span><span class="token verb">play</span><span class="arrow">→</span><span class="token rest">tennis?</span></div>
-<p>Bei normalen Verben im Simple Present brauchst du do oder does.</p>
-</article>
-<article class="card green">
-<h3 class="card-title">do oder does?</h3>
-<p>I, you, we, they → do</p>
-<p>he, she, it → does</p>
-<p>Nach does steht das Verb wieder in der Grundform.</p>
-</article>
-<article class="card yellow">
-<h3 class="card-title">Wichtigste Grenze</h3>
-<p>Bei am, is, are steht kein do oder does.</p>
-<p>Merke nur: am/is/are → kein do/does.</p>
-</article>
-</div>
-</div>
+<nav aria-label="Lernschritte" class="learn-step-nav"><button aria-controls="q-learn-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="q-learn" data-val="start" type="button"><span class="step-badge">1</span><span>Wozu?</span></button><button aria-controls="q-learn-rules" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="rules" type="button"><span class="step-badge">2</span><span>Fragen verstehen</span></button><button aria-controls="q-learn-subject" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="subject" type="button"><span class="step-badge">3</span><span>Subjekt oder Objekt?</span></button><button aria-controls="q-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="machine" type="button"><span class="step-badge">4</span><span>Frage-Maschine</span></button><button aria-controls="q-learn-traps" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="traps" type="button"><span class="step-badge">5</span><span>Denkfallen</span></button><button aria-controls="q-learn-check" aria-pressed="false" class="learn-step-btn" data-tab="q-learn" data-val="check" type="button"><span class="step-badge">6</span><span>Kann ich's?</span></button></nav>
+<div class="learn-panel is-active" data-panel="q-learn" data-val="start" id="q-learn-start"><section class="q-intro-card"><h2>Wozu brauche ich Fragen?</h2><p>Mit einer Frage möchtest du etwas wissen. Du fragst zum Beispiel nach einer Person, einem Ort, einem Zeitpunkt oder einer Handlung.</p><div class="q-example-grid"><div><h3>Ja-oder-Nein-Frage</h3><p class="q-sentence"><span class="q-aux">Does</span><span>she</span><span class="q-verb">play</span><span>tennis?</span></p><p>Du kannst mit <em>Yes</em> oder <em>No</em> antworten.</p></div><div><h3>Frage mit Fragewort</h3><p class="q-sentence"><span class="q-question">Where</span><span class="q-aux">does</span><span>she</span><span class="q-verb">play</span><span>tennis?</span></p><p>Du möchtest etwas Genaueres wissen: <em>Wo?</em></p></div></div></section><section class="q-explain-card"><h3>Wichtig: Erst herausfinden, wonach gefragt wird</h3><div class="q-comparison"><div><p><strong>Who plays tennis?</strong></p><p>Wer spielt? <strong>Who</strong> ist selbst die handelnde Person. Deshalb steht <strong>kein does</strong>.</p></div><div><p><strong>Who does Mia meet?</strong></p><p>Wen trifft Mia? <strong>Mia</strong> handelt. Deshalb brauchst du bei der Objektfrage <strong>does</strong>.</p></div></div><p>Die beiden Arten lernst du in Reiter 3 ausführlich kennen.</p></section></div>
+<div class="learn-panel" data-panel="q-learn" data-val="rules" id="q-learn-rules">
+<section class="q-intro-card"><h2>Fragen mit do und does bilden</h2><p>Für viele Fragen mit normalen Tätigkeitsverben im <strong>Simple Present</strong> brauchst du ein Hilfsverb. Bei <strong>to be</strong> gilt eine andere Regel.</p><div class="q-steps"><div><b>1</b><section><h3>Frageart wählen</h3><p>Eine Ja-/Nein-Frage beginnt meist direkt mit <em>do/does</em>. Bei einer Frage nach Ort, Zeit oder Grund steht das Fragewort davor.</p></section></div><div><b>2</b><section><h3>Person prüfen</h3><p><em>I, you, we, they</em> → <strong>do</strong>; <em>he, she, it</em> → <strong>does</strong>.</p></section></div><div><b>3</b><section><h3>Verb in Grundform schreiben</h3><p><em>Does Mia play?</em> – nicht <em>Does Mia plays?</em>. In <em>does</em> steckt schon die Form für <em>she</em>.</p></section></div></div></section>
+<section class="q-explain-card"><h3>So sehen die Satzbausteine aus</h3><p class="q-sentence"><span class="q-question">Where</span><span class="q-aux">does</span><span class="q-person">Mia</span><span class="q-verb">play</span><span>football?</span></p><p>Ein Fragewort wie <em>where</em> steht ganz vorne. Bei einer Frage ohne Fragewort beginnst du direkt mit <em>does</em>.</p><div class="q-comparison"><div><h4>Kurzantwort mit do</h4><p>Do they play? → <strong>Yes, they do.</strong> / <strong>No, they don't.</strong></p></div><div><h4>Kurzantwort mit does</h4><p>Does she play? → <strong>Yes, she does.</strong> / <strong>No, she doesn't.</strong></p></div></div></section>
+<section class="q-explain-card"><h3>Grenze: to be</h3><p>Bei <em>am, is, are</em> benutzt du kein <em>do/does</em>: <strong>Is she happy?</strong> und nicht <em>Does she is happy?</em></p></section></div>
+<div class="learn-panel" data-panel="q-learn" data-val="subject" id="q-learn-subject">
+<section class="q-intro-card"><h2>Subjektfrage oder Objektfrage?</h2><p>Die entscheidende Frage lautet: <strong>Wer macht etwas?</strong> Das ist das Subjekt. Frage danach, ob das Fragewort selbst für die handelnde Person steht oder ob eine andere Person im Satz handelt.</p><div class="q-comparison"><div class="q-subject-card"><h3>Subjektfrage – Wer handelt?</h3><p class="q-sentence"><span class="q-question">Who</span><span class="q-verb">plays</span><span>football?</span></p><p>Antwort: <em>Mia plays football.</em> <strong>Who</strong> ersetzt Mia, also das Subjekt. Im Simple Present steht hier normalerweise <strong>kein do/does</strong>. Das Verb bekommt bei <em>who</em> als einzelner Person ein <strong>-s</strong>.</p></div><div class="q-object-card"><h3>Objektfrage – Wen oder was?</h3><p class="q-sentence"><span class="q-question">Who</span><span class="q-aux">does</span><span class="q-person">Mia</span><span class="q-verb">meet?</span></p><p>Antwort: <em>Mia meets Leo.</em> <strong>Mia</strong> handelt. <em>Who</em> fragt nach Leo, also nach dem Objekt. Hier brauchst du <strong>does</strong> und die Grundform <em>meet</em>.</p></div></div></section>
+<section class="q-explain-card"><h3>Der sichere Denkweg</h3><div class="q-steps"><div><b>1</b><section><h3>Suche das Verb</h3><p>Zum Beispiel <em>plays</em> oder <em>meets</em>.</p></section></div><div><b>2</b><section><h3>Frage: Wer führt die Handlung aus?</h3><p>Ist die gesuchte Person selbst die handelnde Person? Dann ist es eine <strong>Subjektfrage</strong>.</p></section></div><div><b>3</b><section><h3>Wähle den richtigen Satzbau</h3><p>Subjektfrage: <strong>Who + Verb + Rest?</strong> Objektfrage: <strong>Who + do/does + Person + Grundform + Rest?</strong></p></section></div></div></section>
+<section class="q-explain-card"><h3>Erst denken, dann aufdecken</h3><p>Du weißt: <em>Leo likes Emma.</em> Du möchtest wissen, <strong>wer Emma mag</strong>. Brauchst du <em>does</em>?</p><details class="q-reveal"><summary>Antwort mit Erklärung aufdecken</summary><p><strong>Who likes Emma?</strong></p><p><strong>Schritt 1:</strong> Leo ist der Handelnde.</p><p><strong>Schritt 2:</strong> Nach ihm wird gefragt. <em>Who</em> ersetzt das Subjekt.</p><p><strong>Schritt 3:</strong> Deshalb kein <em>does</em>; es bleibt <em>likes</em>.</p></details><p>Jetzt die andere Frage: <strong>Wen mag Leo?</strong></p><details class="q-reveal"><summary>Antwort mit Erklärung aufdecken</summary><p><strong>Who does Leo like?</strong></p><p><strong>Schritt 1:</strong> Leo handelt und bleibt als Subjekt im Satz.</p><p><strong>Schritt 2:</strong> Nach Emma wird gefragt – sie ist das Objekt.</p><p><strong>Schritt 3:</strong> Deshalb <em>does</em> + <em>like</em> in der Grundform.</p></details></section>
+<section class="q-explain-card"><h3>Besonders wichtig bei what</h3><div class="q-comparison"><div><p><strong>What happens?</strong></p><p>Was geschieht? <em>What</em> ist hier das Subjekt – kein <em>does</em>.</p></div><div><p><strong>What does Mia want?</strong></p><p>Was möchte Mia? <em>Mia</em> ist das Subjekt – deshalb <em>does</em>.</p></div></div><p>Diese Unterscheidung gilt auch im Simple Past: <em>Who called?</em> (Subjekt) – <em>Who did Mia call?</em> (Objekt).</p></section></div>
 <div class="learn-panel" data-panel="q-learn" data-val="machine" id="q-learn-machine">
 <h2 class="panel-title">Frage-Maschine</h2>
 <p class="panel-intro">Wähle die Teile aus. Entscheide selbst, ob do oder does passt. Dann baust du die Frage.</p>
