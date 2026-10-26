@@ -1165,6 +1165,109 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
  body .topic-page--simple-present #schreibcheck.learn-panel{padding:14px 12px!important}
 }
 
+
+/* Schreib-Check: vollständige Angleichung an die Kartenstruktur der Lernreiter 1–6 */
+@media screen {
+ body .topic-page--simple-present #schreibcheck.learn-panel{
+  box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+  margin:0!important;padding:24px!important;
+  background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%)!important;
+  color:var(--gray-800)!important;font-family:var(--font-body)!important;
+  font-size:15px!important;line-height:1.65!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-panel{
+  box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+  margin:0!important;padding:0!important;background:transparent!important;
+  display:block!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-intro{
+  box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+  margin:0 0 14px!important;padding:17px 19px!important;
+  border:1px solid var(--sp-card-border)!important;border-left:5px solid #5d85a5!important;
+  border-radius:14px!important;background:#fff!important;
+  box-shadow:var(--shadow-sm)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-intro h3{
+  margin:0 0 9px!important;font-family:var(--font-head)!important;
+  font-size:1.08rem!important;line-height:1.35!important;font-weight:400!important;
+  color:var(--blue-dark)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-intro p{
+  margin:0!important;max-width:none!important;font-size:1rem!important;
+  line-height:1.6!important;color:var(--gray-800)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  width:100%!important;max-width:100%!important;gap:13px!important;
+  margin:0 0 14px!important;padding:0!important;align-items:stretch!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task{
+  box-sizing:border-box!important;width:100%!important;min-width:0!important;max-width:none!important;
+  padding:17px 19px!important;margin:0!important;
+  border:1px solid var(--sp-card-border)!important;border-radius:14px!important;
+  background:#fff!important;box-shadow:var(--shadow-sm)!important;
+  color:var(--gray-800)!important;line-height:1.6!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task-head{
+  display:flex!important;justify-content:flex-start!important;align-items:center!important;
+  margin:0 0 10px!important;gap:8px!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task-num{
+  font-family:var(--font-head)!important;font-size:.88rem!important;font-weight:400!important;
+  border:1px solid #cbd9e8!important;border-radius:8px!important;
+  background:#eef5fa!important;color:#305d79!important;padding:5px 10px!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-prompt{
+  display:block!important;margin:0 0 13px!important;max-width:none!important;
+  font-family:var(--font-body)!important;font-size:1rem!important;
+  line-height:1.65!important;color:var(--gray-800)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-input-row{
+  display:flex!important;align-items:stretch!important;gap:10px!important;
+  width:100%!important;min-width:0!important;flex-wrap:wrap!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-input{
+  box-sizing:border-box!important;flex:1 1 290px!important;min-width:0!important;
+  max-width:100%!important;min-height:44px!important;
+  border:1px solid #cbd9e8!important;border-radius:10px!important;
+  background:#fff!important;padding:10px 12px!important;
+  color:var(--gray-800)!important;font-family:var(--font-body)!important;
+  font-size:1rem!important;line-height:1.4!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-btn,
+ body .topic-page--simple-present #schreibcheck .writecheck-check-all,
+ body .topic-page--simple-present #schreibcheck .writecheck-reset{
+  min-height:44px!important;border-radius:10px!important;font-size:.9rem!important;
+  font-family:var(--font-head)!important;font-weight:400!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-actions,
+ body .topic-page--simple-present #schreibcheck .writecheck-summary:not(:empty){
+  box-sizing:border-box!important;width:100%!important;max-width:none!important;
+  margin:0 0 14px!important;padding:16px 18px!important;
+  background:#fff!important;border:1px solid var(--sp-card-border)!important;
+  border-radius:14px!important;box-shadow:var(--shadow-sm)!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-summary:empty{
+  display:none!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task.is-correct{
+  border-color:#86bfa1!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task.is-almost{
+  border-color:#e1bd72!important;
+ }
+ body .topic-page--simple-present #schreibcheck .writecheck-task.is-wrong{
+  border-color:#df9898!important;
+ }
+}
+@media screen and (max-width:700px){
+ body .topic-page--simple-present #schreibcheck.learn-panel{padding:14px 12px!important}
+ body .topic-page--simple-present #schreibcheck .writecheck-task,
+ body .topic-page--simple-present #schreibcheck .writecheck-intro{padding:15px!important}
+ body .topic-page--simple-present #schreibcheck .writecheck-input-row{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+ body .topic-page--simple-present #schreibcheck .writecheck-input{width:100%!important;min-width:0!important;margin:0!important}
+}
+
 </style>
 </head>
 <body>
