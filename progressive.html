@@ -102,6 +102,15 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
 .topic-page--present-progressive .pg-part,.topic-page--present-progressive .chip{font-weight:400}
 .topic-page--present-progressive button:focus-visible,.topic-page--present-progressive a:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
 @media(max-width:680px){.topic-page--present-progressive{padding:7px 8px 24px}.topic-page--present-progressive .compass-head{padding:14px 16px}.topic-page--present-progressive .compass-mode-grid{padding:9px;gap:5px}.topic-page--present-progressive .compass-mode-btn{flex:1 1 44%;min-width:0;padding:8px}.topic-page--present-progressive .compass-mode-panel,.topic-page--present-progressive .learn-panel{padding:14px 12px}.topic-page--present-progressive .sp-thinking-line{padding:7px 10px}}
+
+.topic-page--present-progressive .pg-person-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.topic-page--present-progressive .pg-person-map>div{padding:10px;border:1px solid #dce4ec;border-radius:11px;background:#fafcff;display:flex;flex-wrap:wrap;gap:5px;align-items:center;justify-content:center}
+.topic-page--present-progressive .pg-rule-structure h3{margin:16px 0 7px;color:#294766;font-size:1.05rem;font-weight:400}
+.topic-page--present-progressive .pg-rule-structure h3:first-child{margin-top:0}
+.topic-page--present-progressive .pg-rule-check{padding:11px;border:1px solid #dce4ec;background:#f9fbfe;border-radius:11px;margin:12px 0}
+.topic-page--present-progressive .pg-rule-warning{padding:11px;background:#fff8f6;border-left:3px solid #d48b77;border-radius:8px}
+.topic-page--present-progressive [data-machine-output]{display:flex;align-items:center;flex-wrap:wrap;gap:3px}
+@media(max-width:620px){.topic-page--present-progressive .pg-person-map{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -161,13 +170,33 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
       <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
         <p class="section-kicker">Denkweg 2</p>
         <h2 class="section-title">So bildest du das Present Progressive</h2><p class="section-text">Erst die Regel verstehen, dann die Satzmaschine ausprobieren: <strong>Person + am/is/are + Verb-ing</strong>. Wähle das Hilfsverb passend zur Person und hänge -ing an das Tätigkeitsverb.</p>
-        <div class="pg-rule-structure" aria-label="Satzbausteine und Farben"><h3>Die Farben bleiben immer gleich</h3><p><span class="pg-part pg-person">Person</span> <span class="pg-part pg-helper">am / is / are</span> <span class="pg-part pg-verb">Verb-ing</span> <span class="pg-part pg-rest">Satzrest</span></p><p>Die Person bestimmt die Form von <em>to be</em>: <strong>I am</strong>, <strong>he/she/it is</strong>, <strong>you/we/they are</strong>. Das Tätigkeitsverb endet auf <strong>-ing</strong>.</p><div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">reading</span><span class="pg-part pg-rest">a book.</span></div><p class="pg-caption">Merke: Beide Verbteile gehören zusammen. Ohne am/is/are fehlt ein Teil des Present Progressive.</p></div><div class="formula-row">
+        <div class="pg-rule-structure" aria-label="Present Progressive Schritt für Schritt">
+<h3>Die Grundregel: Aus drei Teilen wird ein Satz</h3>
+<p>Du brauchst <strong>immer zwei Verbteile</strong>: eine passende Form von <em>to be</em> (<span class="pg-part pg-helper">am / is / are</span>) und ein Tätigkeitsverb mit <span class="pg-part pg-verb">-ing</span>. Davor steht die Person.</p>
+<div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">reading</span><span class="pg-part pg-rest">a book.</span></div>
+<p class="pg-caption">Die Farben bedeuten auf dieser Seite immer dasselbe: Grau = Person, Lila = am/is/are, Grün = Tätigkeitsverb mit -ing, Hellgrau = restliche Wörter.</p>
+<h3>Schritt 1: Wer macht etwas?</h3>
+<p>Suche die Person im Satz. Sie entscheidet, welches Wort aus <em>am / is / are</em> du brauchst.</p>
+<div class="pg-person-map">
+<div><span class="pg-part pg-person">I</span><span class="pg-part pg-helper">am</span></div>
+<div><span class="pg-part pg-person">he / she / it</span><span class="pg-part pg-helper">is</span></div>
+<div><span class="pg-part pg-person">you / we / they</span><span class="pg-part pg-helper">are</span></div>
+</div>
+<p>Ein Name zählt ebenfalls als Person: <em>Emma</em> = <em>she</em>, also <span class="pg-part pg-person">Emma</span><span class="pg-part pg-helper">is</span>.</p>
+<h3>Schritt 2: Was passiert?</h3>
+<p>Nimm das Tätigkeitsverb, zum Beispiel <em>play</em>. Für Present Progressive brauchst du die <strong>-ing-Form</strong>: <span class="pg-part pg-verb">playing</span>. Bei manchen Verben ändert sich die Schreibweise: <em>make → making</em>, <em>run → running</em>. Alle Schreibregeln stehen im nächsten Reiter.</p>
+<h3>Schritt 3: Setze alles zusammen</h3>
+<div class="pg-line"><span class="pg-part pg-person">Emma</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">playing</span><span class="pg-part pg-rest">football now.</span></div>
+<p>Du kannst dir merken: <strong>Wer? + passende Form von to be + Was mit -ing? + Rest.</strong></p>
+<div class="pg-rule-check"><p><strong>Denke kurz selbst:</strong> Welche Form von <em>to be</em> gehört zu <em>we</em>?</p><button type="button" class="tool-btn" data-pg-rule-reveal aria-expanded="false" aria-controls="pg-rule-answer">Antwort aufdecken</button><p id="pg-rule-answer" hidden><span class="pg-part pg-person">We</span><span class="pg-part pg-helper">are</span><span class="pg-part pg-verb">playing</span><span class="pg-part pg-rest">football.</span> Zu <em>we</em> gehört <em>are</em>.</p></div>
+<p class="pg-rule-warning"><strong>Typische Falle:</strong> <em>She playing.</em> ist unvollständig: <em>is</em> fehlt. <em>She is play.</em> ist ebenfalls falsch: Es muss <em>playing</em> heißen.</p>
+</div><div class="formula-row">
           <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
           <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
           <div class="formula-part"><span class="big">3 Verb-ing</span><span>playing, reading, running</span></div>
         </div>
         <div class="tool-card interactive-only">
-          <h3>Baue den Satz</h3>
+          <h3>Jetzt ausprobieren: Baue deinen Satz</h3><p>Wähle Person, Verb und Satzart. Beobachte, wie sich das lila Hilfsverb verändert. Die grünen -ing-Formen bleiben bei Aussage, Frage und Verneinung gleich.</p>
           <div class="select-row">
             <div class="field"><label for="pg-person">Person</label><select id="pg-person" data-machine-person><option>I</option><option>you</option><option>he</option><option>she</option><option>it</option><option>we</option><option>they</option></select></div>
             <div class="field"><label for="pg-verb">Verb</label><select id="pg-verb" data-machine-verb><option>play</option><option>read</option><option>watch</option><option>make</option><option>write</option><option>run</option><option>swim</option><option>sit</option><option>get</option><option>dance</option></select></div>
@@ -443,6 +472,8 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
   function shortNo(person, b){ if(person === 'I' || person === 'you') return 'No, I’m not.'; return 'No, '+pronounForShort(person)+' '+(b==='is'?'isn’t':'aren’t')+'.'; }
   function shortNote(person, b){ return person === 'you' ? 'Bei Are you ...? antwortest du für dich selbst: Yes, I am. / No, I’m not.' : 'Kurzantwort: kein Vollverb, nur '+b+' oder '+b+' + not.'; }
   function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  var pgRuleReveal=document.querySelector('[data-pg-rule-reveal]');
+  if(pgRuleReveal)pgRuleReveal.addEventListener('click',function(){var answer=document.getElementById('pg-rule-answer');if(!answer)return;answer.hidden=!answer.hidden;pgRuleReveal.setAttribute('aria-expanded',answer.hidden?'false':'true');pgRuleReveal.textContent=answer.hidden?'Antwort aufdecken':'Antwort verbergen';});
   function initMachine(){
     var p=document.querySelector('[data-machine-person]'), v=document.querySelector('[data-machine-verb]'), m=document.querySelector('[data-machine-mode]'), out=document.querySelector('[data-machine-output]'), note=document.querySelector('[data-machine-note]');
     if(!p||!v||!m||!out) return;
@@ -453,7 +484,14 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
       if(mode==='question'){ sentence=cap(b)+' '+person+' '+g+'?'; n='In der Frage steht '+b+' vorne.'; }
       if(mode==='shortYes'){ sentence=shortYes(person,b); n=shortNote(person,b); }
       if(mode==='shortNo'){ sentence=shortNo(person,b); n=shortNote(person,b); }
-      out.textContent=cap(sentence); if(note) note.textContent=n;
+      out.textContent='';
+      var parts=[];
+      if(mode==='positive')parts=[['person',cap(person)],['helper',b],['verb',g],['rest','.']];
+      if(mode==='negative')parts=[['person',cap(person)],['helper',b],['negation','not'],['verb',g],['rest','.']];
+      if(mode==='question')parts=[['helper',cap(b)],['person',person],['verb',g],['rest','?']];
+      if(mode==='shortYes'||mode==='shortNo')parts=[['rest',sentence]];
+      parts.forEach(function(part){var el=document.createElement('span');el.className='pg-part pg-'+part[0];el.textContent=part[1];out.appendChild(el);});
+      if(note) note.textContent=n;
     }
     [p,v,m].forEach(function(el){el.addEventListener('change', update)}); update();
   }
