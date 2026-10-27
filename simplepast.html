@@ -10380,6 +10380,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   if(input){
     input.addEventListener('keydown',function(e){if(e.key==='Enter') root.querySelector('#sp-dz-v14-check').click();});
     input.addEventListener('input',function(){
+      if(workMode==='independent')thinking('<strong>Weiter versuchen.</strong> Prüfe deine überarbeitete Antwort erst, wenn du fertig bist.');
       setStep(5,false);
       rule.textContent='Die ausführliche Erklärung erscheint erst nach deiner Eingabe oder bei einem Fehler.';
       dzSave();
