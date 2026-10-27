@@ -58,6 +58,20 @@ html,body{background:#e7eef4;color:#243b55}
 .overview-return-wrap a:focus-visible,.overview-return-wrap button:focus-visible,.compass-mode-btn:focus-visible,.learn-step-btn:focus-visible,.tool-btn:focus-visible{outline:3px solid #245ec9;outline-offset:3px}
 @media(max-width:700px){.page-content{padding:12px 12px 40px}.overview-return-wrap.page-action-bar{padding:12px}.compass-head.havegot-head-gradient{padding:20px 18px}.compass-mode-grid{margin:12px;gap:7px}.compass-mode-btn{flex:1 1 130px}.compass-mode-panel{padding:0 12px 18px}.learn-step-btn{flex:1 1 120px;max-width:none}}
 
+
+/* Satzbaustein-Farben wie in Simple Present: Person – Hilfsverb – Verb – Rest */
+.pg-part{display:inline-block;padding:3px 9px;margin:2px 3px 2px 0;border:1px solid transparent;border-radius:10px;font-weight:400}
+.pg-person{background:#eef2f6;border-color:#dbe2eb;color:#334155}
+.pg-helper{background:#f1ecff;border-color:#d8cbff;color:#5d3ea8}
+.pg-verb{background:#eaf7ef;border-color:#c6ead2;color:#216847}
+.pg-rest{background:#f4f6fa;border-color:#e3e8f0;color:#475569}
+.pg-negation{background:#fff0f0;border-color:#fecaca;color:#991b1b}
+.pg-rule-structure{margin:14px 0;padding:15px;border:1px solid #dbe2eb;border-radius:14px;background:#f8fafc}
+.pg-rule-structure p{margin:8px 0}
+.pg-rule-structure .pg-line{display:flex;flex-wrap:wrap;gap:2px;align-items:center;margin:7px 0}
+.pg-rule-structure .pg-caption{font-size:.88rem;color:#475569}
+.pg-rule-steps{padding-left:21px;margin:10px 0;line-height:1.75}
+.pg-rule-steps li{margin-bottom:5px}
 </style>
 </head>
 <body>
@@ -146,7 +160,7 @@ html,body{background:#e7eef4;color:#243b55}
       <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
         <p class="section-kicker">Denkweg 2</p>
         <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
-        <div class="formula-row">
+        <div class="pg-rule-structure" aria-label="Satzbausteine und Farben"><h3>Die Farben bleiben immer gleich</h3><p><span class="pg-part pg-person">Person</span> <span class="pg-part pg-helper">am / is / are</span> <span class="pg-part pg-verb">Verb-ing</span> <span class="pg-part pg-rest">Satzrest</span></p><p>Die Person bestimmt die Form von <em>to be</em>: <strong>I am</strong>, <strong>he/she/it is</strong>, <strong>you/we/they are</strong>. Das Tätigkeitsverb endet auf <strong>-ing</strong>.</p><div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">reading</span><span class="pg-part pg-rest">a book.</span></div><p class="pg-caption">Merke: Beide Verbteile gehören zusammen. Ohne am/is/are fehlt ein Teil des Present Progressive.</p></div><div class="formula-row">
           <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
           <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
           <div class="formula-part"><span class="big">3 Verb-ing</span><span>playing, reading, running</span></div>
@@ -167,7 +181,7 @@ html,body{background:#e7eef4;color:#243b55}
         <p class="section-kicker">Denkweg 3</p>
         <h2 class="section-title">-ing-Zauberer: Wie schreibe ich die Form?</h2>
         <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
-        <div class="grid-3">
+        <div class="pg-rule-structure"><h3>So entscheidest du über die Schreibweise</h3><ol class="pg-rule-steps"><li><strong>Normal:</strong> Hänge -ing an: play → playing.</li><li><strong>Stummes -e:</strong> Streiche das e: make → making. Nicht jedes e fällt weg: see → seeing.</li><li><strong>Kurzer betonter Vokal + Endkonsonant:</strong> Verdopple den letzten Konsonanten bei passenden kurzen Verben: run → running, sit → sitting. Nicht bei w oder y: show → showing, play → playing.</li></ol><p>Prüfe die Endung erst selbst, bevor du die nächste Aufgabe löst.</p></div><div class="grid-3">
           <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
           <div class="card yellow-card"><h3>Stummes -e weg</h3><p>make → making<br/>write → writing<br/>come → coming</p></div>
           <div class="card violet-card"><h3>Konsonant verdoppeln</h3><p>Bei kurzen Verben: kurzer Vokal + ein Endkonsonant → Endkonsonant oft verdoppeln.</p><p>run → running<br/>sit → sitting<br/>swim → swimming<br/>get → getting</p><p>Nicht bei w/y: play → playing, show → showing.</p></div>
@@ -185,7 +199,12 @@ html,body{background:#e7eef4;color:#243b55}
       <section class="learn-panel" id="pg-learn-questions" role="tabpanel" aria-labelledby="tab-pg-learn-questions" data-panel="pg-learn" data-val="questions">
         <p class="section-kicker">Denkweg 4</p>
         <h2 class="section-title">Fragen und Verneinungen</h2>
-        <div class="grid-2">
+        <div class="pg-rule-structure"><h3>Aus einem Satz werden drei Formen</h3><p>Beobachte zuerst die Farben: <span class="pg-part pg-person">Person</span>, <span class="pg-part pg-helper">Hilfsverb</span>, <span class="pg-part pg-verb">-ing-Form</span>. Die -ing-Form bleibt bei allen drei Satzarten gleich.</p>
+<p><strong>1. Aussage</strong> – Person vor dem Hilfsverb:</p><div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">playing</span><span class="pg-part pg-rest">tennis.</span></div>
+<p><strong>2. Verneinung</strong> – nur <em>not</em> hinter am/is/are setzen:</p><div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-negation">not</span><span class="pg-part pg-verb">playing</span><span class="pg-part pg-rest">tennis.</span></div>
+<p><strong>3. Frage</strong> – am/is/are wandert vor die Person:</p><div class="pg-line"><span class="pg-part pg-helper">Is</span><span class="pg-part pg-person">she</span><span class="pg-part pg-verb">playing</span><span class="pg-part pg-rest">tennis?</span></div>
+<ol class="pg-rule-steps"><li>Prüfe die Person: I → am, he/she/it → is, you/we/they → are.</li><li>Frage: Das Hilfsverb steht vorne. Verneinung: not steht dahinter.</li><li>Das Tätigkeitsverb bleibt in der -ing-Form. Für Fragen und Verneinungen brauchst du hier kein do oder does.</li></ol>
+<h3>Kurzantworten – ohne -ing-Verb</h3><p>Bei der Antwort wiederholst du nur die Person und die passende Form von to be:</p><div class="pg-line"><span class="pg-part pg-helper">Are</span><span class="pg-part pg-person">you</span><span class="pg-part pg-verb">reading</span><span class="pg-part pg-rest">now?</span></div><div class="pg-line"><span class="pg-part pg-rest">Yes,</span><span class="pg-part pg-person">I</span><span class="pg-part pg-helper">am.</span></div><div class="pg-line"><span class="pg-part pg-rest">No,</span><span class="pg-part pg-person">I</span><span class="pg-part pg-helper">am not.</span></div><p><strong>Achtung:</strong> Wird <em>you</em> gefragt und du antwortest über dich selbst, wird daraus <em>I</em>. In Kurzantworten fällt das -ing-Verb weg. Sage <em>Yes, I am</em> – nicht <em>Yes, I am reading</em> als Kurzantwort.</p></div><div class="grid-2">
           <div class="card soft-card"><h3>Verneinung</h3><p>Setze <span class="chip red">not</span> hinter am/is/are.</p><div class="sentence"><span class="chip blue">She</span><span class="chip blue">is not</span><span class="chip violet">playing</span><span>tennis.</span></div><p>Kurzer: She isn’t playing tennis.</p></div>
           <div class="card green-card"><h3>Frage</h3><p>Stelle am/is/are nach vorne.</p><div class="sentence"><span class="chip blue">Is</span><span class="chip blue">she</span><span class="chip violet">playing</span><span>tennis?</span></div><p>Kurzantwort: Yes, she is. / No, she isn’t.</p></div>
         </div>
