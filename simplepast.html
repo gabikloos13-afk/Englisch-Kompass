@@ -997,6 +997,7 @@ tr:hover td{background:var(--gray-25)}
 .person-form-grid span{padding:8px 10px;border-radius:var(--radius-sm);background:#fff;text-align:center;color:#27415f;font-family:var(--font-head);font-size:.84rem}
 
 .compass-kicker{font-weight:400;color:rgba(255,255,255,.65);}
+
 .compass-title{font-weight:400;}
 
 .compass-subtitle{color:rgba(255,255,255,.82);}
@@ -1996,6 +1997,7 @@ body
 .v113-signal-examples{margin-top:10px}
 
 .v113-rule-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;margin:12px 0}
+
 .v113-rule-flow>div:not(:nth-child(2)){padding:12px;border:1px solid rgba(148,163,184,.35);border-radius:var(--radius);background:#f8fafc}
 
 .v113-rule-flow span{display:block;color:#64748b;font-family:var(--font-head);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
@@ -6576,13 +6578,6 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 .sp-action-btn{border-radius:999px;border:1px solid #c5d2e3;background:#fff;color:#27415f;font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
 .sp-action-btn:hover{background:#eaf1f8;border-color:#8aa4c0;color:#1e3a8a}
 .sp-action-btn:disabled{opacity:.6;cursor:not-allowed}
-
-/* Einheitliche Lesbarkeit: nur tatsächliche Aktionen erhalten Button-Zeiger. */
-#past-learn-entry .past-route-mini span,#past-learn-positive .positive-v31-readline .part,.sp-dz-sentence span{cursor:default!important}
-/* Statische Lernhilfen sollen auch bei Hover nicht wie Aktionen reagieren. */
-#past-learn-entry .past-route-mini span:hover,#past-learn-positive .positive-v31-readline .part:hover,.sp-dz-sentence span:hover{transform:none!important;box-shadow:none!important}
-/* Echte Schaltflächen bleiben per Tastatur erkennbar. */
-#past-learn-entry button:focus-visible,#past-learn-positive button:focus-visible,#simplepast-denkzentrale button:focus-visible{outline:3px solid #507da0!important;outline-offset:3px!important}
 </style>
 <!-- V82 BLOCK 2F KORREKTUR ZIELBEREICH: Denkzentrale/Orientierung. Hier werden die Mixed-Datenpools in Block 2 funktional integriert. -->
 <section aria-labelledby="sp-dz-v14-title" class="sp-dz-v14 simplepast-orientation-shell" id="simplepast-denkzentrale">
@@ -8334,7 +8329,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div><span>Simple Past</span>She <span class="past-clean-emphasis">played</span> football yesterday.<br/><small>einmal, gestern, vorbei</small></div>
 </div>
 </div>
-<div class="sp-v119-card-actions"><button aria-controls="past-learn-entry" class="sp-v119-jump" data-sp-connect-step="entry" type="button">Zum Früher-Radar</button><a class="sp-v119-jump" href="grammatiktraining.html#lernen">Weitere Übungen: Simple Present vs. Simple Past</a></div>
+<div class="sp-v119-card-actions"><button aria-controls="past-learn-entry" class="sp-v119-jump" data-sp-connect-step="entry" type="button">Zum Früher-Radar</button></div>
 </article>
 <article class="sp-v119-network-card">
 <div aria-hidden="true" class="sp-v119-network-icon is-warm">⚡</div>
@@ -10308,7 +10303,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     if(t.verbtype==='verb'){
       if(hasDidPastForm(got)) return {type:'didPast'};
       if(t.sentence==='negative' && !/\b(didnt|did not)\b/.test(got)) return {type:'needsDidnt'};
-      if(t.sentence==='question' && !/^(?:did\s+|(?:who|what|where|when|why|how)\s+did\s+)/.test(got)) return {type:'needsDid'};
+      if(t.sentence==='question' && !got.startsWith('did ')) return {type:'needsDid'};
       if(t.sentence==='positive'){
         const pastMarkers=answerHasAny(answerNorms,['played','visited','opened','helped','watched','studied','liked','stopped','tried','cleaned','went','saw','had','ate','bought','made','came','took','gave','wrote','did','got','said','knew','found','told','thought','read','met','left','ran','drank','spoke','slept','stood','swam','won','brought','caught','chose','broke','drew','heard','rode','sang','wore','woke','threw']);
         if(pastMarkers.length && !pastMarkers.some(w=>got.indexOf(w)>-1)) return {type:'form',message:(t.hints&&t.hints.form)||'Bei positiven Aussagen trägt das Verb die Past Form.'};
