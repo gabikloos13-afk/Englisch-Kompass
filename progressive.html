@@ -72,22 +72,53 @@ html,body{background:#e7eef4;color:#243b55}
 .pg-rule-structure .pg-caption{font-size:.88rem;color:#475569}
 .pg-rule-steps{padding-left:21px;margin:10px 0;line-height:1.75}
 .pg-rule-steps li{margin-bottom:5px}
+
+/* Gemeinsames Layoutsystem nach simplepresent.html, auf Present Progressive begrenzt */
+body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;font-weight:400}
+.topic-page--present-progressive{max-width:1160px;margin:auto;padding:14px 18px 48px}
+.topic-page--present-progressive .learning-card{border:1px solid #dce3eb;border-radius:16px;box-shadow:0 8px 28px rgba(15,23,42,.08);background:white}
+.topic-page--present-progressive .compass-head{padding:19px 24px;background:#f4f7fb;border-bottom:1px solid #e1e7f0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topic-page--present-progressive .compass-kicker{font-size:.8rem;color:#64748b;text-transform:none;letter-spacing:0;margin-bottom:4px}
+.topic-page--present-progressive .compass-title{font-family:Arial,Helvetica,sans-serif;font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:400;margin:0 0 5px;color:#263e59}
+.topic-page--present-progressive .compass-subtitle{font-size:.93rem;line-height:1.5;color:#52677c}
+.topic-page--present-progressive .compass-emoji{font-size:1.4rem;color:#537391}
+.topic-page--present-progressive .sp-thinking-line{display:flex;flex-wrap:wrap;gap:7px;padding:9px 20px;border-bottom:1px solid #e5ebf2;background:#fbfcfe}
+.topic-page--present-progressive .sp-thinking-line span{font-size:.76rem;color:#50657a;padding:3px 8px;border:1px solid #e0e7ef;border-radius:10px;background:#fff}
+.topic-page--present-progressive .compass-mode-grid{display:flex;flex-wrap:wrap;gap:7px;padding:12px 18px 9px;background:#fff;border-bottom:1px solid #e5ebf2}
+.topic-page--present-progressive .compass-mode-btn{display:flex;flex-direction:column;gap:3px;align-items:flex-start;min-width:120px;flex:1 1 135px;border:1px solid #dce4ef;border-radius:13px;background:#fff;color:#344c63;padding:9px 12px;text-align:left;font-family:Arial,Helvetica,sans-serif;font-weight:400;box-shadow:none}
+.topic-page--present-progressive .compass-mode-btn .compass-mode-icon{font-size:.98rem;line-height:1}
+.topic-page--present-progressive .compass-mode-btn .tab-title{font-size:.91rem;color:inherit}
+.topic-page--present-progressive .compass-mode-btn .compass-mode-hint{font-size:.72rem;line-height:1.3;color:#64748b}
+.topic-page--present-progressive .compass-mode-btn[aria-selected="true"],.topic-page--present-progressive .compass-mode-btn.is-active{background:#e9f0f8;border-color:#90abc7;color:#274768}
+.topic-page--present-progressive .compass-mode-btn[aria-selected="true"] .compass-mode-hint{color:#405f7c}
+.topic-page--present-progressive .learn-step-nav{padding:10px 18px;background:#f9fbfd;border-bottom:1px solid #e5ebf2;gap:6px}
+.topic-page--present-progressive .learn-step-btn{border-radius:11px;background:#fff;border:1px solid #dce4ef;padding:8px 10px;color:#3a536b;font-family:Arial,Helvetica,sans-serif;font-weight:400}
+.topic-page--present-progressive .learn-step-btn[aria-selected="true"],.topic-page--present-progressive .learn-step-btn.is-active{background:#e9f0f8;color:#274768;border-color:#90abc7}
+.topic-page--present-progressive .compass-mode-panel,.topic-page--present-progressive .learn-panel{padding:18px 20px}
+.topic-page--present-progressive .card,.topic-page--present-progressive .tool-card,.topic-page--present-progressive .pg-rule-structure{background:#fff;border:1px solid #dce4ec;border-radius:14px;box-shadow:none}
+.topic-page--present-progressive .soft-card,.topic-page--present-progressive .green-card,.topic-page--present-progressive .yellow-card,.topic-page--present-progressive .violet-card{background:#fff}
+.topic-page--present-progressive .section-title{font-family:Arial,Helvetica,sans-serif;color:#263e59;font-size:1.35rem;font-weight:400}
+.topic-page--present-progressive .section-kicker{font-size:.75rem;color:#627994}
+.topic-page--present-progressive .pg-part,.topic-page--present-progressive .chip{font-weight:400}
+.topic-page--present-progressive button:focus-visible,.topic-page--present-progressive a:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+@media(max-width:680px){.topic-page--present-progressive{padding:7px 8px 24px}.topic-page--present-progressive .compass-head{padding:14px 16px}.topic-page--present-progressive .compass-mode-grid{padding:9px;gap:5px}.topic-page--present-progressive .compass-mode-btn{flex:1 1 44%;min-width:0;padding:8px}.topic-page--present-progressive .compass-mode-panel,.topic-page--present-progressive .learn-panel{padding:14px 12px}.topic-page--present-progressive .sp-thinking-line{padding:7px 10px}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 <div class="overview-return-wrap page-action-bar"><a class="overview-return" href="grammatik.html" aria-label="Zur Grammatikübersicht">← Zur Grammatikübersicht</a><div class="page-action-buttons" aria-label="Seitenaktionen"><button class="ha-btn" type="button" data-homework-toggle>Hausaufgaben</button><button class="print-btn spickzettel-btn" type="button" data-print-cheatsheet>Spickzettel drucken</button><button class="print-btn print-page-btn" type="button" data-print-page>Diese Seite drucken</button></div></div>
-<main id="main-content" class="page-content">
-  <article class="learning-card" data-topic="present-progressive">
-    <header class="compass-head havegot-head-gradient"><div><p class="compass-kicker">ENGLISCH-KOMPASS · GRAMMATIK</p><h1 class="compass-title">Present Progressive</h1><p class="compass-subtitle">Was gerade passiert – oder für einen festen Plan vereinbart ist.</p></div></header>
+<main id="main-content" class="page-content topic-page topic-page--present-progressive">
+  <article class="learning-card topic-shell" data-topic="present-progressive">
+    <header class="compass-head sp-compass-head topic-header"><div><p class="compass-kicker">Gegenwart und feste Verabredungen</p><h1 class="compass-title">Present Progressive</h1><p class="compass-subtitle">Was gerade passiert – oder für einen festen Termin vereinbart ist.</p></div><span class="compass-emoji" aria-hidden="true">▶</span></header>
+<div class="sp-thinking-line" aria-label="Denkweg Present Progressive"><span>Bedeutung erkennen</span><span>Person prüfen</span><span>am / is / are wählen</span><span>-ing-Form bilden</span></div>
 
-    <nav class="compass-mode-grid" role="tablist" aria-label="Hauptbereiche">
-      <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span>Lernen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span>Nachschlagen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span>Verbindungen</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span>Schreib-Check</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span>Schreibwerkstatt</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span>Notizen</span></button>
+    <nav class="compass-mode-grid topic-tabs" role="tablist" aria-label="Bereiche">
+      <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span class="compass-mode-icon" aria-hidden="true">🎯</span><span class="tab-title">Lernen</span><span class="compass-mode-hint">Neu hier? Fang hier an.</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span class="compass-mode-icon" aria-hidden="true">📖</span><span class="tab-title">Nachschlagen</span><span class="compass-mode-hint">Hausaufgaben & schnell nachsehen</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span class="compass-mode-icon" aria-hidden="true">🔗</span><span class="tab-title">Verbindungen</span><span class="compass-mode-hint">Was hängt damit zusammen?</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="compass-mode-icon" aria-hidden="true">✏️</span><span class="tab-title">Schreib-Check</span><span class="compass-mode-hint">Schreibe selbst und prüfe.</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span class="compass-mode-icon" aria-hidden="true">✍</span><span class="tab-title">Schreibwerkstatt</span><span class="compass-mode-hint">Eigene Sätze bilden.</span></button>
+      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span class="compass-mode-icon" aria-hidden="true">📝</span><span class="tab-title">Notizen</span><span class="compass-mode-hint">Meine eigenen Notizen</span></button>
     </nav>
 
     <section class="compass-mode-panel is-active" id="lernen" role="tabpanel" aria-labelledby="tab-lernen" data-panel="pg-mode" data-val="learn">
