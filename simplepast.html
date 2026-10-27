@@ -6446,6 +6446,11 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <p class="sp-dz-v14-lead">Starte mit der Aufgabe und gehe Schritt für Schritt weiter. Die Denkzentrale mischt jetzt Bilden, Umbauen und Reparieren – damit du wie in der Klassenarbeit selbst entscheiden musst.</p><section class="sp-dz-distinction" aria-label="Ähnliche Simple-Past-Formen sicher unterscheiden"><h3>Vier Formen, vier Entscheidungen</h3><p>Diese Übersicht ist eine Merkhilfe. Die Antworten in der Denkzentrale musst du weiterhin selbst bilden.</p><div class="sp-dz-distinction-grid"><div><h4>Positive Aussage</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-verb">played</span><span class="sp-part-rest">football.</span></p><p>Regelmäßiges Verb: <strong>Past Form</strong> im Aussagesatz.</p></div><div><h4>Verneinung</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-helper">didn't</span><span class="sp-part-verb">play</span><span class="sp-part-rest">football.</span></p><p>Nach <strong>didn't</strong> kommt die <strong>Grundform</strong>.</p></div><div><h4>Frage</h4><p class="sp-dz-sentence"><span class="sp-part-helper">Did</span><span class="sp-part-person">she</span><span class="sp-part-verb">play</span><span class="sp-part-rest">football?</span></p><p>Nach <strong>did</strong> steht ebenfalls die <strong>Grundform</strong>.</p></div><div><h4>to be</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-helper">was</span><span class="sp-part-rest">tired.</span></p><p>Bei <strong>was/were</strong> brauchst du kein <em>did</em>.</p></div></div></section>
 <section class="sp-dz-checkroute" aria-label="So prüfst du deinen Lernstand"><h3>Klassenarbeits-Check: Erst selbst entscheiden</h3><p>Bearbeite zunächst einige Aufgaben im Modus <strong>Alles gemischt</strong>, ohne die Regeln nachzulesen. Achte danach darauf, <strong>welcher Fehlertyp</strong> in der Rückmeldung steht.</p><div class="sp-dz-checkroute-grid"><div><span class="sp-dz-checkroute-title">Zeitform</span><p>Ist der Satz vergangen oder beschreibt er eine Gewohnheit?</p></div><div><span class="sp-dz-checkroute-title">Verbart</span><p>Brauchst du <em>was/were</em> oder ein gewöhnliches Verb?</p></div><div><span class="sp-dz-checkroute-title">Satzart</span><p>Aussage, Frage oder Verneinung? Welche Form verändert sich?</p></div></div><p>Wiederhole anschließend gezielt den Lernbaustein, bei dem du unsicher warst, und versuche eine neue gemischte Aufgabe.</p></section>
+<div class="sp-dz-workmode" role="group" aria-label="Arbeitsweise wählen">
+<button type="button" data-dz-workmode="guided" aria-pressed="true">Lernen – mit Denkschritten</button>
+<button type="button" data-dz-workmode="independent" aria-pressed="false">Selbstständig – wie in der Klassenarbeit</button>
+</div>
+<p class="sp-dz-workmode-note" id="sp-dz-workmode-note">Wähle zuerst Zeit, Verbart und Satzart. Dann schreibe.</p>
 <div aria-label="Aufgabentyp in der Denkzentrale wählen" class="sp-dz-v80-modebox">
 <p class="sp-dz-v80-mode-title">Modus</p>
 <div class="sp-dz-v80-mode-row">
@@ -9955,6 +9960,19 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   }
   const tasks = baseTasks.map(asBase).concat(mixedTasks);
   let mode='all'; let index=0; let state={past:null,verbtype:null,sentence:null,repairFound:null,repairType:null}; let activePool=[];
+  let workMode='guided';
+  function syncWorkMode(){
+    root.classList.toggle('sp-dz-independent',workMode==='independent');
+    root.querySelectorAll('[data-dz-workmode]').forEach(function(btn){btn.setAttribute('aria-pressed',btn.dataset.dzWorkmode===workMode?'true':'false')});
+    const note=root.querySelector('#sp-dz-workmode-note');
+    if(note)note.textContent=workMode==='independent'?'Lies die Aufgabe und schreibe den vollständigen Satz. Die gesamte Antwort wird erst nach „Prüfen“ bewertet.':'Wähle zuerst Zeit, Verbart und Satzart. Dann schreibe.';
+    if(workMode==='independent'){
+      [2,3].forEach(n=>setStep(n,false));
+      setStep(4,true);
+      input.disabled=false;
+      showRepairPanel(false);
+    }
+  }
   const DZ_SAVE_KEY='kompass_simplepast_denkzentrale_v87_state';
   function dzKeyOf(t){return String((t&&(t.id||t.prompt))||'');}
   function dzReadSaved(){
@@ -9972,6 +9990,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
       const t=task();
       localStorage.setItem(DZ_SAVE_KEY,JSON.stringify({
         mode:mode,
+        workMode:workMode,
         index:index,
         taskKey:dzKeyOf(t),
         state:Object.assign({},state),
@@ -10048,6 +10067,8 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     const t=task(); promptEl.textContent=t.prompt; if(writePromptEl) writePromptEl.textContent=t.prompt; updateMeta();
     thinking('<strong>Starte bei Schritt 1.</strong> Entscheide zuerst, ob es um abgeschlossene Vergangenheit geht.');
     rule.textContent='Die ausführliche Erklärung erscheint erst nach deiner Eingabe oder bei einem Fehler.';
+    syncWorkMode();
+    if(workMode==='independent')thinking('<strong>Dein Versuch zählt.</strong> Schreibe die vollständige Antwort, bevor du prüfst.');
   }
   function shortWrong(kind){
     if(kind==='past') return '<p class="dz-error-title">Stopp.</p><p>Prüfe nur das Zeit-Signal. Ist die Situation wirklich abgeschlossen?</p>';
@@ -10198,6 +10219,20 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   }
   function checkInput(){
     const t=task(); setStep(5,false);
+    if(workMode==='independent'){
+      const d=diagnoseInput(input.value);
+      if(d.type==='empty'){careful('<p>Schreibe zuerst deinen vollständigen Satz.</p>');return;}
+      if(d.type==='correct'){
+        setStep(5,true);
+        good('<h4>Richtig.</h4><p>Deine Antwort passt zur Aufgabe.</p>');
+      }else{
+        const map={incomplete:'Schreibe einen vollständigen englischen Satz.',spelling:'Prüfe die Schreibweise.',beDid:'Bei to be brauchst du kein did.',wasWere:'Prüfe was und were.',didPast:'Nach did oder didn’t steht die Grundform.',needsDidnt:'Prüfe die Verneinung im Simple Past.',needsDid:'Prüfe den Fragebau mit did.'};
+        const suggestion=map[d.type]||'Die Antwort entspricht keiner hinterlegten Musterlösung. Prüfe Verbform, Wortwahl und Satzbau.';
+        careful('<h4>Noch einmal prüfen.</h4><p>'+suggestion+'</p>');
+      }
+      rule.textContent='Regelprüfung: '+t.rule+' Musterlösung: '+(t.answers&&t.answers[0]||'');
+      return;
+    }
     if(currentNeedsRepairDetective() && !repairSelectionIsCorrect()){
       const target=t.repairType||'none';
       let hint = target==='none' ? 'Dieser Satz ist schon richtig. Du sollst ihn unverändert abschreiben.' : 'Der gesuchte Fehlertyp ist noch nicht richtig benannt. Prüfe die Falle im Beispielsatz, ohne die Lösung abzuschreiben.';
@@ -10265,6 +10300,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     const saved=dzReadSaved();
     if(!saved || !saved.taskKey) return false;
     const savedMode=saved.mode||'all';
+    workMode=saved.workMode==='independent'?'independent':'guided';
     mode=savedMode;
     activePool=buildPool(mode);
     const wanted=dzFindTask(saved.taskKey);
@@ -10300,10 +10336,13 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     if(rule && saved.ruleHTML){
       rule.innerHTML=saved.ruleHTML;
     }
+    syncWorkMode();
     return true;
   }
 
   root.addEventListener('click',function(e){
+    const workBtn=e.target.closest('[data-dz-workmode]');
+    if(workBtn){workMode=workBtn.dataset.dzWorkmode==='independent'?'independent':'guided';reset(true);dzSave();return;}
     const modeBtn=e.target.closest('[data-dz-mode]');
     if(modeBtn){mode=modeBtn.dataset.dzMode||'all'; index=0; activePool=buildPool(mode); root.querySelectorAll('[data-dz-mode]').forEach(b=>{b.classList.toggle('is-active',b===modeBtn); b.setAttribute('aria-pressed',b===modeBtn?'true':'false');}); reset(true); dzSave(); return;}
     const repairFoundBtn=e.target.closest('[data-dz-repair-found]');
@@ -10333,7 +10372,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
       dzSave();
       return;
     }
-    const btn=e.target.closest('[data-dz-choice]'); if(btn){choose(btn);dzSave();return;}
+    const btn=e.target.closest('[data-dz-choice]'); if(btn){if(workMode==='independent')return;choose(btn);dzSave();return;}
     if(e.target.id==='sp-dz-v14-check'){checkInput();dzSave();return;}
     if(e.target.id==='sp-dz-v14-reset'){reset(true);dzSave();return;}
     if(e.target.id==='sp-dz-v14-new'){reset(false);dzSave();return;}
@@ -12436,5 +12475,17 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
 </style>
 <style id="sp-school-ed-style">.sp-school-practice{background:#fff;border:1px solid #cbd9e8;border-radius:14px;padding:16px;margin:12px 0}.sp-school-practice h3{font-weight:400;color:#27415f}.sp-school-ex{background:#f8fafc;border:1px solid #d7e1ea;border-radius:10px;padding:12px;margin:10px 0}.sp-school-ex button{border:1px solid #9fb5c9;border-radius:9px;padding:8px 12px;background:#fff;color:#27415f;font:inherit;cursor:pointer;margin:4px}.sp-school-ex button[aria-pressed=true]{background:#dceafa}.sp-school-ex button:focus-visible{outline:3px solid #2563eb;outline-offset:2px}.sp-school-ex input{max-width:100%;width:440px;padding:8px;border:1px solid #9fb5c9;border-radius:8px;font:inherit}.sp-school-ex .correct{color:#166534}.sp-school-ex .retry{color:#9a3412}</style><script id="sp-school-ed-js">(function(){const root=document.getElementById('sp-ed-questions');if(!root)return;[['talked','t','Nach /k/ klingt die Endung als /t/.'],['stayed','d','Nach einem stimmhaften Laut klingt die Endung als /d/.'],['visited','id','Nach /t/ oder /d/ klingt die Endung als /ɪd/ (zusätzliche Silbe).']].forEach(function(item){const wrap=document.createElement('div');wrap.className='sp-school-ex';const p=document.createElement('p');p.textContent='Wie klingt -ed bei '+item[0]+'?';wrap.append(p);const result=document.createElement('p');result.setAttribute('aria-live','polite');['t','d','id'].forEach(function(code){const b=document.createElement('button');b.type='button';b.textContent=code==='id'?'/ɪd/':'/'+code+'/';b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){const was=b.getAttribute('aria-pressed')==='true';wrap.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));if(was){result.textContent='Wähle eine Antwort.';result.className='';return;}b.setAttribute('aria-pressed','true');const ok=code===item[1];result.className=ok?'correct':'retry';result.textContent=ok?'Richtig. '+item[2]:'Noch nicht. Achte auf den letzten Laut der Grundform und versuche es erneut.';});wrap.append(b)});result.textContent='Wähle eine Antwort.';wrap.append(result);root.append(wrap)});})();</script>
 <script id="sp-school-answer-questions-js">(function(){const root=document.getElementById('sp-school-answer-cases');if(!root)return;const cases=[{q:'Abby went to Bristol last summer. Antwort auf die Ortsfrage: In Bristol.',a:['where did abby go last summer','where did abby go'],solution:'Where did Abby go last summer?',rule:'Where erfragt den Ort. Nach did steht go in der Grundform.'},{q:'Sam phoned Justin yesterday. Kurzantwort: Yes, he did.',a:['did sam phone justin yesterday','did sam phone justin'],solution:'Did Sam phone Justin yesterday?',rule:'Yes, he did beantwortet eine Ja-/Nein-Frage. Nach did steht phone.'},{q:'Justin got back two days ago. Antwort auf die Zeitfrage: Two days ago.',a:['when did justin get back'],solution:'When did Justin get back?',rule:'When erfragt die Zeit. Nach did steht get.'}];const norm=s=>s.toLowerCase().replace(/[?!.,]/g,'').replace(/\s+/g,' ').trim();cases.forEach(function(c,i){const box=document.createElement('div');box.className='sp-school-ex';const p=document.createElement('p');p.textContent=c.q;const label=document.createElement('label');const id='sp-school-answer-input-'+i;label.htmlFor=id;label.textContent='Deine Frage';const input=document.createElement('input');input.id=id;input.autocomplete='off';const button=document.createElement('button');button.type='button';button.textContent='Prüfen';const feedback=document.createElement('p');feedback.setAttribute('aria-live','polite');feedback.textContent='Schreibe zuerst deine Frage.';const detail=document.createElement('details');detail.hidden=true;const summary=document.createElement('summary');summary.textContent='Regel und Lösung anzeigen';const solution=document.createElement('p');solution.textContent=c.solution+' '+c.rule;detail.append(summary,solution);input.addEventListener('input',()=>{feedback.textContent='Schreibe deine Frage und prüfe sie.';feedback.className='';detail.hidden=true;detail.open=false});button.addEventListener('click',()=>{if(!norm(input.value)){feedback.textContent='Schreibe zuerst eine Frage.';return}const ok=c.a.includes(norm(input.value));feedback.className=ok?'correct':'retry';feedback.textContent=ok?'Richtig!':'Noch nicht. Prüfe Fragewort, did und Grundform. Versuche es erneut.';detail.hidden=false});box.append(p,label,input,button,feedback,detail);root.append(box)});})();</script>
+<style id="sp-dz-independent-css">
+#simplepast-denkzentrale .sp-dz-workmode{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+#simplepast-denkzentrale .sp-dz-workmode button{font:inherit;font-weight:400;cursor:pointer;border:1px solid #b9cadb;background:white;color:#27415f;padding:9px 13px;border-radius:10px}
+#simplepast-denkzentrale .sp-dz-workmode button[aria-pressed="true"]{background:#e8f0f8;border-color:#6b91b6}
+#simplepast-denkzentrale .sp-dz-workmode button:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+#simplepast-denkzentrale .sp-dz-workmode-note{color:#475569;font-size:.92rem;margin:5px 0 12px}
+#simplepast-denkzentrale.sp-dz-independent .sp-dz-distinction,
+#simplepast-denkzentrale.sp-dz-independent .sp-dz-checkroute,
+#simplepast-denkzentrale.sp-dz-independent .sp-dz-v14-grid,
+#simplepast-denkzentrale.sp-dz-independent .sp-dz-v80-repair-panel{display:none!important}
+#simplepast-denkzentrale.sp-dz-independent [data-dz-step="4"]{display:block!important}
+</style>
 </body>
 </html>
