@@ -116,22 +116,21 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
       <button class="compass-mode-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="lernen" id="tab-lernen" data-tab="pg-mode" data-val="learn"><span class="compass-mode-icon" aria-hidden="true">🎯</span><span class="tab-title">Lernen</span><span class="compass-mode-hint">Neu hier? Fang hier an.</span></button>
       <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="nachschlagen" id="tab-nachschlagen" data-tab="pg-mode" data-val="reference"><span class="compass-mode-icon" aria-hidden="true">📖</span><span class="tab-title">Nachschlagen</span><span class="compass-mode-hint">Hausaufgaben & schnell nachsehen</span></button>
       <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="verbindungen" id="tab-verbindungen" data-tab="pg-mode" data-val="connections"><span class="compass-mode-icon" aria-hidden="true">🔗</span><span class="tab-title">Verbindungen</span><span class="compass-mode-hint">Was hängt damit zusammen?</span></button>
-      <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="compass-mode-icon" aria-hidden="true">✏️</span><span class="tab-title">Schreib-Check</span><span class="compass-mode-hint">Schreibe selbst und prüfe.</span></button>
+      
       <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibwerkstatt" id="tab-schreibwerkstatt" data-tab="pg-mode" data-val="workshop"><span class="compass-mode-icon" aria-hidden="true">✍</span><span class="tab-title">Schreibwerkstatt</span><span class="compass-mode-hint">Eigene Sätze bilden.</span></button>
       <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="notizen" id="tab-notizen" data-tab="pg-mode" data-val="notes"><span class="compass-mode-icon" aria-hidden="true">📝</span><span class="tab-title">Notizen</span><span class="compass-mode-hint">Meine eigenen Notizen</span></button>
-    </nav>
+    <button class="compass-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="schreibcheck" id="tab-schreibcheck" data-tab="pg-mode" data-val="writecheck"><span class="compass-mode-icon" aria-hidden="true">✏️</span><span class="tab-title">Schreib-Check</span><span class="compass-mode-hint">Schreibe selbst und prüfe.</span></button>
+</nav>
 
     <section class="compass-mode-panel is-active" id="lernen" role="tabpanel" aria-labelledby="tab-lernen" data-panel="pg-mode" data-val="learn">
-      <div class="learn-step-nav" role="tablist" aria-label="Lernschritte">
-        <button class="learn-step-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="pg-learn-wozu" id="tab-pg-learn-wozu" data-tab="pg-learn" data-val="wozu"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-radar" id="tab-pg-learn-radar" data-tab="pg-learn" data-val="radar"><span class="step-badge">2</span><span class="step-label">Jetzt-Radar</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-machine" id="tab-pg-learn-machine" data-tab="pg-learn" data-val="machine"><span class="step-badge">3</span><span class="step-label">Satzmaschine</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-spelling" id="tab-pg-learn-spelling" data-tab="pg-learn" data-val="spelling"><span class="step-badge">4</span><span class="step-label">-ing-Zauberer</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-questions" id="tab-pg-learn-questions" data-tab="pg-learn" data-val="questions"><span class="step-badge">5</span><span class="step-label">Fragen</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-contrast" id="tab-pg-learn-contrast" data-tab="pg-learn" data-val="contrast"><span class="step-badge">6</span><span class="step-label">Wechsel</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-state" id="tab-pg-learn-state" data-tab="pg-learn" data-val="state"><span class="step-badge">7</span><span class="step-label">Stoppschild</span></button>
-        <button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-check" id="tab-pg-learn-check" data-tab="pg-learn" data-val="check"><span class="step-badge">8</span><span class="step-label">Kann ich’s?</span></button>
-      </div>
+      <div class="learn-step-nav" role="tablist" aria-label="Lernschritte"><button class="learn-step-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="pg-learn-wozu" id="tab-pg-learn-wozu" data-tab="pg-learn" data-val="wozu"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-machine" id="tab-pg-learn-machine" data-tab="pg-learn" data-val="machine"><span class="step-badge">2</span><span class="step-label">Satzbau verstehen</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-spelling" id="tab-pg-learn-spelling" data-tab="pg-learn" data-val="spelling"><span class="step-badge">3</span><span class="step-label">-ing schreiben</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-questions" id="tab-pg-learn-questions" data-tab="pg-learn" data-val="questions"><span class="step-badge">4</span><span class="step-label">Fragen und Verneinungen</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-contrast" id="tab-pg-learn-contrast" data-tab="pg-learn" data-val="contrast"><span class="step-badge">5</span><span class="step-label">Zeitformen unterscheiden</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-state" id="tab-pg-learn-state" data-tab="pg-learn" data-val="state"><span class="step-badge">6</span><span class="step-label">Besondere Verben</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-radar" id="tab-pg-learn-radar" data-tab="pg-learn" data-val="radar"><span class="step-badge">7</span><span class="step-label">Jetzt erkennen – üben</span></button>
+<button class="learn-step-btn" type="button" role="tab" aria-selected="false" aria-controls="pg-learn-check" id="tab-pg-learn-check" data-tab="pg-learn" data-val="check"><span class="step-badge">8</span><span class="step-label">Kann ich’s? + Zukunft</span></button></div>
 
       <section class="learn-panel is-active" id="pg-learn-wozu" role="tabpanel" aria-labelledby="tab-pg-learn-wozu" data-panel="pg-learn" data-val="wozu">
         <p class="section-kicker">Erst Bedeutung, dann Form</p>
@@ -159,38 +158,9 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
         </div>
       </section>
 
-      <section class="learn-panel" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar">
-        <p class="section-kicker">Denkweg 1</p>
-        <h2 class="section-title">Jetzt-Radar: Läuft die Handlung gerade?</h2>
-        <p class="section-text">Klicke zuerst auf deine Entscheidung. Die Lösung erscheint erst danach.</p>
-        <div class="grid-2 interactive-only" data-radar-list>
-          <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
-            <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
-            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
-          </div>
-          <div class="trap-card" data-radar-card data-answer="simple" data-note="Every day zeigt Gewohnheit. Also: plays.">
-            <p class="mini-label">Satz</p><p>She ___ tennis every day.</p>
-            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
-          </div>
-          <div class="trap-card" data-radar-card data-answer="progressive" data-note="At the moment zeigt: Die Handlung läuft jetzt. Also: are eating.">
-            <p class="mini-label">Satz</p><p>At the moment they ___ pizza.</p>
-            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">eat</button><button class="choice-btn" type="button" data-radar-choice="progressive">are eating</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
-          </div>
-          <div class="trap-card" data-radar-card data-answer="simple" data-note="Usually zeigt Gewohnheit. Also: walk.">
-            <p class="mini-label">Satz</p><p>We usually ___ to school.</p>
-            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">walk</button><button class="choice-btn" type="button" data-radar-choice="progressive">are walking</button></div>
-            <div class="feedback">Entscheide zuerst.</div>
-          </div>
-        </div>
-        <button class="tool-btn interactive-only" type="button" data-reset-radar>Zurücksetzen</button>
-      </section>
-
       <section class="learn-panel" id="pg-learn-machine" role="tabpanel" aria-labelledby="tab-pg-learn-machine" data-panel="pg-learn" data-val="machine">
         <p class="section-kicker">Denkweg 2</p>
-        <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
+        <h2 class="section-title">So bildest du das Present Progressive</h2><p class="section-text">Erst die Regel verstehen, dann die Satzmaschine ausprobieren: <strong>Person + am/is/are + Verb-ing</strong>. Wähle das Hilfsverb passend zur Person und hänge -ing an das Tätigkeitsverb.</p>
         <div class="pg-rule-structure" aria-label="Satzbausteine und Farben"><h3>Die Farben bleiben immer gleich</h3><p><span class="pg-part pg-person">Person</span> <span class="pg-part pg-helper">am / is / are</span> <span class="pg-part pg-verb">Verb-ing</span> <span class="pg-part pg-rest">Satzrest</span></p><p>Die Person bestimmt die Form von <em>to be</em>: <strong>I am</strong>, <strong>he/she/it is</strong>, <strong>you/we/they are</strong>. Das Tätigkeitsverb endet auf <strong>-ing</strong>.</p><div class="pg-line"><span class="pg-part pg-person">She</span><span class="pg-part pg-helper">is</span><span class="pg-part pg-verb">reading</span><span class="pg-part pg-rest">a book.</span></div><p class="pg-caption">Merke: Beide Verbteile gehören zusammen. Ohne am/is/are fehlt ein Teil des Present Progressive.</p></div><div class="formula-row">
           <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
           <div class="formula-part"><span class="big">2 to be</span><span>am, is oder are</span></div>
@@ -210,7 +180,7 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
 
       <section class="learn-panel" id="pg-learn-spelling" role="tabpanel" aria-labelledby="tab-pg-learn-spelling" data-panel="pg-learn" data-val="spelling">
         <p class="section-kicker">Denkweg 3</p>
-        <h2 class="section-title">-ing-Zauberer: Wie schreibe ich die Form?</h2>
+        <h2 class="section-title">Die Schreibregeln für die -ing-Form</h2>
         <p class="section-text">Die meisten Verben bekommen einfach -ing. Die Fehler entstehen bei stummem -e und bei kurzen Verben wie run.</p>
         <div class="pg-rule-structure"><h3>So entscheidest du über die Schreibweise</h3><ol class="pg-rule-steps"><li><strong>Normal:</strong> Hänge -ing an: play → playing.</li><li><strong>Stummes -e:</strong> Streiche das e: make → making. Nicht jedes e fällt weg: see → seeing.</li><li><strong>Kurzer betonter Vokal + Endkonsonant:</strong> Verdopple den letzten Konsonanten bei passenden kurzen Verben: run → running, sit → sitting. Nicht bei w oder y: show → showing, play → playing.</li></ol><p>Prüfe die Endung erst selbst, bevor du die nächste Aufgabe löst.</p></div><div class="grid-3">
           <div class="card green-card"><h3>Normal</h3><p>play → playing<br/>read → reading<br/>watch → watching</p></div>
@@ -255,7 +225,7 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
 
       <section class="learn-panel" id="pg-learn-state" role="tabpanel" aria-labelledby="tab-pg-learn-state" data-panel="pg-learn" data-val="state">
         <p class="section-kicker">Sicherheitsregel</p>
-        <h2 class="section-title">Stoppschild: Manche Verben laufen nicht</h2>
+        <h2 class="section-title">Besondere Verben: Wann passt -ing nicht?</h2>
         <p class="section-text">Das Stoppschild ist kein zweiter Satzbau. Erst kommt die normale Form: am/is/are + Verb-ing. Danach prüfst du kurz, ob das Verb überhaupt eine laufende Handlung beschreibt.</p>
         <div class="grid-2">
           <div class="card green-card"><h3>Handlungen: Progressive möglich</h3><p>play, read, run, write, eat, watch</p><p>Diese Verben zeigen etwas, das jemand tun kann: She is reading.</p></div>
@@ -269,6 +239,35 @@ body{font-family:Arial,Helvetica,sans-serif;background:#e8eef4;color:#1e293b;fon
           <div class="feedback" data-state-feedback>Entscheide zuerst.</div>
           <button class="tool-btn" type="button" data-state-next>Nächstes Verb</button>
         </div>
+      </section>
+
+      <section class="learn-panel" id="pg-learn-radar" role="tabpanel" aria-labelledby="tab-pg-learn-radar" data-panel="pg-learn" data-val="radar">
+        <p class="section-kicker">Denkweg 1</p>
+        <h2 class="section-title">Übe: Findest du die richtige Zeitform?</h2>
+        <p class="section-text">Klicke zuerst auf deine Entscheidung. Die Lösung erscheint erst danach.</p>
+        <div class="grid-2 interactive-only" data-radar-list>
+          <div class="trap-card" data-radar-card data-answer="progressive" data-note="Look! zeigt: Du siehst es gerade. Also: is playing.">
+            <p class="mini-label">Satz</p><p>Look! She ___ tennis.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="simple" data-note="Every day zeigt Gewohnheit. Also: plays.">
+            <p class="mini-label">Satz</p><p>She ___ tennis every day.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">plays</button><button class="choice-btn" type="button" data-radar-choice="progressive">is playing</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="progressive" data-note="At the moment zeigt: Die Handlung läuft jetzt. Also: are eating.">
+            <p class="mini-label">Satz</p><p>At the moment they ___ pizza.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">eat</button><button class="choice-btn" type="button" data-radar-choice="progressive">are eating</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+          <div class="trap-card" data-radar-card data-answer="simple" data-note="Usually zeigt Gewohnheit. Also: walk.">
+            <p class="mini-label">Satz</p><p>We usually ___ to school.</p>
+            <div class="choice-row"><button class="choice-btn" type="button" data-radar-choice="simple">walk</button><button class="choice-btn" type="button" data-radar-choice="progressive">are walking</button></div>
+            <div class="feedback">Entscheide zuerst.</div>
+          </div>
+        </div>
+        <button class="tool-btn interactive-only" type="button" data-reset-radar>Zurücksetzen</button>
       </section>
 
       <section class="learn-panel" id="pg-learn-check" role="tabpanel" aria-labelledby="tab-pg-learn-check" data-panel="pg-learn" data-val="check">
