@@ -219,8 +219,17 @@ const state=Object.assign({trainMode:"free",selectedTopics:["simplepresent","sim
 if(!state.errorReview||typeof state.errorReview!=="object")state.errorReview={};
 if(!Array.isArray(state.selectedTopics))state.selectedTopics=["simplepresent","simplepast","progressive","wordorder"];
 // Simple-Present-Fragen mit do/does gehören zugleich zum Fragen-Thema.
-const SIMPLE_PRESENT_QUESTIONS=new Set(['GT-21','GT-24','GT-31','GT-32','KF-10','KF-12','KF-15']);
-function activeTasks(){const all=state.trainMode==="basic"?TASKS:FREE_TASKS;return all.filter(t=>state.selectedTopics.includes(topicOf(t))||(state.selectedTopics.includes('simplepresent')&&SIMPLE_PRESENT_QUESTIONS.has(t.id)));}
+// Aufgaben bleiben eindeutig über ihre IDs gespeichert, können aber mehreren Themen zugeordnet sein.
+// Die Zuordnung ergänzt die bisherigen Stammthemen, ohne Aufgaben zu kopieren.
+const CROSS_TOPIC_TASKS={
+ simplepresent:new Set(['GT-21','GT-24','GT-31','GT-32','GT-34','GT-39','GT-41','KF-10','KF-12','KF-15','KF-16','KF-17','KF-30']),
+ simplepast:new Set(['GT-22','GT-23','GT-25','GT-26','GT-27','GT-28','GT-29','GT-30','GT-33','GT-35','GT-36','GT-37','GT-38','GT-40','GT-42','KF-11','KF-13','KF-14','KF-25','KF-26','KF-27','KF-28'])
+};
+function matchesSelectedTopic(task){
+ return state.selectedTopics.includes(topicOf(task))||
+  Object.keys(CROSS_TOPIC_TASKS).some(topic=>state.selectedTopics.includes(topic)&&CROSS_TOPIC_TASKS[topic].has(task.id));
+}
+function activeTasks(){const all=state.trainMode==="basic"?TASKS:FREE_TASKS;return all.filter(matchesSelectedTopic);}
 function paintTopics(){const options=[...document.querySelectorAll('[data-topic-choice]')];options.forEach(x=>x.checked=state.selectedTopics.includes(x.value));const available=activeTasks();$("topicSummary").textContent=state.selectedTopics.length?state.selectedTopics.length+" Thema/Themen gewählt · "+available.length+" passende Aufgaben im aktuellen Trainingsmodus.":"Wähle mindestens ein Thema.";$("trainNext").disabled=!available.length;}
 document.querySelectorAll('[data-topic-choice]').forEach(input=>input.addEventListener('change',()=>{const choices=[...document.querySelectorAll('[data-topic-choice]:checked')].map(x=>x.value);if(!choices.length){input.checked=true;$("topicSummary").textContent="Mindestens ein Thema muss ausgewählt bleiben.";return}state.selectedTopics=choices;state.train=null;state.seen=[];save();paintTopics();paintTraining(true);}));
 
