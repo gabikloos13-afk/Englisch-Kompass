@@ -6536,6 +6536,43 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  .compass-mode-panel :is(p,li,dd,blockquote){line-height:1.8!important;}
 }
 </style>
+<style id="simplepast-v111-static-memory-and-examples">
+/* Statische Lernhilfe statt button-ähnlicher Kacheln; ruhige, eindeutige Gliederung. */
+#past-learn-tobe .sp-v111-example-list{display:grid;gap:13px;grid-template-columns:1fr!important;}
+#past-learn-tobe .sp-v111-example{
+  min-width:0;padding:20px 23px!important;background:#fff!important;border:1px solid #d1dbe5!important;
+  border-left:4px solid #94a3b8!important;border-radius:13px!important;box-shadow:none!important;
+}
+#past-learn-tobe .sp-v111-example h4{margin:0 0 13px!important;color:#334155;font-size:1.02rem;line-height:1.45;}
+#past-learn-tobe .sp-v111-example > p:not(.sp-v111-explain){
+  display:grid!important;grid-template-columns:minmax(95px,115px) minmax(0,1fr);align-items:start;
+  column-gap:16px;row-gap:6px;margin:0!important;padding:10px 0!important;line-height:1.65!important;
+}
+#past-learn-tobe .sp-v111-example > p + p{border-top:1px solid #e2e8f0;}
+#past-learn-tobe .sp-v111-label{padding:0!important;margin:0!important;background:none!important;border:0!important;color:#64748b!important;font-size:.85rem;line-height:1.6!important;}
+#past-learn-tobe .sp-v111-sentence{padding:0!important;margin:0!important;background:none!important;border:0!important;color:#1e293b!important;line-height:1.65!important;}
+#past-learn-tobe .sp-v111-explain{margin:13px 0 0!important;padding:12px 0 0!important;border-top:1px solid #e2e8f0!important;color:#475569!important;line-height:1.7!important;}
+#past-learn-tobe .sp-v111-rule-sheet{
+  display:grid!important;grid-template-columns:1fr!important;gap:0!important;
+  padding:8px 24px!important;background:#f1f6fb!important;border:1px solid #cbd9e6!important;
+  border-left:4px solid #6486a6!important;border-radius:12px!important;box-shadow:none!important;
+}
+#past-learn-tobe .sp-v111-rule-sheet > p{
+  display:grid!important;grid-template-columns:26px minmax(0,1fr);align-items:start;gap:14px!important;
+  margin:0!important;padding:14px 0!important;line-height:1.7!important;
+}
+#past-learn-tobe .sp-v111-rule-sheet > p + p{border-top:1px solid #cfdae5;}
+#past-learn-tobe .sp-v111-rule-sheet > p > span:first-child{
+  display:inline-block!important;min-height:25px;width:25px;text-align:center;padding:0!important;
+  border-radius:50%;background:#dce8f2;color:#345675;line-height:25px!important;font-size:.82rem;
+}
+#past-learn-tobe .sp-v111-rule-sheet > p > span:last-child{min-width:0;}
+@media(max-width:600px){
+ #past-learn-tobe .sp-v111-example{padding:17px!important;}
+ #past-learn-tobe .sp-v111-example > p:not(.sp-v111-explain){grid-template-columns:1fr;gap:3px;}
+ #past-learn-tobe .sp-v111-rule-sheet{padding:6px 17px!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7984,28 +8021,28 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span aria-hidden="true" class="tobe-v70-stepmark">3</span>
 <div>
 <h3 id="tobe-v70-trap-title">Drei typische Fehler – Beispiele</h3>
-<p>Rot zeigt den falschen Satz, Grün die richtige Form. Schau dir den Unterschied an. Danach übst du selbst im Register „Denkfalle“.</p>
+<p>Vergleiche die Sätze. Die Erklärung darunter zeigt dir die Regel. Hier musst du nichts auswählen.</p>
 </div>
 </div>
-<div aria-label="Häufige Fehler mit to be im Simple Past" class="tobe-v70-trap-grid">
-<article>
-<p class="past-output-label">Fehler 1 · Frage</p>
-<div class="tobe-v70-wrong">Did she was tired?</div>
-<div class="tobe-v70-right">Was she tired?</div>
-<p>Bei Fragen mit <span class="past-term">to be</span> geht <span class="tobe-v69-neutral-chip">was</span> oder <span class="tobe-v69-neutral-chip">were</span> nach vorne.</p>
-</article>
-<article>
-<p class="past-output-label">Fehler 2 · Verneinung</p>
-<div class="tobe-v70-wrong">She didn’t be tired.</div>
-<div class="tobe-v70-right">She wasn’t tired.</div>
-<p>Die Verneinung kommt direkt mit <span class="tobe-v69-neutral-chip">wasn’t</span> oder <span class="tobe-v69-neutral-chip">weren’t</span>.</p>
-</article>
-<article>
-<p class="past-output-label">Fehler 3 · Person</p>
-<div class="tobe-v70-wrong">They was late.</div>
-<div class="tobe-v70-right">They were late.</div>
-<p><span class="tobe-v69-neutral-chip">they</span> gehört zur <span class="tobe-v69-neutral-chip">were</span>-Gruppe.</p>
-</article>
+<div aria-label="Drei Vergleiche: falscher und richtiger Satz" class="sp-v111-example-list">
+<div class="sp-v111-example">
+<h4>Frage mit to be</h4>
+<p><span class="sp-v111-label">So nicht</span><span class="sp-v111-sentence">Did she was tired?</span></p>
+<p><span class="sp-v111-label">So richtig</span><span class="sp-v111-sentence">Was she tired?</span></p>
+<p class="sp-v111-explain">Bei Fragen mit <span class="past-term">to be</span> steht <span class="past-term">was</span> oder <span class="past-term">were</span> vorne. Du brauchst kein <span class="past-term">did</span>.</p>
+</div>
+<div class="sp-v111-example">
+<h4>Verneinung mit to be</h4>
+<p><span class="sp-v111-label">So nicht</span><span class="sp-v111-sentence">She didn’t be tired.</span></p>
+<p><span class="sp-v111-label">So richtig</span><span class="sp-v111-sentence">She wasn’t tired.</span></p>
+<p class="sp-v111-explain">Bei <span class="past-term">to be</span> verneinst du direkt mit <span class="past-term">wasn’t</span> oder <span class="past-term">weren’t</span>.</p>
+</div>
+<div class="sp-v111-example">
+<h4>Die passende Person</h4>
+<p><span class="sp-v111-label">So nicht</span><span class="sp-v111-sentence">They was late.</span></p>
+<p><span class="sp-v111-label">So richtig</span><span class="sp-v111-sentence">They were late.</span></p>
+<p class="sp-v111-explain"><span class="past-term">they</span> gehört zu <span class="past-term">were</span>.</p>
+</div>
 </div>
 </section>
 <section aria-labelledby="tobe-v70-memory-title" class="tobe-v70-section tobe-v70-memory">
@@ -8013,15 +8050,15 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span aria-hidden="true" class="tobe-v70-stepmark">4</span>
 <div>
 <h3 id="tobe-v70-memory-title">Fünf Regeln zum Merken</h3>
-<p>Diese Karten fassen die Regeln zusammen. Zum Ausprobieren gehst du danach zur Satzmaschine.</p>
+<p>Das sind die fünf wichtigsten Merksätze. Hier musst du nichts anklicken.</p>
 </div>
 </div>
-<div aria-label="Kurz merken zu to be was were" class="tobe-v70-memory-grid">
-<div><span>1</span><p><span class="past-term">to be</span> benutzt kein <span class="tobe-v69-rule-chip">did</span>.</p></div>
-<div><span>2</span><p>I / he / she / it → <span class="tobe-v69-neutral-chip">was</span></p></div>
-<div><span>3</span><p>you / we / they → <span class="tobe-v69-neutral-chip">were</span></p></div>
-<div><span>4</span><p>Frage: <span class="tobe-v69-neutral-chip">Was/Were</span> nach vorne.</p></div>
-<div><span>5</span><p>Verneinung: <span class="tobe-v69-neutral-chip">wasn’t</span> / <span class="tobe-v69-neutral-chip">weren’t</span></p></div>
+<div class="sp-v111-rule-sheet" aria-label="Fünf Merkregeln zu to be im Simple Past">
+<p><span>1</span><span>Bei <span class="past-term">to be</span> brauchst du kein <span class="past-term">did</span>.</span></p>
+<p><span>2</span><span><span class="past-term">I / he / she / it</span> → <span class="past-term">was</span></span></p>
+<p><span>3</span><span><span class="past-term">you / we / they</span> → <span class="past-term">were</span></span></p>
+<p><span>4</span><span>Fragen beginnen mit <span class="past-term">Was</span> oder <span class="past-term">Were</span>.</span></p>
+<p><span>5</span><span>Verneinungen: <span class="past-term">wasn’t</span> oder <span class="past-term">weren’t</span>.</span></p>
 </div>
 </section>
 </div>
