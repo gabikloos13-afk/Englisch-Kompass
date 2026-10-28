@@ -6497,6 +6497,45 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  #past-learn-negative .negative-v49-stop-card .negative-v49-checks{grid-template-columns:minmax(0,1fr)!important;}
 }
 </style>
+<style id="simplepast-v110-readable-inline-and-learning-flow">
+/* Lesbarkeit: Zeilen mit markierten Begriffen brauchen zusätzliche Luft. */
+.compass-mode-panel :is(p,li,dd,blockquote,.past-topic-note,.simplepast-learning-lead,.past-feedback,.past-output-label){
+  line-height:1.9!important;
+}
+.compass-mode-panel :is(.past-term,.past-code,.tobe-v69-neutral-chip,.tobe-v69-rule-chip,.questions-v66-plain,.sp-clean-inline-20,.sp-clean-inline-21,.sp-clean-inline-22,.sp-clean-inline-35,.sp-clean-inline-36,.sp-clean-inline-37,.sp-clean-inline-38){
+  display:inline!important;vertical-align:baseline!important;line-height:inherit!important;
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  padding:2px 6px!important;margin:0 2px!important;white-space:normal!important;
+  overflow-wrap:break-word;
+}
+#past-learn-tobe .tobe-v70-stopline,
+#past-learn-questions .negative-v49-stop-card,
+#past-learn-questions .past-topic-note,
+#past-learn-negative .negative-v49-stop-card{
+  padding:22px 24px!important;line-height:1.85!important;
+}
+#past-learn-tobe .tobe-v70-stopline{display:flex!important;align-items:flex-start!important;gap:16px!important;}
+#past-learn-tobe .tobe-v70-stopline > :is(p,.sp-v110-rule-lines,ul){flex:1 1 0;min-width:0;margin:0!important;}
+#past-learn-tobe .tobe-v70-stopline .sp-v110-rule-lines{display:grid;gap:12px;}
+#past-learn-tobe .tobe-v70-stopline .sp-v110-rule-lines p{margin:0!important;}
+#past-learn-tobe .sp-v110-rule-list{margin:10px 0 0!important;padding-left:24px!important;display:grid;gap:9px;}
+#past-learn-tobe .tobe-v70-route-card{padding:24px!important;}
+#past-learn-tobe .tobe-v70-route-flow{display:grid!important;gap:13px!important;align-content:start!important;}
+#past-learn-tobe .tobe-v70-route-flow > *{min-width:0;line-height:1.75!important;}
+#past-learn-questions :is(.questions-v64-rule-card,.did-v28-example-pair,.negative-v49-stop-card,.did-v59-machine-section,.did-v60-basic-section,.did-v61-repair-section){padding:24px!important;}
+#past-learn-questions :is(.did-v28-example-pair > div,.negative-v49-change-grid article,.did-v28-flow-card){padding:20px!important;}
+#past-learn-questions :is(.past-topic-note,.did-v28-flow-card p,.negative-v49-stop-card p){line-height:1.85!important;}
+#simplepast-learn-panel :is(.past-subcard,.past-topic-card,.simplepast-learning-shell,.negative-v49-hero) :is(p,li){line-height:1.85!important;}
+#simplepast-learn-panel :is(.past-subcard,.past-topic-card) :is(p,ul,ol) + :is(p,ul,ol){margin-top:12px!important;}
+#simplepast-learn-panel :is(.past-subcard,.past-topic-card) :is(h3,h4) + :is(p,ul,ol){margin-top:12px!important;}
+#simplepast-learn-panel :is(.past-subcard,.past-topic-card) :is(.past-choice-row,.negative-v49-change-grid,.tobe-v70-route-compare){row-gap:16px!important;}
+@media(max-width:700px){
+ #past-learn-tobe .tobe-v70-stopline{padding:18px!important;gap:12px!important;}
+ #past-learn-tobe .tobe-v70-route-card,
+ #past-learn-questions :is(.questions-v64-rule-card,.did-v59-machine-section,.did-v60-basic-section,.did-v61-repair-section){padding:18px!important;}
+ .compass-mode-panel :is(p,li,dd,blockquote){line-height:1.8!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7855,7 +7894,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div aria-label="Hauptanker to be oder normales Verb" class="tobe-v70-stopline" role="note">
 <span aria-hidden="true" class="tobe-v70-stop-icon">?</span>
-<p>Erste Denkentscheidung: Ist das Verb <span class="past-term">to be</span> oder ein normales Verb? Bei <span class="past-term">to be</span> nimmst du im Simple Past <span class="tobe-v69-neutral-chip">was</span> oder <span class="tobe-v69-neutral-chip">were</span>. Du nimmst kein <span class="tobe-v69-rule-chip">did</span>.</p>
+<p>Prüfe zuerst das Verb:</p><ul class="sp-v110-rule-list"><li><span class="past-term">to be</span> → <span class="tobe-v69-neutral-chip">was</span> oder <span class="tobe-v69-neutral-chip">were</span></li><li>Normales Verb → andere Simple-Past-Regeln</li><li>Bei <span class="past-term">to be</span> brauchst du <span class="tobe-v69-rule-chip">kein did</span>.</li></ul>
 </div>
 <div aria-label="Vergleich normaler Simple-Past-Weg und to-be-Weg" class="tobe-v70-route-compare">
 <article class="tobe-v70-route-card">
@@ -7879,7 +7918,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div aria-label="Wichtigste Regel zu to be" class="tobe-v70-stopline" role="note">
 <span aria-hidden="true" class="tobe-v70-stop-icon">!</span>
-<p><span class="past-term">to be</span> benutzt <span class="tobe-v69-rule-chip">kein did und kein didn’t be</span>. <span class="past-term">to be</span> trägt die Vergangenheit selbst: <span class="tobe-v69-neutral-chip">was</span>, <span class="tobe-v69-neutral-chip">were</span>, <span class="tobe-v69-neutral-chip">wasn’t</span>, <span class="tobe-v69-neutral-chip">weren’t</span>.</p>
+<div class="sp-v110-rule-lines"><p><span class="past-term">to be</span> braucht kein <span class="tobe-v69-rule-chip">did</span> und kein <span class="tobe-v69-rule-chip">didn’t be</span>.</p><p>Die Formen in der Vergangenheit heißen:</p><p><span class="tobe-v69-neutral-chip">was</span> · <span class="tobe-v69-neutral-chip">were</span> · <span class="tobe-v69-neutral-chip">wasn’t</span> · <span class="tobe-v69-neutral-chip">weren’t</span></p></div>
 </div>
 </section>
 <section aria-labelledby="tobe-v70-checker-title" class="tobe-v70-section">
