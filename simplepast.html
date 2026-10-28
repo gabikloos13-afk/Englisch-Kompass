@@ -6386,6 +6386,10 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   .compass-mode-panel :is(.sp-ref-v99-table,.ref-table,table){max-width:none;}
 }
 </style>
+<style id="simplepast-v105-avoid-duplicate-prompt">
+/* Die aktuelle Aufgabe steht bereits oberhalb der Schreibphase. Das zweite Aufgabenfeld bleibt für die bestehende JavaScript-Anbindung im DOM. */
+#simplepast-denkzentrale .sp-dz-v80-write-task{display:none!important;}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -6621,7 +6625,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="4">
 <h3>4. Form selbst schreiben</h3>
-<p class="sp-dz-v14-rule">Schreibe erst selbst. Schreibe den ganzen englischen Satz. Keine Auswahlbuttons, keine sichtbare Lösung.</p>
+<p class="sp-dz-v14-rule">Schreibe den englischen Satz selbst und prüfe anschließend deine Antwort.</p>
 <div aria-live="polite" class="sp-dz-v80-write-task">
 <span class="sp-dz-v14-task-label">Aufgabe</span>
 <p class="sp-dz-v14-prompt sp-dz-v14-write-prompt" id="sp-dz-v14-write-prompt">Lade Aufgabe …</p>
