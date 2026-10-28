@@ -6454,6 +6454,49 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   #simplepast-learn-panel :is(.negative-v49-change-grid,.tobe-v70-trap-grid,.tobe-v70-memory-grid){gap:14px!important;}
 }
 </style>
+<style id="simplepast-v109-tobe-warning-layout">
+/* Fragen und Verneinung: richtige/falsche Beispielzeilen lesbar voneinander trennen. */
+#past-learn-questions .negative-v49-stop-card,
+#past-learn-negative .negative-v49-stop-card{
+  box-sizing:border-box!important;
+  padding:clamp(20px,2.2vw,28px)!important;
+}
+#past-learn-questions .negative-v49-stop-head,
+#past-learn-negative .negative-v49-stop-head{
+  display:flex!important;align-items:center!important;gap:10px!important;
+  margin-bottom:13px!important;line-height:1.5!important;
+}
+#past-learn-questions .negative-v49-stop-card > p,
+#past-learn-negative .negative-v49-stop-card > p{
+  margin:0 0 17px!important;line-height:1.7!important;
+}
+#past-learn-questions .negative-v49-stop-card .negative-v49-checks,
+#past-learn-negative .negative-v49-stop-card .negative-v49-checks{
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important;
+  gap:14px!important;align-items:stretch!important;
+}
+#past-learn-questions .negative-v49-stop-card .negative-v49-checks > div,
+#past-learn-negative .negative-v49-stop-card .negative-v49-checks > div{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  gap:10px!important;min-width:0!important;
+  padding:17px 19px!important;border:1px solid #cbd5e1!important;border-radius:14px!important;
+  background:#fff!important;line-height:1.6!important;
+}
+#past-learn-questions .negative-v49-stop-card .negative-v49-checks > div > span,
+#past-learn-negative .negative-v49-stop-card .negative-v49-checks > div > span{
+  display:block!important;width:100%!important;max-width:100%!important;
+  margin:0!important;line-height:1.6!important;overflow-wrap:break-word!important;
+}
+#past-learn-questions .negative-v49-stop-card .negative-v49-check-label,
+#past-learn-negative .negative-v49-stop-card .negative-v49-check-label{
+  width:max-content!important;max-width:100%!important;font-size:.85rem!important;
+  line-height:1.4!important;padding:3px 9px!important;margin:0!important;
+}
+@media(max-width:650px){
+ #past-learn-questions .negative-v49-stop-card .negative-v49-checks,
+ #past-learn-negative .negative-v49-stop-card .negative-v49-checks{grid-template-columns:minmax(0,1fr)!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7633,7 +7676,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="negative-v49-stop-card">
 <div class="negative-v49-stop-head"><span aria-hidden="true">⚠</span><span>Achtung bei to be</span></div>
-<p>Bei to be nimmst du nicht Did. Das läuft später im eigenen Lernbaustein.</p>
+<p>Bei <span class="past-term">to be</span> brauchst du kein <span class="past-term">did</span>. Fragen beginnen mit <span class="past-term">Was</span> oder <span class="past-term">Were</span>.</p>
 <div aria-label="to be Stoppkarte für Questions" class="negative-v49-checks">
 <div><span class="negative-v49-check-label">Richtig</span><span>Was she tired?</span></div>
 <div><span class="negative-v49-check-label">Nicht richtig</span><span>Did she was tired?</span></div>
