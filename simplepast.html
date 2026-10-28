@@ -6332,6 +6332,67 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   .compass-mode-panel :is(.past-tool-panel,.past-topic-card,.conn-card,.ref-section){max-width:100%;}
 }
 </style>
+<style id="simplepast-v104-readable-line-spacing">
+/* v104: Textfluss, Zeilenabstände und Überlaufschutz in sämtlichen Registern.
+   Keine Änderungen an Aufgaben, Farben der Auswahl oder JavaScript. */
+.learning-card,
+.compass-mode-panel,
+.learn-panel,
+#simplepast-denkzentrale,
+#simplepast-learn-panel,
+#past-learn-entry,
+#past-learn-positive,
+#past-learn-negative,
+#past-learn-questions,
+#past-learn-tobe,
+#past-learn-irregular{min-width:0;max-width:100%;}
+
+.compass-mode-panel :is(p,li,blockquote,dd,dt),
+#simplepast-denkzentrale :is(p,li,blockquote){
+  line-height:1.65;overflow-wrap:break-word;
+}
+.compass-mode-panel :is(h1,h2,h3,h4,h5,h6),
+#simplepast-denkzentrale :is(h2,h3,h4,h5){
+  line-height:1.4;overflow-wrap:break-word;
+}
+.compass-mode-panel :is(label,summary,small),
+#simplepast-denkzentrale :is(label,summary,small){line-height:1.5;overflow-wrap:break-word;}
+
+.compass-mode-panel :is(.past-topic-card,.past-subcard,.positive-statement-card,.negative-card,.tobe-past-card,.past-radar-card,.past-route-intro,.feature-card,.ref-section,.conn-card,.note-field,.sp-ref-v99-card),
+#simplepast-denkzentrale :is(.sp-dz-v14-card,.sp-dz-v80-card){
+  min-width:0;max-width:100%;overflow-wrap:break-word;
+}
+.compass-mode-panel :is(.past-tool-tab,.past-choice-btn,.past-action-btn,.sp-action-btn,.mode-btn,.learn-step-btn,.compass-mode-btn),
+#simplepast-denkzentrale :is(button,[role="button"]){
+  box-sizing:border-box;min-width:0;min-height:40px;height:auto;line-height:1.45;
+  white-space:normal;overflow-wrap:break-word;text-align:center;
+}
+.compass-mode-panel :is(input,select,textarea),
+#simplepast-denkzentrale :is(input,select,textarea){
+  box-sizing:border-box;max-width:100%;min-width:0;line-height:1.5;
+}
+.compass-mode-panel :is(.past-tool-tabs,.machine-chips,.past-choice-row,.past-action-row,.negative-v49-tabs,.negative-v52-case-row),
+#simplepast-denkzentrale :is(.sp-dz-v14-actions,.sp-dz-v80-actions){row-gap:10px;}
+.compass-mode-panel :is(.past-tool-tabs,.past-tool-panel,.past-subcard,.past-topic-card,.ref-section,.conn-card,.sp-ref-v99-card),
+#simplepast-denkzentrale :is(.sp-dz-v14-grid,.sp-dz-v80-grid){min-width:0;}
+
+.compass-mode-panel :is(.sp-ref-v99-table,.ref-table,table){border-collapse:collapse;}
+.compass-mode-panel :is(th,td){line-height:1.55;vertical-align:top;overflow-wrap:break-word;}
+.compass-mode-panel :is(.table-wrap,.sp-ref-v99-table-wrap,.ref-table-wrap){max-width:100%;overflow-x:auto;}
+.compass-mode-panel :is(p,ul,ol) + :is(p,ul,ol){margin-top:10px;}
+.compass-mode-panel :is(h2,h3,h4,h5) + :is(p,ul,ol){margin-top:9px;}
+.compass-mode-panel :is(.simplepast-learning-shell,.negative-v49-understand,.negative-v50-machine,.tobe-v73-task-grid,.sp-ref-v99-card){row-gap:12px;}
+
+@media(max-width:760px){
+  .compass-mode-panel :is(.simplepast-learning-shell,.past-topic-card,.past-subcard,.negative-card,.positive-statement-card,.tobe-past-card,.ref-section,.conn-card,.note-field,.sp-ref-v99-card){
+    min-width:0;max-width:100%;
+  }
+  .compass-mode-panel :is(.past-choice-row,.past-action-row,.machine-chips,.negative-v52-case-row){flex-wrap:wrap;}
+  .compass-mode-panel :is(.past-tool-tab,.past-choice-btn,.past-action-btn,.sp-action-btn),
+  #simplepast-denkzentrale button{max-width:100%;}
+  .compass-mode-panel :is(.sp-ref-v99-table,.ref-table,table){max-width:none;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
