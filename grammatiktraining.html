@@ -254,7 +254,7 @@ document.querySelectorAll('[data-topic-choice]').forEach(input=>input.addEventLi
 function save(){try{localStorage.setItem(STORE,JSON.stringify(state))}catch(e){}}
 function norm(s){return String(s||"").toLowerCase().replace(/[’‘`´ʼʻ′＇ꞌ]/g,"'").normalize("NFKC").replace(/[.!?]+/g,"").replace(/\s+/g," ").trim()}
 function canonicalAnswer(value){
- return norm(value).replace(/\bdoesn't\b/g,"does not").replace(/\bdon't\b/g,"do not")
+ return norm(value).replace(/\bi'm\b/g,"i am").replace(/\bhe's\b/g,"he is").replace(/\bshe's\b/g,"she is").replace(/\bthey're\b/g,"they are").replace(/\bwe're\b/g,"we are").replace(/\byou're\b/g,"you are").replace(/\bdoesn't\b/g,"does not").replace(/\bdon't\b/g,"do not")
  .replace(/\bdidn't\b/g,"did not").replace(/\bwasn't\b/g,"was not").replace(/\bweren't\b/g,"were not")
  .replace(/\bisn't\b/g,"is not").replace(/\baren't\b/g,"are not").replace(/\bcan't\b/g,"cannot")
  .replace(/\b(mrs|mr|ms)\s+/g,"$1 ").replace(/\s+/g," ").trim();
