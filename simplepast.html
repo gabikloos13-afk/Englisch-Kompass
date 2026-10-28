@@ -6736,6 +6736,76 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  #past-learn-questions .sp-v114-extra .past-question-bridge-grid{padding:16px!important;}
 }
 </style>
+<style id="simplepast-v115-questions-irregular-rework">
+/* Durchgängig sichtbare Zusatzregeln; klare, nicht interaktive Darstellung. */
+#past-learn-questions .sp-v115-extra{
+ background:#f1f6fa!important;border:1px solid #c3d3e1!important;
+ border-left:4px solid #6486a6!important;border-radius:14px!important;
+ padding:22px!important;margin:18px 0 24px!important;box-shadow:none!important;
+}
+#past-learn-questions .sp-v115-extra h3{margin:0 0 16px!important;line-height:1.45!important;}
+#past-learn-questions .sp-v115-extra .past-question-bridge-grid{
+ display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important;
+ gap:16px!important;padding:0!important;
+}
+#past-learn-questions .sp-v115-extra .past-question-bridge-grid > div{
+ background:#fff!important;padding:20px!important;border:1px solid #d8e2eb!important;
+ border-radius:12px!important;min-width:0!important;
+}
+#past-learn-questions .sp-v115-extra :is(h4,p){line-height:1.75!important;}
+#past-learn-questions .sp-v115-extra p+p{margin-top:12px!important;}
+/* Irregular verbs: dieselben Hauptkarten, Abstände und Register wie andere Lernbausteine. */
+#past-learn-irregular .simplepast-learning-shell{
+ background:#fff!important;border:1px solid #d8e2eb!important;border-radius:20px!important;
+ padding:clamp(20px,2.3vw,28px)!important;box-shadow:0 5px 16px rgba(15,23,42,.05)!important;
+}
+#past-learn-irregular .simplepast-learning-head{display:flex!important;gap:16px!important;margin:0 0 22px!important;}
+#past-learn-irregular .simplepast-learning-lead{max-width:75ch!important;line-height:1.8!important;}
+#past-learn-irregular .past-tool-tabs{
+ display:flex!important;flex-wrap:wrap!important;gap:9px!important;
+ padding:10px!important;background:#f1f6fa!important;border:1px solid #d8e2eb!important;
+ border-radius:14px!important;margin-bottom:20px!important;
+}
+#past-learn-irregular .past-tool-tab{
+ min-height:44px!important;flex:1 1 135px!important;padding:10px 14px!important;
+ border:1px solid #cbd5e1!important;border-radius:11px!important;background:#fff!important;
+ color:#334155!important;white-space:normal!important;line-height:1.5!important;
+}
+#past-learn-irregular .past-tool-tab[aria-pressed="true"]{
+ background:#2563eb!important;border-color:#2563eb!important;color:#fff!important;
+}
+#past-learn-irregular .past-tool-stage{min-width:0!important;}
+#past-learn-irregular .past-subcard{
+ padding:clamp(20px,2.2vw,26px)!important;background:#fff!important;
+ border:1px solid #d8e2eb!important;border-radius:16px!important;
+ box-shadow:none!important;min-width:0!important;
+}
+#past-learn-irregular .past-subcard :is(h3,h4){line-height:1.45!important;margin-bottom:14px!important;}
+#past-learn-irregular .past-subcard :is(p,li,label,small){line-height:1.75!important;}
+#past-learn-irregular .past-subcard :is(p,ul,ol)+:is(p,ul,ol){margin-top:12px!important;}
+#past-learn-irregular .irregular-v34-table-wrap{
+ max-width:100%!important;overflow-x:auto!important;border:1px solid #cbd5e1!important;
+ border-radius:12px!important;background:#fff!important;margin-top:18px!important;
+}
+#past-learn-irregular .irregular-v34-table{width:100%!important;min-width:420px!important;border-collapse:collapse!important;}
+#past-learn-irregular .irregular-v34-table th{
+ background:#eaf2f8!important;color:#355f81!important;
+ padding:13px 16px!important;text-align:left!important;
+}
+#past-learn-irregular .irregular-v34-table td{
+ padding:12px 16px!important;line-height:1.6!important;
+ border-top:1px solid #e2e8f0!important;vertical-align:top!important;
+}
+#past-learn-irregular .irregular-v34-table tbody tr:nth-child(even){background:#f8fafc!important;}
+#past-learn-irregular :is(button,input,textarea){min-height:42px;line-height:1.5;}
+#past-learn-irregular :is(button):focus-visible{outline:3px solid #2563eb;outline-offset:3px;}
+@media(max-width:700px){
+ #past-learn-questions .sp-v115-extra{padding:18px!important;}
+ #past-learn-questions .sp-v115-extra .past-question-bridge-grid>div{padding:17px!important;}
+ #past-learn-irregular .simplepast-learning-shell,
+ #past-learn-irregular .past-subcard{padding:18px!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7834,7 +7904,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p class="simplepast-learning-lead questions-v64-lead">So stellst du Fragen über Vergangenes: <span class="past-code">Did</span> + Person + Grundform. Mit Fragewort steht <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> davor.</p>
 </div>
 </div>
-<details class="past-question-bridge sp-v114-extra"><summary>Kurzantworten und besondere Fragen – bei Bedarf nachlesen</summary><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></details>
+<section class="past-question-bridge sp-v115-extra" aria-label="Kurzantworten und besondere Fragen"><h3>Kurzantworten und besondere Fragen</h3><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></section>
 <nav aria-label="Questions with did" class="past-tool-tabs questions-v64-tabs">
 <button aria-controls="questions-v64-understand" aria-pressed="true" class="past-tool-tab is-active" data-tab="questions-v64" data-val="understand" type="button">Verstehen</button>
 <button aria-controls="questions-v64-machine" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="machine" type="button">Satzmaschine</button>
@@ -8408,7 +8478,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 6</p>
 <h2 class="simplepast-learning-title" id="irregular-v93-title">Irregular Verbs</h2>
-<p class="simplepast-learning-lead">Irregular verbs sind vor allem Lernwörter. Du musst die Simple-Past-Form sicher abrufen und in einfachen Sätzen wiedererkennen.</p>
+<p class="simplepast-learning-lead">Unregelmäßige Verben haben eigene Vergangenheitsformen. Du lernst sie und verwendest sie beim Schreiben von Sätzen.</p>
 </div>
 </div>
 <nav aria-label="Untertools Irregular Verbs" class="past-tool-tabs">
