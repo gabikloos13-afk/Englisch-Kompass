@@ -5,8 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Present Progressive — Hannas Englisch-Kompass</title>
-<style>
-/* Schriftbild wie Simple Present: Arial, Helvetica, sans-serif */
+<style>/* v11 – Consolidated Simple Present design; old structural cascade removed. */
 *,*::before,*::after{box-sizing:border-box}
 :root{
   --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
@@ -20,38 +19,96 @@
   --radius:18px;--radius-sm:12px;--radius-pill:999px;
   --shadow:0 10px 30px rgba(15,23,42,.10);--shadow-sm:0 4px 16px rgba(15,23,42,.07);
   --line:1px solid var(--gray-200);
-  --font-head:'Nunito',sans-serif;--font-body:'Nunito Sans',sans-serif;
+  --font-head:"Nunito",sans-serif;--font-body:"Nunito Sans",sans-serif;
 }
-html{scroll-behavior:smooth}
-body{margin:0;padding:0 0 60px;font-family:var(--font-body);font-size:15px;line-height:1.65;color:var(--gray-800);background:linear-gradient(180deg,#dbeafe 0,#e0f2fe 250px,var(--gray-50) 250px)}
-h1,h2,h3,h4,p,ul,ol,table{margin-top:0;font-weight:400}p,ul,ol{margin-bottom:0}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;left:16px;top:-60px;z-index:1000;background:#fff;color:var(--blue-dark);border:var(--line);border-radius:var(--radius-pill);padding:8px 14px;text-decoration:none}.skip-link:focus{top:12px}
-.site-nav{background:rgba(255,255,255,.96);border-bottom:var(--line);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}.site-nav-inner{max-width:1160px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:12px;flex-wrap:wrap}.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-size:1rem}.nav-logo-icon{font-size:1.3rem}.nav-logo-text{color:var(--blue-dark)}.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.nav-link,.nav-action{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.84rem;color:var(--gray-700);text-decoration:none;border:1px solid var(--gray-200);background:#fff;cursor:pointer}.nav-link:hover,.nav-action:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}.nav-link.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}.nav-action.print{color:var(--green);border-color:#bbf7d0;background:var(--green-soft)}.nav-action.homework{color:var(--violet);border-color:#ddd6fe;background:var(--violet-soft)}
-.page-content{max-width:1160px;margin:0 auto;padding:22px 18px}.learning-card{border:var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.compass-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;padding:28px 30px 24px;background:linear-gradient(135deg,#eef6ff 0,#fff 52%,#f5f3ff 100%);border-bottom:var(--line)}.eyebrow{margin:0 0 8px;color:var(--blue-dark);letter-spacing:.06em;text-transform:uppercase;font-size:.76rem}.compass-head h1{font-family:var(--font-head);font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;margin:0 0 12px;color:#0f172a}.lead{font-size:1.05rem;color:var(--gray-700);max-width:760px}.head-badge{align-self:start;border:1px solid #bfdbfe;background:#fff;border-radius:22px;padding:14px 16px;min-width:210px;box-shadow:var(--shadow-sm)}.head-badge-title{font-size:.82rem;color:var(--gray-500);margin-bottom:8px}.head-badge-main{font-family:var(--font-head);font-size:1.1rem;color:var(--blue-dark)}.head-badge-sub{margin-top:6px;font-size:.9rem;color:var(--gray-600)}
-.compass-mode-grid,.learn-step-nav,.subtab-grid{display:flex;gap:8px;flex-wrap:wrap}.compass-mode-grid{padding:16px 18px;background:#fff;border-bottom:var(--line)}.compass-mode-btn,.learn-step-btn,.subtab-btn,.choice-btn,.tool-btn,.mini-btn{border:1px solid var(--gray-200);background:#fff;color:var(--gray-700);border-radius:var(--radius-pill);padding:8px 13px;font-family:var(--font-head);font-size:.92rem;cursor:pointer;transition:.16s}.compass-mode-btn{display:grid;grid-template-columns:auto;gap:1px;text-align:left;border-radius:18px;padding:10px 14px}.compass-mode-btn span{display:block}.tab-title{color:var(--gray-800)}.tab-sub{font-size:.76rem;color:var(--gray-500)}.compass-mode-btn.is-active,.learn-step-btn.is-active,.subtab-btn.is-active{border-color:var(--blue);background:var(--blue);color:#fff}.compass-mode-btn.is-active .tab-title,.compass-mode-btn.is-active .tab-sub{color:#fff}.learn-step-nav{padding:14px 18px;background:var(--gray-25);border-bottom:var(--line)}.learn-step-btn{font-size:.84rem}.compass-mode-panel,.learn-panel{padding:24px 26px}.tabs-ready [data-panel]{display:none}.tabs-ready [data-panel].is-active{display:block}
-.section-kicker{color:var(--blue-dark);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}.section-title{font-family:var(--font-head);font-size:1.55rem;line-height:1.22;margin-bottom:10px;color:#0f172a}.section-text{color:var(--gray-700);max-width:850px;margin-bottom:18px}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card,.tool-card,.note-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:18px;box-shadow:var(--shadow-sm)}.soft-card{border:1px solid #bfdbfe;background:#eff6ff}.green-card{border-color:#bbf7d0;background:#f0fdf4}.yellow-card{border-color:#fde68a;background:#fffbeb}.red-card{border-color:#fecaca;background:#fef2f2}.violet-card{border-color:#ddd6fe;background:#f5f3ff}.cyan-card{border-color:#a5f3fc;background:#ecfeff}.card h3,.tool-card h3,.note-card h3{font-family:var(--font-head);font-size:1.12rem;margin-bottom:8px;color:#0f172a}.mini-label{font-size:.78rem;color:var(--gray-500);margin-bottom:5px}.sentence{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:1.08rem;margin:10px 0}.chip,.word-chip{display:inline-flex;align-items:center;gap:5px;border-radius:var(--radius-pill);padding:4px 10px;border:1px solid var(--gray-200);background:#fff;color:var(--gray-700)}.chip.blue{border-color:#bfdbfe;background:#eff6ff;color:#1e3a8a}.chip.green{border-color:#bbf7d0;background:#f0fdf4;color:#14532d}.chip.yellow{border-color:#fde68a;background:#fffbeb;color:#78350f}.chip.red{border-color:#fecaca;background:#fef2f2;color:#7f1d1d}.chip.violet{border-color:#ddd6fe;background:#f5f3ff;color:#4c1d95}.signal-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.split-example{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}.vs{align-self:center;border:var(--line);background:#fff;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--gray-500)}.formula-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}.formula-part{border:var(--line);border-radius:16px;padding:14px;background:#fff}.formula-part .big{display:block;font-family:var(--font-head);font-size:1.35rem;color:var(--blue-dark)}.select-row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}.field{display:grid;gap:4px}.field label{font-size:.8rem;color:var(--gray-600)}select,input,textarea{font:inherit;border:1px solid var(--gray-300);border-radius:12px;padding:9px 11px;background:#fff;color:var(--gray-800)}textarea{min-height:92px;resize:vertical;width:100%}.output-box{border:1px dashed #93c5fd;background:#eff6ff;border-radius:16px;padding:16px;margin-top:12px}.output-sentence{font-family:var(--font-head);font-size:1.35rem;color:#0f172a;margin-bottom:6px}.output-note{color:var(--gray-600)}.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.choice-btn:hover,.tool-btn:hover,.mini-btn:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}.choice-btn.is-selected{border-color:var(--blue);background:var(--blue);color:#fff}.choice-btn.is-correct{border-color:var(--green);background:var(--green);color:#fff}.choice-btn.is-careful{border-color:var(--red);background:var(--red);color:#fff}.feedback,.write-feedback{border-radius:14px;padding:10px 12px;background:var(--gray-100);color:var(--gray-700);margin-top:10px}.feedback.is-good,.write-feedback.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}.feedback.is-careful,.write-feedback.is-careful{background:var(--red-soft);color:#7f1d1d;border:1px solid #fecaca}.feedback.is-hint,.write-feedback.is-hint{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}.trap-card{border:var(--line);border-radius:var(--radius);padding:16px;background:#fff}.table-wrap{overflow:auto;border:var(--line);border-radius:var(--radius);background:#fff}table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:11px 12px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:top}th{background:var(--gray-50);color:#0f172a}tr:last-child td{border-bottom:0}.rule-list{display:grid;gap:10px}.rule-item{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start;border:var(--line);border-radius:14px;padding:12px;background:#fff}.rule-name{color:var(--blue-dark);font-family:var(--font-head)}.connection-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.connection-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px;box-shadow:var(--shadow-sm)}.connection-card a{display:inline-flex;margin-top:10px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);padding:6px 11px;text-decoration:none;color:var(--blue-dark);background:var(--blue-soft)}.writecheck-list{display:grid;gap:14px}.write-task{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px}.write-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.write-task-title{font-family:var(--font-head);color:#0f172a}.write-task-meta{font-size:.78rem;color:var(--gray-500)}.write-task input{width:100%;margin-top:8px}.write-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.solution-btn[hidden]{display:none!important}.summary-box{margin-top:14px;border-radius:16px;padding:14px;background:var(--gray-100)}.summary-box.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}.summary-box.is-careful{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}.workshop-preview{border:1px dashed #a5b4fc;background:#f5f3ff;border-radius:18px;padding:16px;margin-top:14px}.journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.note-status{margin-top:10px;color:var(--green);min-height:1.4em}.print-sheet{display:none}.homework-only{display:none}.mt-16{margin-top:16px}.mt-18{margin-top:18px}.small-title{font-size:1.25rem;margin-top:22px}
-body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]),body.hausaufgaben-mode .interactive-only{display:none!important}body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}body.hausaufgaben-mode .homework-only{display:block}body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
-@media (max-width:900px){.compass-head{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}.nav-links{display:none}.site-nav-inner{justify-content:center}.page-content{padding:14px 10px}.compass-mode-panel,.learn-panel{padding:18px 14px}.compass-head{padding:22px 18px}}
-@media print{body{background:#fff;color:#000;padding:0}.site-nav,.page-content{display:none!important}body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
-
-/* Present Progressive v2 – Simple Present visual reference */
+p,ul,ol{margin-bottom:0}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:1000;background:#fff;color:var(--blue-dark);border:var(--line);border-radius:var(--radius-pill);padding:8px 14px;text-decoration:none}
+.skip-link:focus{top:12px}
+.nav-action.print{color:var(--green);border-color:#bbf7d0;background:var(--green-soft)}
+.nav-action.homework{color:var(--violet);border-color:#ddd6fe;background:var(--violet-soft)}
+.tab-title{color:var(--gray-800)}
+.tab-sub{font-size:.76rem;color:var(--gray-500)}
+.section-kicker{color:var(--blue-dark);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:var(--font-head);font-size:1.55rem;line-height:1.22;margin-bottom:10px;color:#0f172a}
+.section-text{color:var(--gray-700);max-width:850px;margin-bottom:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card,.tool-card,.note-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:18px;box-shadow:var(--shadow-sm)}
+.soft-card{border:1px solid #bfdbfe;background:#eff6ff}
+.green-card{border-color:#bbf7d0;background:#f0fdf4}
+.yellow-card{border-color:#fde68a;background:#fffbeb}
+.red-card{border-color:#fecaca;background:#fef2f2}
+.violet-card{border-color:#ddd6fe;background:#f5f3ff}
+.cyan-card{border-color:#a5f3fc;background:#ecfeff}
+.card h3,.tool-card h3,.note-card h3{font-family:var(--font-head);font-size:1.12rem;margin-bottom:8px;color:#0f172a}
+.mini-label{font-size:.78rem;color:var(--gray-500);margin-bottom:5px}
+.sentence{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:1.08rem;margin:10px 0}
+.chip,.word-chip{display:inline-flex;align-items:center;gap:5px;border-radius:var(--radius-pill);padding:4px 10px;border:1px solid var(--gray-200);background:#fff;color:var(--gray-700)}
+.chip.blue{border-color:#bfdbfe;background:#eff6ff;color:#1e3a8a}
+.chip.green{border-color:#bbf7d0;background:#f0fdf4;color:#14532d}
+.chip.yellow{border-color:#fde68a;background:#fffbeb;color:#78350f}
+.chip.red{border-color:#fecaca;background:#fef2f2;color:#7f1d1d}
+.chip.violet{border-color:#ddd6fe;background:#f5f3ff;color:#4c1d95}
+.signal-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.split-example{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.vs{align-self:center;border:var(--line);background:#fff;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--gray-500)}
+.formula-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.formula-part{border:var(--line);border-radius:16px;padding:14px;background:#fff}
+.formula-part .big{display:block;font-family:var(--font-head);font-size:1.35rem;color:var(--blue-dark)}
+.select-row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
+.field{display:grid;gap:4px}
+.field label{font-size:.8rem;color:var(--gray-600)}
+select,input,textarea{font:inherit;border:1px solid var(--gray-300);border-radius:12px;padding:9px 11px;background:#fff;color:var(--gray-800)}
+textarea{min-height:92px;resize:vertical;width:100%}
+.output-box{border:1px dashed #93c5fd;background:#eff6ff;border-radius:16px;padding:16px;margin-top:12px}
+.output-sentence{font-family:var(--font-head);font-size:1.35rem;color:#0f172a;margin-bottom:6px}
+.output-note{color:var(--gray-600)}
+.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.choice-btn:hover,.tool-btn:hover,.mini-btn:hover{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}
+.choice-btn.is-selected{border-color:var(--blue);background:var(--blue);color:#fff}
+.choice-btn.is-correct{border-color:var(--green);background:var(--green);color:#fff}
+.choice-btn.is-careful{border-color:var(--red);background:var(--red);color:#fff}
+.feedback,.write-feedback{border-radius:14px;padding:10px 12px;background:var(--gray-100);color:var(--gray-700);margin-top:10px}
+.feedback.is-good,.write-feedback.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}
+.feedback.is-careful,.write-feedback.is-careful{background:var(--red-soft);color:#7f1d1d;border:1px solid #fecaca}
+.feedback.is-hint,.write-feedback.is-hint{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}
+.trap-card{border:var(--line);border-radius:var(--radius);padding:16px;background:#fff}
+.table-wrap{overflow:auto;border:var(--line);border-radius:var(--radius);background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.94rem}
+th,td{padding:11px 12px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:#0f172a}
+tr:last-child td{border-bottom:0}
+.rule-list{display:grid;gap:10px}
+.rule-item{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start;border:var(--line);border-radius:14px;padding:12px;background:#fff}
+.rule-name{color:var(--blue-dark);font-family:var(--font-head)}
+.connection-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.connection-card{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px;box-shadow:var(--shadow-sm)}
+.connection-card a{display:inline-flex;margin-top:10px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);padding:6px 11px;text-decoration:none;color:var(--blue-dark);background:var(--blue-soft)}
+.writecheck-list{display:grid;gap:14px}
+.write-task{border:var(--line);border-radius:var(--radius);background:#fff;padding:16px}
+.write-task-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.write-task-title{font-family:var(--font-head);color:#0f172a}
+.write-task-meta{font-size:.78rem;color:var(--gray-500)}
+.write-task input{width:100%;margin-top:8px}
+.write-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.solution-btn[hidden]{display:none!important}
+.summary-box{margin-top:14px;border-radius:16px;padding:14px;background:var(--gray-100)}
+.summary-box.is-good{background:var(--green-soft);color:#14532d;border:1px solid #bbf7d0}
+.summary-box.is-careful{background:var(--yellow-soft);color:#78350f;border:1px solid #fde68a}
+.workshop-preview{border:1px dashed #a5b4fc;background:#f5f3ff;border-radius:18px;padding:16px;margin-top:14px}
+.journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.note-status{margin-top:10px;color:var(--green);min-height:1.4em}
+.print-sheet{display:none}
+.homework-only{display:none}
+.mt-16{margin-top:16px}
+.mt-18{margin-top:18px}
+.small-title{font-size:1.25rem;margin-top:22px}
+body.hausaufgaben-mode .homework-only{display:block}
+@media  (max-width:900px){.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.split-example{grid-template-columns:1fr}.vs{justify-self:center}.formula-row{grid-template-columns:1fr}.rule-item{grid-template-columns:1fr}}
+@media  print{body.print-cheatsheet .print-sheet{display:block!important;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.45}.print-sheet h1,.print-sheet h2,.print-sheet h3{font-weight:400}.print-sheet table{border-collapse:collapse;width:100%}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:6px;vertical-align:top}.print-note{border:1px solid #bbb;border-radius:8px;padding:8px;margin:8px 0}}
 :root{--font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif;--radius:16px;--radius-sm:10px;--shadow:0 8px 28px rgba(15,23,42,.08);--shadow-sm:0 4px 14px rgba(15,23,42,.06)}
-body{font-family:var(--font-body);font-size:15px;line-height:1.65;background:#e7eef4}
-.page-content{width:100%;max-width:1320px;margin:auto;padding:18px 20px 40px}
-.learning-card{border:1px solid var(--gray-200);border-radius:22px;background:#fff;box-shadow:var(--shadow)}
-.compass-head{display:flex;justify-content:space-between;align-items:start;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#1d4ed8,#0f766e);color:#fff;border:0}
 .compass-kicker{color:rgba(255,255,255,.72);font-size:.78rem;letter-spacing:.08em;margin:0 0 3px}
-.compass-title,.compass-head h1{font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;color:#fff;line-height:1.2;margin:0 0 5px}
-.compass-subtitle{font-size:.91rem;color:rgba(255,255,255,.88);line-height:1.5;max-width:700px}
-.compass-mode-grid,.learn-step-nav{display:flex;flex-wrap:nowrap;gap:0;padding:0;overflow-x:auto;background:#fcfcfd;border-bottom:1px solid var(--gray-200)}
-.compass-mode-btn,.learn-step-btn{display:flex;align-items:center;justify-content:center;flex:1 0 130px;min-height:58px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:10px 8px;box-shadow:none;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:.85rem;font-weight:400;color:#475569}
-.learn-step-btn{flex-basis:170px;font-size:.8rem}
-.compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff;color:#1d4ed8}
-.compass-mode-btn.is-active,.compass-mode-btn[aria-pressed="true"]{color:#1d4ed8!important;background:#fff!important}
-.compass-mode-btn.is-active,.learn-step-btn.is-active{background:#fff;color:#1d4ed8;border-bottom-color:#2563eb}
-.compass-mode-btn .tab-title{color:inherit}
-.compass-mode-panel{padding:22px;background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
-.compass-mode-panel[data-val="learn"]{padding:0}
-.learn-panel{padding:24px 20px;background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
 .card,.tool-card,.note-card,.trap-card,.write-task,.connection-card,.formula-part,.pg-ref-block{background:#fff;border:1px solid rgba(148,163,184,.45);border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(15,23,42,.06)}
 .card.green-card,.card.yellow-card,.card.red-card,.card.violet-card,.card.soft-card,.card.cyan-card{background:#fff;border-color:rgba(148,163,184,.45)}
 .section-title{font-size:1.3rem;line-height:1.35;color:#1e293b;font-weight:400}
@@ -60,18 +117,22 @@ body{font-family:var(--font-body);font-size:15px;line-height:1.65;background:#e7
 .card p+p,.pg-learning-part p+p,.pg-ref-block p+p{margin-top:10px}
 .pg-learning-part{margin-top:22px;padding-top:20px;border-top:1px solid #b8c9da;display:grid;gap:12px}
 .pg-part-title{font-family:Arial,Helvetica,sans-serif;font-size:1.12rem;font-weight:400;color:#1d4ed8;margin:0}
-.pg-learning-guide{margin:14px 0}.pg-rule-note{padding:12px 14px;margin-top:10px;background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 10px 10px 0;line-height:1.6}
-.pg-selfcheck{display:grid;gap:14px}.pg-own-check{display:grid;gap:10px}.pg-own-check label{color:#334155;font-size:.9rem}
-.pg-ref-block{margin:16px 0}.pg-ref-block h3{color:#1d4ed8}.pg-ref-block p{line-height:1.7}
-.chip{padding:4px 11px;line-height:1.4}.formula-part{min-width:0}.formula-row{gap:12px}
+.pg-learning-guide{margin:14px 0}
+.pg-rule-note{padding:12px 14px;margin-top:10px;background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 10px 10px 0;line-height:1.6}
+.pg-selfcheck{display:grid;gap:14px}
+.pg-own-check{display:grid;gap:10px}
+.pg-own-check label{color:#334155;font-size:.9rem}
+.pg-ref-block{margin:16px 0}
+.pg-ref-block h3{color:#1d4ed8}
+.pg-ref-block p{line-height:1.7}
+.chip{padding:4px 11px;line-height:1.4}
+.formula-part{min-width:0}
+.formula-row{gap:12px}
 .choice-btn,.tool-btn,.mini-btn{font-size:.88rem;font-family:Arial,Helvetica,sans-serif;min-height:36px}
 button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
-@media(max-width:700px){.page-content{padding:10px 8px 30px}.learning-card{border-radius:16px}.compass-head{padding:20px 16px}.learn-panel,.compass-mode-panel{padding:18px 14px}.compass-mode-btn{flex-basis:118px}.learn-step-btn{flex-basis:145px}.split-example{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.formula-row{grid-template-columns:1fr}.pg-learning-part{margin-top:18px}}
-@media print{.pg-learning-part{break-inside:avoid}.pg-ref-block{break-inside:avoid}}
-
+@media (max-width:700px){.split-example{grid-template-columns:1fr}.grid-2,.grid-3,.connection-map,.journal-grid{grid-template-columns:1fr}.formula-row{grid-template-columns:1fr}.pg-learning-part{margin-top:18px}}
+@media  print{.pg-learning-part{break-inside:avoid}.pg-ref-block{break-inside:avoid}}
 h1,h2,h3,h4,h5{font-weight:400!important}
-
-/* Progressive v3: optische Lernstruktur und ruhige Farbcodierung */
 .pg-refined-panel{background:linear-gradient(180deg,#eaf2fa 0%,#dce8f3 100%);color:#1e293b}
 .pg-refined-panel > .section-kicker{display:inline-flex;align-items:center;background:#e0eaff;color:#234a85;border-radius:8px;padding:5px 10px;margin-bottom:12px;letter-spacing:.025em;text-transform:none}
 .pg-refined-panel > .section-title{margin:6px 0 12px;padding:0 0 9px;border-bottom:2px solid #b8cbdb;font-size:1.38rem;line-height:1.3}
@@ -82,7 +143,8 @@ h1,h2,h3,h4,h5{font-weight:400!important}
 .pg-decision-step{padding:15px 16px;border:1px solid #ccdaeb;border-radius:13px;background:#f3f7fd;line-height:1.6;min-width:0}
 .pg-decision-step:nth-child(2){background:#eef8f6;border-color:#bbdfd5}
 .pg-decision-step:nth-child(3){background:#f4f1fd;border-color:#d9d0ec}
-.pg-decision-step p{margin:0!important}.pg-decision-step strong{display:block;margin-bottom:8px;color:#223f63}
+.pg-decision-step p{margin:0!important}
+.pg-decision-step strong{display:block;margin-bottom:8px;color:#223f63}
 .pg-warning-note{margin-top:0!important;background:#fff8e8;padding:12px 15px;border:1px solid #eed9a9;border-radius:11px}
 .pg-refined-panel .split-example{gap:14px;margin:18px 0}
 .pg-refined-panel .split-example > .card{padding:20px 21px;background:#fff!important;border:1px solid #bad1db!important;box-shadow:0 4px 12px rgba(29,56,81,.05)}
@@ -113,17 +175,18 @@ h1,h2,h3,h4,h5{font-weight:400!important}
 .pg-refined-panel .rule-item:nth-child(3){border-left:4px solid #c4a35a}
 .pg-refined-panel .table-wrap{border-radius:12px;overflow-x:auto;background:#fff}
 .pg-refined-panel th,.pg-refined-panel td{padding:12px 14px;line-height:1.55;vertical-align:top}
-.pg-error-guide .pg-row-right{background:#f2faf5}.pg-error-guide .pg-row-wrong{background:#fff5f2}
-.pg-error-guide .pg-row-right th{border-left:4px solid #3e9a75}.pg-error-guide .pg-row-wrong th{border-left:4px solid #c76b60}
-.pg-refined-panel .pg-selfcheck{gap:16px}.pg-refined-panel .pg-selfcheck > *{background:#fff;border:1px solid #cbd9e7;border-radius:14px;padding:16px}
+.pg-error-guide .pg-row-right{background:#f2faf5}
+.pg-error-guide .pg-row-wrong{background:#fff5f2}
+.pg-error-guide .pg-row-right th{border-left:4px solid #3e9a75}
+.pg-error-guide .pg-row-wrong th{border-left:4px solid #c76b60}
+.pg-refined-panel .pg-selfcheck{gap:16px}
+.pg-refined-panel .pg-selfcheck > *{background:#fff;border:1px solid #cbd9e7;border-radius:14px;padding:16px}
 .pg-refined-panel .feedback{line-height:1.6}
-@media(max-width:800px){.pg-decision-grid{grid-template-columns:1fr}.pg-feature-section{padding:15px!important}.pg-learning-guide{padding:16px!important}.pg-refined-panel .card,.pg-refined-panel .tool-card,.pg-refined-panel .trap-card{padding:16px}.pg-refined-panel .split-example{grid-template-columns:1fr}.pg-refined-panel .split-example .vs{justify-self:center}}
-@media print{.pg-refined-panel{background:#fff!important}.pg-feature-section{background:#fff!important;break-inside:avoid}.pg-decision-step{break-inside:avoid}}
-
-
-/* Schreib-Check v7: eindeutige Aufgaben und lesbare Eingabekarten */
+@media (max-width:800px){.pg-decision-grid{grid-template-columns:1fr}.pg-feature-section{padding:15px!important}.pg-learning-guide{padding:16px!important}.pg-refined-panel .card,.pg-refined-panel .tool-card,.pg-refined-panel .trap-card{padding:16px}.pg-refined-panel .split-example{grid-template-columns:1fr}.pg-refined-panel .split-example .vs{justify-self:center}}
+@media  print{.pg-refined-panel{background:#fff!important}.pg-feature-section{background:#fff!important;break-inside:avoid}.pg-decision-step{break-inside:avoid}}
 .pg-wc-intro{display:grid;gap:8px;padding:16px 18px;margin:0 0 18px;border:1px solid #bfdbfe;border-radius:16px;background:#eff6ff;color:#334155}
-.pg-wc-intro p{margin:0}.pg-wc-instruction{margin:5px 0 0;color:#475569;font-size:.92rem;line-height:1.55}
+.pg-wc-intro p{margin:0}
+.pg-wc-instruction{margin:5px 0 0;color:#475569;font-size:.92rem;line-height:1.55}
 .pg-wc-prompt{margin:12px 0 14px;padding:12px 15px;background:#f8fafc;border-left:4px solid #2563eb;border-radius:0 10px 10px 0;font-size:1.02rem;color:#1e293b}
 .pg-wc-label{display:block;color:#475569;font-size:.84rem;margin-bottom:3px}
 .pg-refined-panel .write-task{padding:20px;min-width:0}
@@ -132,51 +195,373 @@ h1,h2,h3,h4,h5{font-weight:400!important}
 .pg-refined-panel .write-task-meta{background:#edf4fb;border:1px solid #c9d8e2;border-radius:99px;padding:4px 10px;white-space:nowrap;color:#355a79}
 .pg-refined-panel .write-task input{margin:0;min-height:44px;padding:10px 13px}
 .pg-refined-panel .write-feedback{line-height:1.55;min-height:42px}
-@media(max-width:600px){.pg-refined-panel .write-task{padding:16px}.pg-wc-prompt{padding:11px 12px}}
-
-
-
-/* Progressive structural adapter: one shared page and content layout, no patch-stack. */
-:root{--pg-content-max:1320px}
-html,body{max-width:100%;overflow-x:hidden}
-body{background:#e7eef4;font-family:var(--font-body)}
-.page-content.topic-page-content{width:100%;max-width:none;margin:0;padding:0 0 60px}
-.learning-card.topic-shell{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#eef4fb}
-.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;background:linear-gradient(135deg,#27415f,#0f766e);padding:24px max(26px,calc((100vw - 1320px)/2 + 26px)) 20px;color:white}
-.compass-head h1,.compass-head .compass-title{font-family:var(--font-head);font-weight:400;font-size:clamp(1.35rem,2.7vw,1.75rem);line-height:1.2;margin:0 0 5px;color:white}
-.compass-head .lead,.compass-head .compass-subtitle{font-size:.91rem;max-width:640px;color:rgba(255,255,255,.84)}
-.page-action-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:0;padding:10px max(20px,calc((100vw - 1320px)/2 + 24px)) 6px;background:#fff;border-bottom:1px solid #e2e8f0}
-.pg-thinking-line{display:block;width:100%;margin:0;padding:12px max(24px,calc((100vw - 1320px)/2 + 24px));border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;background:linear-gradient(90deg,#f8fafc,#eef4fb);color:#27415f;font-size:.92rem}
-.pg-thinking-line span{display:inline;padding:0;border:0;border-radius:0;background:none}.pg-thinking-line span:not(:last-child)::after{content:' → ';margin:0 4px;color:#64748b}
-.compass-mode-grid.topic-tabs,.learn-step-nav{display:flex;gap:0;flex-wrap:nowrap;width:100%;margin:0;padding:0 max(0px,calc((100vw - 1320px)/2));border:0;border-bottom:1px solid #e2e8f0;border-radius:0;background:#f8fafc;overflow-x:auto}
-.compass-mode-btn,.learn-step-btn{display:flex;flex:1 1 0;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-height:58px;padding:9px 8px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:#475569;text-align:center;box-shadow:none;font-family:var(--font-head);font-size:.85rem;white-space:normal}
-.learn-step-btn{font-size:.78rem}.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"],.compass-mode-btn.is-active,.learn-step-btn.is-active{background:#fff;color:#1d4ed8;border-bottom-color:#2563eb}
-.compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff;color:#1d4ed8}
-.compass-mode-btn.is-active,.compass-mode-btn[aria-pressed="true"]{color:#1d4ed8!important;background:#fff!important}
-.compass-mode-panel[data-val="learn"],.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
-/* Every panel has the same outer width and same 24px content padding. */
-.learn-panel,.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{box-sizing:border-box;width:min(1320px,calc(100% - 48px));max-width:1320px;margin:0 auto;padding:24px;background:transparent}
-.compass-mode-panel[data-val="learn"]{padding:0}
-.pg-refined-panel{background:transparent}
-.card,.tool-card,.note-card,.pg-ref-block,.pg-wc-task,.pg-wc-intro,.pg-wc-summary,.conn-card,.trap-card,.pg-refined-panel .pg-learning-block{background:#fff;border:1px solid rgba(148,163,184,.45);border-radius:16px;box-shadow:0 8px 22px rgba(15,23,42,.10)}
-.soft-card{background:#eff6ff;border-color:#bfdbfe}.green-card{background:#f0fdf4;border-color:#bbf7d0}.yellow-card{background:#fffbeb;border-color:#fde68a}.red-card{background:#fef2f2;border-color:#fecaca}.violet-card{background:#f5f3ff;border-color:#ddd6fe}
-.card,.tool-card,.note-card,.pg-ref-block,.pg-wc-task,.pg-wc-intro,.trap-card{padding:18px}
-.pg-ref-block,.pg-wc-task{margin-bottom:14px}
-.pg-refined-panel .section-title{color:#1e293b}
-@media(max-width:700px){
- .page-content.topic-page-content{width:100%;padding:0}
- .page-action-bar{display:grid;grid-template-columns:1fr;padding:10px 12px 8px}
- .overview-return,.ha-btn,.print-btn{min-height:38px}
- .compass-head{padding:16px 14px}
- .pg-thinking-line{padding:12px 14px}.pg-thinking-line::before{display:block;margin-bottom:3px}
- .pg-thinking-line span{display:block}.pg-thinking-line span:not(:last-child)::after{content:''}
- .compass-mode-grid.topic-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
- .compass-mode-btn{min-height:70px;padding:10px 6px}
- .learn-step-nav{padding:0;overflow-x:auto}.learn-step-btn{flex:0 0 176px}
- .learn-panel,.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{width:100%;max-width:100%;padding:14px 12px}
- .grid-2,.grid-3,.split-example,.formula-row,.journal-grid{grid-template-columns:1fr}
+@media (max-width:600px){.pg-refined-panel .write-task{padding:16px}.pg-wc-prompt{padding:11px 12px}}
+body.hausaufgaben-mode .site-nav .nav-links .nav-link,body.hausaufgaben-mode .compass-mode-btn:not([data-val="reference"]),body.hausaufgaben-mode .learn-step-nav,body.hausaufgaben-mode .compass-mode-panel:not([data-val="reference"]){display:none!important}
+body.hausaufgaben-mode .compass-mode-panel[data-val="reference"]{display:block!important}
+body.hausaufgaben-mode .compass-mode-grid{justify-content:flex-end}
+.learning-card{border:var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 26px 20px;background:linear-gradient(135deg,#1d4ed8,#6d28d9);color:#fff}
+.compass-kicker{margin:0 0 3px;font-size:.78rem;font-family:var(--font-head);font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.compass-title{margin:0 0 5px;font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.compass-subtitle{margin:0;color:rgba(255,255,255,.82);font-size:.91rem;max-width:540px}
+.compass-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+.compass-mode-grid{display:flex;border-bottom:var(--line);background:var(--gray-25)}
+.compass-mode-btn{flex:1;min-height:58px;padding:9px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.85rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:color .18s,border-color .18s,background .18s;line-height:1.2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.compass-mode-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.compass-mode-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.compass-mode-icon{font-size:1.1rem}
+.compass-mode-hint{font-size:.68rem;font-weight:400;color:var(--gray-400);font-family:var(--font-body)}
+.compass-mode-btn[aria-pressed="true"] .compass-mode-hint{color:var(--blue)}
+.compass-mode-panel{display:none}
+.compass-mode-panel.is-active{display:block}
+.learn-step-nav{display:flex;background:var(--gray-25);border-bottom:var(--line)}
+.learn-step-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 8px;border:none;border-bottom:3px solid transparent;font-family:var(--font-head);font-size:.78rem;font-weight:400;color:var(--gray-600);background:transparent;cursor:pointer;transition:all .18s}
+.learn-step-btn:hover{color:var(--blue-dark);background:var(--blue-soft)}
+.learn-step-btn[aria-pressed="true"]{color:var(--blue-dark);border-bottom-color:var(--blue);background:#fff}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-pill);font-size:.82rem;font-weight:400;background:var(--gray-100);color:var(--gray-600);transition:background .18s,color .18s}
+.learn-step-btn[aria-pressed="true"] .step-badge{background:var(--blue);color:#fff}
+.step-label{font-size:.74rem;text-align:center;line-height:1.2}
+.learn-progress-bar{height:3px;background:var(--gray-100)}
+.learn-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--violet));border-radius:var(--radius-pill);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.learn-panel{display:none;padding:22px 20px}
+.learn-panel.is-active{display:block;animation:fadeUp .22s ease both}
+@media (max-width:580px){.compass-head{padding:16px 14px}.compass-emoji{font-size:1.8rem}.learn-panel,.connections-panel,.notes-panel{padding:14px 12px}}
+.site-nav{background:#fff;border-bottom:var(--line);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gray-800);font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}
+.nav-logo-text{color:var(--blue-dark)}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:var(--gray-600);text-decoration:none;border:1px solid var(--gray-200);background:#fff;transition:all .18s}
+.nav-link:hover{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-soft)}
+.nav-link.is-active{border-color:var(--blue);color:#fff;background:var(--blue)}
+.page-content{max-width:1100px;margin:0 auto;padding:20px 20px 0}
+.site-nav{background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(15,23,42,.06);position:sticky;top:0;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#1e293b;font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}
+.nav-logo-text{color:#1d4ed8}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#475569;text-decoration:none;border:1px solid #e2e8f0;background:#fff;transition:all .18s}
+.nav-link:hover{border-color:#2563eb;color:#1d4ed8;background:#eff6ff}
+.nav-link.is-active{border-color:#2563eb;color:#fff;background:#2563eb}
+.print-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:999px;font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#15803d;border:1px solid #bbf7d0;background:#f0fdf4;cursor:pointer;transition:all .18s}
+.print-btn:hover{background:#15803d;color:#fff;border-color:#15803d}
+.ha-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:var(--radius-pill);font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#0f766e;border:1px solid #99f6e4;background:#ecfdf5;cursor:pointer;transition:all .18s}
+.ha-btn:hover{background:#0f766e;color:#fff;border-color:#0f766e}
+@media  print{.site-nav,.learn-step-nav,.compass-mode-grid,.learn-progress-bar,.notes-panel,.connections-panel,.compass-mode-panel:not(.is-active){display:none!important}.compass-mode-panel.is-active{display:block!important}.learning-card{box-shadow:none;border:1px solid #ccc}.page-content{padding:10px}}
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="reference"],
+.compass-mode-panel[data-val="connections"],
+.compass-mode-panel[data-val="writecheck"],
+.compass-mode-panel[data-val="notes"]{
+  background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%);
 }
-@media print{.page-action-bar,.pg-thinking-line{display:none!important}}
+.learn-panel,
+.connections-panel,
+.writecheck-panel,
+.notes-panel{
+  padding:24px;
+  background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%);
+}
+@media  print{body.spickzettel-print .site-nav,body.spickzettel-print .overview-return-wrap,body.spickzettel-print .compass-mode-grid,body.spickzettel-print .learn-step-nav,body.spickzettel-print .learn-progress-bar,body.spickzettel-print .notes-panel,body.spickzettel-print .connections-panel,body.spickzettel-print .writecheck-panel,body.spickzettel-print .compass-mode-panel:not([data-val="reference"]){display:none!important}body.spickzettel-print .compass-mode-panel[data-val="reference"]{display:block!important}body.spickzettel-print .learning-card{box-shadow:none!important;border:none!important}body.spickzettel-print .compass-head{background:#fff!important;color:#111!important;border-bottom:2px solid #111!important;padding:0 0 10px!important;margin-bottom:14px!important}body.spickzettel-print .compass-kicker,
+  body.spickzettel-print .check-return-hint{display:none!important}body.spickzettel-print .compass-title{color:#111!important;font-size:22px!important;margin:0!important}body.spickzettel-print .page-content{padding:0!important;max-width:none!important}}
+.learn-progress-fill.progress-step-1{width:25%}
+.learn-progress-fill.progress-step-2{width:50%}
+.learn-progress-fill.progress-step-3{width:75%}
+.learn-progress-fill.progress-step-4{width:100%}
+.site-nav{background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(15,23,42,.06);position:sticky;top:0;z-index:100}
+.site-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:16px;flex-wrap:wrap}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#1e293b;font-family:var(--font-head);font-weight:400;font-size:1rem}
+.nav-logo-icon{font-size:1.3rem}
+.nav-logo-text{color:#1d4ed8}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-link{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#475569;text-decoration:none;border:1px solid #e2e8f0;background:#fff;transition:all .18s}
+.nav-link:hover{border-color:#2563eb;color:#1d4ed8;background:#eff6ff}
+.nav-link.is-active{border-color:#2563eb;color:#fff;background:#2563eb}
+.print-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:999px;font-family:var(--font-head);font-size:.83rem;font-weight:400;color:#15803d;border:1px solid #bbf7d0;background:#f0fdf4;cursor:pointer;transition:all .18s}
+.print-btn:hover{background:#15803d;color:#fff;border-color:#15803d}
+@media  print{.site-nav,.learn-step-nav,.compass-mode-grid,.learn-progress-bar,.notes-panel,.connections-panel,.compass-mode-panel:not(.is-active){display:none!important}.compass-mode-panel.is-active{display:block!important}.learning-card{box-shadow:none;border:1px solid #ccc}.page-content{padding:10px}}
+@media (max-width:580px){.compass-head{padding:15px 13px}.compass-emoji{font-size:1.8rem}.learn-panel,.connections-panel{padding:14px 12px}}
+.page-content{max-width:1100px;margin:0 auto;padding:20px}
+.learning-card{border:var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.nav-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.nav-link-overview{border-color:#bfdbfe;color:var(--blue-dark);background:var(--blue-soft)}
+.overview-return-wrap{max-width:1100px;margin:10px auto -6px;padding:0 20px}
+.overview-return{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--gray-200);border-radius:var(--radius-pill);background:#fff;color:var(--blue-dark);text-decoration:none;font-family:var(--font-head);font-size:.85rem;font-weight:400;box-shadow:var(--shadow-sm);transition:all .18s}
+.overview-return:hover{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+@media (max-width:580px){.overview-return-wrap{margin:8px auto -4px;padding:0 12px}.overview-return{width:100%;justify-content:center}}
+@media  print{.overview-return-wrap{display:none!important}}
+@media  (max-width: 700px){.site-nav,.site-nav-inner,.page-content,.learning-card,.compass-mode-grid,.compass-mode-btn,.learn-step-nav,.learn-step-btn,.writecheck-panel,.writecheck-task,.notes-panel,.connections-panel,.overview-return-wrap{max-width:100%;min-width:0;}.site-nav-inner{padding-left:12px;padding-right:12px;flex-wrap:wrap;align-items:center;}.nav-links{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}.nav-actions{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;justify-content:flex-end;}.ha-btn,.print-btn{white-space:nowrap;max-width:100%;}.compass-mode-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));}.compass-mode-btn{overflow-wrap:anywhere;}.learn-step-nav{overflow-x:auto;justify-content:flex-start;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;}.learn-step-btn{flex:0 0 auto;}}
+@media  (min-width: 901px){.site-nav-inner,.page-content,.overview-return-wrap{
+    max-width:1320px;
+  }.page-content{
+    width:min(1320px, calc(100% - 48px));
+  }.overview-return-wrap{
+    width:min(1320px, calc(100% - 48px));
+  }}
+.overview-return{
+  min-height:36px;
+  line-height:1.2;
+}
+@media  (max-width:700px){.page-content,.overview-return-wrap{
+    width:auto;
+    max-width:100%;
+  }}
+/* ============================================================
+   Simple Present v02: Layout-Abgleich analog Simple Past
+   Nur Optik, Rahmen, Header, Breite und mobile Plausibilität.
+   ============================================================ */
+:root{
+  --font-head:"Nunito",Arial,Helvetica,sans-serif;
+  --font-body:"Nunito Sans",Arial,Helvetica,sans-serif;
+  --kompass-page-max:1320px;
+  --sp-topic-bg-top:#dbeafe;
+  --sp-topic-bg-bottom:#c7d9f2;
+  --sp-topic-surface:rgba(255,255,255,.96);
+  --sp-topic-soft:rgba(255,255,255,.88);
+  --sp-card-border:rgba(148,163,184,.45);
+  --sp-card-shadow:0 8px 22px rgba(15,23,42,.10);
+}
+body{
+  padding:0 0 60px!important;
+  background:#e7eef4!important;
+  font-family:var(--font-body)!important;
+  color:#1e293b!important;
+}
+.topic-page--progressive{
+  min-height:100vh;
+  background:#e7eef4;
+}
+.page-action-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.overview-return-wrap.page-action-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.pg-thinking-line{
+  display:block;
+  padding:14px clamp(18px,3vw,36px);
+  border-bottom:var(--line);
+  background:linear-gradient(90deg,#f8fafc 0%,#eef4fb 100%);
+  color:#27415f;
+  font-family:var(--font-body);
+  font-size:.92rem;
+  line-height:1.45;
+}
+.pg-thinking-line::before{
+  content:"Denkweg: ";
+  color:#64748b;
+}
+.pg-thinking-line span{
+  display:inline;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#27415f;
+}
+.pg-thinking-line span:not(:last-child)::after{
+  content:" → ";
+  color:#64748b;
+  margin:0 4px;
+}
+.compass-mode-panel[data-val="learn"],
+.compass-mode-panel[data-val="reference"],
+.compass-mode-panel[data-val="connections"],
+
+.compass-mode-panel[data-val="notes"]{
+  background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%)!important;
+}
+.learn-panel,.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{
+  background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%)!important;
+}
+.entry-card,.mini-rule,.rule-chip,.statement-panel,.live-card,.radar-card,.error-card,.can-card,.pg-ref-block,.conn-card,.note-field,.pg-wc-task,.writecheck-summary,.sp-print-box,.srule-card,.entry-use-card{
+  background:var(--sp-topic-surface)!important;
+  border:1px solid var(--sp-card-border)!important;
+  box-shadow:var(--sp-card-shadow)!important;
+}
+.entry-card,.conn-intro,.sp-ref-intro,.pg-wc-intro{
+  background:var(--sp-topic-soft)!important;
+  border:1px solid rgba(147,197,253,.75)!important;
+  box-shadow:0 4px 14px rgba(15,23,42,.08)!important;
+}
+.compass-head{
+  background:linear-gradient(135deg,#27415f,#0f766e)!important;
+}
+.compass-kicker,.compass-title,.compass-subtitle,.compass-mode-btn,.learn-step-btn,.overview-return,.ha-btn,.print-btn{
+  font-family:var(--font-head)!important;
+}
+.compass-title{
+  font-size:clamp(1.35rem,2.7vw,1.75rem)!important;
+  letter-spacing:.01em;
+}
+.compass-subtitle{
+  max-width:640px!important;
+}
+.compass-mode-grid.topic-tabs{
+  background:#f8fafc!important;
+  border-bottom:1px solid rgba(148,163,184,.45)!important;
+}
+.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"]{
+  background:#fff!important;
+  color:#1d4ed8!important;
+}
+.overview-return,.ha-btn,.print-btn,.conn-open{
+  box-shadow:0 4px 14px rgba(15,23,42,.06)!important;
+}
+@media (min-width:701px){
+  .overview-return-wrap.page-action-bar{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:10px max(20px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 6px!important;
+  }
+  .page-content{
+    max-width:none!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0 0 60px!important;
+  }
+  .learning-card{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#eef4fb!important;
+  }
+  .compass-head,.pg-thinking-line,.compass-mode-grid,.learn-step-nav,.learn-progress-bar{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-radius:0!important;
+    box-sizing:border-box!important;
+  }
+  .compass-head{
+    padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important;
+  }
+  .pg-thinking-line{
+    padding:12px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))!important;
+  }
+  .compass-mode-grid,.learn-step-nav{
+    padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+    padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2))!important;
+  }
+  .learn-panel,.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{
+    width:min(var(--kompass-page-max),calc(100% - 48px))!important;
+    max-width:var(--kompass-page-max)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding:24px!important;
+  }
+  .compass-mode-btn,.learn-step-btn{
+    flex:1 1 0!important;
+  }
+}
+@media (max-width:700px){
+  body{padding:0 0 48px!important;}
+  .overview-return-wrap.page-action-bar{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    margin:0!important;
+    padding:10px 12px 8px!important;
+    max-width:100%!important;
+  }
+  .page-action-buttons{
+    justify-content:stretch!important;
+    width:100%!important;
+  }
+  .overview-return,.ha-btn,.print-btn{
+    width:100%!important;
+    justify-content:center!important;
+    min-height:38px!important;
+  }
+  .page-content{
+    width:100%!important;
+    max-width:100%!important;
+    padding:0!important;
+  }
+  .learning-card{
+    border-radius:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    box-shadow:none!important;
+    background:#eef4fb!important;
+  }
+  .compass-head{
+    padding:16px 14px!important;
+  }
+  .compass-emoji{font-size:1.8rem!important;}
+  .pg-thinking-line{
+    padding:12px 14px!important;
+    font-size:.86rem!important;
+  }
+  .pg-thinking-line::before{
+    display:block;
+    margin:0 0 3px;
+  }
+  .pg-thinking-line span{
+    display:block!important;
+    width:100%;
+  }
+  .pg-thinking-line span:not(:last-child)::after{
+    content:""!important;
+    margin:0!important;
+  }
+  .compass-mode-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    border-top:1px solid rgba(148,163,184,.35)!important;
+  }
+  .compass-mode-btn{
+    min-height:70px!important;
+    padding:10px 6px!important;
+  }
+  .learn-step-nav{
+    overflow-x:auto!important;
+    justify-content:flex-start!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .learn-step-btn{
+    flex:0 0 176px!important;
+  }
+  .learn-panel,.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{
+    padding:14px 12px!important;
+  }
+  .entry-use-grid,.conn-map,.writecheck-grid,.sp-ref-grid,.can-grid,.srule-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+@media print{
+  .page-action-bar,.pg-thinking-line{display:none!important;}
+}
+
+
+
+
+/* Present Progressive: task surfaces, kept distinct from structural reference CSS */
+.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{padding:0!important}
+.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{display:grid;gap:16px;align-content:start}
+.pg-ref-block,.pg-wc-task,.note-card,.connection-card,.pg-learning-block{border:1px solid var(--sp-card-border);background:#fff;border-radius:16px;padding:18px;box-shadow:var(--sp-card-shadow);line-height:1.65}
+.pg-wc-prompt{line-height:1.65;padding:14px 16px}
+.pg-ref-block p,.pg-learning-block p,.connection-card p,.note-card p{line-height:1.65}
+.pg-refined-panel .write-feedback,.pg-refined-panel .feedback{line-height:1.6}
+@media(max-width:700px){.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{padding:14px 12px!important}.pg-ref-block,.pg-wc-task,.note-card,.connection-card,.pg-learning-block{padding:16px}}
+.compass-mode-btn.is-active,.learn-step-btn.is-active,.compass-mode-btn[aria-selected="true"],.learn-step-btn[aria-selected="true"]{background:#fff!important;color:#1d4ed8!important;border-bottom-color:#2563eb!important}
+.compass-mode-btn.is-active .compass-mode-hint,.compass-mode-btn[aria-selected="true"] .compass-mode-hint{color:#2563eb!important}
+.learn-step-btn.is-active .step-badge,.learn-step-btn[aria-selected="true"] .step-badge{background:#2563eb!important;color:#fff!important}
 </style>
 </head>
 <body>
@@ -186,18 +571,18 @@ body{background:#e7eef4;font-family:var(--font-body)}
 <article class="learning-card topic-shell" data-topic="present-progressive">
 <header class="compass-head topic-header"><div><p class="compass-kicker">GRAMMATIK · ZEITFORM</p><h1 class="compass-title">Present Progressive</h1><p class="compass-subtitle">Was passiert gerade? Bedeutung erkennen, am/is/are auswählen und das Verb mit -ing bilden.</p></div></header><div aria-label="Denkweg Present Progressive" class="pg-thinking-line"><span>Bedeutung erkennen</span><span>am / is / are wählen</span><span>-ing-Form bilden</span><span>Satzart prüfen</span></div>
 <div aria-label="Hauptbereiche" class="compass-mode-grid topic-tabs" role="tablist">
-<button aria-controls="lernen" aria-selected="true" class="compass-mode-btn is-active" data-tab="pg-mode" data-val="learn" id="tab-lernen" role="tab" type="button"><span class="tab-title">🎯 Lernen</span></button>
-<button aria-controls="nachschlagen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="reference" id="tab-nachschlagen" role="tab" type="button"><span class="tab-title">📖 Nachschlagen</span></button>
-<button aria-controls="verbindungen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="connections" id="tab-verbindungen" role="tab" type="button"><span class="tab-title">🔗 Verbindungen</span></button>
-<button aria-controls="notizen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="notes" id="tab-notizen" role="tab" type="button"><span class="tab-title">✏️ Notizen</span></button>
+<button aria-controls="lernen" aria-selected="true" class="compass-mode-btn is-active" data-tab="pg-mode" data-val="learn" id="tab-lernen" role="tab" type="button"><span class="compass-mode-icon" aria-hidden="true">🎯</span><span>Lernen</span><span class="compass-mode-hint">Neu hier? Fang hier an.</span></button>
+<button aria-controls="nachschlagen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="reference" id="tab-nachschlagen" role="tab" type="button"><span class="compass-mode-icon" aria-hidden="true">📖</span><span>Nachschlagen</span><span class="compass-mode-hint">Hausaufgaben & schnell nachsehen</span></button>
+<button aria-controls="verbindungen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="connections" id="tab-verbindungen" role="tab" type="button"><span class="compass-mode-icon" aria-hidden="true">🔗</span><span>Verbindungen</span><span class="compass-mode-hint">Was hängt damit zusammen?</span></button>
+<button aria-controls="notizen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="notes" id="tab-notizen" role="tab" type="button"><span class="compass-mode-icon" aria-hidden="true">✏️</span><span>Notizen</span><span class="compass-mode-hint">Meine eigenen Notizen</span></button>
 </div>
 <section aria-labelledby="tab-lernen" class="compass-mode-panel is-active" data-panel="pg-mode" data-val="learn" id="lernen" role="tabpanel">
 <div aria-label="Lernschritte" class="learn-step-nav" role="tablist">
-<button aria-controls="pg-learn-wozu" aria-selected="true" class="learn-step-btn is-active" data-tab="pg-learn" data-val="wozu" id="tab-pg-learn-wozu" role="tab" type="button">1 Wozu brauche ich das?</button>
-<button aria-controls="pg-learn-machine" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="machine" id="tab-pg-learn-machine" role="tab" type="button">2 Satzbau-Werkstatt</button>
-<button aria-controls="pg-learn-contrast" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="contrast" id="tab-pg-learn-contrast" role="tab" type="button">3 Denkfallen erkennen</button>
-<button aria-controls="pg-learn-check" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="check" id="tab-pg-learn-check" role="tab" type="button">4 Kann ich’s?</button>
-<button aria-controls="pg-learn-writecheck" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="writecheck" id="tab-pg-learn-writecheck" role="tab" type="button">5 Schreib-Check</button></div>
+<button aria-controls="pg-learn-wozu" aria-selected="true" class="learn-step-btn is-active" data-tab="pg-learn" data-val="wozu" id="tab-pg-learn-wozu" role="tab" type="button"><span class="step-badge">1</span><span class="step-label">Wozu brauche ich das?</span></button>
+<button aria-controls="pg-learn-machine" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="machine" id="tab-pg-learn-machine" role="tab" type="button"><span class="step-badge">2</span><span class="step-label">Satzbau-Werkstatt</span></button>
+<button aria-controls="pg-learn-contrast" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="contrast" id="tab-pg-learn-contrast" role="tab" type="button"><span class="step-badge">3</span><span class="step-label">Denkfallen erkennen</span></button>
+<button aria-controls="pg-learn-check" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="check" id="tab-pg-learn-check" role="tab" type="button"><span class="step-badge">4</span><span class="step-label">Kann ich’s?</span></button>
+<button aria-controls="pg-learn-writecheck" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="writecheck" id="tab-pg-learn-writecheck" role="tab" type="button"><span class="step-badge">5</span><span class="step-label">Schreib-Check</span></button></div>
 <section aria-labelledby="tab-pg-learn-wozu" class="learn-panel is-active pg-refined-panel" data-panel="pg-learn" data-val="wozu" id="pg-learn-wozu" role="tabpanel">
 <p class="section-kicker">Erst Bedeutung, dann Form</p>
 <div class="pg-learning-guide card"><h3>So entscheidest du</h3><div class="pg-decision-grid"><div class="pg-decision-step"><p><strong>1. Frage nach der Bedeutung:</strong> Ist das eine Gewohnheit oder läuft die Handlung gerade – auch nur vorübergehend in dieser Woche?</p></div><div class="pg-decision-step"><p><strong>2. Wähle die Zeitform:</strong> Gewohnheit = Simple Present; laufende Handlung = Present Progressive.</p></div><div class="pg-decision-step"><p><strong>3. Bilde die Form:</strong> Bei Present Progressive kommt zur passenden Person <span class="chip blue">am / is / are</span> und das Verb mit <span class="chip green">-ing</span>.</p></div></div><p class="pg-warning-note"><strong>Achtung:</strong> Ein Wort wie <em>today</em> reicht allein nicht als Beweis. Entscheidend ist die Aussage, die du machen willst.</p></div><h2 class="section-title">Wozu brauche ich Present Progressive?</h2>
@@ -339,9 +724,9 @@ body{background:#e7eef4;font-family:var(--font-body)}
 <div class="note-card"><h3>Mein eigener Satz</h3><textarea data-own-sentence="" id="pg-own-sentence" placeholder="z. B. My dog is sleeping on the sofa now."></textarea><div class="write-actions"><button class="tool-btn" data-save-own-sentence="" type="button">Speichern</button></div><div class="note-status" data-own-status=""></div></div>
 </section></section>
 <section aria-labelledby="tab-pg-learn-writecheck" class="learn-panel pg-refined-panel" data-panel="pg-learn" data-val="writecheck" id="pg-learn-writecheck" role="tabpanel"><p class="section-kicker">Selbst schreiben</p><h2 class="section-title">Schreib-Check: Present Progressive</h2><div class="pg-wc-intro"><p>Schreibe deine Antwort in das Feld und klicke danach auf <strong>Prüfen</strong>. Du kannst deine Antwort jederzeit verbessern und erneut prüfen.</p><p>Bei ganzen Sätzen sind auch übliche Kurzformen erlaubt. Groß- und Kleinschreibung und Satzzeichen beeinflussen die automatische Grammatikprüfung nicht.</p></div><div class="writecheck-list" data-writecheck-list=""><article class="write-task" data-alt="I’m reading a book.|I'm reading a book." data-answer="I am reading a book." data-hint="Wähle zu I das passende am und ergänze read + -ing." data-review-id="pg-now-positive"><div class="write-task-head"><div><h3 class="write-task-title">1. Schreibe einen Satz im Present Progressive</h3><p class="pg-wc-instruction">Übersetze ins Englische. Schreibe einen vollständigen Satz.</p></div><span class="write-task-meta">Aussage</span></div><p class="pg-wc-prompt">Ich lese gerade ein Buch.</p><label class="pg-wc-label" for="wc-pg-now-positive">Deine Antwort</label><input aria-describedby="fb-pg-now-positive" autocomplete="off" id="wc-pg-now-positive" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-now-positive" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-alt="She isn’t playing tennis.|She isn't playing tennis.|She’s not playing tennis.|She's not playing tennis." data-answer="She is not playing tennis." data-hint="Bei der Verneinung steht not nach is. playing bleibt unverändert." data-review-id="pg-negative"><div class="write-task-head"><div><h3 class="write-task-title">2. Bilde die Verneinung</h3><p class="pg-wc-instruction">Verneine den ganzen englischen Satz. Du darfst eine Kurzform verwenden.</p></div><span class="write-task-meta">Verneinung</span></div><p class="pg-wc-prompt">She is playing tennis.</p><label class="pg-wc-label" for="wc-pg-negative">Deine Antwort</label><input aria-describedby="fb-pg-negative" autocomplete="off" id="wc-pg-negative" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-negative" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-answer="Are they eating pizza?" data-hint="Stelle are an den Satzanfang. Das Hauptverb bleibt eating." data-review-id="pg-question"><div class="write-task-head"><div><h3 class="write-task-title">3. Bilde eine Ja-/Nein-Frage</h3><p class="pg-wc-instruction">Forme die Aussage in eine Frage um. Schreibe die vollständige Frage.</p></div><span class="write-task-meta">Frage</span></div><p class="pg-wc-prompt">They are eating pizza.</p><label class="pg-wc-label" for="wc-pg-question">Deine Antwort</label><input aria-describedby="fb-pg-question" autocomplete="off" id="wc-pg-question" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-question" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-answer="Yes, she is." data-hint="In einer positiven Kurzantwort stehen Yes, das Pronomen und die passende Form von be – ohne -ing-Verb." data-review-id="pg-short-answer"><div class="write-task-head"><div><h3 class="write-task-title">4. Antworte mit einer Kurzantwort</h3><p class="pg-wc-instruction">Beantworte die Frage mit Ja. Schreibe nur die englische Kurzantwort.</p></div><span class="write-task-meta">Kurzantwort</span></div><p class="pg-wc-prompt">Is she coming?</p><label class="pg-wc-label" for="wc-pg-short-answer">Deine Antwort</label><input aria-describedby="fb-pg-short-answer" autocomplete="off" id="wc-pg-short-answer" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-short-answer" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-answer="running" data-hint="Bei run steht ein kurzer betonter Vokal vor einem einzelnen Endkonsonanten. Verdopple n und ergänze -ing." data-review-id="pg-ing-run"><div class="write-task-head"><div><h3 class="write-task-title">5. Bilde die -ing-Form</h3><p class="pg-wc-instruction">Schreibe nur die -ing-Form des Verbs, keinen ganzen Satz.</p></div><span class="write-task-meta">Schreibung</span></div><p class="pg-wc-prompt">run → …</p><label class="pg-wc-label" for="wc-pg-ing-run">Deine Antwort</label><input aria-describedby="fb-pg-ing-run" autocomplete="off" id="wc-pg-ing-run" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-ing-run" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-answer="making" data-hint="Bei make fällt das stumme e am Ende weg, bevor -ing angehängt wird." data-review-id="pg-e-drop"><div class="write-task-head"><div><h3 class="write-task-title">6. Bilde die -ing-Form</h3><p class="pg-wc-instruction">Schreibe nur die -ing-Form des Verbs, keinen ganzen Satz.</p></div><span class="write-task-meta">Schreibung</span></div><p class="pg-wc-prompt">make → …</p><label class="pg-wc-label" for="wc-pg-e-drop">Deine Antwort</label><input aria-describedby="fb-pg-e-drop" autocomplete="off" id="wc-pg-e-drop" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-e-drop" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-alt="Every day, he plays football." data-answer="He plays football every day." data-hint="Every day bezeichnet hier eine regelmäßige Gewohnheit. Im Simple Present bekommt play bei he ein -s." data-review-id="pg-contrast"><div class="write-task-head"><div><h3 class="write-task-title">7. Entscheide über die Zeitform und übersetze</h3><p class="pg-wc-instruction">Schreibe den ganzen Satz auf Englisch. Entscheide selbst zwischen Simple Present und Present Progressive.</p></div><span class="write-task-meta">Zeitformen</span></div><p class="pg-wc-prompt">Er spielt jeden Tag Fußball.</p><label class="pg-wc-label" for="wc-pg-contrast">Deine Antwort</label><input aria-describedby="fb-pg-contrast" autocomplete="off" id="wc-pg-contrast" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-contrast" role="status">Noch nicht geprüft.</div></article><article class="write-task" data-answer="Do you like music?" data-hint="Like beschreibt hier eine allgemeine Vorliebe. Dafür verwendest du Simple Present: Do + you + like." data-review-id="pg-state"><div class="write-task-head"><div><h3 class="write-task-title">8. Repariere den falschen Satz</h3><p class="pg-wc-instruction">Schreibe die grammatisch richtige Frage. Gemeint ist, ob jemand Musik mag.</p></div><span class="write-task-meta">Denkfalle</span></div><p class="pg-wc-prompt">Are you liking music?</p><label class="pg-wc-label" for="wc-pg-state">Deine Antwort</label><input aria-describedby="fb-pg-state" autocomplete="off" id="wc-pg-state" spellcheck="false" type="text"/><div class="write-actions"><button class="tool-btn" data-check-one="" type="button">Prüfen</button><button class="mini-btn solution-btn" data-show-solution="" hidden="" type="button">Lösung anzeigen</button></div><div aria-live="polite" class="write-feedback" id="fb-pg-state" role="status">Noch nicht geprüft.</div></article></div><div class="write-actions"><button class="tool-btn" data-check-all="" type="button">Alle prüfen</button><button class="tool-btn" data-reset-writecheck="" type="button">Zurücksetzen</button></div><div aria-live="polite" class="summary-box" data-write-summary="" role="status">Bearbeite die Aufgaben und prüfe danach.</div></section></section>
-<section aria-labelledby="tab-nachschlagen" class="compass-mode-panel" data-panel="pg-mode" data-val="reference" id="nachschlagen" role="tabpanel">
+<section aria-labelledby="tab-nachschlagen" class="compass-mode-panel" data-panel="pg-mode" data-val="reference" id="nachschlagen" role="tabpanel"><div class="pg-reference-wrap">
 <p class="section-kicker">Regelübersicht</p><div class="card pg-ref-intro"><h3>So benutzt du die Regeln</h3><p>Erst entscheiden, ob du von einer Gewohnheit oder einer gerade laufenden beziehungsweise vorübergehenden Handlung sprichst. Dann die passende Zeitform bilden. Bei Progressive: Person → <em>am/is/are</em> → Verb-ing.</p></div>
-<section class="card pg-ref-block"><h3>Satzmuster auf einen Blick</h3><p><strong>Aussage:</strong> She is reading.</p><p><strong>Verneinung:</strong> She is not reading. / She isn't reading.</p><p><strong>Frage:</strong> Is she reading?</p><p><strong>Kurzantwort:</strong> Yes, she is. / No, she isn't.</p><p><strong>Fragewort:</strong> What is she reading?</p><p><strong>Perspektivwechsel:</strong> Are you reading? – Yes, I am. / No, I'm not.</p><p><strong>Kurzformen:</strong> I'm, you're, he's, she's, it's, we're, they're; isn't, aren't. Bei „I am not“: „I'm not“.</p></section><section class="card pg-ref-block"><h3>Person und Verbform</h3><p><em>I → am</em> · <em>he/she/it / ein einzelner Name → is</em> · <em>you/we/they / mehrere Personen → are</em>. Das -ing-Verb bleibt unabhängig von der Person gleich: <em>he is playing</em>, nicht <em>he is plays</em>.</p></section><section class="card pg-ref-block"><h3>Unterschied zu Simple Present</h3><p><strong>Allgemein / regelmäßig:</strong> She plays tennis every Friday. <strong>Gerade jetzt:</strong> She is playing tennis now. <strong>Vorübergehend:</strong> She is practising a lot this week.</p><p><em>now</em>, <em>Look!</em> und <em>at the moment</em> sind Hinweise. <em>today</em> oder <em>always</em> entscheiden nicht automatisch über die Zeitform. Zustandsverben wie <em>know, want, need, like</em> stehen in ihren üblichen Bedeutungen meist nicht im Progressive.</p></section><h2 class="section-title">Present Progressive – Spickzettel</h2>
+<section class="card pg-ref-block"><h3>Satzmuster auf einen Blick</h3><p><strong>Aussage:</strong> She is reading.</p><p><strong>Verneinung:</strong> She is not reading. / She isn't reading.</p><p><strong>Frage:</strong> Is she reading?</p><p><strong>Kurzantwort:</strong> Yes, she is. / No, she isn't.</p><p><strong>Fragewort:</strong> What is she reading?</p><p><strong>Perspektivwechsel:</strong> Are you reading? – Yes, I am. / No, I'm not.</p><p><strong>Kurzformen:</strong> I'm, you're, he's, she's, it's, we're, they're; isn't, aren't. Bei „I am not“: „I'm not“.</p></div></section><section class="card pg-ref-block"><h3>Person und Verbform</h3><p><em>I → am</em> · <em>he/she/it / ein einzelner Name → is</em> · <em>you/we/they / mehrere Personen → are</em>. Das -ing-Verb bleibt unabhängig von der Person gleich: <em>he is playing</em>, nicht <em>he is plays</em>.</p></section><section class="card pg-ref-block"><h3>Unterschied zu Simple Present</h3><p><strong>Allgemein / regelmäßig:</strong> She plays tennis every Friday. <strong>Gerade jetzt:</strong> She is playing tennis now. <strong>Vorübergehend:</strong> She is practising a lot this week.</p><p><em>now</em>, <em>Look!</em> und <em>at the moment</em> sind Hinweise. <em>today</em> oder <em>always</em> entscheiden nicht automatisch über die Zeitform. Zustandsverben wie <em>know, want, need, like</em> stehen in ihren üblichen Bedeutungen meist nicht im Progressive.</p></section><h2 class="section-title">Present Progressive – Spickzettel</h2>
 <p class="section-text homework-only">Hausaufgabenmodus: Hier bleiben nur die schnellen Regeln sichtbar.</p>
 <div class="grid-2">
 <div class="card soft-card"><h3>Kurz merken</h3><p>Present Progressive bedeutet: etwas passiert gerade jetzt oder gerade in dieser Zeit. Die Form ist immer <span class="chip blue">am/is/are</span> + <span class="chip violet">Verb-ing</span>.</p></div>
@@ -373,7 +758,7 @@ body{background:#e7eef4;font-family:var(--font-body)}
 <tr><td>They play football every Friday.</td><td>Sie spielen jeden Freitag Fußball.</td><td>Gewohnheit = Simple Present</td></tr>
 </tbody></table></div>
 </section>
-<section aria-labelledby="tab-verbindungen" class="compass-mode-panel" data-panel="pg-mode" data-val="connections" id="verbindungen" role="tabpanel">
+<section aria-labelledby="tab-verbindungen" class="compass-mode-panel" data-panel="pg-mode" data-val="connections" id="verbindungen" role="tabpanel"><div class="pg-connections-wrap">
 <p class="section-kicker">Themen-Landkarte</p>
 <h2 class="section-title">Womit hängt Present Progressive zusammen?</h2>
 <div class="connection-map">
@@ -383,8 +768,8 @@ body{background:#e7eef4;font-family:var(--font-body)}
 <div class="connection-card"><h3>Questions</h3><p>In Fragen steht am/is/are vorne. Nicht do/does.</p><a href="questions.html">Questions öffnen</a></div>
 </div>
 <div class="card yellow-card mt-18"><h3>Lernreihenfolge</h3><p>Erst to be sicher machen, dann Present Progressive bauen, dann mit Simple Present vergleichen. Wer diesen Ablauf überspringt, verwechselt fast immer <span class="chip red">she plays</span> und <span class="chip blue">she is playing</span>.</p></div>
-</section>
-<section aria-labelledby="tab-notizen" class="compass-mode-panel" data-panel="pg-mode" data-val="notes" id="notizen" role="tabpanel">
+</div></section>
+<section aria-labelledby="tab-notizen" class="compass-mode-panel" data-panel="pg-mode" data-val="notes" id="notizen" role="tabpanel"><div class="pg-notes-wrap">
 <p class="section-kicker">Lernjournal</p>
 <h2 class="section-title">Meine Notizen zu Present Progressive</h2>
 <div class="journal-grid">
@@ -395,7 +780,7 @@ body{background:#e7eef4;font-family:var(--font-body)}
 </div>
 <div class="write-actions"><button class="tool-btn" data-save-notes="" type="button">Notizen speichern</button><button class="tool-btn" data-clear-notes="" type="button">Notizen löschen</button></div>
 <div class="note-status" data-note-status=""></div>
-</section>
+</div></section>
 </article>
 </main>
 <section aria-label="Spickzettel Druckversion" class="print-sheet" id="progressive-cheatsheet">
