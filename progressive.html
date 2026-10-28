@@ -1573,6 +1573,33 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
   .pg-reference-wrap table {min-width:580px}
 }
 
+
+/* Present Progressive: reference-aligned design and focused teaching components */
+.topic-page--simple-present .compass-head.sp-compass-head {background:linear-gradient(135deg,#1d4ed8,#0f766e);padding:24px max(26px,calc((100vw - 1320px)/2 + 26px)) 20px;color:#fff}
+.topic-page--simple-present .compass-head .compass-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:400;line-height:1.2}
+.topic-page--simple-present .compass-head .compass-subtitle{font-size:.91rem;line-height:1.5}
+.topic-page--simple-present .compass-head .compass-emoji{font-size:2.2rem;line-height:1}
+.pg-refined-panel{font-size:15px;line-height:1.7}
+.pg-refined-panel .section-text,.pg-refined-panel .card p,.pg-reference-wrap p{line-height:1.75}
+.pg-teach-formula{display:flex;align-items:stretch;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.pg-teach-part{flex:1 1 180px;display:grid;gap:7px;text-align:center;background:#fff;border:1px solid #cbd8e6;border-top:4px solid #4f7cb5;border-radius:14px;padding:18px 14px;min-width:150px}
+.pg-teach-part span{font-size:.83rem;color:#52677b}.pg-teach-part strong{font-size:1.4rem;font-weight:600}.pg-teach-part small{color:#52677b}
+.pg-teach-be{border-top-color:#2563eb;background:#eef5ff}.pg-teach-ing{border-top-color:#16836e;background:#eaf7f3}
+.pg-teach-symbol{align-self:center;color:#64748b;font-size:1.25rem}
+.pg-teach-result{text-align:center;background:#fff;border:1px solid #cbd8e6;border-radius:14px;padding:17px 20px;font-size:1.14rem}
+.pg-teach-result small{display:block;font-size:.84rem;color:#52677b;margin-top:6px}
+.pg-teach-blue{color:#1d4ed8;font-weight:600}.pg-teach-green{color:#08765c;font-weight:600}
+.pg-teach-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.pg-teach-card{background:#fff;border:1px solid #cbd8e6;border-radius:16px;padding:22px;min-width:0;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+.pg-teach-card h3{margin:0 0 14px;color:#234d75;font-size:1.04rem}
+.pg-teach-card p{margin:8px 0;line-height:1.7}
+.pg-teach-lines p{display:grid;grid-template-columns:minmax(0,1fr) 20px 55px;gap:8px;align-items:center;padding:9px 11px;background:#f5f8fc;border-radius:10px}
+.pg-teach-example{padding:8px 12px;border-radius:10px;background:#f0f6fc;margin:7px 0}.pg-teach-example span{color:#08765c;font-weight:600}
+.pg-teach-warning{padding:12px;background:#fff5e7;border-left:4px solid #cc913a;border-radius:7px}
+.pg-teach-reminder{margin-top:18px;padding:16px 20px;background:#eff6ff;border:1px solid #bcd3eb;border-radius:14px;line-height:1.7}
+.pg-refined-panel button.choice-btn,.pg-refined-panel button.tool-btn,.pg-refined-panel button.mini-btn,.pg-refined-panel button.mode-btn,.pg-refined-panel button[data-reset-radar]{border-radius:999px;padding:9px 15px;min-height:42px}
+.pg-refined-panel button[data-reset-radar]{width:auto;max-width:100%;display:inline-flex}
+@media(max-width:720px){.pg-teach-grid{grid-template-columns:1fr}.pg-teach-formula{gap:7px}.pg-teach-symbol{display:none}.pg-teach-part{flex-basis:100%}.pg-teach-card{padding:17px}}
 </style>
 </head>
 <body>
@@ -1580,7 +1607,7 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <div class="overview-return-wrap page-action-bar"><a class="overview-return" href="grammatik.html">← Zurück zu Grammatik lernen</a><div class="page-action-buttons"><button class="ha-btn" data-homework-toggle="" type="button">Hausaufgaben</button><button class="print-btn" data-print-cheatsheet="" type="button">Spickzettel drucken</button></div></div>
 <main class="topic-page topic-page--simple-present" id="simplepresent-layout-root"><div class="page-content topic-page-content" id="main-content">
 <article class="learning-card topic-shell" data-topic="present-progressive">
-<header class="compass-head topic-header"><div><p class="compass-kicker">GRAMMATIK · ZEITFORM</p><h1 class="compass-title">Present Progressive</h1><p class="compass-subtitle">Was passiert gerade? Bedeutung erkennen, am/is/are auswählen und das Verb mit -ing bilden.</p></div></header><div aria-label="Denkweg Present Progressive" class="pg-thinking-line sp-thinking-line"><span>Bedeutung erkennen</span><span>am / is / are wählen</span><span>-ing-Form bilden</span><span>Satzart prüfen</span></div>
+<header class="compass-head sp-compass-head topic-header"><div><p class="compass-kicker">Gegenwart und laufende Handlungen</p><h1 class="compass-title">Present Progressive</h1><p class="compass-subtitle">Was passiert gerade oder vorübergehend? So erkennst du es und bildest die richtige Form.</p></div><span aria-hidden="true" class="compass-emoji">▶</span></header><div aria-label="Denkweg Present Progressive" class="pg-thinking-line sp-thinking-line"><span>Bedeutung erkennen</span><span>am / is / are wählen</span><span>-ing-Form bilden</span><span>Satzart prüfen</span></div>
 <div aria-label="Hauptbereiche" class="compass-mode-grid topic-tabs" role="tablist">
 <button aria-controls="lernen" aria-selected="true" class="compass-mode-btn is-active" data-tab="pg-mode" data-val="learn" id="tab-lernen" role="tab" type="button"><span aria-hidden="true" class="compass-mode-icon">🎯</span><span>Lernen</span><span class="compass-mode-hint">Neu hier? Fang hier an.</span></button>
 <button aria-controls="nachschlagen" aria-selected="false" class="compass-mode-btn" data-tab="pg-mode" data-val="reference" id="tab-nachschlagen" role="tab" type="button"><span aria-hidden="true" class="compass-mode-icon">📖</span><span>Nachschlagen</span><span class="compass-mode-hint">Hausaufgaben &amp; schnell nachsehen</span></button>
@@ -1590,10 +1617,10 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 <section aria-labelledby="tab-lernen" class="compass-mode-panel is-active" data-panel="pg-mode" data-val="learn" id="lernen" role="tabpanel">
 <div aria-label="Lernschritte" class="learn-step-nav" role="tablist">
 <button aria-controls="pg-learn-wozu" aria-selected="true" class="learn-step-btn is-active" data-tab="pg-learn" data-val="wozu" id="tab-pg-learn-wozu" role="tab" type="button"><span class="step-badge">1</span><span class="step-label">Wozu brauche ich das?</span></button>
-<button aria-controls="pg-learn-machine" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="machine" id="tab-pg-learn-machine" role="tab" type="button"><span class="step-badge">2</span><span class="step-label">Satzbau-Werkstatt</span></button>
-<button aria-controls="pg-learn-contrast" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="contrast" id="tab-pg-learn-contrast" role="tab" type="button"><span class="step-badge">3</span><span class="step-label">Denkfallen erkennen</span></button>
-<button aria-controls="pg-learn-check" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="check" id="tab-pg-learn-check" role="tab" type="button"><span class="step-badge">4</span><span class="step-label">Kann ich’s?</span></button>
-<button aria-controls="pg-learn-writecheck" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="writecheck" id="tab-pg-learn-writecheck" role="tab" type="button"><span class="step-badge">5</span><span class="step-label">Schreib-Check</span></button></div>
+<button aria-controls="pg-learn-forms" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="forms" id="tab-pg-learn-forms" role="tab" type="button"><span class="step-badge">2</span><span class="step-label">Die Grundform verstehen</span></button><button aria-controls="pg-learn-machine" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="machine" id="tab-pg-learn-machine" role="tab" type="button"><span class="step-badge">3</span><span class="step-label">Satzbau-Werkstatt</span></button>
+<button aria-controls="pg-learn-contrast" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="contrast" id="tab-pg-learn-contrast" role="tab" type="button"><span class="step-badge">4</span><span class="step-label">Denkfallen erkennen</span></button>
+<button aria-controls="pg-learn-check" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="check" id="tab-pg-learn-check" role="tab" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich’s?</span></button>
+<button aria-controls="pg-learn-writecheck" aria-selected="false" class="learn-step-btn" data-tab="pg-learn" data-val="writecheck" id="tab-pg-learn-writecheck" role="tab" type="button"><span class="step-badge">6</span><span class="step-label">Schreib-Check</span></button></div>
 <section aria-labelledby="tab-pg-learn-wozu" class="learn-panel is-active pg-refined-panel" data-panel="pg-learn" data-val="wozu" id="pg-learn-wozu" role="tabpanel">
 <p class="section-kicker">Erst Bedeutung, dann Form</p>
 <div class="pg-learning-guide card"><h3>So entscheidest du</h3><div class="pg-decision-grid"><div class="pg-decision-step"><p><strong>1. Frage nach der Bedeutung:</strong> Ist das eine Gewohnheit oder läuft die Handlung gerade – auch nur vorübergehend in dieser Woche?</p></div><div class="pg-decision-step"><p><strong>2. Wähle die Zeitform:</strong> Gewohnheit = Simple Present; laufende Handlung = Present Progressive.</p></div><div class="pg-decision-step"><p><strong>3. Bilde die Form:</strong> Bei Present Progressive kommt zur passenden Person <span class="chip blue">am / is / are</span> und das Verb mit <span class="chip green">-ing</span>.</p></div></div><p class="pg-warning-note"><strong>Achtung:</strong> Ein Wort wie <em>today</em> reicht allein nicht als Beweis. Entscheidend ist die Aussage, die du machen willst.</p></div><h2 class="section-title">Wozu brauche ich Present Progressive?</h2>
@@ -1646,8 +1673,18 @@ body .topic-page--simple-present .overview-return:focus-visible,body .topic-page
 </div>
 <button class="tool-btn interactive-only" data-reset-radar="" type="button">Zurücksetzen</button>
 </section></section>
-<section aria-labelledby="tab-pg-learn-machine" class="learn-panel pg-refined-panel" data-panel="pg-learn" data-val="machine" id="pg-learn-machine" role="tabpanel">
-<p class="section-kicker">Denkweg 2</p>
+<section aria-labelledby="tab-pg-learn-forms" class="learn-panel pg-refined-panel" data-panel="pg-learn" data-val="forms" id="pg-learn-forms" role="tabpanel">
+<p class="section-kicker">Denkweg 2 · Die Grundregel</p>
+<h2 class="section-title">Jeder Satz braucht zwei Verbteile</h2>
+<p class="section-text">Das Present Progressive bildest du nicht nur mit <em>-ing</em>. Zuerst kommt eine passende Form von <em>to be</em>. Danach folgt das Verb mit <em>-ing</em>. Beide Teile gehören zusammen.</p>
+<div class="pg-teach-formula" aria-label="Bauplan Present Progressive"><div class="pg-teach-part pg-teach-person"><span>1. Wer?</span><strong>She</strong><small>Person erkennen</small></div><div class="pg-teach-symbol">+</div><div class="pg-teach-part pg-teach-be"><span>2. to be</span><strong>is</strong><small>Zur Person passend</small></div><div class="pg-teach-symbol">+</div><div class="pg-teach-part pg-teach-ing"><span>3. Handlung</span><strong>playing</strong><small>Verb mit -ing</small></div></div>
+<div class="pg-teach-result">She <span class="pg-teach-blue">is</span> <span class="pg-teach-green">playing</span> tennis. <small>Sie spielt gerade Tennis.</small></div>
+<div class="pg-teach-grid">
+<section class="pg-teach-card"><h3>Welche Person braucht welches Wort?</h3><div class="pg-teach-lines"><p><span class="pg-teach-blue">I</span><span>→</span><strong>am</strong></p><p><span class="pg-teach-blue">he · she · it · Mia</span><span>→</span><strong>is</strong></p><p><span class="pg-teach-blue">you · we · they · Mia and Ben</span><span>→</span><strong>are</strong></p></div><p>Ein Name für eine Person zählt wie <em>he</em> oder <em>she</em>. Zwei Namen zählen wie <em>they</em>.</p></section>
+<section class="pg-teach-card"><h3>Was bleibt immer gleich?</h3><p>Die Form mit <span class="pg-teach-green">-ing</span> hängt nicht von der Person ab:</p><div class="pg-teach-example">I am <span>reading</span>.</div><div class="pg-teach-example">She is <span>reading</span>.</div><div class="pg-teach-example">They are <span>reading</span>.</div><p class="pg-teach-warning">Nicht: <s>She is reads.</s><br>Richtig: <strong>She is reading.</strong></p></section></div>
+<div class="pg-teach-grid"><section class="pg-teach-card"><h3>Das machst du bei einer Aussage</h3><p><span class="pg-teach-blue">She is</span> <span class="pg-teach-green">playing</span>.</p><p>Person + am/is/are + Verb-ing.</p></section><section class="pg-teach-card"><h3>Das ändert sich bei einer Frage</h3><p><span class="pg-teach-blue">Is she</span> <span class="pg-teach-green">playing</span>?</p><p>Am/is/are steht vor der Person. <em>Do/does</em> brauchst du hier nicht.</p></section><section class="pg-teach-card"><h3>Das ändert sich bei einer Verneinung</h3><p><span class="pg-teach-blue">She is not</span> <span class="pg-teach-green">playing</span>.</p><p>Not steht direkt hinter am/is/are. <em>Playing</em> bleibt unverändert.</p></section><section class="pg-teach-card"><h3>Die Kurzantwort</h3><p>Is she playing? <strong>Yes, she is.</strong></p><p>In der Kurzantwort brauchst du kein -ing-Verb.</p></section></div>
+<div class="pg-teach-reminder"><strong>Jetzt du:</strong> Wähle im nächsten Schritt die Person und baue selbst Sätze. Wenn du unsicher bist, komme zu dieser Übersicht zurück.</div></section><section aria-labelledby="tab-pg-learn-machine" class="learn-panel pg-refined-panel" data-panel="pg-learn" data-val="machine" id="pg-learn-machine" role="tabpanel">
+<p class="section-kicker">Denkweg 3 · Jetzt selbst anwenden</p>
 <h2 class="section-title">Satzmaschine: Person + to be + Verb-ing</h2>
 <div class="formula-row">
 <div class="formula-part"><span class="big">1 Person</span><span>I, you, he, she, it, we, they</span></div>
