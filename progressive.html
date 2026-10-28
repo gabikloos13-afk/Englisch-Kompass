@@ -118,6 +118,30 @@ h1,h2,h3,h4,h5{font-weight:400!important}
 .pg-refined-panel .feedback{line-height:1.6}
 @media(max-width:800px){.pg-decision-grid{grid-template-columns:1fr}.pg-feature-section{padding:15px!important}.pg-learning-guide{padding:16px!important}.pg-refined-panel .card,.pg-refined-panel .tool-card,.pg-refined-panel .trap-card{padding:16px}.pg-refined-panel .split-example{grid-template-columns:1fr}.pg-refined-panel .split-example .vs{justify-self:center}}
 @media print{.pg-refined-panel{background:#fff!important}.pg-feature-section{background:#fff!important;break-inside:avoid}.pg-decision-step{break-inside:avoid}}
+
+/* v4: Seitengeometrie und Register wie Simple Present, Lernblöcke aus v3 erhalten */
+:root{--kompass-page-max:1320px}
+html,body{max-width:100%;overflow-x:hidden}
+.page-content{max-width:none;width:100%;margin:0;padding:0 0 60px}
+.learning-card{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#eef4fb}
+.compass-head{width:100%;border-radius:0;padding:24px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 20px}
+.compass-mode-grid,.learn-step-nav{width:100%;border-radius:0;padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2));padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2));box-sizing:border-box}
+.compass-mode-btn,.learn-step-btn{min-width:0;flex:1 1 0;white-space:normal}
+.compass-mode-panel{width:100%;min-width:0;box-sizing:border-box;background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
+.compass-mode-panel[data-val="learn"]{padding:0}
+.learn-panel{width:min(var(--kompass-page-max),calc(100% - 48px));max-width:var(--kompass-page-max);margin:0 auto;padding:24px;box-sizing:border-box}
+.compass-mode-panel:not([data-val="learn"]){padding:24px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))}
+.pg-feature-section,.pg-learning-guide,.pg-decision-step,.pg-refined-panel .card,.pg-refined-panel .tool-card{min-width:0;overflow-wrap:break-word}
+@media(max-width:700px){
+ .page-content{padding:0 0 40px}.learning-card{border:0;border-radius:0}
+ .compass-head{padding:20px 16px}
+ .compass-mode-grid,.learn-step-nav{padding:0;overflow-x:auto}
+ .compass-mode-btn{flex:1 0 105px;min-width:105px;font-size:.78rem;padding:9px 5px}
+ .learn-step-btn{flex:1 0 128px;min-width:128px;font-size:.76rem;padding:9px 5px}
+ .learn-panel{width:100%;padding:16px 14px}
+ .compass-mode-panel:not([data-val="learn"]){padding:16px 14px}
+ .pg-decision-step{padding:13px 14px}
+}
 </style>
 </head>
 <body>
