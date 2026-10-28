@@ -46,6 +46,7 @@ body{font-family:var(--font-body);font-size:15px;line-height:1.65;background:#e7
 .compass-mode-btn,.learn-step-btn{display:flex;align-items:center;justify-content:center;flex:1 0 130px;min-height:58px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:10px 8px;box-shadow:none;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:.85rem;font-weight:400;color:#475569}
 .learn-step-btn{flex-basis:170px;font-size:.8rem}
 .compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff;color:#1d4ed8}
+.compass-mode-btn.is-active,.compass-mode-btn[aria-pressed="true"]{color:#1d4ed8!important;background:#fff!important}
 .compass-mode-btn.is-active,.learn-step-btn.is-active{background:#fff;color:#1d4ed8;border-bottom-color:#2563eb}
 .compass-mode-btn .tab-title{color:inherit}
 .compass-mode-panel{padding:22px;background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
@@ -119,79 +120,6 @@ h1,h2,h3,h4,h5{font-weight:400!important}
 @media(max-width:800px){.pg-decision-grid{grid-template-columns:1fr}.pg-feature-section{padding:15px!important}.pg-learning-guide{padding:16px!important}.pg-refined-panel .card,.pg-refined-panel .tool-card,.pg-refined-panel .trap-card{padding:16px}.pg-refined-panel .split-example{grid-template-columns:1fr}.pg-refined-panel .split-example .vs{justify-self:center}}
 @media print{.pg-refined-panel{background:#fff!important}.pg-feature-section{background:#fff!important;break-inside:avoid}.pg-decision-step{break-inside:avoid}}
 
-/* v4: Seitengeometrie und Register wie Simple Present, Lernblöcke aus v3 erhalten */
-:root{--kompass-page-max:1320px}
-html,body{max-width:100%;overflow-x:hidden}
-.page-content{max-width:none;width:100%;margin:0;padding:0 0 60px}
-.learning-card{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#eef4fb}
-.compass-head{width:100%;border-radius:0;padding:24px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px)) 20px}
-.compass-mode-grid,.learn-step-nav{width:100%;border-radius:0;padding-left:max(0px,calc((100vw - var(--kompass-page-max))/2));padding-right:max(0px,calc((100vw - var(--kompass-page-max))/2));box-sizing:border-box}
-.compass-mode-btn,.learn-step-btn{min-width:0;flex:1 1 0;white-space:normal}
-.compass-mode-panel{width:100%;min-width:0;box-sizing:border-box;background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
-.compass-mode-panel[data-val="learn"]{padding:0}
-.learn-panel{width:min(var(--kompass-page-max),calc(100% - 48px));max-width:var(--kompass-page-max);margin:0 auto;padding:24px;box-sizing:border-box}
-.compass-mode-panel:not([data-val="learn"]){padding:24px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))}
-.pg-feature-section,.pg-learning-guide,.pg-decision-step,.pg-refined-panel .card,.pg-refined-panel .tool-card{min-width:0;overflow-wrap:break-word}
-@media(max-width:700px){
- .page-content{padding:0 0 40px}.learning-card{border:0;border-radius:0}
- .compass-head{padding:20px 16px}
- .compass-mode-grid,.learn-step-nav{padding:0;overflow-x:auto}
- .compass-mode-btn{flex:1 0 105px;min-width:105px;font-size:.78rem;padding:9px 5px}
- .learn-step-btn{flex:1 0 128px;min-width:128px;font-size:.76rem;padding:9px 5px}
- .learn-panel{width:100%;padding:16px 14px}
- .compass-mode-panel:not([data-val="learn"]){padding:16px 14px}
- .pg-decision-step{padding:13px 14px}
-}
-
-/* v6 – Referenzdesign Simple Present: Farben, Breite, Typografie, Navigation */
-:root{
- --kompass-page-max:1320px;
- --font-head:"Nunito",Arial,Helvetica,sans-serif;
- --font-body:"Nunito Sans",Arial,Helvetica,sans-serif;
- --sp-topic-bg-top:#dbeafe;--sp-topic-bg-bottom:#c7d9f2;
- --sp-topic-surface:rgba(255,255,255,.96);
- --sp-card-border:rgba(148,163,184,.45);
- --sp-card-shadow:0 8px 22px rgba(15,23,42,.10);
- --radius:16px;--radius-sm:10px;
-}
-body{background:#e7eef4!important;color:#1e293b!important;font-family:var(--font-body)!important;font-size:15px;line-height:1.65}
-.page-content{width:100%!important;max-width:none!important;margin:0!important;padding:0 0 60px!important}
-.learning-card{width:100%!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#eef4fb!important}
-.compass-head{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;grid-template-columns:none!important;background:linear-gradient(135deg,#27415f,#0f766e)!important;color:#fff!important;border:0!important;border-radius:0!important;padding:24px max(26px,calc((100vw - var(--kompass-page-max))/2 + 26px)) 20px!important}
-.compass-head h1,.compass-head .compass-title{font-family:var(--font-head)!important;font-size:clamp(1.35rem,2.7vw,1.75rem)!important;font-weight:400!important;letter-spacing:.01em!important;line-height:1.2!important;margin:0 0 5px!important;color:#fff!important}
-.compass-head .compass-kicker{color:rgba(255,255,255,.7)!important;font-family:var(--font-head)!important;font-size:.78rem!important;margin:0 0 3px!important}
-.compass-head .compass-subtitle{color:rgba(255,255,255,.84)!important;max-width:640px!important;font-size:.91rem!important;line-height:1.45!important}
-.compass-head .head-badge{display:none!important}
-.compass-mode-grid,.learn-step-nav{display:flex!important;gap:0!important;flex-wrap:nowrap!important;width:100%!important;box-sizing:border-box!important;padding:0 max(0px,calc((100vw - var(--kompass-page-max))/2))!important;margin:0!important;background:#f8fafc!important;border-bottom:1px solid rgba(148,163,184,.45)!important;border-radius:0!important;overflow-x:auto!important}
-.compass-mode-btn,.learn-step-btn{display:flex!important;flex:1 1 0!important;min-width:0!important;min-height:58px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;padding:9px 8px!important;background:transparent!important;color:#475569!important;font-family:var(--font-head)!important;font-size:.85rem!important;font-weight:400!important;text-align:center!important;box-shadow:none!important;white-space:normal!important}
-.learn-step-btn{font-size:.78rem!important}
-.compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff!important;color:#1d4ed8!important}
-.compass-mode-btn.is-active,.compass-mode-btn[aria-selected="true"],.compass-mode-btn[aria-pressed="true"],.learn-step-btn.is-active,.learn-step-btn[aria-selected="true"],.learn-step-btn[aria-pressed="true"]{background:#fff!important;border-bottom-color:#2563eb!important;color:#1d4ed8!important}
-.compass-mode-btn .tab-title,.compass-mode-btn .tab-sub{color:inherit!important}
-.compass-mode-btn .tab-sub{font-size:.68rem!important;opacity:.73}
-.compass-mode-panel{width:100%!important;min-width:0!important;box-sizing:border-box!important;background:linear-gradient(180deg,#dbeafe 0%,#c7d9f2 100%)!important}
-.compass-mode-panel[data-val="learn"]{padding:0!important}
-.learn-panel{width:min(var(--kompass-page-max),calc(100% - 48px))!important;max-width:var(--kompass-page-max)!important;margin:0 auto!important;padding:24px!important;background:transparent!important}
-.compass-mode-panel:not([data-val="learn"]){padding:24px max(24px,calc((100vw - var(--kompass-page-max))/2 + 24px))!important}
-.card,.tool-card,.note-card,.trap-card,.pg-feature-section,.pg-decision-step,.pg-learning-guide,.pg-ref-block{border:1px solid var(--sp-card-border)!important;border-radius:var(--radius)!important;box-shadow:var(--sp-card-shadow)!important}
-.card,.tool-card,.note-card,.trap-card,.pg-feature-section,.pg-ref-block{background:var(--sp-topic-surface)!important}
-.pg-decision-step{background:#fff!important}
-.pg-learning-guide,.pg-ref-intro{background:rgba(255,255,255,.88)!important;border-color:rgba(147,197,253,.75)!important}
-.card,.tool-card,.note-card,.trap-card,.pg-feature-section,.pg-learning-guide,.pg-decision-step{padding:18px!important}
-.card h3,.tool-card h3,.note-card h3{font-size:1rem!important;font-weight:400!important}
-.section-title{font-size:1.25rem!important;font-weight:400!important}
-@media(max-width:700px){
- .page-content{padding:0 0 48px!important}
- .compass-head{padding:16px 14px!important}
- .compass-mode-grid,.learn-step-nav{padding:0!important;justify-content:flex-start!important}
- .compass-mode-btn{flex:1 0 112px!important;min-width:112px!important;padding:9px 6px!important}
- .learn-step-btn{flex:1 0 116px!important;min-width:116px!important;padding:9px 6px!important}
- .learn-panel{width:100%!important;padding:16px 14px!important}
- .compass-mode-panel:not([data-val="learn"]){padding:16px 14px!important}
- .pg-feature-section,.pg-learning-guide,.pg-decision-step{padding:15px!important}
-}
-@media print{.compass-head,.compass-mode-grid,.learn-step-nav{background:#fff!important;color:#000!important}}
-
 
 /* Schreib-Check v7: eindeutige Aufgaben und lesbare Eingabekarten */
 .pg-wc-intro{display:grid;gap:8px;padding:16px 18px;margin:0 0 18px;border:1px solid #bfdbfe;border-radius:16px;background:#eff6ff;color:#334155}
@@ -206,81 +134,48 @@ body{background:#e7eef4!important;color:#1e293b!important;font-family:var(--font
 .pg-refined-panel .write-feedback{line-height:1.55;min-height:42px}
 @media(max-width:600px){.pg-refined-panel .write-task{padding:16px}.pg-wc-prompt{padding:11px 12px}}
 
-/* v8 – Visuelle Referenzangleichung an simplepresent.html */
-:root{--kompass-page-max:1320px;--sp-card-border:rgba(148,163,184,.45);--sp-card-shadow:0 8px 22px rgba(15,23,42,.10)}
-html,body{background:#e7eef4!important;font-family:Arial,Helvetica,sans-serif!important;font-size:15px!important;line-height:1.65!important}
-.page-action-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;width:100%;margin:0!important;padding:10px max(20px,calc((100vw - 1320px)/2 + 24px)) 6px!important;border-bottom:1px solid #e2e8f0;background:#fff}
-.page-action-buttons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.overview-return,.ha-btn,.print-btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:7px 13px;border:1px solid #e2e8f0;border-radius:999px;background:#fff;color:#334155;text-decoration:none;font:400 .86rem Arial,Helvetica,sans-serif;box-shadow:none;cursor:pointer}
-.overview-return:hover,.ha-btn:hover,.print-btn:hover{border-color:#2563eb;color:#1d4ed8;background:#eff6ff}
-.page-content.topic-page-content{width:100%!important;max-width:none!important;margin:0!important;padding:0 0 60px!important}
-.learning-card.topic-shell{width:100%!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#eef4fb!important;overflow:hidden}
-.compass-head.topic-header{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:16px!important;width:100%!important;min-height:0!important;margin:0!important;padding:24px max(26px,calc((100vw - 1320px)/2 + 26px)) 20px!important;border:0!important;border-radius:0!important;background:linear-gradient(135deg,#1d4ed8,#0f766e)!important;color:#fff!important;box-shadow:none!important}
-.compass-head .compass-kicker{margin:0 0 3px!important;color:rgba(255,255,255,.68)!important;font-size:.78rem!important;letter-spacing:.09em!important;font-weight:400!important}
-.compass-head .compass-title{margin:0 0 5px!important;color:#fff!important;font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(1.2rem,2.5vw,1.55rem)!important;font-weight:400!important;line-height:1.2!important}
-.compass-head .compass-subtitle{margin:0!important;color:rgba(255,255,255,.84)!important;font-size:.91rem!important;max-width:540px!important;line-height:1.45!important}
-.pg-thinking-line{display:block;width:100%;padding:12px max(24px,calc((100vw - 1320px)/2 + 24px));border-top:1px solid rgba(148,163,184,.35);border-bottom:1px solid rgba(148,163,184,.35);background:#f8fafc;color:#334155;font-size:.9rem;line-height:1.45}
-.pg-thinking-line::before{content:'Denkweg:';margin-right:8px;color:#64748b}
-.pg-thinking-line span:not(:last-child)::after{content:' →';margin:0 6px 0 8px;color:#64748b}
-.compass-mode-grid.topic-tabs,.learn-step-nav{display:flex!important;width:100%!important;max-width:none!important;gap:0!important;margin:0!important;padding:0 max(0px,calc((100vw - 1320px)/2))!important;flex-wrap:nowrap!important;overflow-x:auto!important;border:0!important;border-bottom:1px solid #e2e8f0!important;border-radius:0!important;background:#fcfcfd!important;box-shadow:none!important}
-.compass-mode-btn,.learn-step-btn{display:flex!important;flex:1 1 0!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-height:58px!important;min-width:0!important;padding:9px 8px!important;border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;background:transparent!important;color:#475569!important;font:400 .85rem Arial,Helvetica,sans-serif!important;white-space:normal!important;text-align:center!important;box-shadow:none!important}
-.learn-step-btn{font-size:.78rem!important}
-.compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff!important;color:#1d4ed8!important}
-.compass-mode-btn[aria-selected="true"],.compass-mode-btn.is-active,.learn-step-btn[aria-selected="true"],.learn-step-btn.is-active{background:#fff!important;color:#1d4ed8!important;border-bottom-color:#2563eb!important}
-.compass-mode-btn .tab-title,.compass-mode-btn .tab-sub{color:inherit!important;font-weight:400!important}
-.learn-step-btn .step-badge{background:#f1f5f9;color:#475569}
-.learn-step-btn[aria-selected="true"] .step-badge,.learn-step-btn.is-active .step-badge{background:#2563eb;color:#fff}
-.compass-mode-panel{width:100%!important;min-width:0!important;background:linear-gradient(180deg,#dbeafe,#c7d9f2)!important}
-.compass-mode-panel[data-val="learn"]{padding:0!important}
-.learn-panel{width:min(1320px,calc(100% - 48px))!important;max-width:1320px!important;margin:0 auto!important;padding:24px!important;background:transparent!important}
-.compass-mode-panel:not([data-val="learn"]){padding:24px max(24px,calc((100vw - 1320px)/2 + 24px))!important}
-.card,.tool-card,.note-card,.trap-card,.pg-feature-section,.pg-ref-block{background:#fff!important;border:1px solid var(--sp-card-border)!important;border-radius:16px!important;box-shadow:var(--sp-card-shadow)!important}
-@media(max-width:700px){
- .page-action-bar{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;padding:10px 12px 8px!important}
- .page-action-buttons{width:100%!important;display:flex!important;flex-direction:column!important}
- .overview-return,.ha-btn,.print-btn{width:100%!important;min-height:38px!important}
- .compass-head.topic-header{padding:16px 14px!important}
- .pg-thinking-line{padding:12px 14px!important;font-size:.86rem!important}
- .pg-thinking-line::before,.pg-thinking-line span{display:block!important}
- .pg-thinking-line span:not(:last-child)::after{content:''!important}
- .compass-mode-grid.topic-tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:0!important;overflow:visible!important}
- .compass-mode-btn{min-height:70px!important;min-width:0!important;padding:10px 6px!important}
- .learn-step-nav{padding:0!important;justify-content:flex-start!important;overflow-x:auto!important}
- .learn-step-btn{flex:0 0 176px!important;min-width:176px!important}
- .learn-panel{width:100%!important;padding:14px 12px!important}
- .compass-mode-panel:not([data-val="learn"]){padding:14px 12px!important}
-}
-@media print{.page-action-bar,.pg-thinking-line{display:none!important}}
 
-/* v9: einheitliche Referenzgeometrie aus Simple Present, alle Register */
-:root{--kompass-page-max:1320px;--sp-topic-bg-top:#dbeafe;--sp-topic-bg-bottom:#c7d9f2;--sp-topic-surface:rgba(255,255,255,.96);--sp-topic-soft:rgba(255,255,255,.88);--sp-card-border:rgba(148,163,184,.45);--sp-card-shadow:0 8px 22px rgba(15,23,42,.10);--font-head:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif}
-html,body{background:#e7eef4!important;color:#1e293b!important;font:400 15px/1.65 Arial,Helvetica,sans-serif!important}
-.page-content.topic-page-content{max-width:none!important;width:100%!important;margin:0!important;padding:0 0 60px!important}
-.learning-card.topic-shell{width:100%!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#eef4fb!important}
-.compass-head.topic-header{background:linear-gradient(135deg,#27415f,#0f766e)!important;padding:24px max(26px,calc((100vw - 1320px)/2 + 26px)) 20px!important}
-.compass-head .compass-title{font-size:clamp(1.35rem,2.7vw,1.75rem)!important;letter-spacing:.01em!important}
-.compass-head .compass-subtitle{max-width:640px!important}
-.pg-thinking-line{font:400 .92rem/1.45 Arial,Helvetica,sans-serif!important;background:linear-gradient(90deg,#f8fafc 0%,#eef4fb 100%)!important;color:#27415f!important;padding:12px max(24px,calc((100vw - 1320px)/2 + 24px))!important}
-.compass-mode-grid.topic-tabs,.learn-step-nav{background:#f8fafc!important;border-bottom:1px solid rgba(148,163,184,.45)!important;gap:0!important}
-.compass-mode-btn,.learn-step-btn{font-family:Arial,Helvetica,sans-serif!important;box-shadow:none!important}
-.compass-mode-btn[aria-selected="true"],.learn-step-btn[aria-selected="true"]{border-bottom-color:#2563eb!important;background:#fff!important;color:#1d4ed8!important}
-/* Gleicher blaugrauer Hintergrund für jedes Hauptregister */
-.compass-mode-panel[data-val="learn"],.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{background:linear-gradient(180deg,var(--sp-topic-bg-top) 0%,var(--sp-topic-bg-bottom) 100%)!important}
-.compass-mode-panel[data-val="learn"]{padding:0!important}
-.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{padding:0!important}
-/* Gemeinsame Inhaltsbreite statt wechselnder Panel-Innenabstände */
-.learn-panel,.compass-mode-panel[data-val="reference"] > :not(script),.compass-mode-panel[data-val="connections"] > :not(script),.compass-mode-panel[data-val="notes"] > :not(script){box-sizing:border-box!important}
-.learn-panel{width:min(1320px,calc(100% - 48px))!important;max-width:1320px!important;margin:0 auto!important;padding:24px!important;background:transparent!important}
-.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{padding:24px max(24px,calc((100vw - 1320px)/2 + 24px))!important}
-/* Original-Referenzkarten: weiß, konsistente leichte Kontur und Abstand */
-.pg-ref-block,.pg-feature-section,.card,.tool-card,.note-card,.trap-card,.write-task,.note-field,.pg-learning-guide,.pg-decision-step{border:1px solid var(--sp-card-border)!important;border-radius:16px!important;box-shadow:var(--sp-card-shadow)!important}
-.pg-ref-block,.pg-feature-section,.card,.tool-card,.note-card,.trap-card,.write-task,.note-field{background:var(--sp-topic-surface)!important}
-.pg-learning-guide{background:var(--sp-topic-soft)!important;border-color:rgba(147,197,253,.75)!important}
-.pg-decision-step{background:#fff!important}
-.pg-ref-block,.pg-feature-section,.card,.tool-card,.note-card,.trap-card,.note-field,.pg-decision-step{padding:18px!important}
-.pg-refined-panel .write-task{padding:20px!important}
-@media(min-width:701px){.compass-mode-grid.topic-tabs,.learn-step-nav{padding-left:max(0px,calc((100vw - 1320px)/2))!important;padding-right:max(0px,calc((100vw - 1320px)/2))!important}}
-@media(max-width:700px){.page-content.topic-page-content{padding:0!important}.compass-head.topic-header{padding:16px 14px!important}.pg-thinking-line{padding:12px 14px!important}.learn-panel{width:100%!important;padding:14px 12px!important}.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{padding:14px 12px!important}.pg-ref-block,.pg-feature-section,.card,.tool-card,.note-card,.trap-card,.note-field,.pg-decision-step{padding:15px!important}.pg-refined-panel .write-task{padding:16px!important}}
+
+/* Progressive structural adapter: one shared page and content layout, no patch-stack. */
+:root{--pg-content-max:1320px}
+html,body{max-width:100%;overflow-x:hidden}
+body{background:#e7eef4;font-family:var(--font-body)}
+.page-content.topic-page-content{width:100%;max-width:none;margin:0;padding:0 0 60px}
+.learning-card.topic-shell{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;background:#eef4fb}
+.compass-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;background:linear-gradient(135deg,#27415f,#0f766e);padding:24px max(26px,calc((100vw - 1320px)/2 + 26px)) 20px;color:white}
+.compass-head h1,.compass-head .compass-title{font-family:var(--font-head);font-weight:400;font-size:clamp(1.35rem,2.7vw,1.75rem);line-height:1.2;margin:0 0 5px;color:white}
+.compass-head .lead,.compass-head .compass-subtitle{font-size:.91rem;max-width:640px;color:rgba(255,255,255,.84)}
+.page-action-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:0;padding:10px max(20px,calc((100vw - 1320px)/2 + 24px)) 6px;background:#fff;border-bottom:1px solid #e2e8f0}
+.pg-thinking-line{display:block;width:100%;margin:0;padding:12px max(24px,calc((100vw - 1320px)/2 + 24px));border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;background:linear-gradient(90deg,#f8fafc,#eef4fb);color:#27415f;font-size:.92rem}
+.pg-thinking-line span{display:inline;padding:0;border:0;border-radius:0;background:none}.pg-thinking-line span:not(:last-child)::after{content:' → ';margin:0 4px;color:#64748b}
+.compass-mode-grid.topic-tabs,.learn-step-nav{display:flex;gap:0;flex-wrap:nowrap;width:100%;margin:0;padding:0 max(0px,calc((100vw - 1320px)/2));border:0;border-bottom:1px solid #e2e8f0;border-radius:0;background:#f8fafc;overflow-x:auto}
+.compass-mode-btn,.learn-step-btn{display:flex;flex:1 1 0;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-height:58px;padding:9px 8px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:#475569;text-align:center;box-shadow:none;font-family:var(--font-head);font-size:.85rem;white-space:normal}
+.learn-step-btn{font-size:.78rem}.compass-mode-btn[aria-pressed="true"],.learn-step-btn[aria-pressed="true"],.compass-mode-btn.is-active,.learn-step-btn.is-active{background:#fff;color:#1d4ed8;border-bottom-color:#2563eb}
+.compass-mode-btn:hover,.learn-step-btn:hover{background:#eff6ff;color:#1d4ed8}
+.compass-mode-btn.is-active,.compass-mode-btn[aria-pressed="true"]{color:#1d4ed8!important;background:#fff!important}
+.compass-mode-panel[data-val="learn"],.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{background:linear-gradient(180deg,#dbeafe,#c7d9f2)}
+/* Every panel has the same outer width and same 24px content padding. */
+.learn-panel,.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{box-sizing:border-box;width:min(1320px,calc(100% - 48px));max-width:1320px;margin:0 auto;padding:24px;background:transparent}
+.compass-mode-panel[data-val="learn"]{padding:0}
+.pg-refined-panel{background:transparent}
+.card,.tool-card,.note-card,.pg-ref-block,.pg-wc-task,.pg-wc-intro,.pg-wc-summary,.conn-card,.trap-card,.pg-refined-panel .pg-learning-block{background:#fff;border:1px solid rgba(148,163,184,.45);border-radius:16px;box-shadow:0 8px 22px rgba(15,23,42,.10)}
+.soft-card{background:#eff6ff;border-color:#bfdbfe}.green-card{background:#f0fdf4;border-color:#bbf7d0}.yellow-card{background:#fffbeb;border-color:#fde68a}.red-card{background:#fef2f2;border-color:#fecaca}.violet-card{background:#f5f3ff;border-color:#ddd6fe}
+.card,.tool-card,.note-card,.pg-ref-block,.pg-wc-task,.pg-wc-intro,.trap-card{padding:18px}
+.pg-ref-block,.pg-wc-task{margin-bottom:14px}
+.pg-refined-panel .section-title{color:#1e293b}
+@media(max-width:700px){
+ .page-content.topic-page-content{width:100%;padding:0}
+ .page-action-bar{display:grid;grid-template-columns:1fr;padding:10px 12px 8px}
+ .overview-return,.ha-btn,.print-btn{min-height:38px}
+ .compass-head{padding:16px 14px}
+ .pg-thinking-line{padding:12px 14px}.pg-thinking-line::before{display:block;margin-bottom:3px}
+ .pg-thinking-line span{display:block}.pg-thinking-line span:not(:last-child)::after{content:''}
+ .compass-mode-grid.topic-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
+ .compass-mode-btn{min-height:70px;padding:10px 6px}
+ .learn-step-nav{padding:0;overflow-x:auto}.learn-step-btn{flex:0 0 176px}
+ .learn-panel,.compass-mode-panel[data-val="reference"],.compass-mode-panel[data-val="connections"],.compass-mode-panel[data-val="notes"]{width:100%;max-width:100%;padding:14px 12px}
+ .grid-2,.grid-3,.split-example,.formula-row,.journal-grid{grid-template-columns:1fr}
+}
 @media print{.page-action-bar,.pg-thinking-line{display:none!important}}
 </style>
 </head>
