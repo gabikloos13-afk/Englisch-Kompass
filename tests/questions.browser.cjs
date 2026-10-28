@@ -12,8 +12,16 @@ const OUT=process.env.QUESTIONS_QA_OUTPUT||fs.mkdtempSync(require('node:os').tmp
  let checks=0;const ok=(v,msg)=>{assert.ok(v,msg);checks++};const eq=(a,v,msg)=>{assert.deepEqual(a,v,msg);checks++};
  const errors=[];const context=await b.newContext({viewport:{width:1440,height:1000}});const p=await context.newPage();p.on('pageerror',err=>errors.push(err.message));
  await p.goto(origin+'/questions.html');
+ await p.evaluate(()=>document.fonts.ready);
+ eq(await p.locator('.page-content').evaluate(el=>Math.round(el.getBoundingClientRect().width)),1100,'shared Simple Present page width');
+ ok((await p.locator('body').evaluate(el=>getComputedStyle(el).fontFamily)).includes('Nunito Sans'),'shared body typeface');
+ eq(await p.locator('.q-panel-header').count(),7,'numbered panel headers');
+ ok(await p.locator('.rule-box .q-card-label').count()>0,'rules have text labels as well as colour');
+ ok(await p.locator('.q-example-line .q-helper').count()>0,'helper verbs visibly marked');
+ eq(await p.locator('.q-example-line .q-question.q-subject').first().evaluate(el=>getComputedStyle(el).color),'rgb(40, 82, 127)','who takes the subject colour in subject questions');
+
  eq(await p.locator('.compass-mode-btn').count(),4);eq(await p.locator('.learn-step-btn').count(),7);
- eq(await p.locator('.write-task').count(),72);eq(await p.locator('.open-task').count(),4);
+ eq(await p.locator('.write-task').count(),96);eq(await p.locator('.open-task').count(),5);
  eq(await p.locator('.trap-card').count(),12);eq(await p.locator('.micro-check').count(),4);eq(await p.locator('.mini-check').count(),12);
  ok(!(await p.locator('.thinking-line').textContent()).includes('Frageart erkennen'),'old duplicate thinking text removed');
  const allAnswers=await p.evaluate(()=>QuestionsLearning.bank.flatMap(t=>t.answers.map(answer=>({id:t.id,answer,status:QuestionsLearning.diagnose(t,answer).status}))));
@@ -31,7 +39,14 @@ const OUT=process.env.QUESTIONS_QA_OUTPUT||fs.mkdtempSync(require('node:os').tmp
  ['q-wc-27','Who broke the window?','correct'],['q-wc-27','Who did break the window?','wrong'],
  ['q-wc-01','Do  you  play tennis ?','correct'],['q-wc-13','Does your brother swim every day?','correct'],
  ['q-wc-11','Does mia live in London?','format'],['q-wc-03','How often does he watch television?','correct'],
- ['q-wc-01','', 'empty'],['q-wc-39','What are they talking about?','correct'],['q-wc-39','What are they talking?','wrong']
+ ['q-wc-01','', 'empty'],['q-wc-39','What are they talking about?','correct'],['q-wc-39','What are they talking?','wrong'],
+ ['q-wc-73','Who have a big sister?','wrong'],['q-wc-74','What does Mia has?','wrong'],
+ ['q-wc-76','Who did Emma meet?','wrong'],['q-wc-76','Who did Emma wanted to meet?','wrong'],
+ ['q-wc-78','Who does Nora tell to about her trip?','wrong'],['q-wc-80','Who does Ben look every afternoon?','wrong'],
+ ['q-wc-81','What does Ben go to?','wrong'],['q-wc-83','What does Ben usually does?','wrong'],
+ ['q-wc-84','What did Ben did yesterday?','wrong'],['q-wc-85','What do you like sailing?','wrong'],
+ ['q-wc-93','Where does Nora come?','wrong'],['q-wc-94','Yes, he has.','wrong'],
+ ['q-wc-95','Because he was tired.','wrong'],['q-wc-96','When does Ben usually go by bike?','wrong']
  ];
  for(const [id,value,status]of testcases){const actual=await p.evaluate(({id,value})=>{const t=QuestionsLearning.bank.find(t=>t.id===id);return QuestionsLearning.diagnose(t,value).status},{id,value});eq(actual,status,id+' '+value)}
  // Every step is reachable and has one visible panel; real browser history returns to prior steps.
@@ -50,16 +65,16 @@ const OUT=process.env.QUESTIONS_QA_OUTPUT||fs.mkdtempSync(require('node:os').tmp
  await p.locator('#q-wc-01-input').fill('Does you play tennis?');eq(await p.locator('[data-review-id="q-wc-01"] .feedback:visible').count(),0);ok((await p.locator('#bank-progress').textContent()).startsWith('0 ohne Hilfe'));
  await p.locator('[data-review-id="q-wc-02"] [data-check-task]').click();ok(await p.locator('[data-review-id="q-wc-02"] [data-show-solution]').isDisabled());
  await p.locator('#q-wc-02-input').fill('Wo?');await p.locator('#q-wc-02-input').press('Enter');await p.locator('[data-review-id="q-wc-02"] [data-show-help]').click();await p.locator('#q-wc-02-input').fill('Where does she play tennis?');await p.locator('#q-wc-02-input').press('Enter');ok((await p.locator('[data-review-id="q-wc-02"] .feedback').textContent()).startsWith('Richtig mit Hilfe.'));
- await p.locator('#topic-filter').selectOption('prepositions');eq(await p.locator('.write-task:visible').count(),6);await p.locator('#next-tasks').click();eq(await p.locator('.write-task:visible').count(),2);
+ await p.locator('#topic-filter').selectOption('prepositions');eq(await p.locator('.write-task:visible').count(),6);await p.locator('#next-tasks').click();eq(await p.locator('.write-task:visible').count(),6);
  await p.locator('#kind-filter').selectOption('Lücke');eq(await p.locator('.write-task:visible').count(),1);
  await p.locator('#kind-filter').selectOption('Kurzantwort');eq(await p.locator('.write-task:visible').count(),0);ok(await p.locator('#check-all').isDisabled());
  await p.locator('#kind-filter').selectOption('all');await p.locator('#topic-filter').selectOption('all');
  // Open-ended tasks never claim automatic correctness; checklist/model stays hidden without a draft.
  await p.locator('[data-open-id="q-open-01"] [data-open-model]').click();ok(await p.locator('[data-open-id="q-open-01"] .open-review').isHidden());
  await p.locator('#q-open-01').fill('Did you visit London?');await p.locator('[data-open-id="q-open-01"] [data-open-model]').click();ok(await p.locator('[data-open-id="q-open-01"] .open-review').isVisible());
- // Guided sentence builder: all twelve scenarios have coherent sentences; wrong verbs do not get built.
+ // Guided sentence builder: all sixteen scenarios have coherent sentences; wrong verbs do not get built.
  await p.locator('[data-tab="q-learn"][data-val="machine"]').click();
- for(let i=0;i<12;i++){
+ for(let i=0;i<16;i++){
   await p.locator('#machine-case').selectOption(String(i));const s=await p.evaluate(i=>QuestionsLearning.scenarios[i],i);
   const groups=p.locator('.machine-group');for(const [index,key]of [[0,'q'],[1,'aux'],[2,'verb']])await groups.nth(index).getByRole('button',{name:s[key],exact:true}).click();
   await p.locator('#build-question').click();const out=await p.locator('#machine-sentence').textContent();ok(out.endsWith('?'),s.title+': '+out);ok((await p.locator('#machine-rule').textContent()).startsWith('Richtig.'));
