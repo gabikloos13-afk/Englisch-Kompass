@@ -355,6 +355,22 @@ textarea{width:100%;min-height:85px}
 .pg-refined-panel .section-title,.pg-reference-wrap h2,.pg-connections-wrap h2,.pg-notes-wrap h2{line-height:1.35;margin-block:18px 12px}
 .pg-reference-wrap .card p,.pg-connections-wrap .card p{margin-bottom:10px;line-height:1.72}
 .pg-reference-wrap .card p:last-child,.pg-connections-wrap .card p:last-child{margin-bottom:0}
+
+/* SCREEN/PRINT SEPARATION: the cheat sheet is never part of the learner tabs. */
+@media screen {#progressive-cheatsheet{display:none!important}}
+@media print {#progressive-cheatsheet{display:block!important;margin:0 auto;max-width:900px;padding:20px;background:#fff;color:#1e293b}#progressive-cheatsheet table{width:100%;border-collapse:collapse}#progressive-cheatsheet th,#progressive-cheatsheet td{border:1px solid #cbd5e1;padding:9px;text-align:left}}
+/* Explicit visibility and page constraints. */
+@media screen {
+.compass-mode-panel:not(.is-active){display:none!important}
+.compass-mode-panel[data-val="learn"] .learn-panel:not(.is-active){display:none!important}
+.compass-mode-panel[data-val="learn"] .learn-panel.is-active{display:block}
+}
+.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{box-sizing:border-box;width:min(1320px,calc(100% - 48px));max-width:1320px;margin-inline:auto;min-width:0}
+.pg-reference-wrap>*,.pg-connections-wrap>*,.pg-notes-wrap>*{min-width:0}
+.pg-refined-panel,.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{line-height:1.72}
+.pg-refined-panel .pg-teach-card,.pg-refined-panel .pg-teach-part,.pg-refined-panel .tool-card{border-radius:16px}
+.pg-refined-panel .pg-teach-card p,.pg-refined-panel .pg-teach-part p{line-height:1.72}
+@media(max-width:700px){.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{width:100%;max-width:100%;padding:16px}}
 </style>
 </head>
 <body>
