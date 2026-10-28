@@ -1,105 +1,84 @@
-# Questions: Überarbeitung und Qualitätsprüfung
+# Questions: Buchabgleich und Qualitätsprüfung
 
 Stand: 28. Oktober 2026. Zielniveau: Englisch, Klasse 6 Gymnasium.
 
-Die Seite wurde auf Grundlage der aktuellen `questions.html` im Branch `main` überarbeitet. Diese war neuer als die angehängte Projektdatei. Für Header, Seitenbreite und Register wurden die aktuellen Seiten Simple Present und Simple Past verglichen. Die zuletzt festgelegte Zuordnung von Regeln, Denkwegen, Merkbereichen, Beispielen und Interaktionen wurde durchgängig umgesetzt.
+Die Seite wurde mit den jetzt hochgeladenen Originalbuchfotos abgeglichen und um fehlende Aufgabenmuster ergänzt. Aussehen und Aufbau richten sich nach der aktuellen Simple-Present-Referenzseite. Die früher fehlende Originalbuchgrundlage ist für die fotografierten Seiten damit vorhanden.
 
-## Ergebnis der didaktischen Prüfung
+## Welche Buchseiten geprüft wurden
 
-Die bisherige Seite hatte sieben Lernreiter, aber ihr fachlicher Schwerpunkt war ungleich verteilt: Der Header beschrieb vor allem Simple Present, der ausführliche Subjekt-/Objekt-Lernweg blieb weitgehend in der Gegenwart, und der Schreib-Check bestand aus zehn Aufgaben. Vergangenheit, Präpositionen und Antwortbildung wurden für den bekannten Unterrichtsschwerpunkt zu knapp geübt. Die freie Frage-Maschine konnte unpassende Kombinationen und falsche Großschreibung ausgeben.
+| Vorlage aus den Fotos | Bezug zu Questions | Umsetzung |
+| --- | --- | --- |
+| GF 1, S. 157–158 | Simple Past: regelmäßige/unregelmäßige Verben; did + Grundform; Ja-/Nein- und W-Fragen; Kurzantworten; aus Antworten Fragen bilden | Erklärungen, Vergleichsbeispiele, Schreibaufgaben und Antwortprüfung |
+| GF 2, S. 159–160 | Simple Present: do/does, he/she/it, Grundform nach does; Fragewörter; passende Kurzantworten | Schritt 2, Denkfallen, gemischte Entscheidungen und Schreib-Check |
+| GF 3, S. 161 | Subject/Object Questions mit who und what; unterschiedliche Bedeutung von wer/wen/wem; zwei Fragen zu einem Ausgangssatz; Präpositionen | Schritt 3 mit Lückenprobe, Rollenfarben, Gegenwarts-/Vergangenheitspaaren und Buchfällen |
+| Übungen S. 16–17, besonders Aufgaben 2–5 | Fragen aus Antworten ergänzen; Who-Fragen; nach dem Handelnden oder dem Objekt fragen; kurze Dialoge; eigenes Quiz mit sechs Fragen | Gezielte Schreibaufgaben, Partner-/Dialogmuster und ein offener Quizauftrag mit vollständig vorgegebenem Übungstext |
+| GF 4, S. 162, sowie S. 22–23 | Abgrenzung zu Progressive, festen Verabredungen und Telefonfragen | Vergleichskarten und Verbindungen zu den bestehenden Nachbarseiten |
+| SF 12/13, S. 151 | Mediation und längeres Schreiben | Als eigene Lernbereiche verlinkt; keine Gleichsetzung mit dem Questions-Grammatikstoff |
 
-Der neue Lernweg ist nachvollziehbar gegliedert:
+GF 3 ist auf dem Foto als Grammatikabschnitt erkennbar; der Verweis auf S. 161 steht außerdem auf der fotografierten Übungsdoppelseite S. 16–17. Die Seitenangaben wurden somit aus den vorliegenden Fotos und deren Verweisen geprüft. Ein Schulbuchtitel oder eine konkrete Ausgabe wird nicht aus den Bildern geraten.
 
-1. **Wozu? und Lernweg:** gesuchte Information, Frage mit/ohne Fragewort und Lernziele.
-2. **Fragen aufbauen:** Grundbegriffe; do/does/did; be, Progressive, have got und can; Fragewörter; Kurzantworten und vollständige Antworten.
-3. **Subjekt oder Objekt:** Rollen im Ausgangssatz erkennen; Lückenprobe; jeweils zwei Fragen zu demselben Satz im Simple Present und Simple Past; Präpositionen erhalten.
-4. **Frage-Maschine:** zwölf klar vorgegebene Ausgangssätze mit gezielter Informationsfrage. Bausteine müssen sprachlich zusammenpassen, bevor ein Fragesatz ausgegeben wird.
-5. **Denkfallen:** zwölf Entscheidungen mit aufgabenspezifischer Erklärung.
-6. **Kann ich’s?:** zwölf gemischte Entscheidungen und Hinweise auf den passenden Wiederholungsschritt. Selbsteinschätzung und Übungsergebnisse bleiben getrennt.
-7. **Schreib-Check:** selbst schreiben, prüfen, bei Bedarf Hilfe verwenden; anschließend offene Schreibaufträge mit Checklisten.
+Die Questions-bezogenen Anforderungen dieser fotografierten Auszüge sind inhaltlich und durch Übungsmuster abgedeckt. Die Fotos enthalten weiterhin **keine verbindliche Stoffliste der konkreten Klassenarbeit**. Daraus folgt keine Bestätigung des vollständigen Prüfungsumfangs. Vokabeln, Audios und eine vollständige Mediation sind keine zusätzlichen Inhalte dieser Questions-Seite.
 
-Innerhalb der Erklärungen folgen die Bausteine dem Muster Regel → Denkweg → Beispiele → eigener Versuch. Vier kurze interaktive Checks und drei aufdeckbare Anwendungen verkürzen den Abstand zwischen Erklärung und Abruf. Die Begriffe Subjekt, Objekt, Hilfsverb und Grundform werden erklärt, bevor sie systematisch verwendet werden.
+## Fachlich und didaktisch ergänzt
 
-## Fachliche Schwerpunkte und Denkfallen
+Die Grundfolge bleibt: gesuchte Information → Frageart → Zeitform und Verb → Frage bilden → Antwort prüfen. Die sieben Lernregister unter Lernen führen von Orientierung über Erklärungen und Subjekt-/Objektfragen zur Maschine, zu Denkfallen, zur Selbstkontrolle und zum freien Schreiben.
 
-- **does + Grundform:** Does Mia play?, nicht plays nach does.
-- **did + Grundform:** Did Lucy go?, nicht went nach did.
-- **Subjektfragen:** Who likes Emma? / Who called Ben? Das Fragewort ersetzt das Subjekt; kein zusätzliches do/does/did in der normalen positiven Frage.
-- **Objektfragen:** Who does Leo like? / Who did Lucy call? Das Subjekt bleibt erhalten.
-- **who/what:** Das Fragewort allein entscheidet nicht über die Frageart.
-- **Präpositionen:** Who does Justin play tennis with? / Who did Lucy talk to? Zeitangaben können noch nach der Präposition stehen.
-- **be:** Is she tired? / Were they late?, ohne zusätzliches do/did.
-- **Progressive:** Is Mia reading? behält die -ing-Form; feste Verabredungen werden als Verbindung zum Nachbarthema einbezogen.
-- **Kurzantworten:** Frageverb aufnehmen und Perspektive beachten: Did you …? — No, I didn’t.
-- **Positive Kurzantwort:** Yes, I am., nicht Yes, I’m.
-- **Vollständige Antworten:** In einer positiven Aussage die passende Verbform bilden: Lucy went to London.
-- **Gesuchte Information:** Den erfragten Satzteil aus der Frage entfernen, nötige Präpositionen behalten.
+Folgende Buchmuster waren bisher nicht deutlich genug erklärt oder nicht gezielt geübt:
 
-Die Regeln beziehen sich auf die normalen direkten positiven Frageformen des Lernstoffs. Nicht jede denkbare englische Frageform gehört zum Ziel dieser Seite; etwa indirekte Fragen und Question Tags wurden nicht als zusätzlicher Pflichtstoff eingeführt.
+- **Besitz mit have:** Who has a big sister? gegenüber What does Mia have? Has ist hier das Hauptverb; nach does steht have. Das Muster wird von has got unterschieden.
+- **Zwei Verben:** Emma wanted to meet Leo. → Who wanted to meet Leo? / Who did Emma want to meet? Nur wanted wird nach did zur Grundform; to meet bleibt erhalten. Who did Emma meet? hätte eine andere Bedeutung.
+- **Indirektes Objekt / wem:** Nora tells Eva about her trip. → Who does Nora tell about her trip? Das englische Muster tell someone about braucht hier kein zusätzliches to.
+- **Verbgruppe look after:** Who looks after Sam? / Who does Ben look after? After darf in der Objektfrage nicht verschwinden.
+- **Fragewort mit Nomen:** What school does Ben go to? What school bleibt zusammen vorne; to bleibt erhalten. Eine vorgegebene Auswahl wird als möglicher Which-Kontext erklärt.
+- **Zweimal do:** What did Ben do? Did ist Fragehelfer, das zweite do bedeutet tun/machen. Dasselbe Prinzip wird mit does geübt.
+- **Frage aus vorgegebener Antwort:** Yes/No verlangt eine Entscheidungsfrage; eine Orts-, Zeit- oder Grundangabe verlangt das passende Fragewort. Stichwörter und Zeitform sind ausdrücklich vorgegeben.
+- **Eigenes Sechs-Fragen-Quiz:** Ein kurzer eigener Übungstext liefert alle nötigen Fakten. Zwei Subjektfragen, zwei Objektfragen und zwei weitere Fragen werden mit Checkliste und möglichen Beispielen geübt. Es werden keine unbekannten Details der Buchgeschichte vorausgesetzt.
 
-## Übungsmaterial
+Alle bisherigen 72 Schreibaufgaben behalten ihre IDs. Es kommen **24 gezielte Buchmuster-Aufgaben** hinzu. Die vier bisherigen offenen Schreibaufträge bleiben erhalten; der Quizauftrag ist der fünfte.
 
-Die ersten zehn Schreibaufgaben bleiben unter ihren bisherigen IDs erhalten. Der Aufgabenpool umfasst nun 72 automatisch abgleichbare Aufgaben und vier offene Schreibaufträge.
+## Übungsumfang und Antwortqualität
 
 | Bereich | Automatisch prüfbare Aufgaben |
 | --- | ---: |
-| Simple Present | 10 |
-| Simple Past | 10 |
-| Subjekt-/Objektfragen | 14 |
-| Präpositionen | 8 |
-| Fragewörter | 10 |
-| Kurzantworten und vollständige Antworten | 10 |
-| Gemischte Verbmuster und Dialog | 10 |
-| **Gesamt** | **72** |
+| Simple Present | 12 |
+| Simple Past | 13 |
+| Subjekt-/Objektfragen | 23 |
+| Präpositionen | 12 |
+| Fragewörter / Fragen zu Antworten | 14 |
+| Kurzantworten / vollständige Antworten | 12 |
+| Gemischte Verbmuster / Dialog | 10 |
+| **Gesamt** | **96** |
 
-Zwölf Aufgabenformate sind vertreten: übersetzen, Fehler verbessern, Subjekt erfragen, Objekt erfragen, Fragen bilden, Satzbausteine ordnen, Lücken ergänzen, Frageart erkennen, zur Antwort fragen, kurz antworten, vollständig antworten und einen Dialog ergänzen. Die vier offenen Aufgaben erweitern das um Ferieninterview, zwei Fragen zu einem eigenen Satz, Telefongespräch und feste Verabredung.
+Zusätzlich gibt es **fünf offene Schreibaufträge, 16 Maschinenfälle, zwölf Denkfallen, zwölf gemischte Lernentscheidungen und vier direkte Kurzchecks**. Der automatisch geprüfte Pool enthält **136 hinterlegte Antwortvarianten**. Passende verneinte Lang- und Kurzformen sowie unterschiedliche Apostrophzeichen werden zusätzlich normalisiert.
 
-Es werden höchstens sechs Schreibaufgaben gleichzeitig gezeigt. Filter nach Thema, Aufgabentyp und Übungsstand ermöglichen gezieltes Üben. Der automatische Abgleich enthält insgesamt **100 Antwortvarianten**, einschließlich passender alternativer Formulierungen. Gebräuchliche verneinte Lang- und Kurzformen sowie unterschiedliche Apostrophzeichen werden zusätzlich normalisiert.
+Vertreten sind zwölf Aufgabenformate: übersetzen, Fehler verbessern, Subjekt erfragen, Objekt erfragen, Fragen bilden, Satzbausteine ordnen, Lücken ergänzen, Frageart erkennen, zu Antworten fragen, kurz antworten, vollständig antworten und einen Dialog ergänzen. Offene Aufgaben üben längere Eigenproduktion ohne automatisches Richtig-Urteil.
 
-Die Rückmeldung unterscheidet:
+Im Schreib-Check werden jeweils höchstens sechs Aufgaben gezeigt. Filter nach Thema, Aufgabentyp und Übungsstand ermöglichen gezieltes Üben. Die Auswertung trennt selbstständig richtig, richtig mit Hilfe, mit Lösung bearbeitet, Formhinweise und noch offene Antworten. Eine Eingabeänderung nimmt eine alte Richtig-Bewertung zurück. Die Prüfung erfasst nur die hinterlegten passenden Formulierungen; bei weiteren freien Varianten wird ein Vergleich mit dem Muster angeboten.
 
-- selbstständig richtig;
-- richtig mit Hilfe;
-- mit aufgedeckter Lösung bearbeitet;
-- passende Wörter mit Formhinweis, z. B. fehlendes Fragezeichen oder Apostroph;
-- noch nicht passende oder fehlende Antwort.
+## Gestaltung nach Simple Present und den vereinbarten Regeln
 
-Nach einer Eingabeänderung wird ein früheres Richtig-Ergebnis zurückgenommen. Eine aufgedeckte Lösung wird nicht als selbstständiger Lernerfolg gezählt. Offene Texte erhalten Checklisten und Beispiele statt eines automatischen Richtig-Urteils. Bei freier Umformulierung ist der automatische Abgleich auf die erfassten Varianten begrenzt; die Rückmeldung weist dann auf den Vergleich mit dem Muster hin.
+- Gleiche Außenbreite von 1100 Pixeln, gleiche weiße Themenkarte und derselbe Headerverlauf mit denselben Innenabständen.
+- Vier Hauptbereiche und sieben Lernregister; nummerierte Abschnittsköpfe mit kurzem Lernziel nach dem Aufbau von Simple Present.
+- Dieselben Schriftfamilien Nunito und Nunito Sans. Die benötigten Schriftdateien sind direkt eingebettet, einschließlich Lizenzhinweisen; es werden keine externen Schriftanfragen benötigt.
+- **Regeln warm hellorange**, **Denkwege gedämpft blaugrau**, **zusammenhängende Merkzettel hell blaugrau**, **Beispiele und Arbeitskarten weiß**; Hauptaktionen blau.
+- Klare Textlabels wie Regel, Denkweg, Merkzettel, Beispiel und Warum zusätzlich zur Farbe.
+- Statische Satzmarkierungen übernehmen die Rollenfarben: Subjekt blau, Fragehelfer violett, Hauptverb grün, Objekt/gesuchte Ergänzung türkis, Zeit-Signal warm hervorgehoben. Die Markierungen bleiben flacher Lesetext und sehen nicht wie Buttons aus.
+- Signalwörter werden in Orientierung und Aufgaben hervorgehoben. Ihr Hinweischarakter wird ausdrücklich erklärt; be sowie Zustandsverben verhindern eine starre Signalwort-Automatik.
+- Karten mit 20–22 Pixel Innenabstand, 12–16 Pixel Abständen und gut getrennten Beispiel-/Begründungszeilen. Die umfangreiche Frageworttabelle kann im Lernschritt aufgeklappt werden und steht vollständig beim Nachschlagen.
+- Beschriftete Felder, sichtbarer Tastaturfokus, Screenreader-Rückmeldungen, Browserhistorie, Direktlinks, lokale Speicherung und Übernahme bisheriger Eingaben bleiben erhalten.
+- Hausaufgabenansicht und Druckfunktionen bleiben erhalten. Der aktualisierte Kurzmerkzettel passt auf **eine A4-Seite**.
 
-## Gestaltung und Bedienung
+Die Farben ordnen Funktionen. Sie sollen keine zusätzliche Gedächtnisaufgabe werden: Jede Rolle wird auch durch Text, Stellung oder Beschriftung erklärt.
 
-- Gemeinsame Außenbreite von 1100 Pixeln, ruhiger Header und vier Hauptbereiche: Lernen, Nachschlagen, Verbindungen, Notizen.
-- Sieben Lernregister unter Lernen; mobil umbrechend und ohne seitlich versteckte Register.
-- Regeln warm hellorange, Denkwege gedämpft blaugrau, zusammenhängende Merkzettel hell blaugrau, Beispiele und Arbeitskarten weiß; Hauptaktionen mit blauen Buttons.
-- Statische Merksätze und Satzteile erhalten keine Button-Gestaltung.
-- Karten mit 20–22 Pixel Innenabstand und 12–16 Pixel Abstand zwischen zusammengehörigen Elementen.
-- Beschriftete Eingabefelder, Tastaturbedienung, sichtbarer Fokus, Rückmeldungen für Screenreader, reduzierte Bewegung.
-- Funktionierende Browser-Zurück-/Vorwärts-Navigation und direkte Links auf Lernschritte.
-- Antworten und Notizen lokal gespeichert; bestehende Eingaben, Notizen und Auswahlentscheidungen werden aus dem bisherigen Speicherformat übernommen. Zuletzt getippte Notizen haben Vorrang vor älteren Journalwerten.
-- Hausaufgabenansicht und Druckfunktionen bleiben erhalten. Der druckbare Kurzmerkzettel wurde separat auf **einer A4-Seite** geprüft.
-- Die ausgelieferte HTML-Datei benötigt keine externen Skripte, Schriftarten oder Dienste. Ohne JavaScript bleiben Erklärungstexte und Aufgaben lesbar.
+## Prüfung
 
-## Schulbuch und Klassenarbeit: belastbare Aussage und Grenze
+**327 Browser-Assertions erfolgreich; keine JavaScript-Laufzeitfehler im Prüflauf.** Getestet mit Playwright in Chromium 153. Alle 136 hinterlegten Antwortvarianten wurden ausgeführt. Zusätzliche negative Fälle prüfen insbesondere verlorenes to/after/from, has nach does, den Wegfall von want to, eine falsche zusätzliche Präposition bei tell sowie das doppelte do.
 
-**Abgedeckt sind die bekannten Questions-Schwerpunkte**: Simple Present und Simple Past mit do/does/did, Subject/Object Questions, Präpositionen, Fragewörter, Kurzantworten, vollständige Antworten und Übertragung auf kleine Gespräche. Weitere gelernte Verbmuster werden vergleichend behandelt und mit den vorhandenen Nachbarseiten verbunden.
+Weitere Prüfungen betreffen die 16 Maschinenfälle, Hilfe- und Lösungsstatus, Formhinweise, Filter, Sechserseiten, leere Antworten, offene Aufgaben, Selbstkontrolle, Browser-Zurück/-Vorwärts, Direktlinks, Speicherung, Neuladen, Übernahme alter Notizen, Hausaufgabenansicht, Druck und Lesen ohne JavaScript. Gespeichertes altes HTML wird nicht wieder ausgeführt.
 
-**Ein vollständiger Originalbuch- und Klassenarbeitsabgleich ist nicht belegt.** Im aktuellen Material liegen weder die Originalbuchseiten mit verifizierbarer Ausgabe noch eine verbindliche Themenliste für die konkrete Klassenarbeit vor. Früher genannte Seitenzahlen oder GF-Kennzeichnungen wurden deshalb nicht als neue Bestätigung übernommen. Die vorhandenen HTML-Übungen und frühere Zusammenfassungen ersetzen keine Originalquelle. Die Seite kann auch keinen tatsächlichen individuellen Lernerfolg garantieren; dafür sind eigenständige Wiederholungen und die Auswertung echter Lernantworten erforderlich.
+Alle sieben Lernreiter sowie Nachschlagen, Verbindungen und Notizen wurden bei **320, 390, 768, 1024 und 1440 Pixeln** auf horizontales Seitenüberlaufen geprüft. Schriftfamilie, Seitenbreite, nummerierte Abschnittsköpfe und sichtbare Rollenmarkierungen sind zusätzlich im Browser geprüft. Die Desktop-/Mobilansichten sowie die neuen Buchfälle wurden gerendert und visuell kontrolliert. Der A4-Kurzmerkzettel wurde als PDF auf einer Seite geprüft. Dies ist ein Chromium-Test mit verschiedenen Bildschirmbreiten; ein eigener Test auf jedem Mobilbrowser ist damit nicht behauptet.
 
-Die allgemeinen Frageformen wurden mit diesen Grammatikerklärungen abgeglichen:
-
-- [British Council: Question forms](https://learnenglish.britishcouncil.org/free-resources/grammar/a1-a2/question-forms)
-- [British Council: Questions and negatives – einschließlich Präpositionen](https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/questions-negatives)
-- [British Council LearnEnglish Teens: Question words](https://learnenglishteens.britishcouncil.org/grammar/a1-a2-grammar/question-words)
-
-## Technische und visuelle Prüfung
-
-**263 Browser-Assertions erfolgreich; keine JavaScript-Laufzeitfehler in diesem Prüflauf.** Getestet in Chromium 153 mit Playwright. Alle 100 hinterlegten Antwortvarianten wurden ausgeführt. Weitere Prüfungen decken typische falsche Verbformen, Subjekt-/Objektverwechslung, verlorene Präpositionen, Großschreibung, Satzzeichen und Apostrophe ab.
-
-Geprüft wurden außerdem: zwölf Maschinenfälle, Hilfe-/Lösungsstatus, Rücknahme veralteter Bewertungen, Filter und Seitennavigation, leere Antworten, offene Schreibaufträge, Selbstkontrolle, Browserhistorie, Direktlinks, Speichern und Neuladen, Übernahme alter Notizen, Hausaufgabenansicht, Druckdarstellung und Lesen ohne JavaScript. Gespeichertes altes HTML wird nicht wieder ausgeführt.
-
-Alle sieben Lernreiter sowie Nachschlagen, Verbindungen und Notizen wurden bei **320, 390, 768, 1024 und 1440 Pixeln** auf horizontales Seitenüberlaufen geprüft. Desktop- und Mobilansichten wurden zusätzlich anhand gerenderter Screenshots visuell kontrolliert. Der gedruckte Kurzmerkzettel wurde als A4-PDF gerendert und visuell geprüft: eine Seite, ohne abgeschnittenen Inhalt. IDs und Verknüpfungen der Steuerelemente sind eindeutig. Das ist ein Chromium-Test mit verschiedenen Bildschirmbreiten, kein gesonderter Gerätetest in Safari oder auf jedem Android-Browser.
-
-Der wiederholbare Browser-Test liegt in `tests/questions.browser.cjs`. Dafür wird lokal Playwright mit installiertem Chromium benötigt:
+Der wiederholbare Test liegt in `tests/questions.browser.cjs`:
 
 ```sh
 npm install --no-save --package-lock=false playwright
@@ -107,4 +86,6 @@ npx playwright install chromium
 node tests/questions.browser.cjs
 ```
 
-Optional kann `QUESTIONS_CHROMIUM_PATH` auf einen vorhandenen Browser zeigen. Testbilder und das Druck-PDF werden in einem temporären Verzeichnis abgelegt; mit `QUESTIONS_QA_OUTPUT` lässt sich ein anderes Ausgabeverzeichnis wählen. Für die Lernseite selbst ist keine Installation erforderlich.
+Optional sind `QUESTIONS_CHROMIUM_PATH` für einen vorhandenen Browser und `QUESTIONS_QA_OUTPUT` für Testbilder und Druck-PDF verfügbar. Die Lernseite selbst benötigt keine Installation.
+
+Der Buchabgleich bestätigt die Abdeckung der vorliegenden Questions-Muster. Er ist keine Garantie für eine bestimmte Note oder den individuellen Lernerfolg; dafür bleiben eigenständige Versuche und Wiederholung entscheidend.
