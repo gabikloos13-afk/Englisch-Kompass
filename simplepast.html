@@ -6409,6 +6409,51 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 .exam-related .exam-related-check-btn:focus-visible{outline:3px solid #2563eb;outline-offset:3px;}
 @media(max-width:600px){.exam-related .exam-related-check-btn{width:100%;}}
 </style>
+<style id="simplepast-v108-spacious-cards">
+/* v108 – Leseruhe: einheitliche, großzügige Innenabstände bei Simple Past.
+   Vorhandene Inhalte, Quizlogik und Auswahlzustände bleiben erhalten. */
+:root{--sp-space-card:clamp(20px,2.25vw,28px);--sp-space-nested:clamp(17px,1.9vw,24px);}
+#simplepast-learn-panel :is(.past-topic-card,.simplepast-learning-shell,.past-subcard,.positive-statement-card,.negative-card,.tobe-past-card,.past-radar-card,.past-route-intro,.negative-v49-hero,.negative-v50-machine-card,.negative-v51-basic-card,.negative-v52-case-card),
+.compass-mode-panel[data-val="reference"] :is(.ref-section,.sp-ref-v99-card),
+.compass-mode-panel[data-val="connections"] :is(.conn-card,.connection-map-card),
+.compass-mode-panel[data-val="notes"] :is(.notes-panel,.note-field){
+  box-sizing:border-box!important;min-width:0!important;
+  padding:var(--sp-space-card)!important;
+}
+#simplepast-learn-panel :is(
+ .negative-v49-change-grid > article,.negative-v49-stop-card,.negative-v49-route-step,
+ .negative-v50-source-panel,.negative-v50-target-panel,.negative-v51-basic-rule,.negative-v51-basic-work,
+ .negative-v52-case-panel,.negative-v52-work-panel,.negative-v52-step-block,
+ .tobe-v70-check-step,.tobe-v70-route-card,.tobe-v70-trap-grid > article,.tobe-v70-memory-grid > div,
+ .tobe-v70-section,.tobe-v71-step-card,.tobe-v71-think-card,.tobe-v72-workspace,
+ .tobe-v73-form-way,.tobe-v73-task-grid > article,.past-rule-card,.past-machine-card,
+ .past-repair-card,.past-radar-item,.irregular-v32-task,.pos-v40-check-card,.v42-check-card
+){
+  box-sizing:border-box!important;min-width:0!important;
+  padding:var(--sp-space-nested)!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid,.tobe-v70-trap-grid,.tobe-v70-memory-grid,.tobe-v70-checker,.tobe-v70-route-compare,.past-choice-row,.past-tool-tabs){
+  gap:clamp(12px,1.4vw,18px)!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.tobe-v70-trap-grid > article,.tobe-v70-memory-grid > div) > * + *{
+  margin-top:12px!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.tobe-v70-trap-grid > article,.tobe-v70-memory-grid > div) > :is(p,small,div){
+  line-height:1.7!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.tobe-v70-trap-grid > article) > h4{margin:0 0 15px!important;line-height:1.45!important;}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.tobe-v70-trap-grid > article) > small{
+  display:block!important;margin-top:14px!important;
+}
+#simplepast-learn-panel :is(.tobe-v70-memory-grid,.negative-v49-change-grid){align-items:stretch;}
+.compass-mode-panel :is(p,li,small,label){line-height:1.68;}
+.compass-mode-panel :is(h2,h3,h4){line-height:1.42;}
+.compass-mode-panel :is(button,input,select,textarea){line-height:1.48;}
+@media(max-width:700px){
+  :root{--sp-space-card:18px;--sp-space-nested:16px;}
+  #simplepast-learn-panel :is(.negative-v49-change-grid,.tobe-v70-trap-grid,.tobe-v70-memory-grid){gap:14px!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
