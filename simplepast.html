@@ -6263,6 +6263,75 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 .sp-ref-v99-trapgrid p:last-child{margin-bottom:0;color:#64748b;}
 @media(max-width:760px){.sp-ref-v99-ruleline,.sp-ref-v99-trapgrid{grid-template-columns:1fr}.sp-ref-v99-table{min-width:620px}.sp-ref-v99-card{padding:13px}.sp-ref-v99-examples span{min-width:0;display:block;margin-bottom:2px}}
 </style>
+
+<style id="simplepast-v103-github-reading-spacing">
+/* Simple Past: ruhige Registerfarben und lesefreundliche Abstände. */
+:root{--past-readable-line:1.6;}
+.simplepast-negative-v30 .past-tool-tabs{
+  background:#f8fafc;border-color:#cbd5e1;gap:8px;padding:10px;
+}
+.simplepast-negative-v30 .past-tool-tab{
+  min-height:40px;padding:9px 14px;line-height:1.4;white-space:normal;text-align:center;
+}
+.simplepast-negative-v30 .past-tool-tab.is-active{
+  background:#2563eb;border-color:#2563eb;color:#fff;
+}
+.simplepast-negative-v30 .past-tool-tab:hover:not(.is-active){
+  background:#eff6ff;border-color:#93c5fd;color:#1d4ed8;
+}
+#simplepast-learn-panel .simplepast-learning-shell{
+  box-sizing:border-box;min-width:0;padding:clamp(16px,2.2vw,24px)!important;
+}
+#simplepast-learn-panel .past-topic-card:not(.simplepast-learning-shell){
+  box-sizing:border-box;min-width:0;padding:clamp(14px,1.7vw,20px);
+}
+#simplepast-learn-panel .simplepast-learning-head{gap:14px;align-items:flex-start;}
+#simplepast-learn-panel .simplepast-learning-copy{min-width:0;}
+#simplepast-learn-panel .simplepast-learning-lead{line-height:1.65;max-width:90ch;}
+#simplepast-learn-panel .past-tool-tabs{gap:8px;padding:10px;border-radius:14px;}
+#simplepast-learn-panel .past-tool-tab{
+  min-height:40px;padding:9px 14px;line-height:1.4;white-space:normal;text-align:center;
+}
+#simplepast-learn-panel .past-tool-stage,
+#simplepast-learn-panel .past-tool-panel.is-active{min-width:0;}
+#simplepast-learn-panel :is(.past-subcard,.past-radar-item,.past-rule-card,.past-machine-card,.past-repair-card,.negative-compare-card,.negative-trap-card,.negative-repairer,.tobe-inner-card,.tobe-switch-card,.tobe-trap-card,.tobe-repairer,.mixed-focus-card,.mixed-decision-card,.irregular-v32-task,.v113-signal-card,.v113-switch-card,.v113-ed-machine,.v113-trap-card,.v113-ref-card,.negative-v49-hero,.negative-v49-sentence-card,.negative-v50-machine-card,.negative-v51-basic-card,.negative-v52-case-card){
+  box-sizing:border-box;min-width:0;padding:clamp(13px,1.5vw,18px);line-height:var(--past-readable-line);
+}
+#simplepast-learn-panel :is(.past-feedback,.past-machine-output,.negative-v49-readline,.tobe-v67-selected,.irregular-v32-feedback){
+  box-sizing:border-box;min-width:0;padding:12px 14px;line-height:1.55;
+}
+#simplepast-learn-panel :is(.past-choice-row,.irregular-v32-choice-row,.negative-v50-source-row,.negative-v51-basic-choice-row,.negative-v52-case-row){gap:8px;row-gap:9px;}
+#simplepast-learn-panel :is(.past-choice-btn,.past-token-btn,.irregular-v32-choice,.negative-v52-token-btn){
+  min-height:38px;padding:8px 12px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;
+}
+#simplepast-learn-panel :is(input,textarea,select){max-width:100%;line-height:1.5;}
+.compass-mode-panel[data-val="reference"] :is(.sp-reference-wrap > div,.sp-reference-wrap .ref-section){
+  box-sizing:border-box;min-width:0;padding:clamp(16px,2vw,22px)!important;
+}
+.compass-mode-panel[data-val="reference"] :is(td,th){padding:10px 12px;line-height:1.5;vertical-align:top;}
+.compass-mode-panel[data-val="reference"] :is(.past-table-compact,.tobe-table-wrap,.negative-table-wrap){max-width:100%;overflow-x:auto;}
+.compass-mode-panel[data-val="connections"] .conn-card{
+  box-sizing:border-box;min-width:0;padding:clamp(14px,1.7vw,20px)!important;gap:14px;
+}
+.compass-mode-panel[data-val="notes"] :is(.note-field,.notes-panel){
+  box-sizing:border-box;min-width:0;padding:clamp(16px,2vw,22px);
+}
+.compass-mode-panel :is(p,li,td,th,label,summary){overflow-wrap:break-word;}
+.compass-mode-panel :is(p,li){line-height:1.6;}
+.compass-mode-panel :is(h2,h3,h4){line-height:1.35;}
+.compass-mode-panel :is(h2,h3,h4) + p{margin-top:8px;}
+.compass-mode-panel :is(p,ul,ol) + :is(p,ul,ol){margin-top:9px;}
+.compass-mode-panel :is(button,a,input,textarea,select,summary):focus-visible{outline:3px solid #2563eb;outline-offset:3px;}
+@media(max-width:700px){
+  #simplepast-learn-panel .simplepast-learning-shell{padding:16px!important;}
+  #simplepast-learn-panel .past-tool-tabs{padding:8px;gap:7px;}
+  #simplepast-learn-panel .past-tool-tab{flex:1 1 145px;padding:9px 11px;}
+  #simplepast-learn-panel .simplepast-learning-head{gap:10px;}
+  .compass-mode-panel[data-val="reference"] :is(.sp-reference-wrap > div,.sp-reference-wrap .ref-section){padding:15px!important;}
+  .compass-mode-panel[data-val="connections"] .conn-card{padding:14px!important;}
+  .compass-mode-panel :is(.past-tool-panel,.past-topic-card,.conn-card,.ref-section){max-width:100%;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
