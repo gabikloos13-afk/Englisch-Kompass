@@ -6637,7 +6637,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="4">
 <h3>4. Form selbst schreiben</h3>
-<p class="sp-dz-v14-rule">Schreibe den englischen Satz selbst und prüfe anschließend deine Antwort.</p>
+<p class="sp-dz-v14-rule">Schreibe den ganzen englischen Satz. Prüfe erst danach.</p>
 <div aria-live="polite" class="sp-dz-v80-write-task">
 <span class="sp-dz-v14-task-label">Aufgabe</span>
 <p class="sp-dz-v14-prompt sp-dz-v14-write-prompt" id="sp-dz-v14-write-prompt">Lade Aufgabe …</p>
@@ -7737,7 +7737,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 5</p>
 <h2 class="simplepast-learning-title" id="tobe-v67-title">to be: was/were</h2>
-<p class="simplepast-learning-lead">Bei <span class="past-code">to be</span> läuft Simple Past anders als bei normalen Verben. Die Hauptfrage lautet: Ist es <span class="past-code">to be</span>? Dann kein <span class="past-code">did</span>. Hanna entscheidet danach: Welche Person steht im Satz? Gehört sie zur was-Gruppe oder zur were-Gruppe? Erst dann baut sie Aussage, Verneinung oder Frage.</p>
+<p class="simplepast-learning-lead"><span class="past-code">to be</span> hat im Simple Past eigene Formen: <span class="past-code">was</span> und <span class="past-code">were</span>. Hier brauchst du kein <span class="past-code">did</span>. Schau zuerst auf die Person. Entscheide dann zwischen <span class="past-code">was</span> und <span class="past-code">were</span> und bilde den Satz.</p>
 </div>
 </div>
 <nav aria-label="to be: was/were" class="past-tool-tabs tobe-v67-tabs">
@@ -7805,7 +7805,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span class="tobe-v70-mini-number">2</span>
 <h4>Wer steht im Satz?</h4>
 <div class="tobe-v70-person-switch" id="tobe-v106-person-tool" aria-label="Personen-Weiche was oder were">
-<p class="tobe-v106-instruction">Wähle eine Person. Entscheide dann: <span class="past-term">was</span> oder <span class="past-term">were</span>?</p>
+<p class="tobe-v106-instruction">1. Wähle eine Person. 2. Entscheide: <span class="past-term">was</span> oder <span class="past-term">were</span>? 3. Klicke auf „Prüfen“.</p>
 <div class="tobe-v106-choice" role="group" aria-label="Person wählen">
 <button type="button" data-v106-person="I" aria-pressed="false">I</button>
 <button type="button" data-v106-person="you" aria-pressed="false">you</button>
@@ -10250,7 +10250,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
         thinking('<h4>Fehlerdetektiv zuerst.</h4><p>Prüfe, ob der Satz wirklich falsch ist. Wähle dann den Fehlertyp oder „schon richtig“ und schreibe erst danach.</p>');
       } else {
         input.disabled=false; input.focus();
-        thinking('<h4>Jetzt selbst schreiben.</h4><p>Schreibe einen ganzen englischen Satz. Einzelne Wörter oder Verbgruppen reichen hier nicht.</p>');
+        thinking('<h4>Schreibe deinen Satz.</h4><p>Schreibe den vollständigen englischen Satz auf. Danach kannst du ihn prüfen.</p>');
       }
     }
   }
@@ -10498,7 +10498,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
       root.querySelectorAll('[data-dz-repair-type]').forEach(b=>{b.classList.remove('is-selected'); b.setAttribute('aria-pressed','false');});
       if(state.repairFound==='none'){
         input.disabled=false; input.focus();
-        thinking('<h4>Jetzt abschreiben.</h4><p>Wenn du keinen Fehler findest, schreibe den Satz unverändert und sauber ab.</p>');
+        thinking('<h4>Prüfe noch einmal.</h4><p>Wenn der Satz schon richtig ist, schreibe ihn vollständig und unverändert auf.</p>');
         dzSave();
       } else {
         input.disabled=true;
@@ -12647,7 +12647,7 @@ function init(){
  root.addEventListener('click',function(event){
    const button=event.target.closest('button');
    if(!button||!root.contains(button))return;
-   if(button.hasAttribute('data-v106-person')){const value=button.getAttribute('data-v106-person');person=person===value?null:value;pick('data-v106-person',person);message('Wähle die passende Form und prüfe deine Antwort.');}
+   if(button.hasAttribute('data-v106-person')){const value=button.getAttribute('data-v106-person');person=person===value?null:value;pick('data-v106-person',person);message('Wähle jetzt was oder were. Prüfe danach.');}
    else if(button.hasAttribute('data-v106-form')){const value=button.getAttribute('data-v106-form');form=form===value?null:value;pick('data-v106-form',form);message('Prüfe deine Entscheidung.');}
    else if(button.hasAttribute('data-v106-check')){
      if(!person||!form){message('Wähle eine Person und eine Form.');return;}
