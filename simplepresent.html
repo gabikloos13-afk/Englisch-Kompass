@@ -1558,6 +1558,57 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
  .compass-mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 @media print{.sp-learning-footer{display:none!important}.sp-rules-intro,.sp-rules-card{box-shadow:none!important}}
+
+/* Darstellung: kurze Textzeilen, feste Bedeutungsfarben, verlässliche Abstände. */
+.topic-page--simple-present{
+ --sp-line-height:1.78;
+ --sp-text-gap:9px;
+ --sp-mark-person-text:#254a78;--sp-mark-person-bg:#eaf2ff;
+ --sp-mark-helper-text:#68409b;--sp-mark-helper-bg:#f1eafe;
+ --sp-mark-form-text:#216240;--sp-mark-form-bg:#eaf7ef;
+ --sp-mark-signal-text:#88541b;--sp-mark-signal-bg:#fff0cb;
+ --sp-mark-rule-text:#34566e;--sp-mark-rule-bg:#edf4f9;
+}
+.topic-page--simple-present :is(.learn-panel,.sp-ref-wrap,.connections-panel,.notes-panel){line-height:var(--sp-line-height)}
+.topic-page--simple-present :is(.entry-text,.mini-rule-sub,.mini-rule-example,.sp-rule-text,.sp-rule-note,.sp-memory-text,.sp-panel-description,.machine-intro,.machine-note,.radar-hint,.cancheck-task,.cancheck-feedback,.repair-pick-feedback,.sp-feedback-reason,.sp-ref-section-text,.sp-ref-list,.conn-text,.explain-label){line-height:var(--sp-line-height)!important}
+.topic-page--simple-present :is(.sp-rules-card,.sp-rules-intro,.sp-rule-card,.sp-memory-card,.sp-example-block,.sp-why-block,.sp-ref-card,.cancheck-block,.writecheck-intro,.writecheck-feedback) p{line-height:var(--sp-line-height)!important}
+.topic-page--simple-present .sp-line-group{display:grid;gap:var(--sp-text-gap);margin-top:0;margin-bottom:12px}
+.topic-page--simple-present .sp-text-line{display:block;line-height:var(--sp-line-height);min-width:0}
+.topic-page--simple-present .sp-line-group>.sp-text-line+.sp-text-line{padding-top:9px;border-top:1px solid rgba(148,163,184,.24)}
+.topic-page--simple-present .sp-loose-line{display:block;line-height:var(--sp-line-height);margin:0 0 9px}
+.topic-page--simple-present .sp-loose-line:last-child{margin-bottom:0}
+.topic-page--simple-present .sp-mark{display:inline;font-weight:400;line-height:inherit;padding:1px 3px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.topic-page--simple-present .sp-mark-person{color:var(--sp-mark-person-text);background:var(--sp-mark-person-bg)}
+.topic-page--simple-present .sp-mark-helper{color:var(--sp-mark-helper-text);background:var(--sp-mark-helper-bg)}
+.topic-page--simple-present .sp-mark-form{color:var(--sp-mark-form-text);background:var(--sp-mark-form-bg)}
+.topic-page--simple-present .sp-mark-signal{color:var(--sp-mark-signal-text);background:var(--sp-mark-signal-bg)}
+.topic-page--simple-present .sp-mark-rule{color:var(--sp-mark-rule-text);background:var(--sp-mark-rule-bg)}
+.topic-page--simple-present .sp-ref-chip{color:var(--sp-mark-signal-text)!important;background:var(--sp-mark-signal-bg)!important;border-color:#ead29a!important;line-height:1.6;padding:5px 11px}
+.topic-page--simple-present :is(.sp-example-block,.sp-wrong-block){line-height:var(--sp-line-height);padding:13px 14px}
+.topic-page--simple-present :is(.sp-example-block,.sp-why-block) p+p{margin-top:10px!important}
+.topic-page--simple-present :is(.sp-card-label,.sp-example-label,.sp-small-label){margin-bottom:8px!important;line-height:1.5!important}
+.topic-page--simple-present :is(.sp-rules-card,.sp-rules-intro) h3{margin-bottom:14px}
+.topic-page--simple-present .sp-feedback-reason{line-height:var(--sp-line-height);padding-top:12px;margin-top:12px}
+.topic-page--simple-present .sp-feedback-answer{line-height:var(--sp-line-height)}
+.topic-page--simple-present :is(.sp-pronoun-group,.sp-pron-grid>div,.sp-explain-pair>div){line-height:var(--sp-line-height)}
+.topic-page--simple-present .sp-ref-list{display:grid;gap:12px}
+.topic-page--simple-present :is(.sp-ref-table-wrap td,.sp-ref-table-wrap th){line-height:1.7;padding-top:11px;padding-bottom:11px}
+.topic-page--simple-present :is(.sp-ref-example-en,.sp-ref-example-de,.srule-ex){line-height:var(--sp-line-height)}
+.topic-page--simple-present :is(.cancheck-sentence,.repair-wrong,.sp-solution-sentence,.writecheck-prompt){line-height:var(--sp-line-height)!important}
+.topic-page--simple-present :is(.sp-reveal,.sp-rules-reveal) summary{line-height:1.65}
+.topic-page--simple-present :is(.sp-pattern,.sp-sentence-block,.sp-compare-line){line-height:var(--sp-line-height)}
+@media(max-width:700px){
+ .topic-page--simple-present{--sp-text-gap:10px}
+ .topic-page--simple-present .sp-mark{padding:1px 2px}
+ .topic-page--simple-present .sp-line-group>.sp-text-line+.sp-text-line{padding-top:10px}
+}
+@media print{
+ .topic-page--simple-present .sp-mark{background:transparent!important;color:inherit!important;border-bottom:1px solid #bbb;border-radius:0;padding:0}
+ .topic-page--simple-present .sp-line-group{gap:5px}
+ .topic-page--simple-present .sp-line-group>.sp-text-line+.sp-text-line{padding-top:5px}
+}
+
+.topic-page--simple-present .sp-chip-verb .sp-inline-em{color:inherit;background:#d3ecd9;border-radius:3px;padding:0 1px}
 </style>
 </head>
 <body>
@@ -1619,79 +1670,79 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="sp-progress"></div></div>
 <!-- Schritt 1 -->
 <div class="learn-panel is-active" data-panel="sp-learn" data-val="entry" id="sp-learn-entry">
-<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">1</span><div><h2 class="sp-panel-title">Wozu brauche ich Simple Present?</h2><p class="sp-panel-description">Prüfe zuerst die Bedeutung: regelmäßig, allgemein, eine Vorliebe oder ein Zustand?</p></div></div>
+<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">1</span><div><h2 class="sp-panel-title">Wozu brauche ich <span class="sp-mark sp-mark-rule">Simple Present</span>?</h2><p class="sp-panel-description">Prüfe zuerst die Bedeutung: <span class="sp-mark sp-mark-rule">regelmäßig</span>, <span class="sp-mark sp-mark-rule">allgemein</span>, eine <span class="sp-mark sp-mark-rule">Vorliebe</span> oder ein <span class="sp-mark sp-mark-rule">Zustand</span>?</p></div></div>
 <div class="entry-card sp-intro-card">
 <div class="entry-visual" aria-hidden="true">🔁</div>
 <div><h3 class="entry-hook">Was machst du jeden Tag?</h3>
-<p class="entry-text">Simple Present benutzt du für Gewohnheiten, allgemeine Fakten, Vorlieben und Zustände.</p>
-<p class="entry-text sp-intro-hint">Immer, oft, jeden Tag: Es geht darum, was regelmäßig passiert oder allgemein gilt.</p></div>
+<p class="entry-text"><span class="sp-mark sp-mark-rule">Simple Present</span> benutzt du für <span class="sp-mark sp-mark-rule">Gewohnheiten</span>, allgemeine Fakten, <span class="sp-mark sp-mark-rule">Vorlieben</span> und <span class="sp-mark sp-mark-rule">Zustände</span>.</p>
+<p class="entry-text sp-intro-hint">Immer, oft, jeden Tag: Es geht darum, was <span class="sp-mark sp-mark-rule">regelmäßig</span> passiert oder <span class="sp-mark sp-mark-rule">allgemein</span> gilt.</p></div>
 </div>
 <div class="entry-use-grid">
 <div class="mini-rule entry-use-card">
-<span class="mini-rule-main"><span aria-hidden="true">📅</span> Gewohnheiten</span>
-<span class="sp-card-label">Regel</span><span class="mini-rule-sub">Was jemand regelmäßig tut.</span>
-<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p>She plays tennis <em>every day.</em></p><p>I walk to school.</p></div>
+<span class="mini-rule-main"><span aria-hidden="true">📅</span> <span class="sp-mark sp-mark-rule">Gewohnheiten</span></span>
+<span class="sp-card-label">Regel</span><span class="mini-rule-sub">Was jemand <span class="sp-mark sp-mark-rule">regelmäßig</span> tut.</span>
+<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> tennis <em><span class="sp-mark sp-mark-signal">every day</span>.</em></p><p><span class="sp-mark sp-mark-person">I</span> walk to school.</p></div>
 </div>
 <div class="mini-rule entry-use-card">
 <span class="mini-rule-main"><span aria-hidden="true">💡</span> Fakten</span>
-<span class="sp-card-label">Regel</span><span class="mini-rule-sub">Was allgemein oder immer wahr ist.</span>
-<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p>The sun <em>rises</em> in the east.</p><p>Dogs <em>like</em> bones.</p></div>
+<span class="sp-card-label">Regel</span><span class="mini-rule-sub">Was <span class="sp-mark sp-mark-rule">allgemein</span> oder immer wahr ist.</span>
+<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p>The sun <em>rises</em> in the east.</p><p>Dogs <em><span class="sp-mark sp-mark-form">like</span></em> bones.</p></div>
 </div>
 <div class="mini-rule entry-use-card">
-<span class="mini-rule-main"><span aria-hidden="true">❤️</span> Vorlieben</span>
+<span class="mini-rule-main"><span aria-hidden="true">❤️</span> <span class="sp-mark sp-mark-rule">Vorlieben</span></span>
 <span class="sp-card-label">Regel</span><span class="mini-rule-sub">Was man mag oder nicht mag.</span>
-<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p>I <em>love</em> pizza.</p><p>She <em>doesn't like</em> fish.</p></div>
+<div class="mini-rule-example sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">I</span> <em><span class="sp-mark sp-mark-form">love</span></em> pizza.</p><p><span class="sp-mark sp-mark-person">She</span> <em><span class="sp-mark sp-mark-helper">doesn't</span> <span class="sp-mark sp-mark-form">like</span></em> fish.</p></div>
 </div>
 </div>
-<div class="sp-core-memory sp-memory-card" data-memory-role="verstehen"><p class="sp-card-label">Merksatz</p><p class="sp-memory-text">Regelmäßig, allgemein, Vorliebe oder Zustand → Simple Present.</p><div class="sp-why-block"><span class="sp-example-label">Mit „gerade jetzt“ vergleichen</span><p>Eine Handlung, die gerade abläuft: oft Present Progressive. Ein Zustand wie <em>like</em> oder <em>know</em>: normalerweise Simple Present.</p></div></div>
+<div class="sp-core-memory sp-memory-card" data-memory-role="verstehen"><p class="sp-card-label">Merksatz</p><p class="sp-memory-text"><span class="sp-mark sp-mark-rule">Regelmäßig</span>, <span class="sp-mark sp-mark-rule">allgemein</span>, <span class="sp-mark sp-mark-rule">Vorliebe</span> oder <span class="sp-mark sp-mark-rule">Zustand</span> → <span class="sp-mark sp-mark-rule">Simple Present</span>.</p><div class="sp-why-block"><span class="sp-example-label">Mit „gerade jetzt“ vergleichen</span><p class="sp-line-group"><span class="sp-text-line">Eine Handlung, die gerade abläuft: oft <span class="sp-mark sp-mark-rule">Present Progressive</span>. </span><span class="sp-text-line">Ein <span class="sp-mark sp-mark-rule">Zustand</span> wie <em><span class="sp-mark sp-mark-form">like</span></em> oder <em><span class="sp-mark sp-mark-form">know</span></em>: normalerweise <span class="sp-mark sp-mark-rule">Simple Present</span>.</span></p></div></div>
 <div class="sp-signal-note">
-<p class="sp-card-label">Erkennungshilfe</p><h3 class="sp-signal-title">Signalwörter helfen beim Erkennen.</h3>
+<p class="sp-card-label">Erkennungshilfe</p><h3 class="sp-signal-title"><span class="sp-mark sp-mark-signal">Signalwörter</span> helfen beim Erkennen.</h3>
 <div class="sp-ref-chip-row sp-signal-words"><span class="sp-ref-chip">every day</span><span class="sp-ref-chip">often</span><span class="sp-ref-chip">usually</span><span class="sp-ref-chip">on Mondays</span></div>
-<p class="sp-rule-note">Signalwörter sind Hinweise. Entscheide immer auch nach der Bedeutung.</p></div>
-<details class="sp-reveal sp-think-check"><summary>Mini-Denkfrage: Passt „I walk to school every day“?</summary><div class="sp-reveal-body"><span class="sp-example-label">Auflösung</span><p>Ja, Simple Present passt.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Every day zeigt eine Gewohnheit: Es passiert regelmäßig.</p></div></div></details>
+<p class="sp-rule-note sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-signal">Signalwörter</span> sind Hinweise. </span><span class="sp-text-line">Entscheide immer auch nach der Bedeutung.</span></p></div>
+<details class="sp-reveal sp-think-check"><summary>Mini-Denkfrage: Passt „I walk to school every day“?</summary><div class="sp-reveal-body"><span class="sp-example-label">Auflösung</span><p>Ja, <span class="sp-mark sp-mark-rule">Simple Present</span> passt.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p><span class="sp-mark sp-mark-signal">Every day</span> zeigt eine <span class="sp-mark sp-mark-rule">Gewohnheit</span>: Es passiert <span class="sp-mark sp-mark-rule">regelmäßig</span>.</p></div></div></details>
 <div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="rules" type="button">Weiter: Aussagen bilden →</button></div></div>
 
 <!-- Schritt 2: Aussagen erst verstehen -->
 <div class="learn-panel" data-panel="sp-learn" data-val="rules" id="sp-learn-rules">
-<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">2</span><div><h2 class="sp-panel-title">Aussagen bilden</h2><p class="sp-panel-description">Finde die Person. Wähle dann die passende Verbform.</p></div></div><section class="sp-rules-intro" aria-labelledby="sp-rules-title"><h3 id="sp-rules-title">Person und Verb verbinden</h3><p>Im Simple Present steht zuerst die Person, dann das Verb. Entscheidend ist: <span class="sp-inline-em">Wer macht etwas?</span></p><div class="sp-color-steps"><div class="sp-color-step"><h4>1. Finde die Person</h4><div class="sp-pronoun-groups"><div class="sp-pronoun-group"><h4>I / you / we / they</h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-person">you</span><span class="sp-chip sp-chip-person">we</span><span class="sp-chip sp-chip-person">they</span></div><p class="sp-mini-note">Bei diesen Personen bleibt das Verb in der Grundform.</p></div><div class="sp-pronoun-group"><h4>he / she / it</h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">he</span><span class="sp-chip sp-chip-person">she</span><span class="sp-chip sp-chip-person">it</span></div><p class="sp-mini-note">Bei diesen Personen bekommt das Verb in einer positiven Aussage meistens ein <span class="sp-inline-em">-s</span>.</p></div></div></div><div class="sp-color-step"><h4>2. Wähle die richtige Verbform</h4><div class="sp-compare-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-verb">play</span><span class="sp-chip sp-chip-rest">football.</span></div><div class="sp-compare-line"><span class="sp-chip sp-chip-person">She</span><span class="sp-chip sp-chip-verb">play<span class="sp-inline-em">s</span></span><span class="sp-chip sp-chip-rest">football.</span></div><p class="sp-mini-note">Hier kannst du die Form direkt vergleichen: <em>I play</em>, aber <em>She plays</em>.</p></div><div class="sp-color-step"><h4>3. Merksatz</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-rule">Person</span><span class="sp-chip sp-chip-rule">Verb</span><span class="sp-chip sp-chip-rule">Rest</span></div><p class="sp-mini-note">Eine positive Aussage baust du so: <span class="sp-inline-em">Person → Verb → Rest</span>.</p></div></div></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-statement"><h3 id="sp-rules-statement">Auch Namen zählen wie he, she oder it</h3><p>Ersetze einen Namen gedanklich durch ein Pronomen. So findest du die richtige Verbform.</p><div class="sp-explain-pair"><div><span class="sp-small-label">Tom → he</span><p class="sp-sentence-block"><span>Tom</span><span class="sp-word-verb">plays.</span></p></div><div><span class="sp-small-label">My dog → it</span><p class="sp-sentence-block"><span>My dog</span><span class="sp-word-verb">sleeps.</span></p></div></div><p>Mehrere Personen oder Dinge gehören zu <em>they</em>: <em>Tom and Anna play.</em></p></section>
+<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">2</span><div><h2 class="sp-panel-title">Aussagen bilden</h2><p class="sp-panel-description sp-line-group"><span class="sp-text-line">Finde die <span class="sp-mark sp-mark-person">Person</span>. </span><span class="sp-text-line">Wähle dann die passende Verbform.</span></p></div></div><section class="sp-rules-intro" aria-labelledby="sp-rules-title"><h3 id="sp-rules-title"><span class="sp-mark sp-mark-person">Person</span> und <span class="sp-mark sp-mark-form">Verb</span> verbinden</h3><p class="sp-line-group"><span class="sp-text-line">Im <span class="sp-mark sp-mark-rule">Simple Present</span> steht zuerst die <span class="sp-mark sp-mark-person">Person</span>, dann das <span class="sp-mark sp-mark-form">Verb</span>. </span><span class="sp-text-line">Entscheidend ist: <span class="sp-inline-em">Wer macht etwas?</span></span></p><div class="sp-color-steps"><div class="sp-color-step"><h4>1. Finde die <span class="sp-mark sp-mark-person">Person</span></h4><div class="sp-pronoun-groups"><div class="sp-pronoun-group"><h4><span class="sp-mark sp-mark-person">I</span> / <span class="sp-mark sp-mark-person">you</span> / <span class="sp-mark sp-mark-person">we</span> / <span class="sp-mark sp-mark-person">they</span></h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-person">you</span><span class="sp-chip sp-chip-person">we</span><span class="sp-chip sp-chip-person">they</span></div><p class="sp-mini-note">Bei diesen Personen bleibt das <span class="sp-mark sp-mark-form">Verb</span> in der <span class="sp-mark sp-mark-form">Grundform</span>.</p></div><div class="sp-pronoun-group"><h4><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span></h4><div class="sp-pronoun-line"><span class="sp-chip sp-chip-person">he</span><span class="sp-chip sp-chip-person">she</span><span class="sp-chip sp-chip-person">it</span></div><p class="sp-mini-note">Bei diesen Personen bekommt das <span class="sp-mark sp-mark-form">Verb</span> in einer positiven <span class="sp-mark sp-mark-rule">Aussage</span> meistens ein <span class="sp-inline-em"><span class="sp-mark sp-mark-form">-s</span></span>.</p></div></div></div><div class="sp-color-step"><h4>2. Wähle die richtige Verbform</h4><div class="sp-compare-line"><span class="sp-chip sp-chip-person">I</span><span class="sp-chip sp-chip-verb">play</span><span class="sp-chip sp-chip-rest">football.</span></div><div class="sp-compare-line"><span class="sp-chip sp-chip-person">She</span><span class="sp-chip sp-chip-verb">play<span class="sp-inline-em">s</span></span><span class="sp-chip sp-chip-rest">football.</span></div><p class="sp-mini-note">Hier kannst du die Form direkt vergleichen: <em><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">play</span></em>, aber <em><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span></em>.</p></div><div class="sp-color-step"><h4>3. Merksatz</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-rule">Person</span><span class="sp-chip sp-chip-rule">Verb</span><span class="sp-chip sp-chip-rule">Rest</span></div><p class="sp-mini-note">Eine positive <span class="sp-mark sp-mark-rule">Aussage</span> baust du so: <span class="sp-inline-em"><span class="sp-mark sp-mark-person">Person</span> → <span class="sp-mark sp-mark-form">Verb</span> → Rest</span>.</p></div></div></section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-statement"><h3 id="sp-rules-statement">Auch Namen zählen wie <span class="sp-mark sp-mark-person">he</span>, <span class="sp-mark sp-mark-person">she</span> oder <span class="sp-mark sp-mark-person">it</span></h3><p class="sp-line-group"><span class="sp-text-line">Ersetze einen Namen gedanklich durch ein <span class="sp-mark sp-mark-person">Pronomen</span>. </span><span class="sp-text-line">So findest du die richtige Verbform.</span></p><div class="sp-explain-pair"><div><span class="sp-small-label">Tom → he</span><p class="sp-sentence-block"><span><span class="sp-mark sp-mark-person">Tom</span></span><span class="sp-word-verb"><span class="sp-mark sp-mark-form">plays</span>.</span></p></div><div><span class="sp-small-label">My dog → it</span><p class="sp-sentence-block"><span>My dog</span><span class="sp-word-verb"><span class="sp-mark sp-mark-form">sleeps</span>.</span></p></div></div><p>Mehrere Personen oder Dinge gehören zu <em><span class="sp-mark sp-mark-person">they</span></em>: <em><span class="sp-mark sp-mark-person">Tom and Anna</span> <span class="sp-mark sp-mark-form">play</span>.</em></p></section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-s-think"><h3 id="sp-rules-s-think">Jetzt selbst entscheiden</h3>
-<p><span class="sp-inline-em">Aufgabe:</span> Anna (read / reads) books every day.</p>
-<p>Überlege zuerst: Für welches Pronomen könnte <em>Anna</em> stehen? Welche Regel passt dann?</p>
-<details class="sp-rules-reveal"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtiger Satz</p><p class="sp-sentence-block"><span>Anna</span><span class="sp-word-verb">reads</span><span>books every day.</span></p><p><span class="sp-inline-em">Schritt 1:</span> Anna ist eine einzelne Person: <em>she</em>.</p><p><span class="sp-inline-em">Schritt 2:</span> Es ist eine positive Aussage im Simple Present.</p><p><span class="sp-inline-em">Schritt 3:</span> Bei <em>she</em> bekommt <em>read</em> ein <span class="sp-inline-em">-s</span> → <em>reads</em>.</p></div></details>
+<p><span class="sp-inline-em">Aufgabe:</span> <span class="sp-mark sp-mark-person">Anna</span> (<span class="sp-mark sp-mark-form">read</span> / <span class="sp-mark sp-mark-form">reads</span>) books <span class="sp-mark sp-mark-signal">every day</span>.</p>
+<p class="sp-line-group"><span class="sp-text-line">Überlege zuerst: Für welches <span class="sp-mark sp-mark-person">Pronomen</span> könnte <em><span class="sp-mark sp-mark-person">Anna</span></em> stehen? </span><span class="sp-text-line">Welche Regel passt dann?</span></p>
+<details class="sp-rules-reveal"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-answer"><p class="sp-small-label">Richtiger Satz</p><p class="sp-sentence-block"><span><span class="sp-mark sp-mark-person">Anna</span></span><span class="sp-word-verb"><span class="sp-mark sp-mark-form">reads</span></span><span>books <span class="sp-mark sp-mark-signal">every day</span>.</span></p><p><span class="sp-inline-em">Schritt 1:</span> <span class="sp-mark sp-mark-person">Anna</span> ist eine einzelne <span class="sp-mark sp-mark-person">Person</span>: <em><span class="sp-mark sp-mark-person">she</span></em>.</p><p><span class="sp-inline-em">Schritt 2:</span> Es ist eine positive <span class="sp-mark sp-mark-rule">Aussage</span> im <span class="sp-mark sp-mark-rule">Simple Present</span>.</p><p><span class="sp-inline-em">Schritt 3:</span> Bei <em><span class="sp-mark sp-mark-person">she</span></em> bekommt <em><span class="sp-mark sp-mark-form">read</span></em> ein <span class="sp-inline-em"><span class="sp-mark sp-mark-form">-s</span></span> → <em><span class="sp-mark sp-mark-form">reads</span></em>.</p></div></details>
 </section>
-<div class="sp-rule-card"><p class="sp-card-label">Auch laut lesen</p><p>Die Endung klingt nicht immer gleich. Die drei Klänge /s/, /z/ und /ɪz/ findest du unter <a href="#sp-ref-aussprache" data-sp-reference="sp-ref-aussprache">Nachschlagen: Aussprache</a>.</p></div><div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="does" type="button">Weiter: do / does verstehen →</button></div></div>
+<div class="sp-rule-card"><p class="sp-card-label">Auch laut lesen</p><p class="sp-line-group"><span class="sp-text-line">Die Endung klingt nicht immer gleich. </span><span class="sp-text-line">Die drei Klänge /s/, /z/ und /ɪz/ findest du unter <a href="#sp-ref-aussprache" data-sp-reference="sp-ref-aussprache">Nachschlagen: Aussprache</a>.</span></p></div><div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="does" type="button">Weiter: do / does verstehen →</button></div></div>
 <!-- Schritt 3: do / does bei Fragen und Verneinungen -->
-<div class="learn-panel" data-panel="sp-learn" data-val="does" id="sp-learn-does"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">3</span><div><h2 class="sp-panel-title">do / does verstehen</h2><p class="sp-panel-description">Prüfe die Person und die Satzart. Danach bleibt das Hauptverb in der Grundform.</p></div></div>
+<div class="learn-panel" data-panel="sp-learn" data-val="does" id="sp-learn-does"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">3</span><div><h2 class="sp-panel-title"><span class="sp-mark sp-mark-helper">do</span> / <span class="sp-mark sp-mark-helper">does</span> verstehen</h2><p class="sp-panel-description sp-line-group"><span class="sp-text-line">Prüfe die <span class="sp-mark sp-mark-person">Person</span> und die Satzart. </span><span class="sp-text-line">Danach bleibt das Hauptverb in der <span class="sp-mark sp-mark-form">Grundform</span>.</span></p></div></div>
 <section class="sp-rules-intro" aria-labelledby="sp-does-title">
 <h3 id="sp-does-title">Wann brauche ich das Hilfsverb?</h3>
-<p>Bei Ja/Nein-Fragen, Objektfragen und Verneinungen mit gewöhnlichen Verben hilft do oder does.</p>
-<div class="sp-color-step"><h4>1. Person prüfen</h4><div class="sp-pronoun-groups">
-<div class="sp-pronoun-group"><h4>I / you / we / they</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-helper">do / don't</span></div><p>Auch mehrere Personen oder Dinge: the children → they.</p></div>
-<div class="sp-pronoun-group"><h4>he / she / it</h4><div class="sp-chip-row"><span class="sp-chip sp-chip-helper">does / doesn't</span></div><p>Auch einzelne Namen oder Dinge: Tom → he.</p></div>
+<p>Bei Ja/Nein-Fragen, Objektfragen und Verneinungen mit gewöhnlichen Verben hilft <span class="sp-mark sp-mark-helper">do</span> oder <span class="sp-mark sp-mark-helper">does</span>.</p>
+<div class="sp-color-step"><h4>1. <span class="sp-mark sp-mark-person">Person</span> prüfen</h4><div class="sp-pronoun-groups">
+<div class="sp-pronoun-group"><h4><span class="sp-mark sp-mark-person">I</span> / <span class="sp-mark sp-mark-person">you</span> / <span class="sp-mark sp-mark-person">we</span> / <span class="sp-mark sp-mark-person">they</span></h4><div class="sp-chip-row"><span class="sp-chip sp-chip-helper">do / don't</span></div><p>Auch mehrere Personen oder Dinge: <span class="sp-mark sp-mark-person">the children</span> → <span class="sp-mark sp-mark-person">they</span>.</p></div>
+<div class="sp-pronoun-group"><h4><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span></h4><div class="sp-chip-row"><span class="sp-chip sp-chip-helper">does / doesn't</span></div><p>Auch einzelne Namen oder Dinge: <span class="sp-mark sp-mark-person">Tom</span> → <span class="sp-mark sp-mark-person">he</span>.</p></div>
 </div></div>
 </section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-negative"><h3 id="sp-rules-negative">2. Verneinen</h3>
-<p class="sp-card-label">Satzmuster</p><div class="sp-pattern">Person → don't / doesn't → Grundform → Rest.</div>
-<div class="sp-explain-pair"><div><span class="sp-card-label">I / you / we / they</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>We <span class="sp-aux-em">don't</span> <em>like</em> spiders.</p></div></div><div><span class="sp-card-label">he / she / it</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She <span class="sp-aux-em">doesn't</span> <em>like</em> spiders.</p></div></div></div>
-<div class="sp-why-block"><span class="sp-example-label">Langform und Kurzform</span><p>do not → don't · does not → doesn't</p><p>Beide verneinen hier die Handlung oder den Zustand.</p></div>
+<p class="sp-card-label">Satzmuster</p><div class="sp-pattern"><span class="sp-mark sp-mark-person">Person</span> → <span class="sp-mark sp-mark-helper">don't</span> / <span class="sp-mark sp-mark-helper">doesn't</span> → <span class="sp-mark sp-mark-form">Grundform</span> → Rest.</div>
+<div class="sp-explain-pair"><div><span class="sp-card-label">I / you / we / they</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">We</span> <span class="sp-aux-em">don't</span> <em><span class="sp-mark sp-mark-form">like</span></em> spiders.</p></div></div><div><span class="sp-card-label">he / she / it</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-aux-em">doesn't</span> <em><span class="sp-mark sp-mark-form">like</span></em> spiders.</p></div></div></div>
+<div class="sp-why-block"><span class="sp-example-label">Langform und Kurzform</span><p><span class="sp-mark sp-mark-helper">do not</span> → <span class="sp-mark sp-mark-helper">don't</span> · <span class="sp-mark sp-mark-helper">does not</span> → <span class="sp-mark sp-mark-helper">doesn't</span></p><p>Beide verneinen hier die Handlung oder den <span class="sp-mark sp-mark-rule">Zustand</span>.</p></div>
 </section>
 <section class="sp-rules-card" aria-labelledby="sp-rules-question"><h3 id="sp-rules-question">3. Eine Ja/Nein-Frage bilden</h3>
-<p class="sp-card-label">Satzmuster</p><div class="sp-pattern">Do / Does → Person → Grundform → Rest?</div>
-<div class="sp-explain-pair"><div><span class="sp-card-label">I / you / we / they</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-aux-em">Do</span> they <em>play</em> football?</p></div></div><div><span class="sp-card-label">he / she / it</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-aux-em">Does</span> she <em>play</em> football?</p></div></div></div>
-<div class="sp-memory-card" aria-labelledby="sp-rules-key"><h4 class="sp-form-memory-title" id="sp-rules-key">Does übernimmt das -s.</h4><p>Nach do, does, don't und doesn't steht das Hauptverb in der Grundform.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Does und doesn’t zeigen schon he / she / it. Deshalb bleibt play ohne zusätzliches -s.</p></div></div>
-<div class="sp-rule-card sp-inline-reference"><p class="sp-card-label">Mit Fragewort</p><p>Fragewort → do / does → Person → Grundform → Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where does Tom live?</p></div><p class="sp-rule-note">Ganze Fragewort-Fragen übst du bei <a href="questions.html#lernen">Questions</a>. Wenn who selbst die gesuchte Person ist, gilt eine andere Regel: <a href="subjectobjectquestions.html">Subject &amp; Object Questions</a>.</p></div>
+<p class="sp-card-label">Satzmuster</p><div class="sp-pattern"><span class="sp-mark sp-mark-helper">Do</span> / <span class="sp-mark sp-mark-helper">Does</span> → <span class="sp-mark sp-mark-person">Person</span> → <span class="sp-mark sp-mark-form">Grundform</span> → Rest?</div>
+<div class="sp-explain-pair"><div><span class="sp-card-label">I / you / we / they</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-aux-em">Do</span> <span class="sp-mark sp-mark-person">they</span> <em><span class="sp-mark sp-mark-form">play</span></em> football?</p></div></div><div><span class="sp-card-label">he / she / it</span><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-aux-em">Does</span> <span class="sp-mark sp-mark-person">she</span> <em><span class="sp-mark sp-mark-form">play</span></em> football?</p></div></div></div>
+<div class="sp-memory-card" aria-labelledby="sp-rules-key"><h4 class="sp-form-memory-title" id="sp-rules-key"><span class="sp-mark sp-mark-helper">Does</span> übernimmt das <span class="sp-mark sp-mark-form">-s</span>.</h4><p>Nach <span class="sp-mark sp-mark-helper">do</span>, <span class="sp-mark sp-mark-helper">does</span>, <span class="sp-mark sp-mark-helper">don't</span> und <span class="sp-mark sp-mark-helper">doesn't</span> steht das Hauptverb in der <span class="sp-mark sp-mark-form">Grundform</span>.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-helper">Does</span> und <span class="sp-mark sp-mark-helper">doesn’t</span> zeigen schon <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>. </span><span class="sp-text-line">Deshalb bleibt <span class="sp-mark sp-mark-form">play</span> ohne zusätzliches <span class="sp-mark sp-mark-form">-s</span>.</span></p></div></div>
+<div class="sp-rule-card sp-inline-reference"><p class="sp-card-label">Mit Fragewort</p><p><span class="sp-mark sp-mark-rule">Fragewort</span> → <span class="sp-mark sp-mark-helper">do</span> / <span class="sp-mark sp-mark-helper">does</span> → <span class="sp-mark sp-mark-person">Person</span> → <span class="sp-mark sp-mark-form">Grundform</span> → Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where <span class="sp-mark sp-mark-helper">does</span> <span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">live</span>?</p></div><p class="sp-rule-note sp-line-group"><span class="sp-text-line">Ganze <span class="sp-mark sp-mark-rule">Fragewort</span>-Fragen übst du bei <a href="questions.html#lernen">Questions</a>. </span><span class="sp-text-line">Wenn who selbst die gesuchte <span class="sp-mark sp-mark-person">Person</span> ist, gilt eine andere Regel: <a href="subjectobjectquestions.html">Subject &amp; Object Questions</a>.</span></p></div>
 </section>
-<section class="sp-rules-card" aria-labelledby="sp-short-title"><h3 id="sp-short-title">4. Kurz antworten</h3><p>In der Kurzantwort wiederholst du das Hilfsverb. Das Hauptverb lässt du weg.</p>
-<div class="sp-explain-pair"><div><p class="sp-pattern">Does she play?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, she does.<br>No, she doesn’t.</p></div></div><div><p class="sp-pattern">Do they play?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, they do.<br>No, they don’t.</p></div></div></div>
-<p class="sp-rule-note">Bei einer Frage mit you antwortest du für dich mit I: Do you like dogs? → Yes, I do.</p></section>
-<section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Jetzt selbst entscheiden</h3><p>Forme Tom likes dogs. in eine Frage um.</p><p class="sp-rule-note">Welche Person? Welches Hilfsverb? Was wird aus likes?</p>
-<details class="sp-reveal" id="sp-does-think"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-body"><div class="sp-example-block"><span class="sp-example-label">Richtige Frage</span><p>Does Tom like dogs?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Tom steht für he. Deshalb beginnt die Frage mit Does. Danach bleibt like in der Grundform.</p></div></div></details></section>
-<div class="sp-rule-card"><p class="sp-card-label">Grenze: to be</p><p>am, is und are bilden ihre Fragen selbst: Is she happy? Hier verwendest du kein do oder does.</p><p class="sp-rule-note">Mehr dazu bei <a href="tobe.html#lernen">to be</a>.</p></div>
+<section class="sp-rules-card" aria-labelledby="sp-short-title"><h3 id="sp-short-title">4. Kurz antworten</h3><p class="sp-line-group"><span class="sp-text-line">In der <span class="sp-mark sp-mark-rule">Kurzantwort</span> wiederholst du das Hilfsverb. </span><span class="sp-text-line">Das Hauptverb lässt du weg.</span></p>
+<div class="sp-explain-pair"><div><p class="sp-pattern"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">does</span>.<br>No, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">doesn’t</span>.</p></div></div><div><p class="sp-pattern"><span class="sp-mark sp-mark-helper">Do</span> <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-form">play</span>?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">do</span>.<br>No, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">don’t</span>.</p></div></div></div>
+<p class="sp-rule-note">Bei einer Frage mit <span class="sp-mark sp-mark-person">you</span> antwortest du für dich mit <span class="sp-mark sp-mark-person">I</span>: <span class="sp-mark sp-mark-helper">Do</span> <span class="sp-mark sp-mark-person">you</span> <span class="sp-mark sp-mark-form">like</span> dogs? → Yes, <span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-helper">do</span>.</p></section>
+<section class="sp-rules-card" aria-labelledby="sp-rules-think"><h3 id="sp-rules-think">Jetzt selbst entscheiden</h3><p>Forme <span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">likes</span> dogs. in eine Frage um.</p><p class="sp-rule-note sp-line-group"><span class="sp-text-line">Welche <span class="sp-mark sp-mark-person">Person</span>? </span><span class="sp-text-line">Welches Hilfsverb? </span><span class="sp-text-line">Was wird aus <span class="sp-mark sp-mark-form">likes</span>?</span></p>
+<details class="sp-reveal" id="sp-does-think"><summary>Antwort mit Erklärung aufdecken</summary><div class="sp-reveal-body"><div class="sp-example-block"><span class="sp-example-label">Richtige Frage</span><p><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">like</span> dogs?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-person">Tom</span> steht für <span class="sp-mark sp-mark-person">he</span>. </span><span class="sp-text-line">Deshalb beginnt die Frage mit <span class="sp-mark sp-mark-helper">Does</span>. </span><span class="sp-text-line">Danach bleibt <span class="sp-mark sp-mark-form">like</span> in der <span class="sp-mark sp-mark-form">Grundform</span>.</span></p></div></div></details></section>
+<div class="sp-rule-card"><p class="sp-card-label">Grenze: to be</p><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-helper">am, is und are</span> bilden ihre Fragen selbst: <span class="sp-mark sp-mark-helper">Is</span> <span class="sp-mark sp-mark-person">she</span> happy? </span><span class="sp-text-line">Hier verwendest du kein <span class="sp-mark sp-mark-helper">do</span> oder <span class="sp-mark sp-mark-helper">does</span>.</span></p><p class="sp-rule-note">Mehr dazu bei <a href="tobe.html#lernen"><span class="sp-mark sp-mark-rule">to be</span></a>.</p></div>
 <div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="machine" type="button">Weiter: Verbform-Entscheider →</button></div></div>
 <!-- Schritt 4: Verbform-Entscheider -->
 <div class="learn-panel" data-panel="sp-learn" data-val="machine" id="sp-learn-machine">
-<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">4</span><div><h2 class="sp-panel-title">Verbform-Entscheider</h2><p class="sp-panel-description">Jetzt wendest du die Regeln selbst an: Bedeutung, Satzart, Person, Verb.</p></div></div>
+<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">4</span><div><h2 class="sp-panel-title">Verbform-Entscheider</h2><p class="sp-panel-description">Jetzt wendest du die Regeln selbst an: Bedeutung, Satzart, <span class="sp-mark sp-mark-person">Person</span>, <span class="sp-mark sp-mark-form">Verb</span>.</p></div></div>
 <div aria-labelledby="sp-radar-title" class="alltags-radar-card sp-decision-stage">
 <h3 class="alltags-radar-title sp-numbered-title" id="sp-radar-title"><span class="sp-section-number" aria-hidden="true">1</span>Bedeutung prüfen</h3>
 <p class="alltags-radar-intro">Wähle zuerst: Was zeigt der Satz?</p>
@@ -1704,12 +1755,12 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <div aria-live="polite" class="alltags-radar-output is-empty" id="sp-radar-output">
 <p class="radar-decision" id="sp-radar-decision">Wähle erst die Bedeutung.</p>
 <p class="radar-example" id="sp-radar-example"></p>
-<p class="radar-hint" id="sp-radar-hint">Gewohnheit, Fakt oder Vorliebe: Simple Present.</p>
+<p class="radar-hint" id="sp-radar-hint"><span class="sp-mark sp-mark-rule">Gewohnheit</span>, Fakt oder <span class="sp-mark sp-mark-rule">Vorliebe</span>: <span class="sp-mark sp-mark-rule">Simple Present</span>.</p>
 </div>
 </div>
 <div aria-labelledby="sp-machine-title" class="sp-machine-card">
 <h3 class="machine-question sp-numbered-title" id="sp-machine-title"><span class="sp-section-number" aria-hidden="true">2</span>Satz bauen</h3>
-<p class="machine-intro">Wähle Satzart, Person und Verb. Danach baust du den Satz.</p>
+<p class="machine-intro sp-line-group"><span class="sp-text-line">Wähle Satzart, <span class="sp-mark sp-mark-person">Person</span> und <span class="sp-mark sp-mark-form">Verb</span>. </span><span class="sp-text-line">Danach baust du den Satz.</span></p>
 <div class="sp-decision-grid">
 <div class="sp-decision-stage">
 <p class="sp-decision-title">Satzart wählen</p>
@@ -1720,7 +1771,7 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 </div>
 <div class="sp-decision-stage">
-<p class="sp-decision-title">Person wählen</p>
+<p class="sp-decision-title"><span class="sp-mark sp-mark-person">Person</span> wählen</p>
 <div aria-label="Person wählen" class="machine-chips" role="group">
 <button class="m-chip" data-person="I" type="button">I</button>
 <button class="m-chip" data-person="you" type="button">you</button>
@@ -1730,10 +1781,10 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <button class="m-chip" data-person="we" type="button">we</button>
 <button class="m-chip" data-person="they" type="button">they</button>
 </div>
-<div class="sp-name-note"><span class="sp-card-label">Auch Namen prüfen</span><p>Ein einzelner Name oder ein einzelnes Tier zählt wie <em>he / she / it</em>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p>Tom plays.</p><p>Hanna likes dogs.</p><p>The dog sleeps.</p></div></div>
+<div class="sp-name-note"><span class="sp-card-label">Auch Namen prüfen</span><p>Ein einzelner Name oder ein einzelnes Tier zählt wie <em><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span></em>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">plays</span>.</p><p><span class="sp-mark sp-mark-person">Hanna</span> <span class="sp-mark sp-mark-form">likes</span> dogs.</p><p>The dog <span class="sp-mark sp-mark-form">sleeps</span>.</p></div></div>
 </div>
 <div class="sp-decision-stage">
-<p class="sp-decision-title">Verb wählen</p>
+<p class="sp-decision-title"><span class="sp-mark sp-mark-form">Verb</span> wählen</p>
 <div aria-label="Verb wählen" class="verb-chips" role="group">
 <button class="verb-chip" data-rule="+s" data-verb="play" type="button">play</button>
 <button class="verb-chip" data-rule="+s" data-verb="like" type="button">like</button>
@@ -1753,41 +1804,41 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <button class="machine-reset-btn" id="sp-reset-btn" type="button">Zurücksetzen</button>
 </div>
 <div aria-live="polite" class="sp-out is-empty" id="sp-out">
-<div class="sentence-built" id="sp-sentence">Wähle Bedeutung, Satzart, Person und Verb. Dann klicke auf Satz bauen.</div>
+<div class="sentence-built" id="sp-sentence">Wähle Bedeutung, Satzart, <span class="sp-mark sp-mark-person">Person</span> und <span class="sp-mark sp-mark-form">Verb</span>. Dann klicke auf Satz bauen.</div>
 <p class="machine-note" id="sp-note"></p>
 </div>
 <div aria-live="polite" class="sp-rule-box" id="sp-rule"></div>
 </div>
 <div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="trap" type="button">Weiter: Denkfalle: das -s →</button></div></div>
 <!-- Schritt 4: Denkfalle do/does -->
-<div class="learn-panel" data-panel="sp-learn" data-val="trap" id="sp-learn-trap"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">5</span><div><h2 class="sp-panel-title">Denkfalle: das -s</h2><p class="sp-panel-description">Entscheide zuerst. Danach siehst du die richtige Form und die Begründung.</p></div></div>
-<section class="sp-rules-card" aria-labelledby="sp-trap-title"><h3 id="sp-trap-title">Was musst du reparieren?</h3><p class="repair-wrong">Does Mia watches TV?</p><p class="cancheck-task">Wähle die passende Änderung.</p><div class="cancheck-buttons" role="group" aria-label="Reparatur für Does Mia watches TV auswählen"><button class="cancheck-btn" data-sp-trap="correct" type="button">watches wird zu watch</button><button class="cancheck-btn" data-sp-trap="wrong" type="button">Does wird zu Do</button></div><div class="cancheck-feedback" id="sp-trap-feedback" aria-live="polite" hidden></div></section>
-<details class="sp-reveal" id="sp-trap-comparison"><summary>Noch eine Denkfrage: Is she happy? oder Does she be happy?</summary><div class="sp-reveal-body"><div class="sp-example-block"><span class="sp-example-label">Richtige Frage</span><p>Is she happy?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Bei to be steht is selbst vor der Person. Du brauchst kein do oder does.</p></div><p class="sp-rule-note"><a href="tobe.html#lernen">to be öffnen</a></p></div></details><div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="check" type="button">Weiter: Kann ich’s? →</button></div></div>
+<div class="learn-panel" data-panel="sp-learn" data-val="trap" id="sp-learn-trap"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">5</span><div><h2 class="sp-panel-title">Denkfalle: das <span class="sp-mark sp-mark-form">-s</span></h2><p class="sp-panel-description sp-line-group"><span class="sp-text-line">Entscheide zuerst. </span><span class="sp-text-line">Danach siehst du die richtige Form und die Begründung.</span></p></div></div>
+<section class="sp-rules-card" aria-labelledby="sp-trap-title"><h3 id="sp-trap-title">Was musst du reparieren?</h3><p class="repair-wrong"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">Mia</span> <span class="sp-mark sp-mark-form">watches</span> TV?</p><p class="cancheck-task">Wähle die passende Änderung.</p><div class="cancheck-buttons" role="group" aria-label="Reparatur für Does Mia watches TV auswählen"><button class="cancheck-btn" data-sp-trap="correct" type="button">watches wird zu watch</button><button class="cancheck-btn" data-sp-trap="wrong" type="button">Does wird zu Do</button></div><div class="cancheck-feedback" id="sp-trap-feedback" aria-live="polite" hidden></div></section>
+<details class="sp-reveal" id="sp-trap-comparison"><summary>Noch eine Denkfrage: Is she happy? oder Does she be happy?</summary><div class="sp-reveal-body"><div class="sp-example-block"><span class="sp-example-label">Richtige Frage</span><p><span class="sp-mark sp-mark-helper">Is</span> <span class="sp-mark sp-mark-person">she</span> happy?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line">Bei <span class="sp-mark sp-mark-rule">to be</span> steht <span class="sp-mark sp-mark-helper">is</span> selbst vor der <span class="sp-mark sp-mark-person">Person</span>. </span><span class="sp-text-line">Du brauchst kein <span class="sp-mark sp-mark-helper">do</span> oder <span class="sp-mark sp-mark-helper">does</span>.</span></p></div><p class="sp-rule-note"><a href="tobe.html#lernen"><span class="sp-mark sp-mark-rule">to be</span> öffnen</a></p></div></details><div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="check" type="button">Weiter: Kann ich’s? →</button></div></div>
 <!-- Schritt 5: Kann ich's? -->
 <div class="learn-panel" data-panel="sp-learn" data-val="check" id="sp-learn-check">
 <div class="cancheck-shell">
 <section class="cancheck-block cancheck-intro">
-<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">6</span><div><h2 class="sp-panel-title">Kann ich's wirklich?</h2><p class="sp-panel-description">Entscheide zuerst. Danach kannst du reparieren und vergleichen.</p></div></div>
+<div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">6</span><div><h2 class="sp-panel-title">Kann ich's wirklich?</h2><p class="sp-panel-description sp-line-group"><span class="sp-text-line">Entscheide zuerst. </span><span class="sp-text-line">Danach kannst du reparieren und vergleichen.</span></p></div></div>
 </section>
 <section class="cancheck-block" data-cancheck-block="meaning">
 <h3 class="cancheck-title sp-numbered-title"><span class="sp-section-number" aria-hidden="true">1</span>Bedeutung entscheiden</h3>
 <p class="cancheck-task">Welche Zeit passt?</p>
 <div class="cancheck-choice-grid">
 <div class="cancheck-choice-card">
-<p class="cancheck-sentence">She plays tennis every day.</p>
+<p class="cancheck-sentence"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> tennis <span class="sp-mark sp-mark-signal">every day</span>.</p>
 <div aria-label="Zeit für She plays tennis every day auswählen" class="cancheck-buttons" role="group">
 <button class="cancheck-btn" data-answer="simple" data-sp-choice="meaning-1" type="button">Simple Present</button>
 <button class="cancheck-btn" data-answer="progressive" data-sp-choice="meaning-1" type="button">Present Progressive</button>
 </div>
-<p class="cancheck-feedback" hidden="" id="meaning-1-feedback">Richtig: Das ist regelmäßig. Every day zeigt: Simple Present passt.</p>
+<p class="cancheck-feedback sp-line-group" hidden="" id="meaning-1-feedback"><span class="sp-text-line">Richtig: Das ist <span class="sp-mark sp-mark-rule">regelmäßig</span>. </span><span class="sp-text-line"><span class="sp-mark sp-mark-signal">Every day</span> zeigt: <span class="sp-mark sp-mark-rule">Simple Present</span> passt.</span></p>
 </div>
 <div class="cancheck-choice-card">
-<p class="cancheck-sentence">She is playing tennis now.</p>
+<p class="cancheck-sentence"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">is</span> playing tennis <span class="sp-mark sp-mark-signal">now</span>.</p>
 <div aria-label="Zeit für She is playing tennis now auswählen" class="cancheck-buttons" role="group">
 <button class="cancheck-btn" data-answer="simple" data-sp-choice="meaning-2" type="button">Simple Present</button>
 <button class="cancheck-btn" data-answer="progressive" data-sp-choice="meaning-2" type="button">Present Progressive</button>
 </div>
-<p class="cancheck-feedback" hidden="" id="meaning-2-feedback">Richtig: Now bedeutet gerade jetzt. Das ist Present Progressive, nicht Simple Present.</p>
+<p class="cancheck-feedback sp-line-group" hidden="" id="meaning-2-feedback"><span class="sp-text-line">Richtig: <span class="sp-mark sp-mark-signal">Now</span> bedeutet <span class="sp-mark sp-mark-signal">gerade jetzt</span>. </span><span class="sp-text-line">Das ist <span class="sp-mark sp-mark-rule">Present Progressive</span>, nicht <span class="sp-mark sp-mark-rule">Simple Present</span>.</span></p>
 </div>
 </div>
 </section>
@@ -1796,29 +1847,29 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <p class="cancheck-task">Welche Form ist richtig?</p>
 <div class="cancheck-choice-grid">
 <div class="cancheck-choice-card">
-<p class="cancheck-sentence">she + play</p>
+<p class="cancheck-sentence"><span class="sp-mark sp-mark-person">she</span> + <span class="sp-mark sp-mark-form">play</span></p>
 <div aria-label="Form für she play auswählen" class="cancheck-buttons" role="group">
 <button class="cancheck-btn" data-answer="play" data-sp-form-choice="form-1" type="button">She play football.</button>
 <button class="cancheck-btn" data-answer="plays" data-sp-form-choice="form-1" type="button">She plays football.</button>
 </div>
-<p class="cancheck-feedback" hidden="" id="form-1-feedback">Richtig: she gehört zu he / she / it. In Aussagen bekommt das Verb ein -s: plays.</p>
+<p class="cancheck-feedback sp-line-group" hidden="" id="form-1-feedback"><span class="sp-text-line">Richtig: <span class="sp-mark sp-mark-person">she</span> gehört zu <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>. </span><span class="sp-text-line">In Aussagen bekommt das <span class="sp-mark sp-mark-form">Verb</span> ein <span class="sp-mark sp-mark-form">-s</span>: <span class="sp-mark sp-mark-form">plays</span>.</span></p>
 </div>
 <div class="cancheck-choice-card">
-<p class="cancheck-sentence">Does she + play?</p>
+<p class="cancheck-sentence"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> + <span class="sp-mark sp-mark-form">play</span>?</p>
 <div aria-label="Form in Does she play auswählen" class="cancheck-buttons" role="group">
 <button class="cancheck-btn" data-answer="play" data-sp-form-choice="form-2" type="button">Does she play tennis?</button>
 <button class="cancheck-btn" data-answer="plays" data-sp-form-choice="form-2" type="button">Does she plays tennis?</button>
 </div>
-<p class="cancheck-feedback" hidden="" id="form-2-feedback">Richtig: Does zeigt schon he / she / it. Danach steht das Verb in der Grundform: play.</p>
+<p class="cancheck-feedback sp-line-group" hidden="" id="form-2-feedback"><span class="sp-text-line">Richtig: <span class="sp-mark sp-mark-helper">Does</span> zeigt schon <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>. </span><span class="sp-text-line">Danach steht das <span class="sp-mark sp-mark-form">Verb</span> in der <span class="sp-mark sp-mark-form">Grundform</span>: <span class="sp-mark sp-mark-form">play</span>.</span></p>
 </div>
 </div>
 </section>
 <section class="cancheck-block" data-cancheck-block="repair">
 <h3 class="cancheck-title sp-numbered-title"><span class="sp-section-number" aria-hidden="true">3</span>Fehlerdetektiv: Satz reparieren</h3>
-<p class="cancheck-task">Wähle zuerst die passende Fehlerstelle oder Reparatur. Danach deckst du die richtige Form auf.</p>
+<p class="cancheck-task sp-line-group"><span class="sp-text-line">Wähle zuerst die passende Fehlerstelle oder Reparatur. </span><span class="sp-text-line">Danach deckst du die richtige Form auf.</span></p>
 <div class="repair-grid">
 <div class="repair-card" data-review-id="simplepresent-cancheck-s-rule">
-<p class="repair-wrong">She play football.</p>
+<p class="repair-wrong"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">play</span> football.</p>
 <p class="repair-find">Was muss sich ändern?</p>
 <div aria-label="Passende Verbform bei She play football auswählen" class="repair-pick-row" role="group">
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-s-rule" type="button">play</button>
@@ -1826,10 +1877,10 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-s-rule-feedback"></p>
 <button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-s-rule" disabled type="button">Reparatur zeigen</button>
-<div class="repair-solution" hidden="" id="repair-s-rule"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence">She plays football.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>he / she / it → Verb bekommt +s.</p></div></div>
+<div class="repair-solution" hidden="" id="repair-s-rule"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> football.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span> → <span class="sp-mark sp-mark-form">Verb</span> bekommt +s.</p></div></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-does-baseform">
-<p class="repair-wrong">Does she plays tennis?</p>
+<p class="repair-wrong"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">plays</span> tennis?</p>
 <p class="repair-find">Was ist hier falsch?</p>
 <div aria-label="Fehlerstelle bei Does she plays tennis auswählen" class="repair-pick-row" role="group">
 <button class="repair-pick" data-correct="true" data-repair-pick="pick-does-baseform" type="button">plays</button>
@@ -1837,10 +1888,10 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-does-baseform-feedback"></p>
 <button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-does-baseform" disabled type="button">Reparatur zeigen</button>
-<div class="repair-solution" hidden="" id="repair-does-baseform"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence">Does she play tennis?</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Nach do / does steht die Grundform. Das -s steckt schon in does.</p></div></div>
+<div class="repair-solution" hidden="" id="repair-does-baseform"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span> tennis?</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line">Nach <span class="sp-mark sp-mark-helper">do</span> / <span class="sp-mark sp-mark-helper">does</span> steht die <span class="sp-mark sp-mark-form">Grundform</span>. </span><span class="sp-text-line">Das <span class="sp-mark sp-mark-form">-s</span> steckt schon in <span class="sp-mark sp-mark-helper">does</span>.</span></p></div></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-dont-doesnt">
-<p class="repair-wrong">He don't like cats.</p>
+<p class="repair-wrong"><span class="sp-mark sp-mark-person">He</span> <span class="sp-mark sp-mark-helper">don't</span> <span class="sp-mark sp-mark-form">like</span> cats.</p>
 <p class="repair-find">Welche Hilfsverb-Form passt?</p>
 <div aria-label="Hilfsverb bei He don't like cats auswählen" class="repair-pick-row" role="group">
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-dont-doesnt" type="button">don't</button>
@@ -1848,10 +1899,10 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-dont-doesnt-feedback"></p>
 <button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-dont-doesnt" disabled type="button">Reparatur zeigen</button>
-<div class="repair-solution" hidden="" id="repair-dont-doesnt"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence">He doesn't like cats.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>he / she / it braucht doesn't, nicht don't.</p></div></div>
+<div class="repair-solution" hidden="" id="repair-dont-doesnt"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence"><span class="sp-mark sp-mark-person">He</span> <span class="sp-mark sp-mark-helper">doesn't</span> <span class="sp-mark sp-mark-form">like</span> cats.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span> braucht <span class="sp-mark sp-mark-helper">doesn't</span>, nicht <span class="sp-mark sp-mark-helper">don't</span>.</p></div></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-double-error">
-<p class="repair-wrong">She don't likes fish.</p>
+<p class="repair-wrong"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">don't</span> <span class="sp-mark sp-mark-form">likes</span> fish.</p>
 <p class="repair-find">Welche Reparatur passt?</p>
 <div aria-label="Reparatur bei She don't likes fish auswählen" class="repair-pick-row" role="group">
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-double-error" type="button">She don't like</button>
@@ -1859,40 +1910,40 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-double-error-feedback"></p>
 <button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-double-error" disabled type="button">Reparatur zeigen</button>
-<div class="repair-solution" hidden="" id="repair-double-error"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence">She doesn't like fish.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Zwei Fehler: doesn't statt don't, und nach doesn't steht die Grundform.</p></div></div>
+<div class="repair-solution" hidden="" id="repair-double-error"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn't</span> <span class="sp-mark sp-mark-form">like</span> fish.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Zwei Fehler: <span class="sp-mark sp-mark-helper">doesn't</span> statt <span class="sp-mark sp-mark-helper">don't</span>, und nach <span class="sp-mark sp-mark-helper">doesn't</span> steht die <span class="sp-mark sp-mark-form">Grundform</span>.</p></div></div>
 </div>
 <div class="repair-card" data-review-id="simplepresent-cancheck-i-baseform">
-<p class="repair-wrong">Every day I plays football.</p>
-<p class="repair-find">Welche Verbform passt zu I?</p>
+<p class="repair-wrong"><span class="sp-mark sp-mark-signal">Every day</span> <span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">plays</span> football.</p>
+<p class="repair-find">Welche Verbform passt zu <span class="sp-mark sp-mark-person">I</span>?</p>
 <div aria-label="Verbform bei Every day I plays football auswählen" class="repair-pick-row" role="group">
 <button class="repair-pick" data-correct="true" data-repair-pick="pick-i-baseform" type="button">play</button>
 <button class="repair-pick" data-correct="false" data-repair-pick="pick-i-baseform" type="button">plays</button>
 </div>
 <p class="repair-pick-feedback" hidden="" id="pick-i-baseform-feedback"></p>
 <button aria-disabled="true" class="cancheck-btn repair-toggle" data-repair-show="repair-i-baseform" disabled type="button">Reparatur zeigen</button>
-<div class="repair-solution" hidden="" id="repair-i-baseform"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence">Every day I play football.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>I bekommt kein -s. Nur he / she / it bekommt in Aussagen ein -s.</p></div></div>
+<div class="repair-solution" hidden="" id="repair-i-baseform"><span class="sp-card-label">Richtige Form</span><p class="sp-solution-sentence"><span class="sp-mark sp-mark-signal">Every day</span> <span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">play</span> football.</p><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-person">I</span> bekommt kein <span class="sp-mark sp-mark-form">-s</span>. </span><span class="sp-text-line">Nur <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span> bekommt in Aussagen ein <span class="sp-mark sp-mark-form">-s</span>.</span></p></div></div>
 </div>
 </div>
 </section>
 <section class="cancheck-block" data-cancheck-block="explain">
 <h3 class="cancheck-title sp-numbered-title"><span class="sp-section-number" aria-hidden="true">4</span>Kann ich es erklären?</h3>
-<p class="cancheck-task">Schreibe zuerst deine Erklärung. Danach vergleichst du.</p>
+<p class="cancheck-task sp-line-group"><span class="sp-text-line">Schreibe zuerst deine Erklärung. </span><span class="sp-text-line">Danach vergleichst du.</span></p>
 <div class="explain-write-card">
-<label class="explain-label" for="explain-does-input">Warum heißt es in der Aussage <em>She plays</em>, aber in der Frage <em>Does she play?</em></label>
+<label class="explain-label" for="explain-does-input">Warum heißt es in der <span class="sp-mark sp-mark-rule">Aussage</span> <em><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span></em>, aber in der Frage <em><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</em></label>
 <textarea class="explain-textarea" id="explain-does-input" placeholder="Meine Erklärung..." rows="4"></textarea>
 <button class="cancheck-btn" data-explain-compare="explain-does" data-explain-input="explain-does-input" type="button">Musterlösung vergleichen</button>
-<p class="explain-empty" hidden="" id="explain-does-empty">Schreib zuerst kurz deine eigene Erklärung. Ein Satz reicht.</p>
+<p class="explain-empty sp-line-group" hidden="" id="explain-does-empty"><span class="sp-text-line">Schreib zuerst kurz deine eigene Erklärung. </span><span class="sp-text-line">Ein Satz reicht.</span></p>
 <div class="cancheck-explanation" hidden="" id="explain-does">
-<p>In der Aussage steht das -s am Verb: She plays.</p>
-<p>In der Frage zeigt does schon he / she / it. Deshalb bleibt das Hauptverb in der Grundform: Does she play?</p>
+<p>In der <span class="sp-mark sp-mark-rule">Aussage</span> steht das <span class="sp-mark sp-mark-form">-s</span> am <span class="sp-mark sp-mark-form">Verb</span>: <span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span>.</p>
+<p class="sp-line-group"><span class="sp-text-line">In der Frage zeigt <span class="sp-mark sp-mark-helper">does</span> schon <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>. </span><span class="sp-text-line">Deshalb bleibt das Hauptverb in der <span class="sp-mark sp-mark-form">Grundform</span>: <span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</span></p>
 </div>
 </div>
 <div class="explain-write-card">
-<label class="explain-label" for="explain-plural-input">Warum heißt es Tom plays, aber Tom and Anna play?</label>
+<label class="explain-label" for="explain-plural-input">Warum heißt es <span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">plays</span>, aber <span class="sp-mark sp-mark-person">Tom and Anna</span> <span class="sp-mark sp-mark-form">play</span>?</label>
 <textarea class="explain-textarea" id="explain-plural-input" placeholder="Meine Erklärung..." rows="4"></textarea>
 <button class="cancheck-btn" data-explain-compare="explain-repair" data-explain-input="explain-plural-input" type="button">Erklärung vergleichen</button>
-<p class="explain-empty" hidden="" id="explain-repair-empty">Schreib zuerst kurz deine eigene Erklärung. Ein Satz reicht.</p>
-<div class="cancheck-explanation" hidden="" id="explain-repair"><span class="sp-card-label">Mustererklärung</span><p>Tom ist eine einzelne Person und steht für he. In einer positiven Aussage heißt es deshalb plays.</p><div class="sp-why-block"><span class="sp-example-label">Was ändert sich bei zwei Personen?</span><p>Tom and Anna sind mehrere Personen: they. Deshalb bleibt play in der Grundform.</p></div></div>
+<p class="explain-empty sp-line-group" hidden="" id="explain-repair-empty"><span class="sp-text-line">Schreib zuerst kurz deine eigene Erklärung. </span><span class="sp-text-line">Ein Satz reicht.</span></p>
+<div class="cancheck-explanation" hidden="" id="explain-repair"><span class="sp-card-label">Mustererklärung</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-person">Tom</span> ist eine einzelne <span class="sp-mark sp-mark-person">Person</span> und steht für <span class="sp-mark sp-mark-person">he</span>. </span><span class="sp-text-line">In einer positiven <span class="sp-mark sp-mark-rule">Aussage</span> heißt es deshalb <span class="sp-mark sp-mark-form">plays</span>.</span></p><div class="sp-why-block"><span class="sp-example-label">Was ändert sich bei zwei Personen?</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-person">Tom and Anna</span> sind mehrere Personen: <span class="sp-mark sp-mark-person">they</span>. </span><span class="sp-text-line">Deshalb bleibt <span class="sp-mark sp-mark-form">play</span> in der <span class="sp-mark sp-mark-form">Grundform</span>.</span></p></div></div>
 </div>
 </section>
 <section class="cancheck-block" data-cancheck-block="status">
@@ -1909,43 +1960,43 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div>
 <div class="sp-learning-footer"><button class="machine-build-btn" data-sp-next="writecheck" type="button">Weiter: Schreib-Check →</button></div></div>
 <!-- ══════════════ SCHREIB-CHECK ══════════════ -->
-<div class="learn-panel" data-panel="sp-learn" data-val="writecheck" id="schreibcheck"><div class="writecheck-panel"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">7</span><div><h2 class="sp-panel-title">Schreib-Check</h2><p class="sp-panel-description">Schreibe selbst. Die Aufgaben mischen Aussagen, Verneinungen, Fragen und Kurzantworten.</p></div></div><div class="writecheck-intro sp-intro-card"><p>Lies die Aufgabe, schreibe deine Antwort und klicke erst dann auf Prüfen. Bei einem Fehler kannst du einen Tipp oder die Lösung aufdecken.</p></div><div class="writecheck-grid" id="writecheck-tasks"></div><div class="writecheck-actions"><button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button><button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button></div><div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div></div></div>
+<div class="learn-panel" data-panel="sp-learn" data-val="writecheck" id="schreibcheck"><div class="writecheck-panel"><div class="sp-panel-header"><span class="sp-section-number" aria-hidden="true">7</span><div><h2 class="sp-panel-title">Schreib-Check</h2><p class="sp-panel-description sp-line-group"><span class="sp-text-line">Schreibe selbst. </span><span class="sp-text-line">Die Aufgaben mischen Aussagen, Verneinungen, Fragen und <span class="sp-mark sp-mark-rule">Kurzantworten</span>.</span></p></div></div><div class="writecheck-intro sp-intro-card"><p class="sp-line-group"><span class="sp-text-line">Lies die Aufgabe, schreibe deine Antwort und klicke erst dann auf Prüfen. </span><span class="sp-text-line">Bei einem Fehler kannst du einen Tipp oder die Lösung aufdecken.</span></p></div><div class="writecheck-grid" id="writecheck-tasks"></div><div class="writecheck-actions"><button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button><button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button></div><div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div></div></div>
 </div><!-- /LERNEN -->
 <!-- NACHSCHLAGEN -->
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="reference" id="nachschlagen">
 <div class="sp-ref-wrap">
 <section aria-labelledby="sp-print-title" class="sp-print-spickzettel" id="sp-print-spickzettel">
-<h2 id="sp-print-title">Simple Present – Spickzettel</h2>
+<h2 id="sp-print-title"><span class="sp-mark sp-mark-rule">Simple Present</span> – Spickzettel</h2>
 <div class="sp-print-grid">
 <section class="sp-print-box">
 <h3>Kernregel</h3>
 <ul>
-<li>Simple Present benutzt du für Gewohnheiten, Fakten und Vorlieben.</li>
-<li>Für Handlungen, die gerade ablaufen, verwendet man meistens das Present Progressive. Zustände wie like oder know stehen normalerweise im Simple Present.</li>
-<li>I / you / we / they nehmen die Grundform.</li>
-<li>Bei he / she / it bekommt das Verb in Aussagen ein -s.</li>
-<li>Namen zählen wie he / she / it: Tom plays. Hanna likes dogs. The dog sleeps.</li>
+<li><span class="sp-mark sp-mark-rule">Simple Present</span> benutzt du für <span class="sp-mark sp-mark-rule">Gewohnheiten</span>, Fakten und <span class="sp-mark sp-mark-rule">Vorlieben</span>.</li>
+<li class="sp-line-group"><span class="sp-text-line">Für Handlungen, die gerade ablaufen, verwendet man meistens das <span class="sp-mark sp-mark-rule">Present Progressive</span>. </span><span class="sp-text-line"><span class="sp-mark sp-mark-rule">Zustände</span> wie <span class="sp-mark sp-mark-form">like</span> oder <span class="sp-mark sp-mark-form">know</span> stehen normalerweise im <span class="sp-mark sp-mark-rule">Simple Present</span>.</span></li>
+<li><span class="sp-mark sp-mark-person">I</span> / <span class="sp-mark sp-mark-person">you</span> / <span class="sp-mark sp-mark-person">we</span> / <span class="sp-mark sp-mark-person">they</span> nehmen die <span class="sp-mark sp-mark-form">Grundform</span>.</li>
+<li>Bei <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span> bekommt das <span class="sp-mark sp-mark-form">Verb</span> in Aussagen ein <span class="sp-mark sp-mark-form">-s</span>.</li>
+<li class="sp-line-group"><span class="sp-text-line">Namen zählen wie <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>: <span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">plays</span>. </span><span class="sp-text-line"><span class="sp-mark sp-mark-person">Hanna</span> <span class="sp-mark sp-mark-form">likes</span> dogs. </span><span class="sp-text-line">The dog <span class="sp-mark sp-mark-form">sleeps</span>.</span></li>
 </ul>
 </section>
 <section class="sp-print-box">
 <h3>Satzmuster</h3>
-<p class="sp-print-pattern">Aussage: Person + Verb + Rest.</p>
-<p class="sp-print-pattern">Verneinung: Person + don’t/doesn’t + Grundform + Rest.</p>
-<p class="sp-print-pattern">Frage kurz: Do/Does + Person + Grundform + Rest?</p>
+<p class="sp-print-pattern"><span class="sp-mark sp-mark-rule">Aussage</span>: <span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-form">Verb</span> + Rest.</p>
+<p class="sp-print-pattern"><span class="sp-mark sp-mark-rule">Verneinung</span>: <span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-helper">don’t</span>/<span class="sp-mark sp-mark-helper">doesn’t</span> + <span class="sp-mark sp-mark-form">Grundform</span> + Rest.</p>
+<p class="sp-print-pattern">Frage kurz: <span class="sp-mark sp-mark-helper">Do</span>/<span class="sp-mark sp-mark-helper">Does</span> + <span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-form">Grundform</span> + Rest?</p>
 </section>
 <section class="sp-print-box sp-print-warning">
 <h3>Top-Denkfalle</h3>
-<p>Nach does und doesn’t steht das Verb ohne -s.</p>
-<p class="sp-print-pattern">Falsch: Does she plays?</p>
-<p class="sp-print-pattern">Richtig: Does she play?</p>
-<p class="sp-print-pattern">Richtig: She doesn’t play.</p>
+<p>Nach <span class="sp-mark sp-mark-helper">does</span> und <span class="sp-mark sp-mark-helper">doesn’t</span> steht das <span class="sp-mark sp-mark-form">Verb</span> ohne <span class="sp-mark sp-mark-form">-s</span>.</p>
+<p class="sp-print-pattern">Falsch: <span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">plays</span>?</p>
+<p class="sp-print-pattern">Richtig: <span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</p>
+<p class="sp-print-pattern">Richtig: <span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span>.</p>
 </section>
 <section class="sp-print-box">
 <h3>Kurz merken</h3>
 <ul>
-<li>she plays, he lives, it works</li>
-<li>she watches, he goes, she studies</li>
-<li>she has, nicht: she haves</li>
+<li><span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">plays</span>, <span class="sp-mark sp-mark-person">he</span> <span class="sp-mark sp-mark-form">lives</span>, <span class="sp-mark sp-mark-person">it</span> works</li>
+<li><span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">watches</span>, <span class="sp-mark sp-mark-person">he</span> <span class="sp-mark sp-mark-form">goes</span>, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">studies</span></li>
+<li><span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">has</span>, nicht: <span class="sp-mark sp-mark-person">she</span> haves</li>
 <li>Ganze Fragen übst du bei Questions.</li>
 </ul>
 </section>
@@ -1953,14 +2004,14 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <section class="sp-print-box">
 <h3>Typische Beispiele</h3>
 <ul>
-<li>I love animals.</li>
-<li>She walks to school every day.</li>
-<li>He lives in Plymouth.</li>
-<li>She doesn’t eat meat.</li>
-<li>Does she play tennis?</li>
+<li><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">love</span> animals.</li>
+<li><span class="sp-mark sp-mark-person">She</span> walks to school <span class="sp-mark sp-mark-signal">every day</span>.</li>
+<li><span class="sp-mark sp-mark-person">He</span> <span class="sp-mark sp-mark-form">lives</span> in Plymouth.</li>
+<li><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> eat meat.</li>
+<li><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span> tennis?</li>
 </ul>
 </section>
-<section class="sp-print-box"><h3>Kurzantworten</h3><p>Yes, they do. / No, they don’t.</p><p>Yes, she does. / No, she doesn’t.</p><p>Mit Fragewort: Where does she live?</p><p>Aussprache der Endung: /s/, /z/, /ɪz/.</p></section></section>
+<section class="sp-print-box"><h3><span class="sp-mark sp-mark-rule">Kurzantworten</span></h3><p>Yes, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">do</span>. / No, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">don’t</span>.</p><p>Yes, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">does</span>. / No, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">doesn’t</span>.</p><p>Mit <span class="sp-mark sp-mark-rule">Fragewort</span>: Where <span class="sp-mark sp-mark-helper">does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">live</span>?</p><p>Aussprache der Endung: /s/, /z/, /ɪz/.</p></section></section>
 <div class="sp-ref-intro">
 <span aria-hidden="true">📖</span>
 <span>Kurzer Spickzettel zu Bedeutung und Verbform.</span>
@@ -1968,103 +2019,103 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 <section aria-labelledby="sp-ref-kurzmerken" class="sp-ref-section sp-ref-section-core sp-ref-core">
 <h3 class="sp-ref-section-title" data-step="1" id="sp-ref-kurzmerken">Kurz merken</h3>
 <div class="sp-ref-rule-grid">
-<div class="sp-rule-card"><p class="sp-card-label">Bedeutung</p><p>Gewohnheiten, allgemeine Fakten, Vorlieben und Zustände → Simple Present.</p><p class="sp-rule-note">Handlungen, die gerade ablaufen: oft Present Progressive. Zustände wie like und know: normalerweise Simple Present.</p></div>
-<div class="sp-rule-card"><p class="sp-card-label">I / you / we / they</p><p>Das Verb bleibt in der Grundform.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p>I play. · They live.</p></div></div>
-<div class="sp-rule-card"><p class="sp-card-label">he / she / it</p><p>In Aussagen bekommt das Verb ein -s.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p>She plays. · He lives.</p></div></div>
-<div class="sp-rule-card"><p class="sp-card-label">Einzelne Namen und Tiere</p><p>Sie zählen wie he / she / it.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p>Tom plays.</p><p>Hanna likes dogs.</p><p>The dog sleeps.</p></div></div>
+<div class="sp-rule-card"><p class="sp-card-label">Bedeutung</p><p><span class="sp-mark sp-mark-rule">Gewohnheiten</span>, allgemeine Fakten, <span class="sp-mark sp-mark-rule">Vorlieben</span> und <span class="sp-mark sp-mark-rule">Zustände</span> → <span class="sp-mark sp-mark-rule">Simple Present</span>.</p><p class="sp-rule-note sp-line-group"><span class="sp-text-line">Handlungen, die gerade ablaufen: oft <span class="sp-mark sp-mark-rule">Present Progressive</span>. </span><span class="sp-text-line"><span class="sp-mark sp-mark-rule">Zustände</span> wie <span class="sp-mark sp-mark-form">like</span> und <span class="sp-mark sp-mark-form">know</span>: normalerweise <span class="sp-mark sp-mark-rule">Simple Present</span>.</span></p></div>
+<div class="sp-rule-card"><p class="sp-card-label">I / you / we / they</p><p>Das <span class="sp-mark sp-mark-form">Verb</span> bleibt in der <span class="sp-mark sp-mark-form">Grundform</span>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">play</span>. · <span class="sp-mark sp-mark-person">They</span> <span class="sp-mark sp-mark-form">live</span>.</p></div></div>
+<div class="sp-rule-card"><p class="sp-card-label">he / she / it</p><p>In Aussagen bekommt das <span class="sp-mark sp-mark-form">Verb</span> ein <span class="sp-mark sp-mark-form">-s</span>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span>. · <span class="sp-mark sp-mark-person">He</span> <span class="sp-mark sp-mark-form">lives</span>.</p></div></div>
+<div class="sp-rule-card"><p class="sp-card-label">Einzelne Namen und Tiere</p><p>Sie zählen wie <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiele</span><p><span class="sp-mark sp-mark-person">Tom</span> <span class="sp-mark sp-mark-form">plays</span>.</p><p><span class="sp-mark sp-mark-person">Hanna</span> <span class="sp-mark sp-mark-form">likes</span> dogs.</p><p>The dog <span class="sp-mark sp-mark-form">sleeps</span>.</p></div></div>
 </div>
-<div class="sp-memory-card"><p class="sp-card-label">Wichtigste Denkfalle</p><p>Bei gewöhnlichen Verben hilft do / does in Fragen und Verneinungen. Danach steht das Hauptverb in der Grundform.</p><div class="sp-example-block"><span class="sp-example-label">Merksatz</span><p>Does übernimmt das -s.</p></div></div>
+<div class="sp-memory-card"><p class="sp-card-label">Wichtigste Denkfalle</p><p class="sp-line-group"><span class="sp-text-line">Bei gewöhnlichen Verben hilft <span class="sp-mark sp-mark-helper">do</span> / <span class="sp-mark sp-mark-helper">does</span> in Fragen und Verneinungen. </span><span class="sp-text-line">Danach steht das Hauptverb in der <span class="sp-mark sp-mark-form">Grundform</span>.</span></p><div class="sp-example-block"><span class="sp-example-label">Merksatz</span><p><span class="sp-mark sp-mark-helper">Does</span> übernimmt das <span class="sp-mark sp-mark-form">-s</span>.</p></div></div>
 </section>
 <section aria-labelledby="sp-ref-satzmuster" class="sp-ref-section sp-ref-patterns">
 <h3 class="sp-ref-section-title" data-step="2" id="sp-ref-satzmuster">Satzmuster</h3>
 <div class="sp-ref-grid sp-ref-grid-three sp-pattern-grid">
-<div class="sp-ref-card"><h4 class="sp-ref-card-title">Aussage</h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern">Person + Verb + Rest.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She plays tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Merken</span><p>he / she / it → -s</p></div></div>
-<div class="sp-ref-card"><h4 class="sp-ref-card-title">Verneinung</h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern">Person + don't/doesn't + Grundform + Rest.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She doesn't play tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Merken</span><p>Doesn't zeigt schon he / she / it.</p></div></div>
-<div class="sp-ref-card"><h4 class="sp-ref-card-title">Frage kurz</h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern">Do/Does + Person + Grundform + Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Does she play tennis?</p></div><div class="sp-why-block"><span class="sp-example-label">Weiterlernen</span><p>Die ganze Frage-Maschine findest du bei Questions.</p></div></div>
+<div class="sp-ref-card"><h4 class="sp-ref-card-title"><span class="sp-mark sp-mark-rule">Aussage</span></h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern"><span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-form">Verb</span> + Rest.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Merken</span><p><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span> → <span class="sp-mark sp-mark-form">-s</span></p></div></div>
+<div class="sp-ref-card"><h4 class="sp-ref-card-title"><span class="sp-mark sp-mark-rule">Verneinung</span></h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern"><span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-helper">don't</span>/<span class="sp-mark sp-mark-helper">doesn't</span> + <span class="sp-mark sp-mark-form">Grundform</span> + Rest.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn't</span> <span class="sp-mark sp-mark-form">play</span> tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Merken</span><p><span class="sp-mark sp-mark-helper">Doesn't</span> zeigt schon <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>.</p></div></div>
+<div class="sp-ref-card"><h4 class="sp-ref-card-title">Frage kurz</h4><p class="sp-card-label">Satzmuster</p><p class="sp-pattern"><span class="sp-mark sp-mark-helper">Do</span>/<span class="sp-mark sp-mark-helper">Does</span> + <span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-form">Grundform</span> + Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span> tennis?</p></div><div class="sp-why-block"><span class="sp-example-label">Weiterlernen</span><p>Die ganze Frage-Maschine findest du bei Questions.</p></div></div>
 </div>
 <div class="sp-ref-table-wrap sp-ref-full-forms">
 <table>
-<thead><tr><th>Person</th><th>Aussage</th><th>Verneinung kurz</th><th>Merken</th></tr></thead>
+<thead><tr><th><span class="sp-mark sp-mark-person">Person</span></th><th><span class="sp-mark sp-mark-rule">Aussage</span></th><th><span class="sp-mark sp-mark-rule">Verneinung</span> kurz</th><th>Merken</th></tr></thead>
 <tbody>
-<tr><td class="sp-ref-person-I">I</td><td>I play</td><td>I don’t play</td><td>Grundform</td></tr>
-<tr><td class="sp-ref-person-you">you</td><td>you play</td><td>you don’t play</td><td>Grundform</td></tr>
-<tr><td class="sp-ref-person-he">he</td><td>he plays</td><td>he doesn’t play</td><td>Verb + s in Aussagen</td></tr>
-<tr><td class="sp-ref-person-she">she</td><td>she plays</td><td>she doesn’t play</td><td>Verb + s in Aussagen</td></tr>
-<tr><td class="sp-ref-person-it">it</td><td>it plays</td><td>it doesn’t play</td><td>Verb + s in Aussagen</td></tr>
-<tr><td class="sp-ref-person-we">we</td><td>we play</td><td>we don’t play</td><td>Grundform</td></tr>
-<tr><td class="sp-ref-person-they">they</td><td>they play</td><td>they don’t play</td><td>Grundform</td></tr>
+<tr><td class="sp-ref-person-I"><span class="sp-mark sp-mark-person">I</span></td><td><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-helper">don’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Grundform</span></td></tr>
+<tr><td class="sp-ref-person-you"><span class="sp-mark sp-mark-person">you</span></td><td><span class="sp-mark sp-mark-person">you</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-person">you</span> <span class="sp-mark sp-mark-helper">don’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Grundform</span></td></tr>
+<tr><td class="sp-ref-person-he"><span class="sp-mark sp-mark-person">he</span></td><td><span class="sp-mark sp-mark-person">he</span> <span class="sp-mark sp-mark-form">plays</span></td><td><span class="sp-mark sp-mark-person">he</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Verb</span> + s in Aussagen</td></tr>
+<tr><td class="sp-ref-person-she"><span class="sp-mark sp-mark-person">she</span></td><td><span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">plays</span></td><td><span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Verb</span> + s in Aussagen</td></tr>
+<tr><td class="sp-ref-person-it"><span class="sp-mark sp-mark-person">it</span></td><td><span class="sp-mark sp-mark-person">it</span> <span class="sp-mark sp-mark-form">plays</span></td><td><span class="sp-mark sp-mark-person">it</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Verb</span> + s in Aussagen</td></tr>
+<tr><td class="sp-ref-person-we"><span class="sp-mark sp-mark-person">we</span></td><td><span class="sp-mark sp-mark-person">we</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-person">we</span> <span class="sp-mark sp-mark-helper">don’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Grundform</span></td></tr>
+<tr><td class="sp-ref-person-they"><span class="sp-mark sp-mark-person">they</span></td><td><span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">don’t</span> <span class="sp-mark sp-mark-form">play</span></td><td><span class="sp-mark sp-mark-form">Grundform</span></td></tr>
 </tbody>
 </table>
 </div>
-<p class="sp-ref-table-note">Do und does richtest du nach der Person. Bei Kurzantworten wiederholst du das Hilfsverb.</p>
-<details class="sp-reveal" id="sp-reference-questions"><summary>Fragewörter und alle vier Kurzantwortmuster</summary><div class="sp-reveal-body"><p class="sp-card-label">Mit Fragewort</p><p>Fragewort + do / does + Person + Grundform + Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where does Mia live?</p></div><div class="sp-explain-pair"><div><p class="sp-pattern">Do they play?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, they do.<br>No, they don’t.</p></div></div><div><p class="sp-pattern">Does she play?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, she does.<br>No, she doesn’t.</p></div></div></div><p class="sp-rule-note">Bei you antwortest du für dich mit I. Mehr zu Fragewörtern bei <a href="questions.html#lernen">Questions</a>; who als Subjekt bei <a href="subjectobjectquestions.html">Subject &amp; Object Questions</a>.</p></div></details></section>
+<p class="sp-ref-table-note sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-helper">Do</span> und <span class="sp-mark sp-mark-helper">does</span> richtest du nach der <span class="sp-mark sp-mark-person">Person</span>. </span><span class="sp-text-line">Bei <span class="sp-mark sp-mark-rule">Kurzantworten</span> wiederholst du das Hilfsverb.</span></p>
+<details class="sp-reveal" id="sp-reference-questions"><summary>Fragewörter und alle vier Kurzantwortmuster</summary><div class="sp-reveal-body"><p class="sp-card-label">Mit Fragewort</p><p><span class="sp-mark sp-mark-rule">Fragewort</span> + <span class="sp-mark sp-mark-helper">do</span> / <span class="sp-mark sp-mark-helper">does</span> + <span class="sp-mark sp-mark-person">Person</span> + <span class="sp-mark sp-mark-form">Grundform</span> + Rest?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where <span class="sp-mark sp-mark-helper">does</span> <span class="sp-mark sp-mark-person">Mia</span> <span class="sp-mark sp-mark-form">live</span>?</p></div><div class="sp-explain-pair"><div><p class="sp-pattern"><span class="sp-mark sp-mark-helper">Do</span> <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-form">play</span>?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">do</span>.<br>No, <span class="sp-mark sp-mark-person">they</span> <span class="sp-mark sp-mark-helper">don’t</span>.</p></div></div><div><p class="sp-pattern"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</p><div class="sp-example-block"><span class="sp-example-label">Kurzantworten</span><p>Yes, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">does</span>.<br>No, <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-helper">doesn’t</span>.</p></div></div></div><p class="sp-rule-note sp-line-group"><span class="sp-text-line">Bei <span class="sp-mark sp-mark-person">you</span> antwortest du für dich mit <span class="sp-mark sp-mark-person">I</span>. </span><span class="sp-text-line">Mehr zu Fragewörtern bei <a href="questions.html#lernen">Questions</a>; who als Subjekt bei <a href="subjectobjectquestions.html">Subject &amp; Object Questions</a>.</span></p></div></details></section>
 <section aria-labelledby="sp-ref-denkfallen" class="sp-ref-section sp-ref-traps">
 <h3 class="sp-ref-section-title" data-step="3" id="sp-ref-denkfallen">Typische Denkfallen</h3>
 <div class="sp-ref-grid sp-ref-grid-three">
 <div class="sp-ref-card sp-ref-card-yellow" data-review-id="simplepresent-he-she-it-s" data-review-source="reference" data-topic-id="simplepresent" data-type="stolperstelle">
-<span class="sp-ref-card-title">he / she / it</span>
-<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p>She play tennis.</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p>She plays tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Bei she braucht das Verb in Aussagen ein -s.</p></div>
+<span class="sp-ref-card-title"><span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span></span>
+<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">play</span> tennis.</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> tennis.</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Bei <span class="sp-mark sp-mark-person">she</span> braucht das <span class="sp-mark sp-mark-form">Verb</span> in Aussagen ein <span class="sp-mark sp-mark-form">-s</span>.</p></div>
 </div>
 <div class="sp-ref-card sp-ref-card-red" data-review-id="simplepresent-does-grundform" data-review-source="reference" data-topic-id="simplepresent" data-type="stolperstelle">
-<span class="sp-ref-card-title">does übernimmt das -s</span>
-<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p>Does she plays?</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p>Does she play?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Does zeigt schon he / she / it. Danach steht play.</p></div>
+<span class="sp-ref-card-title"><span class="sp-mark sp-mark-helper">does</span> übernimmt das <span class="sp-mark sp-mark-form">-s</span></span>
+<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">plays</span>?</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>?</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p class="sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-helper">Does</span> zeigt schon <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span>. </span><span class="sp-text-line">Danach steht <span class="sp-mark sp-mark-form">play</span>.</span></p></div>
 </div>
 <div class="sp-ref-card sp-ref-card-red" data-review-id="simplepresent-doesnt-grundform" data-review-source="reference" data-topic-id="simplepresent" data-type="stolperstelle">
-<span class="sp-ref-card-title">doesn’t + Grundform</span>
-<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p>She doesn’t plays.</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p>She doesn’t play.</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Nach doesn’t steht die Grundform ohne -s.</p></div>
+<span class="sp-ref-card-title"><span class="sp-mark sp-mark-helper">doesn’t</span> + <span class="sp-mark sp-mark-form">Grundform</span></span>
+<div class="sp-wrong-block"><span class="sp-example-label">Falsch</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">plays</span>.</p></div><div class="sp-example-block"><span class="sp-example-label">Richtig</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span>.</p></div><div class="sp-why-block"><span class="sp-example-label">Warum?</span><p>Nach <span class="sp-mark sp-mark-helper">doesn’t</span> steht die <span class="sp-mark sp-mark-form">Grundform</span> ohne <span class="sp-mark sp-mark-form">-s</span>.</p></div>
 </div>
 </div>
 </section>
 <section aria-labelledby="sp-ref-sonderfaelle" class="sp-ref-section sp-ref-section-extra sp-ref-special">
-<h3 class="sp-ref-section-title" data-step="4" id="sp-ref-sonderfaelle">Verbformen bei he / she / it</h3>
-<p class="sp-ref-section-text">Diese Formen gelten in Aussagen mit he, she oder it.</p>
+<h3 class="sp-ref-section-title" data-step="4" id="sp-ref-sonderfaelle">Verbformen bei <span class="sp-mark sp-mark-person">he</span> / <span class="sp-mark sp-mark-person">she</span> / <span class="sp-mark sp-mark-person">it</span></h3>
+<p class="sp-ref-section-text">Diese Formen gelten in Aussagen mit <span class="sp-mark sp-mark-person">he</span>, <span class="sp-mark sp-mark-person">she</span> oder <span class="sp-mark sp-mark-person">it</span>.</p>
 <div class="srule-grid">
 <div class="srule-card srule-card-blue">
 <span class="srule-rule">+s</span><p class="sp-spelling-hint">Bei den meisten Verben</p>
-<span class="srule-ex">play→plays<br>like→likes<br>live→lives<br>read→reads</span>
-<p class="sp-rule-note">Endet das Verb schon auf -e, kommt nur -s dazu: like → likes, use → uses.</p></div>
+<span class="srule-ex"><span class="sp-mark sp-mark-form">play</span>→<span class="sp-mark sp-mark-form">plays</span><br><span class="sp-mark sp-mark-form">like</span>→<span class="sp-mark sp-mark-form">likes</span><br><span class="sp-mark sp-mark-form">live</span>→<span class="sp-mark sp-mark-form">lives</span><br><span class="sp-mark sp-mark-form">read</span>→<span class="sp-mark sp-mark-form">reads</span></span>
+<p class="sp-rule-note">Endet das <span class="sp-mark sp-mark-form">Verb</span> schon auf -e, kommt nur <span class="sp-mark sp-mark-form">-s</span> dazu: <span class="sp-mark sp-mark-form">like</span> → <span class="sp-mark sp-mark-form">likes</span>, use → uses.</p></div>
 <div class="srule-card srule-card-green">
-<span class="srule-rule">+es</span><p class="sp-spelling-hint">Zum Beispiel nach -ch, -sh, -s, -x und bei go / do</p>
-<span class="srule-ex">watch→watches<br>wash→washes<br>go→goes<br>do→does</span>
+<span class="srule-rule">+es</span><p class="sp-spelling-hint">Zum Beispiel nach -ch, -sh, <span class="sp-mark sp-mark-form">-s</span>, -x und bei <span class="sp-mark sp-mark-form">go</span> / <span class="sp-mark sp-mark-helper">do</span></p>
+<span class="srule-ex"><span class="sp-mark sp-mark-form">watch</span>→<span class="sp-mark sp-mark-form">watches</span><br><span class="sp-mark sp-mark-form">wash</span>→<span class="sp-mark sp-mark-form">washes</span><br><span class="sp-mark sp-mark-form">go</span>→<span class="sp-mark sp-mark-form">goes</span><br><span class="sp-mark sp-mark-helper">do</span>→<span class="sp-mark sp-mark-helper">does</span></span>
 </div>
 <div class="srule-card srule-card-violet">
-<span class="srule-rule">y → ies</span><p class="sp-spelling-hint">Mitlaut + y: y wird zu ies</p>
-<span class="srule-ex">study→studies<br>try→tries<br>fly→flies<br>carry→carries</span>
-<p class="sp-rule-note">Nach einem Selbstlaut bleibt y: play → plays.</p></div>
+<span class="srule-rule">y → <span class="sp-mark sp-mark-form">ies</span></span><p class="sp-spelling-hint"><span class="sp-mark sp-mark-form">Mitlaut</span> + y: y wird zu <span class="sp-mark sp-mark-form">ies</span></p>
+<span class="srule-ex"><span class="sp-mark sp-mark-form">study</span>→<span class="sp-mark sp-mark-form">studies</span><br><span class="sp-mark sp-mark-form">try</span>→<span class="sp-mark sp-mark-form">tries</span><br>fly→flies<br>carry→carries</span>
+<p class="sp-rule-note">Nach einem <span class="sp-mark sp-mark-form">Selbstlaut</span> bleibt y: <span class="sp-mark sp-mark-form">play</span> → <span class="sp-mark sp-mark-form">plays</span>.</p></div>
 <div class="srule-card srule-card-yellow">
 <span class="srule-rule">unregelmäßig</span><p class="sp-spelling-hint">Diese Form merkst du dir.</p>
-<span class="srule-ex">have→has</span>
+<span class="srule-ex"><span class="sp-mark sp-mark-form">have</span>→<span class="sp-mark sp-mark-form">has</span></span>
 </div>
 </div>
-<div aria-labelledby="sp-ref-aussprache" class="sp-pronunciation-detail"><h4 class="sp-subheading" id="sp-ref-aussprache">Aussprache: Wie klingt das -s?</h4><p>In der dritten Person Singular wird <em>-s / -es</em> je nach <span class="sp-inline-em">letztem Laut</span> des Verbs verschieden ausgesprochen. Entscheidend ist nicht allein der letzte Buchstabe.</p><div class="sp-pron-grid"><div><span class="sp-pron-symbol">/s/</span><h4>Stimmlos</h4><p><span class="sp-inline-em">likes, eats, stops</span></p><p>Nach stimmlosen Lauten wie /p/, /t/, /k/, /f/. Die Stimme summt dabei nicht.</p></div><div><span class="sp-pron-symbol">/z/</span><h4>Stimmhaft</h4><p><span class="sp-inline-em">plays, lives, goes</span></p><p>Nach Vokalen und vielen stimmhaften Lauten. Lege eine Hand an den Hals: Du spürst die Stimme.</p></div><div><span class="sp-pron-symbol">/ɪz/</span><h4>Zusätzliche Silbe</h4><p><span class="sp-inline-em">watches, misses, uses</span></p><p>Nach Zischlauten wie /s/, /z/, /ʃ/, /tʃ/ hörst du eine zusätzliche Silbe.</p></div></div><p><span class="sp-inline-em">Wichtig:</span> Die Schreibform und die Aussprache sind nicht dasselbe. Zum Beispiel haben <em>likes</em> und <em>lives</em> beide ein geschriebenes <em>-s</em>, aber unterschiedliche Endlaute. Lies die Beispielsätze laut und vergleiche den Klang.</p></div>
-<div class="sp-rule-card"><p class="sp-card-label">Grenze: to be</p><p>Die Formen am, is und are funktionieren anders: Is she happy? She isn’t happy.</p><p class="sp-rule-note"><a href="tobe.html#lernen">to be nachschlagen</a></p></div></section>
+<div aria-labelledby="sp-ref-aussprache" class="sp-pronunciation-detail"><h4 class="sp-subheading" id="sp-ref-aussprache">Aussprache: Wie klingt das <span class="sp-mark sp-mark-form">-s</span>?</h4><p class="sp-line-group"><span class="sp-text-line">In der dritten <span class="sp-mark sp-mark-person">Person</span> Singular wird <em><span class="sp-mark sp-mark-form">-s</span> / <span class="sp-mark sp-mark-form">-es</span></em> je nach <span class="sp-inline-em"><span class="sp-mark sp-mark-form">letztem Laut</span></span> des Verbs verschieden ausgesprochen. </span><span class="sp-text-line">Entscheidend ist nicht allein der letzte Buchstabe.</span></p><div class="sp-pron-grid"><div><span class="sp-pron-symbol">/s/</span><h4>Stimmlos</h4><p><span class="sp-inline-em"><span class="sp-mark sp-mark-form">likes</span>, eats, stops</span></p><p class="sp-line-group"><span class="sp-text-line">Nach stimmlosen Lauten wie /p/, /t/, /k/, /f/. </span><span class="sp-text-line">Die Stimme summt dabei nicht.</span></p></div><div><span class="sp-pron-symbol">/z/</span><h4>Stimmhaft</h4><p><span class="sp-inline-em"><span class="sp-mark sp-mark-form">plays</span>, <span class="sp-mark sp-mark-form">lives</span>, <span class="sp-mark sp-mark-form">goes</span></span></p><p class="sp-line-group"><span class="sp-text-line">Nach Vokalen und vielen stimmhaften Lauten. </span><span class="sp-text-line">Lege eine Hand an den Hals: Du spürst die Stimme.</span></p></div><div><span class="sp-pron-symbol">/ɪz/</span><h4>Zusätzliche Silbe</h4><p><span class="sp-inline-em"><span class="sp-mark sp-mark-form">watches</span>, misses, uses</span></p><p>Nach Zischlauten wie /s/, /z/, /ʃ/, /tʃ/ hörst du eine zusätzliche Silbe.</p></div></div><p class="sp-line-group"><span class="sp-text-line"><span class="sp-inline-em">Wichtig:</span> Die <span class="sp-mark sp-mark-form">Schreibform</span> und die Aussprache sind nicht dasselbe. </span><span class="sp-text-line">Zum Beispiel haben <em><span class="sp-mark sp-mark-form">likes</span></em> und <em><span class="sp-mark sp-mark-form">lives</span></em> beide ein geschriebenes <em><span class="sp-mark sp-mark-form">-s</span></em>, aber unterschiedliche <span class="sp-mark sp-mark-form">Endlaute</span>. </span><span class="sp-text-line">Lies die Beispielsätze laut und vergleiche den Klang.</span></p></div>
+<div class="sp-rule-card"><p class="sp-card-label">Grenze: to be</p><p class="sp-line-group"><span class="sp-text-line">Die Formen <span class="sp-mark sp-mark-helper">am, is und are</span> funktionieren anders: <span class="sp-mark sp-mark-helper">Is</span> <span class="sp-mark sp-mark-person">she</span> happy? </span><span class="sp-text-line"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">isn’t</span> happy.</span></p><p class="sp-rule-note"><a href="tobe.html#lernen"><span class="sp-mark sp-mark-rule">to be</span> nachschlagen</a></p></div></section>
 <section aria-labelledby="sp-ref-schulbeispiele" class="sp-ref-section sp-ref-examples">
-<h3 class="sp-ref-section-title" data-step="5" id="sp-ref-schulbeispiele">Signalwörter und Beispiele</h3>
-<p class="sp-ref-section-text">Signalwörter zeigen oft: Es geht um regelmäßige Dinge. Die genaue Stelle im Satz prüfst du bei Adverbs of Frequency und Word Order.</p>
+<h3 class="sp-ref-section-title" data-step="5" id="sp-ref-schulbeispiele"><span class="sp-mark sp-mark-signal">Signalwörter</span> und Beispiele</h3>
+<p class="sp-ref-section-text sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-signal">Signalwörter</span> zeigen oft: Es geht um regelmäßige Dinge. </span><span class="sp-text-line">Die genaue Stelle im Satz prüfst du bei Adverbs of Frequency und Word Order.</span></p>
 <div class="sp-ref-chip-row"><span class="sp-ref-chip">always</span><span class="sp-ref-chip">usually</span><span class="sp-ref-chip">often</span><span class="sp-ref-chip">sometimes</span><span class="sp-ref-chip">never</span><span class="sp-ref-chip sp-ref-chip-green">every day</span><span class="sp-ref-chip sp-ref-chip-green">every week</span><span class="sp-ref-chip sp-ref-chip-green">on Mondays</span></div>
 <div class="sp-ref-example-list">
 <div class="sp-ref-example-row">
-<span class="sp-ref-example-en">I love animals.</span>
+<span class="sp-ref-example-en"><span class="sp-mark sp-mark-person">I</span> <span class="sp-mark sp-mark-form">love</span> animals.</span>
 <span class="sp-ref-example-de">Ich liebe Tiere.</span>
-<span class="sp-ref-example-tag">Vorliebe</span>
+<span class="sp-ref-example-tag"><span class="sp-mark sp-mark-rule">Vorliebe</span></span>
 </div>
 <div class="sp-ref-example-row">
-<span class="sp-ref-example-en">She walks to school every day.</span>
+<span class="sp-ref-example-en"><span class="sp-mark sp-mark-person">She</span> walks to school <span class="sp-mark sp-mark-signal">every day</span>.</span>
 <span class="sp-ref-example-de">Sie geht jeden Tag zu Fuß zur Schule.</span>
-<span class="sp-ref-example-tag">Gewohnheit</span>
+<span class="sp-ref-example-tag"><span class="sp-mark sp-mark-rule">Gewohnheit</span></span>
 </div>
 <div class="sp-ref-example-row">
-<span class="sp-ref-example-en">He lives in Plymouth.</span>
+<span class="sp-ref-example-en"><span class="sp-mark sp-mark-person">He</span> <span class="sp-mark sp-mark-form">lives</span> in Plymouth.</span>
 <span class="sp-ref-example-de">Er wohnt in Plymouth.</span>
 <span class="sp-ref-example-tag sp-ref-example-tag-green">Fakt</span>
 </div>
 <div class="sp-ref-example-row">
-<span class="sp-ref-example-en">She doesn’t eat meat.</span>
+<span class="sp-ref-example-en"><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> eat meat.</span>
 <span class="sp-ref-example-de">Sie isst kein Fleisch.</span>
-<span class="sp-ref-example-tag sp-ref-example-tag-red">Verneinung</span>
+<span class="sp-ref-example-tag sp-ref-example-tag-red"><span class="sp-mark sp-mark-rule">Verneinung</span></span>
 </div>
 <div class="sp-ref-example-row">
-<span class="sp-ref-example-en">Does she play tennis?</span>
+<span class="sp-ref-example-en"><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span> tennis?</span>
 <span class="sp-ref-example-de">Spielt sie Tennis?</span>
 <span class="sp-ref-example-tag sp-ref-example-tag-red">Frage kurz</span>
 </div>
@@ -2074,12 +2125,12 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
 </div><!-- /NACHSCHLAGEN -->
 <!-- VERBINDUNGEN -->
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="connections" id="verbindungen">
-<div class="connections-panel"><div class="sp-intro-card sp-main-intro"><h2 class="sp-panel-title">Verbindungen</h2><p class="sp-panel-description">Hier findest du die angrenzenden Themen, wenn du mehr als Bedeutung und Verbform prüfen möchtest.</p></div><div class="conn-map"><a class="conn-card" href="questions.html#lernen" aria-label="Questions öffnen"><div class="conn-icon" aria-hidden="true">❓</div><div><h3 class="conn-title">Questions</h3><p class="conn-text">Fragen mit Fragewort und gemischte Fragearten.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where does Mia live?</p></div><span class="conn-open">Questions öffnen</span></div></a><a class="conn-card" href="subjectobjectquestions.html" aria-label="Subject &amp; Object Questions öffnen"><div class="conn-icon" aria-hidden="true">🔎</div><div><h3 class="conn-title">Subject &amp; Object Questions</h3><p class="conn-text">Unterscheide: Wer ist gesucht – oder nach wem/was wird gefragt?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Who plays tennis? · Who does Mia play with?</p></div><span class="conn-open">Subject &amp; Object Questions öffnen</span></div></a><a class="conn-card" href="progressive.html#lernen" aria-label="Present Progressive öffnen"><div class="conn-icon" aria-hidden="true">🎬</div><div><h3 class="conn-title">Present Progressive</h3><p class="conn-text">Vergleiche eine Gewohnheit mit einer Handlung, die gerade abläuft. Feste Verabredungen gehören ebenfalls auf diese Seite.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She plays every day. · She is playing now.</p></div><span class="conn-open">Present Progressive öffnen</span></div></a><a class="conn-card" href="adverbsoffrequency.html#lernen" aria-label="Adverbs of Frequency öffnen"><div class="conn-icon" aria-hidden="true">📊</div><div><h3 class="conn-title">Adverbs of Frequency</h3><p class="conn-text">Häufigkeitswörter wie often und never und ihre Stelle im Satz.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She often plays tennis.</p></div><span class="conn-open">Adverbs of Frequency öffnen</span></div></a><a class="conn-card" href="wordorder.html#lernen" aria-label="Word Order öffnen"><div class="conn-icon" aria-hidden="true">🚂</div><div><h3 class="conn-title">Word Order</h3><p class="conn-text">Die Reihenfolge von Person, Verb, Rest, Ort und Zeit.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>She plays tennis at school on Mondays.</p></div><span class="conn-open">Word Order öffnen</span></div></a><a class="conn-card" href="tobe.html#lernen" aria-label="to be öffnen"><div class="conn-icon" aria-hidden="true">👤</div><div><h3 class="conn-title">to be</h3><p class="conn-text">am, is und are bilden Fragen und Verneinungen ohne do oder does.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Is she happy? · She isn’t happy.</p></div><span class="conn-open">to be öffnen</span></div></a><a class="conn-card" href="simplepast.html#lernen" aria-label="Simple Past öffnen"><div class="conn-icon" aria-hidden="true">🕰️</div><div><h3 class="conn-title">Simple Past</h3><p class="conn-text">do/does ist Gegenwart. Für eine Frage in der Vergangenheit brauchst du did – bei allen Personen.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Does she play? · Did she play yesterday?<br>She doesn’t play. · She didn’t play yesterday.</p></div><span class="conn-open">Simple Past öffnen</span></div></a></div></div>
+<div class="connections-panel"><div class="sp-intro-card sp-main-intro"><h2 class="sp-panel-title">Verbindungen</h2><p class="sp-panel-description">Hier findest du die angrenzenden Themen, wenn du mehr als Bedeutung und Verbform prüfen möchtest.</p></div><div class="conn-map"><a class="conn-card" href="questions.html#lernen" aria-label="Questions öffnen"><div class="conn-icon" aria-hidden="true">❓</div><div><h3 class="conn-title">Questions</h3><p class="conn-text">Fragen mit <span class="sp-mark sp-mark-rule">Fragewort</span> und gemischte Fragearten.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Where <span class="sp-mark sp-mark-helper">does</span> <span class="sp-mark sp-mark-person">Mia</span> <span class="sp-mark sp-mark-form">live</span>?</p></div><span class="conn-open">Questions öffnen</span></div></a><a class="conn-card" href="subjectobjectquestions.html" aria-label="Subject &amp; Object Questions öffnen"><div class="conn-icon" aria-hidden="true">🔎</div><div><h3 class="conn-title">Subject &amp; Object Questions</h3><p class="conn-text">Unterscheide: Wer ist gesucht – oder nach wem/was wird gefragt?</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p>Who <span class="sp-mark sp-mark-form">plays</span> tennis? · Who <span class="sp-mark sp-mark-helper">does</span> <span class="sp-mark sp-mark-person">Mia</span> <span class="sp-mark sp-mark-form">play</span> with?</p></div><span class="conn-open">Subject &amp; Object Questions öffnen</span></div></a><a class="conn-card" href="progressive.html#lernen" aria-label="Present Progressive öffnen"><div class="conn-icon" aria-hidden="true">🎬</div><div><h3 class="conn-title"><span class="sp-mark sp-mark-rule">Present Progressive</span></h3><p class="conn-text sp-line-group"><span class="sp-text-line">Vergleiche eine <span class="sp-mark sp-mark-rule">Gewohnheit</span> mit einer Handlung, die gerade abläuft. </span><span class="sp-text-line">Feste Verabredungen gehören ebenfalls auf diese Seite.</span></p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> <span class="sp-mark sp-mark-signal">every day</span>. · <span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">is</span> playing <span class="sp-mark sp-mark-signal">now</span>.</p></div><span class="conn-open"><span class="sp-mark sp-mark-rule">Present Progressive</span> öffnen</span></div></a><a class="conn-card" href="adverbsoffrequency.html#lernen" aria-label="Adverbs of Frequency öffnen"><div class="conn-icon" aria-hidden="true">📊</div><div><h3 class="conn-title">Adverbs of Frequency</h3><p class="conn-text">Häufigkeitswörter wie <span class="sp-mark sp-mark-signal">often</span> und <span class="sp-mark sp-mark-signal">never</span> und ihre Stelle im Satz.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-signal">often</span> <span class="sp-mark sp-mark-form">plays</span> tennis.</p></div><span class="conn-open">Adverbs of Frequency öffnen</span></div></a><a class="conn-card" href="wordorder.html#lernen" aria-label="Word Order öffnen"><div class="conn-icon" aria-hidden="true">🚂</div><div><h3 class="conn-title">Word Order</h3><p class="conn-text">Die Reihenfolge von <span class="sp-mark sp-mark-person">Person</span>, <span class="sp-mark sp-mark-form">Verb</span>, Rest, Ort und Zeit.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-form">plays</span> tennis at school <span class="sp-mark sp-mark-signal">on Mondays</span>.</p></div><span class="conn-open">Word Order öffnen</span></div></a><a class="conn-card" href="tobe.html#lernen" aria-label="to be öffnen"><div class="conn-icon" aria-hidden="true">👤</div><div><h3 class="conn-title"><span class="sp-mark sp-mark-rule">to be</span></h3><p class="conn-text"><span class="sp-mark sp-mark-helper">am, is und are</span> bilden Fragen und Verneinungen ohne <span class="sp-mark sp-mark-helper">do</span> oder <span class="sp-mark sp-mark-helper">does</span>.</p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-helper">Is</span> <span class="sp-mark sp-mark-person">she</span> happy? · <span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">isn’t</span> happy.</p></div><span class="conn-open"><span class="sp-mark sp-mark-rule">to be</span> öffnen</span></div></a><a class="conn-card" href="simplepast.html#lernen" aria-label="Simple Past öffnen"><div class="conn-icon" aria-hidden="true">🕰️</div><div><h3 class="conn-title"><span class="sp-mark sp-mark-rule">Simple Past</span></h3><p class="conn-text sp-line-group"><span class="sp-text-line"><span class="sp-mark sp-mark-helper">do</span>/<span class="sp-mark sp-mark-helper">does</span> ist Gegenwart. </span><span class="sp-text-line">Für eine Frage in der Vergangenheit brauchst du <span class="sp-mark sp-mark-helper">did</span> – bei allen Personen.</span></p><div class="sp-example-block"><span class="sp-example-label">Beispiel</span><p><span class="sp-mark sp-mark-helper">Does</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span>? · <span class="sp-mark sp-mark-helper">Did</span> <span class="sp-mark sp-mark-person">she</span> <span class="sp-mark sp-mark-form">play</span> <span class="sp-mark sp-mark-signal">yesterday</span>?<br><span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">doesn’t</span> <span class="sp-mark sp-mark-form">play</span>. · <span class="sp-mark sp-mark-person">She</span> <span class="sp-mark sp-mark-helper">didn’t</span> <span class="sp-mark sp-mark-form">play</span> <span class="sp-mark sp-mark-signal">yesterday</span>.</p></div><span class="conn-open"><span class="sp-mark sp-mark-rule">Simple Past</span> öffnen</span></div></a></div></div>
 </div><!-- /VERBINDUNGEN -->
 <!-- NOTIZEN -->
 <div class="compass-mode-panel" data-panel="sp-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
-<div class="sp-intro-card sp-main-intro"><h2 class="sp-panel-title">Meine Notizen zu Simple Present</h2><p class="sp-panel-description">Notiere deine eigene Regel, eine Frage und einen Beispielsatz.</p></div><div class="notes-grid">
+<div class="sp-intro-card sp-main-intro"><h2 class="sp-panel-title">Meine Notizen zu <span class="sp-mark sp-mark-rule">Simple Present</span></h2><p class="sp-panel-description">Notiere deine eigene Regel, eine Frage und einen Beispielsatz.</p></div><div class="notes-grid">
 <div class="note-field">
 <label class="note-field-label" for="note-understood">💡 Das habe ich verstanden</label>
 <textarea class="note-textarea" id="note-understood" placeholder="Was kannst du jetzt erklären?"></textarea>
@@ -3358,6 +3409,68 @@ body .topic-page--simple-present #schreibcheck .writecheck-prompt{padding:12px 1
    out.innerHTML='<span class="sp-feedback-label">'+(correct?'Richtig':'Noch nicht')+'</span><span class="sp-feedback-answer">Does Mia watch TV?</span><span class="sp-feedback-reason"><span class="sp-example-label">Warum?</span>Mia steht für she. Does ist richtig und zeigt schon die besondere Form. Das Hauptverb bleibt watch ohne -es.</span>';
   }
  });
+})();
+</script><script data-sp-presentation="text-format">(function(){
+ 'use strict';
+ // This layer changes only text layout and colour. It does not evaluate answers or save data.
+ var groups=[{"kind": "signal", "terms": ["every Saturday", "every morning", "every evening", "every day", "every week", "on Saturdays", "on Sundays", "on Mondays", "at weekends", "right now", "always", "usually", "often", "sometimes", "never", "now", "yesterday", "Signalwörter", "Signalwort", "gerade jetzt"]}, {"kind": "helper", "terms": ["does not", "do not", "did not", "doesn't", "doesn’t", "don't", "don’t", "didn't", "didn’t", "does", "do", "did", "is", "are", "isn’t", "isn't", "am, is und are"]}, {"kind": "person", "terms": ["Tom and Anna", "My brother", "My sister", "My parents", "the children", "your friends", "Hanna", "Anna", "Mia", "Tom", "Ben", "Leo", "I", "you", "he", "she", "it", "we", "they", "Person", "Pronomen"]}, {"kind": "form", "terms": ["Grundform", "Mitlaut", "Selbstlaut", "letztem Laut", "Schreibform", "Endlaute", "-es", "-s", "ies", "plays", "play", "watches", "watch", "likes", "like", "lives", "live", "studies", "study", "reads", "read", "tries", "try", "goes", "go", "washes", "wash", "has", "have", "sleeps", "sleep", "knows", "know", "love", "Verb"]}, {"kind": "rule", "terms": ["Present Progressive", "Simple Present", "Simple Past", "to be", "Kurzantworten", "Kurzantwort", "Fragewort", "Fragewörter", "Verneinung", "Aussage", "regelmäßig", "allgemein", "Gewohnheiten", "Gewohnheit", "Vorlieben", "Vorliebe", "Zustände", "Zustand"]}];
+ var kinds=Object.create(null),all=[];
+ groups.forEach(function(g){g.terms.forEach(function(t){kinds[t.toLocaleLowerCase()]=g.kind;all.push(t);});});
+ all.sort(function(a,b){return b.length-a.length;});
+ function escaped(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+ var words=new RegExp("(?<![\\p{L}\\p{N}_’'])("+all.map(escaped).join('|')+")(?![\\p{L}\\p{N}_’'])",'giu');
+ var sentences=/(?<=[.!?])\s+(?=[A-ZÄÖÜ])/g;
+ var skip='button,input,textarea,select,option,script,style,summary,.sp-mark,.tok,.sp-chip,.m-chip,.verb-chip,.sp-ref-chip,.sp-s-ending,.sp-aux-em,.sp-card-label,.sp-example-label,.sp-small-label,.sp-feedback-label,.step-label,.sp-section-number,.sp-pron-symbol';
+ var targets='.learn-panel p,.learn-panel label,.learn-panel .sp-feedback-reason,.learn-panel .sp-feedback-answer,.learn-panel .writecheck-feedback,.learn-panel .writecheck-summary,.learn-panel .radar-decision,.learn-panel .radar-example,.sp-ref-wrap p,.sp-ref-wrap li,.sp-ref-wrap td,.sp-ref-wrap .sp-ref-example-en,.sp-ref-wrap .sp-ref-example-de,.connections-panel p,.notes-panel p';
+ var root=document.getElementById('simplepresent-layout-root');if(!root)return;
+ var observer=null,pending=false;
+ function cutsFor(text){var cuts=[],match;sentences.lastIndex=0;while((match=sentences.exec(text)))cuts.push(match.index+match[0].length);return cuts;}
+ function splitBlock(el){
+  if(!el.matches('p,li,label,.sp-feedback-reason')||el.querySelector('br,button,input,textarea,select'))return;
+  if(Array.from(el.children).some(function(c){return c.classList.contains('sp-text-line');}))return;
+  var text=el.textContent,cuts=cutsFor(text);if(!cuts.length)return;
+  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[],node,offset=0;
+  while((node=walker.nextNode())){nodes.push({node:node,start:offset,end:offset+node.data.length});offset+=node.data.length;}
+  if(!nodes.length)return;
+  function position(index){for(var i=0;i<nodes.length;i++){if(index<=nodes[i].end)return{node:nodes[i].node,offset:index-nodes[i].start};}return{node:nodes[nodes.length-1].node,offset:nodes[nodes.length-1].node.data.length};}
+  var boundaries=[0].concat(cuts,[text.length]),fragment=document.createDocumentFragment();
+  for(var j=0;j<boundaries.length-1;j++){
+   var range=document.createRange(),start=position(boundaries[j]),end=position(boundaries[j+1]);range.setStart(start.node,start.offset);range.setEnd(end.node,end.offset);
+   var line=document.createElement('span');line.className='sp-text-line';line.appendChild(range.cloneContents());fragment.appendChild(line);
+  }
+  el.replaceChildren(fragment);el.classList.add('sp-line-group');
+ }
+ function splitLooseFeedback(el){
+  if(!el.matches('.writecheck-feedback'))return;
+  Array.from(el.childNodes).forEach(function(node){
+   if(node.nodeType!==Node.TEXT_NODE)return;
+   var cuts=cutsFor(node.data);if(!cuts.length)return;
+   var boundaries=[0].concat(cuts,[node.data.length]),fragment=document.createDocumentFragment();
+   for(var j=0;j<boundaries.length-1;j++){var line=document.createElement('span');line.className='sp-loose-line';line.textContent=node.data.slice(boundaries[j],boundaries[j+1]);fragment.appendChild(line);}
+   node.replaceWith(fragment);
+  });
+ }
+ function mark(el){
+  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:function(n){return n.parentElement&&n.parentElement.closest(skip)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT;}}),nodes=[],node;
+  while((node=walker.nextNode()))nodes.push(node);
+  nodes.forEach(function(n){
+   var text=n.data,fragment=document.createDocumentFragment(),last=0,match,found=false;words.lastIndex=0;
+   while((match=words.exec(text))){
+    if(match[0]==='i')continue;
+    found=true;if(match.index>last)fragment.appendChild(document.createTextNode(text.slice(last,match.index)));
+    var span=document.createElement('span');span.className='sp-mark sp-mark-'+kinds[match[0].toLocaleLowerCase()];span.textContent=match[0];fragment.appendChild(span);last=match.index+match[0].length;
+   }
+   if(found){if(last<text.length)fragment.appendChild(document.createTextNode(text.slice(last)));n.replaceWith(fragment);}
+  });
+ }
+ function format(){
+  pending=false;if(observer)observer.disconnect();
+  try{root.querySelectorAll(targets).forEach(function(el){splitBlock(el);splitLooseFeedback(el);mark(el);});}
+  finally{if(observer)observer.observe(root,{childList:true,characterData:true,subtree:true});}
+ }
+ observer=new MutationObserver(function(){if(!pending){pending=true;window.requestAnimationFrame(format);}});
+ format();
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',format,{once:true});
 })();
 </script></body>
 </html>
