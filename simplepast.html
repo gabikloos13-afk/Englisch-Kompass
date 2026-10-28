@@ -6623,6 +6623,88 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  #past-learn-tobe :is(.sp-v111-example,.sp-v111-rule-sheet){padding:18px!important;}
 }
 </style>
+<style id="simplepast-v113-consistent-learning-layout">
+/* Einheitlicher Kompass-Rhythmus für Orientierung, Positive, Negative und alle Lernkarten.
+   Statische Merkhilfen bleiben optisch anders als echte Auswahlbuttons. */
+:root{
+ --sp-v113-gap:18px;--sp-v113-pad:clamp(20px,2.3vw,28px);
+ --sp-v113-text:#334155;--sp-v113-divider:#d8e2eb;
+}
+#simplepast-learn-panel :is(.learn-panel,.past-tool-stage,.past-tool-panel,.simplepast-learning-shell,.past-topic-card,.past-subcard),
+#simplepast-learn-panel :is(.negative-v49-hero,.negative-v49-understand,.negative-v49-route,.negative-v49-change-grid),
+#simplepast-learn-panel :is(.positive-v31-route,.positive-v31-grid,.positive-v31-forms,.simplepast-overview-map){
+ min-width:0;max-width:100%;box-sizing:border-box;
+}
+#simplepast-learn-panel :is(.past-topic-card,.past-subcard,.simplepast-learning-shell,.negative-v49-hero,.past-route-intro){
+ padding:var(--sp-v113-pad)!important;
+}
+#simplepast-learn-panel :is(.simplepast-learning-head,.negative-v49-hero,.entry-card,.past-route-intro){
+ column-gap:20px!important;row-gap:18px!important;
+}
+#simplepast-learn-panel :is(.simplepast-learning-copy,.negative-v49-hero > div,.entry-card > div){min-width:0;}
+#simplepast-learn-panel :is(.simplepast-learning-lead,.entry-text,.past-topic-note,.negative-v49-understand p,.positive-v31-route p){
+ font-size:clamp(15px,1.1vw,16px)!important;line-height:1.9!important;letter-spacing:0!important;
+ max-width:85ch;
+}
+#simplepast-learn-panel :is(.negative-v49-route-step,.positive-v31-route-step,.positive-v31-rule-card,.positive-v31-path-card,.past-route-mini span,.sp-overview-chip-row span){
+ min-width:0!important;box-sizing:border-box!important;
+ padding:16px 18px!important;line-height:1.7!important;
+}
+#simplepast-learn-panel :is(.negative-v49-route-step,.positive-v31-route-step,.positive-v31-rule-card,.positive-v31-path-card){
+ background:#eaf2f8!important;border:1px solid #bfd1e1!important;border-radius:14px!important;
+}
+#simplepast-learn-panel :is(.negative-v49-route-step,.positive-v31-route-step,.positive-v31-rule-card,.positive-v31-path-card) :is(p,small,span){
+ line-height:1.7!important;
+}
+#simplepast-learn-panel :is(.negative-v49-route,.positive-v31-route,.positive-v31-grid,.negative-v49-change-grid,.negative-v49-checks){
+ gap:var(--sp-v113-gap)!important;row-gap:20px!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.positive-v31-card,.positive-v31-example,.entry-card,.simplepast-overview-map > div){
+ min-width:0!important;padding:var(--sp-v113-pad)!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.positive-v31-card,.positive-v31-example) :is(p,small){
+ display:block;line-height:1.85!important;margin-top:12px!important;
+}
+#simplepast-learn-panel :is(.negative-v49-change-grid > article,.positive-v31-card,.positive-v31-example) :is(h3,h4){
+ margin-bottom:14px!important;line-height:1.45!important;
+}
+#simplepast-learn-panel :is(.negative-v49-formula,.past-route-mini,.positive-v31-path,.sp-overview-chip-row){
+ gap:10px!important;row-gap:12px!important;
+}
+#simplepast-learn-panel :is(.positive-v31-warning,.negative-v49-stop-card,.past-topic-note){
+ background:#fff4e5!important;border:1px solid #e9d1aa!important;border-left:4px solid #d9a352!important;
+ padding:var(--sp-v113-pad)!important;border-radius:14px!important;
+}
+#simplepast-learn-panel :is(.past-rule-card,.sp-overview-rule,.positive-v31-rule-card) :is(p,li),
+#simplepast-learn-panel :is(.past-topic-card,.past-subcard,.simplepast-learning-shell) :is(p,li){
+ line-height:1.85!important;
+}
+#simplepast-learn-panel :is(.past-topic-card,.past-subcard,.simplepast-learning-shell) :is(p,ul,ol)+:is(p,ul,ol){
+ margin-top:13px!important;
+}
+#simplepast-learn-panel :is(.past-topic-card,.past-subcard,.simplepast-learning-shell) :is(h2,h3,h4)+:is(p,ul,ol){
+ margin-top:12px!important;
+}
+#simplepast-learn-panel :is(.past-term,.past-code,.questions-v66-plain,.tobe-v69-neutral-chip,.tobe-v69-rule-chip){
+ line-height:inherit!important;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+ white-space:normal!important;padding:2px 5px!important;margin:0 2px!important;
+}
+#simplepast-learn-panel :is(.past-tool-tabs,.past-choice-row,.machine-chips,.positive-v31-option-row,.negative-v49-checks){
+ row-gap:12px!important;
+}
+#simplepast-learn-panel :is(.past-tool-tab,.past-choice-btn,.sp-action-btn){
+ min-height:44px!important;height:auto!important;line-height:1.5!important;
+ white-space:normal!important;padding:10px 15px!important;
+}
+#simplepast-learn-panel :is(.past-tool-tab,.past-choice-btn,.sp-action-btn):focus-visible{
+ outline:3px solid #2563eb;outline-offset:3px;
+}
+@media(max-width:760px){
+ :root{--sp-v113-gap:14px;--sp-v113-pad:18px;}
+ #simplepast-learn-panel :is(.negative-v49-route,.positive-v31-route,.positive-v31-grid){row-gap:15px!important;}
+ #simplepast-learn-panel :is(.simplepast-learning-lead,.entry-text,.negative-v49-understand p){line-height:1.82!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
