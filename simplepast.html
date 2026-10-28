@@ -6705,6 +6705,37 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  #simplepast-learn-panel :is(.simplepast-learning-lead,.entry-text,.negative-v49-understand p){line-height:1.82!important;}
 }
 </style>
+<style id="simplepast-v114-questions-structure">
+/* Fragen: erst verstehen, dann anwenden; ergänzendes Wissen eingeklappt. */
+#past-learn-questions .questions-v64-lead{max-width:78ch!important;line-height:1.8!important;margin:12px 0 0!important;}
+#past-learn-questions .sp-v114-extra{
+ background:#f1f6fa!important;border:1px solid #c3d3e1!important;border-radius:14px!important;
+ padding:0!important;margin:18px 0 22px!important;box-shadow:none!important;
+}
+#past-learn-questions .sp-v114-extra summary{
+ cursor:pointer;display:list-item;list-style-position:inside;padding:16px 20px;
+ color:#355f81;font-size:1rem;line-height:1.6;
+}
+#past-learn-questions .sp-v114-extra[open] summary{border-bottom:1px solid #c3d3e1;}
+#past-learn-questions .sp-v114-extra .past-question-bridge-grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;padding:18px 20px!important;
+}
+#past-learn-questions .sp-v114-extra .past-question-bridge-grid>div{min-width:0;}
+#past-learn-questions #sp-school-answer-questions{
+ margin:0 0 20px!important;padding:22px!important;border:1px solid #c3d3e1!important;
+ border-radius:16px!important;background:#f8fbfd!important;box-shadow:none!important;
+}
+#past-learn-questions #sp-school-answer-questions h3{margin:0 0 10px!important;line-height:1.4!important;}
+#past-learn-questions #sp-school-answer-questions>p{margin:0 0 15px!important;line-height:1.75!important;}
+#past-learn-questions .questions-v64-rule-card{padding:22px!important;background:#fff4e5!important;border:1px solid #e9d1aa!important;border-left:4px solid #d9a352!important;}
+#past-learn-questions .questions-v64-rule-card p{margin:0 0 12px!important;line-height:1.75!important;}
+#past-learn-questions .questions-v64-rule-card p:last-child{margin-bottom:0!important;}
+@media(max-width:700px){
+ #past-learn-questions #sp-school-answer-questions{padding:18px!important;}
+ #past-learn-questions .sp-v114-extra summary{padding:14px 16px;}
+ #past-learn-questions .sp-v114-extra .past-question-bridge-grid{padding:16px!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7793,17 +7824,17 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </section>
 </div>
 <div class="learn-panel" data-panel="past-learn" data-val="questions" id="past-learn-questions">
-<section class="sp-school-practice" id="sp-school-answer-questions" aria-labelledby="sp-school-answer-title"><h3 id="sp-school-answer-title">Aus einer Antwort die Frage bilden</h3><p>Entscheide zuerst: Ja-/Nein-Frage oder Frage mit Fragewort? Schreibe dann die vollständige Frage und prüfe sie.</p><div id="sp-school-answer-cases"></div></section>
+
 <section aria-labelledby="questions-did-title" class="past-topic-card past-topic-card-tools simplepast-did-v28 simplepast-learning-shell questions-v64-shell">
 <div class="simplepast-learning-head">
 <span aria-hidden="true" class="simplepast-learning-icon">❓</span>
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 4</p>
 <h2 class="simplepast-learning-title" id="questions-did-title">Questions with did</h2>
-<p class="simplepast-learning-lead questions-v64-lead">Questions with did sind Fragen im Simple Past mit normalen Verben. Bei Fragen ohne Fragewort steht <span class="past-code">Did</span> vorne. Bei Fragen mit <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> steht das Fragewort vorne, danach kommt <span class="past-code">did</span>. Nach <span class="past-code">did</span> kommt die <span class="past-code">basic form</span>.</p>
+<p class="simplepast-learning-lead questions-v64-lead">So stellst du Fragen über Vergangenes: <span class="past-code">Did</span> + Person + Grundform. Mit Fragewort steht <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> davor.</p>
 </div>
 </div>
-<aside class="past-question-bridge" aria-label="Questions with did: Kurzantworten und Fragearten"><h3>Damit du die Frage richtig einordnest</h3><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></aside>
+<details class="past-question-bridge sp-v114-extra"><summary>Kurzantworten und besondere Fragen – bei Bedarf nachlesen</summary><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></details>
 <nav aria-label="Questions with did" class="past-tool-tabs questions-v64-tabs">
 <button aria-controls="questions-v64-understand" aria-pressed="true" class="past-tool-tab is-active" data-tab="questions-v64" data-val="understand" type="button">Verstehen</button>
 <button aria-controls="questions-v64-machine" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="machine" type="button">Satzmaschine</button>
@@ -7816,7 +7847,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p class="feature-kicker">Block 1 · Verstehen</p>
 <div class="questions-v64-rule-card">
 <h3>1. Grundregel</h3>
-<p>Eine <span class="past-term">question with did</span> fragt im Simple Past nach etwas, das früher passiert ist.</p>
+<p>Mit <span class="past-term">did</span> fragst du bei normalen Verben nach Vergangenem.</p>
 <p>Bei Fragen ohne Fragewort steht <span class="questions-v66-plain">Did</span> ganz vorne. Bei Fragen mit <span class="questions-v66-plain">Where</span>, <span class="questions-v66-plain">What</span> oder <span class="questions-v66-plain">When</span> steht das Fragewort vorne, danach kommt <span class="questions-v66-plain">did</span>.</p>
 <p><span class="questions-v66-plain">Did</span> zeigt schon die Vergangenheit. Deshalb steht das Verb danach in der <span class="questions-v66-plain">basic form</span>.</p>
 </div>
@@ -7893,6 +7924,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 </div>
 <div class="past-tool-panel" data-panel="questions-v64" data-val="machine" id="questions-v64-machine">
+<section class="sp-school-practice" id="sp-school-answer-questions" aria-labelledby="sp-school-answer-title"><h3 id="sp-school-answer-title">Aus einer Antwort die Frage bilden</h3><p>Entscheide zuerst: Ja-/Nein-Frage oder Frage mit Fragewort? Schreibe dann die vollständige Frage und prüfe sie.</p><div id="sp-school-answer-cases"></div></section>
 <div class="past-subcard did-v59-machine-section" data-v59-question-machine="">
 <p class="feature-kicker">Teil 2 · Satzmaschine</p>
 <h3>Aus Aussage wird Frage</h3>
