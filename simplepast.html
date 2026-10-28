@@ -6573,6 +6573,56 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
  #past-learn-tobe .sp-v111-rule-sheet{padding:6px 17px!important;}
 }
 </style>
+<style id="simplepast-v112-design-system">
+/* v112: konsistente visuelle Semantik. Keine Änderung an JS, Aufgaben, Zuständen oder Tab-Logik. */
+:root{
+ --sp-ui-rule-bg:#fff4e5;--sp-ui-rule-edge:#d9a352;--sp-ui-rule-border:#e9d1aa;
+ --sp-ui-thinking-bg:#eaf2f8;--sp-ui-thinking-edge:#6c91b1;--sp-ui-thinking-border:#bfd1e1;
+ --sp-ui-memory-bg:#f1f6fa;--sp-ui-memory-edge:#6486a6;--sp-ui-memory-border:#c3d3e1;
+ --sp-ui-example-bg:#fff;--sp-ui-example-border:#cbd5e1;
+ --sp-ui-outer:clamp(20px,2.2vw,26px);--sp-ui-gap:14px;
+}
+#simplepast-learn-panel :is(.tobe-v70-stopline,.negative-v49-stop-card,.past-topic-note){
+ background:var(--sp-ui-rule-bg)!important;border:1px solid var(--sp-ui-rule-border)!important;
+ border-left:4px solid var(--sp-ui-rule-edge)!important;border-radius:14px!important;
+ padding:var(--sp-ui-outer)!important;box-shadow:none!important;
+}
+#simplepast-learn-panel :is(.tobe-v70-checker,.tobe-v70-route-compare,.past-route-intro){
+ border-color:var(--sp-ui-thinking-border)!important;box-shadow:none!important;
+}
+#past-learn-tobe .tobe-v70-route-card,
+#past-learn-tobe .tobe-v70-check-step{
+ background:var(--sp-ui-thinking-bg)!important;border:1px solid var(--sp-ui-thinking-border)!important;
+ border-radius:14px!important;box-shadow:none!important;
+}
+#past-learn-tobe .sp-v111-rule-sheet{
+ background:var(--sp-ui-memory-bg)!important;
+ border:1px solid var(--sp-ui-memory-border)!important;
+ border-left:4px solid var(--sp-ui-memory-edge)!important;
+ border-radius:14px!important;box-shadow:none!important;
+}
+#past-learn-tobe .sp-v111-example{
+ background:var(--sp-ui-example-bg)!important;
+ border:1px solid var(--sp-ui-example-border)!important;
+ border-left:4px solid #94a3b8!important;box-shadow:none!important;
+}
+#simplepast-learn-panel :is(.tobe-v70-stopline,.negative-v49-stop-card,.past-topic-note,.tobe-v70-route-card,.tobe-v70-check-step,.sp-v111-example,.sp-v111-rule-sheet){
+ min-width:0!important;line-height:1.75!important;
+}
+#simplepast-learn-panel :is(.tobe-v70-stopline,.negative-v49-stop-card,.past-topic-note,.tobe-v70-route-card,.tobe-v70-check-step,.sp-v111-example,.sp-v111-rule-sheet) :is(p,li,small){
+ line-height:1.75!important;
+}
+#simplepast-learn-panel :is(.tobe-v70-stopline,.negative-v49-stop-card,.past-topic-note,.sp-v111-example,.sp-v111-rule-sheet) :is(p,ul,ol)+:is(p,ul,ol){
+ margin-top:12px!important;
+}
+#simplepast-learn-panel :is(.past-tool-tab,.past-choice-btn,.sp-action-btn) {cursor:pointer;}
+#past-learn-tobe .sp-v111-example-list,
+#past-learn-tobe .sp-v111-rule-sheet{cursor:default;}
+@media(max-width:700px){
+ :root{--sp-ui-outer:18px;--sp-ui-gap:12px;}
+ #past-learn-tobe :is(.sp-v111-example,.sp-v111-rule-sheet){padding:18px!important;}
+}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
