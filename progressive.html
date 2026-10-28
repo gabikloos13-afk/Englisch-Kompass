@@ -371,6 +371,38 @@ textarea{width:100%;min-height:85px}
 .pg-refined-panel .pg-teach-card,.pg-refined-panel .pg-teach-part,.pg-refined-panel .tool-card{border-radius:16px}
 .pg-refined-panel .pg-teach-card p,.pg-refined-panel .pg-teach-part p{line-height:1.72}
 @media(max-width:700px){.pg-reference-wrap,.pg-connections-wrap,.pg-notes-wrap{width:100%;max-width:100%;padding:16px}}
+
+/* RESTORED: the dedicated teaching card system removed by earlier CSS cleanup. */
+.pg-refined-panel .pg-teach-formula{display:flex;align-items:stretch;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+.pg-refined-panel .pg-teach-part{flex:1 1 170px;display:grid;gap:8px;min-width:145px;padding:18px;text-align:center;border:1px solid #c6d7e7;border-top:5px solid #6687aa;border-radius:16px;background:#fff}
+.pg-refined-panel .pg-teach-part>span{font-size:.82rem;color:#485d70}
+.pg-refined-panel .pg-teach-part>strong{font-size:1.45rem;color:#23496d}
+.pg-refined-panel .pg-teach-part>small{font-size:.83rem;color:#566c7f}
+.pg-refined-panel .pg-teach-be{background:#edf5ff;border-top-color:#3976bd}
+.pg-refined-panel .pg-teach-ing{background:#eef8f5;border-top-color:#2e9378}
+.pg-refined-panel .pg-teach-symbol{align-self:center;font-size:1.25rem;color:#617d97}
+.pg-refined-panel .pg-teach-result{padding:17px 20px;background:#fff;border:1px solid #c6d7e7;border-radius:16px;text-align:center;font-size:1.15rem;line-height:1.6}
+.pg-refined-panel .pg-teach-result small{display:block;margin-top:7px;color:#536b81;font-size:.86rem}
+.pg-refined-panel .pg-teach-blue{color:#255ca0;font-weight:600}
+.pg-refined-panel .pg-teach-green{color:#16745a;font-weight:600}
+.pg-refined-panel .pg-teach-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:17px 0}
+.pg-refined-panel .pg-teach-card{min-width:0;background:#fff;border:1px solid #ccdae8;border-radius:16px;padding:20px 22px;box-shadow:0 4px 15px rgba(15,23,42,.05)}
+.pg-refined-panel .pg-teach-card h3{margin:0 0 13px;color:#244e73;font-size:1.03rem;line-height:1.4}
+.pg-refined-panel .pg-teach-card p{margin:9px 0;line-height:1.75}
+.pg-refined-panel .pg-teach-lines{display:grid;gap:8px}
+.pg-refined-panel .pg-teach-lines p{display:grid;grid-template-columns:minmax(0,1fr) 18px 52px;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:#edf2f7;margin:0}
+.pg-refined-panel .pg-teach-example{padding:9px 12px;background:#f0f5fa;border-radius:12px;margin:8px 0;line-height:1.55}
+.pg-refined-panel .pg-teach-example span{color:#15795e}
+.pg-refined-panel .pg-teach-warning{padding:13px 15px;border:1px solid #efd2a0;border-left:5px solid #d58d2d;border-radius:12px;background:#fff3df}
+.pg-refined-panel .pg-teach-reminder{margin:18px 0;padding:16px 19px;background:#eaf4ff;border:1px solid #b9d3ea;border-radius:16px;line-height:1.7}
+.pg-refined-panel .pg-learning-guide{background:#e7edf4;border:1px solid #c9d8e7;border-radius:16px;padding:19px 21px}
+.pg-refined-panel .pg-decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pg-refined-panel .pg-decision-step{padding:15px 17px;background:#fff;border:1px solid #cbd9e8;border-radius:14px;min-width:0}
+.pg-refined-panel .pg-decision-step p{line-height:1.75}
+.pg-refined-panel .pg-decision-step strong{display:block;margin-bottom:7px;color:#315b80}
+.pg-refined-panel .pg-warning-note,.pg-refined-panel .pg-rule-note{background:#fff1dd;border:1px solid #e7c88c;border-left:5px solid #d58d2d;border-radius:14px}
+.pg-refined-panel button,.pg-reference-wrap button,.pg-connections-wrap button,.pg-notes-wrap button{border-radius:999px}
+@media(max-width:760px){.pg-refined-panel .pg-teach-grid,.pg-refined-panel .pg-decision-grid{grid-template-columns:1fr}.pg-refined-panel .pg-teach-symbol{display:none}.pg-refined-panel .pg-teach-part{flex-basis:100%}.pg-refined-panel .pg-teach-card{padding:17px}}
 </style>
 </head>
 <body>
