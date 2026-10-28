@@ -6390,6 +6390,18 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 /* Die aktuelle Aufgabe steht bereits oberhalb der Schreibphase. Das zweite Aufgabenfeld bleibt für die bestehende JavaScript-Anbindung im DOM. */
 #simplepast-denkzentrale .sp-dz-v80-write-task{display:none!important;}
 </style>
+<style id="simplepast-v106-tobe-person-tool-css">
+#past-learn-tobe #tobe-v106-person-tool{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding:16px!important;background:#f8fafc!important;border:1px solid #cbd5e1!important;border-radius:16px!important}
+#tobe-v106-person-tool .tobe-v106-instruction{margin:0;line-height:1.6}
+#tobe-v106-person-tool .tobe-v106-choice,#tobe-v106-person-tool .tobe-v106-actions{display:flex;flex-wrap:wrap;gap:8px}
+#tobe-v106-person-tool button{min-height:40px;min-width:50px;padding:8px 13px;border:1px solid #94a3b8;border-radius:12px;background:#fff;color:#334155;font:inherit;font-weight:400;line-height:1.4;cursor:pointer}
+#tobe-v106-person-tool button:hover{background:#eff6ff;border-color:#2563eb}
+#tobe-v106-person-tool button[aria-pressed="true"]{background:#2563eb;border-color:#2563eb;color:#fff}
+#tobe-v106-person-tool button:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+#tobe-v106-person-tool .tobe-v106-feedback{margin:0;padding:11px 13px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;line-height:1.6}
+#tobe-v106-person-tool .tobe-v106-feedback[data-result="correct"]{background:#f0fdf4;border-color:#86efac;color:#166534}
+#tobe-v106-person-tool .tobe-v106-feedback[data-result="incorrect"]{background:#fff7ed;border-color:#fdba74;color:#9a3412}
+</style>
 </head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
@@ -7792,17 +7804,23 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article class="tobe-v70-check-step">
 <span class="tobe-v70-mini-number">2</span>
 <h4>Wer steht im Satz?</h4>
-<div aria-label="Personen-Weiche was were" class="tobe-v70-person-switch">
-<div>
-<p>I · he · she · it</p>
-<span aria-hidden="true">↓</span>
-<p class="tobe-v70-result">was</p>
+<div class="tobe-v70-person-switch" id="tobe-v106-person-tool" aria-label="Personen-Weiche was oder were">
+<p class="tobe-v106-instruction">Wähle eine Person. Entscheide dann: <span class="past-term">was</span> oder <span class="past-term">were</span>?</p>
+<div class="tobe-v106-choice" role="group" aria-label="Person wählen">
+<button type="button" data-v106-person="I" aria-pressed="false">I</button>
+<button type="button" data-v106-person="you" aria-pressed="false">you</button>
+<button type="button" data-v106-person="he" aria-pressed="false">he</button>
+<button type="button" data-v106-person="she" aria-pressed="false">she</button>
+<button type="button" data-v106-person="it" aria-pressed="false">it</button>
+<button type="button" data-v106-person="we" aria-pressed="false">we</button>
+<button type="button" data-v106-person="they" aria-pressed="false">they</button>
 </div>
-<div>
-<p>you · we · they</p>
-<span aria-hidden="true">↓</span>
-<p class="tobe-v70-result">were</p>
+<div class="tobe-v106-choice" role="group" aria-label="Vergangenheitsform wählen">
+<button type="button" data-v106-form="was" aria-pressed="false">was</button>
+<button type="button" data-v106-form="were" aria-pressed="false">were</button>
 </div>
+<div class="tobe-v106-actions"><button type="button" data-v106-check>Prüfen</button><button type="button" data-v106-reset>Zurücksetzen</button></div>
+<p class="tobe-v106-feedback" data-v106-feedback role="status" aria-live="polite">Wähle erst eine Person und dann die passende Form.</p>
 </div>
 </article>
 <article class="tobe-v70-check-step">
@@ -12615,5 +12633,32 @@ body .topic-page--simple-past .topic-panel--connections .sp-v119-jump{white-spac
 #simplepast-denkzentrale.sp-dz-independent .sp-dz-v80-repair-panel{display:none!important}
 #simplepast-denkzentrale.sp-dz-independent [data-dz-step="4"]{display:block!important}
 </style>
+<script id="simplepast-v106-tobe-person-tool-js">
+(function(){
+'use strict';
+function init(){
+ const root=document.getElementById('tobe-v106-person-tool');
+ if(!root||root.dataset.v106Ready==='true')return;
+ root.dataset.v106Ready='true';
+ const feedback=root.querySelector('[data-v106-feedback]');
+ let person=null,form=null;
+ function pick(attribute,value){root.querySelectorAll('['+attribute+']').forEach(function(btn){btn.setAttribute('aria-pressed',String(btn.getAttribute(attribute)===value));});}
+ function message(text,result){feedback.textContent=text;if(result)feedback.dataset.result=result;else delete feedback.dataset.result;}
+ root.addEventListener('click',function(event){
+   const button=event.target.closest('button');
+   if(!button||!root.contains(button))return;
+   if(button.hasAttribute('data-v106-person')){const value=button.getAttribute('data-v106-person');person=person===value?null:value;pick('data-v106-person',person);message('Wähle die passende Form und prüfe deine Antwort.');}
+   else if(button.hasAttribute('data-v106-form')){const value=button.getAttribute('data-v106-form');form=form===value?null:value;pick('data-v106-form',form);message('Prüfe deine Entscheidung.');}
+   else if(button.hasAttribute('data-v106-check')){
+     if(!person||!form){message('Wähle eine Person und eine Form.');return;}
+     const correct=['I','he','she','it'].includes(person)?'was':'were';
+     if(form===correct)message('Richtig: '+person+' '+correct+'.','correct');
+     else message('Noch nicht. Überlege, zu welcher Personengruppe '+person+' gehört. Versuche es erneut.','incorrect');
+   } else if(button.hasAttribute('data-v106-reset')){person=null;form=null;pick('data-v106-person',null);pick('data-v106-form',null);message('Wähle erst eine Person und dann die passende Form.');}
+ });
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
