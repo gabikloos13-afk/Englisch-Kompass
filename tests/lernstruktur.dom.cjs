@@ -15,6 +15,7 @@ const ok=(v,m)=>{assert.ok(v,m);checks++};
  let buttons=[...d.querySelectorAll(selector)];if(name==='questions')buttons=[...d.querySelectorAll('#lernen .learn-step-nav button')];
  ok(buttons.length>1,name+' learn navigation');const last=buttons.at(-1);ok(/Schreib.Check/.test(last.textContent),name+' check last');last.click();
  ok(target.classList.contains('is-active')||target.hidden===false,name+' check activates');
+ if(name==='simplepast'){d.querySelector('button.sp-dz-v14-link').click();ok(d.querySelector('#past-learn-entry').classList.contains('is-active'),'Simple Past return to first learn step');}
  buttons[0].click();ok(special?target.hidden:!target.classList.contains('is-active'),name+' check deactivates');
  const main=d.querySelectorAll('.compass-mode-btn[data-val="writecheck"],.mode-btn[data-tab="schreibcheck"]');ok(!main.length,name+' no top-level writing check');
  ok(!errors.length,name+' script errors: '+errors.join('\n'));
