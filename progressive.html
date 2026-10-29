@@ -1625,7 +1625,7 @@ body.homework .ref-wrap{max-width:1000px}
   const timePattern='right now|at the moment|every (?:day|morning|evening|Friday|Sunday)|last (?:week|Friday|Saturday)|next (?:week|Saturday|Friday|Monday|Tuesday|term)|on (?:Mondays|Fridays|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|this (?:week|year|Saturday)|yesterday|tomorrow|today|usually|normally|often|always|never|now|Look!|Listen!';
   const fullPattern=new RegExp('(?<![A-Za-z])(?:'+timePattern+')(?![A-Za-z])|(?:I[’\\\']m|you[’\\\']re|he[’\\\']s|she[’\\\']s|it[’\\\']s|we[’\\\']re|they[’\\\']re)|\\b(?:Person|Verb-ing|the children|the dog|my friend|Hanna|Lina|Emma|Ben|Mia|Leo|Sam|I|you|he|she|it|we|they|am|is|are|does|did|do|was|were|not|isn[’\\\']t|aren[’\\\']t|[a-z]+ing)\\b','gi');
   const onlyTimePattern=new RegExp('(?<![A-Za-z])(?:'+timePattern+')(?![A-Za-z])','gi');
-  const nonVerbs=new Set(['morning','evening','something','anything','nothing','thing','during','spring','darling']);
+  const nonVerbs=new Set(['morning','evening','something','anything','nothing','thing','during','spring','darling','exciting']);
   function markSpan(className,text){const span=document.createElement('span');span.className='mark '+className;span.textContent=text;return span;}
   function markedFragment(text,grammar=true){
     const frag=document.createDocumentFragment(),rx=grammar?fullPattern:onlyTimePattern;rx.lastIndex=0;let previous=0,m;
