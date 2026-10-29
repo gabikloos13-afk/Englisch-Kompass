@@ -409,7 +409,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 .card,.task{box-shadow:none!important}
 @media(max-width:700px){.page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar,.site-actions{padding:12px!important}.compass-head,.hero{padding:20px 18px!important}}
 </style>
-</head>
+<link rel="stylesheet" href="lernstruktur.css"></head>
 <body>
 <div class="unified-actions" aria-label="Seitenaktionen"><a class="unified-back" href="grammatik.html">← Zur Grammatikübersicht</a><div class="unified-tools"><button type="button" class="ha-btn" id="ha-btn">Hausaufgabenmodus</button><button type="button" class="print-btn" id="print-ref-btn">Spickzettel drucken</button></div></div>
 
@@ -444,11 +444,7 @@ html,body{background:#e7eef4!important;color:#243b55}
         <span>Verbindungen</span>
         
       </button>
-      <button class="compass-mode-btn" type="button" data-val="writecheck" aria-pressed="false" aria-controls="schreibcheck">
-        
-        <span>Schreib-Check</span>
-        
-      </button>
+      
       <button class="compass-mode-btn" type="button" data-val="notes" aria-pressed="false" aria-controls="notizen">
         
         <span>Notizen</span>
@@ -463,15 +459,15 @@ html,body{background:#e7eef4!important;color:#243b55}
         <button class="learn-step-btn" type="button" data-step="machine" aria-pressed="false" aria-controls="tia-learn-machine"><span class="step-badge">3</span><span class="step-label">Satzmaschine</span></button>
         <button class="learn-step-btn" type="button" data-step="traps" aria-pressed="false" aria-controls="tia-learn-traps"><span class="step-badge">4</span><span class="step-label">Denkfallen</span></button>
         <button class="learn-step-btn" type="button" data-step="can" aria-pressed="false" aria-controls="tia-learn-can"><span class="step-badge">5</span><span class="step-label">Kann ich's?</span></button>
-      </nav>
+      <button class="learn-step-btn" type="button" data-step="writecheck" aria-pressed="false" aria-controls="schreibcheck"><span class="step-badge">6</span><span class="step-label">Schreib-Check</span></button></nav>
       <div class="learn-progress-bar" aria-hidden="true"><div class="learn-progress-fill" id="learnProgress"></div></div>
 
       <section class="learn-panel is-active" id="tia-learn-entry" data-step="entry">
         <div class="entry-card">
           <div class="entry-visual" aria-hidden="true">🏠</div>
           <div>
-            <p class="entry-hook">Du benutzt <span lang="en">there is / there are</span>, wenn du sagen willst: Da ist etwas. Es gibt etwas.</p>
-            <p class="entry-text">Die wichtigste Frage ist nicht: Wer macht etwas? Sondern: Wie viele Sachen sind da?</p>
+            <ul class="entry-hook learning-points"><li>Du benutzt <span lang="en">there is / there are</span>, wenn du sagen willst: Da ist etwas.</li><li>Es gibt etwas.</li></ul>
+            <ul class="entry-text learning-points"><li>Die wichtigste Frage ist nicht: Wer macht etwas?</li><li>Sondern: Wie viele Sachen sind da?</li></ul>
             <div class="entry-examples" aria-label="Beispiele">
               <span class="entry-ex" lang="en">There is a bag.</span>
               <span class="entry-ex" lang="en">There are two books.</span>
@@ -502,7 +498,7 @@ html,body{background:#e7eef4!important;color:#243b55}
       <section class="learn-panel" id="tia-learn-scanner" data-step="scanner">
         <div class="feature-card">
           <h2 class="feature-title">Raum-Scanner: Was ist da?</h2>
-          <p class="feature-subtitle">Klicke auf eine Sache im Zimmer. Der Scanner zeigt dir den Denkweg: zählen → entscheiden → Satz bauen.</p>
+          <ul class="feature-subtitle learning-points"><li>Klicke auf eine Sache im Zimmer.</li><li>Der Scanner zeigt dir den Denkweg: zählen → entscheiden → Satz bauen.</li></ul>
 
           <div class="scanner-grid">
             <div class="room-picture">
@@ -514,7 +510,7 @@ html,body{background:#e7eef4!important;color:#243b55}
                 <button class="room-item" type="button" data-item="posters" aria-label="zwei Poster">🖼️</button>
                 <button class="room-item" type="button" data-item="dog" aria-label="ein Hund">🐕</button>
               </div>
-              <p class="room-hint">Merke: Der Scanner fragt nicht „Was heißt es auf Deutsch?“, sondern „eine Sache oder mehrere?“</p>
+              <ul class="room-hint learning-points"><li>Merke: Der Scanner fragt nicht „Was heißt es auf Deutsch?“, sondern „eine Sache oder mehrere?“</li></ul>
             </div>
 
             <div class="scanner-panel">
@@ -545,7 +541,7 @@ html,body{background:#e7eef4!important;color:#243b55}
       <section class="learn-panel" id="tia-learn-machine" data-step="machine">
         <div class="feature-card">
           <h2 class="feature-title">Satzmaschine: Aussage, Verneinung, Frage</h2>
-          <p class="feature-subtitle">Wähle Satzart und Menge. Achte darauf, was sich nach vorne bewegt und wo <span lang="en">not</span> oder <span lang="en">any</span> steht.</p>
+          <ul class="feature-subtitle learning-points"><li>Wähle Satzart und Menge.</li><li>Achte darauf, was sich nach vorne bewegt und wo <span lang="en">not</span> oder <span lang="en">any</span> steht.</li></ul>
 
           <div class="machine-grid">
             <div class="machine-card">
@@ -578,12 +574,12 @@ html,body{background:#e7eef4!important;color:#243b55}
       <section class="learn-panel" id="tia-learn-traps" data-step="traps">
         <div class="feature-card">
           <h2 class="feature-title">Denkfallen: Erst klicken, dann Lösung sehen</h2>
-          <p class="feature-subtitle">Klick zuerst auf den Teil, der die Entscheidung verrät. Die Lösung erscheint erst danach.</p>
+          <ul class="feature-subtitle learning-points"><li>Klick zuerst auf den Teil, der die Entscheidung verrät.</li><li>Die Lösung erscheint erst danach.</li></ul>
 
           <div class="trap-grid">
             <div class="trap-card trap-interactive" data-trap="count">
               <h3 class="trap-title">Falle 1: Zahl übersehen</h3>
-              <p class="trap-question">Im Satz ist etwas falsch. Welcher Teil verrät dir, dass <span lang="en">is</span> nicht passt?</p>
+              <ul class="trap-question learning-points"><li>Im Satz ist etwas falsch.</li><li>Welcher Teil verrät dir, dass <span lang="en">is</span> nicht passt?</li></ul>
               <div class="trap-choice-row" aria-label="Denkfalle 1 Auswahl">
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There</button>
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">is</button>
@@ -598,7 +594,7 @@ html,body{background:#e7eef4!important;color:#243b55}
             </div>
             <div class="trap-card trap-interactive" data-trap="question">
               <h3 class="trap-title">Falle 2: Frage falsch gestartet</h3>
-              <p class="trap-question">Welche Information entscheidet, ob die Frage mit <span lang="en">Is</span> oder <span lang="en">Are</span> beginnt?</p>
+              <ul class="trap-question learning-points"><li>Welche Information entscheidet, ob die Frage mit <span lang="en">Is</span> oder <span lang="en">Are</span> beginnt?</li></ul>
               <div class="trap-choice-row" aria-label="Denkfalle 2 Auswahl">
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">Are</button>
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">there</button>
@@ -621,12 +617,12 @@ html,body{background:#e7eef4!important;color:#243b55}
               <p class="trap-feedback" data-trap-feedback hidden></p>
               <div class="trap-solution" data-trap-solution hidden>
                 <span class="right-line" lang="en">There aren't any pencils.</span>
-                <p class="trap-text"><span lang="en">There aren't pencils</span> ist verständlich, aber im Schulenglisch übst du bei Plural-Verneinungen die saubere Standardform mit <span lang="en">any</span>.</p>
+                <ul class="trap-text learning-points"><li><span lang="en">There aren't pencils</span> ist verständlich, aber im Schulenglisch übst du bei Plural-Verneinungen die saubere Standardform mit <span lang="en">any</span>.</li></ul>
               </div>
             </div>
             <div class="trap-card trap-interactive good" data-trap="itthere">
               <h3 class="trap-title">Nicht verwechseln: <span lang="en">It is</span> oder <span lang="en">There is</span>?</h3>
-              <p class="trap-question">Du willst sagen: „Es ist ein Buch.“ Welcher englische Satz passt?</p>
+              <ul class="trap-question learning-points"><li>Du willst sagen: „Es ist ein Buch.“</li><li>Welcher englische Satz passt?</li></ul>
               <div class="trap-choice-row" aria-label="Denkfalle 4 Auswahl">
                 <button class="trap-choice" type="button" data-trap-choice="correct" lang="en">It is a book.</button>
                 <button class="trap-choice" type="button" data-trap-choice="wrong" lang="en">There is a book.</button>
@@ -646,7 +642,7 @@ html,body{background:#e7eef4!important;color:#243b55}
         <div class="can-shell">
           <div class="can-card">
             <h2 class="can-title">Kann ich's? Entscheiden, reparieren, erklären</h2>
-            <p class="can-task">Das ist keine reine Checkliste. Du musst zuerst entscheiden, dann einen Fehler reparieren und am Ende deinen Lernstand einschätzen.</p>
+            
           </div>
 
           <div class="can-card">
@@ -684,7 +680,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 
           <div class="can-card">
             <h3 class="can-title">4. Lernstand</h3>
-            <p class="can-task">Wähle ehrlich. Das ist für Wiederholung später wichtiger als „alles grün“.</p>
+            <ul class="can-task learning-points"><li>Wähle ehrlich.</li><li>Das ist für Wiederholung später wichtiger als „alles grün“.</li></ul>
             <div class="status-grid" role="group" aria-label="Lernstand auswählen">
               <button class="status-btn" type="button" data-status="red">Noch unsicher</button>
               <button class="status-btn" type="button" data-status="yellow">Fast verstanden</button>
@@ -694,7 +690,97 @@ html,body{background:#e7eef4!important;color:#243b55}
           </div>
         </div>
       </section>
-    </section>
+    <section class="learn-panel" id="schreibcheck" data-step="writecheck">
+      <div class="writecheck-panel">
+        <div class="writecheck-intro">
+          <h2>Schreib-Check</h2>
+          <ul class="learning-points"><li>Schreibe selbst.</li><li>Die Lösung wird nicht vor der Eingabe angezeigt.</li><li>Nach einem Fehler bekommst du zuerst eine Denkfrage.</li></ul>
+        </div>
+
+        <div class="writecheck-grid" id="writecheckGrid">
+          <section class="writecheck-task" data-writecheck-id="th-wc-01" data-review-id="th-wc-01" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There is a bag in the room">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 1</span>
+              <span class="writecheck-skill">Singular · Aussage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Da ist eine Tasche im Zimmer.</p>
+            <p class="writecheck-context">Denke zuerst: eine Tasche oder mehrere Taschen?</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 1">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-01">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-02" data-review-id="th-wc-02" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There are two books on the desk">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 2</span>
+              <span class="writecheck-skill">Plural · Aussage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Da sind zwei Bücher auf dem Schreibtisch.</p>
+            <p class="writecheck-context">Achte auf die Zahl.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 2">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-02">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-03" data-review-id="th-wc-03" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Is there a pencil in your bag">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 3</span>
+              <span class="writecheck-skill">Singular · Frage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Ist ein Bleistift in deiner Tasche?</p>
+            <p class="writecheck-context">In der Frage steht <span lang="en">is</span> vorne.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 3">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-03">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-04" data-review-id="th-wc-04" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Are there any posters on the wall;Are there posters on the wall">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 4</span>
+              <span class="writecheck-skill">Plural · Frage</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Gibt es Poster an der Wand?</p>
+            <p class="writecheck-context">Bei Plural-Fragen ist <span lang="en">any</span> schulnah und passend.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 4">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-04">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+
+          <section class="writecheck-task" data-writecheck-id="th-wc-05" data-review-id="th-wc-05" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There aren't any chairs in the kitchen;There are not any chairs in the kitchen;There are no chairs in the kitchen">
+            <div class="writecheck-task-head">
+              <span class="writecheck-task-num">Aufgabe 5</span>
+              <span class="writecheck-skill">Plural · Verneinung</span>
+            </div>
+            <p class="writecheck-prompt">Übersetze: Es sind keine Stühle in der Küche.</p>
+            <p class="writecheck-context">Denke an <span lang="en">aren't any</span>.</p>
+            <div class="writecheck-input-row">
+              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 5">
+              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-05">Prüfen</button>
+            </div>
+            <div class="writecheck-feedback" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <div class="writecheck-actions">
+          <button class="writecheck-check-all" type="button" id="checkAllWrite">Alle prüfen</button>
+          <button class="writecheck-reset" type="button" id="resetWrite">Eingaben löschen</button>
+        </div>
+
+        <div class="writecheck-summary" id="writeSummary" aria-live="polite">
+          <h3 class="writecheck-summary-title">Auswertung</h3>
+          <div class="writecheck-score" id="writeScore"></div>
+          <p id="writeAdvice"></p>
+        </div>
+      </div>
+    </section></section>
 
     <section class="compass-mode-panel" id="nachschlagen" data-val="reference">
       <div class="ref-wrap">
@@ -806,7 +892,7 @@ html,body{background:#e7eef4!important;color:#243b55}
             <div class="conn-icon" aria-hidden="true">🔤</div>
             <div>
               <h2 class="conn-title">Verbindung zu <span lang="en">to be</span></h2>
-              <p class="conn-text"><span lang="en">is</span> und <span lang="en">are</span> kennst du aus <span lang="en">to be</span>. Hier stehen sie nicht bei Personen, sondern bei Dingen, die da sind.</p>
+              <ul class="conn-text learning-points"><li><span lang="en">is</span> und <span lang="en">are</span> kennst du aus <span lang="en">to be</span>.</li><li>Hier stehen sie nicht bei Personen, sondern bei Dingen, die da sind.</li></ul>
               <div class="conn-examples"><span class="conn-ex" lang="en">There is a bag.</span><span class="conn-ex" lang="en">There are books.</span></div>
             </div>
           </div>
@@ -822,7 +908,7 @@ html,body{background:#e7eef4!important;color:#243b55}
             <div class="conn-icon" aria-hidden="true">❓</div>
             <div>
               <h2 class="conn-title">Verbindung zu Fragen</h2>
-              <p class="conn-text">In der Frage wandert <span lang="en">is</span> oder <span lang="en">are</span> nach vorne. Das kennst du auch von <span lang="en">to be</span>.</p>
+              <ul class="conn-text learning-points"><li>In der Frage wandert <span lang="en">is</span> oder <span lang="en">are</span> nach vorne.</li><li>Das kennst du auch von <span lang="en">to be</span>.</li></ul>
               <div class="conn-examples"><span class="conn-ex" lang="en">Is there ...?</span><span class="conn-ex" lang="en">Are there ...?</span></div>
             </div>
           </div>
@@ -838,97 +924,7 @@ html,body{background:#e7eef4!important;color:#243b55}
       </div>
     </section>
 
-    <section class="compass-mode-panel" id="schreibcheck" data-val="writecheck">
-      <div class="writecheck-panel">
-        <div class="writecheck-intro">
-          <h2>Schreib-Check</h2>
-          <p>Schreibe selbst. Die Lösung wird nicht vor der Eingabe angezeigt. Nach einem Fehler bekommst du zuerst eine Denkfrage.</p>
-        </div>
-
-        <div class="writecheck-grid" id="writecheckGrid">
-          <section class="writecheck-task" data-writecheck-id="th-wc-01" data-review-id="th-wc-01" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There is a bag in the room">
-            <div class="writecheck-task-head">
-              <span class="writecheck-task-num">Aufgabe 1</span>
-              <span class="writecheck-skill">Singular · Aussage</span>
-            </div>
-            <p class="writecheck-prompt">Übersetze: Da ist eine Tasche im Zimmer.</p>
-            <p class="writecheck-context">Denke zuerst: eine Tasche oder mehrere Taschen?</p>
-            <div class="writecheck-input-row">
-              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 1">
-              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-01">Prüfen</button>
-            </div>
-            <div class="writecheck-feedback" aria-live="polite"></div>
-          </section>
-
-          <section class="writecheck-task" data-writecheck-id="th-wc-02" data-review-id="th-wc-02" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There are two books on the desk">
-            <div class="writecheck-task-head">
-              <span class="writecheck-task-num">Aufgabe 2</span>
-              <span class="writecheck-skill">Plural · Aussage</span>
-            </div>
-            <p class="writecheck-prompt">Übersetze: Da sind zwei Bücher auf dem Schreibtisch.</p>
-            <p class="writecheck-context">Achte auf die Zahl.</p>
-            <div class="writecheck-input-row">
-              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 2">
-              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-02">Prüfen</button>
-            </div>
-            <div class="writecheck-feedback" aria-live="polite"></div>
-          </section>
-
-          <section class="writecheck-task" data-writecheck-id="th-wc-03" data-review-id="th-wc-03" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Is there a pencil in your bag">
-            <div class="writecheck-task-head">
-              <span class="writecheck-task-num">Aufgabe 3</span>
-              <span class="writecheck-skill">Singular · Frage</span>
-            </div>
-            <p class="writecheck-prompt">Übersetze: Ist ein Bleistift in deiner Tasche?</p>
-            <p class="writecheck-context">In der Frage steht <span lang="en">is</span> vorne.</p>
-            <div class="writecheck-input-row">
-              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 3">
-              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-03">Prüfen</button>
-            </div>
-            <div class="writecheck-feedback" aria-live="polite"></div>
-          </section>
-
-          <section class="writecheck-task" data-writecheck-id="th-wc-04" data-review-id="th-wc-04" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="Are there any posters on the wall;Are there posters on the wall">
-            <div class="writecheck-task-head">
-              <span class="writecheck-task-num">Aufgabe 4</span>
-              <span class="writecheck-skill">Plural · Frage</span>
-            </div>
-            <p class="writecheck-prompt">Übersetze: Gibt es Poster an der Wand?</p>
-            <p class="writecheck-context">Bei Plural-Fragen ist <span lang="en">any</span> schulnah und passend.</p>
-            <div class="writecheck-input-row">
-              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 4">
-              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-04">Prüfen</button>
-            </div>
-            <div class="writecheck-feedback" aria-live="polite"></div>
-          </section>
-
-          <section class="writecheck-task" data-writecheck-id="th-wc-05" data-review-id="th-wc-05" data-topic-id="thereisthereare" data-type="stolperstelle" data-review-source="writecheck" data-answer="There aren't any chairs in the kitchen;There are not any chairs in the kitchen;There are no chairs in the kitchen">
-            <div class="writecheck-task-head">
-              <span class="writecheck-task-num">Aufgabe 5</span>
-              <span class="writecheck-skill">Plural · Verneinung</span>
-            </div>
-            <p class="writecheck-prompt">Übersetze: Es sind keine Stühle in der Küche.</p>
-            <p class="writecheck-context">Denke an <span lang="en">aren't any</span>.</p>
-            <div class="writecheck-input-row">
-              <input class="writecheck-input" type="text" autocomplete="off" aria-label="Antwort Aufgabe 5">
-              <button class="writecheck-btn" type="button" data-writecheck-id="th-wc-05">Prüfen</button>
-            </div>
-            <div class="writecheck-feedback" aria-live="polite"></div>
-          </section>
-        </div>
-
-        <div class="writecheck-actions">
-          <button class="writecheck-check-all" type="button" id="checkAllWrite">Alle prüfen</button>
-          <button class="writecheck-reset" type="button" id="resetWrite">Eingaben löschen</button>
-        </div>
-
-        <div class="writecheck-summary" id="writeSummary" aria-live="polite">
-          <h3 class="writecheck-summary-title">Auswertung</h3>
-          <div class="writecheck-score" id="writeScore"></div>
-          <p id="writeAdvice"></p>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="compass-mode-panel" id="notizen" data-val="notes">
       <div class="notes-panel">
@@ -967,7 +963,7 @@ html,body{background:#e7eef4!important;color:#243b55}
     <h1>Spickzettel: There is / There are</h1>
     <section>
       <h2>Kurz merken</h2>
-      <p><span lang="en">There is</span> benutzt du für eine Sache. <span lang="en">There are</span> benutzt du für mehrere Sachen.</p>
+      <ul class="learning-points"><li><span lang="en">There is</span> benutzt du für eine Sache.</li><li><span lang="en">There are</span> benutzt du für mehrere Sachen.</li></ul>
     </section>
     <section>
       <h2>Satzmuster</h2>
@@ -980,7 +976,7 @@ html,body{background:#e7eef4!important;color:#243b55}
     </section>
     <section>
       <h2>Wichtigste Denkfalle</h2>
-      <p>Erst zählen, dann entscheiden. <span lang="en">two books</span> ist Plural, also: <span lang="en">There are two books.</span></p>
+      <ul class="learning-points"><li>Erst zählen, dann entscheiden. <span lang="en">two books</span> ist Plural, also: <span lang="en">There are two books.</span></li></ul>
     </section>
     <section>
       <h2>Typische Beispiele</h2>
@@ -1054,6 +1050,7 @@ html,body{background:#e7eef4!important;color:#243b55}
   function qsa(selector, root){return Array.prototype.slice.call((root || document).querySelectorAll(selector));}
 
   function setMainTab(value){
+    if(value === 'writecheck'){setMainTab('learn');setLearnStep('writecheck');return;}
     qsa('.compass-mode-btn').forEach(function(btn){
       var active = btn.dataset.val === value;
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
@@ -1080,7 +1077,7 @@ html,body{background:#e7eef4!important;color:#243b55}
     var progress = qs('#learnProgress');
     if(progress && index >= 0){
       ['progress-step-1','progress-step-2','progress-step-3','progress-step-4','progress-step-5'].forEach(function(cls){progress.classList.remove(cls);});
-      progress.classList.add('progress-step-' + (index + 1));
+      progress.style.width = ((index + 1) / steps.length * 100) + '%';
     }
   }
 

@@ -678,7 +678,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 .card,.task{box-shadow:none!important}
 @media(max-width:700px){.page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar,.site-actions{padding:12px!important}.compass-head,.hero{padding:20px 18px!important}}
 </style>
-<style id="kompass-layoutabgleich-2026">/* Äußerer Kompass-Rahmen; Lerninhalte unverändert */.unified-actions{max-width:1140px!important;margin:12px auto 14px!important;padding:0 15px!important;background:transparent!important;border:0!important}.unified-back{background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:10px!important;min-height:42px!important;padding:9px 15px!important}.page-content{max-width:1140px!important;margin:0 auto!important;padding:0 15px 48px!important;background:transparent!important}.learning-card{background:transparent!important;border:0!important;box-shadow:none!important}.compass-head.compass-head-pronouns{max-width:1110px!important;margin:0 auto 15px!important;padding:25px 30px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;background-image:none!important;color:#243b55!important;box-shadow:none!important}.compass-head-pronouns .compass-title{color:#243b55!important}.compass-head-pronouns .compass-subtitle,.compass-head-pronouns .compass-kicker{color:#52657b!important}.unified-section-nav{max-width:1110px!important;margin:0 auto 15px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;padding:12px!important}.entry-card,.pron-info-card,.pron-think-card{box-shadow:none!important}@media(max-width:650px){.unified-actions{padding:0 12px!important}.page-content{padding:0 12px 30px!important}.compass-head.compass-head-pronouns{padding:19px!important}.unified-section-nav{padding:9px!important}}</style></head>
+<style id="kompass-layoutabgleich-2026">/* Äußerer Kompass-Rahmen; Lerninhalte unverändert */.unified-actions{max-width:1140px!important;margin:12px auto 14px!important;padding:0 15px!important;background:transparent!important;border:0!important}.unified-back{background:#fff!important;color:#243b55!important;border:1px solid #cfdce9!important;border-radius:10px!important;min-height:42px!important;padding:9px 15px!important}.page-content{max-width:1140px!important;margin:0 auto!important;padding:0 15px 48px!important;background:transparent!important}.learning-card{background:transparent!important;border:0!important;box-shadow:none!important}.compass-head.compass-head-pronouns{max-width:1110px!important;margin:0 auto 15px!important;padding:25px 30px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;background-image:none!important;color:#243b55!important;box-shadow:none!important}.compass-head-pronouns .compass-title{color:#243b55!important}.compass-head-pronouns .compass-subtitle,.compass-head-pronouns .compass-kicker{color:#52657b!important}.unified-section-nav{max-width:1110px!important;margin:0 auto 15px!important;border:1px solid #cfdce9!important;border-radius:14px!important;background:#fff!important;padding:12px!important}.entry-card,.pron-info-card,.pron-think-card{box-shadow:none!important}@media(max-width:650px){.unified-actions{padding:0 12px!important}.page-content{padding:0 12px 30px!important}.compass-head.compass-head-pronouns{padding:19px!important}.unified-section-nav{padding:9px!important}}</style><link rel="stylesheet" href="lernstruktur.css"></head>
 <body>
 <div class="unified-actions" aria-label="Seitenaktionen"><a class="unified-back" href="grammatik.html">← Zur Grammatikübersicht</a><div class="unified-tools"><button type="button" class="ha-btn" id="ha-btn">Hausaufgabenmodus</button><button type="button" class="print-btn" id="print-ref-btn">Spickzettel drucken</button></div></div>
 
@@ -707,9 +707,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <span>Verbindungen</span>
 </button>
 
-<button aria-pressed="false" class="compass-mode-btn" data-tab="p-mode" data-val="writecheck" type="button">
-<span>Schreib-Check</span>
-</button>
+
 <button aria-pressed="false" class="compass-mode-btn" data-tab="p-mode" data-val="notes" type="button">
 <span>Notizen</span>
 </button>
@@ -732,7 +730,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <button aria-pressed="false" class="learn-step-btn" data-tab="p-learn" data-val="check" type="button">
 <span class="step-badge">5</span><span class="step-label">Kann ich's?</span>
 </button>
-</nav>
+<button type="button" class="learn-step-btn" data-tab="p-learn" data-val="writecheck" aria-controls="schreibcheck" aria-pressed="false"><span class="step-badge">6</span><span class="step-label">Schreib-Check</span></button></nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill learn-progress-fill-step-1" id="p-progress"></div></div>
 
 <!-- Schritt 1: Wozu brauche ich das? -->
@@ -742,7 +740,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div>
 <p class="entry-hook">Warum gibt es Pronouns?</p>
 <p class="entry-text">Ohne Pronouns klingt Englisch schnell holprig: Hanna likes dogs. Hanna has a dog. Hanna walks with Hanna's dog.</p>
-<p class="entry-text">Mit Pronouns klingt es natürlicher: Hanna likes dogs. She has a dog. She walks with her dog.</p>
+<ul class="entry-text learning-points"><li>Mit Pronouns klingt es natürlicher: Hanna likes dogs.</li><li>She has a dog.</li><li>She walks with her dog.</li></ul>
 <div class="entry-examples">
 <span class="entry-ex">Hanna → she</span>
 <span class="entry-ex">Ben → he</span>
@@ -753,12 +751,12 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="pron-guide-grid" aria-label="Grundidee von Pronouns">
 <article class="pron-info-card">
 <h3>Namen ersetzen</h3>
-<p>Wenn du über jemanden sprichst, musst du den Namen nicht immer wiederholen.</p>
+<ul class="learning-points"><li>Wenn du über jemanden sprichst, musst du den Namen nicht immer wiederholen.</li></ul>
 <p class="pron-example-line">Ben is my friend. He is funny.</p>
 </article>
 <article class="pron-info-card">
 <h3>Besitz zeigen</h3>
-<p>Wenn etwas zu jemandem gehört, brauchst du ein Besitzwort vor dem Nomen.</p>
+<ul class="learning-points"><li>Wenn etwas zu jemandem gehört, brauchst du ein Besitzwort vor dem Nomen.</li></ul>
 <p class="pron-example-line">Hanna has a dog. Her dog is funny.</p>
 </article>
 </div>
@@ -777,7 +775,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="learn-panel" data-panel="p-learn" data-val="replace">
 <div class="machine-card pron-feature-card">
 <p class="machine-question">👤 Tausch-Maschine: Wen oder was möchtest du ersetzen?</p>
-<p class="pron-card-note">Klicke auf einen Ausdruck. Die Maschine zeigt dir, welches Pronoun passt.</p>
+<ul class="pron-card-note learning-points"><li>Klicke auf einen Ausdruck.</li><li>Die Maschine zeigt dir, welches Pronoun passt.</li></ul>
 <div class="pron-swap-grid" aria-label="Namens-Tausch-Maschine">
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Hanna" data-pronoun="she" data-sentence="Hanna is nice." data-result="She is nice.">Hanna</button>
 <button class="pron-swap-btn" type="button" data-pron-swap data-name="Ben" data-pronoun="he" data-sentence="Ben is funny." data-result="He is funny.">Ben</button>
@@ -798,7 +796,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 </div>
 <div class="pron-think-card">
 <p class="pron-card-title">Denkweg</p>
-<p>Name sehen → Wer oder was ist gemeint? → Pronoun wählen: Hanna wird she, Ben wird he, ein Gegenstand wird it, mehrere Personen werden they.</p><p>Bei Tieren kann it passen. Bei einem Haustier mit bekanntem Geschlecht verwendet man auch he oder she.</p>
+<ul class="learning-points"><li>Name sehen → Wer oder was ist gemeint?</li><li>→ Pronoun wählen: Hanna wird she, Ben wird he, ein Gegenstand wird it, mehrere Personen werden they.</li></ul><ul class="learning-points"><li>Bei Tieren kann it passen.</li><li>Bei einem Haustier mit bekanntem Geschlecht verwendet man auch he oder she.</li></ul>
 </div>
 </div>
 
@@ -806,7 +804,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="learn-panel" data-panel="p-learn" data-val="decision">
 <div class="machine-card pron-feature-card">
 <p class="machine-question">🚦 Wer oder wessen?</p>
-<p class="pron-card-note">Das ist die wichtigste Entscheidung: Rede ich über jemanden oder zeige ich, wem etwas gehört?</p>
+<ul class="pron-card-note learning-points"><li>Das ist die wichtigste Entscheidung: Rede ich über jemanden oder zeige ich, wem etwas gehört?</li></ul>
 <div class="pron-decision-map" aria-label="Wer oder wessen Entscheidung">
 <article class="pron-info-card">
 <h3>Wer?</h3>
@@ -875,8 +873,8 @@ html,body{background:#e7eef4!important;color:#243b55}
 <!-- Schritt 4: Zuordnungsspiel -->
 <div class="learn-panel" data-panel="p-learn" data-val="match">
 <div class="match-intro-card">
-<p class="match-intro-title">🎮 Jetzt festigen: Tippe einen Chip an — dann die passende Person:</p>
-<p class="match-intro-text">Welches Besitzwort gehört zu welcher Person? Erst denken: Wer oder wessen?</p>
+<ul class="match-intro-title learning-points"><li>🎮 Jetzt festigen: Tippe einen Chip an — dann die passende Person:</li></ul>
+<ul class="match-intro-text learning-points"><li>Welches Besitzwort gehört zu welcher Person?</li><li>Erst denken: Wer oder wessen?</li></ul>
 </div>
 <div class="match-grid" id="match-grid">
 <div class="match-card match-card-person-I">
@@ -930,13 +928,13 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="cancheck-intro-icon" aria-hidden="true">✅</div>
 <div>
 <h2 class="cancheck-intro-title" id="cancheck-intro-title">Kann ich's wirklich?</h2>
-<p>Prüfe dich selbst: Kannst du entscheiden, ob du über jemanden sprichst oder Besitz zeigst? Erst denken, dann klicken.</p>
+<ul class="learning-points"><li>Prüfe dich selbst: Kannst du entscheiden, ob du über jemanden sprichst oder Besitz zeigst?</li><li>Erst denken, dann klicken.</li></ul>
 </div>
 </section>
 
 <section class="cancheck-block" aria-labelledby="cancheck-mini-title">
 <h2 class="cancheck-block-title" id="cancheck-mini-title">1. Mini-Entscheidung</h2>
-<p class="cancheck-block-text">Wähle die passende Form. Die Rückmeldung kommt erst nach deiner Entscheidung.</p>
+<ul class="cancheck-block-text learning-points"><li>Wähle die passende Form.</li><li>Die Rückmeldung kommt erst nach deiner Entscheidung.</li></ul>
 <div class="cancheck-task-grid" aria-label="Mini-Entscheidung Pronouns">
 <article class="cancheck-task">
 <p class="cancheck-prompt">Mia and I are at school. ___ classroom is upstairs.</p>
@@ -979,7 +977,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 
 <section class="cancheck-block" aria-labelledby="cancheck-detector-title">
 <h2 class="cancheck-block-title" id="cancheck-detector-title">2. Fehlerdetektiv</h2>
-<p class="cancheck-block-text">Suche zuerst die Fehlerstelle. Erst danach kannst du die Reparatur anzeigen.</p>
+<ul class="cancheck-block-text learning-points"><li>Suche zuerst die Fehlerstelle.</li><li>Erst danach kannst du die Reparatur anzeigen.</li></ul>
 <div class="cancheck-detector-list">
 <article class="cancheck-detector" data-cancheck-detector>
 <div class="cancheck-detector-prompt"><span class="cancheck-detector-badge">1</span><span>Her is my friend.</span></div>
@@ -996,7 +994,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="cancheck-wrong"><span class="cancheck-label">Fehler</span>Her is my friend.</div>
 <div class="cancheck-right"><span class="cancheck-label">Richtig</span>She is my friend.</div>
 </div>
-<p class="cancheck-rule">Hier geht es um eine Person. Als Subjekt brauchst du <span class="cancheck-token">she</span>, nicht das Besitzwort <span class="cancheck-token">her</span>.</p>
+<ul class="cancheck-rule learning-points"><li>Hier geht es um eine Person.</li><li>Als Subjekt brauchst du <span class="cancheck-token">she</span>, nicht das Besitzwort <span class="cancheck-token">her</span>.</li></ul>
 </div>
 </article>
 <article class="cancheck-detector" data-cancheck-detector>
@@ -1014,7 +1012,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="cancheck-wrong"><span class="cancheck-label">Fehler</span>I dog is big.</div>
 <div class="cancheck-right"><span class="cancheck-label">Richtig</span>My dog is big.</div>
 </div>
-<p class="cancheck-rule">Vor einem Nomen wie <span class="cancheck-token">dog</span> brauchst du ein Besitzwort. Zu <span class="cancheck-token">I</span> gehört <span class="cancheck-token">my</span>.</p>
+<ul class="cancheck-rule learning-points"><li>Vor einem Nomen wie <span class="cancheck-token">dog</span> brauchst du ein Besitzwort.</li><li>Zu <span class="cancheck-token">I</span> gehört <span class="cancheck-token">my</span>.</li></ul>
 </div>
 </article>
 <article class="cancheck-detector" data-cancheck-detector>
@@ -1032,7 +1030,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="cancheck-wrong"><span class="cancheck-label">Fehler</span>They school is great.</div>
 <div class="cancheck-right"><span class="cancheck-label">Richtig</span>Their school is great.</div>
 </div>
-<p class="cancheck-rule">Vor <span class="cancheck-token">school</span> brauchst du ein Besitzwort. <span class="cancheck-token">they</span> ist „wer“, <span class="cancheck-token">their</span> ist „wessen“.</p>
+<ul class="cancheck-rule learning-points"><li>Vor <span class="cancheck-token">school</span> brauchst du ein Besitzwort. <span class="cancheck-token">they</span> ist „wer“, <span class="cancheck-token">their</span> ist „wessen“.</li></ul>
 </div>
 </article>
 <article class="cancheck-detector" data-cancheck-detector>
@@ -1058,14 +1056,14 @@ html,body{background:#e7eef4!important;color:#243b55}
 
 <section class="cancheck-block" aria-labelledby="cancheck-explain-title">
 <h2 class="cancheck-block-title" id="cancheck-explain-title">3. Kann ich es erklären?</h2>
-<p class="cancheck-block-text">Erkläre die Regel erst selbst. Danach vergleichst du mit der Musterantwort.</p>
+<ul class="cancheck-block-text learning-points"><li>Erkläre die Regel erst selbst.</li><li>Danach vergleichst du mit der Musterantwort.</li></ul>
 <div class="cancheck-explain-card">
 <p class="cancheck-prompt">Erklär dir selbst: Wann nehme ich <span class="cancheck-token">she</span>, wann <span class="cancheck-token">her</span>?</p>
 <textarea class="cancheck-self-input" rows="2" placeholder="Erst eigene Erklärung denken oder kurz eintippen."></textarea>
 <button class="cancheck-reveal-btn" type="button" data-cancheck-toggle aria-controls="explain-she-her" aria-expanded="false" disabled>Musterantwort anzeigen</button>
 <div class="cancheck-answer" id="explain-she-her" hidden>
-<p><span class="cancheck-token">she</span> nehme ich, wenn ich über eine Person spreche: She is my friend.</p>
-<p><span class="cancheck-token">her</span> nehme ich, wenn ich zeige, wem etwas gehört: Her dog is funny.</p>
+<ul class="learning-points"><li><span class="cancheck-token">she</span> nehme ich, wenn ich über eine Person spreche: She is my friend.</li></ul>
+<ul class="learning-points"><li><span class="cancheck-token">her</span> nehme ich, wenn ich zeige, wem etwas gehört: Her dog is funny.</li></ul>
 </div>
 </div>
 <div class="cancheck-explain-card">
@@ -1081,258 +1079,11 @@ html,body{background:#e7eef4!important;color:#243b55}
 </div>
 </div>
 
-</div>
-<!-- NACHSCHLAGEN -->
-<div class="compass-mode-panel" data-panel="p-mode" data-val="reference" id="nachschlagen">
-<div class="ref-pronouns">
-<section class="pron-print-spickzettel" id="pron-print-spickzettel" aria-labelledby="pron-print-title">
-  <h2 id="pron-print-title">Pronouns – Spickzettel</h2>
-  <div class="pron-print-grid">
-    <section class="pron-print-box">
-      <h3>Kernregel</h3>
-      <ul>
-        <li>Pronouns ersetzen Namen.</li>
-        <li>Personal Pronouns antworten auf: Wer?</li>
-        <li>Possessive Determiners antworten auf: Wessen?</li>
-        <li>Besitzwörter stehen vor einem Nomen: my dog, her school, their book.</li>
-      </ul>
-    </section>
-    <section class="pron-print-box">
-      <h3>Satzmuster</h3>
-      <p class="pron-print-pattern">Wer? → Pronoun + verb + rest: She is my friend.</p>
-      <p class="pron-print-pattern">Wessen? → Possessive + noun + verb + rest: Her dog is funny.</p>
-      <p class="pron-print-pattern">Mehrere Personen: They are at school. Their school is big.</p>
-      <p class="pron-print-pattern">Junge / Mädchen: He is nice. His book is new. / She is nice. Her dog is funny.</p>
-    </section>
-    <section class="pron-print-box pron-print-warning">
-      <h3>Top-Denkfalle</h3>
-      <p>Als Person brauchst du she. Vor einem Nomen brauchst du her.</p>
-      <p class="pron-print-pattern">Falsch: Her is my friend.</p>
-      <p class="pron-print-pattern">Richtig: She is my friend.</p>
-      <p class="pron-print-pattern">Richtig: Her dog is funny.</p>
-    </section>
-    <section class="pron-print-box">
-      <h3>Kurz merken</h3>
-      <p>Erst fragen: Geht es um Wer? Dann nimm I, you, he, she, it, we oder they.</p>
-      <p>Geht es um Wessen? Dann nimm my, your, his, her, its, our oder their.</p>
-    </section>
-  </div>
-  <section class="pron-print-box">
-    <h3>Typische Beispiele</h3>
-    <ul>
-      <li>I'm from Plymouth. My name is Ben.</li>
-      <li>She's my friend. Her dog is funny.</li>
-      <li>We're at school. Our teacher is nice.</li>
-      <li>Look at the cat! Its tail is so long.</li>
-    </ul>
-  </section>
-</section>
-  <div class="ref-ha-note" role="status" aria-live="polite">
-    <span aria-hidden="true">📚</span>
-    <span>Hausaufgaben-Modus: Du siehst jetzt die schnelle Regelhilfe mit Kurzregel, Satzmustern, wichtigsten Denkfallen und typischen Beispielen. Ausführliche Formenübersicht und Sonderfälle sind ausgeblendet.</span>
-  </div>
-
-  <section class="ref-section ref-section-core" aria-labelledby="pron-ref-core-title">
-    <h2 class="ref-section-title" id="pron-ref-core-title">1. Kurz merken / Spickzettel-Kern</h2>
-    <p class="ref-section-text">Pronouns ersetzen Namen. Besitzwörter zeigen, wem etwas gehört.</p>
-    <div class="ref-core-grid">
-      <div class="ref-core-card">
-        <span class="ref-core-question">Wer?</span>
-        <div class="ref-chip-row" aria-label="Personal Pronouns">
-          <span class="ref-chip">I</span><span class="ref-chip">you</span><span class="ref-chip">he</span><span class="ref-chip">she</span><span class="ref-chip">it</span><span class="ref-chip">we</span><span class="ref-chip">they</span>
-        </div>
-      </div>
-      <div class="ref-core-card">
-        <span class="ref-core-question">Wessen?</span>
-        <div class="ref-chip-row" aria-label="Possessive Determiners">
-          <span class="ref-chip">my</span><span class="ref-chip">your</span><span class="ref-chip">his</span><span class="ref-chip">her</span><span class="ref-chip">its</span><span class="ref-chip">our</span><span class="ref-chip">their</span>
-        </div>
-      </div>
-    </div>
-    <p class="ref-mini-rule">Merke: Wer? → <span lang="en">She is nice.</span> · Wessen? → <span lang="en">Her dog is funny.</span></p>
-  </section>
-
-  <section class="ref-section" aria-labelledby="pron-ref-patterns-title">
-    <h2 class="ref-section-title" id="pron-ref-patterns-title">2. Satzmuster</h2>
-    <div class="ref-pattern-grid">
-      <article class="ref-pattern-card">
-        <span class="ref-pattern-label">Wer?</span>
-        <span class="ref-pattern-form">Pronoun + verb + rest</span>
-        <span class="ref-pattern-example">She is my friend.</span>
-      </article>
-      <article class="ref-pattern-card">
-        <span class="ref-pattern-label">Wessen?</span>
-        <span class="ref-pattern-form">Possessive + noun + verb + rest</span>
-        <span class="ref-pattern-example">Her dog is funny.</span>
-      </article>
-      <article class="ref-pattern-card">
-        <span class="ref-pattern-label">Mehrere Personen</span>
-        <span class="ref-pattern-form">they / their</span>
-        <span class="ref-pattern-example">They are at school. Their school is big.</span>
-      </article>
-      <article class="ref-pattern-card">
-        <span class="ref-pattern-label">Junge / Mädchen</span>
-        <span class="ref-pattern-form">he / his · she / her</span>
-        <span class="ref-pattern-example">He is nice. His book is new.</span>
-      </article>
-    </div>
-  
-
-    <section class="ref-section ref-section-sub ref-ha-hide ref-print-hide" aria-labelledby="pron-ref-table-title">
-        <h3 class="ref-section-title" id="pron-ref-table-title">Ausführliche Formenübersicht</h3>
-        <p class="ref-section-text">Diese Tabelle bleibt vollständig zum Nachschlagen erhalten. Im Hausaufgabenmodus und im Spickzettel-Druck wird sie ausgeblendet, damit die Schnellhilfe kurz bleibt.</p>
-        <div class="mobile-table-hint" aria-hidden="true">↔️ Wische nach links/rechts zum Lesen.</div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>Person</th><th>Personal Pronoun</th><th>Beispiel</th><th>Besitzwort<br><span class="ref-table-subhint">Possessive Determiner</span></th><th>Beispiel</th></tr></thead>
-            <tbody>
-              <tr><td>1. Sg.</td><td><span class="person-color-I">I</span></td><td>I am happy.</td><td><span class="person-color-I">my</span></td><td>My dog is funny.</td></tr>
-              <tr><td>2. Sg.</td><td><span class="person-color-you">you</span></td><td>You are ready.</td><td><span class="person-color-you">your</span></td><td>Your cat is nice.</td></tr>
-              <tr><td>3. Sg. m.</td><td><span class="person-color-he">he</span></td><td>He is funny.</td><td><span class="person-color-he">his</span></td><td>His book is boring.</td></tr>
-              <tr><td>3. Sg. f.</td><td><span class="person-color-she">she</span></td><td>She is nice.</td><td><span class="person-color-she">her</span></td><td>Her school is great.</td></tr>
-              <tr><td>3. Sg. n.</td><td><span class="person-color-it">it</span></td><td>It is cold.</td><td><span class="person-color-it">its</span></td><td>Its tail is long.</td></tr>
-              <tr><td>1. Pl.</td><td><span class="person-color-we">we</span></td><td>We are friends.</td><td><span class="person-color-we">our</span></td><td>Our teacher is nice.</td></tr>
-              <tr><td>3. Pl.</td><td><span class="person-color-they">they</span></td><td>They are friendly.</td><td><span class="person-color-they">their</span></td><td>Their dog is great.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-</section>
-
-  <section class="ref-section" aria-labelledby="pron-ref-traps-title">
-    <h2 class="ref-section-title" id="pron-ref-traps-title">3. Typische Denkfallen</h2>
-    <div class="ref-trap-grid">
-      <div class="ref-trap">
-        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>Her is my friend.</div>
-        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>She is my friend.</div>
-        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span>Als Person brauchst du <span lang="en">she</span>.</div>
-      </div>
-      <div class="ref-trap">
-        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>They school is big.</div>
-        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>Their school is big.</div>
-        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span>Vor <span lang="en">school</span> steht ein Besitzwort.</div>
-      </div>
-      <div class="ref-trap">
-        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>It's tail is long.</div>
-        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>Its tail is long.</div>
-        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span><span lang="en">its</span> = Besitzwort. <span lang="en">it's</span> = <span lang="en">it is</span>.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ref-section ref-ha-hide ref-print-hide" aria-labelledby="pron-ref-specials-title">
-    <h2 class="ref-section-title" id="pron-ref-specials-title">4. Sonderfälle und Hinweise</h2>
-    <div class="ref-special-grid">
-      <article class="ref-special-card">
-        <h3>Tiere: it, he oder she?</h3>
-        <p>Bei Tieren kannst du <span lang="en">it</span> verwenden. Wenn du das Geschlecht eines Haustiers kennst, sind auch <span lang="en">he</span> oder <span lang="en">she</span> üblich: <span lang="en">Kaya is hungry. She wants her food.</span></p>
-      </article>
-      <article class="ref-special-card">
-        <h3>you = eine oder mehrere Personen</h3>
-        <p><span lang="en">you</span> kann du, ihr oder Sie bedeuten. Das Besitzwort ist in allen Fällen <span lang="en">your</span>.</p>
-      </article>
-      <article class="ref-special-card">
-        <h3>Besitzwort steht vor einem Nomen</h3>
-        <p><span lang="en">her dog</span>, <span lang="en">their school</span>, <span lang="en">my book</span>. Danach kommt eine Sache oder Person.</p>
-      </article>
-      <article class="ref-special-card">
-        <h3>its ohne Apostroph</h3>
-        <p><span lang="en">its tail</span> bedeutet: sein Schwanz / ihr Schwanz bei einem Tier oder einer Sache.</p>
-      </article>
-      <article class="ref-special-card">
-        <h3>it's mit Apostroph</h3>
-        <p><span lang="en">it's</span> ist die Kurzform von <span lang="en">it is</span>: <span lang="en">It's cold today.</span></p>
-      </article>
-    </div>
-  </section>
-
-  <section class="ref-section" aria-labelledby="pron-ref-examples-title">
-    <h2 class="ref-section-title" id="pron-ref-examples-title">5. Typische Schulbeispiele</h2>
-    <div class="ref-example-list">
-      <div class="ref-example-row"><span class="ref-example-en">I'm from Plymouth. My name is Ben.</span><span class="ref-example-de">Ich komme aus Plymouth. Mein Name ist Ben.</span><span class="ref-example-tag">Vorstellen</span></div>
-      <div class="ref-example-row"><span class="ref-example-en">She's my friend. Her dog is funny.</span><span class="ref-example-de">Sie ist meine Freundin. Ihr Hund ist witzig.</span><span class="ref-example-tag">Beschreiben</span></div>
-      <div class="ref-example-row"><span class="ref-example-en">We're at school. Our teacher is nice.</span><span class="ref-example-de">Wir sind in der Schule. Unsere Lehrerin ist nett.</span><span class="ref-example-tag">Schule</span></div>
-      <div class="ref-example-row"><span class="ref-example-en">Look at the cat! Its tail is so long.</span><span class="ref-example-de">Schau die Katze an! Ihr Schwanz ist so lang.</span><span class="ref-example-tag">Tiere</span></div>
-    </div>
-  </section>
-</div>
-</div>
-<!-- VERBINDUNGEN -->
-<div class="compass-mode-panel" data-panel="p-mode" data-val="connections" id="verbindungen">
-<div class="connections-panel">
-<p class="conn-intro">🧭 Pronouns helfen dir, Namen zu ersetzen und Besitz klar zu machen. Sie hängen direkt mit to be, have got und Simple Present zusammen.</p>
-<div class="conn-map">
-<article class="conn-card">
-<div class="conn-icon" aria-hidden="true">👤</div>
-<div>
-<h3 class="conn-title">Pronouns ersetzen Namen</h3>
-<p class="conn-text">Wenn ein Name schon klar ist, kannst du ihn durch ein Personal Pronoun ersetzen: eine weibliche Person → she, eine männliche Person → he, mehrere Personen → they.</p>
-<div class="conn-examples">
-<span class="conn-ex conn-ex-blue">Hanna → she</span>
-<span class="conn-ex conn-ex-blue">Tom → he</span>
-<span class="conn-ex conn-ex-blue">Ben and Mia → they</span>
-</div>
-</div>
-</article>
-<article class="conn-card">
-<div class="conn-icon" aria-hidden="true">🟦</div>
-<div>
-<h3 class="conn-title">to be — die Person entscheidet</h3>
-<p class="conn-text">Jedes Personal Pronoun braucht die passende to be Form. I → am, you → are, he/she/it → is.</p>
-<div class="conn-examples">
-<span class="conn-ex conn-ex-blue">I → am</span>
-<span class="conn-ex conn-ex-blue">you → are</span>
-<span class="conn-ex conn-ex-blue">she → is</span>
-<span class="conn-ex conn-ex-blue">they → are</span>
-</div>
-</div>
-</article>
-<article class="conn-card">
-<div class="conn-icon" aria-hidden="true">🎒</div>
-<div>
-<h3 class="conn-title">have got — Besitz und Person zusammen denken</h3>
-<p class="conn-text">Bei have got entscheidet das Pronoun über die Form: I/you/we/they → have got, he/she/it → has got. Besitzwörter zeigen dann, wem etwas gehört.</p>
-<div class="conn-examples">
-<span class="conn-ex conn-ex-green">I have got → my</span>
-<span class="conn-ex conn-ex-green">She has got → her</span>
-<span class="conn-ex conn-ex-green">He has got → his</span>
-</div>
-</div>
-</article>
-<article class="conn-card">
-<div class="conn-icon" aria-hidden="true">🔁</div>
-<div>
-<h3 class="conn-title">Simple Present — she/he/it bekommt -s</h3>
-<p class="conn-text">Das Personal Pronoun bestimmt, ob das Verb ein -s bekommt. She/he/it → Verb mit -s, I/you/we/they → Verb ohne -s.</p>
-<div class="conn-examples">
-<span class="conn-ex conn-ex-violet">She plays</span>
-<span class="conn-ex conn-ex-violet">They play</span>
-</div>
-</div>
-</article>
-<article class="conn-card">
-<div class="conn-icon" aria-hidden="true">🔑</div>
-<div>
-<h3 class="conn-title">Possessive Determiners zeigen Besitz</h3>
-<p class="conn-text">Possessive Determiners stehen vor einem Nomen und zeigen, wem etwas gehört: my, your, his, her, its, our, their.</p>
-<div class="conn-examples">
-<span class="conn-ex conn-ex-green">I → my</span>
-<span class="conn-ex conn-ex-green">you → your</span>
-<span class="conn-ex conn-ex-green">they → their</span>
-</div>
-</div>
-</article>
-</div>
-</div>
-</div>
-
-
-<!-- SCHREIB-CHECK -->
-<div class="compass-mode-panel" data-panel="p-mode" data-val="writecheck" id="schreibcheck">
+<div class="learn-panel" data-panel="p-learn" data-val="writecheck" id="schreibcheck">
 <div class="writecheck-panel">
 <div class="writecheck-intro">
 <h3>✍️ Schreib-Check Pronouns</h3>
-<p>Schreibe die englischen Sätze selbst. Jede Aufgabe prüft eine echte Pronouns-Entscheidung: Namen ersetzen oder zwischen Wer und wessen unterscheiden.</p>
+<ul class="learning-points"><li>Ersetze Namen oder wähle zwischen Personalpronomen und Besitzwort.</li></ul>
 </div>
 <div class="writecheck-grid" id="writecheck-tasks">
 <div class="writecheck-task" id="write-task-pron-wc-01" data-review-id="pron-wc-01" data-topic-id="pronouns" data-type="stolperstelle" data-review-source="writecheck">
@@ -1419,7 +1170,254 @@ html,body{background:#e7eef4!important;color:#243b55}
 </div>
 <div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
 </div>
+</div></div>
+<!-- NACHSCHLAGEN -->
+<div class="compass-mode-panel" data-panel="p-mode" data-val="reference" id="nachschlagen">
+<div class="ref-pronouns">
+<section class="pron-print-spickzettel" id="pron-print-spickzettel" aria-labelledby="pron-print-title">
+  <h2 id="pron-print-title">Pronouns – Spickzettel</h2>
+  <div class="pron-print-grid">
+    <section class="pron-print-box">
+      <h3>Kernregel</h3>
+      <ul>
+        <li>Pronouns ersetzen Namen.</li>
+        <li>Personal Pronouns antworten auf: Wer?</li>
+        <li>Possessive Determiners antworten auf: Wessen?</li>
+        <li>Besitzwörter stehen vor einem Nomen: my dog, her school, their book.</li>
+      </ul>
+    </section>
+    <section class="pron-print-box">
+      <h3>Satzmuster</h3>
+      <p class="pron-print-pattern">Wer? → Pronoun + verb + rest: She is my friend.</p>
+      <p class="pron-print-pattern">Wessen? → Possessive + noun + verb + rest: Her dog is funny.</p>
+      <p class="pron-print-pattern">Mehrere Personen: They are at school. Their school is big.</p>
+      <ul class="pron-print-pattern learning-points"><li>Junge / Mädchen: He is nice.</li><li>His book is new.</li><li>/ She is nice.</li><li>Her dog is funny.</li></ul>
+    </section>
+    <section class="pron-print-box pron-print-warning">
+      <h3>Top-Denkfalle</h3>
+      <p>Als Person brauchst du she. Vor einem Nomen brauchst du her.</p>
+      <p class="pron-print-pattern">Falsch: Her is my friend.</p>
+      <p class="pron-print-pattern">Richtig: She is my friend.</p>
+      <p class="pron-print-pattern">Richtig: Her dog is funny.</p>
+    </section>
+    <section class="pron-print-box">
+      <h3>Kurz merken</h3>
+      <p>Erst fragen: Geht es um Wer? Dann nimm I, you, he, she, it, we oder they.</p>
+      <p>Geht es um Wessen? Dann nimm my, your, his, her, its, our oder their.</p>
+    </section>
+  </div>
+  <section class="pron-print-box">
+    <h3>Typische Beispiele</h3>
+    <ul>
+      <li>I'm from Plymouth. My name is Ben.</li>
+      <li>She's my friend. Her dog is funny.</li>
+      <li>We're at school. Our teacher is nice.</li>
+      <li>Look at the cat! Its tail is so long.</li>
+    </ul>
+  </section>
+</section>
+  <div class="ref-ha-note" role="status" aria-live="polite">
+    <span aria-hidden="true">📚</span>
+    <span>Hausaufgaben-Modus: Du siehst jetzt die schnelle Regelhilfe mit Kurzregel, Satzmustern, wichtigsten Denkfallen und typischen Beispielen. Ausführliche Formenübersicht und Sonderfälle sind ausgeblendet.</span>
+  </div>
+
+  <section class="ref-section ref-section-core" aria-labelledby="pron-ref-core-title">
+    <h2 class="ref-section-title" id="pron-ref-core-title">1. Kurz merken / Spickzettel-Kern</h2>
+    <p class="ref-section-text">Pronouns ersetzen Namen. Besitzwörter zeigen, wem etwas gehört.</p>
+    <div class="ref-core-grid">
+      <div class="ref-core-card">
+        <span class="ref-core-question">Wer?</span>
+        <div class="ref-chip-row" aria-label="Personal Pronouns">
+          <span class="ref-chip">I</span><span class="ref-chip">you</span><span class="ref-chip">he</span><span class="ref-chip">she</span><span class="ref-chip">it</span><span class="ref-chip">we</span><span class="ref-chip">they</span>
+        </div>
+      </div>
+      <div class="ref-core-card">
+        <span class="ref-core-question">Wessen?</span>
+        <div class="ref-chip-row" aria-label="Possessive Determiners">
+          <span class="ref-chip">my</span><span class="ref-chip">your</span><span class="ref-chip">his</span><span class="ref-chip">her</span><span class="ref-chip">its</span><span class="ref-chip">our</span><span class="ref-chip">their</span>
+        </div>
+      </div>
+    </div>
+    <p class="ref-mini-rule">Merke: Wer? → <span lang="en">She is nice.</span> · Wessen? → <span lang="en">Her dog is funny.</span></p>
+  </section>
+
+  <section class="ref-section" aria-labelledby="pron-ref-patterns-title">
+    <h2 class="ref-section-title" id="pron-ref-patterns-title">2. Satzmuster</h2>
+    <div class="ref-pattern-grid">
+      <article class="ref-pattern-card">
+        <span class="ref-pattern-label">Wer?</span>
+        <span class="ref-pattern-form">Pronoun + verb + rest</span>
+        <span class="ref-pattern-example">She is my friend.</span>
+      </article>
+      <article class="ref-pattern-card">
+        <span class="ref-pattern-label">Wessen?</span>
+        <span class="ref-pattern-form">Possessive + noun + verb + rest</span>
+        <span class="ref-pattern-example">Her dog is funny.</span>
+      </article>
+      <article class="ref-pattern-card">
+        <span class="ref-pattern-label">Mehrere Personen</span>
+        <span class="ref-pattern-form">they / their</span>
+        <span class="ref-pattern-example">They are at school. Their school is big.</span>
+      </article>
+      <article class="ref-pattern-card">
+        <span class="ref-pattern-label">Junge / Mädchen</span>
+        <span class="ref-pattern-form">he / his · she / her</span>
+        <span class="ref-pattern-example">He is nice. His book is new.</span>
+      </article>
+    </div>
+  
+
+    <section class="ref-section ref-section-sub ref-ha-hide ref-print-hide" aria-labelledby="pron-ref-table-title">
+        <h3 class="ref-section-title" id="pron-ref-table-title">Ausführliche Formenübersicht</h3>
+        
+        <div class="mobile-table-hint" aria-hidden="true">↔️ Wische nach links/rechts zum Lesen.</div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Person</th><th>Personal Pronoun</th><th>Beispiel</th><th>Besitzwort<br><span class="ref-table-subhint">Possessive Determiner</span></th><th>Beispiel</th></tr></thead>
+            <tbody>
+              <tr><td>1. Sg.</td><td><span class="person-color-I">I</span></td><td>I am happy.</td><td><span class="person-color-I">my</span></td><td>My dog is funny.</td></tr>
+              <tr><td>2. Sg.</td><td><span class="person-color-you">you</span></td><td>You are ready.</td><td><span class="person-color-you">your</span></td><td>Your cat is nice.</td></tr>
+              <tr><td>3. Sg. m.</td><td><span class="person-color-he">he</span></td><td>He is funny.</td><td><span class="person-color-he">his</span></td><td>His book is boring.</td></tr>
+              <tr><td>3. Sg. f.</td><td><span class="person-color-she">she</span></td><td>She is nice.</td><td><span class="person-color-she">her</span></td><td>Her school is great.</td></tr>
+              <tr><td>3. Sg. n.</td><td><span class="person-color-it">it</span></td><td>It is cold.</td><td><span class="person-color-it">its</span></td><td>Its tail is long.</td></tr>
+              <tr><td>1. Pl.</td><td><span class="person-color-we">we</span></td><td>We are friends.</td><td><span class="person-color-we">our</span></td><td>Our teacher is nice.</td></tr>
+              <tr><td>3. Pl.</td><td><span class="person-color-they">they</span></td><td>They are friendly.</td><td><span class="person-color-they">their</span></td><td>Their dog is great.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+</section>
+
+  <section class="ref-section" aria-labelledby="pron-ref-traps-title">
+    <h2 class="ref-section-title" id="pron-ref-traps-title">3. Typische Denkfallen</h2>
+    <div class="ref-trap-grid">
+      <div class="ref-trap">
+        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>Her is my friend.</div>
+        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>She is my friend.</div>
+        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span>Als Person brauchst du <span lang="en">she</span>.</div>
+      </div>
+      <div class="ref-trap">
+        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>They school is big.</div>
+        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>Their school is big.</div>
+        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span>Vor <span lang="en">school</span> steht ein Besitzwort.</div>
+      </div>
+      <div class="ref-trap">
+        <div class="ref-trap-cell ref-trap-wrong"><span class="ref-cell-label">Fehler</span>It's tail is long.</div>
+        <div class="ref-trap-cell ref-trap-right"><span class="ref-cell-label">Richtig</span>Its tail is long.</div>
+        <div class="ref-trap-cell ref-trap-why"><span class="ref-cell-label">Grund</span><span lang="en">its</span> = Besitzwort. <span lang="en">it's</span> = <span lang="en">it is</span>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ref-section ref-ha-hide ref-print-hide" aria-labelledby="pron-ref-specials-title">
+    <h2 class="ref-section-title" id="pron-ref-specials-title">4. Sonderfälle und Hinweise</h2>
+    <div class="ref-special-grid">
+      <article class="ref-special-card">
+        <h3>Tiere: it, he oder she?</h3>
+        <ul class="learning-points"><li>Bei Tieren kannst du <span lang="en">it</span> verwenden.</li><li>Wenn du das Geschlecht eines Haustiers kennst, sind auch <span lang="en">he</span> oder <span lang="en">she</span> üblich: <span lang="en">Kaya is hungry. </span></li><li>She wants her food.</li></ul>
+      </article>
+      <article class="ref-special-card">
+        <h3>you = eine oder mehrere Personen</h3>
+        <ul class="learning-points"><li><span lang="en">you</span> kann du, ihr oder Sie bedeuten.</li><li>Das Besitzwort ist in allen Fällen <span lang="en">your</span>.</li></ul>
+      </article>
+      <article class="ref-special-card">
+        <h3>Besitzwort steht vor einem Nomen</h3>
+        <ul class="learning-points"><li><span lang="en">her dog</span>, <span lang="en">their school</span>, <span lang="en">my book</span>.</li><li>Danach kommt eine Sache oder Person.</li></ul>
+      </article>
+      <article class="ref-special-card">
+        <h3>its ohne Apostroph</h3>
+        <p><span lang="en">its tail</span> bedeutet: sein Schwanz / ihr Schwanz bei einem Tier oder einer Sache.</p>
+      </article>
+      <article class="ref-special-card">
+        <h3>it's mit Apostroph</h3>
+        <p><span lang="en">it's</span> ist die Kurzform von <span lang="en">it is</span>: <span lang="en">It's cold today.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ref-section" aria-labelledby="pron-ref-examples-title">
+    <h2 class="ref-section-title" id="pron-ref-examples-title">5. Typische Schulbeispiele</h2>
+    <div class="ref-example-list">
+      <div class="ref-example-row"><span class="ref-example-en">I'm from Plymouth. My name is Ben.</span><span class="ref-example-de">Ich komme aus Plymouth. Mein Name ist Ben.</span><span class="ref-example-tag">Vorstellen</span></div>
+      <div class="ref-example-row"><span class="ref-example-en">She's my friend. Her dog is funny.</span><span class="ref-example-de">Sie ist meine Freundin. Ihr Hund ist witzig.</span><span class="ref-example-tag">Beschreiben</span></div>
+      <div class="ref-example-row"><span class="ref-example-en">We're at school. Our teacher is nice.</span><span class="ref-example-de">Wir sind in der Schule. Unsere Lehrerin ist nett.</span><span class="ref-example-tag">Schule</span></div>
+      <div class="ref-example-row"><span class="ref-example-en">Look at the cat! Its tail is so long.</span><span class="ref-example-de">Schau die Katze an! Ihr Schwanz ist so lang.</span><span class="ref-example-tag">Tiere</span></div>
+    </div>
+  </section>
 </div>
+</div>
+<!-- VERBINDUNGEN -->
+<div class="compass-mode-panel" data-panel="p-mode" data-val="connections" id="verbindungen">
+<div class="connections-panel">
+<ul class="conn-intro learning-points"><li>🧭 Pronouns helfen dir, Namen zu ersetzen und Besitz klar zu machen.</li><li>Sie hängen direkt mit to be, have got und Simple Present zusammen.</li></ul>
+<div class="conn-map">
+<article class="conn-card">
+<div class="conn-icon" aria-hidden="true">👤</div>
+<div>
+<h3 class="conn-title">Pronouns ersetzen Namen</h3>
+<ul class="conn-text learning-points"><li>Wenn ein Name schon klar ist, kannst du ihn durch ein Personal Pronoun ersetzen: eine weibliche Person → she, eine männliche Person → he, mehrere Personen → they.</li></ul>
+<div class="conn-examples">
+<span class="conn-ex conn-ex-blue">Hanna → she</span>
+<span class="conn-ex conn-ex-blue">Tom → he</span>
+<span class="conn-ex conn-ex-blue">Ben and Mia → they</span>
+</div>
+</div>
+</article>
+<article class="conn-card">
+<div class="conn-icon" aria-hidden="true">🟦</div>
+<div>
+<h3 class="conn-title">to be — die Person entscheidet</h3>
+<p class="conn-text">Jedes Personal Pronoun braucht die passende to be Form. I → am, you → are, he/she/it → is.</p>
+<div class="conn-examples">
+<span class="conn-ex conn-ex-blue">I → am</span>
+<span class="conn-ex conn-ex-blue">you → are</span>
+<span class="conn-ex conn-ex-blue">she → is</span>
+<span class="conn-ex conn-ex-blue">they → are</span>
+</div>
+</div>
+</article>
+<article class="conn-card">
+<div class="conn-icon" aria-hidden="true">🎒</div>
+<div>
+<h3 class="conn-title">have got — Besitz und Person zusammen denken</h3>
+<ul class="conn-text learning-points"><li>Bei have got entscheidet das Pronoun über die Form: I/you/we/they → have got, he/she/it → has got.</li><li>Besitzwörter zeigen dann, wem etwas gehört.</li></ul>
+<div class="conn-examples">
+<span class="conn-ex conn-ex-green">I have got → my</span>
+<span class="conn-ex conn-ex-green">She has got → her</span>
+<span class="conn-ex conn-ex-green">He has got → his</span>
+</div>
+</div>
+</article>
+<article class="conn-card">
+<div class="conn-icon" aria-hidden="true">🔁</div>
+<div>
+<h3 class="conn-title">Simple Present — she/he/it bekommt -s</h3>
+<ul class="conn-text learning-points"><li>Das Personal Pronoun bestimmt, ob das Verb ein -s bekommt.</li><li>She/he/it → Verb mit -s, I/you/we/they → Verb ohne -s.</li></ul>
+<div class="conn-examples">
+<span class="conn-ex conn-ex-violet">She plays</span>
+<span class="conn-ex conn-ex-violet">They play</span>
+</div>
+</div>
+</article>
+<article class="conn-card">
+<div class="conn-icon" aria-hidden="true">🔑</div>
+<div>
+<h3 class="conn-title">Possessive Determiners zeigen Besitz</h3>
+<ul class="conn-text learning-points"><li>Possessive Determiners stehen vor einem Nomen und zeigen, wem etwas gehört: my, your, his, her, its, our, their.</li></ul>
+<div class="conn-examples">
+<span class="conn-ex conn-ex-green">I → my</span>
+<span class="conn-ex conn-ex-green">you → your</span>
+<span class="conn-ex conn-ex-green">they → their</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+
+<!-- SCHREIB-CHECK -->
+
 <!-- NOTIZEN -->
 <div class="compass-mode-panel" data-panel="p-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
@@ -2171,6 +2169,11 @@ html,body{background:#e7eef4!important;color:#243b55}
     if (!key) return;
     var mode = aliases[key];
     if (!mode) return;
+    if(mode === 'writecheck'){
+      var learn = document.querySelector('[data-tab="p-mode"][data-val="learn"]');
+      var check = document.querySelector('[data-tab="p-learn"][data-val="writecheck"]');
+      if(learn) learn.click(); if(check) check.click(); return;
+    }
     var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
     if (!btn) return;
     btn.click();

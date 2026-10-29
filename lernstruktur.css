@@ -1,0 +1,16 @@
+/* Short learning points; colours match the Simple Present reference. */
+.learning-points{display:grid;gap:.65rem;margin:.75rem 0;padding:0;list-style:none;font-size:inherit;line-height:1.6}
+.learning-points>li{position:relative;margin:0;padding:.2rem 0 .2rem 1.15rem;max-width:100%;overflow-wrap:anywhere}
+.learning-points>li:before{content:"";position:absolute;left:0;top:.9em;width:.36rem;height:.36rem;border-radius:50%;background:#66849c}
+.learning-points>li+li{border-top:1px solid rgba(104,131,153,.16);padding-top:.65rem}
+.learning-points>li+li:before{top:1.35em}
+.message-example{display:grid;gap:.55rem;padding:1rem;border:1px solid #d8e2ec;border-radius:12px;background:#fff;line-height:1.7}
+.message-example>span{display:block}
+#lernen .learn-panel#schreibcheck{width:auto;max-width:100%;box-sizing:border-box}
+.learn-step-nav:has(>[data-step="writecheck"]) {grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+@media(max-width:600px){.learning-points{gap:.4rem}.learning-points>li{padding-left:1rem}.learn-step-nav:has(>[data-step="writecheck"]){grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.learning-points>li{break-inside:avoid}}
+
+#simplepast-learn-panel>#schreibcheck{background:#fff!important;border:1px solid #d8e2ec;border-radius:16px;padding:20px}
+#simplepast-learn-panel>#schreibcheck #simplepast-denkzentrale{margin:0;padding:0;border:0;background:#fff;box-shadow:none}
+@media(max-width:600px){#simplepast-learn-panel>#schreibcheck{margin:16px 12px;padding:16px}}

@@ -6830,7 +6830,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 #past-learn-irregular .sp-v116-irregular-orientation li>span:first-child{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#dce8f2}
 @media(max-width:700px){#past-learn-irregular .sp-v116-irregular-orientation ol{grid-template-columns:1fr}#past-learn-tobe .sp-v116-form-rules p{grid-template-columns:1fr;gap:4px}}
 </style>
-</head>
+<link rel="stylesheet" href="lernstruktur.css"></head>
 <body>
 <main class="topic-page topic-page--simple-past" id="simplepast-refactor-root">
 <div class="overview-return-wrap page-action-bar">
@@ -6880,231 +6880,9 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </button>
 </nav>
 <!-- LERNEN -->
-<div class="compass-mode-panel is-active topic-panel topic-panel--learn" data-panel="past-mode" data-val="learn" id="lernen" role="region">
-<nav aria-label="Simple Past verstehen und lernen" class="simplepast-study-tabs">
-<button aria-controls="simplepast-overview-panel" aria-pressed="true" class="simplepast-study-tab is-active" data-tab="simplepast-study" data-val="overview" type="button">Orientierung<small>Start, Gesamtbild, Testen</small></button>
-<button aria-controls="simplepast-learn-panel" aria-pressed="false" class="simplepast-study-tab" data-tab="simplepast-study" data-val="learn" type="button">Lernen<small>Wozu, was ich schon weiß und wie es aufgebaut ist</small></button>
-</nav>
-<div class="simplepast-study-panel is-active" data-panel="simplepast-study" data-val="overview" id="simplepast-overview-panel">
-<nav aria-label="Orientierung im Simple Past" class="simplepast-orientation-tabs learn-step-nav feature-tabs">
-<button aria-controls="simplepast-orient-start" aria-pressed="true" class="learn-step-btn is-active" data-tab="simplepast-orientation" data-val="start" type="button">
-<span class="step-badge">1</span><span class="step-label">Wegweiser</span>
-</button>
-<button aria-controls="simplepast-orient-map" aria-pressed="false" class="learn-step-btn" data-tab="simplepast-orientation" data-val="map" type="button">
-<span class="step-badge">2</span><span class="step-label">Gesamtbild</span>
-</button>
-<button aria-controls="simplepast-orient-denkzentrale" aria-pressed="false" class="learn-step-btn" data-tab="simplepast-orientation" data-val="denkzentrale" type="button">
-<span class="step-badge">3</span><span class="step-label">Denkzentrale</span>
-</button>
-</nav>
-<div class="simplepast-orientation-panel is-active" data-panel="simplepast-orientation" data-val="start" id="simplepast-orient-start">
-<section aria-labelledby="simplepast-compass-title" class="simplepast-compass-start simplepast-orientation-shell">
-<div class="simplepast-orientation-head">
-<span aria-hidden="true" class="simplepast-orientation-icon">🧭</span>
-<div class="simplepast-orientation-copy">
-<p class="feature-kicker">Wegweiser</p>
-<h2 class="simplepast-compass-title simplepast-orientation-title" id="simplepast-compass-title">Startorientierung Simple Past</h2>
-</div>
-</div>
-<p class="simplepast-compass-lead">Gehe nicht zufällig durch die Werkzeuge. Prüfe immer denselben Weg: Vergangenheit erkennen, Satzart wählen, Verbform bilden und typische Fehler kontrollieren.</p>
-<div aria-label="Simple-Past-Lernweg in vier Schritten" class="simplepast-compass-grid">
-<article class="simplepast-compass-step">
-<span aria-hidden="true" class="simplepast-compass-number">1</span>
-<h3>Ist es Vergangenheit?</h3>
-<p>Früher-Signale zeigen dir, ob Simple Past überhaupt passt.</p>
-<div class="simplepast-compass-action-row"><button aria-controls="past-learn-entry" class="simplepast-compass-action" data-sp-connect-step="entry" type="button">Zum Früher-Radar</button></div>
-</article>
-<article class="simplepast-compass-step">
-<span aria-hidden="true" class="simplepast-compass-number">2</span>
-<h3>Welche Satzart?</h3>
-<p>Entscheide: Aussage, Verneinung, Frage oder was/were.</p>
-<div class="simplepast-compass-action-row"><button aria-controls="simplepast-orient-denkzentrale" class="simplepast-compass-action" data-tab="simplepast-orientation" data-val="denkzentrale" type="button">Zur Denkzentrale</button></div>
-</article>
-<article class="simplepast-compass-step">
-<span aria-hidden="true" class="simplepast-compass-number">3</span>
-<h3>Welche Verbform?</h3>
-<p>Past Form direkt am Verb oder Grundform nach did/didn’t?</p>
-<div class="simplepast-compass-action-row"><button class="simplepast-compass-action" data-sp-connect-step="positive" type="button">Zur Satzmaschine</button></div>
-</article>
-<article class="simplepast-compass-step">
-<span aria-hidden="true" class="simplepast-compass-number">4</span>
-<h3>Prüfen</h3>
-<p>Kontrolliere did/didn’t, was/were und irregular verbs.</p>
-<div class="simplepast-compass-action-row"><button class="simplepast-compass-action" data-sp-connect-step="negative" type="button">Did/didn’t prüfen</button><button class="simplepast-compass-action" data-sp-connect-step="tobe" type="button">was/were prüfen</button><button class="simplepast-compass-action" data-sp-connect-step="irregular" type="button">Irregular verbs</button></div>
-</article>
-</div>
-</section>
-</div>
-<div class="simplepast-orientation-panel" data-panel="simplepast-orientation" data-val="map" id="simplepast-orient-map">
-<section aria-labelledby="simplepast-overview-map-title" class="simplepast-overview-map simplepast-orientation-shell" id="simplepast-overview-map">
-<div class="simplepast-orientation-head">
-<span aria-hidden="true" class="simplepast-orientation-icon">🗺️</span>
-<div class="simplepast-orientation-copy">
-<p class="feature-kicker">Gesamtbild</p>
-<h2 class="simplepast-orientation-title" id="simplepast-overview-map-title">Simple Past auf einen Blick</h2>
-</div>
-</div>
-<div class="sp-overview-start-card">
-<h3>1. Ist es vorbei?</h3>
-<p>Simple Past passt, wenn etwas schon passiert ist.</p>
-<div aria-label="Früher-Signale" class="sp-overview-chip-row">
-<span>yesterday</span><span>last week</span><span>two days ago</span><span>in 2022</span>
-</div>
-</div>
-<div aria-label="Simple-Past-Entscheidung: to be oder normales Verb" class="sp-overview-split">
-<article class="sp-overview-branch">
-<h3><span class="sp-overview-symbol">A</span> to be</h3>
-<p><span class="past-code">to be</span> hat eigene Formen.</p>
-<div class="sp-overview-mini-grid">
-<div class="sp-overview-pattern"><strong>Aussage</strong><span class="past-code">She was tired.</span><br/><span class="past-code">They were at home.</span></div>
-<div class="sp-overview-pattern"><strong>Verneinung</strong><span class="past-code">She wasn’t tired.</span><br/><span class="past-code">They weren’t at home.</span></div>
-<div class="sp-overview-pattern"><strong>Frage</strong><span class="past-code">Was she tired?</span><br/><span class="past-code">Were they at home?</span></div>
-</div>
-<div class="sp-overview-warning"><strong>Merken</strong>Bei <span class="past-code">to be</span> steht kein <span class="past-code">did</span>.</div>
-</article>
-<article class="sp-overview-branch">
-<h3><span class="sp-overview-symbol">B</span> normales Verb</h3>
-<p>Bei normalen Verben entscheidest du zuerst: Aussage, Verneinung oder Frage?</p>
-<div class="sp-overview-paths">
-<div class="sp-overview-path">
-<h4>Aussage: kein did</h4>
-<div aria-label="Positive Aussage normales Verb" class="sp-overview-formula">
-<span>Person</span><span class="arrow">→</span><span>Past Form</span><span class="arrow">→</span><span>Rest</span>
-</div>
-<p><span class="past-code">She played football.</span><br/><span class="past-code">They went home.</span></p>
-<p><span class="past-code">play → played</span> · <span class="past-code">go → went</span></p>
-</div>
-<div class="sp-overview-path">
-<h4>Verneinung / Frage: did + Grundform</h4>
-<div aria-label="Did und Grundform" class="sp-overview-formula">
-<span>did / didn’t</span><span class="arrow">→</span><span>basic form</span>
-</div>
-<p><span class="past-code">She didn’t play football.</span><br/><span class="past-code">Did they go home?</span></p>
-<p>Nicht: <span class="past-code">did played</span> · <span class="past-code">didn’t went</span></p>
-</div>
-</div>
-</article>
-</div>
-<div aria-label="Wichtige Denkfallen" class="sp-overview-warning-row">
-<div class="sp-overview-warning"><strong>to be</strong><span class="past-code">was / were</span>, aber kein <span class="past-code">did</span>.</div>
-<div class="sp-overview-warning"><strong>did / didn’t</strong>Danach kommt die Grundform: <span class="past-code">play</span>, <span class="past-code">go</span>, <span class="past-code">see</span>.</div>
-</div>
-</section>
-</div>
-<div class="simplepast-orientation-panel" data-panel="simplepast-orientation" data-val="denkzentrale" id="simplepast-orient-denkzentrale">
-<style id="sp-denkzentrale-v81-css">
-.sp-dz-v80-modebox{margin:12px 0 16px;padding:13px 14px;border:1px solid rgba(148,163,184,.34);border-radius:18px;background:#fff;box-shadow:0 6px 18px rgba(15,23,42,.045)}
-.sp-dz-v80-mode-title{margin:0 0 8px;font-family:var(--font-head);font-weight:400;color:#27415f}
-.sp-dz-v80-mode-row{display:flex;flex-wrap:wrap;gap:8px}.sp-dz-v80-mode{border:1px solid rgba(148,163,184,.55);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;color:#27415f;cursor:pointer}.sp-dz-v80-mode:hover{border-color:#27415f}.sp-dz-v80-mode.is-active{background:#27415f;border-color:#27415f;color:#fff}.sp-dz-v80-mode-note{margin:8px 0 0;color:var(--gray-600);font-size:.9rem}.sp-dz-v80-task-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.sp-dz-v80-task-meta span{display:inline-flex;align-items:center;border-radius:999px;border:1px solid rgba(148,163,184,.42);background:#fff;padding:4px 9px;font-size:.78rem;color:#475569}.sp-dz-v80-mode-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;margin-left:4px;padding:1px 6px;border-radius:999px;background:#eef2f7;color:inherit;font-size:.78em}.sp-dz-v80-repair-panel{margin:12px 0;padding:12px 14px;border:1px solid rgba(251,191,36,.45);border-radius:16px;background:#fffdf5}.sp-dz-v80-repair-panel[hidden]{display:none}.sp-dz-v80-repair-title{margin:0 0 6px;color:#7c2d12}.sp-dz-v80-repair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}.sp-dz-v80-repair-btn{border:1px solid rgba(148,163,184,.55);background:#fff;border-radius:14px;padding:8px 10px;text-align:left;font:inherit;color:#27415f;cursor:pointer}.sp-dz-v80-repair-btn.is-selected{border-color:#27415f;background:#eaf1f8}.sp-dz-v80-repair-found{margin:8px 0 0}.sp-dz-v80-type-bilden{border-color:#bfdbfe!important;background:#eff6ff!important;color:#1d4ed8!important}.sp-dz-v80-type-umbauen{border-color:#ddd6fe!important;background:#f5f3ff!important;color:#6d28d9!important}.sp-dz-v80-type-reparieren{border-color:#fecaca!important;background:#fff1f2!important;color:#be123c!important}
-
-
-.sp-action-btn{border-radius:999px;border:1px solid #c5d2e3;background:#fff;color:#27415f;font-family:var(--font-head);font-weight:400;font-size:.84rem;padding:9px 13px;cursor:pointer;transition:all .18s}
-.sp-action-btn:hover{background:#eaf1f8;border-color:#8aa4c0;color:#1e3a8a}
-.sp-action-btn:disabled{opacity:.6;cursor:not-allowed}
-</style>
-<!-- V82 BLOCK 2F KORREKTUR ZIELBEREICH: Denkzentrale/Orientierung. Hier werden die Mixed-Datenpools in Block 2 funktional integriert. -->
-<section aria-labelledby="sp-dz-v14-title" class="sp-dz-v14 simplepast-orientation-shell" id="simplepast-denkzentrale">
-<div class="simplepast-orientation-head">
-<span aria-hidden="true" class="simplepast-orientation-icon">🎯</span>
-<div class="simplepast-orientation-copy">
-<p class="feature-kicker">Denkzentrale</p>
-<h2 class="sp-dz-v14-title simplepast-orientation-title" id="sp-dz-v14-title">Simple-Past-Denkzentrale</h2>
-</div>
-</div>
-<p class="sp-dz-v14-lead">Starte mit der Aufgabe und gehe Schritt für Schritt weiter. Die Denkzentrale mischt jetzt Bilden, Umbauen und Reparieren – damit du wie in der Klassenarbeit selbst entscheiden musst.</p><section class="sp-dz-distinction" aria-label="Ähnliche Simple-Past-Formen sicher unterscheiden"><h3>Vier Formen, vier Entscheidungen</h3><p>Diese Übersicht ist eine Merkhilfe. Die Antworten in der Denkzentrale musst du weiterhin selbst bilden.</p><div class="sp-dz-distinction-grid"><div><h4>Positive Aussage</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-verb">played</span><span class="sp-part-rest">football.</span></p><p>Regelmäßiges Verb: <strong>Past Form</strong> im Aussagesatz.</p></div><div><h4>Verneinung</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-helper">didn't</span><span class="sp-part-verb">play</span><span class="sp-part-rest">football.</span></p><p>Nach <strong>didn't</strong> kommt die <strong>Grundform</strong>.</p></div><div><h4>Frage</h4><p class="sp-dz-sentence"><span class="sp-part-helper">Did</span><span class="sp-part-person">she</span><span class="sp-part-verb">play</span><span class="sp-part-rest">football?</span></p><p>Nach <strong>did</strong> steht ebenfalls die <strong>Grundform</strong>.</p></div><div><h4>to be</h4><p class="sp-dz-sentence"><span class="sp-part-person">She</span><span class="sp-part-helper">was</span><span class="sp-part-rest">tired.</span></p><p>Bei <strong>was/were</strong> brauchst du kein <em>did</em>.</p></div></div></section>
-<section class="sp-dz-checkroute" aria-label="So prüfst du deinen Lernstand"><h3>Klassenarbeits-Check: Erst selbst entscheiden</h3><p>Bearbeite zunächst einige Aufgaben im Modus <strong>Alles gemischt</strong>, ohne die Regeln nachzulesen. Achte danach darauf, <strong>welcher Fehlertyp</strong> in der Rückmeldung steht.</p><div class="sp-dz-checkroute-grid"><div><span class="sp-dz-checkroute-title">Zeitform</span><p>Ist der Satz vergangen oder beschreibt er eine Gewohnheit?</p></div><div><span class="sp-dz-checkroute-title">Verbart</span><p>Brauchst du <em>was/were</em> oder ein gewöhnliches Verb?</p></div><div><span class="sp-dz-checkroute-title">Satzart</span><p>Aussage, Frage oder Verneinung? Welche Form verändert sich?</p></div></div><p>Wiederhole anschließend gezielt den Lernbaustein, bei dem du unsicher warst, und versuche eine neue gemischte Aufgabe.</p></section>
-<div class="sp-dz-workmode" role="group" aria-label="Arbeitsweise wählen">
-<button type="button" data-dz-workmode="guided" aria-pressed="true">Lernen – mit Denkschritten</button>
-<button type="button" data-dz-workmode="independent" aria-pressed="false">Selbstständig – wie in der Klassenarbeit</button>
-</div>
-<p class="sp-dz-workmode-note" id="sp-dz-workmode-note">Wähle zuerst Zeit, Verbart und Satzart. Dann schreibe.</p>
-<div aria-label="Aufgabentyp in der Denkzentrale wählen" class="sp-dz-v80-modebox">
-<p class="sp-dz-v80-mode-title">Modus</p>
-<div class="sp-dz-v80-mode-row">
-<button aria-pressed="true" class="sp-dz-v80-mode is-active" data-dz-mode="all" type="button">Alles gemischt</button>
-<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="bilden" type="button">Nur bilden <span class="sp-dz-v80-mode-count">83</span></button>
-<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="umbauen" type="button">Nur umbauen <span class="sp-dz-v80-mode-count">18</span></button>
-<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="reparieren" type="button">Nur reparieren <span class="sp-dz-v80-mode-count">16</span></button>
-</div>
-<p class="sp-dz-v80-mode-note">Standard ist gemischt: 117 Aufgaben. „Nur bilden“ enthält 83 Aufgaben, weil dazu 26 Grundaufgaben und 57 zusätzliche Bilden-Aufgaben gehören. Umbauen hat 18 Aufgaben, Reparieren hat 16 Fehlerdetektiv-Aufgaben.</p>
-</div>
-<div aria-live="polite" class="sp-dz-v14-task sp-dz-v80-task">
-<span class="sp-dz-v14-task-label">Aktuelle Aufgabe</span>
-<div class="sp-dz-v80-task-meta"><span id="sp-dz-v80-type">Alles gemischt</span><span id="sp-dz-v80-count">Aufgabe 1</span></div>
-<p class="sp-dz-v14-prompt" id="sp-dz-v14-prompt">Lade Aufgabe …</p>
-</div>
-<div aria-label="Denkweg Simple Past in fünf Schritten" class="sp-dz-v14-grid">
-<article class="sp-dz-v14-step" data-dz-step="1">
-<span class="sp-dz-v14-number">1</span>
-<h3>Vergangenheit?</h3>
-<p>Entscheide nur: Ist die Situation schon vorbei?</p>
-<div class="sp-dz-v14-choice-row" data-dz-row="past">
-<button class="sp-dz-v14-btn" data-dz-choice="past" data-value="yes" type="button">Ja, vorbei</button>
-<button class="sp-dz-v14-btn" data-dz-choice="past" data-value="no" type="button">Nein / nicht sicher</button>
-</div>
-</article>
-<article aria-disabled="true" class="sp-dz-v14-step" data-dz-step="2">
-<span class="sp-dz-v14-number">2</span>
-<h3>Verb-Art?</h3>
-<p>Entscheide erst jetzt: Geht es um „sein“ oder um eine Handlung mit einem normalen Verb?</p>
-<div class="sp-dz-v14-choice-row" data-dz-row="verbtype">
-<button class="sp-dz-v14-btn" data-dz-choice="verbtype" data-value="be" type="button">to be</button>
-<button class="sp-dz-v14-btn" data-dz-choice="verbtype" data-value="verb" type="button">normales Verb</button>
-</div>
-</article>
-<article aria-disabled="true" class="sp-dz-v14-step" data-dz-step="3">
-<span class="sp-dz-v14-number">3</span>
-<h3>Satzart?</h3>
-<p>Was soll ausgedrückt werden: Aussage, Verneinung oder Frage?</p>
-<div class="sp-dz-v14-choice-row" data-dz-row="sentence">
-<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="positive" type="button">Aussage</button>
-<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="negative" type="button">Verneinung</button>
-<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="question" type="button">Frage</button>
-</div>
-</article>
-</div>
-<article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="4">
-<h3>4. Form selbst schreiben</h3>
-<p class="sp-dz-v14-rule">Schreibe den ganzen englischen Satz. Prüfe erst danach.</p>
-<div aria-live="polite" class="sp-dz-v80-write-task">
-<span class="sp-dz-v14-task-label">Aufgabe</span>
-<p class="sp-dz-v14-prompt sp-dz-v14-write-prompt" id="sp-dz-v14-write-prompt">Lade Aufgabe …</p>
-</div>
-<div class="sp-dz-v14-inputrow">
-<input autocomplete="off" class="sp-dz-v14-input" id="sp-dz-v14-input" placeholder="Deine eigene Lösung …" type="text"/>
-<button class="sp-dz-v14-next" id="sp-dz-v14-check" type="button">Prüfen</button>
-</div>
-<div class="sp-dz-v80-repair-panel" hidden="" id="sp-dz-v80-repair-panel">
-<h4 class="sp-dz-v80-repair-title">Fehlerdetektiv vor der Reparatur</h4>
-<p>Prüfe zuerst: Ist der Satz falsch oder schon richtig? Danach benennst du den Fehlertyp. Erst dann schreibst du die Reparatur oder den richtigen Satz ab.</p>
-<div class="sp-dz-v80-repair-found">
-<button class="sp-dz-v80-repair-btn" data-dz-repair-found="error" type="button">Ich finde einen Fehler.</button>
-<button class="sp-dz-v80-repair-btn" data-dz-repair-found="none" type="button">Der Satz ist schon richtig.</button>
-</div>
-<div aria-label="Fehlertyp wählen" class="sp-dz-v80-repair-grid">
-<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didBe" type="button">did + was/were</button>
-<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didPast" type="button">did/didn’t + Past Form</button>
-<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didntBe" type="button">didn’t be</button>
-<button class="sp-dz-v80-repair-btn" data-dz-repair-type="irregular" type="button">falsches irregular verb</button>
-</div>
-</div>
-<div class="sp-dz-v14-feedback" id="sp-dz-v14-feedback">Erst Schritt 1 bis 3 beantworten, dann hier selbst schreiben.</div>
-</article>
-<article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="5">
-<h3>5. Regelprüfung</h3>
-<p class="sp-dz-v14-rule" id="sp-dz-v14-rule">Die ausführliche Erklärung erscheint erst nach deiner Eingabe oder bei einem Fehler.</p>
-</article>
-<div class="sp-dz-v14-actions">
-<button class="sp-dz-v14-reset" id="sp-dz-v14-reset" type="button">Diese Aufgabe zurücksetzen</button>
-<button class="sp-dz-v14-next" id="sp-dz-v14-new" type="button">Neue Aufgabe</button>
-<button aria-controls="simplepast-learn-panel" class="sp-dz-v14-link" data-tab="simplepast-study" data-val="learn" type="button">Zu den Lernbausteinen</button>
-</div>
-</section>
-</div>
-</div>
-<div class="simplepast-study-panel" data-panel="simplepast-study" data-val="learn" id="simplepast-learn-panel">
+<div class="compass-mode-panel is-active topic-panel topic-panel--learn" data-panel="past-mode" data-val="learn" id="lernen" role="region"><div class="simplepast-study-panel is-active" data-panel="simplepast-study" data-val="learn" id="simplepast-learn-panel">
 <nav aria-label="Simple-Past-Bausteine und Mixed-Aufgaben" class="learn-step-nav feature-tabs">
-<button aria-controls="past-learn-entry" aria-pressed="true" class="learn-step-btn is-active" data-tab="past-learn" data-val="entry" type="button">
+<button aria-controls="past-learn-entry" aria-pressed="false" class="learn-step-btn" data-tab="past-learn" data-val="entry" type="button">
 <span class="step-badge">1</span><span class="step-label">Früher-Radar</span>
 </button>
 <button aria-controls="past-learn-positive" aria-pressed="false" class="learn-step-btn" data-tab="past-learn" data-val="positive" type="button">
@@ -7122,16 +6900,16 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <button aria-controls="past-learn-irregular" aria-pressed="false" class="learn-step-btn" data-tab="past-learn" data-val="irregular" type="button">
 <span class="step-badge">6</span><span class="step-label">Irregular Verbs</span>
 </button>
-</nav>
+<button type="button" class="learn-step-btn" data-tab="past-learn" data-val="writecheck" aria-controls="schreibcheck" aria-pressed="false"><span class="step-badge">7</span><span class="step-label">Schreib-Check</span></button></nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="past-progress"></div></div>
-<div class="learn-panel is-active" data-panel="past-learn" data-val="entry" id="past-learn-entry">
+<div class="learn-panel" data-panel="past-learn" data-val="entry" id="past-learn-entry">
 <section aria-labelledby="past-entry-title" class="past-topic-card past-topic-card-tools simplepast-radar-combined simplepast-learning-shell">
 <div class="simplepast-learning-head">
 <span aria-hidden="true" class="simplepast-learning-icon">🕰️</span>
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 1</p>
 <h2 class="simplepast-learning-title" id="past-entry-title">Früher-Radar</h2>
-<p class="simplepast-learning-lead">Erst prüfen: Ist es vorbei? Dann geht es weiter zum passenden Simple-Past-Baustein.</p>
+<ul class="simplepast-learning-lead learning-points"><li>Erst prüfen: Ist es vorbei?</li><li>Dann geht es weiter zum passenden Simple-Past-Baustein.</li></ul>
 </div>
 </div>
 <nav aria-label="Früher-Radar" class="past-tool-tabs simplepast-radar-tabs">
@@ -7143,7 +6921,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <section aria-labelledby="past-entry-why-title" class="past-learn-route">
 <div class="past-route-intro">
 <h2 id="past-entry-why-title">Wozu brauche ich Simple Past?</h2>
-<p>Mit dem Simple Past erzählst du von Dingen, die schon vorbei sind. Du entscheidest zuerst: <span class="past-code">to be</span> oder <span class="past-code">normales Verb</span>. Danach baust du den Satz.</p>
+<ul class="learning-points"><li>Mit dem Simple Past erzählst du von Dingen, die schon vorbei sind.</li><li>Du entscheidest zuerst: <span class="past-code">to be</span> oder <span class="past-code">normales Verb</span>.</li><li>Danach baust du den Satz.</li></ul>
 <div aria-label="Denkweg Simple Past" class="past-route-mini">
 <span>1. Vergangenheit erkennen</span>
 <span>2. Verbart prüfen</span>
@@ -7155,7 +6933,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div aria-hidden="true" class="entry-visual">⏰</div>
 <div>
 <h2 class="entry-hook" id="past-entry-examples-title">Vorbei heißt: Simple Past prüfen.</h2>
-<p class="entry-text">Signalwörter zeigen dir den Einstieg. Danach prüfst du im nächsten Schritt die Verbart: regular oder irregular.</p>
+<ul class="entry-text learning-points"><li>Signalwörter zeigen dir den Einstieg.</li><li>Danach prüfst du im nächsten Schritt die Verbart: regular oder irregular.</li></ul>
 <div aria-label="Beispiele für Simple Past" class="entry-examples">
 <span class="entry-ex">Yesterday I played football.</span>
 <span class="entry-ex">Last week I visited my grandma.</span>
@@ -7169,12 +6947,12 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <section aria-labelledby="past-radar-title" class="feature-card past-radar-card simplepast-radar-pattern">
 <p class="feature-kicker">Signalwörter prüfen</p>
 <h3 id="past-radar-title">Früher-Radar: Ist es Vergangenheit?</h3>
-<p class="simplepast-radar-lead">Starte hier mit einer einfachen Frage: Ist das schon vorbei? Wenn ja, prüfst du Simple Past.</p>
+<ul class="simplepast-radar-lead learning-points"><li>Starte hier mit einer einfachen Frage: Ist das schon vorbei?</li><li>Wenn ja, prüfst du Simple Past.</li></ul>
 <div aria-label="Früher-Radar Lernweg" class="simplepast-radar-learning-grid">
 <article class="simplepast-radar-main-card simplepast-radar-rule-card">
 <h4>1. Kurze Regel</h4>
 <p>Simple Past benutzt du, wenn etwas schon vorbei ist.</p>
-<p>Entscheide zuerst, ob ein Wort oder der ganze Satz auf Vergangenheit zeigt. Danach prüfst du im nächsten Schritt: regular oder irregular?</p>
+<ul class="learning-points"><li>Entscheide zuerst, ob ein Wort oder der ganze Satz auf Vergangenheit zeigt.</li><li>Danach prüfst du im nächsten Schritt: regular oder irregular?</li></ul>
 <div aria-label="Typische Früher-Signale" class="simplepast-radar-signal-row">
 <span>yesterday</span>
 <span>last week</span>
@@ -7223,7 +7001,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-radar-trap-grid">
 <div>
 <span class="simplepast-radar-trap-word">every day</span>
-<p>Das klingt nach Zeit, passt aber meistens zu Gewohnheiten und Simple Present.</p>
+<ul class="learning-points"><li>Das klingt nach Zeit, passt aber meistens zu Gewohnheiten und Simple Present.</li></ul>
 </div>
 <div>
 <span class="simplepast-radar-trap-word">now</span>
@@ -7231,7 +7009,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div>
 <span class="simplepast-radar-trap-word">on Saturday</span>
-<p>Das kann Vergangenheit oder Zukunft sein. Ohne Kontext musst du auf den ganzen Satz achten.</p>
+<ul class="learning-points"><li>Das kann Vergangenheit oder Zukunft sein.</li><li>Ohne Kontext musst du auf den ganzen Satz achten.</li></ul>
 </div>
 </div>
 </article>
@@ -7261,7 +7039,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </details>
 <details>
 <summary>Unterschied zu Simple Present</summary>
-<p><span class="past-code">every day</span> zeigt meistens eine Gewohnheit. Dann passt eher Simple Present. <span class="past-code">yesterday</span> zeigt Vergangenheit. Dann prüfst du Simple Past.</p>
+<ul class="learning-points"><li><span class="past-code">every day</span> zeigt meistens eine Gewohnheit.</li><li>Dann passt eher Simple Present. <span class="past-code">yesterday</span> zeigt Vergangenheit.</li><li>Dann prüfst du Simple Past.</li></ul>
 </details>
 </div>
 </aside>
@@ -7271,14 +7049,14 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </section>
 </div>
 <div class="learn-panel" data-panel="past-learn" data-val="positive" id="past-learn-positive">
-<section class="sp-school-practice" id="sp-school-ed" aria-labelledby="sp-school-ed-title"><h3 id="sp-school-ed-title">-ed hören: drei Aussprachen</h3><p>Wähle zuerst die Aussprache der Endung. Danach erhältst du die Regel.</p><div id="sp-ed-questions"></div></section>
+<section class="sp-school-practice" id="sp-school-ed" aria-labelledby="sp-school-ed-title"><h3 id="sp-school-ed-title">-ed hören: drei Aussprachen</h3><ul class="learning-points"><li>Wähle zuerst die Aussprache der Endung.</li><li>Danach erhältst du die Regel.</li></ul><div id="sp-ed-questions"></div></section>
 <section aria-labelledby="positive-statement-title" class="past-topic-card past-topic-card-tools simplepast-positive-v31 simplepast-positive-v34 simplepast-learning-shell">
 <div class="simplepast-learning-head">
 <span aria-hidden="true" class="simplepast-learning-icon">➕</span>
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 2</p>
 <h2 class="simplepast-learning-title" id="positive-statement-title">Positive Statements</h2>
-<p class="simplepast-learning-lead positive-v31-lead">Positive Statements erzählen, was jemand getan hat. Das Verb steht in der Past Form.</p>
+<ul class="simplepast-learning-lead positive-v31-lead learning-points"><li>Positive Statements erzählen, was jemand getan hat.</li><li>Das Verb steht in der Past Form.</li></ul>
 </div>
 </div>
 <nav aria-label="Positive Statements" class="past-tool-tabs positive-v31-tabs">
@@ -7350,7 +7128,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="positive-v31-warning">
 <div class="positive-v31-warning-head"><span class="positive-v31-warning-sign">⚠</span><strong>Achtung</strong></div>
-<p>In normalen positiven Simple-Past-Sätzen mit normalen Verben steht kein <span class="positive-v47-blue-chip">did</span>.</p>
+<ul class="learning-points"><li>In normalen positiven Simple-Past-Sätzen mit normalen Verben steht kein <span class="positive-v47-blue-chip">did</span>.</li></ul>
 <div class="positive-v31-checks">
 <div><strong>Richtig</strong><span>She played football.</span></div>
 <div><strong>Nicht richtig</strong><span>She <span class="positive-v47-blue-chip">did</span> played football.</span></div>
@@ -7363,7 +7141,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <section aria-labelledby="positive-thinking-start-title" class="pos-v22-thinking-start" id="positive-thinking-start">
 <p class="feature-kicker">Hauptweg · erst selbst denken</p>
 <h3 id="positive-thinking-start-title">Positive Statements selbst bilden</h3>
-<p class="pos-v22-lead">Beginne hier. Die Regel steht nicht zuerst da. Du entscheidest kurz den Denkweg und schreibst dann selbst.</p>
+<ul class="pos-v22-lead learning-points"><li>Beginne hier.</li><li>Die Regel steht nicht zuerst da.</li><li>Du entscheidest kurz den Denkweg und schreibst dann selbst.</li></ul>
 <div class="pos-v22-taskbox">
 <span class="pos-v22-tasklabel">Aktuelle Aufgabe</span>
 <p id="pos-v22-prompt">Aufgabe wird geladen …</p>
@@ -7394,7 +7172,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div aria-disabled="true" class="pos-v22-inputarea" data-pos22-step="4">
 <h4>4. Schreibe selbst</h4>
-<p>Schreibe den ganzen englischen Satz. Keine Auswahl, keine Lösung vorher.</p>
+<ul class="learning-points"><li>Schreibe den ganzen englischen Satz.</li><li>Keine Auswahl, keine Lösung vorher.</li></ul>
 <div class="pos-v22-inputrow">
 <input autocomplete="off" class="pos-v22-input" id="pos-v22-input" placeholder="Dein Satz …" type="text"/>
 <button class="pos-v22-btn" id="pos-v22-check" type="button">Prüfen</button>
@@ -7411,7 +7189,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <section aria-labelledby="reg39-title" class="past-subcard reg39-card">
 <p class="feature-kicker">Regular oder irregular?</p>
 <h3 id="reg39-title">Welche Past Form brauche ich?</h3>
-<p class="reg39-lead">Ein normales Verb hat im Simple Past eine Past Form. Manche Formen kannst du bauen. Manche musst du wissen.</p>
+<ul class="reg39-lead learning-points"><li>Ein normales Verb hat im Simple Past eine Past Form.</li><li>Manche Formen kannst du bauen.</li><li>Manche musst du wissen.</li></ul>
 <div aria-label="Regular oder irregular verstehen" class="reg39-map">
 <article class="reg39-map-card reg39-regular">
 <span aria-hidden="true" class="reg39-icon">🧱</span>
@@ -7462,7 +7240,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="reg39-practice" data-reg39-practice="">
 <h4>Verb-Weiche</h4>
-<p>Entscheide zuerst: regular oder irregular. Schreibe danach die Past Form selbst.</p>
+<ul class="learning-points"><li>Entscheide zuerst: regular oder irregular.</li><li>Schreibe danach die Past Form selbst.</li></ul>
 <div aria-label="Regular oder irregular entscheiden und Past Form schreiben" class="reg39-practice-grid">
 <article class="reg39-item" data-explain="Regular: play → played. Bei Vokal + y bleibt y: nicht plaied." data-kind="regular" data-past="played" data-reg39-card="">
 <h5>play</h5>
@@ -7602,7 +7380,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="past-subcard pos-v34-repair-card">
 <div class="v113-trap-card" data-v113-trap="">
 <h3>Denkfalle: Welcher Satz stimmt?</h3>
-<p>Wähle zuerst A oder B. Die Erklärung erscheint erst nach deiner Entscheidung.</p>
+<ul class="learning-points"><li>Wähle zuerst A oder B.</li><li>Die Erklärung erscheint erst nach deiner Entscheidung.</li></ul>
 <div aria-label="Denkfalle positive statement auswählen" class="v113-trap-options" role="group">
 <button class="past-choice-btn" data-v113-trap-choice="A" type="button">A) Yesterday I play football.</button>
 <button class="past-choice-btn" data-v113-trap-choice="B" type="button">B) Yesterday I played football.</button>
@@ -7611,7 +7389,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="past-choice-row"><button class="past-choice-btn v113-reset-btn" data-v113-reset-trap="" type="button">Denkfalle zurücksetzen</button></div>
 </div>
 <h3>Richtig oder reparieren?</h3>
-<p>Entscheide zuerst: Ist der Satz richtig oder hat er einen Fehler? Erst danach klickst du die Fehlerstelle. So lernst du nicht nur „Fehler suchen“, sondern wirklich prüfen.</p>
+<p>Entscheide: richtig oder falsch. Benenne und verbessere einen Fehler.</p>
 <div class="past-three-grid">
 <article class="past-repair-card pos-v40-check-card" data-answer="She played football yesterday." data-v40-pos-error="play" data-v40-pos-status="wrong">
 <p class="past-repair-question">Prüfe den Satz.</p>
@@ -7669,7 +7447,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 3</p>
 <h2 class="simplepast-learning-title" id="negative-statements-title">Negative Statements</h2>
-<p class="simplepast-learning-lead simplepast-negative-lead">Negative Statements erzählen, was in der Vergangenheit nicht passiert ist. Bei normalen Verben steht die Vergangenheit in <span class="past-code">did not / didn’t</span>. <span class="past-clean-emphasis">did not</span> ist die lange Form, <span class="past-clean-emphasis">didn’t</span> die kurze Form. Danach kommt die <span class="past-code">basic form</span>.</p>
+<ul class="simplepast-learning-lead simplepast-negative-lead learning-points"><li>Negative Statements erzählen, was in der Vergangenheit nicht passiert ist.</li><li>Bei normalen Verben steht die Vergangenheit in <span class="past-code">did not / didn’t</span>. <span class="past-clean-emphasis">did not</span> ist die lange Form, <span class="past-clean-emphasis">didn’t</span> die kurze Form.</li><li>Danach kommt die <span class="past-code">basic form</span>.</li></ul>
 </div>
 </div>
 <nav aria-label="Negative Statements" class="past-tool-tabs negative-v53-tabs">
@@ -7685,8 +7463,8 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="negative-v49-hero">
 <div class="negative-v49-hero-copy">
 <h3>Die wichtigste Regel</h3>
-<p>Ein <span class="past-term">negative statement</span> im Simple Past sagt, was früher <span class="past-clean-emphasis">nicht</span> passiert ist.</p>
-<p>Bei normalen Verben steht die Vergangenheit im Hilfswort <span class="past-code">did not / didn’t</span>. Deshalb geht das Verb danach zurück in die <span class="past-code">basic form</span>.</p>
+<ul class="learning-points"><li>Ein <span class="past-term">negative statement</span> im Simple Past sagt, was früher <span class="past-clean-emphasis">nicht</span> passiert ist.</li></ul>
+<ul class="learning-points"><li>Bei normalen Verben steht die Vergangenheit im Hilfswort <span class="past-code">did not / didn’t</span>.</li><li>Deshalb geht das Verb danach zurück in die <span class="past-code">basic form</span>.</li></ul>
 </div>
 <div class="negative-v49-sentence-card">
 <p class="negative-v49-label">Beispielsatz</p>
@@ -7707,7 +7485,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div aria-label="Bauplan Negative Statements" class="simplepast-negative-formula negative-v49-formula">
 <span>Person</span><span>did not / didn’t</span><span>basic form</span><span>Rest</span>
 </div>
-<p>Der entscheidende Punkt ist nicht regular oder irregular. Nach did not oder didn’t kommt bei normalen Verben immer die Grundform.</p>
+<ul class="learning-points"><li>Der entscheidende Punkt ist nicht regular oder irregular.</li><li>Nach did not oder didn’t kommt bei normalen Verben immer die Grundform.</li></ul>
 </div>
 <div aria-label="did not und didn’t sicher unterscheiden" class="negative-v49-change-grid">
 <article><h4>Lange Form oder kurze Form?</h4><p>did not = lange Form</p><p>didn’t = kurze Form</p><small>Beide bedeuten dasselbe. Beide sind richtig, wenn die Aufgabe keine bestimmte Form verlangt.</small></article>
@@ -7729,7 +7507,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="negative-v49-stop-card">
 <div class="negative-v49-stop-head"><span aria-hidden="true">⚠</span><span>Achtung bei to be</span></div>
-<p>Bei to be nimmst du nicht didn’t. Das läuft später im eigenen Lernbaustein.</p>
+<ul class="learning-points"><li>Bei to be nimmst du nicht didn’t.</li><li>Das läuft später im eigenen Lernbaustein.</li></ul>
 <div aria-label="to be Stoppkarte" class="negative-v49-checks">
 <div><span class="negative-v49-check-label">Richtig</span><span>She wasn’t tired.</span></div>
 <div><span class="negative-v49-check-label">Nicht richtig</span><span>She didn’t be tired.</span></div>
@@ -7741,12 +7519,12 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="negative-v50-machine-title" class="simplepast-negative-practice-card negative-v50-machine-section">
 <p class="feature-kicker">Teil 2 · Satzmaschine</p>
 <h3 id="negative-v50-machine-title">Positive Aussage umbauen</h3>
-<p>Baue aus einer positiven Aussage ein Negative Statement. Erst denken, dann schreiben, dann prüfen.</p>
+<ul class="learning-points"><li>Baue aus einer positiven Aussage ein Negative Statement.</li><li>Erst denken, dann schreiben, dann prüfen.</li></ul>
 <div class="negative-v50-machine" data-v50-neg-machine="">
 <div class="negative-v50-machine-grid">
 <div class="negative-v50-step negative-v50-step-source">
 <span class="mixed-step-label">1. Ausgangssatz wählen</span>
-<p class="negative-v50-step-note">Der Satz ist positiv. Deine Aufgabe: daraus einen negativen Satz machen.</p>
+<ul class="negative-v50-step-note learning-points"><li>Der Satz ist positiv.</li><li>Deine Aufgabe: daraus einen negativen Satz machen.</li></ul>
 <div aria-label="Ausgangssatz wählen" class="past-choice-row negative-v50-source-row">
 <button class="past-choice-btn" data-v50-neg-source="She|played|play|football yesterday|She played football yesterday.|She didn’t play football yesterday." type="button">She played football yesterday.</button>
 <button class="past-choice-btn" data-v50-neg-source="They|went|go|home last weekend|They went home last weekend.|They didn’t go home last weekend." type="button">They went home last weekend.</button>
@@ -7776,7 +7554,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <button class="sp-action-btn" data-v50-neg-reset="" type="button">Zurücksetzen</button>
 </div>
 <div aria-live="polite" class="negative-v50-feedback" id="negative-v50-feedback">
-<p>Wähle einen Satz, triff die Denkentscheidung und schreibe dann deine Lösung.</p>
+<ul class="learning-points"><li>Wähle einen Satz, triff die Denkentscheidung und schreibe dann deine Lösung.</li></ul>
 </div>
 </div>
 </div>
@@ -7786,7 +7564,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="negative-v51-basic-title" class="simplepast-negative-practice-card negative-v51-basic-section">
 <p class="feature-kicker">Block 3 · did not / didn’t + basic form</p>
 <h3 id="negative-v51-basic-title">Past Form zurückdenken</h3>
-<p>Trainiere genau den Teil, der bei Verneinungen oft schiefgeht: did not ist die lange Form, didn’t die kurze Form. Nach beiden steht nicht die Past Form, sondern die basic form.</p>
+<ul class="learning-points"><li>Trainiere genau den Teil, der bei Verneinungen oft schiefgeht: did not ist die lange Form, didn’t die kurze Form.</li><li>Nach beiden steht nicht die Past Form, sondern die basic form.</li></ul>
 <div class="negative-v51-basic-grid" data-v51-neg-basic-trainer="">
 <div class="negative-v51-basic-rule">
 <h4>Der kleine Umwandler</h4>
@@ -7831,11 +7609,11 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="negative-v52-repair-title" class="simplepast-negative-practice-card negative-v52-repair-section">
 <p class="feature-kicker">Teil 4 · Denkfalle</p>
 <h3 id="negative-v52-repair-title">Fehler finden und reparieren</h3>
-<p>Prüfe den Satz in drei Schritten: richtig oder falsch, Fehlerstelle finden, dann selbst reparieren. Die Lösung kommt erst nach deinem Versuch.</p>
+<ul class="learning-points"><li>Entscheide: richtig oder falsch.</li><li>Repariere einen falschen Satz vollständig.</li></ul>
 <div class="negative-v52-repair-grid" data-v52-neg-repair="">
 <div class="negative-v52-case-panel">
 <h4>1. Satz wählen</h4>
-<p>Manche Sätze sind richtig. Manche enthalten genau die Denkfalle nach didn’t.</p>
+<ul class="learning-points"><li>Manche Sätze sind richtig.</li><li>Manche enthalten genau die Denkfalle nach didn’t.</li></ul>
 <div aria-label="Satz für den Reparierer wählen" class="past-choice-row negative-v52-case-row">
 <button class="past-choice-btn" data-v52-accepted="She didn't play football.|She did not play football." data-v52-answer="She didn't play football." data-v52-case="play-wrong" data-v52-error="played" data-v52-note="Nach didn't steht die basic form: play, nicht played." data-v52-sentence="She didn't played football." data-v52-status="wrong" data-v52-tokens="She|didn't|played|football" type="button">She didn't played football.</button>
 <button class="past-choice-btn" data-v52-accepted="They didn't go home.|They did not go home." data-v52-answer="They didn't go home." data-v52-case="go-right" data-v52-error="" data-v52-note="Der Satz ist richtig: go ist die basic form." data-v52-sentence="They didn't go home." data-v52-status="right" data-v52-tokens="They|didn't|go|home" type="button">They didn't go home.</button>
@@ -7886,7 +7664,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <summary>positiv ↔ negativ üben</summary>
 <div class="past-subcard neg-v30-machine-card" data-v30-neg-switcher="">
 <h3>Umschalter: positiv ↔ negativ</h3>
-<p>Vergleiche kurz: Bleibt der Satz positiv oder wird er negativ? Achte darauf, ob die Past Form zurück zur Grundform geht.</p>
+<ul class="learning-points"><li>Vergleiche kurz: Bleibt der Satz positiv oder wird er negativ?</li><li>Achte darauf, ob die Past Form zurück zur Grundform geht.</li></ul>
 <div class="past-two-grid">
 <div class="tobe-v23-step tobe-v23-step-person"><span class="mixed-step-label">1. Ausgangssatz</span><div class="past-choice-row neg-v30-source-row">
 <button class="past-choice-btn" data-v30-neg-source="positive|she|played|play|football yesterday" type="button">She played football yesterday.</button>
@@ -7925,10 +7703,10 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 4</p>
 <h2 class="simplepast-learning-title" id="questions-did-title">Questions with did</h2>
-<p class="simplepast-learning-lead questions-v64-lead">So stellst du Fragen über Vergangenes: <span class="past-code">Did</span> + Person + Grundform. Mit Fragewort steht <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> davor.</p>
+<ul class="simplepast-learning-lead questions-v64-lead learning-points"><li>So stellst du Fragen über Vergangenes: <span class="past-code">Did</span> + Person + Grundform.</li><li>Mit Fragewort steht <span class="past-code">Where</span>, <span class="past-code">What</span> oder <span class="past-code">When</span> davor.</li></ul>
 </div>
 </div>
-<section class="past-question-bridge sp-v115-extra" aria-label="Kurzantworten und besondere Fragen"><h3>Kurzantworten und besondere Fragen</h3><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><p>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&learn=subject">Questions – Subjekt oder Objekt?</a>.</p></div></div></section>
+<section class="past-question-bridge sp-v115-extra" aria-label="Kurzantworten und besondere Fragen"><h3>Kurzantworten und besondere Fragen</h3><div class="past-question-bridge-grid"><div><h4>Kurzantworten mit did</h4><p><span class="past-code">Did Mia play?</span></p><p><span class="past-code">Yes, she did.</span> / <span class="past-code">No, she didn't.</span></p><p>In der Kurzantwort wiederholst du <em>did</em>, nicht das Hauptverb.</p></div><div><h4>Wichtige Ausnahme: Wer handelt?</h4><p><span class="past-code">Who called Mia?</span> – Subjektfrage: <em>Who</em> handelt selbst, kein did.</p><p><span class="past-code">Who did Mia call?</span> – Objektfrage: Mia handelt; deshalb <em>did + call</em>.</p><ul class="learning-points"><li>Den Denkweg dazu übst du ausführlich bei <a href="questions.html#kompass:mode=learn&amp;learn=subject">Questions – Subjekt oder Objekt?</a>.</li></ul></div></div></section>
 <nav aria-label="Questions with did" class="past-tool-tabs questions-v64-tabs">
 <button aria-controls="questions-v64-understand" aria-pressed="true" class="past-tool-tab is-active" data-tab="questions-v64" data-val="understand" type="button">Verstehen</button>
 <button aria-controls="questions-v64-machine" aria-pressed="false" class="past-tool-tab" data-tab="questions-v64" data-val="machine" type="button">Satzmaschine</button>
@@ -7942,8 +7720,8 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="questions-v64-rule-card">
 <h3>1. Grundregel</h3>
 <p>Mit <span class="past-term">did</span> fragst du bei normalen Verben nach Vergangenem.</p>
-<p>Bei Fragen ohne Fragewort steht <span class="questions-v66-plain">Did</span> ganz vorne. Bei Fragen mit <span class="questions-v66-plain">Where</span>, <span class="questions-v66-plain">What</span> oder <span class="questions-v66-plain">When</span> steht das Fragewort vorne, danach kommt <span class="questions-v66-plain">did</span>.</p>
-<p><span class="questions-v66-plain">Did</span> zeigt schon die Vergangenheit. Deshalb steht das Verb danach in der <span class="questions-v66-plain">basic form</span>.</p>
+<ul class="learning-points"><li>Bei Fragen ohne Fragewort steht <span class="questions-v66-plain">Did</span> ganz vorne.</li><li>Bei Fragen mit <span class="questions-v66-plain">Where</span>, <span class="questions-v66-plain">What</span> oder <span class="questions-v66-plain">When</span> steht das Fragewort vorne, danach kommt <span class="questions-v66-plain">did</span>.</li></ul>
+<ul class="learning-points"><li><span class="questions-v66-plain">Did</span> zeigt schon die Vergangenheit.</li><li>Deshalb steht das Verb danach in der <span class="questions-v66-plain">basic form</span>.</li></ul>
 </div>
 <div aria-label="Positive Aussage wird Frage mit did" class="did-v28-example-pair">
 <div><span class="past-output-label">positive statement</span><div class="sentence-built"><span class="tok tok-person-she">She</span><span class="tok tok-verb">played</span><span class="tok tok-rest">football yesterday.</span></div></div>
@@ -7967,7 +7745,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <p><span class="questions-v66-plain">Where did they go?</span></p>
 </article>
 </div>
-<p>Der wichtigste Punkt: Nach <span class="questions-v66-plain">did</span> kommt bei normalen Verben immer die Grundform.</p>
+<ul class="learning-points"><li>Der wichtigste Punkt: Nach <span class="questions-v66-plain">did</span> kommt bei normalen Verben immer die Grundform.</li></ul>
 </div>
 <div aria-label="Denkweg für Questions with did" class="did-v28-rule-flow">
 <div class="did-v28-flow-card"><span class="did-v28-flow-label">1. Vergangenheit</span><span class="past-clean-emphasis">früher</span><small>Der Satz gehört ins Simple Past.</small></div>
@@ -8009,7 +7787,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="negative-v49-stop-card">
 <div class="negative-v49-stop-head"><span aria-hidden="true">⚠</span><span>Achtung bei to be</span></div>
-<p>Bei <span class="past-term">to be</span> brauchst du kein <span class="past-term">did</span>. Fragen beginnen mit <span class="past-term">Was</span> oder <span class="past-term">Were</span>.</p>
+<ul class="learning-points"><li>Bei <span class="past-term">to be</span> brauchst du kein <span class="past-term">did</span>.</li><li>Fragen beginnen mit <span class="past-term">Was</span> oder <span class="past-term">Were</span>.</li></ul>
 <div aria-label="to be Stoppkarte für Questions" class="negative-v49-checks">
 <div><span class="negative-v49-check-label">Richtig</span><span>Was she tired?</span></div>
 <div><span class="negative-v49-check-label">Nicht richtig</span><span>Did she was tired?</span></div>
@@ -8018,11 +7796,11 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 </div>
 <div class="past-tool-panel" data-panel="questions-v64" data-val="machine" id="questions-v64-machine">
-<section class="sp-school-practice" id="sp-school-answer-questions" aria-labelledby="sp-school-answer-title"><h3 id="sp-school-answer-title">Aus einer Antwort die Frage bilden</h3><p>Entscheide zuerst: Ja-/Nein-Frage oder Frage mit Fragewort? Schreibe dann die vollständige Frage und prüfe sie.</p><div id="sp-school-answer-cases"></div></section>
+<section class="sp-school-practice" id="sp-school-answer-questions" aria-labelledby="sp-school-answer-title"><h3 id="sp-school-answer-title">Aus einer Antwort die Frage bilden</h3><ul class="learning-points"><li>Entscheide zuerst: Ja-/Nein-Frage oder Frage mit Fragewort?</li><li>Schreibe dann die vollständige Frage und prüfe sie.</li></ul><div id="sp-school-answer-cases"></div></section>
 <div class="past-subcard did-v59-machine-section" data-v59-question-machine="">
 <p class="feature-kicker">Teil 2 · Satzmaschine</p>
 <h3>Aus Aussage wird Frage</h3>
-<p>Wähle einen positiven Simple-Past-Satz. Entscheide dann, was nach <span class="questions-v66-plain">Did</span> mit dem Verb passiert, und schreibe die ganze Frage selbst.</p>
+<ul class="learning-points"><li>Wähle einen positiven Simple-Past-Satz.</li><li>Entscheide dann, was nach <span class="questions-v66-plain">Did</span> mit dem Verb passiert, und schreibe die ganze Frage selbst.</li></ul>
 <div class="did-v59-machine-grid">
 <div class="did-v59-step">
 <span class="mixed-step-label">1. Ausgangssatz wählen</span>
@@ -8056,7 +7834,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="negative-v49-stop-card did-v59-stop-card">
 <div class="negative-v49-stop-head"><span aria-hidden="true">⚠</span><span>Stopp bei to be</span></div>
-<p>Sätze mit <span class="questions-v66-plain">was</span> oder <span class="questions-v66-plain">were</span> gehören nicht in diese Satzmaschine. Dafür kommt der eigene Lernbaustein.</p>
+<ul class="learning-points"><li>Sätze mit <span class="questions-v66-plain">was</span> oder <span class="questions-v66-plain">were</span> gehören nicht in diese Satzmaschine.</li><li>Dafür kommt der eigene Lernbaustein.</li></ul>
 </div>
 </div>
 </div>
@@ -8111,7 +7889,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="did-v61-repair-title" class="past-subcard did-v61-repair-section" data-v61-q-repair="">
 <p class="feature-kicker">Teil 4 · Denkfalle</p>
 <h3 id="did-v61-repair-title">Fehler in Fragen finden und reparieren</h3>
-<p>Prüfe die Frage zuerst selbst. Wenn sie falsch ist, finde die Fehlerstelle und schreibe die reparierte Frage. Die Lösung erscheint erst nach deinem Versuch.</p>
+<ul class="learning-points"><li>Entscheide: richtig oder falsch.</li><li>Repariere eine falsche Frage vollständig.</li></ul>
 <div class="did-v61-repair-grid">
 <div class="did-v61-repair-step">
 <span class="mixed-step-label">1. Satz wählen</span>
@@ -8152,7 +7930,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <div class="negative-v49-stop-card did-v61-stop-card">
 <div class="negative-v49-stop-head"><span aria-hidden="true">⚠</span><span>Stopp bei to be</span></div>
-<p><span class="questions-v66-plain">Did she was tired?</span> ist ein Stoppfall. Bei <span class="questions-v66-plain is-inline">to be</span> baust du die Frage ohne <span class="questions-v66-plain">Did</span>: <span class="questions-v66-plain">Was she tired?</span></p>
+<ul class="learning-points"><li><span class="questions-v66-plain">Did she was tired?</span></li><li>ist ein Stoppfall.</li><li>Bei <span class="questions-v66-plain is-inline">to be</span> baust du die Frage ohne <span class="questions-v66-plain">Did</span>: <span class="questions-v66-plain">Was she tired?</span></li></ul>
 </div>
 </article>
 </div>
@@ -8166,7 +7944,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="simplepast-learning-copy">
 <p class="feature-kicker">Lernbaustein 5</p>
 <h2 class="simplepast-learning-title" id="tobe-v67-title">to be: was/were</h2>
-<p class="simplepast-learning-lead"><span class="past-code">to be</span> hat im Simple Past eigene Formen: <span class="past-code">was</span> und <span class="past-code">were</span>. Hier brauchst du kein <span class="past-code">did</span>. Schau zuerst auf die Person. Entscheide dann zwischen <span class="past-code">was</span> und <span class="past-code">were</span> und bilde den Satz.</p>
+<ul class="simplepast-learning-lead learning-points"><li><span class="past-code">to be</span> hat im Simple Past eigene Formen: <span class="past-code">was</span> und <span class="past-code">were</span>.</li><li>Hier brauchst du kein <span class="past-code">did</span>.</li><li>Schau zuerst auf die Person.</li><li>Entscheide dann zwischen <span class="past-code">was</span> und <span class="past-code">were</span> und bilde den Satz.</li></ul>
 </div>
 </div>
 <nav aria-label="to be: was/were" class="past-tool-tabs tobe-v67-tabs">
@@ -8221,7 +7999,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span aria-hidden="true" class="tobe-v70-stepmark">2</span>
 <div>
 <h3 id="tobe-v70-checker-title">Der to-be-Prüfer</h3>
-<p>Gehe immer in dieser Reihenfolge. Dann verwechselst du <span class="past-term">to be</span> nicht mit normalen Verben.</p>
+<ul class="learning-points"><li>Gehe immer in dieser Reihenfolge.</li><li>Dann verwechselst du <span class="past-term">to be</span> nicht mit normalen Verben.</li></ul>
 </div>
 </div>
 <div aria-label="Denkweg to be Prüfer" class="tobe-v70-checker">
@@ -8230,7 +8008,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div></details>
 <details class="tobe-v70-check-step sp-v116-check-step"><summary><span class="tobe-v70-mini-number">2</span><span>Wer steht im Satz?</span><span class="sp-v116-open-hint">Öffnen / schließen</span></summary><div class="sp-v116-step-content">
 <div class="tobe-v70-person-switch" id="tobe-v106-person-tool" aria-label="Personen-Weiche was oder were">
-<p class="tobe-v106-instruction">1. Wähle eine Person. 2. Entscheide: <span class="past-term">was</span> oder <span class="past-term">were</span>? 3. Klicke auf „Prüfen“.</p>
+<ul class="tobe-v106-instruction learning-points"><li>1.</li><li>Wähle eine Person.</li><li>2.</li><li>Entscheide: <span class="past-term">was</span> oder <span class="past-term">were</span>?</li><li>3.</li><li>Klicke auf „Prüfen“.</li></ul>
 <div class="tobe-v106-choice" role="group" aria-label="Person wählen">
 <button type="button" data-v106-person="I" aria-pressed="false">I</button>
 <button type="button" data-v106-person="you" aria-pressed="false">you</button>
@@ -8271,7 +8049,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span aria-hidden="true" class="tobe-v70-stepmark">3</span>
 <div>
 <h3 id="tobe-v70-trap-title">Drei typische Fehler – Beispiele</h3>
-<p>Vergleiche die Sätze. Die Erklärung darunter zeigt dir die Regel. Hier musst du nichts auswählen.</p>
+<ul class="learning-points"><li>Vergleiche die Sätze.</li><li>Die Erklärung darunter zeigt dir die Regel.</li><li>Hier musst du nichts auswählen.</li></ul>
 </div>
 </div>
 <div aria-label="Drei Vergleiche: falscher und richtiger Satz" class="sp-v111-example-list">
@@ -8279,7 +8057,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <h4>Frage mit to be</h4>
 <p><span class="sp-v111-label">So nicht</span><span class="sp-v111-sentence">Did she was tired?</span></p>
 <p><span class="sp-v111-label">So richtig</span><span class="sp-v111-sentence">Was she tired?</span></p>
-<p class="sp-v111-explain">Bei Fragen mit <span class="past-term">to be</span> steht <span class="past-term">was</span> oder <span class="past-term">were</span> vorne. Du brauchst kein <span class="past-term">did</span>.</p>
+<ul class="sp-v111-explain learning-points"><li>Bei Fragen mit <span class="past-term">to be</span> steht <span class="past-term">was</span> oder <span class="past-term">were</span> vorne.</li><li>Du brauchst kein <span class="past-term">did</span>.</li></ul>
 </div>
 <div class="sp-v111-example">
 <h4>Verneinung mit to be</h4>
@@ -8300,7 +8078,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <span aria-hidden="true" class="tobe-v70-stepmark">4</span>
 <div>
 <h3 id="tobe-v70-memory-title">Fünf Regeln zum Merken</h3>
-<p>Das sind die fünf wichtigsten Merksätze. Hier musst du nichts anklicken.</p>
+<ul class="learning-points"><li>Das sind die fünf wichtigsten Merksätze.</li><li>Hier musst du nichts anklicken.</li></ul>
 </div>
 </div>
 <div class="sp-v111-rule-sheet" aria-label="Fünf Merkregeln zu to be im Simple Past">
@@ -8317,7 +8095,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="tobe-v67-machine-title" class="simplepast-negative-practice-card tobe-v67-machine-card tobe-v71-machine-card" data-v67-tobe-machine="">
 <p class="feature-kicker">Teil 2 · Satzmaschine</p>
 <h3 id="tobe-v67-machine-title">Aus present wird Simple Past mit to be</h3>
-<p>Baue den Satz Schritt für Schritt um. Erst Subjekt finden, dann was/were-Gruppe prüfen, dann die Satzart bauen und den ganzen Satz selbst schreiben.</p>
+<ul class="learning-points"><li>Baue den Satz Schritt für Schritt um.</li><li>Erst Subjekt finden, dann was/were-Gruppe prüfen, dann die Satzart bauen und den ganzen Satz selbst schreiben.</li></ul>
 <div class="tobe-v71-machine-layout">
 <section aria-labelledby="tobe-v71-machine-think-title" class="tobe-v71-think-card">
 <h4 id="tobe-v71-machine-think-title">Denkweg vor dem Schreiben</h4>
@@ -8331,7 +8109,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="tobe-v71-machine-grid">
 <section aria-labelledby="tobe-v71-source-title" class="tobe-v71-step-card">
 <h4 id="tobe-v71-source-title">1. Ausgangssatz wählen</h4>
-<p class="tobe-v71-step-note">Die Sätze sind unterschiedlich, damit du nicht nur ein Muster auswendig lernst.</p>
+<ul class="tobe-v71-step-note learning-points"><li>Die Sätze sind unterschiedlich, damit du nicht nur ein Muster auswendig lernst.</li></ul>
 <div aria-label="Ausgangssatz für to be Satzmaschine wählen" class="past-choice-row tobe-v71-source-row">
 <button class="past-choice-btn" data-form="was" data-negative="She wasn't tired." data-negative-alt="She was not tired." data-note="she gehört zur was-Gruppe." data-positive="She was tired." data-question="Was she tired?" data-source="She is tired." data-subject="she" data-subject-label="She" data-v67-machine-source="" type="button">She is tired.</button>
 <button class="past-choice-btn" data-form="were" data-negative="They weren't late." data-negative-alt="They were not late." data-note="they gehört zur were-Gruppe." data-positive="They were late." data-question="Were they late?" data-source="They are late." data-subject="they" data-subject-label="They" data-v67-machine-source="" type="button">They are late.</button>
@@ -8375,7 +8153,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <button class="sp-action-btn" data-v67-machine-solution="" disabled="" type="button">Lösung anzeigen</button>
 <button class="sp-action-btn" data-v67-machine-reset="" type="button">Zurücksetzen</button>
 </div>
-<div aria-live="polite" class="negative-v50-feedback tobe-v72-feedback" data-feedback-class="tobe-v72-feedback" id="tobe-v67-machine-feedback"><p>Wähle einen Ausgangssatz, wähle die Satzart und schreibe dann deine Lösung.</p></div>
+<div aria-live="polite" class="negative-v50-feedback tobe-v72-feedback" data-feedback-class="tobe-v72-feedback" id="tobe-v67-machine-feedback"><ul class="learning-points"><li>Wähle einen Ausgangssatz, wähle die Satzart und schreibe dann deine Lösung.</li></ul></div>
 </section>
 </div>
 </article>
@@ -8395,11 +8173,11 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <li><span>4</span><p>Steht <span class="past-code">not</span> dabei oder beginnt der Satz als Frage?</p></li>
 <li><span>5</span><p>Nur die fehlende Form schreiben.</p></li>
 </ol>
-<div class="tobe-v73-note"><span class="tobe-v73-note-label">Wichtig</span><p>Die Lösung steht nicht neben der Aufgabe. Nutze den Tipp erst, wenn du wirklich festhängst.</p></div>
+<div class="tobe-v73-note"><span class="tobe-v73-note-label">Wichtig</span><ul class="learning-points"><li>Die Lösung steht nicht neben der Aufgabe.</li><li>Nutze den Tipp erst, wenn du wirklich festhängst.</li></ul></div>
 </section>
 <section aria-labelledby="tobe-v73-task-title" class="tobe-v73-form-work">
 <h4 id="tobe-v73-task-title">1. Aufgabe wählen</h4>
-<p class="tobe-v73-mini-help">Die Aufgaben mischen Pronomen, Namen, Dinge, Einzahl, Mehrzahl, Verneinung und Fragen.</p>
+<ul class="tobe-v73-mini-help learning-points"><li>Die Aufgaben mischen Pronomen, Namen, Dinge, Einzahl, Mehrzahl, Verneinung und Fragen.</li></ul>
 <div aria-label="Formaufgabe wählen" class="tobe-v73-task-grid">
 <button class="past-choice-btn" data-accepted="was" data-answer="was" data-group="was" data-kind="positive" data-note="I gehört zur was-Gruppe." data-prompt="I ___ nervous before the test." data-subject="I" data-v67-form-task="" type="button">I ___ nervous before the test.</button>
 <button class="past-choice-btn" data-accepted="was" data-answer="was" data-group="was" data-kind="positive" data-note="he gehört zur was-Gruppe." data-prompt="He ___ in the garden yesterday." data-subject="He" data-v67-form-task="" type="button">He ___ in the garden yesterday.</button>
@@ -8425,7 +8203,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <label class="negative-v50-input-label tobe-v73-answer-label" for="tobe-v67-form-answer">3. Hier schreibst du nur die fehlende Form.</label>
 <input autocomplete="off" class="negative-v50-input tobe-v73-answer-input" id="tobe-v67-form-answer" placeholder="Zum Beispiel: was" type="text"/>
-<p class="tobe-v73-answer-help">Erst Gruppe denken, dann Form schreiben. Bei not brauchst du wasn’t oder weren’t. Bei Fragen steht Was oder Were vorne.</p>
+<ul class="tobe-v73-answer-help learning-points"><li>Erst Gruppe denken, dann Form schreiben.</li><li>Bei not brauchst du wasn’t oder weren’t.</li><li>Bei Fragen steht Was oder Were vorne.</li></ul>
 </div>
 <div class="past-choice-row negative-v50-action-row tobe-v72-action-row tobe-v73-action-row">
 <button class="sp-action-btn" data-v67-form-check="" type="button">Prüfen</button>
@@ -8442,11 +8220,11 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <article aria-labelledby="tobe-v67-trap-title" class="simplepast-negative-practice-card tobe-v67-trap-card" data-v67-tobe-trap="">
 <p class="feature-kicker">Teil 4 · Denkfalle</p>
 <h3 id="tobe-v67-trap-title">Kein did bei to be</h3>
-<p>Prüfe den Satz in drei Schritten: richtig oder falsch, Fehlerstelle finden, Satz selbst reparieren. Die Lösung kommt erst nach deinem Versuch.</p>
+<ul class="learning-points"><li>Entscheide: richtig oder falsch.</li><li>Repariere einen falschen Satz vollständig.</li></ul>
 <div class="negative-v52-repair-grid tobe-v67-trap-grid">
 <div class="negative-v52-case-panel">
 <h4>1. Satz wählen</h4>
-<p>Manche Sätze sind richtig. Manche enthalten genau die to-be-Falle.</p>
+<ul class="learning-points"><li>Manche Sätze sind richtig.</li><li>Manche enthalten genau die to-be-Falle.</li></ul>
 <div aria-label="Satz für to be Denkfalle wählen" class="past-choice-row negative-v52-case-row">
 <button class="past-choice-btn" data-accepted="Was she tired?" data-answer="Was she tired?" data-error="Did" data-note="Bei to be steht kein did. Was wandert nach vorne." data-sentence="Did she was tired?" data-status="wrong" data-tokens="Did|she|was|tired?" data-v67-trap-case="" type="button">Did she was tired?</button>
 <button class="past-choice-btn" data-accepted="She wasn't tired.|She was not tired." data-answer="She wasn't tired." data-error="didn't be" data-note="Bei to be heißt die Verneinung wasn't oder weren't, nicht didn't be." data-sentence="She didn't be tired." data-status="wrong" data-tokens="She|didn't be|tired." data-v67-trap-case="" type="button">She didn’t be tired.</button>
@@ -8684,7 +8462,103 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </div>
 <!-- V82 BLOCK 3: Alter sichtbarer Mixed-Bereich entfernt. Archiv: archiv/simplepast_v81_alt_mixed_bereich_block3_archiv.html. Die Denkzentrale ist das einzige Mixed-System. -->
 <!-- V78 BLOCK 1: Mixed-Aufgaben sind hier als Datenpools für den späteren Denkzentrale-Umbau dokumentiert. Keine neue sichtbare Reiterlogik. -->
-</div></div>
+<div class="learn-panel" data-panel="past-learn" data-val="writecheck" id="schreibcheck"><section aria-labelledby="sp-dz-v14-title" class="sp-dz-v14 simplepast-orientation-shell" id="simplepast-denkzentrale">
+<div class="simplepast-orientation-head">
+<span aria-hidden="true" class="simplepast-orientation-icon">🎯</span>
+<div class="simplepast-orientation-copy">
+<p class="feature-kicker">Denkzentrale</p>
+<h2 class="sp-dz-v14-title simplepast-orientation-title" id="sp-dz-v14-title">Schreib-Check</h2>
+</div>
+</div>
+<p class="sp-dz-v14-lead">Bilden · Umbauen · Reparieren</p>
+
+<div class="sp-dz-workmode" role="group" aria-label="Arbeitsweise wählen">
+<button type="button" data-dz-workmode="guided" aria-pressed="true">Lernen – mit Denkschritten</button>
+<button type="button" data-dz-workmode="independent" aria-pressed="false">Selbstständig – wie in der Klassenarbeit</button>
+</div>
+<p class="sp-dz-workmode-note" id="sp-dz-workmode-note">Wähle zuerst Zeit, Verbart und Satzart. Dann schreibe.</p>
+<div aria-label="Aufgabentyp in der Denkzentrale wählen" class="sp-dz-v80-modebox">
+<p class="sp-dz-v80-mode-title">Modus</p>
+<div class="sp-dz-v80-mode-row">
+<button aria-pressed="true" class="sp-dz-v80-mode is-active" data-dz-mode="all" type="button">Alles gemischt</button>
+<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="bilden" type="button">Nur bilden <span class="sp-dz-v80-mode-count">83</span></button>
+<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="umbauen" type="button">Nur umbauen <span class="sp-dz-v80-mode-count">18</span></button>
+<button aria-pressed="false" class="sp-dz-v80-mode" data-dz-mode="reparieren" type="button">Nur reparieren <span class="sp-dz-v80-mode-count">16</span></button>
+</div>
+
+</div>
+<div aria-live="polite" class="sp-dz-v14-task sp-dz-v80-task">
+<span class="sp-dz-v14-task-label">Aktuelle Aufgabe</span>
+<div class="sp-dz-v80-task-meta"><span id="sp-dz-v80-type">Alles gemischt</span><span id="sp-dz-v80-count">Aufgabe 1</span></div>
+<p class="sp-dz-v14-prompt" id="sp-dz-v14-prompt">Lade Aufgabe …</p>
+</div>
+<div aria-label="Denkweg Simple Past in fünf Schritten" class="sp-dz-v14-grid">
+<article class="sp-dz-v14-step" data-dz-step="1">
+<span class="sp-dz-v14-number">1</span>
+<h3>Vergangenheit?</h3>
+<p>Entscheide nur: Ist die Situation schon vorbei?</p>
+<div class="sp-dz-v14-choice-row" data-dz-row="past">
+<button class="sp-dz-v14-btn" data-dz-choice="past" data-value="yes" type="button">Ja, vorbei</button>
+<button class="sp-dz-v14-btn" data-dz-choice="past" data-value="no" type="button">Nein / nicht sicher</button>
+</div>
+</article>
+<article aria-disabled="true" class="sp-dz-v14-step" data-dz-step="2">
+<span class="sp-dz-v14-number">2</span>
+<h3>Verb-Art?</h3>
+<ul class="learning-points"><li>Entscheide erst jetzt: Geht es um „sein“ oder um eine Handlung mit einem normalen Verb?</li></ul>
+<div class="sp-dz-v14-choice-row" data-dz-row="verbtype">
+<button class="sp-dz-v14-btn" data-dz-choice="verbtype" data-value="be" type="button">to be</button>
+<button class="sp-dz-v14-btn" data-dz-choice="verbtype" data-value="verb" type="button">normales Verb</button>
+</div>
+</article>
+<article aria-disabled="true" class="sp-dz-v14-step" data-dz-step="3">
+<span class="sp-dz-v14-number">3</span>
+<h3>Satzart?</h3>
+<p>Was soll ausgedrückt werden: Aussage, Verneinung oder Frage?</p>
+<div class="sp-dz-v14-choice-row" data-dz-row="sentence">
+<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="positive" type="button">Aussage</button>
+<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="negative" type="button">Verneinung</button>
+<button class="sp-dz-v14-btn" data-dz-choice="sentence" data-value="question" type="button">Frage</button>
+</div>
+</article>
+</div>
+<article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="4">
+<h3>4. Form selbst schreiben</h3>
+<p class="sp-dz-v14-rule">Schreibe den vollständigen englischen Satz.</p>
+<div aria-live="polite" class="sp-dz-v80-write-task">
+<span class="sp-dz-v14-task-label">Aufgabe</span>
+<p class="sp-dz-v14-prompt sp-dz-v14-write-prompt" id="sp-dz-v14-write-prompt">Lade Aufgabe …</p>
+</div>
+<div class="sp-dz-v14-inputrow">
+<input autocomplete="off" class="sp-dz-v14-input" id="sp-dz-v14-input" placeholder="Deine eigene Lösung …" type="text"/>
+<button class="sp-dz-v14-next" id="sp-dz-v14-check" type="button">Prüfen</button>
+</div>
+<div class="sp-dz-v80-repair-panel" hidden="" id="sp-dz-v80-repair-panel">
+<h4 class="sp-dz-v80-repair-title">Fehlerdetektiv vor der Reparatur</h4>
+<ul class="learning-points"><li>Prüfe zuerst: Ist der Satz falsch oder schon richtig?</li><li>Danach benennst du den Fehlertyp.</li><li>Erst dann schreibst du die Reparatur oder den richtigen Satz ab.</li></ul>
+<div class="sp-dz-v80-repair-found">
+<button class="sp-dz-v80-repair-btn" data-dz-repair-found="error" type="button">Ich finde einen Fehler.</button>
+<button class="sp-dz-v80-repair-btn" data-dz-repair-found="none" type="button">Der Satz ist schon richtig.</button>
+</div>
+<div aria-label="Fehlertyp wählen" class="sp-dz-v80-repair-grid">
+<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didBe" type="button">did + was/were</button>
+<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didPast" type="button">did/didn’t + Past Form</button>
+<button class="sp-dz-v80-repair-btn" data-dz-repair-type="didntBe" type="button">didn’t be</button>
+<button class="sp-dz-v80-repair-btn" data-dz-repair-type="irregular" type="button">falsches irregular verb</button>
+</div>
+</div>
+<div class="sp-dz-v14-feedback" id="sp-dz-v14-feedback">Erst Schritt 1 bis 3 beantworten, dann hier selbst schreiben.</div>
+</article>
+<article aria-disabled="true" class="sp-dz-v14-result" data-dz-step="5">
+<h3>5. Regelprüfung</h3>
+
+<p class="sp-dz-v14-rule" id="sp-dz-v14-rule" aria-live="polite"></p></article>
+<div class="sp-dz-v14-actions">
+<button class="sp-dz-v14-reset" id="sp-dz-v14-reset" type="button">Diese Aufgabe zurücksetzen</button>
+<button class="sp-dz-v14-next" id="sp-dz-v14-new" type="button">Neue Aufgabe</button>
+<button aria-controls="simplepast-learn-panel" class="sp-dz-v14-link" data-tab="simplepast-study" data-val="learn" type="button">Zu den Lernbausteinen</button>
+</div>
+</section></div></div></div>
 <div class="compass-mode-panel topic-panel topic-panel--reference" data-panel="past-mode" data-val="reference" id="nachschlagen" role="region">
 <div class="sp-reference-wrap sp-ref-v99-wrap">
 <section aria-labelledby="sp-print-title" class="sp-print-spickzettel">
@@ -8697,12 +8571,12 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <section class="sp-print-box"><h3>Regular verbs: spelling</h3><ul><li>play → played</li><li>like → liked</li><li>study → studied</li><li>stop → stopped</li></ul></section>
 <section class="sp-print-box sp-print-warning"><h3>Denkfallen</h3><p class="sp-print-pattern">Nicht: Did she went?</p><p class="sp-print-pattern">Richtig: Did she go?</p><p class="sp-print-pattern">Nicht: She didn’t went.</p><p class="sp-print-pattern">Richtig: She didn’t go.</p></section>
 </div>
-<p class="sp-print-mini">Kurzregel: Bei normalen Verben steht die Past Form nur in positiven Aussagen. Nach did / didn’t steht die basic form. to be ist anders: was / were.</p>
+<ul class="sp-print-mini learning-points"><li>Kurzregel: Bei normalen Verben steht die Past Form nur in positiven Aussagen.</li><li>Nach did / didn’t steht die basic form. to be ist anders: was / were.</li></ul>
 </section>
 <section aria-labelledby="sp-ref-v99-title" class="v113-ref-card sp-ref-v99-card sp-ref-v99-hero">
 <p class="feature-kicker">Nachschlagen</p>
 <h2 id="sp-ref-v99-title">Simple Past – kurz und vollständig</h2>
-<p>Simple Past brauchst du für Dinge, die vorbei und abgeschlossen sind. Der wichtigste Unterschied: Bei normalen Verben steht die Past Form nur in positiven Aussagen. In Verneinungen und Fragen übernimmt <span class="past-code">did</span> die Vergangenheit, danach kommt wieder die Grundform.</p>
+<ul class="learning-points"><li>Simple Past brauchst du für Dinge, die vorbei und abgeschlossen sind.</li><li>Der wichtigste Unterschied: Bei normalen Verben steht die Past Form nur in positiven Aussagen.</li><li>In Verneinungen und Fragen übernimmt <span class="past-code">did</span> die Vergangenheit, danach kommt wieder die Grundform.</li></ul>
 <div aria-label="Kernregel Simple Past" class="sp-ref-v99-ruleline"><span>Positive Aussage → Past Form</span><span>Verneinung → didn’t + basic form</span><span>Frage → Did + basic form?</span><span>to be → was / were</span></div>
 </section>
 <section aria-labelledby="sp-ref-v99-normal-title" class="v113-ref-card sp-ref-v99-card">
@@ -8718,7 +8592,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </section>
 <section aria-labelledby="sp-ref-v99-be-title" class="v113-ref-card sp-ref-v99-card sp-ref-v99-warning">
 <h2 id="sp-ref-v99-be-title">2. Sonderfall: to be → was / were</h2>
-<p class="sp-ref-v99-lead"><span class="past-code">to be</span> benutzt im Simple Past kein <span class="past-code">did</span>. Die Vergangenheitsformen sind <span class="past-code">was</span> und <span class="past-code">were</span>.</p>
+<ul class="sp-ref-v99-lead learning-points"><li><span class="past-code">to be</span> benutzt im Simple Past kein <span class="past-code">did</span>.</li><li>Die Vergangenheitsformen sind <span class="past-code">was</span> und <span class="past-code">were</span>.</li></ul>
 <div class="sp-ref-v99-table-wrap"><table class="sp-ref-v99-table"><thead><tr><th>Person</th><th>positive</th><th>negative</th><th>question</th><th>short answer</th></tr></thead><tbody>
 <tr><td>I / he / she / it</td><td>She was tired.</td><td>She wasn’t tired.<br/>She was not tired.</td><td>Was she tired?</td><td>Yes, she was.<br/>No, she wasn’t.</td></tr>
 <tr><td>you / we / they</td><td>They were late.</td><td>They weren’t late.<br/>They were not late.</td><td>Were they late?</td><td>Yes, they were.<br/>No, they weren’t.</td></tr>
@@ -8737,9 +8611,9 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </section>
 <section aria-labelledby="sp-ref-v99-irregular-title" class="v113-ref-card sp-ref-v99-card">
 <h2 id="sp-ref-v99-irregular-title">4. Irregular Verbs</h2>
-<p class="sp-ref-v99-lead">Irregular verbs bilden das Simple Past nicht mit <span class="past-code">-ed</span>. Diese Formen musst du lernen.</p>
+<ul class="sp-ref-v99-lead learning-points"><li>Irregular verbs bilden das Simple Past nicht mit <span class="past-code">-ed</span>.</li><li>Diese Formen musst du lernen.</li></ul>
 <div aria-label="Beispiele für irregular verbs" class="sp-ref-v99-chipgrid"><span>go → went</span><span>have → had</span><span>see → saw</span><span>come → came</span><span>buy → bought</span><span>take → took</span><span>write → wrote</span><span>get → got</span></div>
-<p class="sp-ref-v99-note">Die vollständige Schulliste steht im Lernbereich 6 „Irregular Verbs“.</p>
+<ul class="sp-ref-v99-note learning-points"><li>Die vollständige Schulliste steht im Lernbereich 6 „Irregular Verbs“.</li></ul>
 </section>
 <section aria-labelledby="sp-ref-v99-signals-title" class="v113-ref-card sp-ref-v99-card">
 <h2 id="sp-ref-v99-signals-title">5. Signalwörter und kurze Beispiele</h2>
@@ -8752,7 +8626,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 </section>
 <section aria-labelledby="sp-ref-v99-pronunciation-title" class="v113-ref-card sp-ref-v99-card sp-ref-v99-extra">
 <h2 id="sp-ref-v99-pronunciation-title">Zusatz: Aussprache von -ed</h2>
-<p>Für Klassenarbeiten ist die Schreibweise wichtiger. Die Aussprache hilft dir beim Lesen und Sprechen.</p>
+<ul class="learning-points"><li>Für Klassenarbeiten ist die Schreibweise wichtiger.</li><li>Die Aussprache hilft dir beim Lesen und Sprechen.</li></ul>
 <div class="sp-ref-v99-chipgrid"><span>/t/: watched, walked, liked</span><span>/d/: played, lived, listened</span><span>/ɪd/: wanted, visited, needed</span></div>
 </section>
 </div>
@@ -8762,7 +8636,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div class="compass-mode-panel topic-panel topic-panel--connections" data-panel="past-mode" data-val="connections" id="verbindungen" role="region">
 <div class="connections-panel sp-v119-connections"><section aria-labelledby="sp-v119-network-title" class="sp-v119-network">
 <div class="sp-v119-network-hero">
-<p>🧭 Simple Past hängt mit Simple Present, irregular verbs, <span class="past-code">did/didn't</span> und <span class="past-code">to be</span> zusammen.</p>
+<ul class="learning-points"><li>🧭 Simple Past hängt mit Simple Present, irregular verbs, <span class="past-code">did/didn't</span> und <span class="past-code">to be</span> zusammen.</li></ul>
 </div>
 <h2 id="sp-v119-network-title">Themen-Netz: Wo passt das zusammen?</h2>
 <div aria-label="Verknüpfungen zu den Simple-Past-Lernbausteinen" class="sp-v119-network-grid sp-connections-two-col">
@@ -8781,7 +8655,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div aria-hidden="true" class="sp-v119-network-icon is-warm">⚡</div>
 <div>
 <h3>Irregular Verbs — Lernbaustein 6</h3>
-<p>Manche Verben bekommen kein <span class="past-code">-ed</span>. Sie haben eine eigene Form, die du lernen musst.</p>
+<ul class="learning-points"><li>Manche Verben bekommen kein <span class="past-code">-ed</span>.</li><li>Sie haben eine eigene Form, die du lernen musst.</li></ul>
 <div class="sp-v119-chip-row">
 <span class="sp-v119-chip">go → went</span>
 <span class="sp-v119-chip">have → had</span>
@@ -8796,7 +8670,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div aria-hidden="true" class="sp-v119-network-icon is-violet">❓</div>
 <div>
 <h3>Questions + Negation — did/didn't</h3>
-<p><span class="past-code">did</span> und <span class="past-code">didn't</span> gelten für regular und irregular verbs. Danach steht die basic form.</p>
+<ul class="learning-points"><li><span class="past-code">did</span> und <span class="past-code">didn't</span> gelten für regular und irregular verbs.</li><li>Danach steht die basic form.</li></ul>
 <div class="sp-v119-chip-row">
 <span class="sp-v119-chip is-ok">Did she play? ✓</span>
 <span class="sp-v119-chip is-ok">Did she go? ✓</span>
@@ -8833,7 +8707,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
 <div>
 <p class="sp-clean-inline-42">Schreibwerkstatt</p>
 <h2 class="sp-clean-inline-43">Die Schreibwerkstatt ist jetzt eine eigene Seite</h2>
-<p class="sp-clean-inline-44">Verben · Drill · My last weekend · Dear Diary · Nachschlagen — alles auf einer eigenen Seite, damit du mehr Platz zum Schreiben hast.</p>
+
 <a class="sp-clean-inline-45" href="schreibwerkstatt.html" onmouseout="this.style.background='#2563eb'" onmouseover="this.style.background='#1d4ed8'">
       Schreibwerkstatt öffnen →
     </a>
@@ -10633,7 +10507,7 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     input.value=''; input.disabled=true; showRepairPanel(false);
     const t=task(); promptEl.textContent=t.prompt; if(writePromptEl) writePromptEl.textContent=t.prompt; updateMeta();
     thinking('<strong>Starte bei Schritt 1.</strong> Entscheide zuerst, ob es um abgeschlossene Vergangenheit geht.');
-    rule.textContent='Die ausführliche Erklärung erscheint erst nach deiner Eingabe oder bei einem Fehler.';
+    rule.textContent='';
     syncWorkMode();
     if(workMode==='independent')thinking('<strong>Dein Versuch zählt.</strong> Schreibe die vollständige Antwort, bevor du prüfst.');
   }
@@ -12625,15 +12499,15 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   };
   var DEFAULTS = {
     mode: 'learn',
-    study: 'overview',
+    study:'learn',
     orientation: 'start',
-    learn: 'entry'
+    learn:'entry'
   };
   var VALID = {
     mode: ['learn','reference','connections','writingworkshop','notes'],
     study: ['overview','learn'],
     orientation: ['start','map','denkzentrale'],
-    learn: ['entry','positive','negative','questions','tobe','irregular']
+    learn: ['entry','positive','negative','questions','tobe','irregular','overview','writecheck']
   };
   var LEGACY = {
     'lernen': {mode:'learn'},
@@ -12649,9 +12523,10 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
     'writingworkshop': {mode:'writingworkshop'},
     'notizen': {mode:'notes'},
     'notes': {mode:'notes'},
-    'denkzentrale': {mode:'learn',study:'overview',orientation:'denkzentrale'},
-    'simplepast-denkzentrale': {mode:'learn',study:'overview',orientation:'denkzentrale'},
-    'simplepast-orient-denkzentrale': {mode:'learn',study:'overview',orientation:'denkzentrale'}
+    'schreibcheck': {mode:'learn',study:'learn',learn:'writecheck'},
+    'denkzentrale': {mode:'learn',study:'learn',learn:'writecheck'},
+    'simplepast-denkzentrale': {mode:'learn',study:'learn',learn:'writecheck'},
+    'simplepast-orient-denkzentrale': {mode:'learn',study:'learn',learn:'writecheck'}
   };
 
   var suppress = false;
@@ -12683,7 +12558,10 @@ body[data-simplepast-mode="learn"] .compass-mode-panel[data-panel="past-mode"][d
   }
 
   function normalizeState(st){
-    st = st || {};
+    st = Object.assign({},st || {});
+    if(st.orientation === 'denkzentrale' && st.study === 'overview'){st.learn='writecheck';}
+    if(st.mode === 'writecheck' || st.mode === 'schreibcheck'){st.mode='learn';st.learn='writecheck';}
+    st.study='learn';
     var out = {};
     Object.keys(DEFAULTS).forEach(function(key){
       out[key] = isValid(key,st[key]) ? st[key] : DEFAULTS[key];

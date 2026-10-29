@@ -1145,7 +1145,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 @media(max-width:700px){body .topic-page--word-order .compass-head.topic-header{padding:20px 18px!important;margin:0 12px 12px!important;width:calc(100% - 24px)!important}body .topic-page--word-order .learn-step-nav .learn-step-btn{flex:1 1 125px!important;max-width:none!important}}
 
 </style>
-</head>
+<link rel="stylesheet" href="lernstruktur.css"></head>
 <body><main class="topic-page topic-page--word-order" id="wordorder-refactor-root">
 <div class="overview-return-wrap page-action-bar"><a aria-label="Zur Grammatikübersicht" class="overview-return" href="grammatik.html">← Zur Grammatikübersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button aria-pressed="false" class="ha-btn" data-wo-action="toggle-homework" id="ha-btn" type="button">Hausaufgaben</button><button class="print-btn spickzettel-btn" data-wo-action="print-ref" id="wo-spickzettel-print-btn" type="button">Spickzettel drucken</button><button class="print-btn print-page-btn" data-wo-action="print-page" id="wo-print-page-btn" type="button">Diese Seite drucken</button><button class="print-btn" data-wo-action="reset-storage" id="wo-reset-storage-btn" type="button">Lernstand löschen</button></div></div>
 <div class="page-content topic-page-content">
@@ -1168,9 +1168,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="connections" type="button">
 <span>Verbindungen</span>
 </button>
-<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="writecheck" type="button">
-<span>Schreib-Check</span>
-</button>
+
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="wo-mode" data-val="notes" type="button">
 <span>Notizen</span>
 </button>
@@ -1184,7 +1182,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <button aria-controls="wo-learn-adverb-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="adverb" type="button"><span class="step-badge">4</span><span class="step-label">Adverb-Entscheider</span></button>
 <button aria-controls="wo-learn-satzart-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="satzart" type="button"><span class="step-badge">5</span><span class="step-label">Satzart wechseln</span></button>
 <button aria-controls="wo-learn-check-panel" aria-pressed="false" class="learn-step-btn" data-tab="wo-learn" data-val="check" type="button"><span class="step-badge">6</span><span class="step-label">Kann ich's?</span></button>
-</nav>
+<button type="button" class="learn-step-btn" data-tab="wo-learn" data-val="writecheck" aria-controls="schreibcheck" aria-pressed="false"><span class="step-badge">7</span><span class="step-label">Schreib-Check</span></button></nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="wo-progress"></div></div>
 <!-- Schritt 1: Wozu? -->
 <div class="learn-panel is-active" data-panel="wo-learn" data-val="entry" id="wo-learn-entry-panel">
@@ -1192,7 +1190,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <div class="wo-style-003">🚂</div>
 <div>
 <p class="wo-style-004">Normale englische Aussagesätze haben eine Lieblingsreihenfolge!</p>
-<p class="wo-style-005">Im Deutschen kann man Satzteile oft umstellen. Im englischen Schulenglisch übst du zuerst eine feste Grundreihenfolge — wie ein Zug mit festen Waggons.</p>
+<ul class="wo-style-005 learning-points"><li>Im Deutschen kann man Satzteile oft umstellen.</li><li>Im englischen Schulenglisch übst du zuerst eine feste Grundreihenfolge — wie ein Zug mit festen Waggons.</li></ul>
 <div class="wo-style-006">
 <span class="wo-style-007">Hanna plays football. ✓</span>
 <span class="wo-style-008">Football plays Hanna. ✗</span>
@@ -1200,7 +1198,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </div>
 </div>
 <div aria-label="Lernweg Word Order" class="wo-learning-path">
-<p class="wo-learning-path-title">Dein Lernweg: erst Reihenfolge verstehen, dann Sonderstellen prüfen.</p>
+<ul class="wo-learning-path-title learning-points"><li>Dein Lernweg: erst Reihenfolge verstehen, dann Sonderstellen prüfen.</li></ul>
 <ol class="wo-learning-path-list">
 <li>Was ist Word Order?<span>Englisch hat eine feste Satz-Reihenfolge.</span></li>
 <li>Normaler Satz<span>Subject → Verb → Object.</span></li>
@@ -1212,7 +1210,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </div>
 <div aria-label="Mini-Start Subject Verb Object" class="wo-mark-task">
 <p class="wo-mark-title">Mini-Start: Wer macht was?</p>
-<p class="wo-mark-intro">Bevor du den ganzen Satz-Zug anschaust: Markiere im kurzen Satz die drei wichtigsten Teile.</p>
+<ul class="wo-mark-intro learning-points"><li>Bevor du den ganzen Satz-Zug anschaust: Markiere im kurzen Satz die drei wichtigsten Teile.</li></ul>
 <p class="wo-mark-sentence" lang="en">Hanna plays football.</p>
 <div class="wo-mark-grid">
 <label class="wo-mark-label" for="wo-mark-subject">Subject: Wer?<input autocomplete="off" id="wo-mark-subject" placeholder="Subject eintragen" type="text"/></label>
@@ -1250,7 +1248,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <div class="wo-learn-linkline">Passt dazu: <a href="simplepresent.html#lernen">Simple Present öffnen</a> — dort geht es um Routinen wie <em>On Mondays she plays football.</em></div>
 <div aria-label="Does-Maschine für Fragen und Verneinungen" class="wo-does-machine">
 <p class="wo-does-title">⚙️ Does-Maschine — wenn does oder doesn’t im Satz steht</p>
-<p class="wo-does-intro">Bei diesen Aufgaben entscheidet nicht dein Gefühl. Du schickst die Wörter durch eine feste Maschine. Nach <em>does</em> oder <em>doesn’t</em> kommt das Verb immer in der Grundform.</p>
+<ul class="wo-does-intro learning-points"><li>Bei diesen Aufgaben entscheidet nicht dein Gefühl.</li><li>Du schickst die Wörter durch eine feste Maschine.</li><li>Nach <em>does</em> oder <em>doesn’t</em> kommt das Verb immer in der Grundform.</li></ul>
 <div class="wo-does-paths">
 <section class="wo-does-path">
 <p class="wo-does-path-title">Ja/Nein-Frage</p>
@@ -1268,13 +1266,13 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <p class="wo-does-example">Silky doesn’t usually swim in the Lido pool.</p>
 </section>
 </div>
-<p class="wo-does-warning">Denkfalle: <em>does</em> trägt schon das <em>-s</em>. Darum heißt es: <em>Does Silky have ...?</em> und nicht <em>Does Silky has ...?</em></p>
+<ul class="wo-does-warning learning-points"><li>Denkfalle: <em>does</em> trägt schon das <em>-s</em>.</li><li>Darum heißt es: <em>Does Silky have ...?</em></li><li>und nicht <em>Does Silky has ...?</em></li></ul>
 </div>
 </div>
 <!-- Schritt 2: Baukasten -->
 <div class="learn-panel" data-panel="wo-learn" data-val="baukasten" id="wo-learn-baukasten-panel">
-<p class="wo-style-016">🔧 Satz-Baukasten — ziehe die Blöcke in die richtige Reihenfolge!</p>
-<p class="wo-style-017">Ziehe die Blöcke aus dem Pool (oben) in die nummerierten Felder (unten). Auf Handy: antippen zum Platzieren.</p>
+<ul class="wo-style-016 learning-points"><li>🔧 Satz-Baukasten — ziehe die Blöcke in die richtige Reihenfolge!</li></ul>
+<ul class="wo-style-017 learning-points"><li>Ziehe die Blöcke aus dem Pool (oben) in die nummerierten Felder (unten).</li><li>Auf Handy: antippen zum Platzieren.</li></ul>
 <p class="bk-counter" id="bk-counter">1 / 8</p>
 <span class="bk-task-label" id="bk-task-label"></span>
 <p class="wo-style-018">📦 Blöcke (zum Ziehen oder Antippen):</p>
@@ -1305,7 +1303,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <p class="wo-style-017">Wähle den Satz mit der richtigen Position des Adverbs.</p>
 <div aria-label="Signalwort-Detektor" class="signal-card">
 <p class="signal-title">🔎 Signalwort-Detektor</p>
-<p class="signal-sub">Klicke zuerst das Häufigkeitswort an. Danach erscheint die Regel. So liegt die Hilfe erst nach deinem Versuch.</p>
+<ul class="signal-sub learning-points"><li>Klicke zuerst das Häufigkeitswort an.</li><li>Danach erscheint die Regel.</li><li>So liegt die Hilfe erst nach deinem Versuch.</li></ul>
 <p class="adv-counter" id="signal-counter">1 / 5</p>
 <div class="signal-sentence" id="signal-sentence"></div><div aria-live="polite" class="signal-tip" id="signal-tip"></div>
 <div class="bk-controls wo-style-020">
@@ -1325,7 +1323,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </div>
 <details class="wo-style-023">
 <summary class="wo-style-024">💡 Nach dem Versuch merken</summary>
-<p><span class="wo-emph">Normales Verb:</span> Adverb steht <span class="wo-emph">vor</span> dem Verb → <em>She always plays tennis.</em></p>
+<ul class="learning-points"><li><span class="wo-emph">Normales Verb:</span> Adverb steht <span class="wo-emph">vor</span> dem Verb → <em>She always plays tennis.</em></li></ul>
 <p><span class="wo-emph">to be (am/is/are):</span> Adverb steht <span class="wo-emph">nach</span> to be → <em>She is always late.</em></p>
 </details>
 <div class="wo-learn-linkline">Wenn es um die Wörter <em>always, usually, often, sometimes, never</em> geht: <a href="adverbsoffrequency.html#lernen">Adverbs of Frequency öffnen</a>.</div>
@@ -1334,13 +1332,13 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <section aria-label="Satzart wechseln" class="learn-panel" data-panel="wo-learn" data-val="satzart" id="wo-learn-satzart-panel">
 <div class="wo-satzart">
 <h2>Satzart wechseln</h2>
-<p>Der Satz-Zug zeigt die Grundreihenfolge einer <em>Aussage</em>. Bei Fragen ändert sich die Reihenfolge. Achte darauf, <em>welche Information gefragt ist</em>.</p>
+<ul class="learning-points"><li>Der Satz-Zug zeigt die Grundreihenfolge einer <em>Aussage</em>.</li><li>Bei Fragen ändert sich die Reihenfolge.</li><li>Achte darauf, <em>welche Information gefragt ist</em>.</li></ul>
 <div aria-label="Drei Satzmuster" class="wo-satzart-patterns">
 <div class="wo-satzart-pattern"><h3>Aussage</h3><p><span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">called</span> Sam.</p><small>Subjekt → Verb → Rest</small></div>
 <div class="wo-satzart-pattern"><h3>Frage nach dem Objekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-aux">did</span> <span class="wo-sz-subject">Lucy</span> <span class="wo-sz-verb">call</span>?</p><small>Fragewort → did → Subjekt → Grundform</small></div>
 <div class="wo-satzart-pattern"><h3>Frage nach dem Subjekt</h3><p><span class="wo-sz-q">Who</span> <span class="wo-sz-verb">called</span> Sam?</p><small>Who als Subjekt → Verb → Rest</small></div>
 </div>
-<p class="wo-satzart-note">Diese Fragemuster gelten für normale Verben. Fragen mit <em>to be</em> oder <em>can</em> funktionieren anders. Die vollständigen Fragetypen lernst du bei <a href="questions.html">Questions</a>.</p>
+<ul class="wo-satzart-note learning-points"><li>Diese Fragemuster gelten für normale Verben.</li><li>Fragen mit <em>to be</em> oder <em>can</em> funktionieren anders.</li><li>Die vollständigen Fragetypen lernst du bei <a href="questions.html">Questions</a>.</li></ul>
 <div aria-label="Satzbauaufgaben" class="wo-satzart-exercise">
 <p aria-live="polite" class="wo-satzart-counter" id="wo-sz-counter"></p>
 <p class="wo-satzart-instruction" id="wo-sz-instruction"></p>
@@ -1430,18 +1428,38 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </div>
 <section class="wo-can-final wo-can-explain">
 <h3 class="wo-can-card-title">7. Kann ich es erklären?</h3>
-<p class="wo-can-task">Erklären ist der härtere Test. Schreibe die Regel kurz in eigenen Worten und nutze ein Beispiel.</p>
+<ul class="wo-can-task learning-points"><li>Erklären ist der härtere Test.</li><li>Schreibe die Regel kurz in eigenen Worten und nutze ein Beispiel.</li></ul>
 <div class="wo-can-grid">
 <article class="wo-can-card"><h4 class="wo-can-card-title">A. Erkläre den Satz-Zug</h4><p class="wo-can-task">Warum heißt es <em>She plays tennis in the garden on Saturdays.</em>?</p><textarea aria-label="Erklärung zum Satz-Zug" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Im englischen Aussagesatz kommt zuerst das Subjekt, dann das Verb, dann die Sache. Danach kommt der Ort und zuletzt die Zeit.</div></details></article>
-<article class="wo-can-card wo-can-card-trap"><h4 class="wo-can-card-title">B. Erkläre die Does-Maschine</h4><p class="wo-can-task">Warum heißt es <em>Does Silky have ...?</em> und nicht <em>Does Silky has ...?</em>?</p><textarea aria-label="Erklärung zur Does-Maschine" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div><em>Does</em> trägt schon das <em>-s</em>. Darum bleibt das Vollverb in der Grundform: <em>have</em>, <em>swim</em>, <em>read</em>.</div></details></article>
+<article class="wo-can-card wo-can-card-trap"><h4 class="wo-can-card-title">B. Erkläre die Does-Maschine</h4><ul class="wo-can-task learning-points"><li>Warum heißt es <em>Does Silky have ...?</em></li><li>und nicht <em>Does Silky has ...?</em>?</li></ul><textarea aria-label="Erklärung zur Does-Maschine" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div><em>Does</em> trägt schon das <em>-s</em>. Darum bleibt das Vollverb in der Grundform: <em>have</em>, <em>swim</em>, <em>read</em>.</div></details></article>
 <article class="wo-can-card"><h4 class="wo-can-card-title">C. Erkläre die Adverb-Regel</h4><p class="wo-can-task">Warum heißt es <em>She often plays</em>, aber <em>She is often late</em>?</p><textarea aria-label="Erklärung zur Adverb-Regel" class="wo-can-sentence wo-can-explain-text" placeholder="Meine Erklärung in eigenen Worten ..."></textarea><details class="wo-can-reveal"><summary>Muster-Erklärung ansehen</summary><div>Bei normalen Verben steht das Häufigkeitswort vor dem Verb. Bei to be steht es nach am, is oder are.</div></details></article>
 </div>
-<div class="wo-can-explain-check"><p class="wo-can-task"><span aria-hidden="true">🎯</span> Fertig bist du erst, wenn du diese vier Muster erklären kannst:</p><ol class="wo-can-explain-list"><li>Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</li><li>Zeit vorne ist möglich, aber nur ohne deutsche Verb-Umstellung.</li><li>Does + Person + Verb ohne s + Rest?</li><li>Person + doesn’t + Verb ohne s + Rest.</li></ol></div>
-<section aria-labelledby="wo-can-status-title" class="wo-can-status"><h3 class="wo-can-status-title" id="wo-can-status-title">Wie sicher bin ich mit Word Order?</h3><p class="wo-can-status-note">Wähle ehrlich aus. Das ist keine Note, sondern dein nächster Lernstand.</p><div class="wo-can-status-options"><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="sicher"/> Sicher — ich kann es erklären und anwenden.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="fast-sicher"/> Fast sicher — ich brauche noch einzelne Beispiele.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="nochmal-pruefen"/> Nochmal prüfen — ich verwechsle noch etwas.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="offen"/> Offen — ich brauche dazu noch Hilfe.</label></div></section>
+<div class="wo-can-explain-check"><ul class="wo-can-task learning-points"><li><span aria-hidden="true">🎯</span> Fertig bist du erst, wenn du diese vier Muster erklären kannst:</li></ul><ol class="wo-can-explain-list"><li>Der Satz-Zug fährt: Subject → Verb → Object → Place → Time.</li><li>Zeit vorne ist möglich, aber nur ohne deutsche Verb-Umstellung.</li><li>Does + Person + Verb ohne s + Rest?</li><li>Person + doesn’t + Verb ohne s + Rest.</li></ol></div>
+<section aria-labelledby="wo-can-status-title" class="wo-can-status"><h3 class="wo-can-status-title" id="wo-can-status-title">Wie sicher bin ich mit Word Order?</h3><ul class="wo-can-status-note learning-points"><li>Wähle ehrlich aus.</li><li>Das ist keine Note, sondern dein nächster Lernstand.</li></ul><div class="wo-can-status-options"><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="sicher"/> Sicher — ich kann es erklären und anwenden.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="fast-sicher"/> Fast sicher — ich brauche noch einzelne Beispiele.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="nochmal-pruefen"/> Nochmal prüfen — ich verwechsle noch etwas.</label><label class="wo-can-status-option"><input name="wo-can-status" type="radio" value="offen"/> Offen — ich brauche dazu noch Hilfe.</label></div></section>
 </section>
 </div>
 </div>
-</div><!-- /LERNEN -->
+<div class="learn-panel" data-panel="wo-learn" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>✍️ Schreib-Check Word Order</h3>
+<ul class="learning-points"><li>Schreibe jeden Satz einmal selbst.</li><li>Jede Aufgabe prüft eine andere Satzbau-Entscheidung.</li></ul>
+</div>
+<div class="writecheck-grid" id="writecheck-tasks">
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-01" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / Hanna / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen englischen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-02" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">every Friday / football / at school / I play</p><p class="writecheck-prompt">Schreibe den vollständigen Satz. Achte auf Ort vor Zeit.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-03" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">football / plays / she / On Mondays</p><p class="writecheck-prompt">Schreibe den Satz mit der Zeitangabe vorne.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-04" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / always / She / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-06" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span><span class="writecheck-skill">Does-Frage</span></div><p class="writecheck-context">crabs / have / Silky / Does / for breakfast?</p><p class="writecheck-prompt">Baue die Ja/Nein-Frage mit does.</p></article>
+<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-07" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span><span class="writecheck-skill">Where-Frage</span></div><p class="writecheck-context">does / where / with her friends / Silky / swim?</p><p class="writecheck-prompt">Baue die Where-Frage.</p></article>
+</div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div></div><!-- /LERNEN -->
 <!-- NACHSCHLAGEN -->
 <div class="compass-mode-panel" data-panel="wo-mode" data-val="reference" id="nachschlagen">
 <div class="wo-ref-wrap">
@@ -1473,8 +1491,8 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </section>
 <section class="wo-print-box">
 <h3>Kurz merken</h3>
-<p>Erst die Satzteile erkennen: Wer? Was tut die Person? Wen oder was? Wo? Wann?</p>
-<p>Bei normalen Aussagen nicht deutsch umstellen. Englisch bleibt klarer und fester.</p>
+<ul class="learning-points"><li>Erst die Satzteile erkennen: Wer?</li><li>Was tut die Person?</li><li>Wen oder was?</li><li>Wo?</li><li>Wann?</li></ul>
+<ul class="learning-points"><li>Bei normalen Aussagen nicht deutsch umstellen.</li><li>Englisch bleibt klarer und fester.</li></ul>
 </section>
 </div>
 <section class="wo-print-box">
@@ -1561,13 +1579,13 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <!-- VERBINDUNGEN -->
 <div class="compass-mode-panel" data-panel="wo-mode" data-val="connections" id="verbindungen">
 <div class="wo-style-025">
-<p class="wo-style-026">🧭 Für die Klassenarbeit ist die wichtigste Achse: Word Order ↔ Adverbs of Frequency ↔ Questions ↔ Simple Present.</p>
+<ul class="wo-style-026 learning-points"><li>🧭 Für die Klassenarbeit ist die wichtigste Achse: Word Order ↔ Adverbs of Frequency ↔ Questions ↔ Simple Present.</li></ul>
 <div class="wo-style-027">
 <a aria-label="Adverbs of frequency öffnen" class="wo-style-028" href="adverbsoffrequency.html#lernen">
 <div class="wo-style-029">📍</div>
 <div>
 <h3 class="wo-style-030">Adverbs of Frequency — Häufigkeitswörter</h3>
-<p class="wo-style-031">Hier sitzt die wichtigste Schnittstelle: Häufigkeitswörter stehen bei normalen Verben vor dem Verb, bei to be nach am, is oder are.</p>
+<ul class="wo-style-031 learning-points"><li>Hier sitzt die wichtigste Schnittstelle: Häufigkeitswörter stehen bei normalen Verben vor dem Verb, bei to be nach am, is oder are.</li></ul>
 <div class="wo-style-035">
 <span class="wo-style-032">She always plays tennis. ✓</span>
 <span class="wo-style-032">She is often late. ✓</span>
@@ -1578,7 +1596,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <div class="wo-style-033">❓</div>
 <div>
 <h3 class="wo-style-034">Questions / How often — Frage-Satzbau</h3>
-<p class="wo-style-031">Bei Fragen kommt zuerst das Fragewort, dann do oder does, dann die Person und dann das Verb in der Grundform.</p>
+<ul class="wo-style-031 learning-points"><li>Bei Fragen kommt zuerst das Fragewort, dann do oder does, dann die Person und dann das Verb in der Grundform.</li></ul>
 <div class="wo-style-035">
 <span class="wo-style-036">How often does she play tennis? ✓</span>
 <span class="wo-style-037">How often she plays tennis? ✗</span>
@@ -1589,7 +1607,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 <div class="wo-style-029">🔁</div>
 <div>
 <h3 class="wo-style-030">Simple Present — Gewohnheiten und Routinen</h3>
-<p class="wo-style-031">Word Order hilft besonders bei Sätzen über Routinen: Person, Verb, Rest — und Häufigkeitswort an die richtige Stelle.</p>
+<ul class="wo-style-031 learning-points"><li>Word Order hilft besonders bei Sätzen über Routinen: Person, Verb, Rest — und Häufigkeitswort an die richtige Stelle.</li></ul>
 <div class="wo-style-035">
 <span class="wo-style-032">On Mondays she plays football. ✓</span>
 <span class="wo-style-037">On Mondays plays she football. ✗</span>
@@ -1598,32 +1616,12 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
 </a>
 </div>
 <div class="wo-connection-secondary">
-<p>Später brauchst du Word Order auch bei anderen Zeiten. Für diese Klassenarbeit sind aber nur die drei Nachbarn oben wichtig.</p>
+<ul class="learning-points"><li>Später brauchst du Word Order auch bei anderen Zeiten.</li><li>Für diese Klassenarbeit sind aber nur die drei Nachbarn oben wichtig.</li></ul>
 </div>
 </div>
 </div><!-- /VERBINDUNGEN -->
 <!-- SCHREIB-CHECK -->
-<div class="compass-mode-panel" data-panel="wo-mode" data-val="writecheck" id="schreibcheck">
-<div class="writecheck-panel">
-<div class="writecheck-intro">
-<h3>✍️ Schreib-Check Word Order</h3>
-<p>Schreibe jeden Satz einmal selbst. Jede Aufgabe prüft eine andere Satzbau-Entscheidung.</p>
-</div>
-<div class="writecheck-grid" id="writecheck-tasks">
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-01" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-01"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 1</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / Hanna / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen englischen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-02" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-02"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 2</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">every Friday / football / at school / I play</p><p class="writecheck-prompt">Schreibe den vollständigen Satz. Achte auf Ort vor Zeit.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-03" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-03"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 3</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">football / plays / she / On Mondays</p><p class="writecheck-prompt">Schreibe den Satz mit der Zeitangabe vorne.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-04" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-04"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 4</span><span class="writecheck-skill">Schreib-Aufgabe</span></div><p class="writecheck-context">tennis / always / She / plays</p><p class="writecheck-prompt">Schreibe den Satz in der richtigen Reihenfolge.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-06" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-06"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 6</span><span class="writecheck-skill">Does-Frage</span></div><p class="writecheck-context">crabs / have / Silky / Does / for breakfast?</p><p class="writecheck-prompt">Baue die Ja/Nein-Frage mit does.</p></article>
-<article class="writecheck-task writecheck-fallback" data-review-id="wo-wc-07" data-review-source="writecheck" data-topic-id="wordorder" data-type="stolperstelle" id="write-task-wo-wc-07"><div class="writecheck-task-head"><span class="writecheck-task-num">Aufgabe 7</span><span class="writecheck-skill">Where-Frage</span></div><p class="writecheck-context">does / where / with her friends / Silky / swim?</p><p class="writecheck-prompt">Baue die Where-Frage.</p></article>
-</div>
-<div class="writecheck-actions">
-<button class="writecheck-check-all" data-writecheck-action="check-all" type="button">Alle Antworten prüfen</button>
-<button class="writecheck-reset" data-writecheck-action="reset" type="button">Schreib-Check zurücksetzen</button>
-</div>
-<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
-</div>
-</div><!-- /SCHREIB-CHECK -->
+<!-- /SCHREIB-CHECK -->
 <!-- NOTIZEN -->
 <div class="compass-mode-panel" data-panel="wo-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
@@ -2679,6 +2677,7 @@ body .topic-page--word-order .learn-step-nav .learn-step-btn[aria-pressed="true"
   }
   function applyHashState(state){
     if (!state) return;
+    if(state.mode === 'writecheck'){state={mode:'learn',learn:'writecheck'};}
     suppressHashPush = true;
     try {
       clickTab('wo-mode', state.mode || 'learn');

@@ -1637,7 +1637,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 .card,.task{box-shadow:none!important}
 @media(max-width:700px){.page-content,.topic-page .page-content{padding:12px!important}.overview-return-wrap,.page-action-bar,.site-actions{padding:12px!important}.compass-head,.hero{padding:20px 18px!important}}
 </style>
-</head>
+<link rel="stylesheet" href="lernstruktur.css"></head>
 <body>
 <!-- NAVIGATION -->
 <div class="overview-return-wrap page-action-bar"><a aria-label="Zur Grammatikübersicht" class="overview-return" href="grammatik.html">← Zur Grammatikübersicht</a><div aria-label="Seitenaktionen" class="page-action-buttons"><button class="ha-btn" id="ha-btn" type="button">Hausaufgaben</button><button class="print-btn spickzettel-btn" id="print-ref-btn" type="button">Spickzettel drucken</button><button class="print-btn print-page-btn" id="print-page-btn" type="button">Diese Seite drucken</button><button class="print-btn" id="tb-reset-storage-btn" type="button">Lernstand löschen</button></div></div><div class="page-content">
@@ -1653,17 +1653,17 @@ html,body{background:#e7eef4!important;color:#243b55}
 <button aria-controls="lernen" aria-pressed="true" class="compass-mode-btn is-active" data-tab="tobe-mode" data-val="learn" type="button"><span>Lernen</span></button>
 <button aria-controls="nachschlagen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="reference" type="button"><span>Nachschlagen</span></button>
 <button aria-controls="verbindungen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="connections" type="button"><span>Verbindungen</span></button>
-<button aria-controls="schreibcheck" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="writecheck" type="button"><span>Schreib-Check</span></button>
+
 <button aria-controls="notizen" aria-pressed="false" class="compass-mode-btn" data-tab="tobe-mode" data-val="notes" type="button"><span>Notizen</span></button>
 </nav>
 <div class="compass-mode-panel is-active" data-panel="tobe-mode" data-val="learn" id="lernen">
-<nav aria-label="Lernschritte" class="learn-step-nav feature-tabs"><button aria-controls="tobe-learn-entry" aria-pressed="true" class="learn-step-btn is-active" data-tab="tobe-learn" data-val="entry" type="button"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button><button aria-controls="tobe-learn-control" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="control" type="button"><span class="step-badge">2</span><span class="step-label">Kontrollzentrum</span></button><button aria-controls="tobe-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="machine" type="button"><span class="step-badge">3</span><span class="step-label">Satz bauen</span></button><button aria-controls="tobe-learn-questions" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="questions" type="button"><span class="step-badge">4</span><span class="step-label">Fragewörter</span></button><button aria-controls="tobe-learn-selfcheck" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="selfcheck" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich’s?</span></button></nav>
+<nav aria-label="Lernschritte" class="learn-step-nav feature-tabs"><button aria-controls="tobe-learn-entry" aria-pressed="true" class="learn-step-btn is-active" data-tab="tobe-learn" data-val="entry" type="button"><span class="step-badge">1</span><span class="step-label">Wozu?</span></button><button aria-controls="tobe-learn-control" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="control" type="button"><span class="step-badge">2</span><span class="step-label">Kontrollzentrum</span></button><button aria-controls="tobe-learn-machine" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="machine" type="button"><span class="step-badge">3</span><span class="step-label">Satz bauen</span></button><button aria-controls="tobe-learn-questions" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="questions" type="button"><span class="step-badge">4</span><span class="step-label">Fragewörter</span></button><button aria-controls="tobe-learn-selfcheck" aria-pressed="false" class="learn-step-btn" data-tab="tobe-learn" data-val="selfcheck" type="button"><span class="step-badge">5</span><span class="step-label">Kann ich’s?</span></button><button type="button" class="learn-step-btn" data-tab="tobe-learn" data-val="writecheck" aria-controls="schreibcheck" aria-pressed="false"><span class="step-badge">6</span><span class="step-label">Schreib-Check</span></button></nav>
 <div class="learn-panel is-active" data-panel="tobe-learn" data-val="entry" id="tobe-learn-entry">
 <div class="entry-card">
 <div aria-hidden="true" class="entry-visual">🙋</div>
 <div>
 <p class="entry-hook">to be bedeutet „sein“.</p>
-<p class="entry-text">Du brauchst <span class="text-mark">am</span>, <span class="text-mark">is</span> oder <span class="text-mark">are</span>, wenn du sagst, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist.</p>
+<ul class="entry-text learning-points"><li>Du brauchst <span class="text-mark">am</span>, <span class="text-mark">is</span> oder <span class="text-mark">are</span>, wenn du sagst, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist.</li></ul>
 <div class="entry-examples"><span class="entry-ex">I am eleven.</span><span class="entry-ex">She is happy.</span><span class="entry-ex">They are from Plymouth.</span><span class="entry-ex">We are at school.</span></div>
 </div>
 </div>
@@ -1671,8 +1671,8 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="change-card"><span class="change-label">1. Bedeutung prüfen</span><p>Geht es um Alter, Zustand, Herkunft, Ort oder Person?</p><p class="change-note">In solchen Sätzen ist to be meistens das richtige Verb.</p></div>
 <div class="change-card"><span class="change-label">2. Person erkennen</span><p>Wer ist gemeint: I, you, he, she, it, we, they oder ein Name?</p><p class="change-note">Die Person entscheidet die Form.</p></div>
 <div class="change-card"><span class="change-label">3. Form wählen</span><p>I → am · he/she/it/ein Name → is · you/we/they → are</p><p class="change-note">Erst die Person, dann die Form. Nicht raten.</p></div>
-<div class="change-card"><span class="change-label">4. Satzart bauen</span><p>Aussage: Person + to be. Verneinung: not nach to be. Frage: to be nach vorne.</p><p class="change-note">So baust du den Satz, nicht Wort für Wort aus dem Deutschen.</p></div>
-<div class="change-card"><span class="change-label">5. Fehler prüfen</span><p>Frage dich: Passt die Form? Steht not richtig? Steht bei der Frage am/is/are vorne? Gibt es ein falsches do/does?</p><p class="change-note">Bei to be-Fragen brauchst du kein do und kein does.</p></div>
+<div class="change-card"><span class="change-label">4. Satzart bauen</span><ul class="learning-points"><li>Aussage: Person + to be.</li><li>Verneinung: not nach to be.</li><li>Frage: to be nach vorne.</li></ul><p class="change-note">So baust du den Satz, nicht Wort für Wort aus dem Deutschen.</p></div>
+<div class="change-card"><span class="change-label">5. Fehler prüfen</span><ul class="learning-points"><li>Frage dich: Passt die Form?</li><li>Steht not richtig?</li><li>Steht bei der Frage am/is/are vorne?</li><li>Gibt es ein falsches do/does?</li></ul><p class="change-note">Bei to be-Fragen brauchst du kein do und kein does.</p></div>
 </div>
 <div aria-label="Wann benutzt man to be?" class="purpose-grid">
 <div class="purpose-card"><span class="purpose-icon">👤</span><span class="purpose-title">Alter / Person</span><span class="purpose-ex">I am eleven.</span></div>
@@ -1713,8 +1713,8 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="learn-panel" data-panel="tobe-learn" data-val="machine" id="tobe-learn-machine">
 <div class="feature-card">
 <p class="feature-title">🧱 to-be-Satzmaschine</p>
-<p class="feature-subtitle">Nimm immer denselben Denkweg: Person finden, Form einsetzen, Satzart bauen, dann den fertigen Satz prüfen.</p>
-<p class="machine-question">Wähle erst die Satzart, dann die Person. Prüfe danach den ganzen Satz.</p>
+<ul class="feature-subtitle learning-points"><li>Nimm immer denselben Denkweg: Person finden, Form einsetzen, Satzart bauen, dann den fertigen Satz prüfen.</li></ul>
+<ul class="machine-question learning-points"><li>Wähle erst die Satzart, dann die Person.</li><li>Prüfe danach den ganzen Satz.</li></ul>
 <div aria-label="Satzart" class="mode-switcher" role="group">
 <button aria-pressed="true" class="mode-btn is-active" data-mode="positive" type="button">Aussage</button>
 <button aria-pressed="false" class="mode-btn" data-mode="negative" type="button">Verneinung</button>
@@ -1731,7 +1731,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 </div>
 <div aria-live="polite" class="machine-output" id="machine-out"><div class="sentence-built" id="m-sentence"></div><p class="machine-note" id="m-note"></p></div><div class="pitfall-mini" data-review-id="tobe-no-do-does-question-learning" data-review-source="learning-machine" data-topic-id="tobe" data-type="stolperstelle">
 <p class="pitfall-mini-title">Wichtigste Frage-Falle</p>
-<p><span class="wrong-inline">Do you are ready?</span> ist falsch. <span class="right-inline">Are you ready?</span> ist richtig. Bei to be-Fragen kommt am/is/are nach vorne. Kein do, kein does.</p>
+<ul class="learning-points"><li><span class="wrong-inline">Do you are ready?</span></li><li>ist falsch.</li><li><span class="right-inline">Are you ready?</span></li><li>ist richtig.</li><li>Bei to be-Fragen kommt am/is/are nach vorne.</li><li>Kein do, kein does.</li></ul>
 </div>
 <div class="change-grid">
 <div class="change-card"><span class="change-label">Aussage</span><p><span class="tok tok-subject subject-she">She</span><span class="tok tok-verb">is</span><span class="tok tok-rest">happy.</span></p><p class="change-note">Prüfe: Person und Form passen zusammen.</p></div>
@@ -1743,7 +1743,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="learn-panel" data-panel="tobe-learn" data-val="questions" id="tobe-learn-questions">
 <div class="feature-card">
 <p class="feature-title">❓ Fragewörter mit to be</p>
-<p class="feature-subtitle">Bei Fragen mit to be steht am, is oder are vor der Person. Mit Fragewort steht das Fragewort ganz vorne. Du brauchst kein do und kein does.</p>
+<ul class="feature-subtitle learning-points"><li>Bei Fragen mit to be steht am, is oder are vor der Person.</li><li>Mit Fragewort steht das Fragewort ganz vorne.</li><li>Du brauchst kein do und kein does.</li></ul>
 <div class="change-grid">
 <div class="change-card"><span class="change-label">Alter</span><p><span class="tok tok-rest">How old</span> <span class="tok tok-verb">are</span> <span class="tok tok-subject subject-you">you</span>?</p><p class="change-note">Antwort: I am eleven.</p></div>
 <div class="change-card"><span class="change-label">Herkunft</span><p><span class="tok tok-rest">Where</span> <span class="tok tok-verb">are</span> <span class="tok tok-subject subject-you">you</span> from?</p><p class="change-note">Antwort: I am from Germany.</p></div>
@@ -1751,20 +1751,20 @@ html,body{background:#e7eef4!important;color:#243b55}
 <div class="change-card"><span class="change-label">Ja-/Nein-Frage</span><p><span class="tok tok-verb">Are</span> <span class="tok tok-subject subject-you">you</span> <span class="tok tok-rest">ready</span>?</p><p class="change-note">Antwort: Yes, I am. / No, I am not.</p></div></div>
 <div class="pitfall-mini" data-review-id="tobe-questionword-order" data-review-source="learning-questionwords" data-topic-id="tobe" data-type="stolperstelle">
 <p class="pitfall-mini-title">Denkweg</p>
-<p>Fragewort → am/is/are → Person → Rest. Beispiel: <span class="right-inline">Where are you from?</span></p>
+<ul class="learning-points"><li>Fragewort → am/is/are → Person → Rest.</li><li>Beispiel: <span class="right-inline">Where are you from?</span></li></ul>
 </div>
 </div>
 </div>
 <div class="learn-panel" data-panel="tobe-learn" data-val="selfcheck" id="tobe-learn-selfcheck">
 <div class="check-shell tobe-can-check">
 <div class="check-intro-card">
-<p class="check-kicker">Prüfe das Kontrollzentrum ohne Spickzettel: Wer ist gemeint? Welche Form passt? Welche Satzart ist es? Wo steckt der typische Fehler?</p>
+<ul class="check-kicker learning-points"><li>Prüfe das Kontrollzentrum ohne Spickzettel: Wer ist gemeint?</li><li>Welche Form passt?</li><li>Welche Satzart ist es?</li><li>Wo steckt der typische Fehler?</li></ul>
 <h3>Kann ich’s?</h3>
-<p>Entscheide zuerst selbst. Danach prüfst du, ob dein Satz sauber gebaut ist.</p>
+<ul class="learning-points"><li>Entscheide zuerst selbst.</li><li>Danach prüfst du, ob dein Satz sauber gebaut ist.</li></ul>
 </div>
 <section aria-labelledby="tb-mini-decision-title" class="check-card">
 <h4 id="tb-mini-decision-title">1. Person erkennen und Form wählen</h4>
-<p class="check-card-text">Entscheide zuerst: Welche Person ist gemeint? Wähle dann am, is oder are. Die Lösung bleibt zu, bis du gedacht hast.</p>
+<ul class="check-card-text learning-points"><li>Entscheide zuerst: Welche Person ist gemeint?</li><li>Wähle dann am, is oder are.</li><li>Die Lösung bleibt zu, bis du gedacht hast.</li></ul>
 <div class="mini-decision-grid">
 <div class="mini-decision-item is-stacked">
 <div class="mini-decision-line"><span class="mini-decision-prompt">I</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">Welche Form passt?</span></div>
@@ -1788,19 +1788,19 @@ html,body{background:#e7eef4!important;color:#243b55}
 <p class="scanner-label">Aussage</p>
 <p class="scanner-sentence-lite"><span class="scanner-word">Hanna</span><span class="scanner-word">?</span><span class="scanner-word">happy.</span></p>
 <p class="scanner-question">Welche Form gehört zwischen Hanna und happy?</p>
-<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Hanna is happy.</p><p>Denkweg: Hanna ist ein einzelner Name. Ein einzelner Name funktioniert hier wie she. Deshalb brauchst du is.</p></div></details>
+<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Hanna is happy.</p><ul class="learning-points"><li>Denkweg: Hanna ist ein einzelner Name.</li><li>Ein einzelner Name funktioniert hier wie she.</li><li>Deshalb brauchst du is.</li></ul></div></details>
 </div>
 <div class="scanner-card">
 <p class="scanner-label">Frage</p>
 <p class="scanner-sentence-lite"><span class="scanner-word">?</span><span class="scanner-word">you</span><span class="scanner-word">ready?</span></p>
 <p class="scanner-question">Welche to-be-Form muss nach vorne?</p>
-<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Are you ready?</p><p>Denkweg: you gehört zu are. Bei Fragen steht die to-be-Form vorne.</p></div></details>
+<details class="scanner-reveal"><summary>Kontrolle zeigen</summary><div class="scanner-solution-lite"><p>Richtig: Are you ready?</p><ul class="learning-points"><li>Denkweg: you gehört zu are.</li><li>Bei Fragen steht die to-be-Form vorne.</li></ul></div></details>
 </div>
 </div>
 </section>
 <section aria-labelledby="tb-error-scanner-title" class="check-card">
 <h4 id="tb-error-scanner-title">3. Fehler erkennen</h4>
-<p class="check-card-text">Prüfe mit demselben Kontrollzentrum: Person erkennen, Form prüfen, Satzstellung prüfen. Öffne die Reparatur erst danach.</p>
+<ul class="check-card-text learning-points"><li>Prüfe mit demselben Kontrollzentrum: Person erkennen, Form prüfen, Satzstellung prüfen.</li><li>Öffne die Reparatur erst danach.</li></ul>
 <div class="error-scanner-lite">
 <div class="scanner-card">
 <p class="scanner-label">Fehler-Satz 1</p>
@@ -1812,7 +1812,7 @@ html,body{background:#e7eef4!important;color:#243b55}
 <p class="scanner-label">Fehler-Satz 2</p>
 <p class="scanner-sentence-lite"><button aria-pressed="false" class="scanner-word scanner-word-btn" data-hidden-error-target="true" data-review-id="tobe-no-do-does-question-scanner" data-review-source="selfcheck" data-scanner-word="true" data-topic-id="tobe" data-type="stolperstelle" type="button">Do</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">you</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">are</button><button aria-pressed="false" class="scanner-word scanner-word-btn" data-scanner-word="true" type="button">ready?</button></p>
 <p class="scanner-question">Welcher Satzanfang passt nicht zu to be?</p><p aria-live="polite" class="scanner-feedback">Klicke zuerst die Stelle an, die du für falsch hältst.</p>
-<details class="scanner-reveal"><summary>Reparatur zeigen</summary><div class="scanner-solution-lite"><p>Fehlerstelle: Do.</p><p>Richtig: Are you ready?</p><p>Denkweg: Bei to be-Fragen benutzt du kein do/does. Die to-be-Form wandert nach vorne.</p></div></details>
+<details class="scanner-reveal"><summary>Reparatur zeigen</summary><div class="scanner-solution-lite"><p>Fehlerstelle: Do.</p><p>Richtig: Are you ready?</p><ul class="learning-points"><li>Denkweg: Bei to be-Fragen benutzt du kein do/does.</li><li>Die to-be-Form wandert nach vorne.</li></ul></div></details>
 </div>
 <div class="scanner-card">
 <p class="scanner-label">Kurzantwort-Falle</p>
@@ -1824,11 +1824,11 @@ html,body{background:#e7eef4!important;color:#243b55}
 </section>
 <section aria-labelledby="tb-explain-title" class="check-card">
 <h4 id="tb-explain-title">4. Denkweg erklären</h4>
-<p class="check-card-text">Erkläre die Regel erst selbst. Vergleiche danach mit der Muster-Kurzfassung.</p>
+<ul class="check-card-text learning-points"><li>Erkläre die Regel erst selbst.</li><li>Vergleiche danach mit der Muster-Kurzfassung.</li></ul>
 <label class="selfcheck-own-label" for="tobe-own-rule">Mein Satz zur Regel:</label>
 <textarea class="selfcheck-own-field" id="tobe-own-rule" placeholder="Zum Beispiel: to be benutze ich, wenn ..." rows="3"></textarea>
-<details class="explain-reveal"><summary>Muster-Kurzfassung vergleichen</summary><p>to be beschreibt, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist. Die Form richtet sich nach der Person: I am, he/she/it is, you/we/they are.</p></details>
-<p class="check-return-hint">Unsicher? Zurück zum Kontrollzentrum: Person erkennen → Form wählen → Satz bauen → Fehler erkennen.</p>
+<details class="explain-reveal"><summary>Muster-Kurzfassung vergleichen</summary><ul class="learning-points"><li>to be beschreibt, wer jemand ist, wie jemand ist, wo jemand ist, woher jemand kommt oder wie alt jemand ist.</li><li>Die Form richtet sich nach der Person: I am, he/she/it is, you/we/they are.</li></ul></details>
+<ul class="check-return-hint learning-points"><li>Unsicher?</li><li>Zurück zum Kontrollzentrum: Person erkennen → Form wählen → Satz bauen → Fehler erkennen.</li></ul>
 </section>
 <section aria-labelledby="tb-final-check-title" class="check-card check-finish-card">
 <h4 id="tb-final-check-title">5. Nach dem eigenen Versuch prüfen</h4>
@@ -1839,6 +1839,13 @@ html,body{background:#e7eef4!important;color:#243b55}
 </ul>
 <div aria-live="polite" class="check-status" id="check-status">Noch offen: Erst Aufgaben versuchen, dann die eigene Erklärung mit der Muster-Kurzfassung vergleichen.</div>
 </section>
+</div>
+</div><div class="learn-panel" data-panel="tobe-learn" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro"><h3>✍️ Schreib-Check</h3><p>Person → passende Form → Aussage, Verneinung oder Frage.</p></div>
+<div class="writecheck-grid" id="writecheck-tasks"></div>
+<div class="writecheck-actions"><button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle ausgefüllten Antworten prüfen</button><button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button></div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
 </div>
 </div></div>
 <div class="compass-mode-panel" data-panel="tobe-mode" data-val="reference" id="nachschlagen">
@@ -1916,22 +1923,15 @@ html,body{background:#e7eef4!important;color:#243b55}
 <p class="conn-intro">to be ist eine Grundlage. Diese Nachbarthemen helfen dir, es nicht mit anderen Satzmustern zu verwechseln.</p>
 <div class="conn-map">
 <a class="conn-card" href="pronouns.html#lernen"><div aria-hidden="true" class="conn-icon">👤</div><div><h3 class="conn-title">Pronouns</h3><p class="conn-text">Ohne Pronomen weißt du nicht sicher, ob am, is oder are passt.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">I → am</span><span class="conn-ex conn-ex-blue">she → is</span><span class="conn-ex conn-ex-blue">they → are</span></div><span class="conn-link-label">Pronouns öffnen →</span></div></a>
-<a class="conn-card" href="questions.html#lernen"><div aria-hidden="true" class="conn-icon">❓</div><div><h3 class="conn-title">Questions</h3><p class="conn-text">Bei normalen Verben brauchst du do oder does. Bei to be steht am, is oder are selbst vorne.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">Is she late?</span><span class="conn-ex conn-ex-blue">nicht: Does she is late?</span></div><span class="conn-link-label">Questions öffnen →</span></div></a>
-<a class="conn-card" href="wordorder.html#lernen"><div aria-hidden="true" class="conn-icon">🧱</div><div><h3 class="conn-title">Word Order</h3><p class="conn-text">Dort prüfst du die Satzstellung. Bei to be verändert sich die Reihenfolge besonders in Fragen.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">She is ready.</span><span class="conn-ex conn-ex-blue">Is she ready?</span></div><span class="conn-link-label">Word Order öffnen →</span></div></a>
-<a class="conn-card" href="adverbsoffrequency.html#lernen"><div aria-hidden="true" class="conn-icon">🔁</div><div><h3 class="conn-title">Adverbs of Frequency</h3><p class="conn-text">Häufigkeitswörter stehen bei to be meistens nach am, is oder are.</p><div class="conn-examples"><span class="conn-ex conn-ex-violet">She is always late.</span><span class="conn-ex conn-ex-violet">They are often tired.</span></div><span class="conn-link-label">Adverbs of Frequency öffnen →</span></div></a>
+<a class="conn-card" href="questions.html#lernen"><div aria-hidden="true" class="conn-icon">❓</div><div><h3 class="conn-title">Questions</h3><ul class="conn-text learning-points"><li>Bei normalen Verben brauchst du do oder does.</li><li>Bei to be steht am, is oder are selbst vorne.</li></ul><div class="conn-examples"><span class="conn-ex conn-ex-blue">Is she late?</span><span class="conn-ex conn-ex-blue">nicht: Does she is late?</span></div><span class="conn-link-label">Questions öffnen →</span></div></a>
+<a class="conn-card" href="wordorder.html#lernen"><div aria-hidden="true" class="conn-icon">🧱</div><div><h3 class="conn-title">Word Order</h3><ul class="conn-text learning-points"><li>Dort prüfst du die Satzstellung.</li><li>Bei to be verändert sich die Reihenfolge besonders in Fragen.</li></ul><div class="conn-examples"><span class="conn-ex conn-ex-blue">She is ready.</span><span class="conn-ex conn-ex-blue">Is she ready?</span></div><span class="conn-link-label">Word Order öffnen →</span></div></a>
+<a class="conn-card" href="adverbsoffrequency.html#lernen"><div aria-hidden="true" class="conn-icon">🔁</div><div><h3 class="conn-title">Adverbs of Frequency</h3><ul class="conn-text learning-points"><li>Häufigkeitswörter stehen bei to be meistens nach am, is oder are.</li></ul><div class="conn-examples"><span class="conn-ex conn-ex-violet">She is always late.</span><span class="conn-ex conn-ex-violet">They are often tired.</span></div><span class="conn-link-label">Adverbs of Frequency öffnen →</span></div></a>
 <a class="conn-card" href="progressive.html#lernen"><div aria-hidden="true" class="conn-icon">🎬</div><div><h3 class="conn-title">Present Progressive</h3><p class="conn-text">Dort ist to be das Hilfsverb vor dem Verb mit -ing.</p><div class="conn-examples"><span class="conn-ex conn-ex-violet">She is playing.</span><span class="conn-ex conn-ex-violet">They are eating.</span></div><span class="conn-link-label">Present Progressive öffnen →</span></div></a>
 <a class="conn-card" href="thereisthereare.html#lernen"><div aria-hidden="true" class="conn-icon">📍</div><div><h3 class="conn-title">there is / there are</h3><p class="conn-text">Dort benutzt du wieder is oder are, aber diesmal nach there.</p><div class="conn-examples"><span class="conn-ex conn-ex-blue">There is a book.</span><span class="conn-ex conn-ex-blue">There are three cats.</span></div><span class="conn-link-label">there is / there are öffnen →</span></div></a>
 </div>
 </div>
 </div>
-<div class="compass-mode-panel" data-panel="tobe-mode" data-val="writecheck" id="schreibcheck">
-<div class="writecheck-panel">
-<div class="writecheck-intro"><h3>✍️ Schreib-Check</h3><p>Schreibe erst selbst. Prüfe immer: Wer ist gemeint? Welche Form passt? Ist es Aussage, Verneinung oder Frage? Danach bekommst du eine Denkfrage oder auf Wunsch die Lösung. Leere Aufgaben werden nicht bewertet.</p></div>
-<div class="writecheck-grid" id="writecheck-tasks"></div>
-<div class="writecheck-actions"><button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle ausgefüllten Antworten prüfen</button><button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button></div>
-<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
-</div>
-</div>
+
 <div class="compass-mode-panel" data-panel="tobe-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
 <p class="notes-title">✏️ Meine Notizen zu to be</p>
@@ -2261,16 +2261,17 @@ html,body{background:#e7eef4!important;color:#243b55}
       var rest=raw.slice(HASH_PREFIX.length);
       var out={};
       rest.split('&').forEach(function(pair){var ix=pair.indexOf('=');if(ix<0)return;out[pair.slice(0,ix)]=decodeURIComponent(pair.slice(ix+1));});
-      return {mode:out.mode||'learn', learn:out.learn||'entry'};
+      return out.mode==='writecheck'?{mode:'learn',learn:'writecheck'}:{mode:out.mode||'learn', learn:out.learn||'entry'};
     }
     if(legacyLearn[low]){return {mode:'learn', learn:legacyLearn[low]};}
-    if(legacyModes[low]){return {mode:legacyModes[low], learn:'entry'};}
+    if(legacyModes[low]){return legacyModes[low]==='writecheck'?{mode:'learn',learn:'writecheck'}:{mode:legacyModes[low], learn:'entry'};}
     var byId=document.getElementById(raw);
     if(byId && byId.getAttribute('data-panel')==='tobe-mode'){return {mode:byId.getAttribute('data-val')||'learn', learn:'entry'};}
     if(byId && byId.getAttribute('data-panel')==='tobe-learn'){return {mode:'learn', learn:byId.getAttribute('data-val')||'entry'};}
     return null;
   }
   function activateTab(group, val){
+    if(group==='tobe-mode' && val==='writecheck'){activateTab('tobe-mode','learn');return activateTab('tobe-learn','writecheck');}
     var btn=qs('[data-tab="'+group+'"][data-val="'+cssEscape(val)+'"]');
     if(!btn){return false;}
     qsa('[data-tab="'+group+'"]').forEach(function(b){var on=b===btn;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false');});
@@ -2390,6 +2391,7 @@ html,body{background:#e7eef4!important;color:#243b55}
     (state.writeTasks||[]).forEach(function(item){var card=document.getElementById(item.id);if(card&&item.className){card.className=item.className;}});
     (state.feedbacks||[]).forEach(function(item){var fb=document.getElementById(item.id);if(fb){if(item.className){fb.className=item.className;}if(item.html){fb.innerHTML=item.html;}}});
     if(state.summary){var summary=qs('#writecheck-summary');if(summary){summary.className=state.summary.className||summary.className;summary.innerHTML=state.summary.html||'';}}
+    if(state.mode==='writecheck'){state.mode='learn';state.learn='writecheck';}
     if(state.mode){activateTab('tobe-mode',state.mode);}
     if(state.learn){activateTab('tobe-learn',state.learn);}
     restoring=false;
@@ -2429,6 +2431,7 @@ html,body{background:#e7eef4!important;color:#243b55}
     var parsed=parseHash();
     if(parsed){applyHash(parsed);updateHash(true);return;}
     var state=readJSON(UI_KEY,{});
+    if(state.mode==='writecheck'){state.mode='learn';state.learn='writecheck';}
     if(state.mode){activateTab('tobe-mode',state.mode);}
     if(state.learn){activateTab('tobe-learn',state.learn);}
     updateHash(true);

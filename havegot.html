@@ -1071,7 +1071,7 @@ body{color:#243b55!important}
 .card,.task{box-shadow:none!important}
 @media(max-width:650px){.compass-head{padding:22px 18px!important}.page-content{padding-left:12px!important;padding-right:12px!important}}
 </style>
-</head>
+<link rel="stylesheet" href="lernstruktur.css"></head>
 <body>
 <div class="overview-return-wrap page-action-bar">
   <a aria-label="Zur Grammatikübersicht" class="overview-return" href="grammatik.html">← Zur Grammatikübersicht</a>
@@ -1100,9 +1100,7 @@ body{color:#243b55!important}
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="connections" type="button">
 <span>Verbindungen</span>
 </button>
-<button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="writecheck" type="button">
-<span>Schreib-Check</span>
-</button>
+
 <button aria-pressed="false" class="compass-mode-btn" data-tab="hg-mode" data-val="notes" type="button">
 <span>Notizen</span>
 </button>
@@ -1122,7 +1120,7 @@ body{color:#243b55!important}
 <button aria-pressed="false" class="learn-step-btn" data-tab="hg-learn" data-val="check" type="button">
 <span class="step-badge">4</span><span class="step-label">Kann ich's?</span>
 </button>
-</nav>
+<button type="button" class="learn-step-btn" data-tab="hg-learn" data-val="writecheck" aria-controls="schreibcheck" aria-pressed="false"><span class="step-badge">5</span><span class="step-label">Schreib-Check</span></button></nav>
 <div class="learn-progress-bar"><div class="learn-progress-fill progress-step-1" id="hg-progress"></div></div>
 <!-- Schritt 1: Wozu? -->
 <div class="learn-panel is-active" data-panel="hg-learn" data-val="entry">
@@ -1191,8 +1189,8 @@ body{color:#243b55!important}
 <div class="learn-panel" data-panel="hg-learn" data-val="balance">
 <div class="hg-machine-card">
 <div aria-label="Haben-Waage: Die Person entscheidet über have got oder has got" class="hg-balance-card">
-<p class="hg-balance-title">⚖️ Haben-Waage: Klicke auf die Person und prüfe die richtige Seite</p>
-<p class="check-card-text">Die Waage entscheidet nur eine Sache: Braucht die Person have got oder has got?</p>
+<ul class="hg-balance-title learning-points"><li>⚖️ Haben-Waage: Klicke auf die Person und prüfe die richtige Seite</li></ul>
+<ul class="check-card-text learning-points"><li>Die Waage entscheidet nur eine Sache: Braucht die Person have got oder has got?</li></ul>
 <div aria-label="Person für die Haben-Waage wählen" class="hg-balance-picker" role="group">
 <button aria-pressed="true" class="hg-balance-pick is-active" data-balance-person="I" type="button">I</button>
 <button aria-pressed="false" class="hg-balance-pick" data-balance-person="you" type="button">you</button>
@@ -1221,7 +1219,7 @@ body{color:#243b55!important}
 <span class="hg-balance-result-form">I → have got</span>
 <span class="hg-balance-result-sentence">I have got a dog.</span>
 </div>
-<p class="hg-balance-rule">Denkweg: 1. Person suchen. 2. Gruppe wählen: I / you / we / they oder he / she / it, ein einzelner Name oder ein Nomen in der Einzahl. 3. Dann einsetzen: have got oder has got.</p>
+<ul class="hg-balance-rule learning-points"><li>Denkweg: 1.</li><li>Person suchen.</li><li>2.</li><li>Gruppe wählen: I / you / we / they oder he / she / it, ein einzelner Name oder ein Nomen in der Einzahl.</li><li>3.</li><li>Dann einsetzen: have got oder has got.</li></ul>
 </div>
 </div>
 </div>
@@ -1266,18 +1264,31 @@ body{color:#243b55!important}
 </div>
 </div>
 </div>
+<div class="learn-panel" data-panel="hg-learn" data-val="writecheck" id="schreibcheck">
+<div class="writecheck-panel">
+<div class="writecheck-intro">
+<h3>✍️ Schreib-Check</h3>
+<p>Übersetze die Sätze ins Englische.</p>
 </div>
+<div class="writecheck-grid" id="writecheck-tasks"></div>
+<div class="writecheck-actions">
+<button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle Antworten prüfen</button>
+<button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button>
+</div>
+<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
+</div>
+</div></div>
 <!-- Schritt 4: Kann ich's? -->
 <div class="learn-panel" data-panel="hg-learn" data-val="check">
 <div class="check-shell havegot-can-check">
 <div class="check-intro-card">
 <p class="check-kicker">Denkcheck</p>
 <h3>Kann ich's?</h3>
-<p>Prüfe kurz, ob du die wichtigste Regel wirklich anwenden kannst: Wer hat etwas? Brauchst du have got oder has got?</p>
+<ul class="learning-points"><li>Prüfe kurz, ob du die wichtigste Regel wirklich anwenden kannst: Wer hat etwas?</li><li>Brauchst du have got oder has got?</li></ul>
 </div>
 <section aria-labelledby="hg-mini-decision-title" class="check-card">
 <h4 id="hg-mini-decision-title">1. Welche Form passt?</h4>
-<p class="check-card-text">Entscheide erst mit der Haben-Waage. Die Lösung bleibt zu, bis du gedacht hast.</p>
+<ul class="check-card-text learning-points"><li>Entscheide erst mit der Haben-Waage.</li><li>Die Lösung bleibt zu, bis du gedacht hast.</li></ul>
 <div class="mini-decision-grid">
 <div class="mini-decision-item is-stacked">
 <div class="mini-decision-line"><span class="mini-decision-prompt">I</span><span class="mini-decision-arrow">→</span><span class="mini-decision-question">have got oder has got?</span></div>
@@ -1303,7 +1314,7 @@ body{color:#243b55!important}
 </section>
 <section aria-labelledby="hg-error-scanner-title" class="check-card">
 <h4 id="hg-error-scanner-title">2. Fehler-Scanner</h4>
-<p class="check-card-text">Klicke im Satz zuerst auf die Fehlerstelle. Erst wenn du die Fehlerstelle gefunden hast, kannst du die Reparatur öffnen.</p>
+<ul class="check-card-text learning-points"><li>Klicke im Satz zuerst auf die Fehlerstelle.</li><li>Erst wenn du die Fehlerstelle gefunden hast, kannst du die Reparatur öffnen.</li></ul>
 <div class="error-scanner" data-error-scanner="havegot" data-topic-id="havegot">
 <div class="scanner-card is-active" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-he-she-it-has-got" data-review-source="learning-scanner"> 
 <p class="scanner-label">Fehler-Satz 1</p>
@@ -1320,7 +1331,7 @@ body{color:#243b55!important}
 <div class="scanner-solution" hidden="">
 <p>Fehlerstelle: have.</p>
 <p>Richtig: He has got a bike.</p>
-<p>Denkweg: he gehört zu he / she / it. Deshalb brauchst du has got.</p>
+<ul class="learning-points"><li>Denkweg: he gehört zu he / she / it.</li><li>Deshalb brauchst du has got.</li></ul>
 </div>
 </div>
 <div class="scanner-card" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-i-you-we-they-have-got" data-review-source="learning-scanner" hidden=""> 
@@ -1338,7 +1349,7 @@ body{color:#243b55!important}
 <div class="scanner-solution" hidden="">
 <p>Fehlerstelle: has.</p>
 <p>Richtig: I have got a sister.</p>
-<p>Denkweg: I steht nicht bei he / she / it. Deshalb brauchst du have got.</p>
+<ul class="learning-points"><li>Denkweg: I steht nicht bei he / she / it.</li><li>Deshalb brauchst du have got.</li></ul>
 </div>
 </div>
 <div class="scanner-card" data-scanner-card="" data-topic-id="havegot" data-type="stolperstelle" data-review-id="havegot-question-have-has-front" data-review-source="learning-scanner" hidden=""> 
@@ -1375,7 +1386,7 @@ body{color:#243b55!important}
 <div class="scanner-solution" hidden="">
 <p>Fehlerstelle: Does.</p>
 <p>Richtig: Has he got a dog?</p>
-<p>Denkweg: Bei have got-Fragen benutzt du in diesem Schulmuster kein do/does. Has wandert nach vorne.</p>
+<ul class="learning-points"><li>Denkweg: Bei have got-Fragen benutzt du in diesem Schulmuster kein do/does.</li><li>Has wandert nach vorne.</li></ul>
 </div>
 </div>
 <div class="scanner-actions">
@@ -1392,7 +1403,7 @@ body{color:#243b55!important}
 <button class="explain-option" data-explain-result="unclear" type="button">Nein, das ist noch unklar.</button>
 </div>
 <div class="explain-feedback" hidden="" id="hg-explain-feedback"></div>
-<p class="check-return-hint">Unsicher bei have/has? Zurück zur Haben-Waage. Unsicher bei Fragen? Zurück zur Satzmaschine.</p>
+<ul class="check-return-hint learning-points"><li>Unsicher bei have/has?</li><li>Zurück zur Haben-Waage.</li><li>Unsicher bei Fragen?</li><li>Zurück zur Satzmaschine.</li></ul>
 </section>
 </div>
 </div>
@@ -1417,7 +1428,7 @@ body{color:#243b55!important}
 <p class="hg-print-pattern">Aussage: Person + have/has got + Sache.</p>
 <p class="hg-print-pattern">Verneinung: Person + haven’t/hasn’t got + Sache.</p>
 <p class="hg-print-pattern">Frage: Have/Has + Person + got + Sache?</p>
-<p class="hg-print-pattern">Kurzantwort: Yes, Person + have/has. / No, Person + haven’t/hasn’t. Bei Have you got …? meist: Yes, I have. / No, I haven’t.</p>
+<ul class="hg-print-pattern learning-points"><li>Kurzantwort: Yes, Person + have/has.</li><li>/ No, Person + haven’t/hasn’t.</li><li>Bei Have you got …?</li><li>meist: Yes, I have.</li><li>/ No, I haven’t.</li></ul>
 </section>
 <section class="hg-print-box hg-print-warning">
 <h3>Top-Denkfalle</h3>
@@ -1427,8 +1438,8 @@ body{color:#243b55!important}
 </section>
 <section class="hg-print-box">
 <h3>Kurz merken</h3>
-<p>Erst Person oder Sache suchen. Dann entscheiden: have got oder has got. Bei Fragen wandert Have oder Has nach vorne. In Kurzantworten fällt got weg.</p>
-<p>Bei Fragen und Verneinungen mit Mehrzahl steht oft any: Have you got any pets? / We haven’t got any bikes.</p>
+<ul class="learning-points"><li>Erst Person oder Sache suchen.</li><li>Dann entscheiden: have got oder has got.</li><li>Bei Fragen wandert Have oder Has nach vorne.</li><li>In Kurzantworten fällt got weg.</li></ul>
+<ul class="learning-points"><li>Bei Fragen und Verneinungen mit Mehrzahl steht oft any: Have you got any pets?</li><li>/ We haven’t got any bikes.</li></ul>
 </section>
 </div>
 <section class="hg-print-box">
@@ -1478,7 +1489,7 @@ body{color:#243b55!important}
 </tbody>
 </table>
 </div>
-<p class="hg-ref-hint">Wichtig: In Kurzantworten steht kein got. Bei Have you got …? antwortest du meistens mit I: Yes, I have. / No, I haven't.</p>
+<ul class="hg-ref-hint learning-points"><li>Wichtig: In Kurzantworten steht kein got.</li><li>Bei Have you got …?</li><li>antwortest du meistens mit I: Yes, I have.</li><li>/ No, I haven't.</li></ul>
 </section>
 <section aria-labelledby="hg-ref-forms" class="hg-ref-section hg-ref-forms">
 <h3 class="hg-ref-title" data-step="3" id="hg-ref-forms">Alle Formen</h3>
@@ -1663,7 +1674,7 @@ body{color:#243b55!important}
 <div class="connection-map-icon">👤</div>
 <div>
 <h3 class="connection-map-title">Pronouns — die Form bestimmt have oder has</h3>
-<p class="connection-map-text">Das Personal Pronoun bestimmt die Form. Und Possessive Determiners / Besitzwörter kommen oft danach.</p>
+<ul class="connection-map-text learning-points"><li>Das Personal Pronoun bestimmt die Form.</li><li>Und Possessive Determiners / Besitzwörter kommen oft danach.</li></ul>
 <div class="connection-chip-row">
 <span class="connection-pill-blue">I have got → my dog</span>
 <span class="connection-pill-she">she has got → her cat</span>
@@ -1676,7 +1687,7 @@ body{color:#243b55!important}
 <div class="connection-map-icon">🔁</div>
 <div>
 <h3 class="connection-map-title">Simple Present — Fragen funktionieren anders!</h3>
-<p class="connection-map-text">Das ist ein häufiger Fehler: have got und Simple Present haben verschiedene Fragenmuster.</p>
+<ul class="connection-map-text learning-points"><li>Das ist ein häufiger Fehler: have got und Simple Present haben verschiedene Fragenmuster.</li></ul>
 <div class="connection-compare">
 <div class="connection-mini-card-green">
 <span class="connection-mini-title-green">have got — Frage</span>
@@ -1697,20 +1708,7 @@ body{color:#243b55!important}
 </div>
 </div><!-- /VERBINDUNGEN -->
 <!-- ══════════════ SCHREIB-CHECK ══════════════ -->
-<div class="compass-mode-panel" data-panel="hg-mode" data-val="writecheck" id="schreibcheck">
-<div class="writecheck-panel">
-<div class="writecheck-intro">
-<h3>✍️ Schreib-Check</h3>
-<p>Schreibe die englischen Sätze selbst. Kleine Formfehler wie ein fehlender Punkt zählen nicht hart. Grammatik, Satzbau und Rechtschreibung werden geprüft.</p>
-</div>
-<div class="writecheck-grid" id="writecheck-tasks"></div>
-<div class="writecheck-actions">
-<button class="writecheck-check-all" id="writecheck-check-all-btn" type="button">Alle Antworten prüfen</button>
-<button class="writecheck-reset" id="writecheck-reset-btn" type="button">Schreib-Check zurücksetzen</button>
-</div>
-<div aria-live="polite" class="writecheck-summary" id="writecheck-summary"></div>
-</div>
-</div>
+
 <!-- ══════════ NOTIZEN ══════════ -->
 <div class="compass-mode-panel" data-panel="hg-mode" data-val="notes" id="notizen">
 <div class="notes-panel">
@@ -2487,6 +2485,11 @@ body{color:#243b55!important}
     if (!key) return;
     var mode = aliases[key];
     if (!mode) return;
+    if(mode === 'writecheck'){
+      var learn = document.querySelector('[data-tab="hg-mode"][data-val="learn"]');
+      var check = document.querySelector('[data-tab="hg-learn"][data-val="writecheck"]');
+      if(learn) learn.click(); if(check) check.click(); return;
+    }
     var btn = document.querySelector('.compass-mode-btn[data-val="' + mode + '"]') || document.querySelector('[data-tab$="-mode"][data-val="' + mode + '"]');
     if (!btn) return;
     btn.click();
