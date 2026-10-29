@@ -211,7 +211,7 @@ const TOPICS={tobe:'to be',pronouns:'Pronouns',havegot:'have got',wordorder:'Wor
 const SCOPES={topic:'Ausgewählte Grammatikthemen','present-past':'Simple Present ↔ Simple Past','present-progressive':'Simple Present ↔ Present Progressive'};
 const PAIR_TOPICS={'present-past':['simplepresent','simplepast'],'present-progressive':['simplepresent','progressive']};
 const REASONS={habit:'Gewohnheit oder Regelmäßigkeit',state:'Zustand, Fakt oder Vorliebe',past:'vorbei und abgeschlossen',now:'läuft gerade jetzt',temporary:'vorübergehende Situation',plan:'feste persönliche Verabredung'};
-const STORE='englisch_grammatiktraining_v4',VERSION=4,$=id=>document.getElementById(id);
+const STORE='englisch_grammatiktraining_v4',VERSION=5,$=id=>document.getElementById(id);
 const defaults={scope:'topic',mode:'free',selected:['simplepresent','simplepast','progressive','questions'],seen:[],review:[],stats:{started:0,first:0,retried:0,helped:0,skipped:0},task:null,exam:null,version:VERSION};
 function read(){try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(STORE))||{})}catch{return structuredClone(defaults)}}
 let state=read();state.stats=Object.assign({},defaults.stats,state.stats||{});state.selected=(state.selected||[]).filter(x=>TOPICS[x]);if(!state.selected.length)state.selected=defaults.selected.slice();if(!SCOPES[state.scope])state.scope='topic';if(!['basic','free'].includes(state.mode))state.mode='free';
@@ -221,15 +221,37 @@ function active(){const p=pool();return state.scope==='topic'?p.filter(q=>(q.top
 function current(){return state.task?pool().find(q=>q.id===state.task.id)||null:null}
 function shuffle(a){const b=a.slice();for(let i=b.length-1;i;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function cleanApos(s){return String(s||'').normalize('NFKC').replace(/[’‘`´ʼʻ′＇ꞌ]/g,"'")}
-function canon(s){let n=cleanApos(s).toLowerCase().trim();const c={"i'm":'i am',"he's":'he is',"she's":'she is',"it's":'it is',"they're":'they are',"we're":'we are',"you're":'you are',"don't":'do not',"doesn't":'does not',"didn't":'did not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"weren't":'were not'};n=n.replace(/\b[a-z]+'[a-z]+\b/g,m=>c[m]||m);return n.replace(/\s*,\s*/g,' ').replace(/[.!?]+$/,'').replace(/\s+/g,' ').trim()}
-function formIssues(q,v){const out=[];if(q.format==='question'&&!/\?$/.test(v))out.push('Am Ende fehlt das Fragezeichen.');if(q.format==='sentence'&&!/[.!]$/.test(v))out.push('Am Ende fehlt der Punkt.');if(!/^[A-Z]/.test(v))out.push('Der Satz beginnt groß.');if(/\bi\b/.test(v))out.push('Das englische I wird großgeschrieben.');return out}
-function diagnose(q,value){const raw=String(value||'').trim(),n=canon(raw);if(!raw)return{kind:'empty',message:'Schreibe zuerst deine Antwort.'};if(q.answers.some(a=>canon(a)===n)){const issues=formIssues(q,raw);return issues.length?{kind:'format',message:'Die Grammatik passt. '+issues.join(' ')}:{kind:'correct',message:'Richtig. '+q.explain}}
+function canon(s,lower=true){
+ let n=cleanApos(s).trim();
+ // 's means has before got, but is in an ordinary be construction.
+ n=n.replace(/\b(he|she|it|who|what|that|there)'s(?=\s+got\b)/gi,'$1 has');
+ const contractions={"i'm":'i am',"he's":'he is',"she's":'she is',"it's":'it is',"they're":'they are',"we're":'we are',"you're":'you are',"i've":'i have',"you've":'you have',"we've":'we have',"they've":'they have',"don't":'do not',"doesn't":'does not',"didn't":'did not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"weren't":'were not',"haven't":'have not',"hasn't":'has not'};
+ n=n.replace(/\b[a-z]+'[a-z]+\b/gi,m=>{let expanded=contractions[m.toLowerCase()];if(!expanded)return m;return /^[A-Z]/.test(m)?expanded[0].toUpperCase()+expanded.slice(1):expanded});
+ n=n.replace(/\s*,\s*/g,' ').replace(/[.!?]+$/,'').replace(/\s+/g,' ').trim();return lower?n.toLowerCase():n;
+}
+function formIssues(q,v,answer){
+ const out=[],full=q.format==='question'||q.format==='sentence';
+ if(q.format==='question'&&!/[^?!]\?$/.test(v))out.push('Setze genau ein Fragezeichen ans Ende.');
+ if(q.format==='sentence'&&!/[^.!?][.!]$/.test(v))out.push('Setze genau einen Punkt ans Ende.');
+ if(full&&!/^[A-Z]/.test(v))out.push('Der Satz beginnt groß.');
+ if(/\bi\b/.test(v))out.push('Das englische I wird großgeschrieben.');
+ const expected=canon(answer,false).split(' '),actual=canon(v,false).split(' ');
+ const names=expected.filter((word,i)=>/^[A-Z]/.test(word)&&word!=='I'&&(!full||i>0)&&actual[i]!==word);
+ if(names.length)out.push('Achte auf die Großschreibung: '+[...new Set(names)].join(', ')+'.');
+ return out;
+}
+function diagnose(q,value){
+ const raw=String(value||'').trim(),n=canon(raw);
+ if(!raw)return{kind:'empty',message:'Schreibe zuerst deine Antwort.'};
+ if(/^yes\b/i.test(raw)&&/\b(?:i'm|you(?:'re|'ve)|we(?:'re|'ve)|they(?:'re|'ve)|he's|she's|it's)[.!?]*$/i.test(cleanApos(raw)))return{kind:'error',message:'Am Ende einer positiven Kurzantwort steht die volle Form: Yes, I am. / Yes, she is. / Yes, they have.'};
+ const matches=q.answers.filter(a=>canon(a)===n);
+ if(matches.length){const issues=matches.map(a=>formIssues(q,raw,a)).sort((a,b)=>a.length-b.length)[0];return issues.length?{kind:'format',message:'Die Grammatik passt. '+issues.join(' ')}:{kind:'correct',message:'Richtig. '+q.explain}}
  if(/\b(?:did|did not)\s+\w+\s+(?:went|played|visited|liked|made|brought|saw|found|had|watched|bought|lost)\b/.test(n))return{kind:'error',message:'Nach did oder did not steht die Grundform. '+q.hint};
  if(/\bdoes\s+\w+\s+(?:plays|likes|goes|watches|visits|walks|has|reads|takes)\b/.test(n))return{kind:'error',message:'Nach does steht die Grundform. '+q.hint};
  if(/\b(?:do|does|did)\s+\w+\s+\w+ing\b/.test(n))return{kind:'error',message:'Beim Present Progressive brauchst du am, is oder are statt do, does oder did. '+q.hint};
  if(q.topic==='progressive'&&!/\b(?:am|is|are)\b/.test(n))return{kind:'error',message:'Beim Present Progressive fehlt am, is oder are. '+q.hint};
  return{kind:'unknown',message:'Noch nicht passend. '+q.hint}}
-function guidance(q){return q.format==='question'?'Schritt 2: Schreibe eine vollständige englische Frage.':'Schritt 2: Schreibe einen vollständigen englischen Satz.'}
+function guidance(q){return {word:'Schreibe nur das gesuchte Wort oder die gesuchte Verbform.',phrase:'Schreibe nur die gesuchte Wortgruppe.',question:'Schreibe eine vollständige englische Frage.',sentence:'Schreibe einen vollständigen englischen Satz.'}[q.format]||'Lies die Aufgabe und schreibe die gesuchte Antwort.'}
 function showTab(tab){if(!['auswahl','training','check','nachschlagen'].includes(tab))tab='auswahl';document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!==tab);document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));if(tab==='training')paintTraining(true);if(tab==='check')paintExam()}
 function go(tab){history.pushState({tab},'','#'+tab);showTab(tab)}
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>go(b.dataset.tab));window.addEventListener('popstate',()=>showTab(location.hash.slice(1)));
@@ -244,7 +266,7 @@ $('modeBasic').onclick=()=>setMode('basic');$('modeFree').onclick=()=>setMode('f
 document.querySelectorAll('[data-topic-choice]').forEach(i=>i.onchange=()=>{const selected=[...document.querySelectorAll('[data-topic-choice]:checked')].map(x=>x.value);if(!selected.length){i.checked=true;return}if(state.task&&!state.task.done)state.stats.skipped++;state.selected=selected;state.task=null;state.exam=null;save();newTask()});
 function choose(){const a=active();if(!a.length)return null;const recent=state.seen.slice(-5),fresh=a.filter(q=>!recent.includes(q.id)),due=a.filter(q=>state.review.includes(q.id));if(due.length&&Math.random()<.5)return shuffle(due)[0];return shuffle(fresh.length?fresh:a)[0]}
 function newTask(){const q=choose();if(!q)return;state.seen.push(q.id);state.seen=state.seen.slice(-80);state.task={id:q.id,value:'',attempts:0,hinted:false,done:false,decision:null,decisionTries:0};state.stats.started++;save();paintTraining(true)}
-function input(hostId,q,value='',readonly=false){const host=$(hostId);host.replaceChildren();const f=document.createElement('textarea');f.className='field';f.rows=3;f.value=value;f.readOnly=readonly;f.setAttribute('aria-label',guidance(q));f.placeholder=q.format==='question'?'Deine englische Frage …':'Dein englischer Satz …';f.oninput=()=>{if(hostId==='trainInput'){state.task.value=f.value;save()}else if(state.exam){state.exam.value=f.value;save()}};host.append(f);return f}
+function input(hostId,q,value='',readonly=false){const host=$(hostId);host.replaceChildren();const f=document.createElement('textarea');f.className='field';f.rows=3;f.value=value;f.readOnly=readonly;f.setAttribute('aria-label',guidance(q));f.placeholder={word:'Dein Wort / deine Verbform …',phrase:'Deine Wortgruppe …',question:'Deine englische Frage …',sentence:'Dein englischer Satz …'}[q.format]||'Deine Antwort …';f.oninput=()=>{if(hostId==='trainInput'){state.task.value=f.value;save()}else if(state.exam){state.exam.value=f.value;save()}};host.append(f);return f}
 function decisionLabels(){return state.scope==='present-past'?[['simplepresent','Simple Present'],['simplepast','Simple Past']]:[['simplepresent','Simple Present'],['progressive','Present Progressive']]}
 function paintDecision(q){const box=$('tenseDecision'),host=$('decisionButtons');box.hidden=state.scope==='topic';host.replaceChildren();if(box.hidden)return;for(const [key,label] of decisionLabels()){const b=document.createElement('button');b.className='pill';b.textContent=label;b.setAttribute('aria-pressed',String(state.task.decision===key));b.onclick=()=>{state.task.decision=key;state.task.decisionTries++;save();paintTraining()};host.append(b)}const picked=state.task.decision;$('decisionMessage').textContent=!picked?'Wähle zuerst nach der Bedeutung der Situation.':picked===q.topic?'Richtig gewählt: '+TOPICS[q.topic]+' – '+REASONS[q.reason]+'.':'Prüfe noch einmal: '+REASONS[q.reason]+'.';$('decisionMessage').className='decision-message'+(picked===q.topic?' good':'')}
 function paintTraining(fresh=false){paintScope();let q=current();if(!q){newTask();return}const t=state.task;$('taskContext').textContent=q.context||'Lies die Aufgabe genau.';$('trainTask').textContent=q.prompt;$('responseGuide').textContent=guidance(q);$('trainProgress').textContent='Wiederholen: '+state.review.filter(id=>active().some(q=>q.id===id)).length+' · Verfügbare Aufgaben: '+active().length;paintDecision(q);const f=input('trainInput',q,t.value,t.done);if(state.scope!=='topic'&&t.decision!==q.topic&&!t.done){f.disabled=true;f.placeholder='Wähle zuerst die passende Zeitform.'}$('trainCheck').disabled=t.done||(state.scope!=='topic'&&t.decision!==q.topic);$('trainHint').hidden=!t.attempts||t.done;$('trainSolution').hidden=!t.attempts||t.done;const fb=$('trainFeedback');fb.hidden=!t.feedback;fb.className='feedback '+(t.feedbackKind||'');fb.textContent=t.feedback||'';paintStats()}
